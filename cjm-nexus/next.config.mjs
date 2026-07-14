@@ -11,4 +11,6 @@ const nextConfig = {
   eslint: { ignoreDuringBuilds: true },
 };
 
+// Redeploy de producción tras corregir el Root Directory (cjm-nexus).
+
 export default nextConfig;
