@@ -1,0 +1,66 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ============================================================
+   Estilos base globales — CJM Nexus
+   ============================================================ */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    /* Compensa la altura de la navbar fija al navegar por anclas */
+    scroll-padding-top: 5.5rem;
+  }
+
+  /* Respeta la preferencia del usuario de reducir el movimiento */
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
+
+  body {
+    @apply bg-smoke font-sans text-slate antialiased transition-colors duration-300 dark:bg-navy dark:text-smoke;
+  }
+
+  /* Foco de teclado siempre visible y consistente en toda la web */
+  :focus-visible {
+    @apply outline-none ring-2 ring-indigo ring-offset-2 ring-offset-smoke dark:ring-offset-navy;
+  }
+
+  ::selection {
+    @apply bg-indigo/20;
+  }
+}
+
+/* ============================================================
+   Utilidades propias
+   ============================================================ */
+@layer utilities {
+  /* Malla decorativa muy tenue del hero; se desvanece hacia los bordes
+     mediante una máscara radial para no competir con el contenido */
+  .bg-grid-hero {
+    background-image:
+      linear-gradient(to right, rgb(30 35 64 / 0.06) 1px, transparent 1px),
+      linear-gradient(to bottom, rgb(30 35 64 / 0.06) 1px, transparent 1px);
+    background-size: 42px 42px;
+    -webkit-mask-image: radial-gradient(ellipse 80% 70% at 50% 35%, black 35%, transparent 78%);
+    mask-image: radial-gradient(ellipse 80% 70% at 50% 35%, black 35%, transparent 78%);
+  }
+
+  .dark .bg-grid-hero {
+    background-image:
+      linear-gradient(to right, rgb(228 231 242 / 0.06) 1px, transparent 1px),
+      linear-gradient(to bottom, rgb(228 231 242 / 0.06) 1px, transparent 1px);
+  }
+
+  /* Malla clara para bandas navy permanentes (Línea 02), independiente del tema */
+  .bg-grid-navy {
+    background-image:
+      linear-gradient(to right, rgb(228 231 242 / 0.05) 1px, transparent 1px),
+      linear-gradient(to bottom, rgb(228 231 242 / 0.05) 1px, transparent 1px);
+    background-size: 42px 42px;
+    -webkit-mask-image: radial-gradient(ellipse 80% 70% at 50% 40%, black 30%, transparent 75%);
+    mask-image: radial-gradient(ellipse 80% 70% at 50% 40%, black 30%, transparent 75%);
+  }
+}

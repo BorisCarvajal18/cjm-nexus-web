@@ -1,0 +1,207 @@
+{
+  "common": {
+    "brand": "CJM Nexus",
+    "tagline": "Connecting Finance. Technology. Global Growth.",
+    "diagnosticCta": "Executive-Diagnose",
+    "skipToContent": "Zum Inhalt springen"
+  },
+  "meta": {
+    "title": "Strategische Finanzen & Technologie nach Maß | CJM Nexus",
+    "description": "Finanzführung, Management-Dashboards und maßgeschneiderte Technologie für KMU. Buchen Sie Ihre kostenlose Executive-Diagnose."
+  },
+  "nav": {
+    "home": "Start",
+    "problem": "Das Problem",
+    "finance": "Finanzen",
+    "technology": "Technologie",
+    "why": "Warum wir",
+    "process": "Prozess",
+    "menuLabel": "Hauptnavigation",
+    "openMenu": "Menü öffnen",
+    "closeMenu": "Menü schließen",
+    "language": "Sprache",
+    "themeLight": "Zum hellen Modus wechseln",
+    "themeDark": "Zum dunklen Modus wechseln"
+  },
+  "hero": {
+    "titleStart": "Wir verwandeln Ihre Zahlen in",
+    "titleHighlight": "klare Entscheidungen.",
+    "subtitle": "Wir verbinden Finanzen und Technologie, damit Ihr Unternehmen kontrolliert wächst — Diagnose, Dashboards und Finanzführung für KMU und mittelständische Unternehmen.",
+    "regions": "Lateinamerika · USA · Europa",
+    "dash": {
+      "title": "Management-Dashboard",
+      "live": "Live",
+      "demoNote": "Beispieldaten",
+      "kpiSales": "Umsatz",
+      "salesDelta": "+12 %",
+      "kpiMargin": "Marge",
+      "kpiCash": "Liquidität",
+      "cashUnit": "Tage",
+      "cashflowTitle": "Prognostizierter Cashflow",
+      "cashflowSeries": "Cashflow",
+      "profitTitle": "Rentabilität nach Geschäftsbereich",
+      "profitSeries": "Marge",
+      "lines": { "a": "Dienstleistungen", "b": "Handel", "c": "Vertrieb", "d": "Digital" },
+      "progressLabel": "Jahresplan umgesetzt",
+      "alertTitle": "Management-Hinweis",
+      "alertText": "Überfällige Forderungen +8 % in diesem Monat — Inkasso priorisieren."
+    }
+  },
+  "problem": {
+    "eyebrow": "Das Problem, das wir lösen",
+    "title": "Ihr Unternehmen hat Informationen. Was es braucht, ist Klarheit für Entscheidungen.",
+    "intro": "Viele Unternehmen verkaufen, wachsen und arbeiten Tag für Tag. Doch wenn Entscheidungen anstehen, erzählen die Zahlen nicht immer eine klare Geschichte.",
+    "q1": "Wachsen Sie mit echter Rentabilität?",
+    "q2": "Sind Ihre Kosten und Ausgaben unter Kontrolle?",
+    "q3": "Trägt Ihr Cashflow den Betrieb der kommenden Monate?",
+    "q4": "Welche Kennzahlen sollte das Management monatlich prüfen?",
+    "q5": "Welche Bereiche brauchen mehr finanzielle Ordnung?",
+    "q6": "Wie werden Informationen zu konkreten Entscheidungen?",
+    "resultLabel": "Ergebnis",
+    "resultText": "Finanzielle Klarheit für bessere Entscheidungen."
+  },
+  "finance": {
+    "eyebrow": "Linie 01 · Strategische Finanzen",
+    "title": "Finanzführung für geordnetes Wachstum.",
+    "intro": "Ein präziser, objektiver und praxisnaher Blick auf die Lage Ihres Unternehmens — für Inhaber, Geschäftsführung sowie Finanz- und Verwaltungsleitung, die mehr Kontrolle und bessere Entscheidungen suchen.",
+    "s1": {
+      "title": "Executive-Finanzdiagnose",
+      "text": "Wir analysieren Ihre Finanzdaten, um Schlüsselthemen, Verbesserungspotenziale und Bereiche mit Kontrollbedarf zu identifizieren."
+    },
+    "s2": {
+      "title": "Strategische Finanzführung",
+      "text": "Begleitung im Stil eines Fractional CFO: Entscheidungen stützen, Planung stärken und das Management-Follow-up verbessern."
+    },
+    "s3": {
+      "title": "Rentabilitätsanalyse",
+      "text": "Wir bewerten die Rentabilität nach Geschäftsbereichen, Einheiten, Produkten oder Projekten."
+    },
+    "s4": {
+      "title": "Kosten- und Ausgabenkontrolle",
+      "text": "Wir identifizieren relevante Muster, um Effizienz- und Kontrollentscheidungen zu unterstützen."
+    },
+    "s5": {
+      "title": "Cashflow",
+      "text": "Wir prognostizieren und überwachen Ihren Cashflow, um Bedarfe zu antizipieren und den Betrieb zu sichern."
+    },
+    "s6": {
+      "title": "Finanz-KPIs",
+      "text": "Wir definieren die Kennzahlen, die Ihr Management monatlich messen sollte."
+    },
+    "deliverablesLabel": "Zentrale Ergebnisse",
+    "deliverables": {
+      "d1": "Executive-Finanzdiagnose",
+      "d2": "Management-Dashboard",
+      "d3": "Finanz-KPIs",
+      "d4": "Cashflow-Prognose"
+    }
+  },
+  "technology": {
+    "eyebrow": "Linie 02 · Maßgeschneiderte Technologie",
+    "title": "Technologie, die Ihre Informationen in Kontrolle verwandelt.",
+    "intro": "Wir entwickeln digitale Lösungen, die Ihre Finanz-, Vertriebs- und Betriebsdaten mit visuellen, automatisierten und einfach zu bedienenden Werkzeugen verbinden. Ohne unnötige technische Komplexität.",
+    "s1": {
+      "title": "Corporate Website",
+      "text": "Professionelle Websites und Landingpages, die Vertrauen schaffen und Kunden besser erreichen."
+    },
+    "s2": {
+      "title": "Web- und Mobile-Apps",
+      "text": "Maßgeschneiderte Lösungen, um Prozesse zu verbessern und Informationen zu zentralisieren."
+    },
+    "s3": {
+      "title": "Management-Dashboards",
+      "text": "Wir verwandeln Ihre Daten in visuelle Boards der wichtigsten Kennzahlen."
+    },
+    "s4": {
+      "title": "Report-Automatisierung",
+      "text": "Weniger manuelle Arbeit, mehr Präzision und mehr Zeit für Entscheidungen."
+    },
+    "s5": {
+      "title": "Datenintegration",
+      "text": "Wir verbinden Informationen aus verschiedenen Quellen und Systemen."
+    },
+    "s6": {
+      "title": "Angewandte Künstliche Intelligenz",
+      "text": "Wir setzen KI und Automatisierung einfach, nützlich und ergebnisorientiert ein."
+    },
+    "closing1": "Das Ziel sind nicht mehr Systeme.",
+    "closing2": "Sondern bessere Informationen für Entscheidungen."
+  },
+  "why": {
+    "eyebrow": "Warum CJM Nexus",
+    "title1": "Eine Firma. Zwei Disziplinen.",
+    "title2": "Ein Ziel: dass Ihr Unternehmen besser entscheidet.",
+    "intro": "CJM Nexus verbindet Finanzexpertise, strategischen Blick und maßgeschneiderte Technologie, um Unternehmen zu begleiten, die mehr Klarheit und Kontrolle suchen.",
+    "r1": {
+      "title": "Über 15 Jahre Erfahrung",
+      "text": "Unser Gründerteam bringt über 15 Jahre Finanzerfahrung in Analyse, Kontrolle, Planung und Entscheidungsfindung mit."
+    },
+    "r2": {
+      "title": "Kunden weltweit",
+      "text": "Wir haben mehr als 100 Kunden in Lateinamerika, den USA und Europa begleitet."
+    },
+    "r3": {
+      "title": "Maßgeschneiderte Lösungen",
+      "text": "Wir arbeiten nicht mit Standardformeln. Jede Lösung entsteht aus Ihren Daten, Ihrer Struktur, Ihren Zielen und Prioritäten."
+    },
+    "stats": {
+      "s1": "Jahre Erfahrung",
+      "s2": "Betreute Kunden",
+      "s3": "Weltregionen",
+      "s4Value": "in 1",
+      "s4": "Finanzen + Technologie"
+    },
+    "closing": "Klare Finanzen. Nützliche Technologie. Entscheidungen mit Kontrolle."
+  },
+  "process": {
+    "title": "So arbeiten wir",
+    "badge": "Erstgespräch · Kostenlos — 20 Minuten",
+    "step": "Schritt {{n}}",
+    "p1": {
+      "title": "Wir sprechen",
+      "text": "Wir sprechen über die Situation Ihres Unternehmens, Ihre Prioritäten und Ihre wichtigsten Finanz- oder Technologie-Herausforderungen."
+    },
+    "p2": {
+      "title": "Wir identifizieren Chancen",
+      "text": "Gemeinsam identifizieren wir die Chancen mit dem größten Hebel, um zu ordnen, zu kontrollieren und besser zu entscheiden."
+    },
+    "p3": {
+      "title": "Wir schlagen einen Weg vor",
+      "text": "Wir schlagen Ihnen einen Weg vor: Diagnose, Finanzführung oder maßgeschneiderte Technologielösung. Unverbindlich."
+    }
+  },
+  "cta": {
+    "title1": "Machen Sie den nächsten Schritt",
+    "title2": "zu einem klareren, geordneteren und wachstumsbereiten Unternehmen.",
+    "text": "Sprechen wir darüber, wie Ihre Zahlen zu klareren Entscheidungen werden. Buchen Sie ein kostenloses 20-Minuten-Gespräch.",
+    "orContact": "Oder schreiben Sie uns direkt"
+  },
+  "contact": {
+    "waEc": "WhatsApp Ecuador",
+    "waDe": "WhatsApp Deutschland",
+    "email": "E-Mail",
+    "web": "Website"
+  },
+  "footer": {
+    "slogan": "Strategische Finanzen · Maßgeschneiderte Technologie · Wachstum mit Kontrolle.",
+    "navTitle": "Navigation",
+    "contactTitle": "Kontakt",
+    "reachTitle": "Reichweite",
+    "rights": "Alle Rechte vorbehalten."
+  },
+  "brochure": {
+    "button": "Broschüre herunterladen",
+    "title": "CJM Nexus-Broschüre herunterladen",
+    "desc": "Hinterlassen Sie Ihre E-Mail und erhalten Sie sofort Zugang zur Broschüre mit unseren Bereichen Strategische Finanzen und maßgeschneiderte Technologie.",
+    "emailLabel": "E-Mail-Adresse",
+    "emailPlaceholder": "sie@unternehmen.com",
+    "submit": "PDF herunterladen",
+    "sending": "Wird gesendet…",
+    "success": "Fertig! Ihr Download startet automatisch.",
+    "downloadAgain": "Nicht gestartet? Erneut herunterladen",
+    "errorEmail": "Bitte geben Sie eine gültige E-Mail-Adresse ein.",
+    "errorServer": "Ihre Anfrage konnte nicht verarbeitet werden. Bitte versuchen Sie es erneut.",
+    "note": "Wir verwenden Ihre E-Mail nur, um Ihnen Informationen zu CJM Nexus zu senden.",
+    "close": "Schließen"
+  }
+}
