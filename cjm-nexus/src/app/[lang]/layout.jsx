@@ -10,12 +10,39 @@
  * ESTÁTICA para /es, /en y /de (SSG): el HTML servido ya trae todo el
  * contenido, títulos, enlaces y etiquetas SEO.
  */
+import { Manrope, Syne } from 'next/font/google';
+
 import '../globals.css';
 import Providers from '../providers';
 import { getDictionary } from '../../i18n/dictionaries';
 import { defaultLanguage, languages, localeMap } from '../../i18n/settings';
 import { organizationSchema } from '../../lib/seo';
 import { SITE_URL } from '../../lib/site';
+
+/* Fuentes del sistema «Pulso Cobre».
+ *
+ * SE SIRVEN DESDE NUESTRO DOMINIO, no desde Google: next/font las descarga en
+ * el build y las empaqueta. Así el navegador no tiene que resolver, conectar y
+ * esperar a un tercero antes de pintar el primer texto — que es lo que hacía
+ * el sitio anterior con su <link> a fonts.googleapis.com — y de paso ninguna
+ * visita queda registrada en un servidor ajeno.
+ *
+ * `display: swap` muestra la fuente de reserva mientras carga la definitiva,
+ * en lugar de dejar el texto invisible.
+ */
+const syne = Syne({
+  subsets: ['latin'],
+  weight: ['600', '700', '800'],
+  variable: '--font-syne',
+  display: 'swap',
+});
+
+const manrope = Manrope({
+  subsets: ['latin'],
+  weight: ['400', '500', '600', '700'],
+  variable: '--font-manrope',
+  display: 'swap',
+});
 
 // Genera estáticamente /es, /en y /de en el build.
 export function generateStaticParams() {
@@ -60,11 +87,6 @@ export function generateMetadata({ params }) {
   };
 }
 
-/* Anti-flash de tema: aplica modo oscuro antes del primer render SOLO si el
-   usuario lo eligió antes (localStorage). Por defecto, la web abre en CLARO. */
-const THEME_SCRIPT =
-  "(function(){try{if(localStorage.getItem('cjm-theme')==='dark'){document.documentElement.classList.add('dark');}}catch(e){}})();";
-
 export default function LangLayout({ children, params }) {
   const lang = languages.includes(params.lang) ? params.lang : defaultLanguage;
   const dict = getDictionary(lang);
@@ -72,15 +94,8 @@ export default function LangLayout({ children, params }) {
   const orgJsonLd = organizationSchema({ lang, description: dict.hero.subtitle });
 
   return (
-    <html lang={lang} suppressHydrationWarning>
+    <html lang={lang} className={`${syne.variable} ${manrope.variable}`} suppressHydrationWarning>
       <head>
-        {/* Fuentes: Space Grotesk (display) + Inter (cuerpo) */}
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap"
-          rel="stylesheet"
-        />
         {/* Preconexión a Calendly (el widget se inyecta bajo demanda) */}
         <link rel="preconnect" href="https://assets.calendly.com" />
         {/* Datos estructurados: Organization (renderizado en servidor) */}
@@ -88,8 +103,6 @@ export default function LangLayout({ children, params }) {
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(orgJsonLd) }}
         />
-        {/* Anti-flash de tema (ver arriba) */}
-        <script dangerouslySetInnerHTML={{ __html: THEME_SCRIPT }} />
       </head>
       <body>
         <Providers lang={lang}>{children}</Providers>

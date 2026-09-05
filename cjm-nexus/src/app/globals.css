@@ -3,16 +3,15 @@
 @tailwind utilities;
 
 /* ============================================================
-   Estilos base globales — CJM Nexus
+   Base — sistema «Pulso Cobre»
    ============================================================ */
 @layer base {
   html {
     scroll-behavior: smooth;
-    /* Compensa la altura de la navbar fija al navegar por anclas */
+    /* Compensa la cabecera fija al saltar a un ancla */
     scroll-padding-top: 5.5rem;
   }
 
-  /* Respeta la preferencia del usuario de reducir el movimiento */
   @media (prefers-reduced-motion: reduce) {
     html {
       scroll-behavior: auto;
@@ -20,16 +19,25 @@
   }
 
   body {
-    @apply bg-smoke font-sans text-slate antialiased transition-colors duration-300 dark:bg-navy dark:text-smoke;
+    @apply bg-canvas font-sans text-[15px] leading-relaxed text-ink antialiased;
   }
 
-  /* Foco de teclado siempre visible y consistente en toda la web */
+  /* Foco de teclado: el mismo en todo el sitio, siempre visible */
   :focus-visible {
-    @apply outline-none ring-2 ring-indigo ring-offset-2 ring-offset-smoke dark:ring-offset-navy;
+    @apply outline-none ring-2 ring-copper ring-offset-2 ring-offset-canvas;
   }
 
   ::selection {
-    @apply bg-indigo/20;
+    @apply bg-copper/25;
+  }
+
+  /* Los títulos usan la display; el peso hace la jerarquía, no la familia */
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-display font-extrabold tracking-tight;
+    text-wrap: balance;
   }
 }
 
@@ -37,8 +45,50 @@
    Utilidades propias
    ============================================================ */
 @layer utilities {
-  /* Malla decorativa muy tenue del hero; se desvanece hacia los bordes
-     mediante una máscara radial para no competir con el contenido */
+  /* Texto con gradiente. Atajo de `bg-* bg-clip-text text-transparent`,
+     que aparece tantas veces que merece nombre. */
+  .text-grad {
+    @apply bg-clip-text text-transparent;
+  }
+
+  /* Trazado de los circuitos decorativos. El grosor y el color se fijan aquí
+     para que todos los circuitos del sitio se dibujen igual; lo único que
+     cambia entre secciones es la forma del trazo.
+
+     `stroke-dasharray` lo pone GSAP al preparar el dibujado: sin JavaScript
+     las líneas se ven completas, que es el estado correcto en reposo. */
+  .circuit path {
+    fill: none;
+    stroke: #e8b48a;
+    stroke-width: 1.5;
+    stroke-linecap: round;
+  }
+  .circuit .node {
+    fill: #e8b48a;
+  }
+  .circuit .halo {
+    fill: #e8b48a;
+    opacity: 0.3;
+  }
+  .circuit .pulse {
+    fill: #fff;
+    filter: drop-shadow(0 0 6px #e8b48a);
+  }
+
+  /* Oculta la barra de desplazamiento sin bloquear el desplazamiento:
+     lo necesitan los raíles horizontales en móvil. */
+  .no-bar {
+    scrollbar-width: none;
+  }
+  .no-bar::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+/* ============================================================
+   HEREDADO del sitio anterior — se borra en la fase 03
+   ============================================================ */
+@layer utilities {
   .bg-grid-hero {
     background-image:
       linear-gradient(to right, rgb(30 35 64 / 0.06) 1px, transparent 1px),
@@ -48,13 +98,6 @@
     mask-image: radial-gradient(ellipse 80% 70% at 50% 35%, black 35%, transparent 78%);
   }
 
-  .dark .bg-grid-hero {
-    background-image:
-      linear-gradient(to right, rgb(228 231 242 / 0.06) 1px, transparent 1px),
-      linear-gradient(to bottom, rgb(228 231 242 / 0.06) 1px, transparent 1px);
-  }
-
-  /* Malla clara para bandas navy permanentes (Línea 02), independiente del tema */
   .bg-grid-navy {
     background-image:
       linear-gradient(to right, rgb(228 231 242 / 0.05) 1px, transparent 1px),
