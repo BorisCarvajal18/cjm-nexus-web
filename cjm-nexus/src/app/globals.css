@@ -86,24 +86,19 @@
 }
 
 /* ============================================================
-   HEREDADO del sitio anterior — se borra en la fase 03
-   ============================================================ */
-@layer utilities {
-  .bg-grid-hero {
-    background-image:
-      linear-gradient(to right, rgb(30 35 64 / 0.06) 1px, transparent 1px),
-      linear-gradient(to bottom, rgb(30 35 64 / 0.06) 1px, transparent 1px);
-    background-size: 42px 42px;
-    -webkit-mask-image: radial-gradient(ellipse 80% 70% at 50% 35%, black 35%, transparent 78%);
-    mask-image: radial-gradient(ellipse 80% 70% at 50% 35%, black 35%, transparent 78%);
-  }
+   RETIRADO: las mallas decorativas del sitio anterior
+   ============================================================
+   `bg-grid-hero` y `bg-grid-navy` dibujaban una cuadrícula de líneas finas
+   sobre el hero y sobre la banda de tecnología. Se han eliminado y no vuelven.
 
-  .bg-grid-navy {
-    background-image:
-      linear-gradient(to right, rgb(228 231 242 / 0.05) 1px, transparent 1px),
-      linear-gradient(to bottom, rgb(228 231 242 / 0.05) 1px, transparent 1px);
-    background-size: 42px 42px;
-    -webkit-mask-image: radial-gradient(ellipse 80% 70% at 50% 40%, black 30%, transparent 75%);
-    mask-image: radial-gradient(ellipse 80% 70% at 50% 40%, black 30%, transparent 75%);
-  }
-}
+   Motivo: una malla de fondo solo tiene sentido cuando la superficie ES una
+   cuadrícula —un plano, un mapa, un lienzo de medición—. En una portada
+   corporativa no aporta información y es, además, una de las señas más
+   reconocibles de las páginas hechas con plantilla, que es exactamente de lo
+   que este rediseño quiere alejarse.
+
+   En el sistema nuevo la profundidad la dan los gradientes y los circuitos,
+   que sí significan algo. Las secciones antiguas que aún citan estas clases
+   se borran en la fase 03; mientras tanto se ven sin la malla, que es como
+   deben verse.
+   ============================================================ */
