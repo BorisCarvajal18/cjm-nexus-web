@@ -73,7 +73,7 @@ export default function SolucionesDigitalesPage({ params }) {
         <Offer content={content.web} id="web" />
         <Offer content={content.systems} id="sistemas" tone="muted" />
         <FeatureGrid content={content.guarantees} columns={2} numbered />
-        <ProductBand content={content.proof} href={`/${lang}#campos`} />
+        <ProductBand content={content.proof} href={`/${lang}/klinoda`} />
         <Faq content={content.faq} />
         <FinalCta content={content.cta} />
       </main>

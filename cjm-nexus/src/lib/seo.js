@@ -133,3 +133,24 @@ export function serviceSchema({ name, description, url }) {
     areaServed: ['Ecuador', 'Germany'],
   };
 }
+
+/**
+ * schema.org/SoftwareApplication para KLINODA.
+ *
+ * SIN PRECIO, SIN VALORACIONES Y SIN FECHA DE LANZAMIENTO. Las tres son
+ * propiedades que este tipo admite y que un buscador enseña con gusto; poner
+ * cualquiera de ellas sería afirmar en datos estructurados algo que la página
+ * se cuida de no afirmar en texto.
+ */
+export function softwareSchema({ name, description, url }) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'SoftwareApplication',
+    name,
+    description,
+    url: `${SITE_URL}${url}`,
+    applicationCategory: 'HealthApplication',
+    operatingSystem: 'Web',
+    author: { '@type': 'Organization', name: 'CJM Nexus', url: SITE_URL },
+  };
+}

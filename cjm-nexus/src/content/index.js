@@ -14,12 +14,14 @@
  * abajo. Ningún componente cambia.
  */
 import { home as homeEs } from './home.es';
+import { klinoda as klinodaEs } from './klinoda.es';
 import { digital as digitalEs, finanzas as finanzasEs, servicios as serviciosEs } from './servicios.es';
 
 const HOME = { es: homeEs, en: homeEs, de: homeEs };
 const SERVICIOS = { es: serviciosEs, en: serviciosEs, de: serviciosEs };
 const FINANZAS = { es: finanzasEs, en: finanzasEs, de: finanzasEs };
 const DIGITAL = { es: digitalEs, en: digitalEs, de: digitalEs };
+const KLINODA = { es: klinodaEs, en: klinodaEs, de: klinodaEs };
 
 export function getHome(lang) {
   return HOME[lang] ?? HOME.es;
@@ -35,4 +37,8 @@ export function getFinanzas(lang) {
 
 export function getDigital(lang) {
   return DIGITAL[lang] ?? DIGITAL.es;
+}
+
+export function getKlinoda(lang) {
+  return KLINODA[lang] ?? KLINODA.es;
 }

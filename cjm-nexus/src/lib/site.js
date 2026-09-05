@@ -26,16 +26,15 @@ export const SOCIAL_PROFILES = [];
  * funciones que reciben el idioma y no constantes: es imposible olvidarse
  * del prefijo si no existe la forma de escribirlo sin él.
  *
- * PROVISIONAL: KLINODA y Nosotros todavía apuntan a su sección de la portada
- * porque sus páginas son lo siguiente que se construye (fases 05 y 06). Un
- * enlace que lleva a una página inexistente es peor que uno que lleva a menos
- * de lo prometido: el primero es un callejón sin salida, el segundo un
- * adelanto.
+ * PROVISIONAL: solo queda «Nosotros» apuntando a su banda de la portada,
+ * hasta que exista su página. Un enlace que lleva a una página inexistente es
+ * peor que uno que lleva a menos de lo prometido: el primero es un callejón
+ * sin salida, el segundo un adelanto.
  */
 export function navLinks(lang = 'es') {
   return [
     { href: `/${lang}/servicios`, label: 'Servicios' },
-    { href: `/${lang}#campos`, label: 'KLINODA' },
+    { href: `/${lang}/klinoda`, label: 'KLINODA' },
     { href: `/${lang}#metodo`, label: 'Método' },
     { href: `/${lang}#equipo`, label: 'Nosotros' },
     // Todas las paginas terminan con la misma seccion de cierre, con
@@ -81,7 +80,7 @@ export function footerColumns(lang = 'es') {
     {
       title: 'Empresa',
       links: [
-        { label: 'KLINODA', href: `/${lang}#campos` },
+        { label: 'KLINODA', href: `/${lang}/klinoda` },
         { label: 'Método', href: `/${lang}#metodo` },
         { label: 'Nosotros', href: `/${lang}#equipo` },
         { label: 'Contacto', href: `/${lang}#contacto` },

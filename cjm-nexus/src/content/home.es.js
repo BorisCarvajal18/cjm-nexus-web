@@ -99,8 +99,7 @@ export const home = {
           'Certificados firmados electrónicamente',
           'La empresa ve la aptitud; nunca lo clínico',
         ],
-        // Apuntará a /klinoda cuando esa página exista; es lo siguiente del plan.
-        cta: { label: 'Conocer KLINODA', href: '#contacto', variant: 'navy' },
+        cta: { label: 'Conocer KLINODA', href: '/klinoda', variant: 'navy' },
       },
     ],
   },

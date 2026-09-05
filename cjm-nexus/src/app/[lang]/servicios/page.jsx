@@ -58,7 +58,7 @@ export default function ServiciosPage({ params }) {
           }}
           columns={3}
         />
-        <ProductBand content={content.product} href={`/${lang}#campos`} />
+        <ProductBand content={content.product} href={`/${lang}/klinoda`} />
         <FinalCta content={content.cta} />
       </main>
       <SiteFooter lang={lang} />
