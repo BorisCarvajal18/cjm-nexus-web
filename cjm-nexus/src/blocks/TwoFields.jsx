@@ -37,8 +37,12 @@ const FONDOS = {
 
 const MOCKUPS = { finanzas: FinanceCard, plataforma: PlatformCard, klinoda: KlinodaCard };
 
-export default function TwoFields({ content, mockups }) {
+export default function TwoFields({ content, mockups, lang = 'es' }) {
   const tones = content.panels.map((p) => p.tone);
+  /* Los enlaces internos se guardan sin idioma en `content` y se prefijan
+     aquí: escribirlos con /es dentro del texto obligaría a corregirlos uno a
+     uno el día que se traduzca la portada. */
+  const ruta = (href) => (href.startsWith('/') ? `/${lang}${href}` : href);
 
   return (
     <div id="campos">
@@ -67,7 +71,7 @@ export default function TwoFields({ content, mockups }) {
                   ))}
                 </ul>
                 <div className="mt-7">
-                  <Button href={panel.cta.href} variant={panel.cta.variant}>
+                  <Button href={ruta(panel.cta.href)} variant={panel.cta.variant}>
                     {panel.cta.label}
                   </Button>
                 </div>

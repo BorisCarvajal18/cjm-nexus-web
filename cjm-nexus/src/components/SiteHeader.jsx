@@ -20,10 +20,14 @@
 import { useEffect, useRef, useState } from 'react';
 
 import { alCambiarSuperficie } from '../lib/surface';
-import { NAV_LINKS } from '../lib/site';
+import { navLinks } from '../lib/site';
 import Button from './ui/Button';
 
-export default function SiteHeader({ ctaLabel = 'Agendar diagnóstico', ctaHref = '#contacto' }) {
+export default function SiteHeader({ lang = 'es', ctaLabel = 'Agendar diagnóstico', ctaHref }) {
+  /* Los enlaces se calculan con el idioma de la página. Ver `navLinks` en
+     `lib/site.js`: ninguna ruta del sitio existe sin su prefijo de idioma. */
+  const links = navLinks(lang);
+  const cta = ctaHref ?? `/${lang}#contacto`;
   const [open, setOpen] = useState(false);
   const [onDark, setOnDark] = useState(false);
   const [scrolled, setScrolled] = useState(false);
@@ -73,7 +77,7 @@ export default function SiteHeader({ ctaLabel = 'Agendar diagnóstico', ctaHref 
       className={`fixed inset-x-0 top-0 z-40 border-b transition-colors duration-300 ${tone} ${fondo}`}
     >
       <div className="container flex h-[72px] items-center justify-between gap-4">
-        <a href="#top" className="flex items-center gap-[.55rem]" aria-label="CJM Nexus, inicio">
+        <a href={`/${lang}`} className="flex items-center gap-[.55rem]" aria-label="CJM Nexus, inicio">
           <img
             src="/marca/cjm-isotipo.png"
             alt=""
@@ -97,7 +101,7 @@ export default function SiteHeader({ ctaLabel = 'Agendar diagnóstico', ctaHref 
               : 'border-hairline bg-white/90 shadow-[0_1px_2px_rgba(26,34,56,.06),0_8px_24px_-16px_rgba(26,34,56,.35)]'
           }`}
         >
-          {NAV_LINKS.map((link) => (
+          {links.map((link) => (
             <a
               key={link.href}
               href={link.href}
@@ -113,7 +117,7 @@ export default function SiteHeader({ ctaLabel = 'Agendar diagnóstico', ctaHref 
         <div className="flex items-center gap-2">
           {/* Cobre y no marino: sobre el crema de la portada el marino se
               apaga, y en todo el sistema lo que se pulsa es cobre. */}
-          <Button href={ctaHref} variant="copper" size="sm" className="hidden sm:inline-flex">
+          <Button href={cta} variant="copper" size="sm" className="hidden sm:inline-flex">
             {ctaLabel}
           </Button>
 
@@ -150,7 +154,7 @@ export default function SiteHeader({ ctaLabel = 'Agendar diagnóstico', ctaHref 
           className="fixed inset-0 z-50 bg-canvas px-6 pb-10 pt-[72px] text-ink lg:hidden"
         >
           <nav aria-label="Principal" className="grid gap-1 border-t border-hairline pt-6">
-            {NAV_LINKS.map((link, i) => (
+            {links.map((link, i) => (
               <a
                 key={link.href}
                 href={link.href}
@@ -164,7 +168,7 @@ export default function SiteHeader({ ctaLabel = 'Agendar diagnóstico', ctaHref 
               </a>
             ))}
           </nav>
-          <Button href={ctaHref} variant="copper" className="mt-8 w-full" onClick={close}>
+          <Button href={cta} variant="copper" className="mt-8 w-full" onClick={close}>
             {ctaLabel}
           </Button>
         </div>

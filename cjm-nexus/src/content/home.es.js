@@ -70,7 +70,7 @@ export const home = {
           'Tablero de indicadores y control de costos',
           'Rentabilidad por línea de negocio',
         ],
-        cta: { label: 'Hablar de tus números', href: '#contacto', variant: 'copper' },
+        cta: { label: 'Ver el servicio', href: '/servicios/direccion-financiera', variant: 'copper' },
       },
       {
         index: '02',
@@ -85,7 +85,7 @@ export const home = {
           'Automatización de reportes',
           'Privacidad y trazabilidad desde el diseño',
         ],
-        cta: { label: 'Contar tu caso', href: '#contacto', variant: 'navy' },
+        cta: { label: 'Ver el servicio', href: '/servicios/soluciones-digitales', variant: 'navy' },
       },
       {
         index: '03',
@@ -138,42 +138,6 @@ export const home = {
         ['Conductor', 'Periódica', 'warn', 'Con observaciones'],
       ],
       foot: 'Diagnósticos, antecedentes y exámenes no existen en esta vista.',
-    },
-  },
-
-  /* RESERVADO PARA LA PÁGINA DE DIRECCIÓN FINANCIERA. Estuvo en la portada
-     como marco que se expandía a pantalla completa y se retiró: era la
-     tercera sección fijada seguida y fijar el desplazamiento es lo más caro
-     que hace el sitio. El contenido se conserva porque el tablero sigue
-     siendo el mejor argumento de la línea financiera; solo cambia de sitio,
-     a una página donde puede ocupar el espacio que merece.
-
-     Su estructura es la del brochure, la que ya se enseña a los clientes. */
-  deliverable: {
-    badge: 'Entregable mensual · dirección financiera',
-    title: 'Así se ve lo que recibes cada mes.',
-    text: 'Un tablero con las ventas contra la meta, el margen por línea, los días de caja y las alertas que exigen una decisión. Un documento vivo que se revisa en reunión, no un informe que nadie abre.',
-    board: {
-      title: 'Tablero gerencial',
-      subject: 'Empresa Ejemplo · junio',
-      kpis: [
-        { label: 'Ventas', value: '$1,24 M', delta: '▲ 12 %', tone: 'ok' },
-        { label: 'Margen', value: '34 %', delta: '▲ 3 pt', tone: 'ok' },
-        { label: 'Caja', value: '45 días', delta: '▼ 4 d', tone: 'warn' },
-        { label: 'Rentabilidad', value: '18,2 %', delta: '▲ 1,5', tone: 'ok' },
-      ],
-      seriesLabel: 'Ventas contra meta',
-      series: [58, 64, 61, 72, 78, 86, 92, 88, 101, 96, 108, 114],
-      target: 95,
-      linesLabel: 'Margen por línea',
-      lines: [
-        ['Servicios', 41, 'ok'],
-        ['Producto', 33, 'ok'],
-        ['Distribución', 27, 'warn'],
-        ['Digital', 21, 'neutral'],
-      ],
-      alertsLabel: 'Alertas del mes',
-      alerts: ['Cartera vencida por encima de 60 días', 'Margen sobre meta en Servicios'],
     },
   },
 

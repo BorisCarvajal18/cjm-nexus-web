@@ -20,26 +20,27 @@ export const CALENDLY_URL = 'https://calendly.com/cjmnexus/diagnostico-ejecutivo
 export const SOCIAL_PROFILES = [];
 
 /**
- * Menú principal. Cinco entradas, todas con destino real.
+ * TODOS LOS ENLACES LLEVAN EL IDIOMA DELANTE. Cada ruta del sitio vive bajo
+ * /es, /en o /de, así que un enlace escrito como `/servicios` sacaría al
+ * visitante de su idioma y daría un 404. Por eso el menú y el pie son
+ * funciones que reciben el idioma y no constantes: es imposible olvidarse
+ * del prefijo si no existe la forma de escribirlo sin él.
  *
- * «Proyectos» se retiró: no hay trabajo de clientes que enseñar todavía y una
- * entrada de menú que lleva a una sección floja resta. En su lugar entra
- * KLINODA con su nombre: nombrar el producto hace que la firma se lea como
- * una empresa que tiene uno, que es exactamente el posicionamiento buscado.
- *
- * PROVISIONAL: KLINODA y Nosotros van a tener página propia, y son lo
- * siguiente que se construye. Hasta entonces apuntan a su sección de la
- * portada. Un enlace de menú que lleva a una página inexistente es peor que
- * uno que lleva a menos de lo prometido: el primero es un callejón sin
- * salida y el segundo, solo un adelanto.
+ * PROVISIONAL: KLINODA y Nosotros todavía apuntan a su sección de la portada
+ * porque sus páginas son lo siguiente que se construye (fases 05 y 06). Un
+ * enlace que lleva a una página inexistente es peor que uno que lleva a menos
+ * de lo prometido: el primero es un callejón sin salida, el segundo un
+ * adelanto.
  */
-export const NAV_LINKS = [
-  { href: '#campos', label: 'Servicios' },
-  { href: '#campos', label: 'KLINODA' },
-  { href: '#metodo', label: 'Método' },
-  { href: '#equipo', label: 'Nosotros' },
-  { href: '#contacto', label: 'Contacto' },
-];
+export function navLinks(lang = 'es') {
+  return [
+    { href: `/${lang}/servicios`, label: 'Servicios' },
+    { href: `/${lang}#campos`, label: 'KLINODA' },
+    { href: `/${lang}#metodo`, label: 'Método' },
+    { href: `/${lang}#equipo`, label: 'Nosotros' },
+    { href: `/${lang}#contacto`, label: 'Contacto' },
+  ];
+}
 
 /** Canales de contacto directo. */
 export const CONTACTS = [
@@ -63,29 +64,34 @@ export const CONTACTS = [
   },
 ];
 
-/** Columnas del pie. */
-export const FOOTER_COLUMNS = [
-  {
-    title: 'Servicios',
-    links: [
-      { label: 'Dirección financiera', href: '#campos' },
-      { label: 'Soluciones digitales', href: '#campos' },
-    ],
-  },
-  {
-    title: 'Empresa',
-    links: [
-      { label: 'KLINODA', href: '#campos' },
-      { label: 'Método', href: '#metodo' },
-      { label: 'Nosotros', href: '#equipo' },
-      { label: 'Contacto', href: '#contacto' },
-    ],
-  },
-  {
-    title: 'Legal',
-    links: [
-      { label: 'Privacidad', href: '#' },
-      { label: 'Aviso legal', href: '#' },
-    ],
-  },
-];
+/** Columnas del pie. Mismo criterio de idioma que el menú. */
+export function footerColumns(lang = 'es') {
+  return [
+    {
+      title: 'Servicios',
+      links: [
+        { label: 'Los dos servicios', href: `/${lang}/servicios` },
+        { label: 'Dirección financiera', href: `/${lang}/servicios/direccion-financiera` },
+        { label: 'Soluciones digitales', href: `/${lang}/servicios/soluciones-digitales` },
+      ],
+    },
+    {
+      title: 'Empresa',
+      links: [
+        { label: 'KLINODA', href: `/${lang}#campos` },
+        { label: 'Método', href: `/${lang}#metodo` },
+        { label: 'Nosotros', href: `/${lang}#equipo` },
+        { label: 'Contacto', href: `/${lang}#contacto` },
+      ],
+    },
+    {
+      title: 'Legal',
+      links: [
+        // Pendientes de la entidad legal de la firma (fase 06). Se dejan
+        // visibles a propósito: su ausencia resta seriedad a un sitio B2B.
+        { label: 'Privacidad', href: '#' },
+        { label: 'Aviso legal', href: '#' },
+      ],
+    },
+  ];
+}

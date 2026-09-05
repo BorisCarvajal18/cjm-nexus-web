@@ -39,23 +39,27 @@ import TwoFields from '../../blocks/TwoFields';
 import SiteFooter from '../../components/SiteFooter';
 import BackToTop from '../../components/ui/BackToTop';
 import SiteHeader from '../../components/SiteHeader';
-import { home } from '../../content/home.es';
+import { getHome } from '../../content';
+import { defaultLanguage, languages } from '../../i18n/settings';
 
-export default function HomePage() {
+export default function HomePage({ params }) {
+  const lang = languages.includes(params.lang) ? params.lang : defaultLanguage;
+  const home = getHome(lang);
+
   return (
     <>
-      <SiteHeader />
+      <SiteHeader lang={lang} />
       <main>
         <Hero content={home.hero} />
         <FactsTicker items={home.facts} />
         <ManifestoBlock content={home.manifesto} />
-        <TwoFields content={home.fields} mockups={home.mockups} />
+        <TwoFields content={home.fields} mockups={home.mockups} lang={lang} />
         <Numbers content={home.numbers} />
         <Method content={home.method} />
         <Team content={home.team} />
         <FinalCta content={home.cta} />
       </main>
-      <SiteFooter />
+      <SiteFooter lang={lang} />
       <BackToTop />
     </>
   );

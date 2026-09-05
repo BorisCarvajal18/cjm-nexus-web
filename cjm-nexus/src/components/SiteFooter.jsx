@@ -6,15 +6,15 @@
  * firma, que sigue pendiente. Se dejan visibles a propósito, porque su
  * ausencia es una de las señales que resta seriedad a un sitio B2B.
  */
-import { CONTACTS, FOOTER_COLUMNS } from '../lib/site';
+import { CONTACTS, footerColumns } from '../lib/site';
 import DarkSurface from './ui/DarkSurface';
 
-export default function SiteFooter() {
+export default function SiteFooter({ lang = 'es' }) {
   return (
     <DarkSurface as="footer" className="bg-g-navy text-white">
       <div className="container grid gap-10 py-14 lg:grid-cols-[1.5fr_repeat(3,1fr)]">
         <div>
-          <a href="#top" className="flex items-center gap-[.55rem]" aria-label="CJM Nexus, inicio">
+          <a href={`/${lang}`} className="flex items-center gap-[.55rem]" aria-label="CJM Nexus, inicio">
             <img
               src="/marca/cjm-isotipo.png"
               alt=""
@@ -42,7 +42,7 @@ export default function SiteFooter() {
           </ul>
         </div>
 
-        {FOOTER_COLUMNS.map((column) => (
+        {footerColumns(lang).map((column) => (
           <nav key={column.title} aria-label={column.title}>
             <h2 className="mb-3 text-[.66rem] font-extrabold uppercase tracking-[.18em] text-copper-light">
               {column.title}
