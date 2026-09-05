@@ -141,10 +141,14 @@ export const home = {
     },
   },
 
-  /* El momento visual grande de la portada. Va sobre el entregable de la
-     línea financiera y no sobre KLINODA: es lo que la mayoría de visitantes
-     viene a comprar. La estructura del tablero es la del brochure, que es la
-     que ya se enseña a los clientes. */
+  /* RESERVADO PARA LA PÁGINA DE DIRECCIÓN FINANCIERA. Estuvo en la portada
+     como marco que se expandía a pantalla completa y se retiró: era la
+     tercera sección fijada seguida y fijar el desplazamiento es lo más caro
+     que hace el sitio. El contenido se conserva porque el tablero sigue
+     siendo el mejor argumento de la línea financiera; solo cambia de sitio,
+     a una página donde puede ocupar el espacio que merece.
+
+     Su estructura es la del brochure, la que ya se enseña a los clientes. */
   deliverable: {
     badge: 'Entregable mensual · dirección financiera',
     title: 'Así se ve lo que recibes cada mes.',

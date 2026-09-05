@@ -281,10 +281,16 @@ export default function Hero({ content }) {
         {/* En reposo asoma por abajo. La posición inicial la fija GSAP con
             xPercent/yPercent para que conviva con el `scale` que viene
             después; el `-translate-` de CSS es solo el estado sin
-            JavaScript. */}
+            JavaScript.
+
+            EL BORDE VA DIFUMINADO, no recortado. Con el canto duro y una
+            sombra marcada parecía un disco pegado encima de la portada, y de
+            hecho se leía como un error. Con la máscara radial el color se
+            desvanece hacia los lados y se lee como lo que es: algo que asoma
+            desde abajo y que al bajar crece. */}
         <div
           data-circulo
-          className="relative aspect-square w-full overflow-hidden rounded-full shadow-deep will-change-transform lg:absolute lg:left-1/2 lg:top-full lg:h-[min(42vw,600px)] lg:w-[min(42vw,600px)] lg:-translate-x-1/2 lg:-translate-y-[22%]"
+          className="relative aspect-square w-full overflow-hidden rounded-full will-change-transform [mask-image:radial-gradient(circle_at_50%_50%,#000_58%,transparent_92%)] lg:absolute lg:left-1/2 lg:top-full lg:h-[min(42vw,600px)] lg:w-[min(42vw,600px)] lg:-translate-x-1/2 lg:-translate-y-[22%]"
         >
           <Aurora />
         </div>
