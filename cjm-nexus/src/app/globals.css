@@ -57,11 +57,16 @@
 
      `stroke-dasharray` lo pone GSAP al preparar el dibujado: sin JavaScript
      las líneas se ven completas, que es el estado correcto en reposo. */
-  .circuit path {
+  .circuit path,
+  .circuit line,
+  .circuit polyline,
+  .circuit rect,
+  .circuit circle.dibujo {
     fill: none;
     stroke: #e8b48a;
     stroke-width: 1.5;
     stroke-linecap: round;
+    stroke-linejoin: round;
   }
   .circuit .node {
     fill: #e8b48a;

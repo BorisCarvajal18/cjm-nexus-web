@@ -19,10 +19,23 @@ export const CALENDLY_URL = 'https://calendly.com/cjmnexus/diagnostico-ejecutivo
  */
 export const SOCIAL_PROFILES = [];
 
-/** Menú principal. Las etiquetas se traducen en `src/content/`. */
+/**
+ * Menú principal. Cinco entradas, todas con destino real.
+ *
+ * «Proyectos» se retiró: no hay trabajo de clientes que enseñar todavía y una
+ * entrada de menú que lleva a una sección floja resta. En su lugar entra
+ * KLINODA con su nombre: nombrar el producto hace que la firma se lea como
+ * una empresa que tiene uno, que es exactamente el posicionamiento buscado.
+ *
+ * PROVISIONAL: KLINODA y Nosotros van a tener página propia, y son lo
+ * siguiente que se construye. Hasta entonces apuntan a su sección de la
+ * portada. Un enlace de menú que lleva a una página inexistente es peor que
+ * uno que lleva a menos de lo prometido: el primero es un callejón sin
+ * salida y el segundo, solo un adelanto.
+ */
 export const NAV_LINKS = [
   { href: '#campos', label: 'Servicios' },
-  { href: '#proyectos', label: 'Proyectos' },
+  { href: '#campos', label: 'KLINODA' },
   { href: '#metodo', label: 'Método' },
   { href: '#equipo', label: 'Nosotros' },
   { href: '#contacto', label: 'Contacto' },
@@ -62,7 +75,7 @@ export const FOOTER_COLUMNS = [
   {
     title: 'Empresa',
     links: [
-      { label: 'Proyectos', href: '#proyectos' },
+      { label: 'KLINODA', href: '#campos' },
       { label: 'Método', href: '#metodo' },
       { label: 'Nosotros', href: '#equipo' },
       { label: 'Contacto', href: '#contacto' },

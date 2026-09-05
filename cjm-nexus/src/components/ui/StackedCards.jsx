@@ -31,10 +31,18 @@ export default function StackedCards({ items = [], className = '' }) {
         <article
           key={item.title ?? i}
           data-card
-          style={{ top: `${14 + i * 3}vh` }}
-          className={`sticky grid min-h-[48vh] content-start gap-8 rounded-xl4 p-9 text-white shadow-[0_40px_100px_-40px_rgba(20,31,58,.5)] md:grid-cols-2 ${SURFACES[i % SURFACES.length]}`}
+          /* SEPARACIÓN AMPLIA ENTRE TARJETAS. Con tres grados de diferencia
+             asomaba justo la franja donde vive el título de la anterior, y
+             los cuatro títulos acababan pisándose. Con nueve solo asoma
+             color, que es lo que debe verse: el borde de lo ya leído. */
+          style={{ top: `${12 + i * 9}vh`, zIndex: i + 1 }}
+          className={`sticky grid min-h-[46vh] content-start gap-8 overflow-hidden rounded-xl4 p-9 text-white shadow-[0_40px_100px_-40px_rgba(20,31,58,.5)] md:grid-cols-2 ${SURFACES[i % SURFACES.length]}`}
         >
-          <div>
+          {/* La tarjeta que queda debajo se OSCURECE, no se vuelve
+              translúcida: con opacidad se transparentaba y se leía el texto
+              de dos tarjetas a la vez. */}
+          <span data-velo aria-hidden="true" className="pointer-events-none absolute inset-0 bg-navy-deep opacity-0" />
+          <div className="relative">
             <span
               aria-hidden="true"
               className="font-display text-[3.4rem] font-extrabold leading-none tracking-tighter opacity-45"
@@ -46,7 +54,7 @@ export default function StackedCards({ items = [], className = '' }) {
           </div>
 
           {item.evidence ? (
-            <div className="rounded-xl3 bg-white/[.16] p-5 text-[.9rem] backdrop-blur-sm">
+            <div className="relative rounded-xl3 bg-white/[.16] p-5 text-[.9rem] backdrop-blur-sm">
               <b className="mb-2 block text-[.64rem] font-extrabold uppercase tracking-[.14em] opacity-80">
                 {item.evidenceLabel ?? 'Ejemplo real'}
               </b>

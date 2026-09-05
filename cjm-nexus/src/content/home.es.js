@@ -1,18 +1,18 @@
 /**
- * Todo el texto de la portada, en un solo sitio.
+ * Todo el texto y los datos de la portada, en un solo sitio.
  *
  * POR QUÉ ASÍ Y NO DENTRO DE LOS COMPONENTES: cuando llegue el inglés y el
  * alemán bastará con un archivo hermano (`home.en.js`, `home.de.js`) y no
  * habrá que tocar ni una línea de maquetación. Además permite revisar y
  * corregir los textos leyendo un solo archivo, que es como se aprobaron.
  *
- * Aprobado por el dueño el 5 de septiembre de 2026, con cuatro correcciones
- * suyas ya aplicadas: el eslogan en inglés se retira, se dice «clientes» y no
- * «empresas», el alcance es «Ecuador y Alemania», y el titular se queda como
- * estaba.
+ * REGLA AL EDITAR: cada AFIRMACIÓN sobre la firma tiene que poder responder
+ * «¿dónde está eso?». Los datos que llenan las interfaces de muestra son otra
+ * cosa: ilustran cómo se ve un entregable, igual que la captura de pantalla de
+ * cualquier producto, y por eso pueden ser inventados. Lo que no se hace nunca
+ * es presentar esos números como resultados propios ni de un cliente.
  *
- * REGLA AL EDITAR: cada afirmación tiene que poder responder «¿dónde está
- * eso?». Si la respuesta es «lo sabemos hacer», se reformula o se quita.
+ * Revisado con el dueño el 5 de septiembre de 2026.
  */
 export const home = {
   meta: {
@@ -24,14 +24,15 @@ export const home = {
   hero: {
     eyebrow: 'Finanzas · Tecnología · Ecuador y Alemania',
     title: 'Finanzas claras y software a la altura de tu empresa.',
-    // Se resaltan en gradiente dentro del titular.
+    // Estas dos palabras van en gradiente dentro del titular.
     highlight: ['claras', 'altura'],
     lead: 'CJM Nexus une dirección financiera con quince años de trayectoria y desarrollo de software especializado, para empresas que quieren crecer con control.',
     primary: 'Agendar diagnóstico ejecutivo · 20 min',
     secondary: 'Ver qué hacemos',
     note: 'Sin costo · sin compromiso · en español, inglés o alemán',
     scroll: 'Desliza',
-    // Aparece dentro de la esfera cuando ocupa la pantalla entera.
+    // Aparece dentro de la esfera cuando ocupa la pantalla entera, justo
+    // donde los dos dibujos se juntan en una sola línea.
     reveal: {
       title: 'Dos campos. Un criterio.',
       text: 'Control: en los números y en el software.',
@@ -59,6 +60,7 @@ export const home = {
       {
         index: '01',
         tone: 'navy',
+        mockup: 'finanzas',
         eyebrow: 'Servicio 01',
         title: 'Dirección financiera externa.',
         text: 'Un director financiero para dueños y gerentes que necesitan claridad para decidir, con entregables concretos cada mes.',
@@ -68,12 +70,12 @@ export const home = {
           'Tablero de indicadores y control de costos',
           'Rentabilidad por línea de negocio',
         ],
-        cta: { label: 'Ver el servicio', href: '#contacto', variant: 'copper' },
-        card: { label: 'Flujo de caja proyectado', value: '13 semanas', note: 'Ejemplo' },
+        cta: { label: 'Hablar de tus números', href: '#contacto', variant: 'copper' },
       },
       {
         index: '02',
         tone: 'copper',
+        mockup: 'plataforma',
         eyebrow: 'Servicio 02',
         title: 'Soluciones digitales a medida.',
         text: 'Plataformas web, dashboards y automatización para operaciones con normativa, documentos oficiales y datos sensibles.',
@@ -84,83 +86,91 @@ export const home = {
           'Privacidad y trazabilidad desde el diseño',
         ],
         cta: { label: 'Contar tu caso', href: '#contacto', variant: 'navy' },
-        card: { label: 'Plataforma · panel', value: '42 documentos', note: 'Ejemplo' },
       },
       {
         index: '03',
         tone: 'stone',
-        eyebrow: 'Proyecto destacado',
+        mockup: 'klinoda',
+        eyebrow: 'Producto propio',
         title: 'KLINODA: la prueba de lo que construimos.',
-        text: 'Convertimos una norma de sesenta páginas en una plataforma que un médico ocupacional usa cada día. No es un servicio médico: es la demostración de lo que hacemos por cualquier sector con reglas estrictas.',
+        text: 'KLINODA es nuestra plataforma para médicos ocupacionales en Ecuador. Digitaliza un trámite obligatorio lleno de reglas, formularios oficiales y datos sensibles, y lo deja resuelto en minutos. No es un servicio médico: es la prueba de lo que construimos para cualquier sector con normativa estricta.',
         items: [
           'Formulario oficial completo por bloques',
           'Certificados firmados electrónicamente',
           'La empresa ve la aptitud; nunca lo clínico',
         ],
-        cta: { label: 'Ver el proyecto', href: '#proyectos', variant: 'navy' },
-        card: { label: 'KLINODA', value: 'En piloto controlado', note: 'Producto propio' },
+        // Apuntará a /klinoda cuando esa página exista; es lo siguiente del plan.
+        cta: { label: 'Conocer KLINODA', href: '#contacto', variant: 'navy' },
       },
     ],
+  },
+
+  /* Interfaces de muestra de los tres paneles. Son ilustraciones del
+     entregable, no resultados: por eso los números son redondos y las
+     empresas genéricas. */
+  mockups: {
+    finanzas: {
+      title: 'Tablero gerencial',
+      subject: 'Junio',
+      kpis: [
+        { label: 'Ventas', value: '$1,24 M', delta: '▲ 12 %', tone: 'ok' },
+        { label: 'Margen', value: '34 %', delta: '▲ 3 pt', tone: 'ok' },
+        { label: 'Caja', value: '45 d', delta: '▼ 4 d', tone: 'warn' },
+      ],
+      seriesLabel: 'Ventas contra meta',
+      series: [42, 48, 45, 58, 63, 72, 78, 88, 96],
+      alert: 'Cartera vencida por encima de 60 días',
+    },
+    plataforma: {
+      title: 'De tus datos al documento',
+      sources: ['Contabilidad', 'Ventas', 'Operación'],
+      core: 'Plataforma',
+      outputs: ['Tablero', 'Documento firmado', 'Alertas'],
+      foot: 'Reglas, permisos y trazabilidad en el centro, no en la pantalla.',
+    },
+    klinoda: {
+      title: 'Portal de empresa',
+      subject: 'Vista de aptitud',
+      columns: ['Cargo', 'Evaluación', 'Aptitud'],
+      rows: [
+        ['Operador de planta', 'Periódica', 'ok', 'Apto'],
+        ['Supervisora de turno', 'Ingreso', 'ok', 'Apto'],
+        ['Conductor', 'Periódica', 'warn', 'Con observaciones'],
+      ],
+      foot: 'Diagnósticos, antecedentes y exámenes no existen en esta vista.',
+    },
   },
 
   /* El momento visual grande de la portada. Va sobre el entregable de la
      línea financiera y no sobre KLINODA: es lo que la mayoría de visitantes
-     viene a comprar. Las cifras son de ejemplo y se dice, sin la palabra
-     «en vivo» que el sitio anterior ponía sobre datos inventados. */
+     viene a comprar. La estructura del tablero es la del brochure, que es la
+     que ya se enseña a los clientes. */
   deliverable: {
     badge: 'Entregable mensual · dirección financiera',
-    title: 'El tablero que tu gerencia revisa cada mes.',
-    text: 'Rentabilidad por línea, flujo de caja proyectado y los indicadores que de verdad se usan para decidir. Un documento vivo, no un informe que nadie abre.',
+    title: 'Así se ve lo que recibes cada mes.',
+    text: 'Un tablero con las ventas contra la meta, el margen por línea, los días de caja y las alertas que exigen una decisión. Un documento vivo que se revisa en reunión, no un informe que nadie abre.',
     board: {
       title: 'Tablero gerencial',
-      note: 'Cifras de ejemplo',
+      subject: 'Empresa Ejemplo · junio',
       kpis: [
-        { label: 'Margen bruto', value: '34 %', tone: 'ok' },
-        { label: 'Caja disponible', value: '45 días', tone: 'ok' },
-        { label: 'Cartera vencida', value: '+8 %', tone: 'warn' },
-        { label: 'Plan anual', value: '65 %', tone: 'neutral' },
+        { label: 'Ventas', value: '$1,24 M', delta: '▲ 12 %', tone: 'ok' },
+        { label: 'Margen', value: '34 %', delta: '▲ 3 pt', tone: 'ok' },
+        { label: 'Caja', value: '45 días', delta: '▼ 4 d', tone: 'warn' },
+        { label: 'Rentabilidad', value: '18,2 %', delta: '▲ 1,5', tone: 'ok' },
       ],
-      rows: [
-        ['Servicios', '42 %', 'ok', 'Sano'],
-        ['Comercio', '34 %', 'ok', 'Sano'],
-        ['Distribución', '27 %', 'warn', 'Revisar'],
-        ['Digital', '21 %', 'neutral', 'Nuevo'],
+      seriesLabel: 'Ventas contra meta',
+      series: [58, 64, 61, 72, 78, 86, 92, 88, 101, 96, 108, 114],
+      target: 95,
+      linesLabel: 'Margen por línea',
+      lines: [
+        ['Servicios', 41, 'ok'],
+        ['Producto', 33, 'ok'],
+        ['Distribución', 27, 'warn'],
+        ['Digital', 21, 'neutral'],
       ],
-      columns: ['Línea de negocio', 'Margen', 'Estado'],
-      foot: 'El mismo tablero, cada mes, con los indicadores que su gerencia decidió medir.',
+      alertsLabel: 'Alertas del mes',
+      alerts: ['Cartera vencida por encima de 60 días', 'Margen sobre meta en Servicios'],
     },
-  },
-
-  projects: {
-    eyebrow: 'Proyectos',
-    title: 'Lo que hemos construido.',
-    intro: 'Contado con su estado real, sin promesas.',
-    cta: { label: 'Ver todos los proyectos', href: '#proyectos' },
-    items: [
-      {
-        title: 'KLINODA',
-        meta: 'Plataforma · 2026',
-        description: 'Medicina ocupacional para Ecuador: formulario oficial, certificados firmados y portal de empresa.',
-        status: 'En piloto controlado',
-        statusTone: 'warn',
-        tone: 'navy',
-        thumb: { title: 'KLINODA', dark: true },
-      },
-      {
-        title: 'cjmnexus.com',
-        meta: 'Web · 2026',
-        description: 'Este sitio: trilingüe, estático y animado con GSAP.',
-        tone: 'stone',
-        thumb: { title: 'CJM Nexus', dark: false },
-      },
-      {
-        title: 'Tablero gerencial',
-        meta: 'Dirección financiera',
-        description: 'El entregable mensual: indicadores, caja y rentabilidad por línea.',
-        tone: 'copper',
-        thumb: { title: 'Tablero', dark: false },
-      },
-    ],
   },
 
   numbers: {
@@ -231,31 +241,21 @@ export const home = {
     ],
   },
 
+  /* En la portada el equipo va como banda corta, sin fotografías ni fichas.
+     Tres tarjetas con iniciales dentro de un círculo se leen como un hueco
+     esperando a rellenarse; una frase que nombra a los tres y enlaza a su
+     página se lee como una decisión. Las fotos van en «Nosotros». */
   team: {
     eyebrow: 'Nosotros',
     title: 'Tres personas, dos países, una firma.',
-    intro: 'Dirección financiera desde Ecuador; tecnología desde Alemania.',
+    lead: 'Richard Carvajal dirige las finanzas desde Ecuador. Mirella Llanga lleva la operación. Boris Carvajal construye la tecnología desde Alemania.',
     people: [
-      {
-        name: 'Richard Carvajal',
-        role: 'Fundador · Dirección financiera',
-        bio: 'Más de quince años en asesoría financiera, con más de cien clientes acompañados en Latinoamérica y Estados Unidos.',
-        linkedin:
-          'https://www.linkedin.com/in/richard-jefferson-carvajal-pilliza-3a58b171/',
-      },
-      {
-        name: 'Mirella Llanga',
-        role: 'Gerente General',
-        bio: 'Dirige la operación diaria de la firma: coordina los proyectos, las entregas y la relación con cada cliente.',
-        linkedin: 'https://www.linkedin.com/in/mirella-ana-llanga-deid%C3%A1n-08295318a/',
-      },
-      {
-        name: 'Boris Carvajal',
-        role: 'Cofundador · Tecnología',
-        bio: 'Responsable del área tecnológica desde Alemania: KLINODA, las soluciones digitales y esta web.',
-        linkedin: 'https://www.linkedin.com/in/boris-carvajal',
-      },
+      { name: 'Richard Carvajal', role: 'Fundador · Dirección financiera' },
+      { name: 'Mirella Llanga', role: 'Gerente General' },
+      { name: 'Boris Carvajal', role: 'Cofundador · Tecnología' },
     ],
+    // Apuntará a /nosotros cuando esa página exista.
+    cta: { label: 'Conocer al equipo', href: '#contacto' },
   },
 
   cta: {

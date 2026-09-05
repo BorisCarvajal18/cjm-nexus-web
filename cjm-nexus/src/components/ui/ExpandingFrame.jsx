@@ -72,19 +72,26 @@ export default function ExpandingFrame({ backdrop, caption, children, className 
         <div data-backdrop className="absolute inset-[-20%] will-change-transform">
           {backdrop}
         </div>
-        <div className="relative grid min-h-[26rem] place-items-center p-6 lg:min-h-0 lg:h-full">
-          {children}
+
+        {/* DOS COLUMNAS AL EXPANDIRSE, no una pieza centrada con el texto
+            encima. Antes el marco crecía centrado y acababa tapando el
+            titular; ahora, cuando ocupa la pantalla, el texto tiene su mitad
+            izquierda y la pieza la derecha, y no pueden solaparse. */}
+        <div className="relative grid min-h-[26rem] place-items-center p-6 lg:h-full lg:min-h-0 lg:grid-cols-2 lg:items-center lg:gap-[4vw] lg:px-[7vw]">
+          {caption ? (
+            <div data-caption className="hidden text-white lg:block lg:opacity-0">
+              {caption}
+            </div>
+          ) : (
+            <span className="hidden lg:block" />
+          )}
+          <div className="flex w-full justify-center lg:justify-end">{children}</div>
         </div>
       </div>
 
-      {caption ? (
-        <div
-          data-caption
-          className="mt-8 max-w-[36rem] text-ink lg:absolute lg:bottom-[7vh] lg:left-[7vw] lg:z-10 lg:mt-0 lg:text-white lg:opacity-0"
-        >
-          {caption}
-        </div>
-      ) : null}
+      {/* En móvil no hay expansión ni columnas: el texto va debajo de la
+          pieza, en el orden en que se lee. */}
+      {caption ? <div className="mt-8 max-w-[36rem] text-ink lg:hidden">{caption}</div> : null}
     </section>
   );
 }

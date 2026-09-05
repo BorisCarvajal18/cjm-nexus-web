@@ -24,11 +24,19 @@ import { useEffect, useRef, useState } from 'react';
 
 import useGsap from '../hooks/useGsap';
 import Button from '../components/ui/Button';
-import Circuit from '../components/ui/Circuit';
 import { Eyebrow } from '../components/ui/Text';
 import { splitWords, wordsIn } from '../lib/animations';
 import { gsap, prefersReducedMotion } from '../lib/gsap';
 import { marcarOscuro } from '../lib/surface';
+import HeroDiagram from './HeroDiagram';
+
+/** Quita acentos y signos para comparar palabras del titular. */
+const normalizar = (palabra) =>
+  palabra
+    .toLowerCase()
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .replace(/[^\p{L}\p{N}]/gu, '');
 
 /* Los cinco focos de la aurora: marino, azul acero, cobre, durazno y piedra.
    Se dibujan sumando luz sobre marino profundo, que es lo que hace que las
@@ -108,7 +116,7 @@ function Aurora() {
 }
 
 export default function Hero({ content }) {
-  const { eyebrow, title, lead, primary, secondary, note, scroll, reveal } = content;
+  const { eyebrow, title, lead, primary, secondary, note, scroll, reveal, highlight = [] } = content;
   const [anchoSuficiente, setAnchoSuficiente] = useState(false);
 
   useEffect(() => {
@@ -124,7 +132,20 @@ export default function Hero({ content }) {
       if (!root) return undefined;
 
       const h1 = root.querySelector('[data-titular]');
-      wordsIn(splitWords(h1), { delay: 0.15, stagger: 0.055 });
+      const palabras = splitWords(h1);
+
+      /* Las dos palabras clave del titular van en gradiente de marca. Se
+         resaltan aquí, después de partir el texto, y no en el JSX: así el
+         HTML que sirve el servidor es una frase normal y un buscador lee
+         «Finanzas claras y software a la altura», no fragmentos sueltos. */
+      const destacadas = new Set(highlight.map(normalizar));
+      palabras.forEach((palabra) => {
+        if (destacadas.has(normalizar(palabra.textContent))) {
+          palabra.classList.add('text-grad', 'bg-g-brand');
+        }
+      });
+
+      wordsIn(palabras, { delay: 0.15, stagger: 0.055 });
       gsap.from(root.querySelectorAll('[data-entra]'), {
         y: 24,
         opacity: 0,
@@ -239,21 +260,7 @@ export default function Hero({ content }) {
         className="relative mx-auto mb-16 aspect-square w-[min(78vw,420px)] overflow-hidden rounded-full shadow-deep lg:absolute lg:left-1/2 lg:top-full lg:mb-0 lg:h-[42vw] lg:max-h-[600px] lg:w-[42vw] lg:max-w-[600px]"
       >
         <Aurora />
-        <Circuit
-          className="absolute inset-0 h-full w-full opacity-90"
-          width={600}
-          height={600}
-          paths={[
-            'M300 0 V170 L240 230 V420 L300 480 V600',
-            'M300 170 L360 230 V330 L400 370 V600',
-            'M240 330 L200 370 V600',
-          ]}
-          nodes={[
-            [300, 170],
-            [400, 370],
-            [300, 480],
-          ]}
-        />
+        <HeroDiagram className="absolute inset-0 h-full w-full opacity-90" />
         <div
           data-frase
           className="absolute inset-0 grid place-items-center px-[8vw] text-center text-white opacity-0"

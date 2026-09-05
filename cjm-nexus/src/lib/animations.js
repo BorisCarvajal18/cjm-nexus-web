@@ -301,12 +301,18 @@ export function stackCards(cards) {
   const list = gsap.utils.toArray(cards);
   list.forEach((card, i) => {
     if (i === list.length - 1) return;
-    gsap.to(card, {
-      scale: 0.94,
-      opacity: 0.7,
-      ease: 'none',
-      scrollTrigger: { trigger: list[i + 1], start: 'top 80%', end: 'top 20%', scrub: true },
-    });
+    const trigger = { trigger: list[i + 1], start: 'top 80%', end: 'top 20%', scrub: true };
+
+    // Encoge un poco…
+    gsap.to(card, { scale: 0.96, ease: 'none', scrollTrigger: trigger });
+
+    /* …y se oscurece con un velo, NUNCA con opacidad. Bajar la opacidad de
+       la tarjeta la vuelve translúcida y deja leer a través de ella el texto
+       de la que viene detrás: cuatro reglas superpuestas e ilegibles. Un velo
+       opaco encima consigue el mismo efecto de profundidad sin transparentar
+       nada. */
+    const velo = card.querySelector('[data-velo]');
+    if (velo) gsap.to(velo, { opacity: 0.45, ease: 'none', scrollTrigger: trigger });
   });
   return list;
 }

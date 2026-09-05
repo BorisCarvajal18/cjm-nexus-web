@@ -26,11 +26,23 @@ import Button from './ui/Button';
 export default function SiteHeader({ ctaLabel = 'Agendar diagnóstico', ctaHref = '#contacto' }) {
   const [open, setOpen] = useState(false);
   const [onDark, setOnDark] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const menuButton = useRef(null);
 
   /* La cabecera no averigua qué hay debajo: se lo dicen. Cada banda oscura
      avisa al entrar y al salir, y aquí solo se escucha. */
   useEffect(() => alCambiarSuperficie(setOnDark), []);
+
+  /* Al salir de la portada, la cabecera gana fondo propio.
+     Sobre la portada va suelta, para que la primera pantalla se vea entera;
+     a partir de ahí pasa por encima de secciones de todos los colores, y sin
+     un fondo detrás el menú se pierde en cuanto el contenido tiene contraste. */
+  useEffect(() => {
+    const alDesplazar = () => setScrolled(window.scrollY > 24);
+    alDesplazar();
+    window.addEventListener('scroll', alDesplazar, { passive: true });
+    return () => window.removeEventListener('scroll', alDesplazar);
+  }, []);
 
   /* Cerrar el panel con Escape y bloquear el desplazamiento de fondo. */
   useEffect(() => {
@@ -50,9 +62,16 @@ export default function SiteHeader({ ctaLabel = 'Agendar diagnóstico', ctaHref 
   };
 
   const tone = onDark ? 'text-white' : 'text-ink';
+  const fondo = scrolled
+    ? onDark
+      ? 'bg-navy-deep/85 border-white/10'
+      : 'bg-canvas/90 border-hairline'
+    : 'bg-transparent border-transparent';
 
   return (
-    <header className={`fixed inset-x-0 top-0 z-40 transition-colors duration-300 ${tone}`}>
+    <header
+      className={`fixed inset-x-0 top-0 z-40 border-b backdrop-blur-md transition-colors duration-300 ${tone} ${fondo}`}
+    >
       <div className="container flex h-[72px] items-center justify-between gap-4">
         <a href="#top" className="flex items-center gap-[.55rem]" aria-label="CJM Nexus, inicio">
           <img
@@ -67,18 +86,23 @@ export default function SiteHeader({ ctaLabel = 'Agendar diagnóstico', ctaHref 
           </span>
         </a>
 
+        {/* La píldora del menú necesita BORDE Y FONDO propios. Translúcida
+            sobre el crema de la portada no se separaba del fondo y el menú
+            desaparecía, que es justo lo que había que arreglar. */}
         <nav
           aria-label="Principal"
           className={`hidden items-center gap-[.15rem] rounded-full border p-[.3rem] backdrop-blur-md lg:flex ${
-            onDark ? 'border-white/15 bg-white/10' : 'border-hairline bg-white/70 shadow-soft'
+            onDark
+              ? 'border-white/25 bg-white/15'
+              : 'border-hairline bg-white/90 shadow-[0_1px_2px_rgba(26,34,56,.06),0_8px_24px_-16px_rgba(26,34,56,.35)]'
           }`}
         >
           {NAV_LINKS.map((link) => (
             <a
               key={link.href}
               href={link.href}
-              className={`rounded-full px-[.85rem] py-[.45rem] text-[.78rem] font-bold transition-colors ${
-                onDark ? 'text-white/75 hover:bg-white/15 hover:text-white' : 'text-ink-soft hover:bg-g-navy hover:text-white'
+              className={`rounded-full px-[.9rem] py-[.45rem] text-[.82rem] font-bold transition-colors ${
+                onDark ? 'text-white/85 hover:bg-white/20 hover:text-white' : 'text-ink hover:bg-g-navy hover:text-white'
               }`}
             >
               {link.label}
@@ -87,7 +111,9 @@ export default function SiteHeader({ ctaLabel = 'Agendar diagnóstico', ctaHref 
         </nav>
 
         <div className="flex items-center gap-2">
-          <Button href={ctaHref} variant={onDark ? 'white' : 'navy'} size="sm" className="hidden sm:inline-flex">
+          {/* Cobre y no marino: sobre el crema de la portada el marino se
+              apaga, y en todo el sistema lo que se pulsa es cobre. */}
+          <Button href={ctaHref} variant="copper" size="sm" className="hidden sm:inline-flex">
             {ctaLabel}
           </Button>
 
