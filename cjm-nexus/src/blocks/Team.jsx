@@ -16,7 +16,11 @@ import { Eyebrow, GradientText } from '../components/ui/Text';
 export default function Team({ content }) {
   return (
     <section id="equipo" className="container py-[12vh]">
-      <Reveal className="grid gap-8 lg:grid-cols-[1fr_1.1fr] lg:items-end">
+      {/* LAS DOS COLUMNAS ARRANCAN ARRIBA, no abajo. Alineadas al pie, el
+          titular quedaba muy por debajo del párrafo de al lado y parecía
+          descolgado. Con la línea superior compartida, el título y el texto
+          empiezan a la misma altura y la sección se lee de un vistazo. */}
+      <Reveal className="grid gap-x-12 gap-y-8 lg:grid-cols-[1fr_1.1fr] lg:items-start">
         <div>
           <Eyebrow>{content.eyebrow}</Eyebrow>
           <h2 className="mt-4 max-w-[14ch] text-display-md">
@@ -24,8 +28,8 @@ export default function Team({ content }) {
           </h2>
         </div>
 
-        <div>
-          <p className="text-[1.05rem] text-ink-soft">{content.lead}</p>
+        <div className="lg:pt-[calc(1.4rem_+_.6rem)]">
+          <p className="max-w-[38rem] text-[1.05rem] text-ink-soft">{content.lead}</p>
 
           <ul className="mt-6 grid gap-x-8 gap-y-3 border-t border-hairline pt-5 sm:grid-cols-3">
             {content.people.map((person) => (

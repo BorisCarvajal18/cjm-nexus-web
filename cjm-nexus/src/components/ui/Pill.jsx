@@ -34,7 +34,7 @@ export function Badge({ tone = 'copper', className = '', children }) {
   const dot = { copper: 'bg-g-copper', teal: 'bg-g-teal', navy: 'bg-g-navy' }[tone] ?? 'bg-g-copper';
   return (
     <span
-      className={`inline-flex items-center gap-2 rounded-full bg-white/14 px-3 py-[.35rem] text-[.7rem] font-bold backdrop-blur-sm ${className}`}
+      className={`inline-flex items-center gap-2 rounded-full bg-white/20 px-3 py-[.35rem] text-[.7rem] font-bold ${className}`}
     >
       <span aria-hidden="true" className={`h-2 w-2 rounded-full ${dot}`} />
       {children}

@@ -64,13 +64,13 @@ export default function SiteHeader({ ctaLabel = 'Agendar diagnóstico', ctaHref 
   const tone = onDark ? 'text-white' : 'text-ink';
   const fondo = scrolled
     ? onDark
-      ? 'bg-navy-deep/85 border-white/10'
-      : 'bg-canvas/90 border-hairline'
+      ? 'bg-navy-deep border-white/10'
+      : 'bg-canvas border-hairline'
     : 'bg-transparent border-transparent';
 
   return (
     <header
-      className={`fixed inset-x-0 top-0 z-40 border-b backdrop-blur-md transition-colors duration-300 ${tone} ${fondo}`}
+      className={`fixed inset-x-0 top-0 z-40 border-b transition-colors duration-300 ${tone} ${fondo}`}
     >
       <div className="container flex h-[72px] items-center justify-between gap-4">
         <a href="#top" className="flex items-center gap-[.55rem]" aria-label="CJM Nexus, inicio">
@@ -91,7 +91,7 @@ export default function SiteHeader({ ctaLabel = 'Agendar diagnóstico', ctaHref 
             desaparecía, que es justo lo que había que arreglar. */}
         <nav
           aria-label="Principal"
-          className={`hidden items-center gap-[.15rem] rounded-full border p-[.3rem] backdrop-blur-md lg:flex ${
+          className={`hidden items-center gap-[.15rem] rounded-full border p-[.3rem] lg:flex ${
             onDark
               ? 'border-white/25 bg-white/15'
               : 'border-hairline bg-white/90 shadow-[0_1px_2px_rgba(26,34,56,.06),0_8px_24px_-16px_rgba(26,34,56,.35)]'

@@ -6,9 +6,11 @@
  * parta en dos, se arregla en este archivo y no en catorce páginas.
  */
 export { default as Accordion } from './Accordion';
+export { default as BackToTop } from './BackToTop';
 export { default as Button } from './Button';
 export { default as Card } from './Card';
 export { default as Circuit } from './Circuit';
+export { default as DarkSurface } from './DarkSurface';
 export { default as ExpandingFrame } from './ExpandingFrame';
 export { default as Field } from './Field';
 export { default as HorizontalRail, RailPanel } from './HorizontalRail';

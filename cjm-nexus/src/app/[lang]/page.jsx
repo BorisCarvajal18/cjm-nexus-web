@@ -32,6 +32,7 @@ import Numbers from '../../blocks/Numbers';
 import Team from '../../blocks/Team';
 import TwoFields from '../../blocks/TwoFields';
 import SiteFooter from '../../components/SiteFooter';
+import BackToTop from '../../components/ui/BackToTop';
 import SiteHeader from '../../components/SiteHeader';
 import { home } from '../../content/home.es';
 
@@ -51,6 +52,7 @@ export default function HomePage() {
         <FinalCta content={home.cta} />
       </main>
       <SiteFooter />
+      <BackToTop />
     </>
   );
 }

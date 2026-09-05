@@ -54,7 +54,7 @@ export default function StackedCards({ items = [], className = '' }) {
           </div>
 
           {item.evidence ? (
-            <div className="relative rounded-xl3 bg-white/[.16] p-5 text-[.9rem] backdrop-blur-sm">
+            <div className="relative rounded-xl3 bg-white/[.16] p-5 text-[.9rem]">
               <b className="mb-2 block text-[.64rem] font-extrabold uppercase tracking-[.14em] opacity-80">
                 {item.evidenceLabel ?? 'Ejemplo real'}
               </b>

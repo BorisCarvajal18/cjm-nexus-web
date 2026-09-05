@@ -24,6 +24,24 @@ export function registerGsap() {
   gsap.registerPlugin(ScrollTrigger, MotionPathPlugin);
   registered = true;
 
+  /* AJUSTES DE RENDIMIENTO DEL DESPLAZAMIENTO.
+   *
+   * `limitCallbacks` hace que onUpdate y compañía se llamen una vez por
+   * fotograma en lugar de una vez por evento de scroll. Un ratón de rueda
+   * libre o un panel táctil disparan muchos más eventos que fotogramas puede
+   * pintar el navegador, y sin esto cada uno ejecutaba nuestro código.
+   *
+   * `ignoreMobileResize` evita recalcular todas las medidas cuando la barra
+   * del navegador móvil se esconde al bajar. Ese recálculo es carísimo y
+   * ocurre justo mientras el dedo está desplazando.
+   *
+   * `lagSmoothing` le dice a GSAP que, si un fotograma tarda más de 500 ms,
+   * no intente recuperar el tiempo perdido de golpe: hacerlo produce un salto
+   * brusco justo después de cualquier tirón.
+   */
+  ScrollTrigger.config({ limitCallbacks: true, ignoreMobileResize: true });
+  gsap.ticker.lagSmoothing(500, 33);
+
   /* DOS RECÁLCULOS QUE EVITAN QUE EL MOVIMIENTO SE DISPARE A DESTIEMPO.
    *
    * ScrollTrigger mide dónde empieza y acaba cada sección UNA VEZ, al crearla.
