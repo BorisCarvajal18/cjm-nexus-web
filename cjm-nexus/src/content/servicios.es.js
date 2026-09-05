@@ -148,11 +148,11 @@ export const finanzas = {
   },
 
   /* SUPUESTO — LO MÁS IMPORTANTE DE ESTA PÁGINA.
-     Este es el ritmo de trabajo tal y como yo lo supongo: un levantamiento,
-     un diagnóstico presentado en reunión, una puesta en marcha del tablero y
-     luego una reunión mensual fija. Los plazos (semana 1, semana 2, semanas 3
-     y 4) y el contenido de cada paso son suposiciones. Richard tiene que
-     confirmar el ritmo real o corregirlo.
+     El arranque ya está confirmado por el dueño (5-sep-2026): el primer paso
+     es una conversación estratégica sobre el negocio, no una revisión de doce
+     meses de estados financieros ni una reunión con el contador del cliente.
+     LO QUE SIGUE SIN CONFIRMAR son los plazos —semana 1, semana 2, semanas 3
+     y 4— y si la reunión de dirección es mensual o de otra periodicidad.
      Es la pregunta 1 de `docs/preguntas-richard.md`. */
   month: {
     eyebrow: 'Cómo trabajamos',
@@ -163,9 +163,9 @@ export const finanzas = {
       {
         step: '01',
         when: 'Semana 1',
-        title: 'Levantamiento',
-        text: 'Nos entregas los estados financieros de los últimos doce meses y conversamos una vez con tu contador. No pedimos acceso a tus cuentas bancarias ni movemos dinero: leemos y preguntamos.',
-        gives: 'Lo que pones tú: los reportes que ya tienes y un par de horas de tu tiempo.',
+        title: 'Conversación estratégica',
+        text: 'Nos sentamos a hablar de tu negocio en serio: qué vendes, cómo lo vendes, qué te cuesta y a dónde quieres llegar. Con eso y con la información financiera que ya tienes, empezamos. No pedimos acceso a tus cuentas bancarias ni movemos dinero.',
+        gives: 'Lo que pones tú: la información que ya existe y una conversación a fondo sobre tu empresa.',
       },
       {
         step: '02',
@@ -270,7 +270,7 @@ export const finanzas = {
     no: {
       title: 'No es lo tuyo si',
       items: [
-        'Buscas quien lleve la contabilidad y presente los impuestos: eso lo hace tu contador, y nosotros trabajamos con él.',
+        'Buscas quien lleve la contabilidad y presente los impuestos: eso lo hace tu contador. Lo nuestro es lo que viene después.',
         'Necesitas resolver una urgencia de caja esta semana: un diagnóstico no reemplaza a un crédito.',
         'No hay disposición a tomar decisiones incómodas cuando los números las señalen.',
       ],
@@ -287,7 +287,7 @@ export const finanzas = {
     items: [
       {
         q: '¿Esto reemplaza a mi contador?',
-        a: 'No, y no debería. El contador registra lo que ya pasó y cumple con lo que exige la ley. La dirección financiera interpreta esa información y la convierte en decisiones hacia adelante. Trabajamos con tu contador, no en su lugar.',
+        a: 'No, y no debería. El contador registra lo que ya pasó y cumple con lo que exige la ley. La dirección financiera interpreta esa información y la convierte en decisiones hacia adelante. Son dos trabajos distintos: el nuestro empieza donde termina el suyo.',
       },
       {
         q: '¿Y si mi contabilidad está desordenada?',
