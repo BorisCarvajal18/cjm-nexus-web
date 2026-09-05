@@ -17,6 +17,11 @@ import { CALENDLY_URL } from '../../lib/site';
  * gradiente y el resplandor de color detrás. Se reconoce como el mismo sitio
  * sin volver a cobrar el peaje de la animación.
  *
+ * EL RELLENO SUPERIOR ES FIJO EN MOVIL Y RELATIVO EN ESCRITORIO. Con 26vh
+ * en los dos sitios, un telefono se comia doscientos pixeles en blanco antes
+ * del primer texto: en la pantalla mas pequena, justo donde menos sobra. Los
+ * 136 px de movil son la cabecera mas un respiro, y nada mas.
+ *
  * El texto NO entra con opacidad cero. Se anima con `gsap.from()`, de modo
  * que el HTML que sirve el servidor ya trae el titular visible: si el
  * JavaScript falla o tarda, la página se lee igual.
@@ -25,7 +30,7 @@ export default function PageHero({ content, align = 'left' }) {
   const centrado = align === 'center';
 
   return (
-    <section id="top" className="relative overflow-hidden pb-[8vh] pt-[26vh]">
+    <section id="top" className="relative overflow-hidden pb-[8vh] pt-[136px] md:pt-[26vh]">
       {/* Resplandor de marca. Va muy difuminado y detrás del texto: da color
           al bloque sin robarle contraste al titular. */}
       <span

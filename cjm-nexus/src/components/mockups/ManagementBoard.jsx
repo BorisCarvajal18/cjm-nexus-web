@@ -17,10 +17,16 @@ const TONO_BARRA = { ok: 'bg-g-navy', warn: 'bg-g-copper', neutral: 'bg-stone' }
 
 export default function ManagementBoard({ data }) {
   const max = Math.max(...data.series, data.target);
-  const paso = 300 / (data.series.length - 1);
+  /* MARGEN DE MEDIA BARRA A CADA LADO. Sin el, la primera barra empezaba en
+     x = -6 y la ultima terminaba en 306, las dos cortadas por el borde del
+     dibujo. En escritorio pasaba desapercibido; en un telefono, con el
+     tablero a la mitad de ancho, se veia una barra partida en cada punta. */
+  const MARGEN = 7;
+  const paso = (300 - MARGEN * 2) / (data.series.length - 1);
+  const x = (i) => MARGEN + i * paso;
   const y = (v) => 76 - (v / max) * 66;
   const linea = data.series
-    .map((v, i) => `${i === 0 ? 'M' : 'L'}${(i * paso).toFixed(1)} ${y(v).toFixed(1)}`)
+    .map((v, i) => `${i === 0 ? 'M' : 'L'}${x(i).toFixed(1)} ${y(v).toFixed(1)}`)
     .join(' ');
 
   return (
@@ -68,7 +74,7 @@ export default function ManagementBoard({ data }) {
             {data.series.map((v, i) => (
               <rect
                 key={i}
-                x={i * paso - 6}
+                x={x(i) - 6}
                 y={y(v)}
                 width="12"
                 height={76 - y(v)}

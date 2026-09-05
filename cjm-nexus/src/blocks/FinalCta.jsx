@@ -49,10 +49,16 @@ export default function FinalCta({ content }) {
             </Button>
           </div>
 
-          <ul className="mt-8 flex flex-wrap justify-center gap-x-6 gap-y-2 text-[.85rem] font-semibold text-white/80">
+          {/* Los tres canales, con altura de dedo. Eran enlaces de dieciseis pixeles
+              de alto: en un telefono, tres objetivos asi de finos y pegados
+              garantizan que se pulse el equivocado. */}
+          <ul className="mt-8 flex flex-wrap justify-center gap-x-6 text-[.85rem] font-semibold text-white/80">
             {CONTACTS.map((contact) => (
               <li key={contact.key}>
-                <a href={contact.href} className="transition-colors hover:text-copper-light">
+                <a
+                  href={contact.href}
+                  className="inline-block py-[.55rem] transition-colors hover:text-copper-light"
+                >
                   {contact.label} · {contact.value}
                 </a>
               </li>

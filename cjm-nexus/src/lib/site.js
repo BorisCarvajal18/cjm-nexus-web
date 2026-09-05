@@ -38,7 +38,10 @@ export function navLinks(lang = 'es') {
     { href: `/${lang}#campos`, label: 'KLINODA' },
     { href: `/${lang}#metodo`, label: 'Método' },
     { href: `/${lang}#equipo`, label: 'Nosotros' },
-    { href: `/${lang}#contacto`, label: 'Contacto' },
+    // Todas las paginas terminan con la misma seccion de cierre, con
+    // id="contacto". Un ancla suelta lleva a la de la pagina donde estas, y
+    // no obliga a cargar la portada para pedir una reunion.
+    { href: '#contacto', label: 'Contacto' },
   ];
 }
 

@@ -18,6 +18,11 @@ import { StepCard } from './Steps';
  * un 01 y un 02 del tamaño de un titular, se entiende de un vistazo que son
  * dos caminos y que hay que elegir uno.
  *
+ * SE VE TAMBIEN EN EL TELEFONO. Estuvo oculto por debajo de 640 px y era
+ * justo al reves de lo que hacia falta: en una pantalla ancha las dos ofertas
+ * se abarcan de un vistazo, y en uno alto y estrecho se leen en columna, una
+ * detras de otra, y sin el numero parecen la misma seccion repitiendose.
+ *
  * `tone="muted"` pone la segunda oferta sobre fondo de piedra. Es la forma
  * más barata de marcar el corte: no cuesta un píxel de animación y funciona
  * incluso mirando la página de reojo.
@@ -38,7 +43,7 @@ export default function Offer({ content, tone = 'plain', id }) {
                 de hacerles leer «cero uno» antes de cada bloque. */}
             <span
               aria-hidden="true"
-              className="hidden font-display text-[3.4rem] font-extrabold leading-none text-grad bg-g-copper sm:block"
+              className="text-grad bg-g-copper font-display text-[2.2rem] font-extrabold leading-none sm:text-[3.4rem]"
             >
               {content.marker}
             </span>

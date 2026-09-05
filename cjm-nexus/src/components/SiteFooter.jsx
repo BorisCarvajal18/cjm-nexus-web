@@ -30,10 +30,13 @@ export default function SiteFooter({ lang = 'es' }) {
             Dirección financiera y software especializado para empresas que crecen con control.
             Ecuador y Alemania.
           </p>
-          <ul className="mt-5 grid gap-2 text-[.88rem]">
+          <ul className="mt-5 grid text-[.88rem]">
             {CONTACTS.map((contact) => (
               <li key={contact.key}>
-                <a href={contact.href} className="text-white/70 transition-colors hover:text-copper-light">
+                <a
+                  href={contact.href}
+                  className="inline-block py-[.5rem] text-white/70 transition-colors hover:text-copper-light"
+                >
                   <span className="text-white/45">{contact.label}: </span>
                   {contact.value}
                 </a>
@@ -47,12 +50,12 @@ export default function SiteFooter({ lang = 'es' }) {
             <h2 className="mb-3 text-[.66rem] font-extrabold uppercase tracking-[.18em] text-copper-light">
               {column.title}
             </h2>
-            <ul className="grid gap-[.35rem]">
+            <ul className="grid">
               {column.links.map((link) => (
                 <li key={link.label}>
                   <a
                     href={link.href}
-                    className="text-[.9rem] text-white/70 transition-colors hover:text-white"
+                    className="inline-block py-[.4rem] text-[.9rem] text-white/70 transition-colors hover:text-white"
                   >
                     {link.label}
                   </a>

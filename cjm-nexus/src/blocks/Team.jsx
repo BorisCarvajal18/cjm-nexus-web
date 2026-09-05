@@ -44,7 +44,7 @@ export default function Team({ content }) {
 
           <a
             href={content.cta.href}
-            className="mt-6 inline-block font-display text-[.95rem] font-extrabold text-navy-light hover:underline"
+            className="mt-4 inline-block py-[.6rem] font-display text-[.95rem] font-extrabold text-navy-light hover:underline"
           >
             {content.cta.label} →
           </a>

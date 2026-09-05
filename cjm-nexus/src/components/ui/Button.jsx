@@ -10,8 +10,14 @@
  * sitio, para que un enlace nunca acabe siendo un <button> con onClick que
  * no se pueda abrir en otra pestaña.
  */
+/* EL TEXTO PUEDE PARTIRSE EN DOS LINEAS, y por eso no hay `whitespace-nowrap`.
+   Lo hubo, y en un telefono de 375 px la accion principal —«Agendar
+   diagnostico ejecutivo · 20 min»— se salia trece pixeles por la derecha.
+   Un boton que se sale del margen se lee como una pagina rota justo en el
+   sitio donde se pide el clic. Centrado y con `max-w-full`, cuando no cabe
+   se parte en dos lineas y sigue dentro. */
 const BASE =
-  'inline-flex items-center justify-center gap-2 rounded-full font-bold whitespace-nowrap ' +
+  'inline-flex max-w-full items-center justify-center gap-2 rounded-full text-center font-bold ' +
   'transition-transform duration-200 ease-out motion-safe:hover:-translate-y-[3px] active:translate-y-0 ' +
   'border border-transparent';
 

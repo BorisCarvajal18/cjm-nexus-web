@@ -11,22 +11,47 @@
  * por tarjeta, de modo que asome el borde superior de las anteriores. GSAP
  * solo añade el encogido; sin JavaScript el apilado sigue funcionando, que es
  * la razón de resolverlo con CSS y no con animación.
+ *
+ * NO SE APILA EN EL TELÉFONO, y no es por gusto: se midió. Con la cuarta
+ * tarjeta pegada a 39vh del borde superior, en una pantalla de 667 px —un
+ * iPhone SE o un 8, que siguen siendo muchísimos— la tarjeta sobresalía 77 px
+ * por abajo y su ejemplo quedaba cortado. Justo el ejemplo, que es lo único
+ * que distingue esta sección de una lista de adjetivos.
+ *
+ * Apilar exige altura, y en vertical no la hay. Por debajo de 768 px las
+ * cuatro se leen una detrás de otra, enteras, y GSAP no se activa: sin
+ * apilado no hay nada que oscurecer.
  */
+import { useEffect, useState } from 'react';
+
 import useGsap from '../../hooks/useGsap';
 import { stackCards } from '../../lib/animations';
 
 const SURFACES = ['bg-g-navy', 'bg-g-copper', 'bg-g-teal', 'bg-g-brand'];
 
 export default function StackedCards({ items = [], className = '' }) {
+  const [apila, setApila] = useState(false);
+
+  useEffect(() => {
+    // 768 px: el mismo punto que el prefijo `md:` de la tarjeta. Si los dos no
+    // coinciden queda una franja de anchos donde GSAP oscurece tarjetas que
+    // no se están apilando.
+    const query = window.matchMedia('(min-width: 768px)');
+    const sync = () => setApila(query.matches);
+    sync();
+    query.addEventListener('change', sync);
+    return () => query.removeEventListener('change', sync);
+  }, []);
+
   const scope = useGsap(
     (self, root) => {
-      if (root) stackCards(root.querySelectorAll('[data-card]'));
+      if (root && apila) stackCards(root.querySelectorAll('[data-card]'));
     },
-    [items.length],
+    [items.length, apila],
   );
 
   return (
-    <div ref={scope} className={`grid gap-4 ${className}`}>
+    <div ref={scope} className={`grid gap-4 md:gap-4 ${className}`}>
       {items.map((item, i) => (
         <article
           key={item.title ?? i}
@@ -36,7 +61,7 @@ export default function StackedCards({ items = [], className = '' }) {
              los cuatro títulos acababan pisándose. Con nueve solo asoma
              color, que es lo que debe verse: el borde de lo ya leído. */
           style={{ top: `${12 + i * 9}vh`, zIndex: i + 1 }}
-          className={`sticky grid min-h-[46vh] content-start gap-8 overflow-hidden rounded-xl4 p-9 text-white shadow-[0_40px_100px_-40px_rgba(20,31,58,.5)] md:grid-cols-2 ${SURFACES[i % SURFACES.length]}`}
+          className={`static grid md:sticky md:min-h-[46vh] content-start gap-8 overflow-hidden rounded-xl4 p-9 text-white shadow-[0_40px_100px_-40px_rgba(20,31,58,.5)] md:grid-cols-2 ${SURFACES[i % SURFACES.length]}`}
         >
           {/* La tarjeta que queda debajo se OSCURECE, no se vuelve
               translúcida: con opacidad se transparentaba y se leía el texto

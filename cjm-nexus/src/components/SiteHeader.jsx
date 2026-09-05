@@ -27,7 +27,8 @@ export default function SiteHeader({ lang = 'es', ctaLabel = 'Agendar diagnósti
   /* Los enlaces se calculan con el idioma de la página. Ver `navLinks` en
      `lib/site.js`: ninguna ruta del sitio existe sin su prefijo de idioma. */
   const links = navLinks(lang);
-  const cta = ctaHref ?? `/${lang}#contacto`;
+  // Mismo criterio que el enlace «Contacto»: el cierre de ESTA pagina.
+  const cta = ctaHref ?? '#contacto';
   const [open, setOpen] = useState(false);
   const [onDark, setOnDark] = useState(false);
   const [scrolled, setScrolled] = useState(false);
