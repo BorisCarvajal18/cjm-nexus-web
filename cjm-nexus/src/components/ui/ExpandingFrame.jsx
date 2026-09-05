@@ -19,6 +19,7 @@ import { useEffect, useState } from 'react';
 
 import useGsap from '../../hooks/useGsap';
 import { expandFrame } from '../../lib/animations';
+import { marcarOscuro } from '../../lib/surface';
 
 export default function ExpandingFrame({ backdrop, caption, children, className = '' }) {
   const [isWide, setIsWide] = useState(false);
@@ -34,11 +35,27 @@ export default function ExpandingFrame({ backdrop, caption, children, className 
 
   const scope = useGsap(
     (self, root) => {
-      if (!root || !isWide) return;
+      if (!root || !isWide) return undefined;
+
+      /* Cuando el marco ocupa la pantalla, el fondo bajo la cabecera es
+         oscuro aunque la sección sea clara. Se avisa a partir de la mitad de
+         la expansión, que es cuando el marco ya cubre la franja superior. */
+      let oscuro = false;
+      const aplicar = (siguiente) => {
+        if (siguiente === oscuro) return;
+        marcarOscuro(siguiente);
+        oscuro = siguiente;
+      };
+
       expandFrame(root.querySelector('[data-frame]'), root, {
         backdrop: root.querySelector('[data-backdrop]'),
         caption: root.querySelector('[data-caption]'),
+        // Al salir por abajo el marco queda expandido detrás, pero la cabecera
+        // ya está sobre la sección siguiente: por eso `onProgress(1)` apaga.
+        onProgress: (progress) => aplicar(progress > 0.45 && progress < 1),
       });
+
+      return () => aplicar(false);
     },
     [isWide],
   );

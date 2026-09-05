@@ -1,53 +1,55 @@
-'use client';
-
 /**
- * Página one-page de CJM Nexus (SSR/SSG).
+ * Portada de CJM Nexus.
  *
- * Aunque es un Client Component (todas las secciones son interactivas),
- * Next lo renderiza también en el servidor: los textos, títulos y enlaces
- * existen en el HTML servido. El orden de secciones (1–9) es el del brief.
+ * ORDEN DE LOS BLOQUES, y por qué es ese:
  *
- * El <h1> descriptivo único de la página vive en <Hero />; el resto de
- * secciones usan <h2>/<h3>.
+ *  1. Portada — qué hacemos, para quién, qué valor, qué hacer ahora.
+ *  2. Cinta de hechos — razones para creer ANTES de pedir nada.
+ *  3. Manifiesto — el problema del cliente, con sus palabras.
+ *  4. Los dos campos — la oferta, con KLINODA como tercer panel.
+ *  5. Tablero gerencial — el momento visual grande, sobre lo que la mayoría
+ *     viene a comprar.
+ *  6. Proyectos — evidencia, contada con su estado real.
+ *  7. Cifras — cuatro datos sostenibles.
+ *  8. Método — cómo trabajamos, con un ejemplo comprobable por regla.
+ *  9. Equipo — quiénes somos.
+ * 10. Cierre — la reunión.
+ *
+ * Este archivo solo COMPONE. Los textos viven en `src/content/` y la
+ * maquetación en `src/blocks/`, de modo que traducir no obliga a tocar
+ * ningún componente y cambiar una frase no obliga a leer JSX.
  */
-import { useTranslation } from 'react-i18next';
-
-import Navbar from '../../sections/Navbar';
-import Hero from '../../sections/Hero';
-import Problem from '../../sections/Problem';
-import Finance from '../../sections/Finance';
-import Technology from '../../sections/Technology';
-import WhyNexus from '../../sections/WhyNexus';
-import Process from '../../sections/Process';
-import FinalCta from '../../sections/FinalCta';
-import Footer from '../../sections/Footer';
+import DeliverableFrame from '../../blocks/DeliverableFrame';
+import FactsTicker from '../../blocks/FactsTicker';
+import FinalCta from '../../blocks/FinalCta';
+import Hero from '../../blocks/Hero';
+import ManifestoBlock from '../../blocks/ManifestoBlock';
+import Method from '../../blocks/Method';
+import Numbers from '../../blocks/Numbers';
+import ProjectsStrip from '../../blocks/ProjectsStrip';
+import Team from '../../blocks/Team';
+import TwoFields from '../../blocks/TwoFields';
+import SiteFooter from '../../components/SiteFooter';
+import SiteHeader from '../../components/SiteHeader';
+import { home } from '../../content/home.es';
 
 export default function HomePage() {
-  const { t } = useTranslation();
-
   return (
-    <div className="min-h-screen">
-      {/* Enlace de salto para navegación con teclado / lectores de pantalla */}
-      <a
-        href="#inicio"
-        className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-full focus:bg-indigo focus:px-5 focus:py-2.5 focus:text-white"
-      >
-        {t('common.skipToContent')}
-      </a>
-
-      <Navbar /> {/* 1 · Navegación fija */}
-
+    <>
+      <SiteHeader />
       <main>
-        <Hero />       {/* 2 · Hero + demo interactiva          → #inicio     */}
-        <Problem />    {/* 3 · El problema que resolvemos       → #problema   */}
-        <Finance />    {/* 4 · Línea 01 · Finanzas Estratégicas → #finanzas   */}
-        <Technology /> {/* 5 · Línea 02 · Tecnología a la Medida→ #tecnologia */}
-        <WhyNexus />   {/* 6 · Por qué elegir CJM Nexus         → #por-que    */}
-        <Process />    {/* 7 · Cómo trabajamos                  → #proceso    */}
-        <FinalCta />   {/* 8 · CTA final "Da el siguiente paso" → #contacto   */}
+        <Hero content={home.hero} />
+        <FactsTicker items={home.facts} />
+        <ManifestoBlock content={home.manifesto} />
+        <TwoFields content={home.fields} />
+        <DeliverableFrame content={home.deliverable} />
+        <ProjectsStrip content={home.projects} />
+        <Numbers content={home.numbers} />
+        <Method content={home.method} />
+        <Team content={home.team} />
+        <FinalCta content={home.cta} />
       </main>
-
-      <Footer /> {/* 9 · Footer */}
-    </div>
+      <SiteFooter />
+    </>
   );
 }

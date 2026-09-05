@@ -1,10 +1,16 @@
 /**
  * Datos estructurados (JSON-LD) — CJM Nexus.
  *
- * Solo información REAL presente en el sitio: nombre, logo, eslogan oficial,
- * correo, teléfonos de contacto (WhatsApp Ecuador / Alemania) y regiones de
- * alcance. `sameAs` se rellena desde SOCIAL_PROFILES (vacío mientras no haya
- * perfiles sociales reales que declarar).
+ * Solo información REAL presente en el sitio: nombre, logo, correo, teléfonos
+ * de contacto y alcance. `sameAs` se rellena desde SOCIAL_PROFILES, vacío
+ * mientras no exista una página de empresa en LinkedIn.
+ *
+ * DOS COSAS QUE SE RETIRARON AQUÍ, y por el mismo motivo que en el resto del
+ * sitio: el eslogan en inglés, que ya no se usa en ninguna parte; y el
+ * alcance «Latinoamérica, Estados Unidos y Europa», que era el del sitio
+ * anterior y no se sostiene. La firma opera desde Ecuador y Alemania, y eso
+ * es lo que se declara. La trayectoria de Richard en Latinoamérica y Estados
+ * Unidos se cuenta donde corresponde: en su ficha, con su nombre.
  */
 import { SITE_URL, SOCIAL_PROFILES } from './site';
 
@@ -19,13 +25,11 @@ export function organizationSchema({ lang, description }) {
     '@type': 'Organization',
     name: 'CJM Nexus',
     url: SITE_URL,
-    logo: `${SITE_URL}/logo.png`,
+    logo: `${SITE_URL}/marca/cjm-isotipo.png`,
     image: `${SITE_URL}/og-${lang}.png`,
     description,
-    slogan: 'Connecting Finance. Technology. Global Growth.',
     email: 'experiencia@cjmnexus.com',
-    // Alcance declarado en el sitio: Latinoamérica · Estados Unidos · Europa
-    areaServed: ['Latin America', 'United States', 'Europe'],
+    areaServed: ['Ecuador', 'Germany'],
     contactPoint: [
       {
         '@type': 'ContactPoint',

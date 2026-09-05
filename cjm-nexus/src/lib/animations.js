@@ -251,10 +251,21 @@ export function horizontalRail(rail, section, { onProgress, extra = 0.4 } = {}) 
  * Es el momento más caro del sitio en atención, así que solo se usa dos
  * veces: en el Inicio y en la página de KLINODA.
  */
-export function expandFrame(frame, section, { backdrop, caption, end = '+=140%' } = {}) {
+export function expandFrame(frame, section, { backdrop, caption, end = '+=140%', onProgress } = {}) {
   if (prefersReducedMotion() || !frame || !section) return null;
   const tl = gsap.timeline({
-    scrollTrigger: { trigger: section, start: 'top top', end, pin: true, scrub: 0.6 },
+    scrollTrigger: {
+      trigger: section,
+      start: 'top top',
+      end,
+      pin: true,
+      scrub: 0.6,
+      // Los callbacks van AQUÍ, en la configuración: ScrollTrigger los lee al
+      // crearse y asignarlos después no tiene ningún efecto.
+      onUpdate: onProgress ? (self) => onProgress(self.progress) : undefined,
+      onLeave: onProgress ? () => onProgress(1) : undefined,
+      onLeaveBack: onProgress ? () => onProgress(0) : undefined,
+    },
   });
 
   tl.fromTo(

@@ -13,8 +13,7 @@
 import { Inter, Plus_Jakarta_Sans } from 'next/font/google';
 
 import '../globals.css';
-import Providers from '../providers';
-import { getDictionary } from '../../i18n/dictionaries';
+import { getHome } from '../../content';
 import { defaultLanguage, languages, localeMap } from '../../i18n/settings';
 import { organizationSchema } from '../../lib/seo';
 import { SITE_URL } from '../../lib/site';
@@ -60,10 +59,11 @@ export const dynamicParams = false;
 
 export function generateMetadata({ params }) {
   const lang = languages.includes(params.lang) ? params.lang : defaultLanguage;
-  const dict = getDictionary(lang);
-  const { meta } = dict;
-  // Imagen para compartir, localizada por idioma (1200×630)
-  const ogImage = { url: `/og-${lang}.png`, width: 1200, height: 630, alt: dict.common.tagline };
+  const { meta } = getHome(lang);
+  // Imagen para compartir, localizada por idioma (1200×630).
+  // PENDIENTE: las tres siguen mostrando el eslogan en inglés que se retiró
+  // del sitio. Hay que rehacerlas con el titular nuevo (fase 08).
+  const ogImage = { url: `/og-${lang}.png`, width: 1200, height: 630, alt: 'CJM Nexus' };
 
   return {
     metadataBase: new URL(SITE_URL),
@@ -104,9 +104,8 @@ export function generateMetadata({ params }) {
 
 export default function LangLayout({ children, params }) {
   const lang = languages.includes(params.lang) ? params.lang : defaultLanguage;
-  const dict = getDictionary(lang);
-  // JSON-LD de Organization, con descripción localizada (subtítulo del hero).
-  const orgJsonLd = organizationSchema({ lang, description: dict.hero.subtitle });
+  // JSON-LD de Organization, con la descripción del propio contenido.
+  const orgJsonLd = organizationSchema({ lang, description: getHome(lang).hero.lead });
 
   return (
     <html lang={lang} className={`${jakarta.variable} ${inter.variable}`} suppressHydrationWarning>
@@ -120,7 +119,7 @@ export default function LangLayout({ children, params }) {
         />
       </head>
       <body>
-        <Providers lang={lang}>{children}</Providers>
+        {children}
       </body>
     </html>
   );

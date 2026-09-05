@@ -19,10 +19,14 @@
 import { useEffect, useState } from 'react';
 
 import useGsap from '../../hooks/useGsap';
-import { gsap } from '../../lib/gsap';
 import { horizontalRail } from '../../lib/animations';
+import { gsap, ScrollTrigger } from '../../lib/gsap';
+import { marcarOscuro } from '../../lib/surface';
 
-export default function HorizontalRail({ children, label, className = '' }) {
+/** Tonos con los que la cabecera necesita ponerse blanca. */
+const OSCUROS = new Set(['navy', 'copper', 'teal']);
+
+export default function HorizontalRail({ children, label, panelTones = [], className = '' }) {
   const [isWide, setIsWide] = useState(false);
 
   useEffect(() => {
@@ -38,14 +42,44 @@ export default function HorizontalRail({ children, label, className = '' }) {
 
   const scope = useGsap(
     (self, root) => {
-      if (!root || !isWide) return;
+      if (!root || !isWide) return undefined;
       const rail = root.querySelector('[data-rail]');
       const bar = root.querySelector('[data-bar]');
 
+      /* EL TONO DE LA CABECERA SE DEDUCE DEL AVANCE, no de medir posiciones:
+         los paneles se mueven en horizontal dentro de una sección fijada, así
+         que ninguno «pasa por debajo» de la cabecera en el eje vertical y un
+         ScrollTrigger normal no sabría cuál se está viendo. Con el progreso
+         sí: dice qué panel toca y de ahí sale si es claro u oscuro. */
+      let oscuro = false;
+      const aplicar = (siguiente) => {
+        if (siguiente === oscuro) return;
+        marcarOscuro(siguiente);
+        oscuro = siguiente;
+      };
+      const segunPanel = (progress) => {
+        if (!panelTones.length) return;
+        const i = Math.min(panelTones.length - 1, Math.floor(progress * panelTones.length));
+        aplicar(OSCUROS.has(panelTones[i]));
+      };
+
       const railTl = horizontalRail(rail, root, {
-        onProgress: (progress) => bar && gsap.set(bar, { scaleX: progress }),
+        onProgress: (progress) => {
+          if (bar) gsap.set(bar, { scaleX: progress });
+          segunPanel(progress);
+        },
       });
-      if (!railTl) return;
+      if (!railTl) return undefined;
+
+      /* Al salir de la sección hay que devolver el tono, o la cabecera se
+         queda blanca sobre el fondo crema de la sección siguiente. */
+      const salida = ScrollTrigger.create({
+        trigger: root,
+        start: 'top top',
+        end: () => `+=${rail.scrollWidth - window.innerWidth + window.innerHeight * 0.4}`,
+        onLeave: () => aplicar(false),
+        onLeaveBack: () => aplicar(false),
+      });
 
       root.querySelectorAll('[data-panel]').forEach((panel) => {
         const layer = panel.querySelector('[data-parallax]');
@@ -84,8 +118,15 @@ export default function HorizontalRail({ children, label, className = '' }) {
           },
         });
       });
+
+      return () => {
+        // Si se desmonta con un panel oscuro en pantalla hay que devolver su
+        // punto, o la cabecera se quedaría blanca en la página siguiente.
+        aplicar(false);
+        salida.kill();
+      };
     },
-    [isWide],
+    [isWide, panelTones],
   );
 
   return (

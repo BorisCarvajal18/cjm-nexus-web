@@ -1,63 +1,78 @@
 /**
- * Datos compartidos del sitio (navbar, footer y CTA final).
+ * Datos invariantes del sitio: los que no se traducen.
  *
- * Aquí viven solo ids, valores INVARIANTES (números de teléfono, correos,
- * URLs) y el nombre del icono asociado. Las etiquetas visibles se traducen
- * en locales/ (claves nav.* y contact.*).
+ * Teléfonos, correos y direcciones viven aquí y en ningún otro sitio, para
+ * que cambiar un número no obligue a buscarlo por catorce páginas y tres
+ * idiomas. Las etiquetas visibles van en `src/content/`.
  */
 
-/** URL canónica del sitio (robots, sitemap, metadata, hreflang) */
+/** URL canónica (robots, sitemap, metadata, hreflang). */
 export const SITE_URL = 'https://www.cjmnexus.com';
 
+/** Agenda del diagnóstico ejecutivo. */
+export const CALENDLY_URL = 'https://calendly.com/cjmnexus/diagnostico-ejecutivo';
+
 /**
- * Perfiles sociales oficiales para los datos estructurados JSON-LD (sameAs).
- * Vacío por ahora: el sitio actual no lista redes sociales, así que no se
- * inventa ninguna. Añade aquí las URLs reales (LinkedIn, Instagram, Facebook,
- * YouTube…) y aparecerán automáticamente en el schema de Organization.
- *   ej.: ['https://www.linkedin.com/company/cjm-nexus']
+ * Perfiles oficiales para los datos estructurados (`sameAs`).
+ * Los tres son personales; falta la página de empresa en LinkedIn. Cuando
+ * exista, va la primera y estas pueden quedarse o no.
  */
 export const SOCIAL_PROFILES = [];
 
-/** Enlaces del menú → ancla de sección (id) + clave de traducción (nav.*) */
+/** Menú principal. Las etiquetas se traducen en `src/content/`. */
 export const NAV_LINKS = [
-  { id: 'inicio', key: 'home' },
-  { id: 'problema', key: 'problem' },
-  { id: 'finanzas', key: 'finance' },
-  { id: 'tecnologia', key: 'technology' },
-  { id: 'por-que', key: 'why' },
-  { id: 'proceso', key: 'process' },
+  { href: '#campos', label: 'Servicios' },
+  { href: '#proyectos', label: 'Proyectos' },
+  { href: '#metodo', label: 'Método' },
+  { href: '#equipo', label: 'Nosotros' },
+  { href: '#contacto', label: 'Contacto' },
 ];
 
-/** Canales de contacto directo (CTA final + footer) */
+/** Canales de contacto directo. */
 export const CONTACTS = [
   {
     key: 'waEc',
-    icon: 'whatsapp',
+    label: 'WhatsApp Ecuador',
     value: '+593 99 385 6695',
     href: 'https://wa.me/593993856695',
-    external: true,
   },
   {
     key: 'waDe',
-    icon: 'whatsapp',
+    label: 'WhatsApp Alemania',
     value: '+49 1575 5849100',
     href: 'https://wa.me/4915755849100',
-    external: true,
   },
   {
     key: 'email',
-    icon: 'mail',
+    label: 'Correo',
     value: 'experiencia@cjmnexus.com',
     href: 'mailto:experiencia@cjmnexus.com',
-    external: false,
   },
 ];
 
-/** Sitio web oficial (footer) */
-export const WEBSITE = {
-  key: 'web',
-  icon: 'globe',
-  value: 'www.cjmnexus.com',
-  href: 'https://www.cjmnexus.com',
-  external: true,
-};
+/** Columnas del pie. */
+export const FOOTER_COLUMNS = [
+  {
+    title: 'Servicios',
+    links: [
+      { label: 'Dirección financiera', href: '#campos' },
+      { label: 'Soluciones digitales', href: '#campos' },
+    ],
+  },
+  {
+    title: 'Empresa',
+    links: [
+      { label: 'Proyectos', href: '#proyectos' },
+      { label: 'Método', href: '#metodo' },
+      { label: 'Nosotros', href: '#equipo' },
+      { label: 'Contacto', href: '#contacto' },
+    ],
+  },
+  {
+    title: 'Legal',
+    links: [
+      { label: 'Privacidad', href: '#' },
+      { label: 'Aviso legal', href: '#' },
+    ],
+  },
+];
