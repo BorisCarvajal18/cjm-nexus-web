@@ -89,7 +89,16 @@ export function generateMetadata({ params }) {
       description: meta.description,
       images: [`/og-${lang}.png`],
     },
-    icons: { icon: '/logo.png', apple: '/logo.png' },
+    // El icono de pestaña era el logotipo de 1024 px y 817 KB. Un favicon de
+    // 32 px con el mismo archivo obliga al navegador a descargar y reescalar
+    // todo eso para pintar un cuadrado diminuto.
+    icons: {
+      icon: [
+        { url: '/marca/favicon-32.png', sizes: '32x32', type: 'image/png' },
+        { url: '/marca/cjm-isotipo.png', sizes: '256x256', type: 'image/png' },
+      ],
+      apple: '/marca/apple-icon.png',
+    },
   };
 }
 
