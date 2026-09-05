@@ -23,6 +23,30 @@ export function registerGsap() {
   if (registered || typeof window === 'undefined') return gsap;
   gsap.registerPlugin(ScrollTrigger, MotionPathPlugin);
   registered = true;
+
+  /* DOS RECÁLCULOS QUE EVITAN QUE EL MOVIMIENTO SE DISPARE A DESTIEMPO.
+   *
+   * ScrollTrigger mide dónde empieza y acaba cada sección UNA VEZ, al crearla.
+   * Si el alto de la página cambia después, esas medidas quedan viejas y las
+   * animaciones saltan antes o después de donde deben, o no saltan.
+   *
+   * 1. Al terminar de cargar las fuentes. Plus Jakarta e Inter entran con
+   *    `display: swap`: primero se dibuja con la letra de reserva y luego se
+   *    sustituye, y el texto cambia de alto al hacerlo. En una conexión lenta
+   *    eso ocurre mucho después de crear los ScrollTrigger.
+   *
+   * 2. Al volver a la pestaña. El motor de animación de GSAP va con
+   *    requestAnimationFrame, que el navegador detiene cuando la pestaña no
+   *    está a la vista. Si alguien abre el enlace en segundo plano y vuelve
+   *    más tarde, esto reanuda las medidas y despierta lo que quedó a medias.
+   */
+  if (document.fonts?.ready) {
+    document.fonts.ready.then(() => ScrollTrigger.refresh()).catch(() => {});
+  }
+  document.addEventListener('visibilitychange', () => {
+    if (!document.hidden) ScrollTrigger.refresh();
+  });
+
   return gsap;
 }
 

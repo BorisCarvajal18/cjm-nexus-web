@@ -10,7 +10,7 @@
  * ESTÁTICA para /es, /en y /de (SSG): el HTML servido ya trae todo el
  * contenido, títulos, enlaces y etiquetas SEO.
  */
-import { Manrope, Syne } from 'next/font/google';
+import { Inter, Plus_Jakarta_Sans } from 'next/font/google';
 
 import '../globals.css';
 import Providers from '../providers';
@@ -21,6 +21,12 @@ import { SITE_URL } from '../../lib/site';
 
 /* Fuentes del sistema «Pulso Cobre».
  *
+ * PLUS JAKARTA SANS para titulares, INTER para texto. Elegida por el dueño el
+ * 3 de septiembre de 2026 entre cuatro parejas comparadas sobre la misma
+ * portada. Además de leerse bien, tiene una ventaja propia: Plus Jakarta Sans
+ * es la misma familia que ya usa KLINODA, de modo que la firma y su producto
+ * se ven emparentados sin que ninguno copie al otro.
+ *
  * SE SIRVEN DESDE NUESTRO DOMINIO, no desde Google: next/font las descarga en
  * el build y las empaqueta. Así el navegador no tiene que resolver, conectar y
  * esperar a un tercero antes de pintar el primer texto — que es lo que hacía
@@ -30,17 +36,17 @@ import { SITE_URL } from '../../lib/site';
  * `display: swap` muestra la fuente de reserva mientras carga la definitiva,
  * en lugar de dejar el texto invisible.
  */
-const syne = Syne({
+const jakarta = Plus_Jakarta_Sans({
   subsets: ['latin'],
-  weight: ['600', '700', '800'],
-  variable: '--font-syne',
+  weight: ['500', '600', '700', '800'],
+  variable: '--font-jakarta',
   display: 'swap',
 });
 
-const manrope = Manrope({
+const inter = Inter({
   subsets: ['latin'],
   weight: ['400', '500', '600', '700'],
-  variable: '--font-manrope',
+  variable: '--font-inter',
   display: 'swap',
 });
 
@@ -94,7 +100,7 @@ export default function LangLayout({ children, params }) {
   const orgJsonLd = organizationSchema({ lang, description: dict.hero.subtitle });
 
   return (
-    <html lang={lang} className={`${syne.variable} ${manrope.variable}`} suppressHydrationWarning>
+    <html lang={lang} className={`${jakarta.variable} ${inter.variable}`} suppressHydrationWarning>
       <head>
         {/* Preconexión a Calendly (el widget se inyecta bajo demanda) */}
         <link rel="preconnect" href="https://assets.calendly.com" />

@@ -38,16 +38,27 @@ export const EASE = 'power3.out';
  * `once: true` porque una sección que reaparece cada vez que subes y bajas
  * llama la atención sobre sí misma en lugar de sobre lo que dice.
  */
-export function reveal(targets, { y = 40, stagger = 0, delay = 0, start = 'top 86%' } = {}) {
+export function reveal(targets, { y = 40, stagger = 0, delay = 0, start = 'top 88%', trigger } = {}) {
   if (prefersReducedMotion()) return null;
-  return gsap.from(targets, {
+
+  /* EL DISPARADOR ES UN SOLO ELEMENTO, SIEMPRE.
+     Pasarle a ScrollTrigger la misma lista que se anima parece lo natural y
+     está mal: con varios elementos no sabe cuál medir, la animación arranca y
+     se queda a mitad, y como partimos de opacidad cero el resultado son
+     tarjetas invisibles para siempre. Ocurrió de verdad en el catálogo. Por
+     eso quien llama pasa `trigger` —normalmente el contenedor— y si no,
+     usamos el primer elemento y nunca la colección entera. */
+  const list = gsap.utils.toArray(targets);
+  const anchor = trigger || list[0] || targets;
+
+  return gsap.from(list, {
     y,
     opacity: 0,
     duration: 0.9,
     ease: EASE,
     stagger,
     delay,
-    scrollTrigger: { trigger: targets, start, once: true },
+    scrollTrigger: { trigger: anchor, start, once: true },
   });
 }
 

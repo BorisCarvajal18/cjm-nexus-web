@@ -80,8 +80,11 @@ module.exports = {
         'nexus-gradient': 'linear-gradient(135deg, #8B8FE8 0%, #5B5FD6 100%)',
       },
       fontFamily: {
-        display: ['var(--font-syne)', 'Segoe UI', 'ui-sans-serif', 'system-ui', 'sans-serif'],
-        sans: ['var(--font-manrope)', 'Segoe UI', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+        // Plus Jakarta Sans (titulares) + Inter (texto), elegidas el 3-sep-2026.
+        // Plus Jakarta es también la familia de KLINODA: firma y producto
+        // quedan emparentados. Las variables las define next/font en el layout.
+        display: ['var(--font-jakarta)', 'Segoe UI', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+        sans: ['var(--font-inter)', 'Segoe UI', 'ui-sans-serif', 'system-ui', 'sans-serif'],
       },
       fontSize: {
         // Escala contenida: el cliente rechazó expresamente los títulos enormes.

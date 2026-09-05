@@ -21,11 +21,16 @@ export default function Reveal({
   children,
   ...rest
 }) {
-  const scope = useGsap((self, root) => {
-    if (!root) return;
-    const targets = stagger ? root.children : root;
-    reveal(targets, { y, stagger, delay });
-  }, [stagger, y, delay]);
+  const scope = useGsap(
+    (self, root) => {
+      if (!root) return;
+      // Con `stagger` se animan los hijos, pero quien manda el momento es
+      // siempre el contenedor: es un elemento y se puede medir.
+      const targets = stagger ? Array.from(root.children) : root;
+      reveal(targets, { y, stagger, delay, trigger: root });
+    },
+    [stagger, y, delay],
+  );
 
   return (
     <Tag ref={scope} className={className} {...rest}>
