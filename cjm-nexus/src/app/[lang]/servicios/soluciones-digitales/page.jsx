@@ -1,32 +1,37 @@
 /**
- * Soluciones digitales a medida — /es/servicios/soluciones-digitales
+ * Soluciones digitales — /es/servicios/soluciones-digitales
  *
- * EL PROBLEMA COMERCIAL DE ESTA PÁGINA es que cualquiera puede escribir
- * «desarrollamos software a medida». Lo que nos diferencia no es la lista de
- * lo que construimos, sino cómo lo entregamos y qué nos obliga a nosotros:
- * ver el sistema antes de que exista, entregas periódicas, y que el código
- * quede a nombre del cliente. Por eso el proceso y las garantías van antes
- * que cualquier catálogo de tecnologías —que aquí no aparece: al comprador no
- * le importa con qué está escrito, le importa si funcionará y si queda atado.
+ * DOS OFERTAS EN LA MISMA PÁGINA, y en este orden: primero la página web
+ * publicada en menos de una semana, que es lo que la firma entrega hoy y el
+ * argumento más fuerte que tiene; después los sistemas a medida, para quien
+ * llega buscando algo del tamaño de KLINODA.
+ *
+ * El primer borrador de esta página describía SOLO los sistemas a medida:
+ * meses de trabajo, descubrimiento, entregas parciales. Describía un servicio
+ * que la firma no vende y escondía el que sí. Corregido con el dueño el 5 de
+ * septiembre de 2026.
+ *
+ * NO HAY CLIENTES DE PÁGINAS WEB TODAVÍA, así que aquí no hay portafolio, ni
+ * número de proyectos, ni testimonios. Las dos pruebas honestas son KLINODA y
+ * esta misma web, y las dos se pueden mirar.
  *
  * ORDEN DE LOS BLOQUES:
- *  1. Cabecera.
- *  2. Qué construimos — cuatro formas, no una lista de tecnologías.
- *  3. Cómo trabajamos — el prototipo antes de programar.
- *  4. Las garantías — lo que nos obliga a nosotros, comprobable.
+ *  1. Cabecera — las dos formas de trabajar, en una frase.
+ *  2. Oferta 01 — la web: qué incluye, cómo va, y la condición del plazo.
+ *  3. Oferta 02 — los sistemas: qué construimos y cómo va.
+ *  4. Las garantías, comunes a las dos.
  *  5. KLINODA como prueba, una sola vez.
- *  6. Preguntas — precio, plazo, propiedad del código.
+ *  6. Preguntas — plazo, precio, dominio, propiedad.
  *  7. Cierre.
  *
- * PENDIENTE ANTES DE PUBLICAR: el bloque 3 está marcado «SUPUESTO» en
- * `src/content/servicios.es.js`; la cadencia de entregas se publica como una
- * promesa y conviene aprobarla antes.
+ * PENDIENTE ANTES DE PUBLICAR: qué entra en el precio de una web y cómo se
+ * manejan dominio y alojamiento. Marcado «SUPUESTO» en el contenido.
  */
 import Faq from '../../../../blocks/pages/Faq';
 import FeatureGrid from '../../../../blocks/pages/FeatureGrid';
+import Offer from '../../../../blocks/pages/Offer';
 import PageHero from '../../../../blocks/pages/PageHero';
 import ProductBand from '../../../../blocks/pages/ProductBand';
-import Steps from '../../../../blocks/pages/Steps';
 import FinalCta from '../../../../blocks/FinalCta';
 import SiteFooter from '../../../../components/SiteFooter';
 import SiteHeader from '../../../../components/SiteHeader';
@@ -64,9 +69,9 @@ export default function SolucionesDigitalesPage({ params }) {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(datos) }}
       />
       <main>
-        <PageHero content={{ ...content.hero, secondaryHref: '#proceso' }} />
-        <FeatureGrid content={content.build} columns={4} id="contenido" />
-        <Steps content={content.process} />
+        <PageHero content={{ ...content.hero, secondaryHref: '#web' }} />
+        <Offer content={content.web} id="web" />
+        <Offer content={content.systems} id="sistemas" tone="muted" />
         <FeatureGrid content={content.guarantees} columns={2} numbered />
         <ProductBand content={content.proof} href={`/${lang}#campos`} />
         <Faq content={content.faq} />

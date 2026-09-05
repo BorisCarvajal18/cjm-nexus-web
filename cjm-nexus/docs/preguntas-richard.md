@@ -2,66 +2,67 @@
 
 **Para:** Richard
 **De:** Boris
-**Fecha:** 5 de septiembre de 2026
+**Actualizado:** 5 de septiembre de 2026
 
 Las tres páginas de servicios ya están escritas y montadas. Casi todo sale del
-brochure y de lo que ya hacemos, pero hay **tres cosas que escribí suponiendo**,
-porque no las tengo confirmadas. Están abajo.
+brochure y de lo que ya hacemos, pero quedan **tres cosas escritas suponiendo**.
 
-**No hace falta que escribas nada desde cero.** Debajo de cada pregunta está lo
-que dice hoy la web. Solo tienes que decir **«está bien»** o **corregir la
-frase**. Con cinco minutos por pregunta queda resuelto.
+**No hace falta escribir nada desde cero.** Debajo de cada pregunta está lo que
+dice hoy la web. Solo hay que decir **«está bien»** o **corregir la frase**.
 
 Si algo de lo que escribí no es verdad, prefiero saberlo ahora: es texto que un
-cliente te va a leer antes de una reunión, y no puede decir algo que después
-tengas que desmentir.
+cliente va a leer antes de una reunión, y no puede decir algo que después haya
+que desmentir.
 
 ---
 
-## 1 · ¿Cómo es de verdad un mes de trabajo con un cliente?
+## 1 · El ritmo del mes de trabajo (dirección financiera)
 
-Es lo más importante de la página de dirección financiera. Todo comprador se
-hace la misma pregunta antes de contratar: *«¿y qué pasa exactamente si os
-contrato?»*. La página la responde con estos cuatro pasos.
+Es lo más importante de esa página, porque responde a la única pregunta que se
+hace todo el mundo antes de contratar: *«¿y qué pasa exactamente si os
+contrato?»*.
+
+**Ya resuelto:** el primer paso es una **conversación estratégica** sobre el
+negocio —qué vende, cómo lo vende, qué le cuesta, a dónde quiere llegar— con la
+información financiera que el cliente ya tenga. Nada de pedir doce meses de
+estados financieros ni de reunirnos con su contador.
 
 **Lo que dice hoy la web:**
 
 | Cuándo | Qué pasa | Qué recibe el cliente |
 | --- | --- | --- |
-| **Semana 1** — Levantamiento | Nos entrega los estados financieros de los últimos doce meses y hablamos una vez con su contador. No pedimos acceso a cuentas bancarias ni movemos dinero. | Pone él: los reportes que ya tiene y un par de horas de su tiempo. |
-| **Semana 2** — Diagnóstico financiero | Un documento con el estado real del negocio: rentabilidad por línea, estructura de costos, ciclo de caja y los tres o cuatro puntos que más dinero le están costando. **Se presenta en reunión**, no se manda por correo. | El diagnóstico y una lista priorizada de qué atacar primero. |
+| **Semana 1** — Conversación estratégica | Hablamos a fondo de su negocio y arrancamos con la información financiera que ya tiene. No pedimos acceso a cuentas bancarias ni movemos dinero. | Pone él: la información que ya existe y una conversación a fondo. |
+| **Semana 2** — Diagnóstico financiero | Rentabilidad por línea, estructura de costos, ciclo de caja y los tres o cuatro puntos que más dinero le están costando. **Se presenta en reunión**, no se manda por correo. | El diagnóstico y una lista priorizada de qué atacar primero. |
 | **Semanas 3 y 4** — Puesta en marcha | Montamos el tablero gerencial y el flujo de caja proyectado a trece semanas con sus datos. | El tablero funcionando, con sus cifras dentro. |
-| **Cada mes** — Reunión de dirección | Una reunión mensual con el tablero delante: qué pasó, qué se decide, quién hace qué. Las decisiones quedan escritas. | Tablero actualizado, alertas del mes y el acta de la reunión. |
+| **Cada mes** — Reunión de dirección | Reunión con el tablero delante: qué pasó, qué se decide, quién hace qué. Las decisiones quedan escritas. | Tablero actualizado, alertas del mes y el acta de la reunión. |
 
-**Lo que necesito que confirmes:**
+**Falta confirmar:**
 
-1. ¿Los plazos son así? (¿el diagnóstico tarda una semana, dos, un mes?)
-2. ¿Qué le pides exactamente al cliente para arrancar? Yo puse «estados
-   financieros de los últimos doce meses y una conversación con su contador».
-3. ¿El diagnóstico se **presenta en reunión** o se entrega y ya?
-4. ¿La reunión es **mensual**? ¿Quincenal? ¿Depende del cliente?
-5. ¿Se firma un **acta** de cada reunión? Lo puse porque es nuestra forma de
-   trabajar en tecnología, pero no sé si tú lo haces así en finanzas.
-6. ¿Cómo se cobra? ¿Mensualidad, por proyecto, por horas? **El precio no va a
-   salir en la web**, pero necesito saber la forma para no escribir algo que
-   contradiga tu propuesta.
+1. ¿Los plazos son así? ¿El diagnóstico tarda una semana, dos, un mes?
+2. ¿El diagnóstico se **presenta en reunión** o se entrega y ya?
+3. ¿La reunión de dirección es **mensual**? ¿Quincenal? ¿Depende del cliente?
+4. ¿Se levanta un **acta** de cada reunión? Lo puse porque es nuestra forma de
+   trabajar en tecnología, pero no sé si en finanzas lo haces así.
+5. ¿Cómo se cobra: mensualidad, por proyecto, por horas? **El precio no va a
+   salir en la web**, pero necesito la forma para no contradecir tu propuesta.
 
 ---
 
 ## 2 · ¿Qué te preguntan de verdad antes de firmar?
 
-La sección de preguntas frecuentes va justo antes de pedir la reunión, y sirve
-para quitar la última objeción. Ahora mismo tiene **las preguntas que yo
-imagino**, no las que tú escuchas.
+Las preguntas frecuentes van justo antes de pedir la reunión y sirven para
+quitar la última objeción. Ahora tienen **las que yo imagino**, no las que tú
+escuchas.
 
 **Lo que dice hoy la web** (pregunta → resumen de la respuesta):
 
-1. **¿Esto reemplaza a mi contador?** → No. El contador registra y cumple; la
-   dirección financiera interpreta y decide. Trabajamos con él, no en su lugar.
+1. **¿Esto reemplaza a mi contador?** → No. El contador registra y cumple con
+   la ley; nosotros interpretamos y decidimos hacia adelante. Son dos trabajos
+   distintos: el nuestro empieza donde termina el suyo.
 2. **¿Y si mi contabilidad está desordenada?** → Es lo normal y no impide
-   empezar. Ordenar lo mínimo para decidir es parte del primer mes.
-3. **¿Cuánto tiempo me va a quitar?** → La entrega inicial de información y una
-   reunión al mes. El trabajo lo hacemos nosotros.
+   empezar.
+3. **¿Cuánto tiempo me va a quitar?** → La información inicial y una reunión al
+   mes. El trabajo lo hacemos nosotros.
 4. **¿Necesitan acceso a mis cuentas bancarias?** → No. Trabajamos con
    reportes. No manejamos ni movemos dinero de ningún cliente.
 5. **¿Desde qué tamaño de empresa tiene sentido?** → Desde que las decisiones
@@ -69,46 +70,70 @@ imagino**, no las que tú escuchas.
 6. **¿Trabajan a distancia?** → Sí, Ecuador y Alemania, en español, inglés y
    alemán.
 
-**Lo que necesito que confirmes:**
+**Falta confirmar:**
 
-- ¿Alguna de estas respuestas está mal o suena distinto a como tú la dices?
-- **¿Cuáles son las tres o cuatro preguntas que te hacen de verdad?** Si alguna
-  de las de arriba nunca te la han hecho, la quitamos y ponemos la real. Una
-  pregunta auténtica vale por tres inventadas.
+- ¿Alguna respuesta está mal o suena distinto a como tú la dices?
+- **¿Cuáles son las tres o cuatro que te hacen de verdad?** Si alguna de las de
+  arriba no te la han hecho nunca, la quitamos y ponemos la real. Una pregunta
+  auténtica vale por tres inventadas.
 
 ---
 
-## 3 · La promesa de entregas en los proyectos de software
+## 3 · Qué entra en el precio de una página web
 
-*(Esta es más para mí que para ti, pero conviene que la veas porque es una
-promesa pública.)*
+La página de tecnología ahora tiene **dos ofertas**: la página web publicada en
+menos de una semana, primero, y los sistemas a medida después. La promesa de la
+semana está escrita con su condición a la vista: *la semana empieza a contar
+cuando tenemos los textos, el logotipo y las imágenes del cliente*.
 
-**Lo que dice hoy la web:** que en un proyecto de software el cliente ve un
-prototipo navegable antes de que programemos nada, y que **cada dos semanas hay
-una versión que puede abrir y usar**. También que al terminar **el código, la
-documentación y los accesos quedan a su nombre**.
+**Lo que dice hoy la web que incluye una página:**
 
-**Lo que necesito que confirmes:** que estás de acuerdo con comprometer eso por
-escrito en la web. Yo puedo sostenerlo técnicamente. Lo que no quiero es que un
-cliente lo lea, lo exija en la negociación y a ti te sorprenda.
+- Diseño propio, no una plantilla con el logotipo cambiado
+- Se ve bien en el teléfono
+- Textos redactados o corregidos con el cliente
+- Formulario de contacto y enlace directo a WhatsApp
+- Preparada para que Google la lea bien
+- Publicada, con el dominio a nombre de la empresa del cliente
+
+Y en las preguntas frecuentes dice que **el dominio y el alojamiento se
+contratan a nombre del cliente**, que es un gasto anual pequeño y suyo desde el
+primer día.
+
+**Falta confirmar:**
+
+1. ¿Esa lista es la correcta? ¿Sobra o falta algo? Es lo más parecido a un
+   presupuesto que va a leer un cliente en la web.
+2. ¿El dominio y el alojamiento los paga el cliente aparte, o van dentro?
+3. ¿Ofrecemos mantenimiento después? Hoy la web dice que se puede contratar
+   aparte **o** dejarle los accesos y que lo lleve quien él quiera.
+4. ¿Los correos con el dominio de la empresa entran o no?
+
+---
+
+## Lo que ya está decidido y no hay que revisar
+
+- **No se inventa ningún cliente.** No hay portafolio de páginas web porque
+  todavía no hay ninguna. Las dos pruebas de la página son KLINODA y esta misma
+  web, y las dos se pueden mirar. Cuando lleguen los primeros clientes, la
+  página ya tiene el sitio donde ponerlos.
+- **Todo queda a nombre del cliente:** dominio, accesos, código y
+  documentación. Es un compromiso público y un cliente lo puede exigir en la
+  negociación.
+- **Nada se publica** hasta que el sitio entero esté terminado.
 
 ---
 
 ## Lo que no está bloqueado
 
-Todo lo demás de las tres páginas ya está escrito y no depende de esta lista:
-los síntomas del cliente, los entregables, el tablero gerencial, la sección de
-«para quién no es», los tipos de proyecto de software y las garantías.
-
-En cuanto lleguen tus respuestas, corrijo los tres bloques y las páginas quedan
-listas. Nada se publica hasta que esté todo el sitio terminado.
+Todo lo demás ya está escrito y no depende de esta lista: los síntomas del
+cliente, los entregables financieros, el tablero gerencial, la sección de «para
+quién no es», los tipos de sistema y las garantías.
 
 ---
 
 ### Nota técnica (para Boris)
 
-Cada bloque escrito con suposiciones está marcado con el comentario `SUPUESTO`
-en `src/content/servicios.es.js`. Para encontrarlos todos:
+Los bloques escritos con suposiciones llevan el comentario `SUPUESTO`:
 
 ```bash
 grep -n "SUPUESTO" src/content/servicios.es.js
