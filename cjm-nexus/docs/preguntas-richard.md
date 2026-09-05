@@ -79,36 +79,22 @@ escuchas.
 
 ---
 
-## 3 · Qué entra en el precio de una página web
+## 3 · Qué entra en una página web — RESUELTO
 
-La página de tecnología ahora tiene **dos ofertas**: la página web publicada en
-menos de una semana, primero, y los sistemas a medida después. La promesa de la
-semana está escrita con su condición a la vista: *la semana empieza a contar
-cuando tenemos los textos, el logotipo y las imágenes del cliente*.
+Confirmado el 5 de septiembre de 2026. Ya está aplicado en la web y no hace
+falta revisarlo:
 
-**Lo que dice hoy la web que incluye una página:**
-
-- Diseño propio, no una plantilla con el logotipo cambiado
-- Se ve bien en el teléfono
-- Textos redactados o corregidos con el cliente
-- Formulario de contacto y enlace directo a WhatsApp
-- Preparada para que Google la lea bien
-- Publicada, con el dominio a nombre de la empresa del cliente
-
-Y en las preguntas frecuentes dice que **el dominio y el alojamiento se
-contratan a nombre del cliente**, que es un gasto anual pequeño y suyo desde el
-primer día.
-
-**Falta confirmar:**
-
-1. ¿Esa lista es la correcta? ¿Sobra o falta algo? Es lo más parecido a un
-   presupuesto que va a leer un cliente en la web.
-2. ¿El dominio y el alojamiento los paga el cliente aparte, o van dentro?
-3. ¿Ofrecemos mantenimiento después? Hoy la web dice que se puede contratar
-   aparte **o** dejarle los accesos y que lo lleve quien él quiera.
-4. ¿Los correos con el dominio de la empresa entran o no?
-
----
+- **El dominio y el alojamiento van incluidos** en lo que paga el cliente. Nos
+  ocupamos nosotros de contratarlos y renovarlos; él no habla con nadie.
+- **Pero quedan registrados a nombre de su empresa.** Las dos cosas a la vez, y
+  no se contradicen: es cómodo para él y sigue siendo suyo. Si algún día se va
+  con otro proveedor, se lleva su web sin pedirnos permiso.
+- **Ofrecemos mantenimiento**, y también va incluido: que la web siga en línea,
+  actualizada y segura, y los cambios que vayan surgiendo.
+- **Ningún precio en la web.** La pregunta «¿cuánto cuesta?» está respondida sin
+  una sola cifra —remite a la reunión de veinte minutos—, que es distinto de
+  esquivarla. La misma respuesta se añadió en la página financiera, donde antes
+  esa pregunta no estaba contestada de ninguna forma.
 
 ## Lo que ya está decidido y no hay que revisar
 

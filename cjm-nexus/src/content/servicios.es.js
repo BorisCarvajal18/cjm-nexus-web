@@ -279,7 +279,9 @@ export const finanzas = {
 
   /* SUPUESTO — las seis preguntas de abajo son las que yo esperaría, no las
      que Richard escucha de verdad en sus reuniones. Las respuestas son
-     conservadoras a propósito: ninguna promete precio, plazo ni resultado.
+     conservadoras a propósito: ninguna promete plazo ni resultado, y la del
+     precio no lleva cifra por decisión del dueño —los números se hablan en la
+     reunión, nunca en la web.
      Es la pregunta 2 de `docs/preguntas-richard.md`. */
   faq: {
     eyebrow: 'Preguntas frecuentes',
@@ -304,6 +306,10 @@ export const finanzas = {
       {
         q: '¿Desde qué tamaño de empresa tiene sentido?',
         a: 'Desde el momento en que las decisiones de precio, compra o contratación pesan lo suficiente como para que equivocarse cueste caro, y el dueño ya no puede tener todos los números en la cabeza. Eso pasa mucho antes de lo que la mayoría cree.',
+      },
+      {
+        q: '¿Cuánto cuesta?',
+        a: 'Depende del tamaño de tu empresa y de hasta dónde llegue el trabajo, así que lo vemos en el diagnóstico ejecutivo en lugar de poner una tarifa aquí. De esa conversación sale una propuesta concreta, y decidir después no cuesta nada.',
       },
       {
         q: '¿Trabajan a distancia?',
@@ -362,11 +368,19 @@ export const digital = {
     title: 'Una página web que no parece una plantilla.',
     text: 'Hecha para tu empresa, con tus textos, tu marca y tu forma de vender. No un tema comprado con el logotipo cambiado, que es lo que se reconoce a la primera y lo que hace que un cliente dude antes de escribir.',
 
-    /* SUPUESTO — qué entra en el precio.
-       Esta lista es la que yo daría por hecha en un trabajo de este tipo.
-       Hay que confirmarla con Richard antes de publicar, porque es lo más
-       parecido a una lista de precios que va a leer un cliente.
-       Es la pregunta 3 de `docs/preguntas-richard.md`. */
+    /* QUÉ ENTRA. Confirmado por el dueño el 5 de septiembre de 2026: el
+       dominio, el alojamiento y el mantenimiento van dentro de lo que paga
+       el cliente, no como gastos sueltos que tenga que ir contratando.
+
+       DOMINIO Y ALOJAMIENTO INCLUIDOS PERO A SU NOMBRE. Las dos cosas a la
+       vez, y no se contradicen: nos ocupamos nosotros y él no tiene que
+       hablar con nadie, pero el registro es de su empresa. Si algún día se
+       va con otro proveedor, se lleva su web sin pedirnos permiso, que es
+       justo lo que promete la sección de garantías.
+
+       NINGÚN PRECIO EN LA WEB. Decisión del dueño: los números se hablan en
+       la reunión. Por eso la pregunta «¿cuánto cuesta?» está respondida sin
+       una sola cifra, que es distinto de esquivarla. */
     includesLabel: 'Qué incluye',
     includes: [
       'Diseño propio, no una plantilla con el logotipo cambiado',
@@ -374,7 +388,8 @@ export const digital = {
       'Textos redactados o corregidos con vosotros',
       'Formulario de contacto y enlace directo a WhatsApp',
       'Preparada para que Google la lea bien',
-      'Publicada, con el dominio a nombre de tu empresa',
+      'Dominio y alojamiento incluidos, y a nombre de tu empresa',
+      'Mantenimiento: nos ocupamos de que siga en línea y al día',
     ],
 
     stepsLabel: 'Cómo va',
@@ -397,8 +412,8 @@ export const digital = {
         step: '03',
         when: 'Menos de una semana',
         title: 'Publicada',
-        text: 'Tu web en internet, con tu dominio, tus correos y todo a nombre de tu empresa. A partir de ahí es tuya, y podemos seguir cuidándola o no.',
-        gives: 'Lo que recibes: la web en línea y los accesos en tu poder.',
+        text: 'Tu web en internet, con tu dominio y todo a nombre de tu empresa. A partir de ahí nos ocupamos de que siga funcionando: tú no tienes que hablar con ninguna empresa de alojamiento ni acordarte de renovar nada.',
+        gives: 'Lo que recibes: la web en línea, los accesos en tu poder y el mantenimiento cubierto.',
       },
     ],
 
@@ -523,15 +538,19 @@ export const digital = {
       },
       {
         q: '¿El dominio y el alojamiento son aparte?',
-        a: 'Te ayudamos a contratarlos y quedan a nombre de tu empresa, no del nuestro. Es un gasto pequeño y anual, y preferimos que sea tuyo desde el primer día: tu web no debería depender de que sigamos trabajando juntos.',
+        a: 'No, van incluidos. Nos ocupamos nosotros de contratarlos y mantenerlos, y quedan registrados a nombre de tu empresa. Las dos cosas a la vez: tú no hablas con nadie, y si algún día decides seguir con otro equipo, te llevas tu web sin pedirnos permiso.',
       },
       {
         q: '¿Voy a salir en Google?',
         a: 'La construimos para que un buscador la entienda: velocidad, estructura correcta y cada página con su título y su descripción. Aparecer de primero en una búsqueda competida es otro trabajo, más largo, y nadie serio te lo garantiza en una semana.',
       },
       {
-        q: '¿Puedo cambiarla después?',
-        a: 'Sí. Podemos encargarnos del mantenimiento con un acuerdo aparte, o dejarte los accesos y que lo lleve quien tú quieras. Las dos opciones están abiertas y ninguna te ata.',
+        q: '¿Quién la mantiene después?',
+        a: 'Nosotros. El mantenimiento va incluido: que siga en línea, actualizada y segura, y los cambios que vayas necesitando. No te dejamos con la web publicada y a ver qué pasa, que es donde se cae la mayoría.',
+      },
+      {
+        q: '¿Cuánto cuesta?',
+        a: 'Depende de lo que necesites, y por eso lo hablamos en la reunión en vez de poner una tarifa aquí. Son veinte minutos, sales con una propuesta cerrada y sin sorpresas después.',
       },
       {
         q: '¿Y si lo que necesito es un sistema, no una web?',
