@@ -1,0 +1,14 @@
+{
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "overused-font",
+        "value": "plus jakarta sans",
+        "createdAt": "2026-09-12T13:46:50.221Z",
+        "reason": "user confirmed: Boris eligio Plus Jakarta Sans + Inter el 3-sep-2026 entre cuatro parejas comparadas, y es la familia de KLINODA; la direccion A existe para defender esa decision"
+      }
+    ]
+  }
+}

@@ -1,0 +1,862 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CJM Nexus — Portada, dirección C (ronda 2)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --papel:#F3F1ED;
+  --papel-hondo:#EDEAE3;
+  --tinta:#141F3A;
+  --tinta-honda:#0B1122;
+  --cobre:#C9784A;
+  --cobre-honda:#A85A2E;
+  --cobre-presion:#8F4A22;
+  --cobre-claro:#DD9268;
+  --piedra:#B9B1A7;
+  --gris:#5A6375;
+  --blanco:#FFFFFF;
+  --linea:#DDD8D0;
+  --linea-fina:#E8E4DC;
+  --tinta-suave:#4E5870;
+  --display:'Plus Jakarta Sans','Segoe UI',system-ui,sans-serif;
+  --texto:'Inter','Segoe UI',system-ui,sans-serif;
+  --curva:cubic-bezier(.16,1,.3,1);
+  --alto-pieza:640px;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scrollbar-color:var(--gris) var(--papel);scrollbar-width:thin}
+body{margin:0;background:var(--papel);color:var(--tinta);font-family:var(--texto);font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased}
+::selection{background:var(--cobre);color:#fff}
+a{color:inherit}
+h1,h2,h3,h4{font-family:var(--display);margin:0;text-wrap:balance}
+p{margin:0}
+ul{margin:0;padding:0;list-style:none}
+:focus-visible{outline:2px solid var(--cobre);outline-offset:3px}
+.num{font-variant-numeric:tabular-nums;font-feature-settings:"tnum" 1}
+.marco{max-width:1240px;margin:0 auto;padding:0 32px}
+
+/* ══ 1. cabecera ══════════════════════════════════════════════════ */
+.sitio{position:fixed;top:0;left:0;right:0;z-index:30;color:#fff;
+  transition:background .32s var(--curva),color .32s var(--curva),box-shadow .32s var(--curva),border-color .32s var(--curva);
+  border-bottom:1px solid transparent}
+.sitio .marco{display:flex;align-items:center;gap:40px;height:74px}
+.sitio.fijo{background:var(--papel);color:var(--tinta);border-bottom-color:var(--linea);box-shadow:0 1px 18px -8px rgba(20,31,58,.34)}
+
+/* La marca es el archivo real. Dos versiones del mismo isotipo: la clara
+   sobre la fotografía, la original cuando la cabecera se vuelve papel. */
+.marca{display:inline-flex;align-items:center;gap:11px;text-decoration:none}
+.marca img{flex:none;display:block;width:28px;height:28px}
+.marca .iso-oscuro{display:none}
+.sitio.fijo .marca .iso-claro{display:none}
+.sitio.fijo .marca .iso-oscuro{display:block}
+.marca span{font-family:var(--display);font-weight:700;font-size:14px;letter-spacing:.2em;text-transform:uppercase;white-space:nowrap}
+
+.sitio nav{display:flex;gap:26px;margin-left:auto}
+.sitio nav a{position:relative;font-size:14.5px;font-weight:500;text-decoration:none;padding:5px 0;opacity:.82;transition:opacity .2s var(--curva)}
+.sitio nav a::after{content:"";position:absolute;left:0;right:0;bottom:0;height:1.5px;background:var(--cobre);transform:scaleX(0);transform-origin:left;transition:transform .34s var(--curva)}
+.sitio nav a:hover{opacity:1}
+.sitio nav a:hover::after{transform:scaleX(1)}
+.idiomas{display:flex;gap:9px;font-size:12.5px;font-weight:600;letter-spacing:.08em;opacity:.62}
+.idiomas b{opacity:1;color:inherit}
+.sitio.fijo .idiomas{opacity:.55}
+.sitio.fijo .idiomas b{opacity:1}
+.cta-cab{display:inline-flex;align-items:center;gap:8px;background:var(--cobre-honda);color:#fff;font-family:var(--display);font-weight:700;font-size:.82rem;
+  padding:9px 15px;border-radius:3px;text-decoration:none;white-space:nowrap;
+  opacity:0;transform:translateX(8px);pointer-events:none;
+  transition:opacity .34s var(--curva),transform .34s var(--curva),background .18s var(--curva)}
+.sitio.fijo .cta-cab{opacity:1;transform:none;pointer-events:auto}
+.cta-cab:hover{background:var(--cobre-presion)}
+
+/* ══ 2. portada a pantalla completa ═══════════════════════════════ */
+.portada{position:relative;min-height:100vh;min-height:100svh;display:flex;align-items:center;overflow:clip;isolation:isolate;background:var(--tinta-honda)}
+
+/* GRADIENTE 1 DE 3 · el velo sobre la fotografía.
+   Sostiene el contraste del texto y asienta la banda contra el papel. */
+.velo{position:absolute;inset:0;z-index:1;pointer-events:none;background:
+  linear-gradient(180deg,rgba(11,17,34,.66) 0%,rgba(11,17,34,.38) 24%,rgba(11,17,34,.37) 48%,rgba(11,17,34,.54) 76%,rgba(11,17,34,.86) 100%)}
+
+/* El aliento de la fotografía: de 1 a 1,06 en 22 s. `alternate` hace el
+   viaje de vuelta, así que no hay salto al reiniciar; y solo se anima
+   `transform`, que la tarjeta gráfica resuelve sin repintar. */
+.portada>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 58%;
+  filter:brightness(.60) contrast(1.06) saturate(.86);
+  will-change:transform;animation:respira 22s ease-in-out infinite alternate}
+@keyframes respira{from{transform:scale(1)}to{transform:scale(1.06)}}
+
+.portada .marco{position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;text-align:center;padding-top:96px;padding-bottom:118px}
+
+h1{color:#fff;font-size:clamp(2.15rem,4.7vw,4.1rem);line-height:1.03;letter-spacing:-.036em;font-weight:500;max-width:17ch}
+h1 b{font-weight:800}
+.entrada{margin-top:22px;max-width:50ch;font-size:clamp(1rem,1.2vw,1.12rem);color:rgba(255,255,255,.95)}
+.acciones{display:flex;align-items:center;justify-content:center;gap:26px;margin-top:34px;flex-wrap:wrap}
+.nota{margin-top:20px;font-size:.84rem;color:rgba(255,255,255,.80)}
+.credito{position:absolute;right:20px;bottom:18px;z-index:2;font-size:10.5px;font-weight:600;letter-spacing:.09em;text-transform:uppercase;
+  color:rgba(255,255,255,.62);background:rgba(11,17,34,.42);padding:5px 9px;border-radius:2px}
+
+/* La señal de que hay más abajo: un filete con un tramo de cobre que baja. */
+.sigue{position:absolute;left:50%;bottom:30px;z-index:2;transform:translateX(-50%);width:1px;height:44px;
+  background:rgba(255,255,255,.30);overflow:hidden;transition:opacity .4s var(--curva)}
+.sigue i{position:absolute;left:0;top:0;width:1px;height:14px;background:var(--cobre-claro);animation:baja 2.8s var(--curva) infinite}
+@keyframes baja{0%{transform:translateY(-16px)}60%,100%{transform:translateY(46px)}}
+.desplazada .sigue{opacity:0}
+
+/* botón y enlace */
+.boton{display:inline-flex;align-items:center;gap:10px;background:var(--cobre-honda);color:#fff;font-family:var(--display);font-weight:700;font-size:.95rem;
+  padding:15px 24px;border-radius:3px;text-decoration:none;
+  box-shadow:0 2px 3px rgba(11,17,34,.16),0 14px 28px -18px rgba(168,90,46,.85);
+  transition:background .18s var(--curva),transform .2s var(--curva),box-shadow .2s var(--curva)}
+.boton:hover{background:var(--cobre-presion);transform:translateY(-2px);box-shadow:0 3px 6px rgba(11,17,34,.2),0 20px 36px -20px rgba(168,90,46,.95)}
+.boton:active{transform:translateY(0)}
+.boton svg,.enlace svg,.cta-cab svg{flex:none;transition:transform .22s var(--curva)}
+.boton:hover svg,.cta-cab:hover svg{transform:translateX(3px)}
+
+.enlace{position:relative;font-family:var(--display);font-weight:700;font-size:.95rem;text-decoration:none;
+  display:inline-flex;align-items:center;gap:9px;padding-bottom:5px}
+.enlace::after{content:"";position:absolute;left:0;right:0;bottom:0;height:1px;background:var(--linea)}
+.enlace::before{content:"";position:absolute;left:0;right:0;bottom:0;height:1.6px;background:var(--cobre);z-index:1;
+  transform:scaleX(0);transform-origin:left;transition:transform .36s var(--curva)}
+.enlace:hover::before{transform:scaleX(1)}
+.enlace:hover svg{transform:translateY(2px)}
+.enlace.der:hover svg{transform:translateX(3px) translateY(0)}
+.portada .enlace{color:#fff}
+.portada .enlace::after{background:rgba(255,255,255,.42)}
+
+/* ══ 3. la ficha ══════════════════════════════════════════════════ */
+.ficha{border-bottom:1px solid var(--linea);background:var(--papel)}
+.ficha .marco{display:flex;align-items:baseline;justify-content:space-between;gap:24px;padding-top:13px;padding-bottom:13px}
+.campo{font-size:12px;font-weight:600;letter-spacing:.13em;text-transform:uppercase;color:var(--tinta-suave)}
+.campo em{font-style:normal;color:var(--gris);margin-right:10px}
+
+/* ══ 4. las dos líneas, mitad y mitad ════════════════════════════ */
+.criterio{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;padding:17px 0 18px;font-size:.95rem;color:var(--tinta-suave)}
+.criterio b{font-family:var(--display);font-weight:800;font-size:1.02rem;color:var(--tinta);letter-spacing:-.018em}
+.mitades{display:grid;grid-template-columns:1fr 1px 1fr;border-top:1px solid var(--linea)}
+.mitad{position:relative;display:block;text-decoration:none;padding:26px 40px 28px 0;transition:background-color .28s var(--curva)}
+.mitades>.mitad:last-of-type{padding:26px 0 28px 40px}
+.mitad::before{content:"";position:absolute;top:-1px;left:0;right:0;height:2px;background:var(--cobre);
+  transform:scaleX(0);transform-origin:left;transition:transform .44s var(--curva)}
+.mitad:hover{background-color:rgba(255,255,255,.62)}
+.mitad:hover::before{transform:scaleX(1)}
+.divisoria{background:var(--linea)}
+.mitad h2{font-size:1.28rem;line-height:1.2;letter-spacing:-.022em;font-weight:700}
+.mitad .ref{font-size:11.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--gris);margin-bottom:9px;transition:color .24s var(--curva)}
+.mitad:hover .ref{color:var(--cobre-honda)}
+.mitad .ver{margin-top:14px;font-size:.88rem;font-weight:600;display:inline-flex;gap:8px;align-items:center;color:var(--tinta)}
+.mitad .ver svg{transition:transform .22s var(--curva)}
+.mitad:hover .ver svg{transform:translateX(4px)}
+
+/* ══ 5. pie de imprenta ══════════════════════════════════════════ */
+.imprenta{border-top:1px solid var(--linea);border-bottom:1px solid var(--linea);background:var(--papel-hondo)}
+.imprenta ul{display:grid;grid-template-columns:repeat(3,1fr)}
+.imprenta li{font-size:12.4px;color:var(--tinta-suave);padding:13px 20px 13px 0;border-right:1px solid var(--linea);border-bottom:1px solid var(--linea);min-width:0}
+.imprenta li:nth-child(3n){border-right:0}
+.imprenta li:nth-child(n+4){border-bottom:0}
+
+/* ══ 6. qué hacemos: dos filas a todo el ancho ═══════════════════ */
+.hacemos{padding-top:96px;scroll-margin-top:80px}
+.rotulo{display:flex;align-items:baseline;gap:20px;padding-bottom:22px;position:relative}
+.rotulo::after{content:"";position:absolute;left:0;right:0;bottom:0;height:1px;background:var(--tinta);
+  transform:scaleX(0);transform-origin:left}
+.rotulo h2{font-size:clamp(1.6rem,2.6vw,2.3rem);letter-spacing:-.03em;font-weight:800}
+.rotulo p{margin-left:auto;max-width:36ch;font-size:.92rem;color:var(--tinta-suave)}
+
+.linea{position:relative;min-height:108vh}
+.linea + .linea{border-top:1px solid var(--linea)}
+.linea .marco{display:grid;grid-template-columns:.44fr .56fr;gap:64px;align-items:start;padding-top:64px;padding-bottom:72px}
+.texto{display:flex;flex-direction:column;min-height:max(calc(var(--alto-pieza) + 40px),calc(108vh - 136px))}
+.cabeza .ref{position:relative;display:block;font-size:11.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--gris);padding-bottom:12px;border-bottom:1px solid var(--linea);transition:color .24s var(--curva)}
+.texto .ref::after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:1.5px;background:var(--cobre);
+  transform:scaleX(0);transform-origin:left;transition:transform .46s var(--curva)}
+.linea:hover .cabeza .ref{color:var(--cobre-honda)}
+.linea:hover .cabeza .ref::after{transform:scaleX(1)}
+.cabeza h3{font-size:clamp(1.65rem,2.6vw,2.45rem);line-height:1.12;letter-spacing:-.032em;font-weight:800;margin-top:24px;max-width:16ch}
+.cabeza>p{margin-top:16px;font-size:1.02rem;color:var(--tinta-suave);max-width:42ch}
+.lista{flex:1;display:flex;flex-direction:column;margin-top:40px;border-top:1px solid var(--linea)}
+.lista li{flex:1;display:flex;gap:14px;align-items:center;font-size:1.06rem;font-weight:500;padding:14px 0;min-height:0;border-bottom:1px solid var(--linea-fina)}
+.lista li:last-child{border-bottom:0}
+.lista li::before{content:"";width:6px;height:6px;flex:none;border-radius:50%;background:var(--cobre)}
+.texto>a.enlace{margin-top:34px;align-self:flex-start}
+
+/* el lienzo se queda quieto mientras pasa la columna de texto */
+.lienzo{position:sticky;top:max(94px,calc(50vh - (var(--alto-pieza) / 2)))}
+.muestra{margin-top:10px;font-size:11px;font-weight:500;color:var(--gris)}
+
+/* ── la pieza ───────────────────────────────────────────────────── */
+.pieza{background:var(--blanco);border:1px solid var(--linea);border-radius:3px;height:var(--alto-pieza);display:flex;flex-direction:column;overflow:hidden;
+  box-shadow:0 1px 2px rgba(20,31,58,.05),0 28px 56px -34px rgba(20,31,58,.55)}
+.pieza>header{display:flex;justify-content:space-between;align-items:center;padding:16px 20px;border-bottom:1px solid var(--linea);flex:none}
+.pieza>header h4{margin:0;font-family:var(--display);font-size:1.02rem;font-weight:800;letter-spacing:-.014em}
+.chip-per{display:inline-flex;align-items:center;gap:6px;font-size:11.5px;font-weight:600;color:var(--tinta-suave);
+  border:1px solid var(--linea);border-radius:2px;padding:4px 9px}
+.rotulo-pieza{font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--gris)}
+.cuerpo{flex:1;min-height:0;display:flex;flex-direction:column;padding:18px 20px 20px}
+
+/* los tres tramos que se arman al pasar */
+/* El panel está entero desde el principio: lo que avanza es el foco y el
+   dibujo del dato. Un panel medio vacío no se lee como que se está
+   armando, se lee como que está roto. */
+.tramo{transition:opacity .62s var(--curva)}
+.js .pieza .tramo{opacity:.34}
+.js .pieza.p1 .t1,.js .pieza.p2 .t1,.js .pieza.p2 .t2,
+.js .pieza.p3 .t1,.js .pieza.p3 .t2,.js .pieza.p3 .t3{opacity:1}
+
+/* entregable 1 */
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--linea-fina);border:1px solid var(--linea-fina);flex:none}
+.kpi{background:var(--blanco);padding:12px 13px 11px;min-width:0}
+.kpi .fila{display:flex;justify-content:space-between;align-items:baseline;gap:4px}
+.kpi small{font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--gris);white-space:nowrap}
+.kpi i{font-style:normal;font-size:10.5px;font-weight:700;color:var(--tinta-suave);white-space:nowrap}
+.kpi.aviso i{color:var(--cobre-honda)}
+.kpi b{display:block;font-family:var(--display);font-size:1.34rem;font-weight:800;letter-spacing:-.03em;margin-top:4px;line-height:1.15}
+.kpi .chispa{display:block;width:100%;height:18px;margin-top:7px;overflow:visible}
+.grafico{margin-top:16px;flex:1;min-height:0;display:flex;flex-direction:column}
+.grafico .cab{display:flex;justify-content:space-between;align-items:baseline;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--gris)}
+.leyenda{display:flex;gap:14px;font-size:10.5px;font-weight:600;letter-spacing:.02em;text-transform:none;color:var(--gris)}
+.leyenda span{display:inline-flex;align-items:center;gap:5px}
+.leyenda em{display:inline-block;width:14px;height:0;border-top:2px solid var(--cobre);font-style:normal}
+.leyenda em.meta{border-top:1.5px dashed var(--piedra)}
+.grafico svg{width:100%;flex:1;min-height:130px;margin-top:8px;overflow:visible}
+.tabla{margin-top:14px;flex:none}
+.tabla .th,.tabla .tr{display:grid;grid-template-columns:1.35fr .72fr .95fr;gap:10px;align-items:center}
+.tabla .th{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--gris);padding-bottom:7px;border-bottom:1px solid var(--linea)}
+.tabla .tr{font-size:12.5px;font-weight:500;padding:9px 0;border-bottom:1px solid var(--linea-fina)}
+.tabla .tr:last-child{border-bottom:0}
+.tabla .der{text-align:right}
+.barra{display:flex;align-items:center;gap:8px;justify-content:flex-end}
+.barra .pista{width:46px;height:4px;background:var(--linea-fina);border-radius:1px;overflow:hidden}
+.barra .relleno{display:block;height:100%;background:var(--piedra);transform-origin:left;transform:scaleX(0);transition:transform .9s var(--curva) .2s}
+.p3 .barra .relleno{transform:scaleX(var(--v))}
+.alerta{margin-top:13px;border-top:1px solid var(--cobre);padding-top:11px;font-size:.88rem;font-weight:600;color:var(--cobre-honda);flex:none}
+
+/* entregable 2 */
+.operacion{flex:1;min-height:0;display:grid;grid-template-columns:1.42fr 1px 1fr}
+.docs{padding-right:18px;display:flex;flex-direction:column;min-width:0}
+.docs .th{display:grid;grid-template-columns:1fr auto;gap:8px;font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--gris);
+  padding-bottom:8px;border-bottom:1px solid var(--linea)}
+.docs ul{flex:1;display:flex;flex-direction:column;min-height:0}
+.docs li{position:relative;display:grid;grid-template-columns:1fr auto;gap:8px;align-items:center;flex:none;padding:10px 0 10px 11px;
+  border-bottom:1px solid var(--linea-fina);min-width:0;transition:background-color .18s var(--curva)}
+.docs li:last-child{border-bottom:0}
+.docs li:hover{background:#FAF8F5}
+.docs li>span:first-child{display:block;min-width:0}
+.docs li::before{content:"";position:absolute;left:0;top:7px;bottom:7px;width:2px;background:var(--cobre);opacity:0;transition:opacity .2s var(--curva)}
+.docs li.sel::before{opacity:1}
+.docs li.sel{background:#FAF8F5}
+.docs .nom{display:block;font-size:12.5px;font-weight:600;line-height:1.25;letter-spacing:-.005em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.docs .org{display:block;font-size:10px;font-weight:600;line-height:1.2;letter-spacing:.07em;text-transform:uppercase;color:var(--gris);margin-top:3px}
+.estado{display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:600;color:var(--tinta-suave);white-space:nowrap}
+.estado::before{content:"";width:5px;height:5px;border-radius:50%;background:var(--tinta);flex:none}
+.estado.rev{color:var(--gris)}
+.estado.rev::before{background:var(--piedra)}
+.estado.bor{color:var(--gris)}
+.estado.bor::before{background:transparent;box-shadow:inset 0 0 0 1.2px var(--piedra)}
+.docs .pie{display:flex;justify-content:space-between;align-items:center;margin-top:auto;padding-top:10px;border-top:1px solid var(--linea);
+  font-size:10px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--gris)}
+.docs .pie i{font-style:normal}
+.docs .pie i b{color:var(--tinta-suave)}
+.raya{background:var(--linea-fina)}
+.traza-col{padding-left:18px;display:flex;flex-direction:column;min-width:0}
+.traza-col .th{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--gris);padding-bottom:8px;border-bottom:1px solid var(--linea)}
+.hilo{position:relative;flex:1;min-height:0;padding:14px 0 6px 18px;display:flex;flex-direction:column;justify-content:space-between}
+.hilo svg.espina{position:absolute;left:2.5px;top:18px;bottom:16px;width:2px;overflow:visible}
+.suceso{position:relative;min-width:0}
+.suceso .pt{position:absolute;left:-18px;top:4px;width:7px;height:7px;border-radius:50%;background:var(--cobre);
+  opacity:0;transform:scale(.4);transition:opacity .32s var(--curva),transform .32s var(--curva)}
+.p2 .suceso .pt,.p3 .suceso .pt{opacity:1;transform:scale(1)}
+.p2 .suceso:nth-of-type(1) .pt{transition-delay:.1s}
+.p2 .suceso:nth-of-type(2) .pt{transition-delay:.26s}
+.p2 .suceso:nth-of-type(3) .pt{transition-delay:.42s}
+.p2 .suceso:nth-of-type(4) .pt{transition-delay:.58s}
+.p2 .suceso:nth-of-type(5) .pt{transition-delay:.74s}
+.suceso b{display:block;font-size:12px;font-weight:600;line-height:1.3}
+.suceso span{display:block;font-size:10px;font-weight:600;line-height:1.2;letter-spacing:.06em;text-transform:uppercase;color:var(--gris);margin-top:3px}
+.reglas{margin-top:12px;padding-top:10px;padding-bottom:2px;border-top:1px solid var(--linea-fina);flex:none}
+.reglas .fila{display:flex;justify-content:space-between;align-items:baseline;font-size:10.5px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--gris)}
+.reglas .pista{margin-top:6px;height:4px;background:var(--linea-fina);border-radius:1px;overflow:hidden}
+.reglas .relleno{display:block;height:100%;background:var(--tinta);transform-origin:left;transform:scaleX(0);transition:transform 1s var(--curva) .2s}
+.p3 .reglas .relleno{transform:scaleX(1)}
+.pieza>footer{flex:none;padding:13px 20px;border-top:1px solid var(--linea);font-size:.82rem;color:var(--tinta-suave)}
+
+/* ══ 7. KLINODA: la puerta ═══════════════════════════════════════ */
+.puerta{background:var(--blanco);border-top:1px solid var(--linea);border-bottom:1px solid var(--linea)}
+.puerta .marco{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center;padding-top:84px;padding-bottom:84px}
+.puerta .ref{font-size:11.5px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--gris)}
+.puerta .logo{display:block;height:38px;width:auto;margin-top:18px}
+.puerta .frase{margin-top:22px;font-size:1.12rem;line-height:1.5;color:var(--tinta-suave);max-width:40ch}
+.puerta .estado-prod{display:inline-flex;align-items:center;gap:8px;margin-top:22px;font-size:.8rem;font-weight:600;color:var(--gris);
+  border:1px solid var(--linea);border-radius:2px;padding:6px 11px}
+.puerta .estado-prod::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--cobre);flex:none}
+.puerta a.enlace{margin-top:28px}
+
+.portal{border:1px solid var(--linea);border-radius:3px;overflow:hidden;background:var(--blanco);
+  box-shadow:0 1px 2px rgba(20,31,58,.05),0 26px 52px -34px rgba(20,31,58,.5);
+  transition:transform .32s var(--curva),box-shadow .32s var(--curva)}
+.portal:hover{transform:translateY(-3px);box-shadow:0 2px 5px rgba(20,31,58,.07),0 34px 62px -36px rgba(20,31,58,.6)}
+.portal header{display:flex;justify-content:space-between;align-items:center;padding:14px 18px;border-bottom:1px solid var(--linea)}
+.portal header h4{font-family:var(--display);font-size:.95rem;font-weight:800;letter-spacing:-.012em}
+.portal .th,.portal .tr{display:grid;grid-template-columns:1.5fr 1fr 1.1fr;gap:12px;align-items:center;padding:0 18px}
+.portal .th{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--gris);padding-top:14px;padding-bottom:9px;border-bottom:1px solid var(--linea)}
+.portal .tr{font-size:12.5px;font-weight:500;padding-top:13px;padding-bottom:13px;border-bottom:1px solid var(--linea-fina)}
+.portal .apto{display:inline-flex;align-items:center;gap:7px;font-weight:600}
+.portal .apto::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--tinta);flex:none}
+.portal .apto.obs::before{background:var(--cobre)}
+.portal .apto.obs{color:var(--cobre-honda)}
+.portal footer{padding:13px 18px;font-size:.8rem;color:var(--gris);background:#FAF8F5;border-top:1px solid var(--linea-fina)}
+
+/* ══ 8. la banda de cierre ═══════════════════════════════════════ */
+/* GRADIENTE 2 DE 3 · marino a tinta honda. El suelo cambia al final. */
+.cierre{position:relative;background:linear-gradient(170deg,var(--tinta) 0%,#101A31 52%,var(--tinta-honda) 100%);color:#fff;text-align:center}
+.cierre::before{content:"";position:absolute;top:0;left:0;right:0;height:1px;background:var(--cobre);transform:scaleX(0);transform-origin:left}
+.cierre .marco{padding-top:92px;padding-bottom:96px;display:flex;flex-direction:column;align-items:center}
+.cierre .ref{font-size:11.5px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.54)}
+.cierre h2{margin-top:16px;font-size:clamp(1.7rem,3vw,2.6rem);line-height:1.08;letter-spacing:-.034em;font-weight:500;max-width:19ch}
+.cierre h2 b{font-weight:800}
+.tres{display:grid;grid-template-columns:repeat(3,1fr);margin-top:52px;width:100%;max-width:940px;text-align:left;
+  border-top:1px solid rgba(255,255,255,.18)}
+.tres div{padding:26px 30px 4px 0;border-right:1px solid rgba(255,255,255,.14)}
+.tres div:last-child{border-right:0;padding-right:0}
+.tres div:not(:first-child){padding-left:30px}
+.tres h3{font-size:.82rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--cobre-claro)}
+.tres p{margin-top:12px;font-size:.95rem;line-height:1.5;color:rgba(255,255,255,.80)}
+.cierre .boton{margin-top:50px}
+.cierre .nota{color:rgba(255,255,255,.6)}
+.cierre .canales{margin-top:40px;padding-top:22px;border-top:1px solid rgba(255,255,255,.16);width:100%;max-width:940px;
+  display:flex;justify-content:center;gap:34px;flex-wrap:wrap;font-size:.85rem;color:rgba(255,255,255,.72)}
+.cierre .canales a{position:relative;text-decoration:none;padding-bottom:3px}
+.cierre .canales a::after{content:"";position:absolute;left:0;right:0;bottom:0;height:1px;background:var(--cobre);transform:scaleX(0);transform-origin:left;transition:transform .34s var(--curva)}
+.cierre .canales a:hover{color:#fff}
+.cierre .canales a:hover::after{transform:scaleX(1)}
+
+/* ══ 9. los tres momentos de scroll ══════════════════════════════
+   1 · «Qué hacemos»: la regla se traza y el rótulo sube.
+   2 · los entregables: el lienzo se queda quieto y la pieza se arma.
+   3 · el cierre: el filete cruza la banda y las tres respuestas suben. */
+.js .sec{opacity:0;transform:translateY(16px)}
+.js.cargada .sec{opacity:1;transform:none;
+  transition:opacity .78s var(--curva) var(--d,0s),transform .78s var(--curva) var(--d,0s)}
+
+.js .rotulo h2,.js .rotulo p{opacity:0;transform:translateY(14px)}
+.rotulo.on h2,.rotulo.on p{opacity:1;transform:none;transition:opacity .7s var(--curva) var(--d,0s),transform .7s var(--curva) var(--d,0s)}
+.rotulo.on::after{transform:scaleX(1);transition:transform .85s var(--curva)}
+
+.js .cierre .ref,.js .cierre h2,.js .tres div,.js .cierre .boton,.js .cierre .nota{opacity:0;transform:translateY(18px)}
+.cierre.on .ref,.cierre.on h2,.cierre.on .tres div,.cierre.on .boton,.cierre.on .nota{opacity:1;transform:none;
+  transition:opacity .74s var(--curva) var(--d,0s),transform .74s var(--curva) var(--d,0s)}
+.cierre.on::before{transform:scaleX(1);transition:transform 1s var(--curva)}
+
+.traza{stroke-dasharray:var(--l);stroke-dashoffset:var(--l);transition:stroke-dashoffset 1.25s var(--curva)}
+.p1 .t1 .traza,.p2 .t1 .traza,.p2 .t2 .traza,
+.p3 .t1 .traza,.p3 .t2 .traza,.p3 .t3 .traza{stroke-dashoffset:0}
+.punta{opacity:0;transition:opacity .45s ease .9s}
+.p2 .punta,.p3 .punta{opacity:1}
+
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{transition-duration:.001ms !important}
+  .portada>img{animation:none;transform:scale(1.02)}
+  .sigue i{animation:none;transform:translateY(15px)}
+  .js .sec,.js .rotulo h2,.js .rotulo p,.js .pieza .tramo,
+  .js .pieza .tramo,
+  .js .cierre .ref,.js .cierre h2,.js .tres div,.js .cierre .boton,.js .cierre .nota{opacity:1;transform:none}
+  .rotulo::after,.cierre::before{transform:scaleX(1)}
+  .traza{stroke-dashoffset:0}
+  .punta,.suceso .pt{opacity:1;transform:none}
+  .barra .relleno,.reglas .relleno{transform:scaleX(var(--v,1))}
+}
+
+/* ══ 10. adaptación ══════════════════════════════════════════════ */
+@media (max-width:1100px){
+  .linea .marco{grid-template-columns:1fr;gap:40px;padding-top:52px;padding-bottom:60px}
+  .linea{min-height:0}
+  .texto{min-height:0;justify-content:flex-start}
+  .lista{margin-top:28px;max-height:none;display:block}
+  .lista li{padding:14px 0}
+  .texto>a.enlace{margin-top:30px}
+  .lienzo{position:static}
+  .puerta .marco{grid-template-columns:1fr;gap:44px;padding-top:64px;padding-bottom:64px}
+}
+@media (max-width:1000px){
+  .sitio nav{display:none}
+  .cta-cab{margin-left:auto}
+  .mitades{grid-template-columns:1fr}
+  .mitad,.mitades>.mitad:last-of-type{padding-left:0;padding-right:0}
+  .mitades>.mitad:last-of-type{border-top:1px solid var(--linea)}
+  .imprenta ul{grid-template-columns:repeat(2,1fr)}
+  .imprenta li{border-right:1px solid var(--linea);border-bottom:1px solid var(--linea)}
+  .imprenta li:nth-child(2n){border-right:0}
+  .imprenta li:nth-child(n+4){border-bottom:1px solid var(--linea)}
+  .imprenta li:nth-last-child(-n+2){border-bottom:0}
+  .divisoria{display:none}
+  .rotulo{flex-wrap:wrap;gap:12px}
+  .rotulo p{margin-left:0}
+  .tres{grid-template-columns:1fr;max-width:520px}
+  .tres div{border-right:0;border-bottom:1px solid rgba(255,255,255,.14);padding:22px 0}
+  .tres div:not(:first-child){padding-left:0}
+  .tres div:last-child{border-bottom:0}
+}
+@media (max-width:620px){
+  :root{--alto-pieza:auto}
+  .marco{padding:0 20px}
+  .sitio .marco{gap:12px}
+  .marca span{font-size:12.5px;letter-spacing:.17em}
+  .marca img{width:25px;height:25px}
+  .cta-cab{font-size:.76rem;padding:8px 12px}
+  .cta-cab span{display:none}
+  .idiomas{display:none}
+  .portada .marco{padding-top:88px;padding-bottom:104px}
+  h1{font-size:clamp(1.95rem,8.6vw,2.7rem);max-width:15ch}
+  .entrada{font-size:1rem}
+  .acciones{flex-direction:column;align-items:stretch;gap:16px;width:100%;max-width:420px}
+  .boton{width:100%;justify-content:space-between;padding:15px 18px}
+  .enlace{align-self:center}
+  .ficha .marco{flex-direction:column;gap:7px;align-items:flex-start}
+  .imprenta ul{grid-template-columns:1fr}
+  .imprenta li{border-right:0;padding-right:0}
+  .imprenta li:nth-last-child(-n+2){border-bottom:1px solid var(--linea)}
+  .imprenta li:last-child{border-bottom:0}
+  .hacemos{padding-top:60px}
+  .pieza{height:auto;min-height:560px}
+  .kpis{grid-template-columns:repeat(2,1fr)}
+  .operacion{grid-template-columns:1fr}
+  .docs{padding-right:0}
+  .raya{display:none}
+  .traza-col{padding-left:0;margin-top:18px;padding-top:16px;border-top:1px solid var(--linea)}
+  .hilo{justify-content:flex-start;gap:15px;padding-bottom:14px}
+  .puerta .marco{padding-top:52px;padding-bottom:52px;gap:36px}
+  .puerta .frase{font-size:1.02rem}
+  .portal .th,.portal .tr{grid-template-columns:1.4fr .9fr 1fr;gap:8px;padding:0 13px}
+  .portal .tr{font-size:11.5px}
+  .cierre .marco{padding-top:64px;padding-bottom:68px}
+  .cierre .canales{gap:14px 26px}
+}
+</style>
+</head>
+<body>
+
+<!-- ═══ cabecera ══════════════════════════════════════════════════════ -->
+<header class="sitio">
+  <div class="marco">
+    <a class="marca sec" style="--d:.06s" href="#" aria-label="CJM Nexus, inicio">
+      <img class="iso-claro" src="img/cjm-isotipo-claro.png" width="28" height="28" alt="">
+      <img class="iso-oscuro" src="img/cjm-isotipo.png" width="28" height="28" alt="">
+      <span>CJM Nexus</span>
+    </a>
+    <nav class="sec" style="--d:.1s">
+      <a href="#campos">Servicios</a><a href="#">Proyectos</a><a href="#">Método</a><a href="#">Nosotros</a><a href="#cierre">Contacto</a>
+    </nav>
+    <div class="idiomas sec" style="--d:.14s"><b>ES</b><span>EN</span><span>DE</span></div>
+    <a class="cta-cab" href="#cierre">Agendar<span> · 20 min</span>
+      <svg width="13" height="13" viewBox="0 0 15 15" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 7.5h10.5M8.5 3.5 12.5 7.5 8.5 11.5"/></svg>
+    </a>
+  </div>
+</header>
+
+<!-- ═══ portada, pantalla completa ════════════════════════════════════ -->
+<section class="portada">
+  <img src="img/hero-oscura.jpg" alt="Un equipo reunido alrededor de una mesa de trabajo, con cuadernos y documentos.">
+  <div class="velo" aria-hidden="true"></div>
+  <div class="marco">
+    <h1 class="sec" style="--d:.16s">Finanzas <b>claras</b> y software a la <b>altura</b> de tu empresa.</h1>
+    <p class="entrada sec" style="--d:.26s">CJM Nexus une dirección financiera con quince años de trayectoria y desarrollo de software especializado, para empresas que quieren crecer con control.</p>
+    <div class="acciones sec" style="--d:.34s">
+      <a class="boton" href="#cierre"><span>Agendar diagnóstico ejecutivo · 20 min</span>
+        <svg width="15" height="15" viewBox="0 0 15 15" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 7.5h10.5M8.5 3.5 12.5 7.5 8.5 11.5"/></svg>
+      </a>
+      <a class="enlace" href="#campos">Ver qué hacemos
+        <svg width="14" height="14" viewBox="0 0 15 15" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7.5 2.5v10M3.5 8.5l4 4 4-4"/></svg>
+      </a>
+    </div>
+    <p class="nota sec" style="--d:.42s">Sin costo · sin compromiso · 20 minutos</p>
+  </div>
+  <p class="credito">Foto provisional de archivo</p>
+  <div class="sigue" aria-hidden="true"><i></i></div>
+</section>
+
+<!-- ═══ la ficha ══════════════════════════════════════════════════════ -->
+<div class="ficha">
+  <div class="marco">
+    <p class="campo"><em>Asunto</em>Finanzas · Tecnología · En español, inglés y alemán</p>
+    <p class="campo"><em>Nosotros</em>Richard Carvajal · Mirella Llanga · Boris Carvajal</p>
+  </div>
+</div>
+
+<!-- ═══ las dos líneas ════════════════════════════════════════════════ -->
+<div class="dos">
+  <div class="marco">
+    <p class="criterio"><b>Dos campos. Un criterio.</b> Control: en los números y en el software.</p>
+    <div class="mitades">
+      <a class="mitad" href="#campos">
+        <p class="ref">Servicio 01</p>
+        <h2>Dirección financiera externa.</h2>
+        <span class="ver">Ver el servicio
+          <svg width="13" height="13" viewBox="0 0 15 15" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 7.5h10.5M8.5 3.5 12.5 7.5 8.5 11.5"/></svg>
+        </span>
+      </a>
+      <div class="divisoria" aria-hidden="true"></div>
+      <a class="mitad" href="#campos">
+        <p class="ref">Servicio 02</p>
+        <h2>Páginas web y sistemas a medida.</h2>
+        <span class="ver">Ver el servicio
+          <svg width="13" height="13" viewBox="0 0 15 15" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 7.5h10.5M8.5 3.5 12.5 7.5 8.5 11.5"/></svg>
+        </span>
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ pie de imprenta ═══════════════════════════════════════════════ -->
+<div class="imprenta">
+  <div class="marco">
+    <ul>
+      <li class="num">Más de 15 años en dirección financiera</li>
+      <li class="num">Más de 100 clientes asesorados</li>
+      <li>Un producto propio en desarrollo: KLINODA</li>
+      <li>Equipo en Ecuador y Alemania</li>
+      <li>Decisiones documentadas en actas</li>
+      <li class="num">Más de 2.300 pruebas automáticas</li>
+    </ul>
+  </div>
+</div>
+
+<!-- ═══ qué hacemos ═══════════════════════════════════════════════════ -->
+<section class="hacemos" id="campos">
+  <div class="marco">
+    <div class="rotulo">
+      <h2>Qué hacemos</h2>
+      <p style="--d:.12s">Dos líneas, una firma. La misma casa define el número y construye el sistema que lo produce.</p>
+    </div>
+  </div>
+
+  <!-- ── fila 01 ──────────────────────────────────────────────────── -->
+  <article class="linea">
+    <div class="marco">
+      <div class="texto">
+        <div class="cabeza">
+          <p class="ref">Servicio 01</p>
+          <h3>Dirección financiera externa.</h3>
+          <p>Un director financiero para dueños y gerentes que necesitan claridad para decidir, con entregables concretos cada mes.</p>
+        </div>
+        <ul class="lista">
+          <li>Diagnóstico financiero ejecutivo</li>
+          <li>Flujo de caja proyectado a trece semanas</li>
+          <li>Tablero de indicadores y control de costos</li>
+          <li>Rentabilidad por línea de negocio</li>
+        </ul>
+        <a class="enlace der" href="#">Ver el servicio
+          <svg width="14" height="14" viewBox="0 0 15 15" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 7.5h10.5M8.5 3.5 12.5 7.5 8.5 11.5"/></svg>
+        </a>
+      </div>
+
+      <div class="lienzo">
+        <div class="pieza" data-arma>
+          <header>
+            <h4>Tablero gerencial</h4>
+            <span class="chip-per">Junio 2026
+              <svg width="9" height="9" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 3.8 5 6.8 8 3.8"/></svg>
+            </span>
+          </header>
+          <div class="cuerpo">
+            <div class="kpis tramo t1">
+              <div class="kpi">
+                <div class="fila"><small>Ventas</small><i class="num">▲ 12 %</i></div>
+                <b class="num">$1,24 M</b>
+                <svg class="chispa" viewBox="0 0 56 15" preserveAspectRatio="none" aria-hidden="true">
+                  <polyline class="traza" style="--l:70" fill="none" stroke="#B9B1A7" stroke-width="1.3" stroke-linejoin="round" stroke-linecap="round" points="0,12 9,11 18,12 27,8 36,7 45,4 55,2"/>
+                </svg>
+              </div>
+              <div class="kpi">
+                <div class="fila"><small>Margen</small><i class="num">▲ 3 pt</i></div>
+                <b class="num">34 %</b>
+                <svg class="chispa" viewBox="0 0 56 15" preserveAspectRatio="none" aria-hidden="true">
+                  <polyline class="traza" style="--l:70" fill="none" stroke="#B9B1A7" stroke-width="1.3" stroke-linejoin="round" stroke-linecap="round" points="0,10 9,12 18,9 27,10 36,6 45,7 55,4"/>
+                </svg>
+              </div>
+              <div class="kpi aviso">
+                <div class="fila"><small>Caja</small><i class="num">▼ 4 d</i></div>
+                <b class="num">45 d</b>
+                <svg class="chispa" viewBox="0 0 56 15" preserveAspectRatio="none" aria-hidden="true">
+                  <polyline class="traza" style="--l:70" fill="none" stroke="#B9B1A7" stroke-width="1.3" stroke-linejoin="round" stroke-linecap="round" points="0,4 9,5 18,3 27,7 36,8 45,11 55,12"/>
+                </svg>
+              </div>
+              <div class="kpi aviso">
+                <div class="fila"><small>Cartera</small><i class="num">▲ 2 pt</i></div>
+                <b class="num">18 %</b>
+                <svg class="chispa" viewBox="0 0 56 15" preserveAspectRatio="none" aria-hidden="true">
+                  <polyline class="traza" style="--l:70" fill="none" stroke="#B9B1A7" stroke-width="1.3" stroke-linejoin="round" stroke-linecap="round" points="0,11 9,10 18,11 27,8 36,9 45,6 55,5"/>
+                </svg>
+              </div>
+            </div>
+
+            <div class="grafico tramo t2">
+              <div class="cab">
+                <span>Ventas contra meta</span>
+                <span class="leyenda"><span><em></em>Real</span><span><em class="meta"></em>Meta</span></span>
+              </div>
+              <svg viewBox="0 0 320 128" preserveAspectRatio="none" aria-hidden="true">
+                <defs>
+                  <!-- GRADIENTE 3 DE 3 · el trazo del dato. Sale de cobre
+                       apagado y llega encendido donde cruza la meta. -->
+                  <linearGradient id="trazo" x1="0" y1="1" x2="1" y2="0">
+                    <stop offset="0" stop-color="#A85A2E"/>
+                    <stop offset=".62" stop-color="#C9784A"/>
+                    <stop offset="1" stop-color="#DD9268"/>
+                  </linearGradient>
+                </defs>
+                <g stroke="#EFEBE4" stroke-width="1">
+                  <line x1="38" y1="8.5" x2="320" y2="8.5"/><line x1="38" y1="40.5" x2="320" y2="40.5"/>
+                  <line x1="38" y1="72.5" x2="320" y2="72.5"/><line x1="38" y1="104.5" x2="320" y2="104.5"/>
+                </g>
+                <g font-family="Inter" font-size="8" font-weight="600" fill="#5A6375">
+                  <text x="0" y="11.5">1,4 M</text><text x="0" y="43.5">1,1 M</text>
+                  <text x="0" y="75.5">0,8 M</text><text x="0" y="107.5">0,5 M</text>
+                </g>
+                <path d="M38 96 L73.2 89 L108.4 92 L143.6 78 L178.8 72 L214 62 L249.2 55 L284.4 43 L319.6 34 L319.6 104.5 L38 104.5 Z" fill="#C9784A" fill-opacity=".06"/>
+                <line x1="38" y1="63" x2="320" y2="50" stroke="#B9B1A7" stroke-width="1.4" stroke-dasharray="4 4"/>
+                <polyline class="traza" style="--l:300" fill="none" stroke="url(#trazo)" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"
+                  points="38,96 73.2,89 108.4,92 143.6,78 178.8,72 214,62 249.2,55 284.4,43 319.6,34"/>
+                <circle class="punta" cx="319.6" cy="34" r="3.8" fill="#DD9268"/>
+                <g font-family="Inter" font-size="7.5" font-weight="600" fill="#5A6375">
+                  <text x="38" y="122">ENE</text><text x="108" y="122">MAR</text><text x="178" y="122">MAY</text>
+                  <text x="249" y="122">JUL</text><text x="320" y="122" text-anchor="end">SEP</text>
+                </g>
+              </svg>
+            </div>
+
+            <div class="tramo t3">
+              <div class="tabla">
+                <div class="th"><span>Rentabilidad por línea</span><span class="der">Ingresos</span><span class="der">Margen</span></div>
+                <div class="tr"><span>Servicios</span><span class="der num">$612 K</span>
+                  <span class="barra"><span class="pista"><i class="relleno" style="--v:1"></i></span><span class="num">38 %</span></span></div>
+                <div class="tr"><span>Producto</span><span class="der num">$431 K</span>
+                  <span class="barra"><span class="pista"><i class="relleno" style="--v:.82"></i></span><span class="num">31 %</span></span></div>
+                <div class="tr"><span>Mantenimiento</span><span class="der num">$197 K</span>
+                  <span class="barra"><span class="pista"><i class="relleno" style="--v:.63"></i></span><span class="num">24 %</span></span></div>
+              </div>
+              <p class="alerta">Cartera vencida por encima de 60 días</p>
+            </div>
+          </div>
+        </div>
+        <p class="muestra">Interfaz de muestra · datos ilustrativos</p>
+      </div>
+    </div>
+  </article>
+
+  <!-- ── fila 02 ──────────────────────────────────────────────────── -->
+  <article class="linea">
+    <div class="marco">
+      <div class="texto">
+        <div class="cabeza">
+          <p class="ref">Servicio 02</p>
+          <h3>Páginas web y sistemas a medida.</h3>
+          <p>Tu página web profesional publicada en menos de una semana. Y el sistema completo cuando la operación lo pide: normativa, documentos oficiales y datos sensibles.</p>
+        </div>
+        <ul class="lista">
+          <li>Página web a medida, publicada en días</li>
+          <li>Software especializado por sector</li>
+          <li>Tableros conectados a tus datos</li>
+          <li>Privacidad y trazabilidad desde el diseño</li>
+        </ul>
+        <a class="enlace der" href="#">Ver el servicio
+          <svg width="14" height="14" viewBox="0 0 15 15" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 7.5h10.5M8.5 3.5 12.5 7.5 8.5 11.5"/></svg>
+        </a>
+      </div>
+
+      <div class="lienzo">
+        <div class="pieza" data-arma>
+          <header>
+            <h4>Documentos y trazabilidad</h4>
+            <span class="rotulo-pieza">Portal de empresa</span>
+          </header>
+          <div class="cuerpo">
+            <div class="operacion">
+              <div class="docs tramo t1">
+                <div class="th"><span>Documento</span><span>Estado</span></div>
+                <ul>
+                  <li class="sel"><span><span class="nom">Informe mensual de resultados</span><span class="org">Contabilidad · 12 jun</span></span><span class="estado">Firmado</span></li>
+                  <li><span><span class="nom">Acta de reunión de dirección</span><span class="org">Dirección · 05 jun</span></span><span class="estado">Firmado</span></li>
+                  <li><span><span class="nom">Conciliación bancaria</span><span class="org">Contabilidad · 04 jun</span></span><span class="estado rev">En revisión</span></li>
+                  <li><span><span class="nom">Orden de compra 2418</span><span class="org">Operación · 03 jun</span></span><span class="estado bor">Borrador</span></li>
+                  <li><span><span class="nom">Reporte de inventario</span><span class="org">Operación · 01 jun</span></span><span class="estado">Firmado</span></li>
+                  <li><span><span class="nom">Presupuesto anual 2026</span><span class="org">Dirección · 28 may</span></span><span class="estado rev">En revisión</span></li>
+                  <li><span><span class="nom">Factura de proveedor 8831</span><span class="org">Contabilidad · 27 may</span></span><span class="estado">Firmado</span></li>
+                </ul>
+                <p class="pie"><span class="num">7 de 128 documentos</span><i><b>Filtro:</b> últimos 30 días</i></p>
+              </div>
+
+              <div class="raya tramo t2" aria-hidden="true"></div>
+
+              <div class="traza-col">
+                <div class="th tramo t2">Traza del documento</div>
+                <div class="hilo tramo t2">
+                  <svg class="espina" viewBox="0 0 2 100" preserveAspectRatio="none" aria-hidden="true">
+                    <line class="traza" style="--l:100" x1="1" y1="0" x2="1" y2="100" stroke="#E8E4DC" stroke-width="2"/>
+                  </svg>
+                  <div class="suceso"><i class="pt"></i><b>Crea el documento</b><span>09:12 · Operación</span></div>
+                  <div class="suceso"><i class="pt"></i><b>Valida 12 reglas</b><span>09:20 · Sistema</span></div>
+                  <div class="suceso"><i class="pt"></i><b>Adjunta el respaldo</b><span>09:26 · Contabilidad</span></div>
+                  <div class="suceso"><i class="pt"></i><b>Firma electrónica</b><span>09:34 · Dirección</span></div>
+                  <div class="suceso"><i class="pt"></i><b>Sella y entrega</b><span>09:34 · Sistema</span></div>
+                </div>
+                <div class="reglas tramo t3">
+                  <div class="fila"><span>Reglas cumplidas</span><span class="num">12 / 12</span></div>
+                  <div class="pista"><i class="relleno"></i></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <footer>Reglas, permisos y trazabilidad en el centro, no en la pantalla.</footer>
+        </div>
+        <p class="muestra">Interfaz de muestra · datos ilustrativos</p>
+      </div>
+    </div>
+  </article>
+</section>
+
+<!-- ═══ KLINODA: la puerta, no la explicación ═════════════════════════ -->
+<section class="puerta">
+  <div class="marco">
+    <div>
+      <p class="ref">Producto propio</p>
+      <img class="logo" src="img/klinoda.png" alt="KLINODA">
+      <!-- PROPUESTA DE TEXTO -->
+      <p class="frase">Nuestra plataforma para médicos ocupacionales en Ecuador. La construimos para probar, en un sector lleno de reglas y de datos sensibles, exactamente lo que decimos que sabemos hacer.</p>
+      <p class="estado-prod">En piloto controlado · solo con datos ficticios</p>
+      <div><a class="enlace der" href="#">Conocer KLINODA
+        <svg width="14" height="14" viewBox="0 0 15 15" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 7.5h10.5M8.5 3.5 12.5 7.5 8.5 11.5"/></svg>
+      </a></div>
+    </div>
+
+    <div class="portal">
+      <header><h4>Portal de empresa</h4><span class="rotulo-pieza">Vista de aptitud</span></header>
+      <div class="th"><span>Cargo</span><span>Evaluación</span><span>Aptitud</span></div>
+      <div class="tr"><span>Operador de planta</span><span>Periódica</span><span class="apto">Apto</span></div>
+      <div class="tr"><span>Supervisora de turno</span><span>Ingreso</span><span class="apto">Apto</span></div>
+      <div class="tr"><span>Conductor</span><span>Periódica</span><span class="apto obs">Con observaciones</span></div>
+      <footer>Diagnósticos, antecedentes y exámenes no existen en esta vista.</footer>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ la banda de cierre ════════════════════════════════════════════ -->
+<section class="cierre" id="cierre">
+  <div class="marco">
+    <p class="ref">Siguiente paso</p>
+    <!-- PROPUESTA DE TEXTO: nada de esta banda está en home.es.js. -->
+    <h2>Veinte minutos con <b>quien va a hacer el trabajo</b>.</h2>
+    <div class="tres">
+      <div style="--d:.1s">
+        <h3>Con quién hablas</h3>
+        <p>Richard Carvajal en dirección financiera, Boris Carvajal en tecnología. No hay un comercial de por medio.</p>
+      </div>
+      <div style="--d:.2s">
+        <h3>Qué pasa en la reunión</h3>
+        <p>Nos cuentas cómo decides hoy, con qué información y qué te falta. Preguntamos: no venimos a presentar.</p>
+      </div>
+      <div style="--d:.3s">
+        <h3>Qué te llevas</h3>
+        <p>Qué conviene ordenar primero y en qué orden. Y si no somos la casa adecuada, te lo decimos en esa misma reunión.</p>
+      </div>
+    </div>
+    <a class="boton" style="--d:.4s" href="#"><span>Agendar diagnóstico ejecutivo · 20 min</span>
+      <svg width="15" height="15" viewBox="0 0 15 15" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 7.5h10.5M8.5 3.5 12.5 7.5 8.5 11.5"/></svg>
+    </a>
+    <p class="nota" style="--d:.48s">Sin costo · sin compromiso · en español, inglés o alemán</p>
+    <div class="canales">
+      <a href="#">WhatsApp Ecuador</a>
+      <a href="#">WhatsApp Alemania</a>
+      <a href="#">Correo</a>
+    </div>
+  </div>
+</section>
+
+<script>
+/* ── el movimiento de la página ──────────────────────────────────────
+   La secuencia de entrada de la portada, y tres momentos al bajar. Nada
+   más se mueve: ninguna sección entra con desvanecido.
+
+   El estado oculto lo pone la clase .js, así que sin JavaScript la página
+   se ve entera y quieta.                                                */
+
+document.documentElement.classList.add('js');
+
+function arranca() { document.documentElement.classList.add('cargada'); }
+requestAnimationFrame(function () { requestAnimationFrame(arranca); });
+/* En una pestaña abierta en segundo plano el navegador congela
+   requestAnimationFrame; sin esto el titular no aparecería nunca. */
+setTimeout(arranca, 500);
+
+/* la cabecera se vuelve sólida cuando la fotografía ya ha pasado */
+var cabecera = document.querySelector('.sitio');
+var portada = document.querySelector('.portada');
+new IntersectionObserver(function (es) {
+  cabecera.classList.toggle('fijo', !es[0].isIntersecting);
+}, { rootMargin: '-74px 0px 0px 0px', threshold: 0 }).observe(portada);
+
+/* la señal de «sigue» se apaga en cuanto alguien empieza a bajar */
+new IntersectionObserver(function (es) {
+  document.body.classList.toggle('desplazada', es[0].intersectionRatio < .92);
+}, { threshold: [.88, .92, .96] }).observe(portada);
+
+/* MOMENTO 1 y 3 · una sola vez, al entrar */
+var unaVez = new IntersectionObserver(function (es) {
+  es.forEach(function (e) {
+    if (e.isIntersecting) { e.target.classList.add('on'); unaVez.unobserve(e.target); }
+  });
+}, { threshold: .3 });
+document.querySelectorAll('.rotulo, .cierre').forEach(function (n) { unaVez.observe(n); });
+
+/* MOMENTO 2 · el lienzo se queda quieto y la pieza se arma en tres
+   tramos, marcados por el avance de la propia fila. Se usan marcas
+   observadas y no un manejador de scroll: el navegador avisa cuando toca
+   y no en cada píxel. */
+var conPin = matchMedia('(min-width:1101px)');
+
+document.querySelectorAll('.linea').forEach(function (fila) {
+  var pieza = fila.querySelector('[data-arma]');
+  if (!pieza) return;
+
+  if (!conPin.matches) {
+    /* Sin sitio para fijar el lienzo, la pieza se arma entera al entrar:
+       el mismo contenido, sin el momento. */
+    new IntersectionObserver(function (es) {
+      if (es[0].isIntersecting) { pieza.classList.add('p3'); }
+    }, { threshold: .15 }).observe(pieza);
+    return;
+  }
+
+  var marcas = [];
+  [.39, .47, .55].forEach(function (p) {
+    var m = document.createElement('i');
+    m.setAttribute('aria-hidden', 'true');
+    m.style.cssText = 'position:absolute;left:0;width:1px;height:1px;pointer-events:none;top:' + (p * 100) + '%';
+    fila.appendChild(m);
+    marcas.push(m);
+  });
+
+  /* En cuanto el panel asoma se arma el primer tramo: quien entre a la
+     página por la mitad nunca encuentra un marco en blanco. */
+  var paso = 0;
+  new IntersectionObserver(function (es, self) {
+    if (es[0].isIntersecting && paso === 0) { paso = 1; pieza.classList.add('p1'); self.disconnect(); }
+  }, { threshold: .05 }).observe(pieza);
+
+  var obs = new IntersectionObserver(function (es) {
+    es.forEach(function (e) {
+      var i = marcas.indexOf(e.target) + 1;
+      if (e.isIntersecting && i > paso) {
+        paso = i;
+        pieza.classList.remove('p1', 'p2', 'p3');
+        pieza.classList.add('p' + i);
+      }
+    });
+  }, { rootMargin: '-45% 0px -45% 0px', threshold: 0 });
+  marcas.forEach(function (m) { obs.observe(m); });
+});
+</script>
+</body>
+</html>

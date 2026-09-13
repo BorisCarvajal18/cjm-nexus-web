@@ -1,0 +1,400 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CJM Nexus — Portada, dirección A (fotográfica clara)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --papel:#F3F1ED;
+  --tinta:#141F3A;
+  --cobre:#C9784A;
+  --cobre-honda:#A85A2E;
+  --piedra:#B9B1A7;
+  --gris:#5A6375;
+  --blanco:#FFFFFF;
+  --linea:#DDD8D0;
+  --tinta-suave:#4E5870;
+  --display:'Plus Jakarta Sans','Segoe UI',system-ui,sans-serif;
+  --texto:'Inter','Segoe UI',system-ui,sans-serif;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scrollbar-color:var(--gris) var(--papel);scrollbar-width:thin}
+body{margin:0;background:var(--papel);color:var(--tinta);font-family:var(--texto);font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased}
+::selection{background:var(--cobre);color:#fff}
+a{color:inherit}
+h1,h2,h3{font-family:var(--display);margin:0;text-wrap:balance}
+p{margin:0}
+ul{margin:0;padding:0;list-style:none}
+:focus-visible{outline:2px solid var(--cobre);outline-offset:3px}
+.num{font-variant-numeric:tabular-nums;font-feature-settings:"tnum" 1}
+.marco{max-width:1240px;margin:0 auto;padding:0 32px}
+
+/* ── cabecera ─────────────────────────────────────────── */
+.sitio .marco{display:flex;align-items:center;gap:40px;height:76px}
+.marca{font-family:var(--display);font-weight:800;font-size:15px;letter-spacing:.16em;text-transform:uppercase;text-decoration:none}
+.sitio nav{display:flex;gap:28px;margin-left:auto}
+.sitio nav a{font-size:14.5px;font-weight:500;color:var(--tinta-suave);text-decoration:none;padding:6px 0;border-bottom:1px solid transparent}
+.sitio nav a:hover{color:var(--tinta);border-bottom-color:var(--cobre)}
+.idiomas{display:flex;gap:10px;font-size:12.5px;font-weight:600;letter-spacing:.08em;color:var(--gris)}
+.idiomas b{color:var(--tinta)}
+
+/* ── ficha del documento ──────────────────────────────── */
+.ficha{border-top:1px solid var(--linea);border-bottom:1px solid var(--linea)}
+.ficha .marco{display:flex;align-items:baseline;justify-content:space-between;gap:24px;padding-top:11px;padding-bottom:11px}
+.campo{font-size:12px;font-weight:600;letter-spacing:.13em;text-transform:uppercase;color:var(--tinta-suave)}
+.campo em{font-style:normal;color:var(--gris);margin-right:10px}
+
+/* ── portada ──────────────────────────────────────────── */
+.portada .marco{display:grid;grid-template-columns:1.02fr .98fr;gap:56px;align-items:center;padding-top:60px;padding-bottom:52px}
+h1{font-size:clamp(2.25rem,3.85vw,3.45rem);line-height:1.04;letter-spacing:-.035em;font-weight:500;max-width:19ch}
+h1 b{font-weight:800}
+.entrada{margin-top:24px;max-width:46ch;font-size:1.05rem;color:var(--tinta-suave)}
+.acciones{display:flex;align-items:center;gap:26px;margin-top:30px;flex-wrap:wrap}
+.boton{display:inline-flex;align-items:center;gap:10px;background:var(--cobre);color:#fff;font-family:var(--display);font-weight:700;font-size:.95rem;padding:15px 24px;border-radius:3px;text-decoration:none;box-shadow:0 2px 3px rgba(20,31,58,.10),0 14px 28px -18px rgba(168,90,46,.85);transition:background .18s cubic-bezier(.2,.7,.2,1),transform .18s cubic-bezier(.2,.7,.2,1)}
+.boton:hover{background:var(--cobre-honda);transform:translateY(-1px)}
+.enlace{font-family:var(--display);font-weight:700;font-size:.95rem;text-decoration:none;display:inline-flex;align-items:center;gap:9px;padding-bottom:3px;border-bottom:1px solid var(--linea);transition:border-color .18s cubic-bezier(.2,.7,.2,1)}
+.enlace:hover{border-bottom-color:var(--cobre)}
+.enlace svg,.boton svg{flex:none}
+.nota{margin-top:18px;font-size:.83rem;color:var(--gris)}
+
+/* la fotografía */
+figure.escena{margin:0;position:relative}
+figure.escena img{display:block;width:100%;aspect-ratio:4/3.3;object-fit:cover;border-radius:3px}
+figure.escena figcaption{position:absolute;left:14px;bottom:14px;background:rgba(20,31,58,.82);color:#fff;font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;padding:6px 10px;border-radius:2px}
+
+/* ── las dos líneas, mitad y mitad ───────────────────── */
+.dos{border-top:1px solid var(--linea)}
+.criterio{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;padding:15px 0 16px;font-size:.95rem;color:var(--tinta-suave)}
+.criterio b{font-family:var(--display);font-weight:800;font-size:1.02rem;color:var(--tinta);letter-spacing:-.018em}
+.mitades{display:grid;grid-template-columns:1fr 1px 1fr;border-top:1px solid var(--linea)}
+.mitad{padding:26px 0 28px}
+.mitad:first-child{padding-right:40px}
+.mitad:last-child{padding-left:40px}
+.divisoria{background:var(--linea)}
+.mitad h2{font-size:1.28rem;line-height:1.2;letter-spacing:-.022em;font-weight:700}
+.mitad .ref{font-size:11.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--gris);margin-bottom:9px}
+.mitad a{margin-top:14px;font-size:.88rem;font-weight:600;text-decoration:none;display:inline-flex;gap:8px;align-items:center;color:var(--tinta)}
+.mitad a:hover{color:var(--cobre-honda)}
+
+/* ── pie de imprenta ─────────────────────────────────── */
+.imprenta{border-top:1px solid var(--linea);border-bottom:1px solid var(--linea);background:#EDEAE3}
+.imprenta ul{display:grid;grid-template-columns:repeat(4,1fr)}
+.imprenta li{font-size:12.4px;color:var(--tinta-suave);padding:13px 20px 13px 0;border-right:1px solid var(--linea);border-bottom:1px solid var(--linea);min-width:0}
+.imprenta li:nth-child(4n){border-right:0}
+.imprenta li:nth-child(n+5){border-bottom:0}
+.desliza{display:flex;align-items:center;gap:9px;font-size:11.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--gris);border-right:0}
+
+/* ── sección: qué hacemos ────────────────────────────── */
+.hacemos{padding:88px 0 96px}
+.rotulo{display:flex;align-items:baseline;gap:20px;padding-bottom:22px;border-bottom:1px solid var(--tinta)}
+.rotulo h2{font-size:clamp(1.5rem,2.3vw,2.05rem);letter-spacing:-.028em;font-weight:800}
+.rotulo p{margin-left:auto;max-width:36ch;font-size:.92rem;color:var(--tinta-suave)}
+.campos{display:grid;grid-template-columns:1fr 1px 1fr}
+.campo-col{padding-top:34px;display:flex;flex-direction:column}
+.campos>.campo-col:first-child{padding-right:48px}
+.campos>.campo-col:last-child{padding-left:48px}
+.campo-col .ref{display:flex;justify-content:space-between;font-size:11.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--gris);padding-bottom:12px;border-bottom:1px solid var(--linea)}
+.campo-col h3{font-size:1.5rem;line-height:1.15;letter-spacing:-.028em;font-weight:800;margin-top:20px;max-width:26ch;min-height:3.45rem}
+.campo-col>p{margin-top:12px;font-size:.97rem;color:var(--tinta-suave);max-width:46ch;min-height:4.65em}
+.lista{margin-top:20px;border-top:1px solid var(--linea)}
+.lista li{display:flex;gap:12px;align-items:baseline;font-size:.92rem;font-weight:500;padding:9px 0;border-bottom:1px solid var(--linea)}
+.lista li::before{content:"";width:6px;height:6px;flex:none;border-radius:50%;background:var(--cobre);transform:translateY(-1px)}
+.campo-col>a.enlace{margin-top:24px;align-self:flex-start}
+
+/* el entregable dibujado */
+.pieza{margin-top:26px;background:var(--blanco);border:1px solid var(--linea);border-radius:3px;padding:20px 20px 22px;height:432px;display:flex;flex-direction:column;box-shadow:0 1px 2px rgba(20,31,58,.05),0 22px 44px -30px rgba(20,31,58,.5)}
+.pieza header{display:flex;justify-content:space-between;align-items:baseline;padding-bottom:12px;border-bottom:1px solid var(--linea)}
+.pieza header h4{margin:0;font-family:var(--display);font-size:.98rem;font-weight:800;letter-spacing:-.012em}
+.pieza header span{font-size:11.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--gris)}
+.kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--linea);margin-top:14px}
+.kpi{background:var(--blanco);padding:11px 12px 12px}
+.kpi small{display:block;font-size:11px;font-weight:600;letter-spacing:.09em;text-transform:uppercase;color:var(--gris)}
+.kpi b{display:block;font-family:var(--display);font-size:1.22rem;font-weight:800;letter-spacing:-.025em;margin-top:5px}
+.kpi i{font-style:normal;font-size:11.5px;font-weight:600;color:var(--tinta-suave)}
+.kpi.aviso i{color:var(--cobre-honda)}
+.grafico{margin-top:18px;flex:1;display:flex;flex-direction:column}
+.grafico .cab{display:flex;justify-content:space-between;font-size:11.5px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--gris)}
+.grafico svg{width:100%;flex:1;min-height:118px;margin-top:8px;overflow:visible}
+.alerta{margin-top:14px;border-top:1px solid var(--cobre);padding-top:10px;font-size:.85rem;font-weight:600;color:var(--cobre-honda)}
+.flujo{margin-top:16px;flex:1;min-height:0;display:flex}
+.flujo svg{width:100%;height:100%;overflow:visible}
+.pieza footer{margin-top:12px;padding-top:11px;border-top:1px solid var(--linea);font-size:.8rem;color:var(--tinta-suave)}
+
+/* ── KLINODA ─────────────────────────────────────────── */
+.producto{margin-top:64px;border-top:1px solid var(--tinta);padding-top:26px;display:grid;grid-template-columns:.84fr 1.16fr;gap:48px}
+.producto .ref{font-size:11.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--gris)}
+.producto h3{font-size:1.42rem;line-height:1.17;letter-spacing:-.028em;font-weight:800;margin-top:10px;max-width:18ch}
+.producto p{font-size:.96rem;color:var(--tinta-suave);max-width:66ch}
+.producto ul{margin-top:16px;display:grid;gap:7px}
+.producto ul li{font-size:.88rem;font-weight:500}
+.producto ul li::before{content:"";display:inline-block;width:5px;height:5px;border-radius:50%;background:var(--piedra);margin-right:10px;transform:translateY(-2px)}
+.producto a.enlace{margin-top:20px}
+
+/* ── dibujo: la única animación ──────────────────────── */
+.traza{stroke-dasharray:var(--l);stroke-dashoffset:var(--l);transition:stroke-dashoffset 1.15s cubic-bezier(.16,1,.3,1)}
+.on .traza{stroke-dashoffset:0}
+.punta{opacity:0;transition:opacity .45s ease .85s}
+.on .punta{opacity:1}
+@media (prefers-reduced-motion:reduce){
+  .traza{transition:none;stroke-dashoffset:0}
+  .punta{transition:none;opacity:1}
+}
+
+@media (max-width:1000px){
+  .portada .marco{grid-template-columns:1fr;gap:36px;padding-top:44px}
+  h1{max-width:24ch}
+  .mitades,.campos{grid-template-columns:1fr}
+  .campo-col h3,.campo-col>p{min-height:0}
+  .imprenta ul{grid-template-columns:repeat(2,1fr)}
+  .imprenta li{border-right:1px solid var(--linea);border-bottom:1px solid var(--linea)}
+  .imprenta li:nth-child(2n){border-right:0}
+  .imprenta li:nth-child(n+5){border-bottom:1px solid var(--linea)}
+  .imprenta li:last-child{border-bottom:0}
+  .divisoria{display:none}
+  .mitad:first-child,.mitad:last-child,.campos>.campo-col:first-child,.campos>.campo-col:last-child{padding-left:0;padding-right:0}
+  .mitad:last-child{border-top:1px solid var(--linea)}
+  .campos>.campo-col:last-child{border-top:1px solid var(--linea);margin-top:36px}
+  .producto{grid-template-columns:1fr;gap:20px}
+  .sitio nav{display:none}
+  .rotulo{flex-wrap:wrap;gap:12px}
+  .rotulo p{margin-left:0}
+}
+@media (max-width:620px){
+  .marco{padding:0 20px}
+  .imprenta ul{grid-template-columns:1fr}
+  .imprenta li{border-right:0;padding-right:0}
+  .hacemos{padding:56px 0 64px}
+  .kpis{grid-template-columns:1fr}
+  .acciones{gap:18px}
+  .boton{width:100%;justify-content:space-between;padding:14px 18px}
+  .boton span{text-wrap:balance}
+  .ficha .marco{flex-direction:column;gap:6px}
+}
+</style>
+</head>
+<body>
+
+<header class="sitio">
+  <div class="marco">
+    <a class="marca" href="#">CJM Nexus</a>
+    <nav>
+      <a href="#">Servicios</a><a href="#">Proyectos</a><a href="#">Método</a><a href="#">Nosotros</a><a href="#">Contacto</a>
+    </nav>
+    <div class="idiomas"><b>ES</b><span>EN</span><span>DE</span></div>
+  </div>
+</header>
+
+<div class="ficha">
+  <div class="marco">
+    <p class="campo"><em>Asunto</em>Finanzas · Tecnología · Ecuador y Alemania</p>
+    <p class="campo"><em>Nosotros</em>Richard Carvajal · Mirella Llanga · Boris Carvajal</p>
+  </div>
+</div>
+
+<section class="portada">
+  <div class="marco">
+    <div>
+      <h1>Finanzas <b>claras</b> y software a la <b>altura</b> de tu empresa.</h1>
+      <p class="entrada">CJM Nexus une dirección financiera con quince años de trayectoria y desarrollo de software especializado, para empresas que quieren crecer con control.</p>
+      <div class="acciones">
+        <a class="boton" href="#"><span>Agendar diagnóstico ejecutivo · 20 min</span>
+          <svg width="15" height="15" viewBox="0 0 15 15" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 7.5h10.5M8.5 3.5 12.5 7.5 8.5 11.5"/></svg>
+        </a>
+        <a class="enlace" href="#campos">Ver qué hacemos
+          <svg width="14" height="14" viewBox="0 0 15 15" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7.5 2.5v10M3.5 8.5l4 4 4-4"/></svg>
+        </a>
+      </div>
+      <p class="nota">Sin costo · sin compromiso · en español, inglés o alemán</p>
+    </div>
+
+    <figure class="escena">
+      <img src="img/hero-clara.jpg" alt="Dos personas revisan indicadores en una pantalla, sentadas a una mesa de trabajo.">
+      <figcaption>Foto provisional de archivo</figcaption>
+    </figure>
+  </div>
+</section>
+
+<div class="dos">
+  <div class="marco">
+    <p class="criterio"><b>Dos campos. Un criterio.</b> Control: en los números y en el software.</p>
+    <div class="mitades">
+    <div class="mitad">
+      <p class="ref">Servicio 01</p>
+      <h2>Dirección financiera externa.</h2>
+      <a href="#campos">Ver el servicio
+        <svg width="13" height="13" viewBox="0 0 15 15" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 7.5h10.5M8.5 3.5 12.5 7.5 8.5 11.5"/></svg>
+      </a>
+    </div>
+    <div class="divisoria" aria-hidden="true"></div>
+    <div class="mitad">
+      <p class="ref">Servicio 02</p>
+      <h2>Páginas web y sistemas a medida.</h2>
+      <a href="#campos">Ver el servicio
+        <svg width="13" height="13" viewBox="0 0 15 15" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 7.5h10.5M8.5 3.5 12.5 7.5 8.5 11.5"/></svg>
+      </a>
+    </div>
+    </div>
+  </div>
+</div>
+
+<div class="imprenta">
+  <div class="marco">
+    <ul>
+      <li class="num">Más de 15 años en dirección financiera</li>
+      <li class="num">Más de 100 clientes asesorados</li>
+      <li>Un producto propio en desarrollo: KLINODA</li>
+      <li>Equipo en Ecuador y Alemania</li>
+      <li>Decisiones documentadas en actas</li>
+      <li class="num">Más de 2.300 pruebas automáticas</li>
+      <li class="desliza">Desliza
+        <svg width="12" height="12" viewBox="0 0 15 15" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7.5 2.5v10M3.5 8.5l4 4 4-4"/></svg>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<!-- ══ sección: qué hacemos, las dos líneas al mismo nivel ══ -->
+<section class="hacemos" id="campos">
+  <div class="marco">
+    <div class="rotulo">
+      <h2>Qué hacemos</h2>
+      <p>Dos líneas, una firma. La misma casa define el número y construye el sistema que lo produce.</p>
+    </div>
+
+    <div class="campos">
+      <div class="campo-col">
+        <p class="ref"><span>Servicio 01</span></p>
+        <h3>Dirección financiera externa.</h3>
+        <p>Un director financiero para dueños y gerentes que necesitan claridad para decidir, con entregables concretos cada mes.</p>
+        <ul class="lista">
+          <li>Diagnóstico financiero ejecutivo</li>
+          <li>Flujo de caja proyectado a trece semanas</li>
+          <li>Tablero de indicadores y control de costos</li>
+          <li>Rentabilidad por línea de negocio</li>
+        </ul>
+
+        <div class="pieza" data-dibuja>
+          <header><h4>Tablero gerencial</h4><span>Junio</span></header>
+          <div class="kpis">
+            <div class="kpi"><small>Ventas</small><b class="num">$1,24 M</b><i class="num">▲ 12 %</i></div>
+            <div class="kpi"><small>Margen</small><b class="num">34 %</b><i class="num">▲ 3 pt</i></div>
+            <div class="kpi aviso"><small>Caja</small><b class="num">45 d</b><i class="num">▼ 4 d</i></div>
+          </div>
+          <div class="grafico">
+            <div class="cab"><span>Ventas contra meta</span><span class="num">Ene — Sep</span></div>
+            <svg viewBox="0 0 320 110" preserveAspectRatio="none" aria-hidden="true">
+              <g stroke="#E6E2DA" stroke-width="1">
+                <line x1="0" y1="109.5" x2="320" y2="109.5"/><line x1="0" y1="73.5" x2="320" y2="73.5"/>
+                <line x1="0" y1="37.5" x2="320" y2="37.5"/><line x1="0" y1="1.5" x2="320" y2="1.5"/>
+              </g>
+              <line x1="0" y1="60" x2="320" y2="52" stroke="#B9B1A7" stroke-width="1.5" stroke-dasharray="4 4"/>
+              <polyline class="traza" style="--l:420" fill="none" stroke="#C9784A" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"
+                points="0,102 40,95 80,98 120,84 160,78 200,68 240,61 280,49 318,40"/>
+              <circle class="punta" cx="318" cy="40" r="4" fill="#C9784A"/>
+            </svg>
+          </div>
+          <p class="alerta">Cartera vencida por encima de 60 días</p>
+        </div>
+
+        <a class="enlace" href="#">Ver el servicio
+          <svg width="14" height="14" viewBox="0 0 15 15" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 7.5h10.5M8.5 3.5 12.5 7.5 8.5 11.5"/></svg>
+        </a>
+      </div>
+
+      <div class="divisoria" aria-hidden="true"></div>
+
+      <div class="campo-col">
+        <p class="ref"><span>Servicio 02</span></p>
+        <h3>Páginas web y sistemas a medida.</h3>
+        <p>Tu página web profesional publicada en menos de una semana. Y el sistema completo cuando la operación lo pide: normativa, documentos oficiales y datos sensibles.</p>
+        <ul class="lista">
+          <li>Página web a medida, publicada en días</li>
+          <li>Software especializado por sector</li>
+          <li>Tableros conectados a tus datos</li>
+          <li>Privacidad y trazabilidad desde el diseño</li>
+        </ul>
+
+        <div class="pieza" data-dibuja>
+          <header><h4>De tus datos al documento</h4><span>Arquitectura</span></header>
+          <div class="flujo">
+            <svg viewBox="0 0 320 252" aria-hidden="true">
+              <g font-family="Inter" font-size="10.5" font-weight="600" fill="#141F3A">
+                <rect x="0" y="14" width="94" height="30" rx="2" fill="#FAF8F5" stroke="#DDD8D0"/>
+                <text x="12" y="33">Contabilidad</text>
+                <rect x="0" y="56" width="94" height="30" rx="2" fill="#FAF8F5" stroke="#DDD8D0"/>
+                <text x="12" y="75">Ventas</text>
+                <rect x="0" y="98" width="94" height="30" rx="2" fill="#FAF8F5" stroke="#DDD8D0"/>
+                <text x="12" y="117">Operación</text>
+                <rect x="222" y="14" width="98" height="30" rx="2" fill="#FAF8F5" stroke="#DDD8D0"/>
+                <text x="234" y="33">Tablero</text>
+                <rect x="222" y="56" width="98" height="30" rx="2" fill="#FAF8F5" stroke="#DDD8D0"/>
+                <text x="234" y="75">Documento firmado</text>
+                <rect x="222" y="98" width="98" height="30" rx="2" fill="#FAF8F5" stroke="#DDD8D0"/>
+                <text x="234" y="117">Alertas</text>
+              </g>
+              <rect x="124" y="42" width="68" height="58" rx="2" fill="#141F3A"/>
+              <text x="158" y="76" text-anchor="middle" font-family="Plus Jakarta Sans" font-size="11" font-weight="800" fill="#fff">Plataforma</text>
+              <g class="traza" style="--l:130" fill="none" stroke="#C9784A" stroke-width="1.6" stroke-linecap="round">
+                <path d="M94 29h14q8 0 8 8v22"/><path d="M94 71h30"/><path d="M94 113h14q8 0 8-8v-22"/>
+              </g>
+              <g class="traza" style="--l:130" fill="none" stroke="#C9784A" stroke-width="1.6" stroke-linecap="round">
+                <path d="M192 59v-22q0-8 8-8h22"/><path d="M192 71h30"/><path d="M192 83v22q0 8 8 8h22"/>
+              </g>
+              <g class="punta" fill="#C9784A">
+                <circle cx="222" cy="29" r="3"/><circle cx="222" cy="71" r="3"/><circle cx="222" cy="113" r="3"/>
+              </g>
+              <line x1="0" y1="150" x2="320" y2="150" stroke="#DDD8D0" stroke-width="1"/>
+              <g font-family="Inter" font-size="10" font-weight="600" fill="#8B92A3">
+                <text x="0" y="172">Reglas</text><text x="0" y="192">Permisos</text><text x="0" y="212">Trazabilidad</text>
+              </g>
+              <g fill="none" stroke="#B9B1A7" stroke-width="1.3" stroke-dasharray="3 3">
+                <path d="M52 168H134q6 0 6-6V100"/><path d="M70 188H152q6 0 6-6V100"/><path d="M88 208H170q6 0 6-6V100"/>
+              </g>
+            </svg>
+          </div>
+          <footer>Reglas, permisos y trazabilidad en el centro, no en la pantalla.</footer>
+        </div>
+
+        <a class="enlace" href="#">Ver el servicio
+          <svg width="14" height="14" viewBox="0 0 15 15" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 7.5h10.5M8.5 3.5 12.5 7.5 8.5 11.5"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <div class="producto">
+      <div>
+        <p class="ref">Producto propio</p>
+        <h3>KLINODA: la prueba de lo que construimos.</h3>
+      </div>
+      <div>
+        <p>KLINODA es nuestra plataforma para médicos ocupacionales en Ecuador. Digitaliza un trámite obligatorio lleno de reglas, formularios oficiales y datos sensibles, y lo deja resuelto en minutos. No es un servicio médico: es la prueba de lo que construimos para cualquier sector con normativa estricta.</p>
+        <ul>
+          <li>Formulario oficial completo por bloques</li>
+          <li>Certificados firmados electrónicamente</li>
+          <li>La empresa ve la aptitud; nunca lo clínico</li>
+        </ul>
+        <a class="enlace" href="#">Conocer KLINODA
+          <svg width="14" height="14" viewBox="0 0 15 15" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 7.5h10.5M8.5 3.5 12.5 7.5 8.5 11.5"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+/* La única animación de la página: los dos entregables se dibujan una vez, a
+   la vez y con el mismo peso. El trazo explica el dato (ventas contra meta) y
+   el recorrido (de tus datos al documento). Nada más se mueve. */
+const ob = new IntersectionObserver(function (es) {
+  es.forEach(function (e) {
+    if (e.isIntersecting) { e.target.classList.add('on'); ob.unobserve(e.target); }
+  });
+}, { threshold: 0.3 });
+document.querySelectorAll('[data-dibuja]').forEach(function (n) { ob.observe(n); });
+</script>
+</body>
+</html>
