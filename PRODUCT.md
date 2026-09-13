@@ -40,7 +40,7 @@ El segundo diferencial es **el método como garantía**, no como promesa: decisi
 
 - Dirección financiera externa: diagnóstico financiero ejecutivo, tablero gerencial mensual, flujo de caja proyectado a trece semanas, rentabilidad por línea de negocio, estructura de costos, reunión de dirección documentada.
 - Soluciones digitales: página web a medida publicada en menos de una semana (dominio, alojamiento y mantenimiento incluidos, registrados a nombre de la empresa del cliente); plataformas especializadas por sector; tableros conectados a los datos del cliente; automatización de reportes y documentos con firma electrónica; integraciones con facturación, contabilidad, inventario.
-- Producto propio: **KLINODA**, plataforma de medicina ocupacional para médicos en Ecuador (repositorio aparte, `C:\dev\plataforma-medicina-ocupacional`).
+- Producto propio: **KLINODA**, plataforma de salud ocupacional en Ecuador (repositorio aparte, `C:\dev\plataforma-medicina-ocupacional`). A quién se dirige —a quien hace la evaluación o a la empresa— es una decisión de negocio abierta: la web no la afirma (ver «Reglas de contenido que no se negocian»).
 
 **Restricciones técnicas de esta web**
 
@@ -59,7 +59,7 @@ Recogidas en `cjm-nexus/docs/preguntas-richard.md` y marcadas con el comentario 
 3. Forma de cobro (mensualidad, proyecto, horas). No sale en la web, pero condiciona qué se puede afirmar.
 4. Cuáles son las preguntas que de verdad le hacen a Richard antes de firmar. Las seis actuales son las que Boris esperaría, no las que Richard escucha.
 
-Otras cosas sin resolver: no existe página «Nosotros» (el menú apunta a la banda de la portada), no existen las páginas legales de Privacidad y Aviso legal (pendientes de la entidad legal de la firma), y no hay página de empresa en LinkedIn (`SOCIAL_PROFILES` está vacío a propósito).
+Otras cosas sin resolver: no existe página «Nosotros» (el menú apunta a la banda de la portada), no existen las páginas legales de Privacidad y Aviso legal (pendientes de la entidad legal de la firma), no hay página de empresa en LinkedIn (`SOCIAL_PROFILES` está vacío a propósito) y **no está decidido quién es el cliente de KLINODA**.
 
 ## Brand Commitments
 
@@ -68,7 +68,17 @@ Otras cosas sin resolver: no existe página «Nosotros» (el menú apunta a la b
 - Equipo nombrado en público: Richard Carvajal (fundador, dirección financiera, Ecuador), Mirella Llanga (gerente general), Boris Carvajal (cofundador, tecnología, Alemania).
 - **Voz:** frase corta, sujeto concreto, cero jerga de consultora. Se nombra la objeción antes que el beneficio. La letra pequeña va a la vista porque es lo que hace creíble la promesa («en una semana desde que tenemos tus textos»). El texto dice lo que el sistema hace, nunca que cumple una norma.
 - **Confidencial, no publicable sin autorización:** identidad de la médica aliada de KLINODA, participación familiar en el desarrollo, cifras de avance interno y cualquier fecha de lanzamiento.
-- **Reglas públicas de KLINODA** (acordadas con el dueño, ver cabecera de `cjm-nexus/src/content/klinoda.es.js`): ninguna pantalla con datos de paciente ni siquiera inventados; ninguna afirmación de validez legal o sanitaria; ninguna fecha de lanzamiento; ningún nombre de los profesionales que acompañan; nada de riesgos ni detalles de seguridad; y el estado —piloto controlado, solo datos ficticios— se dice, y se dice primero.
+- **Reglas públicas de KLINODA** (acordadas con el dueño, ver cabecera de `cjm-nexus/src/content/klinoda.es.js`): ninguna pantalla con datos de paciente ni siquiera inventados; ninguna afirmación de validez legal o sanitaria; ninguna fecha de lanzamiento; ningún nombre de los profesionales que acompañan; nada de riesgos ni detalles de seguridad; y el estado se dice, y se dice primero.
+
+**Reglas de contenido que no se negocian.** Confirmadas por Boris al aprobar la portada, el 13 de septiembre de 2026. Valen para cualquier página, no solo la portada.
+
+1. **El 50/50.** Dirección financiera y soluciones digitales pesan lo mismo donde aparezcan juntas: mismo tamaño, mismo tratamiento, misma duración. Cuando una tiene que ir primero, el orden lo marcan «Servicio 01» y «Servicio 02», y no cambia nada más.
+2. **Las cifras de trayectoria llevan nombre.** Los más de 15 años en dirección financiera y los más de 100 clientes asesorados son de Richard Carvajal. Se le atribuyen por su nombre, junto a la cifra, y nunca se presentan como de la firma.
+3. **KLINODA, fuera de su página, es una puerta.** Enseña el producto, dice su estado y lleva a su página. No explica más ni añade información que no esté allí.
+4. **Nada clínico, ni siquiera inventado.** Ninguna interfaz enseña diagnósticos, antecedentes, exámenes, nombres de persona ni números de documento. Las demos de KLINODA muestran solo módulos que existen en su portal de empresa, con datos ficticios, sus etiquetas reales y sin totales por aptitud.
+5. **Ninguna fecha** de lanzamiento y ninguna afirmación de validez legal o sanitaria.
+6. **El estado se dice; lo que falta no se lista.** La etiqueta pública de KLINODA es «Demo · en desarrollo · datos ficticios».
+7. **No se afirma quién es el cliente de KLINODA.** Se dice «salud ocupacional», nunca «para médicos» ni «para empresas»: esa decisión de negocio sigue abierta.
 
 ## Evidence on Hand
 
@@ -84,7 +94,7 @@ Otras cosas sin resolver: no existe página «Nosotros» (el menú apunta a la b
 
 - **No hay ningún cliente de páginas web todavía.** Por eso no hay portafolio, ni número, ni testimonio en la página de soluciones digitales. Las dos únicas pruebas son KLINODA y esta web. La página ya tiene el sitio evidente donde ponerlos cuando lleguen.
 - No hay casos de estudio financieros publicables, ni logotipos de clientes, ni prensa, ni fotografías del equipo (las fotos esperan a la página «Nosotros»).
-- Los números de las interfaces de muestra (tablero gerencial, portal de empresa) ilustran cómo se ve un entregable, igual que la captura de pantalla de cualquier producto. **Nunca se presentan como resultados propios ni de un cliente.**
+- Los números de las interfaces de muestra (tablero gerencial, portal de empresa) ilustran cómo se ve un entregable, igual que la captura de pantalla de cualquier producto. **Nunca se presentan como resultados propios ni de un cliente.** Llevan al pie «Interfaz de muestra · datos ilustrativos».
 
 ## Product Principles
 

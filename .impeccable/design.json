@@ -1,0 +1,559 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-09-13T14:37:29.100Z",
+  "title": "Design System: CJM Nexus",
+  "extensions": {
+    "colorMeta": {
+      "papel": {
+        "role": "neutral",
+        "displayName": "Papel",
+        "canonical": "#F3F1ED",
+        "tonalRamp": [
+          "oklch(15.0% 0.006 84.6)",
+          "oklch(26.0% 0.006 84.6)",
+          "oklch(37.0% 0.006 84.6)",
+          "oklch(48.0% 0.006 84.6)",
+          "oklch(59.0% 0.006 84.6)",
+          "oklch(70.0% 0.006 84.6)",
+          "oklch(82.0% 0.006 84.6)",
+          "oklch(95.0% 0.006 84.6)"
+        ]
+      },
+      "papel-hondo": {
+        "role": "neutral",
+        "displayName": "Papel hondo",
+        "canonical": "#EDEAE3",
+        "tonalRamp": [
+          "oklch(15.0% 0.010 87.5)",
+          "oklch(26.0% 0.010 87.5)",
+          "oklch(37.0% 0.010 87.5)",
+          "oklch(48.0% 0.010 87.5)",
+          "oklch(59.0% 0.010 87.5)",
+          "oklch(70.0% 0.010 87.5)",
+          "oklch(82.0% 0.010 87.5)",
+          "oklch(95.0% 0.010 87.5)"
+        ]
+      },
+      "blanco": {
+        "role": "neutral",
+        "displayName": "Blanco de hoja",
+        "canonical": "#FFFFFF",
+        "tonalRamp": [
+          "oklch(15.0% 0.000 89.9)",
+          "oklch(26.0% 0.000 89.9)",
+          "oklch(37.0% 0.000 89.9)",
+          "oklch(48.0% 0.000 89.9)",
+          "oklch(59.0% 0.000 89.9)",
+          "oklch(70.0% 0.000 89.9)",
+          "oklch(82.0% 0.000 89.9)",
+          "oklch(95.0% 0.000 89.9)"
+        ]
+      },
+      "tinta": {
+        "role": "neutral",
+        "displayName": "Marino tinta",
+        "canonical": "#141F3A",
+        "tonalRamp": [
+          "oklch(15.0% 0.054 265.8)",
+          "oklch(26.0% 0.054 265.8)",
+          "oklch(37.0% 0.054 265.8)",
+          "oklch(48.0% 0.054 265.8)",
+          "oklch(59.0% 0.054 265.8)",
+          "oklch(70.0% 0.054 265.8)",
+          "oklch(82.0% 0.054 265.8)",
+          "oklch(95.0% 0.054 265.8)"
+        ]
+      },
+      "tinta-honda": {
+        "role": "neutral",
+        "displayName": "Marino hondo",
+        "canonical": "#0B1122",
+        "tonalRamp": [
+          "oklch(15.0% 0.036 268.0)",
+          "oklch(26.0% 0.036 268.0)",
+          "oklch(37.0% 0.036 268.0)",
+          "oklch(48.0% 0.036 268.0)",
+          "oklch(59.0% 0.036 268.0)",
+          "oklch(70.0% 0.036 268.0)",
+          "oklch(82.0% 0.036 268.0)",
+          "oklch(95.0% 0.036 268.0)"
+        ]
+      },
+      "tinta-suave": {
+        "role": "neutral",
+        "displayName": "Tinta suave",
+        "canonical": "#4E5870",
+        "tonalRamp": [
+          "oklch(15.0% 0.041 267.1)",
+          "oklch(26.0% 0.041 267.1)",
+          "oklch(37.0% 0.041 267.1)",
+          "oklch(48.0% 0.041 267.1)",
+          "oklch(59.0% 0.041 267.1)",
+          "oklch(70.0% 0.041 267.1)",
+          "oklch(82.0% 0.041 267.1)",
+          "oklch(95.0% 0.041 267.1)"
+        ]
+      },
+      "gris": {
+        "role": "neutral",
+        "displayName": "Gris de letra pequeña",
+        "canonical": "#5A6375",
+        "tonalRamp": [
+          "oklch(15.0% 0.031 264.2)",
+          "oklch(26.0% 0.031 264.2)",
+          "oklch(37.0% 0.031 264.2)",
+          "oklch(48.0% 0.031 264.2)",
+          "oklch(59.0% 0.031 264.2)",
+          "oklch(70.0% 0.031 264.2)",
+          "oklch(82.0% 0.031 264.2)",
+          "oklch(95.0% 0.031 264.2)"
+        ]
+      },
+      "piedra": {
+        "role": "neutral",
+        "displayName": "Piedra",
+        "canonical": "#B9B1A7",
+        "tonalRamp": [
+          "oklch(15.0% 0.017 73.6)",
+          "oklch(26.0% 0.017 73.6)",
+          "oklch(37.0% 0.017 73.6)",
+          "oklch(48.0% 0.017 73.6)",
+          "oklch(59.0% 0.017 73.6)",
+          "oklch(70.0% 0.017 73.6)",
+          "oklch(82.0% 0.017 73.6)",
+          "oklch(95.0% 0.017 73.6)"
+        ]
+      },
+      "linea": {
+        "role": "neutral",
+        "displayName": "Línea",
+        "canonical": "#DDD8D0",
+        "tonalRamp": [
+          "oklch(15.0% 0.012 79.8)",
+          "oklch(26.0% 0.012 79.8)",
+          "oklch(37.0% 0.012 79.8)",
+          "oklch(48.0% 0.012 79.8)",
+          "oklch(59.0% 0.012 79.8)",
+          "oklch(70.0% 0.012 79.8)",
+          "oklch(82.0% 0.012 79.8)",
+          "oklch(95.0% 0.012 79.8)"
+        ]
+      },
+      "linea-fina": {
+        "role": "neutral",
+        "displayName": "Línea fina",
+        "canonical": "#E8E4DC",
+        "tonalRamp": [
+          "oklch(15.0% 0.012 84.6)",
+          "oklch(26.0% 0.012 84.6)",
+          "oklch(37.0% 0.012 84.6)",
+          "oklch(48.0% 0.012 84.6)",
+          "oklch(59.0% 0.012 84.6)",
+          "oklch(70.0% 0.012 84.6)",
+          "oklch(82.0% 0.012 84.6)",
+          "oklch(95.0% 0.012 84.6)"
+        ]
+      },
+      "cobre": {
+        "role": "primary",
+        "displayName": "Cobre",
+        "canonical": "#C9784A",
+        "tonalRamp": [
+          "oklch(15.0% 0.119 49.2)",
+          "oklch(26.0% 0.119 49.2)",
+          "oklch(37.0% 0.119 49.2)",
+          "oklch(48.0% 0.119 49.2)",
+          "oklch(59.0% 0.119 49.2)",
+          "oklch(70.0% 0.119 49.2)",
+          "oklch(82.0% 0.119 49.2)",
+          "oklch(95.0% 0.119 49.2)"
+        ]
+      },
+      "cobre-honda": {
+        "role": "primary",
+        "displayName": "Cobre hondo",
+        "canonical": "#A85A2E",
+        "tonalRamp": [
+          "oklch(15.0% 0.117 48.0)",
+          "oklch(26.0% 0.117 48.0)",
+          "oklch(37.0% 0.117 48.0)",
+          "oklch(48.0% 0.117 48.0)",
+          "oklch(59.0% 0.117 48.0)",
+          "oklch(70.0% 0.117 48.0)",
+          "oklch(82.0% 0.117 48.0)",
+          "oklch(95.0% 0.117 48.0)"
+        ]
+      },
+      "cobre-presion": {
+        "role": "primary",
+        "displayName": "Cobre presión",
+        "canonical": "#8F4A22",
+        "tonalRamp": [
+          "oklch(15.0% 0.107 48.2)",
+          "oklch(26.0% 0.107 48.2)",
+          "oklch(37.0% 0.107 48.2)",
+          "oklch(48.0% 0.107 48.2)",
+          "oklch(59.0% 0.107 48.2)",
+          "oklch(70.0% 0.107 48.2)",
+          "oklch(82.0% 0.107 48.2)",
+          "oklch(95.0% 0.107 48.2)"
+        ]
+      },
+      "cobre-claro": {
+        "role": "primary",
+        "displayName": "Cobre claro",
+        "canonical": "#DD9268",
+        "tonalRamp": [
+          "oklch(15.0% 0.107 49.7)",
+          "oklch(26.0% 0.107 49.7)",
+          "oklch(37.0% 0.107 49.7)",
+          "oklch(48.0% 0.107 49.7)",
+          "oklch(59.0% 0.107 49.7)",
+          "oklch(70.0% 0.107 49.7)",
+          "oklch(82.0% 0.107 49.7)",
+          "oklch(95.0% 0.107 49.7)"
+        ]
+      },
+      "klinoda-acento": {
+        "role": "tertiary",
+        "displayName": "Azul KLINODA",
+        "canonical": "#1868E8",
+        "tonalRamp": [
+          "oklch(15.0% 0.160 260.2)",
+          "oklch(26.0% 0.160 260.2)",
+          "oklch(37.0% 0.160 260.2)",
+          "oklch(48.0% 0.160 260.2)",
+          "oklch(59.0% 0.160 260.2)",
+          "oklch(70.0% 0.160 260.2)",
+          "oklch(82.0% 0.160 260.2)",
+          "oklch(95.0% 0.160 260.2)"
+        ]
+      },
+      "klinoda-acento-oscuro": {
+        "role": "tertiary",
+        "displayName": "Azul KLINODA hondo",
+        "canonical": "#0B47B0",
+        "tonalRamp": [
+          "oklch(15.0% 0.160 261.2)",
+          "oklch(26.0% 0.160 261.2)",
+          "oklch(37.0% 0.160 261.2)",
+          "oklch(48.0% 0.160 261.2)",
+          "oklch(59.0% 0.160 261.2)",
+          "oklch(70.0% 0.160 261.2)",
+          "oklch(82.0% 0.160 261.2)",
+          "oklch(95.0% 0.160 261.2)"
+        ]
+      },
+      "klinoda-tinta": {
+        "role": "tertiary",
+        "displayName": "Tinta KLINODA",
+        "canonical": "#0A1F33",
+        "tonalRamp": [
+          "oklch(15.0% 0.047 249.6)",
+          "oklch(26.0% 0.047 249.6)",
+          "oklch(37.0% 0.047 249.6)",
+          "oklch(48.0% 0.047 249.6)",
+          "oklch(59.0% 0.047 249.6)",
+          "oklch(70.0% 0.047 249.6)",
+          "oklch(82.0% 0.047 249.6)",
+          "oklch(95.0% 0.047 249.6)"
+        ]
+      },
+      "klinoda-fondo": {
+        "role": "tertiary",
+        "displayName": "Fondo KLINODA",
+        "canonical": "#F4F8FE",
+        "tonalRamp": [
+          "oklch(15.0% 0.009 258.3)",
+          "oklch(26.0% 0.009 258.3)",
+          "oklch(37.0% 0.009 258.3)",
+          "oklch(48.0% 0.009 258.3)",
+          "oklch(59.0% 0.009 258.3)",
+          "oklch(70.0% 0.009 258.3)",
+          "oklch(82.0% 0.009 258.3)",
+          "oklch(95.0% 0.009 258.3)"
+        ]
+      },
+      "klinoda-exito": {
+        "role": "tertiary",
+        "displayName": "Verde KLINODA",
+        "canonical": "#0B7D57",
+        "tonalRamp": [
+          "oklch(15.0% 0.110 163.0)",
+          "oklch(26.0% 0.110 163.0)",
+          "oklch(37.0% 0.110 163.0)",
+          "oklch(48.0% 0.110 163.0)",
+          "oklch(59.0% 0.110 163.0)",
+          "oklch(70.0% 0.110 163.0)",
+          "oklch(82.0% 0.110 163.0)",
+          "oklch(95.0% 0.110 163.0)"
+        ]
+      },
+      "klinoda-atencion": {
+        "role": "tertiary",
+        "displayName": "Ámbar KLINODA",
+        "canonical": "#9C5C05",
+        "tonalRamp": [
+          "oklch(15.0% 0.119 64.3)",
+          "oklch(26.0% 0.119 64.3)",
+          "oklch(37.0% 0.119 64.3)",
+          "oklch(48.0% 0.119 64.3)",
+          "oklch(59.0% 0.119 64.3)",
+          "oklch(70.0% 0.119 64.3)",
+          "oklch(82.0% 0.119 64.3)",
+          "oklch(95.0% 0.119 64.3)"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Titular de portada",
+        "purpose": "Solo el titular sobre la imagen de portada; palabras de énfasis en 800."
+      },
+      "cifra": {
+        "displayName": "Cifra",
+        "purpose": "Credenciales y cifras grandes de tableros, en trazo fino y numeración tabular."
+      },
+      "headline": {
+        "displayName": "Título de servicio",
+        "purpose": "Título de cada línea dentro de la escena, en dos líneas fijas; escala con --k."
+      },
+      "title": {
+        "displayName": "Rótulo de sección",
+        "purpose": "Rótulos como «Qué hacemos» y la pregunta de KLINODA."
+      },
+      "body": {
+        "displayName": "Texto",
+        "purpose": "Texto corrido en Inter."
+      },
+      "label": {
+        "displayName": "Referencia",
+        "purpose": "Referencias en versalitas («Servicio 01»), nunca como antetítulo decorativo."
+      },
+      "button": {
+        "displayName": "Botón",
+        "purpose": "Letra de botones y enlaces con filete."
+      }
+    },
+    "shadows": [
+      {
+        "name": "hoja",
+        "value": "0 1px 2px rgba(20,31,58,.05), 0 28px 56px -34px rgba(20,31,58,.55)",
+        "purpose": "Interfaces de muestra sobre papel."
+      },
+      {
+        "name": "hoja-noche",
+        "value": "0 2px 6px rgba(0,0,0,.2), 0 48px 90px -48px rgba(0,0,0,.7)",
+        "purpose": "El tablero de KLINODA sobre marino."
+      },
+      {
+        "name": "boton-conversion",
+        "value": "0 2px 3px rgba(11,17,34,.16), 0 14px 28px -18px rgba(168,90,46,.85)",
+        "purpose": "El botón «Agendar» en reposo."
+      },
+      {
+        "name": "boton-conversion-hover",
+        "value": "0 3px 6px rgba(11,17,34,.2), 0 20px 36px -20px rgba(168,90,46,.95)",
+        "purpose": "El botón «Agendar» al apuntar, subido 2 px."
+      }
+    ],
+    "motion": [
+      {
+        "name": "llegar",
+        "value": "cubic-bezier(.16,1,.3,1)",
+        "purpose": "Entradas y estados al apuntar (expo.out en GSAP)."
+      },
+      {
+        "name": "cruzar",
+        "value": "power3.inOut",
+        "purpose": "Desplazamientos decididos de las escenas fijadas."
+      },
+      {
+        "name": "salir",
+        "value": "power2.in",
+        "purpose": "Salidas; duran el 60 % de su entrada."
+      },
+      {
+        "name": "gesto-escena",
+        "value": "0.30 pantallas",
+        "purpose": "Duración en scroll de cada gesto de una escena fijada."
+      },
+      {
+        "name": "pausa-escena",
+        "value": "0.40 pantallas",
+        "purpose": "Pausa de lectura en scroll dentro de una escena fijada."
+      },
+      {
+        "name": "scrub",
+        "value": "0.5s",
+        "purpose": "Suavizado del scroll en las escenas fijadas."
+      },
+      {
+        "name": "noche",
+        "value": "0.75 pantallas",
+        "purpose": "Recorrido del cambio de tema al entrar KLINODA; paso corto 50→59 % en 0,3 s."
+      },
+      {
+        "name": "estado-al-apuntar",
+        "value": "0.18s–0.44s",
+        "purpose": "Botones, subrayados y filetes al apuntar."
+      },
+      {
+        "name": "entrada-seccion",
+        "value": "0.6s–1.8s",
+        "purpose": "Una entrada con reloj por sección, una sola vez."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "escena",
+        "value": "1024px × 640px",
+        "purpose": "Por debajo no se fija nada."
+      },
+      {
+        "name": "una-columna",
+        "value": "1100px"
+      },
+      {
+        "name": "sin-menu",
+        "value": "1000px"
+      },
+      {
+        "name": "cifras-apiladas",
+        "value": "760px"
+      },
+      {
+        "name": "movil",
+        "value": "620px"
+      },
+      {
+        "name": "tablero-klinoda-contenedor",
+        "value": "700px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Botón de conversión",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "«Agendar»: el único relleno de cobre de la página.",
+      "html": "<a class=\"ds-boton\" href=\"#\">Agendar diagnóstico ejecutivo · 20 min <svg width=\"15\" height=\"15\" viewBox=\"0 0 15 15\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M2 7.5h10.5M8.5 3.5 12.5 7.5 8.5 11.5\"/></svg></a>",
+      "css": ".ds-boton{display:inline-flex;align-items:center;gap:10px;background:#A85A2E;color:#fff;font-family:'Plus Jakarta Sans','Segoe UI',system-ui,sans-serif;font-weight:700;font-size:.95rem;padding:15px 24px;border-radius:3px;text-decoration:none;box-shadow:0 2px 3px rgba(11,17,34,.16),0 14px 28px -18px rgba(168,90,46,.85);transition:background-color .18s cubic-bezier(.16,1,.3,1),transform .2s cubic-bezier(.16,1,.3,1),box-shadow .2s cubic-bezier(.16,1,.3,1)}.ds-boton svg{transition:transform .22s cubic-bezier(.16,1,.3,1)}.ds-boton:hover{background:#8F4A22;transform:translateY(-2px);box-shadow:0 3px 6px rgba(11,17,34,.2),0 20px 36px -20px rgba(168,90,46,.95)}.ds-boton:hover svg{transform:translateX(3px)}.ds-boton:focus-visible{outline:2px solid #C9784A;outline-offset:3px}"
+    },
+    {
+      "name": "Botón de contorno",
+      "kind": "button",
+      "refersTo": "button-secondary",
+      "description": "Cualquier otra acción: «Ver el servicio», «Ver KLINODA».",
+      "html": "<a class=\"ds-contorno\" href=\"#\">Ver el servicio <svg width=\"15\" height=\"15\" viewBox=\"0 0 15 15\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M2 7.5h10.5M8.5 3.5 12.5 7.5 8.5 11.5\"/></svg></a>",
+      "css": ".ds-contorno{display:inline-flex;align-items:center;gap:10px;font-family:'Plus Jakarta Sans','Segoe UI',system-ui,sans-serif;font-weight:700;font-size:.95rem;color:#141F3A;text-decoration:none;padding:13px 22px;border:1.5px solid currentColor;border-radius:3px;transition:background-color .18s cubic-bezier(.16,1,.3,1),color .18s cubic-bezier(.16,1,.3,1)}.ds-contorno svg{transition:transform .22s cubic-bezier(.16,1,.3,1)}.ds-contorno:hover{background:#141F3A;border-color:#141F3A;color:#fff}.ds-contorno:hover svg{transform:translateX(3px)}.ds-contorno:focus-visible{outline:2px solid #C9784A;outline-offset:3px}"
+    },
+    {
+      "name": "Enlace con filete",
+      "kind": "custom",
+      "description": "El filete de cobre se traza de izquierda a derecha al apuntar.",
+      "html": "<a class=\"ds-enlace\" href=\"#\">Ver qué hacemos</a>",
+      "css": ".ds-enlace{position:relative;display:inline-block;font-family:'Plus Jakarta Sans','Segoe UI',system-ui,sans-serif;font-weight:700;font-size:.95rem;color:#141F3A;text-decoration:none;padding-bottom:5px}.ds-enlace::after{content:'';position:absolute;left:0;right:0;bottom:0;height:1px;background:#DDD8D0}.ds-enlace::before{content:'';position:absolute;left:0;right:0;bottom:0;height:1.6px;background:#C9784A;z-index:1;transform:scaleX(0);transform-origin:left;transition:transform .36s cubic-bezier(.16,1,.3,1)}.ds-enlace:hover::before{transform:scaleX(1)}.ds-enlace:focus-visible{outline:2px solid #C9784A;outline-offset:3px}"
+    },
+    {
+      "name": "Cabecera",
+      "kind": "nav",
+      "refersTo": "button-header",
+      "description": "Estado «con fondo»: papel, filete y letra tinta.",
+      "html": "<header class=\"ds-cab\"><span class=\"ds-marca\">CJM Nexus</span><nav><a href=\"#\">Servicios</a><a href=\"#\">Método</a><a href=\"#\">Contacto</a></nav><a class=\"ds-cta\" href=\"#\">Agendar · 20 min</a></header>",
+      "css": ".ds-cab{display:flex;align-items:center;gap:32px;height:72px;padding:0 32px;background:#F3F1ED;border-bottom:1px solid #DDD8D0;color:#141F3A;font-family:'Inter','Segoe UI',system-ui,sans-serif}.ds-marca{font-family:'Plus Jakarta Sans','Segoe UI',system-ui,sans-serif;font-weight:700;font-size:14px;letter-spacing:.2em;text-transform:uppercase}.ds-cab nav{display:flex;gap:26px;margin-left:auto}.ds-cab nav a{position:relative;font-size:14.5px;font-weight:500;color:inherit;text-decoration:none;padding:5px 0;opacity:.84}.ds-cab nav a::after{content:'';position:absolute;left:0;right:0;bottom:0;height:1.5px;background:#C9784A;transform:scaleX(0);transform-origin:left;transition:transform .34s cubic-bezier(.16,1,.3,1)}.ds-cab nav a:hover{opacity:1}.ds-cab nav a:hover::after{transform:scaleX(1)}.ds-cta{background:#A85A2E;color:#fff;font-family:'Plus Jakarta Sans','Segoe UI',system-ui,sans-serif;font-weight:700;font-size:.82rem;padding:9px 15px;border-radius:3px;text-decoration:none;transition:background-color .18s}.ds-cta:hover{background:#8F4A22}"
+    },
+    {
+      "name": "Credencial",
+      "kind": "custom",
+      "description": "Cifra en trazo fino, lo que es y a nombre de quién.",
+      "html": "<div class=\"ds-cred\"><p class=\"ds-cifra\">15<span>+</span></p><p class=\"ds-que\">años en dirección financiera</p><p class=\"ds-quien\">La trayectoria de Richard Carvajal, fundador de la firma.</p></div>",
+      "css": ".ds-cred{max-width:320px;padding:4px 0;color:#141F3A}.ds-cifra{margin:0;font-family:'Plus Jakarta Sans','Segoe UI',system-ui,sans-serif;font-weight:300;font-size:5.5rem;line-height:.95;letter-spacing:-.04em;font-variant-numeric:tabular-nums}.ds-que{margin:18px 0 0;font-family:'Plus Jakarta Sans','Segoe UI',system-ui,sans-serif;font-weight:700;font-size:1.08rem;letter-spacing:-.012em}.ds-quien{margin:6px 0 0;font-family:'Inter','Segoe UI',system-ui,sans-serif;font-size:.95rem;line-height:1.5;color:#4E5870}"
+    },
+    {
+      "name": "Interfaz de muestra",
+      "kind": "card",
+      "refersTo": "interfaz-muestra",
+      "description": "Hoja de papel blanco con un entregable real y su pie de muestra.",
+      "html": "<div><div class=\"ds-hoja\"><div class=\"ds-hoja-cab\"><strong>Tablero gerencial</strong><span>Junio 2026</span></div><div class=\"ds-hoja-kpi\"><small>Ventas</small><b>$1,24 M</b></div></div><p class=\"ds-muestra\">Interfaz de muestra · datos ilustrativos</p></div>",
+      "css": ".ds-hoja{max-width:360px;background:#fff;color:#141F3A;border:1px solid #DDD8D0;border-radius:3px;box-shadow:0 1px 2px rgba(20,31,58,.05),0 28px 56px -34px rgba(20,31,58,.55);font-family:'Inter','Segoe UI',system-ui,sans-serif}.ds-hoja-cab{display:flex;justify-content:space-between;align-items:center;padding:14px 18px;border-bottom:1px solid #DDD8D0;font-size:14px}.ds-hoja-cab span{font-size:11.5px;color:#4E5870;border:1px solid #DDD8D0;border-radius:2px;padding:3px 8px}.ds-hoja-kpi{padding:14px 18px}.ds-hoja-kpi small{display:block;font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#5A6375}.ds-hoja-kpi b{font-family:'Plus Jakarta Sans','Segoe UI',system-ui,sans-serif;font-size:1.3rem;font-weight:800;letter-spacing:-.03em;font-variant-numeric:tabular-nums}.ds-muestra{margin:10px 0 0;font-family:'Inter','Segoe UI',system-ui,sans-serif;font-size:11px;font-weight:500;color:#5A6375}"
+    },
+    {
+      "name": "Etiqueta de estado",
+      "kind": "chip",
+      "refersTo": "etiqueta-estado",
+      "description": "Dice el estado sobre marino; no lista lo que falta.",
+      "html": "<div class=\"ds-noche\"><span class=\"ds-etiqueta\">Demo · en desarrollo · datos ficticios</span></div>",
+      "css": ".ds-noche{background:#141F3A;padding:24px}.ds-etiqueta{display:inline-flex;align-items:center;gap:9px;font-family:'Inter','Segoe UI',system-ui,sans-serif;font-size:.8rem;font-weight:600;letter-spacing:.03em;color:rgba(255,255,255,.82);border:1px solid rgba(255,255,255,.16);border-radius:2px;padding:6px 12px}.ds-etiqueta::before{content:'';width:6px;height:6px;border-radius:50%;background:#8DB8F8}"
+    }
+  ],
+  "narrative": {
+    "northStar": "El registro de la firma",
+    "overview": "La web se construye como el documento que la firma entrega, no como una página de captación. Filetes de 1 px en lugar de cajas, cifras tabulares que cuadran, referencias pequeñas en versalitas, e interfaces de muestra que son hojas de trabajo: un tablero gerencial, un portal de documentos, el panel de KLINODA. Cuando el método de la casa es «decidimos por escrito», que la página tenga forma de registro es la primera prueba de ese método, y se lee antes de leer una palabra.\n\nDos mundos y un solo acento. De día, sobre papel cálido, está lo que la firma ofrece: la portada de fotografía o vídeo, las credenciales y las dos líneas de servicio, con el mismo peso. De noche, sobre marino, está la prueba y la decisión: el producto propio y el cierre. El paso de uno a otro ocurre a la vista, ligado al scroll. El cobre es la única tinta de énfasis: marca lo que se pulsa, la regla que avisa y el trazo del dato. La densidad es la de un informe bien compuesto: aire generoso entre bloques, apretado dentro de cada bloque.\n\nEl movimiento está escrito, no espolvoreado. Hay dos escenas fijadas que cuentan algo, y cada sección tiene una sola entrada, sacada de su contenido. Todo lo que se mueve puede leerse quieto. Rechazos confirmados por Boris: orbes y manchas difuminadas, texto con degradado, tarjetas de vidrio, halos de color, tarjetas iguales de icono, título y texto, numeración grande decorativa y datos que pasan en un ticker.",
+    "keyCharacteristics": [
+      "Papel `#F3F1ED` y marino `#141F3A`, con el cobre como único acento.",
+      "Filetes de 1 px como estructura; esquinas casi rectas (2–3 px).",
+      "Plus Jakarta Sans para titulares y cifras; Inter para el texto; numeración tabular en toda cifra.",
+      "Interfaces de muestra en papel blanco, en los dos temas, con su pie «Interfaz de muestra · datos ilustrativos».",
+      "El 50/50 medible: las dos líneas miden, duran y se mueven exactamente igual.",
+      "Dos relojes de movimiento: el scroll para las escenas y la noche; el reloj, una vez, para cada entrada."
+    ],
+    "rules": [
+      {
+        "name": "The One Accent Rule",
+        "body": "El cobre es la única tinta de énfasis de CJM Nexus. Dos líneas de negocio con dos colores se leen como dos negocios distintos; un solo acento las iguala.",
+        "section": "colors"
+      },
+      {
+        "name": "The Copper-Fill Rule",
+        "body": "El cobre relleno es solo para «Agendar». Cualquier otra acción es un botón de contorno en el color del texto.",
+        "section": "colors"
+      },
+      {
+        "name": "The Paper-Sheet Rule",
+        "body": "Las interfaces de muestra son papel blanco en los dos temas. No usan las variables del tema y nunca se oscurecen.",
+        "section": "colors"
+      },
+      {
+        "name": "The Three Gradients Rule",
+        "body": "Solo hay tres degradados: el velo sobre la imagen de portada, la banda de cierre (marino a marino hondo) y el trazo del gráfico, de cobre apagado a encendido. Ninguno en titulares, botones ni fondos decorativos.",
+        "section": "colors"
+      },
+      {
+        "name": "The Tabular Numbers Rule",
+        "body": "Toda cifra lleva `font-variant-numeric: tabular-nums`. Un tablero financiero cuyas columnas no cuadran dice que no sabemos de esto.",
+        "section": "typography"
+      },
+      {
+        "name": "The Weight Not Color Rule",
+        "body": "El énfasis se hace con peso (500 → 800) o con tamaño, nunca con color ni con degradado.",
+        "section": "typography"
+      },
+      {
+        "name": "The Flat-By-Default Rule",
+        "body": "Filetes, bandas y texto no llevan sombra. Si algo no es una hoja ni el botón de conversión, no se levanta.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "**Do** usar el cobre hondo (#A85A2E) como relleno solo en «Agendar», y el contorno para cualquier otra acción.",
+      "**Do** escribir toda cifra con numeración tabular y atribuir las cifras de trayectoria a quien pertenecen.",
+      "**Do** dar a las dos líneas de servicio el mismo ancho, alto, letra, curva y recorrido. Si una va primero, la marca «Servicio 01».",
+      "**Do** medir cada escena en pantallas: 0,30 por gesto, 0,40 por pausa, y las mismas curvas en las dos.",
+      "**Do** fijar escenas solo desde 1024 × 640 px y ajustar piezas y letra a la altura antes de pensar en subir el umbral.",
+      "**Do** dejar cada sección legible y quieta con «reducir movimiento» y sin JavaScript, con todo el texto en el HTML.",
+      "**Do** mantener el contraste AA en cada punto de reposo, también durante la noche."
+    ],
+    "donts": [
+      "**Don't** usar orbes, manchas difuminadas, texto con degradado, tarjetas de vidrio ni halos de color sin desplazamiento.",
+      "**Don't** repetir la misma entrada de desvanecido en todas las secciones: cada una tiene su gesto.",
+      "**Don't** animar alto, ancho ni márgenes. Solo transformación, opacidad, máscara y trazo.",
+      "**Don't** fijar nada por debajo de 1024 px de ancho ni de 640 de alto.",
+      "**Don't** pintar las dos líneas de negocio con colores distintos, ni traer el azul de KLINODA fuera de su tablero.",
+      "**Don't** numerar en grande (01 / 02 / 03) como decoración, ni hacer rejillas de tarjetas iguales de icono, título y texto.",
+      "**Don't** mover datos en un ticker: una cifra que pasa no se puede leer.",
+      "**Don't** usar piedra (#B9B1A7) como texto sobre papel o blanco."
+    ]
+  }
+}
