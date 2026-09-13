@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>CJM Nexus — Portada, dirección C (ronda 5: KLINODA)</title>
+<title>CJM Nexus — Portada, dirección C (ronda 4: coreografía)</title>
 <script>
 /* Antes del primer pintado. Con movimiento permitido, la portada arranca en
    su estado de entrada (clase .js-mov). Sin JavaScript, o con «reducir
@@ -19,7 +19,7 @@
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 :root{
   --papel:#F3F1ED;
@@ -155,7 +155,7 @@ h1 b{font-weight:800}
 .js-mov .sigue{transform:scaleY(0);transform-origin:top}
 .js-mov.cargada .sigue{transform:none;transition:transform .5s var(--curva) 1.3s}
 
-/* botones y enlace: estados al apuntar */
+/* botón y enlace: estados al apuntar */
 .boton{display:inline-flex;align-items:center;gap:10px;background:var(--cobre-honda);color:#fff;font-family:var(--display);font-weight:700;font-size:.95rem;
   padding:15px 24px;border-radius:3px;text-decoration:none;box-shadow:0 2px 3px rgba(11,17,34,.16),0 14px 28px -18px rgba(168,90,46,.85);
   transition:background-color .18s var(--curva),transform .2s var(--curva),box-shadow .2s var(--curva)}
@@ -163,46 +163,60 @@ h1 b{font-weight:800}
 .boton:active{transform:translateY(0)}
 .boton svg,.enlace svg{flex:none;transition:transform .22s var(--curva)}
 .boton:hover svg{transform:translateX(3px)}
-/* Botón secundario, de contorno: el cobre relleno queda solo para «Agendar».
-   Toma el color del texto, así que sirve igual sobre papel y de noche. */
-.boton-contorno{display:inline-flex;align-items:center;gap:10px;font-family:var(--display);font-weight:700;font-size:.95rem;color:var(--tx-1);text-decoration:none;
-  padding:13px 22px;border:1.5px solid currentColor;border-radius:3px;transition:background-color .18s var(--curva),color .18s var(--curva),border-color .18s var(--curva)}
-.boton-contorno svg{flex:none;transition:transform .22s var(--curva)}
-.boton-contorno:hover{background:var(--tx-1);border-color:var(--tx-1);color:var(--tx-inverso)}
-.boton-contorno:hover svg{transform:translateX(3px)}
 .enlace{position:relative;font-family:var(--display);font-weight:700;font-size:.95rem;text-decoration:none;display:inline-flex;align-items:center;gap:9px;padding-bottom:5px}
 .enlace::after{content:"";position:absolute;left:0;right:0;bottom:0;height:1px;background:var(--filete)}
 .enlace::before{content:"";position:absolute;left:0;right:0;bottom:0;height:1.6px;background:var(--cobre);z-index:1;transform:scaleX(0);transform-origin:left;transition:transform .36s var(--curva)}
 .enlace:hover::before{transform:scaleX(1)}
 .enlace:hover svg{transform:translateY(2px)}
+.enlace.der:hover svg{transform:translateX(3px)}
 .portada .enlace{color:#fff}
 .portada .enlace::after{background:rgba(255,255,255,.42)}
 
-/* ══ M1 · credenciales ═════════════════════════════════════════════
-   Pocas cifras y grandes, cada una con su nota y a nombre de quien la
-   sostiene: la trayectoria es de Richard Carvajal, no de la firma. Debajo,
-   quién hace qué, en una frase. Sustituye a la ficha, las dos mitades y la
-   imprenta de las rondas anteriores.                                   */
-.credenciales{padding:clamp(56px,9vh,96px) 0 clamp(52px,8vh,84px)}
-.cifras{display:grid;grid-template-columns:repeat(3,minmax(0,1fr))}
-.cifras li{position:relative;padding:4px 40px 0}
-.cifras li:first-child{padding-left:0}
-.cifras li:last-child{padding-right:0}
-.cifras li+li::before{content:"";position:absolute;left:0;top:0;bottom:0;width:1px;background:var(--filete);transform:scaleY(var(--raya,1));transform-origin:top}
-.cifra{font-family:var(--display);font-weight:300;font-size:clamp(3.6rem,6.6vw,6.25rem);line-height:.95;letter-spacing:-.04em;color:var(--tx-1)}
-.cifra .mas{letter-spacing:0;margin-left:.03em}
-.que{margin-top:20px;font-family:var(--display);font-weight:700;font-size:1.08rem;letter-spacing:-.012em;color:var(--tx-1)}
-.quien{margin-top:6px;font-size:.95rem;line-height:1.5;color:var(--tx-2);max-width:34ch}
-.firma{position:relative;margin-top:clamp(40px,6vh,64px);padding-top:20px;font-size:1rem;color:var(--tx-2)}
-.firma::before{content:"";position:absolute;left:0;right:0;top:0;height:1px;background:var(--filete);transform:scaleX(var(--raya,1));transform-origin:left}
-.firma b{font-weight:600;color:var(--tx-1)}
+/* ══ M1 · ficha ════════════════════════════════════════════════════ */
+.ficha{position:relative}
+.ficha::after{content:"";position:absolute;left:0;right:0;bottom:0;height:1px;background:var(--filete);transform:scaleX(var(--raya,1));transform-origin:left}
+.ficha .marco{display:flex;align-items:baseline;justify-content:space-between;gap:24px;padding-top:13px;padding-bottom:13px}
+.campo{font-size:12px;font-weight:600;letter-spacing:.13em;text-transform:uppercase;color:var(--tx-2)}
+.campo em{font-style:normal;color:var(--tx-3);margin-right:10px}
+.campo .valor{display:inline-block}
+
+/* ══ M2 · criterio y las dos mitades ═══════════════════════════════ */
+.criterio{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;padding:17px 0 18px;font-size:.95rem;color:var(--tx-2)}
+.criterio b{font-family:var(--display);font-weight:800;font-size:1.02rem;color:var(--tx-1);letter-spacing:-.018em}
+.mitades{position:relative;display:grid;grid-template-columns:1fr 1px 1fr}
+/* El filete superior se traza desde el centro hacia los dos bordes. */
+.mitades::before{content:"";position:absolute;left:0;right:0;top:0;height:1px;background:var(--filete);transform:scaleX(var(--raya,1));transform-origin:50% 0}
+.mitad{position:relative;display:block;text-decoration:none;padding:26px 40px 28px 0;transition:background-color .28s var(--curva)}
+.mitades>.mitad:last-of-type{padding:26px 0 28px 40px}
+.mitad::before{content:"";position:absolute;top:-1px;left:0;right:0;height:2px;background:var(--cobre);transform:scaleX(0);transform-origin:left;transition:transform .44s var(--curva)}
+.mitad:hover{background-color:rgba(255,255,255,.62)}
+.mitad:hover::before{transform:scaleX(1)}
+.divisoria{background:var(--filete);transform-origin:top}
+.mitad h2{font-size:1.28rem;line-height:1.2;letter-spacing:-.022em;font-weight:700}
+.mitad .ref{font-size:11.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--tx-3);margin-bottom:9px}
+.mitad:hover .ref{color:var(--cobre-honda)}
+.mitad .ver{margin-top:14px;font-size:.88rem;font-weight:600;display:inline-flex;gap:8px;align-items:center}
+.mitad .ver svg{transition:transform .22s var(--curva)}
+.mitad:hover .ver svg{transform:translateX(4px)}
+
+/* ══ M3 · imprenta ═════════════════════════════════════════════════
+   Las rayas interiores son pseudoelementos, para poder trazarlas. */
+.imprenta{border-top:1px solid var(--filete);border-bottom:1px solid var(--filete);background:var(--suelo-hondo)}
+.imprenta ul{display:grid;grid-template-columns:repeat(3,1fr)}
+.imprenta li{position:relative;font-size:12.4px;color:var(--tx-2);padding:13px 20px 13px 0;min-width:0}
+.imprenta li::before,.imprenta li::after{content:"";position:absolute;background:var(--filete)}
+.imprenta li::before{left:0;right:0;bottom:0;height:1px;transform:scaleX(var(--raya,1));transform-origin:left}
+.imprenta li::after{top:0;bottom:0;right:0;width:1px;transform:scaleY(var(--raya,1));transform-origin:top}
+.imprenta li:nth-child(3n)::after{display:none}
+.imprenta li:nth-child(n+4)::before{display:none}
+.imprenta .celda{display:inline-block}
 .cuenta{display:inline-block;text-align:right}
 
 /* ══ M4 · qué hacemos ══════════════════════════════════════════════
    Estado en reposo: es lo que ve quien no tiene JavaScript, quien pide
-   reducir movimiento y cualquier pantalla de menos de 1024 × 640 px. Cada
+   reducir movimiento y cualquier pantalla de menos de 1024 × 760 px. Cada
    servicio en su fila, interfaz y texto, todo legible.                 */
-.hacemos{padding:96px 0 104px;scroll-margin-top:var(--cabecera);--sangria:clamp(0px,calc((100vw - 1240px) / 2 + 16px),56px);--k:1}
+.hacemos{padding:96px 0 104px;scroll-margin-top:var(--cabecera);--sangria:clamp(0px,calc((100vw - 1240px) / 2 + 16px),56px)}
 .escenario .marco{position:relative}
 .rotulo{position:relative;display:flex;align-items:baseline;gap:20px;padding-bottom:20px}
 .rotulo h2{font-size:clamp(1.6rem,2.6vw,2.3rem);letter-spacing:-.03em;font-weight:800}
@@ -222,36 +236,34 @@ h1 b{font-weight:800}
 .texto-servicio .lista{margin-top:14px;display:grid;grid-template-columns:1fr 1fr;column-gap:24px}
 .texto-servicio .lista li{display:flex;gap:10px;align-items:baseline;font-size:.9rem;font-weight:500;padding:7px 0;border-top:1px solid var(--filete)}
 .texto-servicio .lista li::before{content:"";width:5px;height:5px;flex:none;border-radius:50%;background:var(--cobre);transform:translateY(-2px)}
-.texto-servicio .boton-contorno{margin-top:20px}
+.texto-servicio .enlace{margin-top:16px}
 
-/* La escena. La añade el guion SOLO con ≥1024 px de ancho, ≥640 px de alto
+/* La escena. La añade el guion SOLO con ≥1024 px de ancho, ≥760 px de alto
    y sin «reducir movimiento». El escenario ocupa la pantalla y se fija 3,1
-   pantallas. Todo lo vertical se ajusta a la altura disponible: los márgenes
-   con vh, los tableros con su escala y la letra con --k, que el guion baja
-   en pasos hasta que los dos textos caben. Nunca se anima alto ni ancho. */
+   pantallas. Las piezas van a tamaño real y solo se reducen si no caben;
+   se colocan por transformación: nunca se anima alto ni ancho. */
 .hacemos.coreografia{padding:0}
-.coreografia .escenario{height:100vh;padding:calc(var(--cabecera) + clamp(10px,2.6vh,24px)) 0 clamp(10px,2.6vh,24px)}
+.coreografia .escenario{height:100vh;padding:calc(var(--cabecera) + 24px) 0 24px}
 .coreografia .escenario .marco{height:100%;display:flex;flex-direction:column}
-.coreografia .rotulo{padding-bottom:clamp(8px,1.6vh,14px);flex:none}
-.coreografia .rotulo h2{font-size:clamp(1.3rem,min(2.2vw,3.4vh),2rem);line-height:1.15}
-.coreografia .rotulo p{font-size:clamp(.82rem,1.5vh,.92rem);line-height:1.45}
+.coreografia .rotulo{padding-bottom:14px;flex:none}
+.coreografia .rotulo h2{font-size:clamp(1.45rem,2.2vw,2rem)}
 .coreografia .regla i{display:block;position:absolute;bottom:0;width:calc(50% - 6px);height:2px;background:var(--cobre);transform:scaleX(0);transform-origin:left}
 .coreografia .regla i:first-child{left:0}
 .coreografia .regla i:last-child{right:0}
 /* El escenario sobresale del marco hasta 56 px por lado: las piezas son
    figuras; el texto sigue alineado con la rejilla de la página. */
-.coreografia .dos-servicios{display:block;position:relative;flex:1;min-height:0;margin:clamp(8px,2.2vh,20px) calc(-1 * var(--sangria)) 0}
+.coreografia .dos-servicios{display:block;position:relative;flex:1;min-height:0;margin:20px calc(-1 * var(--sangria)) 0}
 .coreografia .servicio{display:block}
 .coreografia .caja-pieza{position:absolute;left:0;top:0;z-index:2;max-width:none;transform-origin:0 0;will-change:transform,opacity;pointer-events:none}
 .coreografia .pieza{height:560px}
 .coreografia .texto-servicio{position:absolute;left:0;top:0;z-index:1}
-.coreografia .texto-servicio .ref{font-size:12px;padding-bottom:calc(12px * var(--k))}
-.coreografia .texto-servicio h3{font-size:calc(var(--k) * clamp(2.2rem,3.2vw,2.9rem));line-height:1.04;letter-spacing:-.036em;margin-top:calc(18px * var(--k))}
+.coreografia .texto-servicio .ref{font-size:12px;padding-bottom:12px}
+.coreografia .texto-servicio h3{font-size:clamp(2.2rem,3.2vw,2.9rem);line-height:1.04;letter-spacing:-.036em;margin-top:18px}
 .coreografia .texto-servicio .linea{display:block}
-.coreografia .texto-servicio .lead{margin-top:calc(16px * var(--k));font-size:max(15px,calc(var(--k) * clamp(1.02rem,1.2vw,1.15rem)));line-height:1.5;max-width:44ch}
-.coreografia .texto-servicio .lista{margin-top:calc(18px * var(--k));grid-template-columns:1fr}
-.coreografia .texto-servicio .lista li{padding:calc(8px * var(--k)) 0;font-size:max(14.5px,calc(.98rem * var(--k)))}
-.coreografia .texto-servicio .boton-contorno{margin-top:calc(22px * var(--k))}
+.coreografia .texto-servicio .lead{margin-top:16px;font-size:clamp(1.02rem,1.2vw,1.15rem);line-height:1.5;max-width:44ch}
+.coreografia .texto-servicio .lista{margin-top:18px;grid-template-columns:1fr}
+.coreografia .texto-servicio .lista li{padding:8px 0;font-size:.98rem}
+.coreografia .texto-servicio .enlace{margin-top:18px}
 
 /* ── las interfaces de muestra: papel blanco en los dos temas ───── */
 .pieza{background:var(--blanco);color:var(--tinta);border:1px solid var(--linea);border-radius:3px;height:520px;display:flex;flex-direction:column;overflow:hidden;
@@ -320,106 +332,43 @@ h1 b{font-weight:800}
 .reglas .pista{margin-top:6px;height:4px;background:var(--tinta);border-radius:1px;transform-origin:left}
 .pieza>footer{flex:none;padding:12px 20px;border-top:1px solid var(--linea);font-size:.8rem;color:var(--tinta-suave)}
 
-/* ══ M5 · KLINODA: la escena ═══════════════════════════════════════
-   Un tablero gigante del portal de empresa, tapado por una placa marino con
-   el logotipo en el centro. La placa se levanta, el logotipo viaja a la barra
-   del tablero, el tablero se dibuja, se retira a la derecha y deja sitio a
-   tres frases, la pregunta y el botón.
-
-   El tablero lleva la marca de KLINODA, no la de CJM Nexus: sus azules, su
-   verde y su ámbar salen de su propio base.html. Poco texto y mucho gesto:
-   tres cifras grandes y una línea de 90 días con un punto por vencimiento.
-   Solo módulos que existen en su portal de empresa; sin nombres de persona,
-   sin datos clínicos y sin totales por aptitud (su código los prohíbe).  */
-.puerta{border-top:1px solid var(--filete);--sangria:clamp(0px,calc((100vw - 1240px) / 2 + 16px),56px);--kb:1;--kt:1;
-  --k-acento:#1868E8;--k-acento-oscuro:#0B47B0;--k-acento-tinte:#EAF2FE;--k-acento-claro:#8DB8F8;
-  --k-tinta:#0A1F33;--k-tinta-3:#5C748C;--k-filete:#E1EBF6;--k-fondo:#F4F8FE;
-  --k-exito:#0B7D57;--k-exito-tinte:#E7F7F1;--k-atencion:#9C5C05;--k-atencion-tinte:#FDF3E3}
+/* ══ M5 · KLINODA: la puerta ═══════════════════════════════════════ */
+.puerta{border-top:1px solid var(--filete)}
 /* Sin movimiento (o sin JavaScript) la banda es oscura por sí misma. Con
    movimiento es la página entera la que se hace de noche (tramo T). */
 html:not(.tema-vivo) .puerta{background:var(--tinta);color:#fff;--tx-1:#FFFFFF;--tx-2:rgba(255,255,255,.82);--tx-3:rgba(255,255,255,.66);
   --tx-inverso:var(--tinta);--filete:rgba(255,255,255,.16);--filete-fuerte:rgba(255,255,255,.55)}
-.puerta .marco{padding-top:88px;padding-bottom:88px}
-
-/* En reposo: logotipo y etiqueta, el tablero y el texto. Es lo que ve quien no
-   tiene JavaScript, quien pide reducir movimiento y cualquier pantalla de
-   menos de 1024 × 640 px. */
-.k-area{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,.7fr);gap:64px;align-items:center}
-.k-caja{position:relative;display:flex;flex-direction:column;gap:26px;min-width:0}
-.k-marca{order:-1;display:flex;flex-direction:column;align-items:flex-start;gap:16px}
-.k-marca img{display:block;width:clamp(190px,20vw,250px);height:auto}
-.k-etiqueta{display:inline-flex;align-items:center;gap:9px;font-size:.8rem;font-weight:600;letter-spacing:.03em;color:var(--tx-2);border:1px solid var(--filete);border-radius:2px;padding:6px 12px;white-space:nowrap}
-.k-etiqueta::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--k-acento-claro);flex:none}
-.k-placa{display:none}
-.k-frase{font-size:clamp(1.02rem,1.25vw,1.18rem);line-height:1.5;color:var(--tx-2);max-width:42ch}
-.k-frase:first-child{color:var(--tx-1)}
-.k-frase+.k-frase{margin-top:.75em}
-.k-texto .pregunta{margin-top:28px;font-family:var(--display);font-size:clamp(1.9rem,3vw,2.75rem);font-weight:700;letter-spacing:-.03em;line-height:1.08;max-width:17ch;text-wrap:balance}
-.k-texto .boton-contorno{margin-top:26px}
-.puerta:not(.k-coreo) .k-chip{display:none}
-
-/* ── el tablero: medidas en em, para que --kb lo ajuste entero ─────── */
-.k-tablero{position:relative;container-type:inline-size;display:flex;flex-direction:column;overflow:hidden;background:var(--k-fondo);color:var(--k-tinta);
-  border-radius:6px;font-family:var(--texto);font-size:calc(16px * var(--kb));box-shadow:0 2px 6px rgba(0,0,0,.2),0 48px 90px -48px rgba(0,0,0,.7)}
-.k-barra{display:flex;align-items:center;gap:1em;padding:.85em 1.4em;background:#fff;border-bottom:1px solid var(--k-filete);flex:none}
-.k-logo{display:block;height:1.9em;width:auto}
-.k-seccion{font-family:var(--display);font-weight:700;font-size:.95em;letter-spacing:-.01em;padding-left:1em;border-left:1px solid var(--k-filete)}
-.k-chip{margin-left:auto;font-size:.7em;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--k-acento-oscuro);background:var(--k-acento-tinte);padding:.5em .9em;border-radius:3px;white-space:nowrap}
-.k-cuerpo{flex:1;min-height:0;display:grid;grid-template-columns:1.4fr 1fr;grid-template-rows:minmax(0,1fr) auto;gap:1em;padding:1.2em 1.4em 1.4em}
-.k-carta{background:#fff;border:1px solid var(--k-filete);border-radius:5px;padding:1.1em 1.3em;min-width:0}
-.k-rot{font-size:.8em;font-weight:600;color:var(--k-tinta-3)}
-.k-grande{font-family:var(--display);font-weight:300;font-size:4.2em;line-height:1;letter-spacing:-.04em;color:var(--k-tinta);margin-top:.14em}
-.k-plazos .k-grande{font-size:6.4em;margin-top:.06em}
-.k-plazos{grid-row:1;grid-column:1;display:flex;flex-direction:column}
-/* La línea de los próximos 90 días: tres tramos, un punto por vencimiento. */
-.k-linea{position:relative;display:grid;grid-template-columns:repeat(3,1fr);margin-top:auto;padding-top:1.2em}
-.k-linea::before{content:"";position:absolute;left:0;right:0;top:calc(1.2em + .65em - 1.5px);height:3px;background:var(--k-filete);transform:scaleX(var(--raya,1));transform-origin:left}
-.k-tramo{position:relative;min-width:0;padding-right:.8em}
-.k-puntos{position:relative;display:flex;align-items:center;gap:.5em;height:1.3em}
-.k-puntos i{display:block;width:1.3em;height:1.3em;border-radius:50%;background:var(--k-acento);box-shadow:0 0 0 .28em #fff}
-.k-tramo:nth-child(1) .k-puntos i{background:var(--k-acento-oscuro)}
-.k-tramo:nth-child(3) .k-puntos i{background:var(--k-acento-claro)}
-.k-tramo>span{display:block;margin-top:.8em;font-size:.76em;line-height:1.3;color:var(--k-tinta-3)}
-.k-tramo>span b{display:block;font-family:var(--display);font-size:2.3em;font-weight:300;line-height:1.05;letter-spacing:-.03em;color:var(--k-tinta);margin-bottom:.12em}
-.k-minis{grid-row:1;grid-column:2;display:grid;grid-template-rows:1fr 1fr;gap:1em;min-height:0}
-.k-mini{display:flex;flex-direction:column;justify-content:space-between}
-.k-mini .k-grande{font-size:4.2em}
-.k-mini.aviso .k-grande{color:var(--k-atencion)}
-.k-mini.bien .k-grande{color:var(--k-exito)}
-.k-filas{grid-row:2;grid-column:1 / -1;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1em}
-.k-fila{display:flex;flex-direction:column;gap:.55em;background:#fff;border:1px solid var(--k-filete);border-radius:5px;padding:.8em 1em;min-width:0}
-.k-cargo{font-weight:600;font-size:.9em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.k-pie{display:flex;justify-content:space-between;align-items:center;gap:.6em}
-.k-apto{font-size:.66em;font-weight:700;letter-spacing:.06em;color:var(--k-exito);background:var(--k-exito-tinte);padding:.35em .6em;border-radius:3px;white-space:nowrap}
-.k-apto.obs{color:var(--k-atencion);background:var(--k-atencion-tinte)}
-.k-vence{font-size:.76em;color:var(--k-tinta-3);white-space:nowrap}
-@container (max-width: 700px){
-  .k-cuerpo{grid-template-columns:1fr;grid-template-rows:none}
-  .k-plazos,.k-minis,.k-filas{grid-column:1;grid-row:auto}
-  .k-minis{grid-template-rows:none;grid-template-columns:1fr 1fr}
-  .k-filas{grid-template-columns:1fr}
-  .k-grande{font-size:3.2em}
-  .k-plazos .k-grande{font-size:5em}
-  .k-mini .k-grande{font-size:3em}
-}
-
-/* ── la escena: la añade el guion SOLO con ≥1024 × 640 px y sin «reducir
-   movimiento». Se fija 2,1 pantallas. Tablero y texto se colocan por
-   transformación; la letra de los dos (--kb y --kt) baja en pasos hasta
-   que caben en el alto disponible. ─────────────────────────────────── */
-.k-coreo .k-escenario{height:100vh;padding:calc(var(--cabecera) + clamp(14px,4vh,40px)) 0 clamp(14px,4vh,40px)}
-.k-coreo .k-escenario .marco{height:100%;padding-top:0;padding-bottom:0}
-.k-coreo .k-area{display:block;position:relative;height:100%;margin:0 calc(-1 * var(--sangria))}
-.k-coreo .k-caja{position:absolute;left:0;top:0;display:block;transform-origin:0 0;will-change:transform}
-.k-coreo .k-tablero{height:100%}
-.k-coreo .k-placa{display:block;position:absolute;inset:0;border-radius:6px;background:var(--tinta);pointer-events:none}
-.k-coreo .k-marca{position:absolute;inset:0;align-items:center;justify-content:center;gap:24px;pointer-events:none}
-.k-coreo .k-marca img{width:min(34%,460px)}
-.k-coreo .k-etiqueta{font-size:.95rem;padding:8px 15px}
-.k-coreo .k-texto{position:absolute;left:0;top:0}
-.k-coreo .k-frase{font-size:calc(var(--kt) * clamp(1.02rem,1.25vw,1.18rem))}
-.k-coreo .k-texto .pregunta{margin-top:calc(28px * var(--kt));font-size:calc(var(--kt) * clamp(2rem,3.2vw,2.9rem))}
-.k-coreo .k-texto .boton-contorno{margin-top:calc(26px * var(--kt))}
+.puerta .marco{display:grid;grid-template-columns:.9fr 1.1fr;gap:72px;align-items:start;padding-top:88px;padding-bottom:88px}
+.puerta .ref{font-size:11.5px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--tx-3)}
+.logos{position:relative;display:block;height:38px;margin-top:18px}
+.logos img{position:absolute;left:0;top:0;height:38px;width:auto;transition:opacity .3s var(--curva)}
+.logos .logo-c{opacity:0}
+:root[data-tema="oscuro"] .logos .logo-o,html:not(.tema-vivo) .puerta .logo-o{opacity:0}
+:root[data-tema="oscuro"] .logos .logo-c,html:not(.tema-vivo) .puerta .logo-c{opacity:1}
+.puerta .frase{margin-top:22px;font-size:1.12rem;line-height:1.5;color:var(--tx-2);max-width:40ch}
+.estado-prod{display:inline-flex;align-items:center;gap:8px;margin-top:22px;font-size:.8rem;font-weight:600;color:var(--tx-3);border:1px solid var(--filete);border-radius:2px;padding:6px 11px}
+.estado-prod::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--cobre);flex:none}
+.llamada{display:flex;flex-direction:column;align-items:flex-start;gap:22px;margin-bottom:30px}
+.pregunta{font-family:var(--display);font-size:clamp(1.9rem,3vw,2.75rem);font-weight:700;letter-spacing:-.03em;line-height:1.08;max-width:18ch;text-wrap:balance}
+/* Botón de contorno: el cobre relleno queda solo para «Agendar». */
+.boton-contorno{display:inline-flex;align-items:center;gap:10px;font-family:var(--display);font-weight:700;font-size:.95rem;color:var(--tx-1);text-decoration:none;
+  padding:13px 22px;border:1.5px solid currentColor;border-radius:3px;transition:background-color .18s var(--curva),color .18s var(--curva),border-color .18s var(--curva)}
+.boton-contorno svg{flex:none;transition:transform .22s var(--curva)}
+.boton-contorno:hover{background:var(--tx-1);border-color:var(--tx-1);color:var(--tx-inverso)}
+.boton-contorno:hover svg{transform:translateX(3px)}
+.portal{border:1px solid var(--linea);border-radius:3px;overflow:hidden;background:var(--blanco);color:var(--tinta);box-shadow:0 1px 2px rgba(20,31,58,.05),0 26px 52px -34px rgba(20,31,58,.5)}
+.portal header{display:flex;justify-content:space-between;align-items:center;padding:14px 18px;border-bottom:1px solid var(--linea)}
+.portal header h4{font-size:.95rem;font-weight:800;letter-spacing:-.012em}
+.portal .th,.portal .tr{display:grid;grid-template-columns:1.5fr 1fr 1.1fr;gap:12px;align-items:center;padding:0 18px}
+.portal .th{position:relative;font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--gris);padding-top:14px;padding-bottom:9px}
+.portal .th::after{content:"";position:absolute;left:0;right:0;bottom:0;height:1px;background:var(--linea);transform:scaleX(var(--raya,1));transform-origin:left}
+.portal .tr{font-size:12.5px;font-weight:500;padding-top:13px;padding-bottom:13px;border-bottom:1px solid var(--linea-fina)}
+.portal .apto{display:inline-flex;align-items:center;gap:7px;font-weight:600}
+.portal .apto::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--tinta);flex:none;transform:scale(var(--sello,1))}
+.portal .apto.obs{color:var(--cobre-honda)}
+.portal .apto.obs::before{background:var(--cobre)}
+.portal footer{position:relative;padding:13px 18px;font-size:.8rem;color:var(--gris);background:#FAF8F5}
+.portal footer::before{content:"";position:absolute;left:0;right:0;top:0;height:1px;background:var(--linea-fina);transform:scaleX(var(--raya,1));transform-origin:left}
 
 /* ══ M6 · cierre ═══════════════════════════════════════════════════ */
 .cierre{position:relative;background:linear-gradient(180deg,var(--tinta) 0%,#101A31 55%,var(--tinta-honda) 100%);color:#fff;text-align:center}
@@ -453,25 +402,25 @@ html:not(.tema-vivo) .puerta{background:var(--tinta);color:#fff;--tx-1:#FFFFFF;-
 /* ══ adaptación ════════════════════════════════════════════════════ */
 @media (max-width:1100px){
   .servicio{grid-template-columns:1fr;gap:28px}
-  .puerta .marco{padding-top:64px;padding-bottom:64px}
-  .k-area{grid-template-columns:1fr;gap:44px}
+  .puerta .marco{grid-template-columns:1fr;gap:48px;padding-top:64px;padding-bottom:64px}
 }
 @media (max-width:1000px){
   .sitio nav{display:none}
   .cta-cab{margin-left:auto}
+  .mitades{grid-template-columns:1fr}
+  .mitad,.mitades>.mitad:last-of-type{padding-left:0;padding-right:0}
+  .mitades>.mitad:last-of-type{border-top:1px solid var(--filete)}
+  .imprenta ul{grid-template-columns:repeat(2,1fr)}
+  .imprenta li:nth-child(n)::after,.imprenta li:nth-child(n)::before{display:block}
+  .imprenta li:nth-child(2n)::after{display:none}
+  .imprenta li:nth-last-child(-n+2)::before{display:none}
+  .divisoria{display:none}
   .rotulo{flex-wrap:wrap;gap:12px}
   .rotulo p{margin-left:0}
   .tres{grid-template-columns:1fr;max-width:520px}
   .tres div{padding:22px 0}
   .tres div:not(:first-child){padding-left:0}
   .tres div::after{top:auto;left:0;right:0;bottom:0;width:auto;height:1px;transform:scaleX(var(--div,1));transform-origin:left}
-}
-@media (max-width:760px){
-  .cifras{grid-template-columns:1fr}
-  .cifras li,.cifras li:first-child,.cifras li:last-child{padding:28px 0}
-  .cifras li:first-child{padding-top:0}
-  .cifras li+li::before{top:0;bottom:auto;left:0;right:0;width:auto;height:1px;transform:scaleX(var(--raya,1));transform-origin:left}
-  .quien{max-width:40ch}
 }
 @media (max-width:620px){
   .marco{padding:0 20px}
@@ -487,6 +436,12 @@ html:not(.tema-vivo) .puerta{background:var(--tinta);color:#fff;--tx-1:#FFFFFF;-
   .acciones{flex-direction:column;align-items:stretch;gap:16px;width:100%;max-width:420px}
   .boton{width:100%;justify-content:space-between;padding:15px 18px}
   .enlace{align-self:center}
+  .ficha .marco{flex-direction:column;gap:7px;align-items:flex-start}
+  .imprenta ul{grid-template-columns:1fr}
+  .imprenta li{padding-right:0}
+  .imprenta li:nth-child(n)::after{display:none}
+  .imprenta li:nth-child(n)::before{display:block}
+  .imprenta li:last-child::before{display:none}
   .hacemos{padding:60px 0 68px}
   .dos-servicios{gap:56px;margin-top:32px}
   .pieza{height:auto}
@@ -498,7 +453,10 @@ html:not(.tema-vivo) .puerta{background:var(--tinta);color:#fff;--tx-1:#FFFFFF;-
   .traza-col{padding-left:0;margin-top:16px;padding-top:14px;border-top:1px solid var(--linea)}
   .hilo{justify-content:flex-start;gap:14px;padding-bottom:12px}
   .texto-servicio .lista{grid-template-columns:1fr}
-  .puerta .marco{padding-top:52px;padding-bottom:52px}
+  .puerta .marco{padding-top:52px;padding-bottom:52px;gap:36px}
+  .puerta .frase{font-size:1.02rem}
+  .portal .th,.portal .tr{grid-template-columns:1.4fr .9fr 1fr;gap:8px;padding:0 13px}
+  .portal .tr{font-size:11.5px}
   .cierre .marco{padding-top:64px;padding-bottom:68px}
   .canales{gap:14px 26px}
 }
@@ -555,32 +513,47 @@ html:not(.tema-vivo) .puerta{background:var(--tinta);color:#fff;--tx-1:#FFFFFF;-
   <div class="sigue" aria-hidden="true"><i></i></div>
 </section>
 
-<!-- ═══ M1 · credenciales ════════════════════════════════════════════
-     TEXTO PROPUESTO (ronda 5), pendiente de aprobación: las tres notas y la
-     frase de la firma. Las cifras y su atribución salen de home.es.js
-     (`numbers`) y de PRODUCT.md. -->
-<section class="credenciales" aria-label="Trayectoria y equipo">
+<!-- ═══ M1 · ficha · M2 · las dos líneas · M3 · imprenta ═════════════ -->
+<div class="ficha">
   <div class="marco">
-    <ul class="cifras">
-      <li>
-        <p class="cifra num"><span class="cuenta" data-hasta="15">15</span><span class="mas">+</span></p>
-        <p class="que">años en dirección financiera</p>
-        <p class="quien">La trayectoria de Richard Carvajal, fundador de la firma.</p>
-      </li>
-      <li>
-        <p class="cifra num"><span class="cuenta" data-hasta="100">100</span><span class="mas">+</span></p>
-        <p class="que">clientes asesorados</p>
-        <p class="quien">Por Richard Carvajal, en Latinoamérica y Estados Unidos.</p>
-      </li>
-      <li>
-        <p class="cifra num">3</p>
-        <p class="que">idiomas de trabajo</p>
-        <p class="quien">Español, inglés y alemán, con equipo en Ecuador y Alemania.</p>
-      </li>
-    </ul>
-    <p class="firma"><span><b>Richard Carvajal</b> dirige las finanzas, <b>Boris Carvajal</b> la tecnología y <b>Mirella Llanga</b> la gerencia general.</span></p>
+    <p class="campo"><em>Asunto</em><span class="valor">Finanzas · Tecnología · En español, inglés y alemán</span></p>
+    <p class="campo"><em>Nosotros</em><span class="valor">Richard Carvajal · Mirella Llanga · Boris Carvajal</span></p>
   </div>
-</section>
+</div>
+<div class="dos">
+  <div class="marco">
+    <p class="criterio"><b>Dos campos. Un criterio.</b> Control: en los números y en el software.</p>
+    <div class="mitades">
+      <a class="mitad" href="#campos">
+        <p class="ref">Servicio 01</p>
+        <h2>Dirección financiera externa.</h2>
+        <span class="ver">Ver el servicio
+          <svg width="13" height="13" viewBox="0 0 15 15" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 7.5h10.5M8.5 3.5 12.5 7.5 8.5 11.5"/></svg>
+        </span>
+      </a>
+      <div class="divisoria" aria-hidden="true"></div>
+      <a class="mitad" href="#campos">
+        <p class="ref">Servicio 02</p>
+        <h2>Páginas web y sistemas a medida.</h2>
+        <span class="ver">Ver el servicio
+          <svg width="13" height="13" viewBox="0 0 15 15" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 7.5h10.5M8.5 3.5 12.5 7.5 8.5 11.5"/></svg>
+        </span>
+      </a>
+    </div>
+  </div>
+</div>
+<div class="imprenta">
+  <div class="marco">
+    <ul>
+      <li class="num">Más de <span class="cuenta" data-hasta="15">15</span> años en dirección financiera</li>
+      <li class="num">Más de <span class="cuenta" data-hasta="100">100</span> clientes asesorados</li>
+      <li><span class="celda">Un producto propio en desarrollo: KLINODA</span></li>
+      <li><span class="celda">Equipo en Ecuador y Alemania</span></li>
+      <li><span class="celda">Decisiones documentadas en actas</span></li>
+      <li class="num">Más de <span class="cuenta" data-hasta="2300">2.300</span> pruebas automáticas</li>
+    </ul>
+  </div>
+</div>
 
 <!-- ═══ M4 · qué hacemos: la escena ══════════════════════════════════ -->
 <section class="hacemos" id="campos">
@@ -653,8 +626,8 @@ html:not(.tema-vivo) .puerta{background:var(--tinta);color:#fff;--tx-1:#FFFFFF;-
               <li>Indicadores y control de costos</li>
               <li>Rentabilidad por línea de negocio</li>
             </ul>
-            <a class="boton-contorno" href="#"><span>Ver el servicio</span>
-              <svg width="15" height="15" viewBox="0 0 15 15" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 7.5h10.5M8.5 3.5 12.5 7.5 8.5 11.5"/></svg>
+            <a class="enlace der" href="#">Ver el servicio
+              <svg width="14" height="14" viewBox="0 0 15 15" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 7.5h10.5M8.5 3.5 12.5 7.5 8.5 11.5"/></svg>
             </a>
           </div>
         </article>
@@ -706,8 +679,8 @@ html:not(.tema-vivo) .puerta{background:var(--tinta);color:#fff;--tx-1:#FFFFFF;-
               <li>Tableros conectados a tus datos</li>
               <li>Privacidad y trazabilidad</li>
             </ul>
-            <a class="boton-contorno" href="#"><span>Ver el servicio</span>
-              <svg width="15" height="15" viewBox="0 0 15 15" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 7.5h10.5M8.5 3.5 12.5 7.5 8.5 11.5"/></svg>
+            <a class="enlace der" href="#">Ver el servicio
+              <svg width="14" height="14" viewBox="0 0 15 15" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 7.5h10.5M8.5 3.5 12.5 7.5 8.5 11.5"/></svg>
             </a>
           </div>
         </article>
@@ -716,60 +689,32 @@ html:not(.tema-vivo) .puerta{background:var(--tinta);color:#fff;--tx-1:#FFFFFF;-
   </div>
 </section>
 
-<!-- ═══ M5 · KLINODA: la escena, en oscuro ═══════════════════════════
-     DEMO CON DATOS FICTICIOS. Solo módulos que existen en el portal de empresa
-     de KLINODA (portal_empresa/panel.html): vencidas, vencen en 90 días o menos
-     con sus tres plazos, trabajadores con certificado disponible y los plazos
-     por cargo con su aptitud. Sin nombre ni documento (el portal real sí los
-     muestra), sin datos clínicos y sin totales por aptitud. Etiquetas reales.
-     Frases aprobadas por Boris el 13 de septiembre de 2026. -->
-<section class="puerta" id="klinoda">
-  <div class="k-escenario">
-    <div class="marco">
-      <div class="k-area">
-        <div class="k-caja">
-          <div class="k-tablero">
-            <header class="k-barra">
-              <img class="k-logo" src="img/klinoda.png" width="630" height="176" alt="">
-              <span class="k-seccion">Panel de mi empresa</span>
-              <span class="k-chip" aria-hidden="true">Demo · en desarrollo · datos ficticios</span>
-            </header>
-            <div class="k-cuerpo">
-              <div class="k-carta k-plazos">
-                <p class="k-rot">Vencen en 90 días o menos</p>
-                <p class="k-grande num"><span class="cuenta" data-hasta="11">11</span></p>
-                <div class="k-linea">
-                  <div class="k-tramo"><div class="k-puntos" aria-hidden="true"><i></i><i></i><i></i><i></i></div><span><b class="num">4</b>en 30 días o menos</span></div>
-                  <div class="k-tramo"><div class="k-puntos" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div><span><b class="num">5</b>entre 31 y 60 días</span></div>
-                  <div class="k-tramo"><div class="k-puntos" aria-hidden="true"><i></i><i></i></div><span><b class="num">2</b>entre 61 y 90 días</span></div>
-                </div>
-              </div>
-              <div class="k-minis">
-                <div class="k-carta k-mini aviso"><p class="k-grande num"><span class="cuenta" data-hasta="3">3</span></p><p class="k-rot">Vencidas</p></div>
-                <div class="k-carta k-mini bien"><p class="k-grande num"><span class="cuenta" data-hasta="44">44</span></p><p class="k-rot">Trabajadores con certificado disponible</p></div>
-              </div>
-              <div class="k-filas">
-                <div class="k-fila"><span class="k-cargo">Operador de planta</span><span class="k-pie"><span class="k-apto">APTO</span><span class="k-vence num">Vence 14 oct</span></span></div>
-                <div class="k-fila"><span class="k-cargo">Conductor</span><span class="k-pie"><span class="k-apto obs">APTO EN OBSERVACIÓN</span><span class="k-vence num">Vence 22 oct</span></span></div>
-                <div class="k-fila"><span class="k-cargo">Supervisora de turno</span><span class="k-pie"><span class="k-apto">APTO</span><span class="k-vence num">Vence 03 nov</span></span></div>
-              </div>
-            </div>
-          </div>
-          <div class="k-placa" aria-hidden="true"></div>
-          <div class="k-marca">
-            <img src="img/klinoda-claro.png" width="630" height="176" alt="KLINODA">
-            <p class="k-etiqueta">Demo · en desarrollo · datos ficticios</p>
-          </div>
-        </div>
-        <div class="k-texto">
-          <p class="k-frase">KLINODA es nuestro producto propio de salud ocupacional en Ecuador.</p>
-          <p class="k-frase">Lo construimos en un sector lleno de reglas y de datos sensibles, para probar exactamente lo que decimos que sabemos hacer.</p>
-          <p class="k-frase">Cada vista enseña solo lo que le corresponde: en la de la empresa, lo clínico no existe.</p>
-          <p class="pregunta">¿Quieres conocer más sobre KLINODA?</p>
-          <a class="boton-contorno" href="#"><span>Ver KLINODA</span>
-            <svg width="15" height="15" viewBox="0 0 15 15" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 7.5h10.5M8.5 3.5 12.5 7.5 8.5 11.5"/></svg>
-          </a>
-        </div>
+<!-- ═══ M5 · KLINODA: la puerta, en oscuro ═══════════════════════════ -->
+<section class="puerta">
+  <div class="marco">
+    <div>
+      <p class="ref">Producto propio</p>
+      <span class="logos">
+        <img class="logo-o" src="img/klinoda.png" alt="KLINODA">
+        <img class="logo-c" src="img/klinoda-claro.png" alt="" aria-hidden="true">
+      </span>
+      <p class="frase">Nuestra plataforma para médicos ocupacionales en Ecuador. La construimos para probar, en un sector lleno de reglas y de datos sensibles, exactamente lo que decimos que sabemos hacer.</p>
+      <p class="estado-prod">En piloto controlado · solo con datos ficticios</p>
+    </div>
+    <div>
+      <div class="llamada">
+        <p class="pregunta">¿Quieres saber más sobre KLINODA?</p>
+        <a class="boton-contorno" href="#"><span>Conocer KLINODA</span>
+          <svg width="15" height="15" viewBox="0 0 15 15" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 7.5h10.5M8.5 3.5 12.5 7.5 8.5 11.5"/></svg>
+        </a>
+      </div>
+      <div class="portal">
+        <header><h4>Portal de empresa</h4><span class="rotulo-pieza">Vista de aptitud</span></header>
+        <div class="th"><span>Cargo</span><span>Evaluación</span><span>Aptitud</span></div>
+        <div class="tr"><span>Operador de planta</span><span>Periódica</span><span class="apto">Apto</span></div>
+        <div class="tr"><span>Supervisora de turno</span><span>Ingreso</span><span class="apto">Apto</span></div>
+        <div class="tr"><span>Conductor</span><span>Periódica</span><span class="apto obs">Con observaciones</span></div>
+        <footer>Diagnósticos, antecedentes y exámenes no existen en esta vista.</footer>
       </div>
     </div>
   </div>
@@ -797,14 +742,13 @@ html:not(.tema-vivo) .puerta{background:var(--tinta);color:#fff;--tx-1:#FFFFFF;-
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/ScrollTrigger.min.js"></script>
 <script>
 /* ════════════════════════════════════════════════════════════════════
-   MOVIMIENTO DE LA PORTADA — ronda 5.
+   MOVIMIENTO DE LA PORTADA — ronda 4.
 
    Dos relojes:
      · ligado al scroll y reversible: M4, la escena de los tableros, fijada
-       3,1 pantallas; T, la página se hace de noche al entrar KLINODA; y M5,
-       la escena de KLINODA, fijada 2,1 pantallas;
-     · con reloj, una sola vez, al asomar: M0 portada, M1 credenciales, el
-       dibujo de los tableros, el del tablero de KLINODA y M6 cierre.
+       3,1 pantallas; y T, la página se hace de noche al entrar KLINODA;
+     · con reloj, una sola vez, al asomar: M0 portada, M1 ficha, M2 mitades,
+       M3 imprenta, el dibujo de los tableros, M5 portal y M6 cierre.
    Cada sección tiene un gesto sacado de su contenido; ninguno se repite.
 
    Está escrito con las mismas piezas que el sitio, para que pasar esto a
@@ -961,13 +905,6 @@ function iniciaMovimiento() {
   }
   function restauraCuenta(el) { el.style.minWidth = ''; el.textContent = puntos(+el.dataset.hasta); }
 
-  /* Escalonado a mano: un fromTo por elemento, cada uno en su posición de la
-     línea de tiempo. */
-  function escalona(tl, elementos, desde, hasta, pos, cada) {
-    gsap.utils.toArray(elementos).forEach(function (el, i) { tl.fromTo(el, desde, hasta, pos + i * cada); });
-    return tl;
-  }
-
   /* Una entrada con reloj, una sola vez, al asomar. Si la sección ya quedó
      arriba (se recargó más abajo), se pone en su estado final sin animar. Si
      está a la vista mientras entra la portada, espera a que termine. */
@@ -976,36 +913,24 @@ function iniciaMovimiento() {
     function lanza() {
       if (hecho) return;
       hecho = true;
-      tl.__arrancada = true;
       if (st) st.kill();
       if (el.getBoundingClientRect().bottom < 0) { tl.progress(1); return; }
       if (tl.data && tl.data.cuentas) tl.data.cuentas.forEach(fijaAncho);
       var espera = Math.max(0, 1.6 - (performance.now() - inicioPagina) / 1000);
       if (espera > 0) gsap.delayedCall(espera, function () { tl.play(); }); else tl.play();
     }
-    pendientes.push(tl);
     st = ScrollTrigger.create({ trigger: el, start: inicio, onEnter: lanza, onLeave: lanza });
     return st;
   }
 
-  /* Estados de partida. Con escenas fijadas, al recalcular ScrollTrigger se
-     perdía el estado de partida de lo creado después de ellas: el tablero de
-     KLINODA y el cierre se veían enteros antes de animarse (medido en la
-     ronda 5). Tras cada recálculo se vuelven a pintar los que no han
-     arrancado; los de un contexto ya deshecho no tienen padre y se saltan. */
-  var pendientes = [];
-  ScrollTrigger.addEventListener('refresh', function () {
-    pendientes.forEach(function (tl) { if (!tl.__arrancada && tl.parent) tl.progress(1, true).progress(0, true); });
-  });
-
   /* Las «líneas» de un texto de servicio: la referencia, cada línea del
-     título, la entrada, cada punto y el botón. */
+     título, la entrada, cada punto y el enlace. */
   function lineasDe(t) {
     return [t.querySelector('.ref')]
       .concat(gsap.utils.toArray(t.querySelectorAll('h3 .linea')))
       .concat([t.querySelector('.lead')])
       .concat(gsap.utils.toArray(t.querySelectorAll('.lista li')))
-      .concat([t.querySelector('.boton-contorno')]);
+      .concat([t.querySelector('.enlace')]);
   }
 
   /* Un trazo que se dibuja. El hueco mide 2 unidades más que el trazo: así
@@ -1053,34 +978,51 @@ function iniciaMovimiento() {
 
   var mm = gsap.matchMedia();
 
-  /* ══ M1 · credenciales: las cifras llegan a su valor ═══════════════
-     Se trazan las rayas entre cifras, cada cifra sube y cuenta, su nota se
-     escribe detrás y al final se traza la firma. Una vez, al asomar.     */
+  /* ══ M1 · la ficha: se abre un registro ════════════════════════════ */
   mm.add(MUEVE, function () {
-    var cred = document.querySelector('.credenciales');
-    var cuentas = gsap.utils.toArray(cred.querySelectorAll('.cuenta'));
-    var notas = cred.querySelectorAll('.que, .quien');
+    var ficha = document.querySelector('.ficha');
+    var valores = ficha.querySelectorAll('.valor');
     var tl = gsap.timeline({ paused: true })
-      .fromTo(cred.querySelector('.cifras'), { '--raya': 0 }, { '--raya': 1, duration: .6, ease: 'power2.out' }, 0);
-    gsap.utils.toArray(cred.querySelectorAll('.cifras li')).forEach(function (li, i) {
-      var t = .1 + i * .12;
-      tl.fromTo(li.querySelector('.cifra'), { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: .7, ease: LLEGA }, t);
-      escalona(tl, li.querySelectorAll('.que, .quien'), { clipPath: 'inset(0% 100% 0% 0%)' }, { clipPath: 'inset(0% 0% 0% 0%)', duration: .6, ease: 'power2.inOut' }, t + .35, .1);
-    });
-    cuentas.forEach(function (el) { tl.add(cuenta(el, 1.3), .1); });
-    tl.fromTo(cred.querySelector('.firma'), { '--raya': 0 }, { '--raya': 1, duration: .7, ease: LLEGA }, .9)
-      .fromTo(cred.querySelector('.firma span'), { opacity: 0 }, { opacity: 1, duration: .5, ease: 'power1.out' }, 1.1)
-      .set(notas, { clearProps: 'clipPath' });
+      .fromTo(ficha, { '--raya': 0 }, { '--raya': 1, duration: .7, ease: LLEGA }, 0)
+      .fromTo(ficha.querySelectorAll('.campo em'), { opacity: 0 }, { opacity: 1, duration: .3, ease: 'power1.out' }, .1)
+      .fromTo(valores, { clipPath: 'inset(0% 100% 0% 0%)' }, { clipPath: 'inset(0% 0% 0% 0%)', duration: .6, ease: 'power2.inOut' }, .3)
+      .set(valores, { clearProps: 'clipPath' });
+    alAsomar(ficha, 'top 96%', tl);
+  });
+
+  /* ══ M2 · un criterio que se parte en dos campos iguales ═══════════ */
+  mm.add({ mueve: MUEVE, ancha: '(min-width: 1001px)' }, function (ctx) {
+    if (!ctx.conditions.mueve) return;
+    var dos = document.querySelector('.dos'), mitades = dos.querySelectorAll('.mitad');
+    var ancha = ctx.conditions.ancha;   // en una columna, las dos bajan del filete
+    var tl = gsap.timeline({ paused: true })
+      .fromTo(dos.querySelector('.criterio'), { opacity: 0 }, { opacity: 1, duration: .45, ease: 'power1.out' }, 0)
+      .fromTo(dos.querySelector('.mitades'), { '--raya': 0 }, { '--raya': 1, duration: .6, ease: LLEGA }, .1)
+      .fromTo(dos.querySelector('.divisoria'), { scaleY: 0 }, { scaleY: 1, duration: .4, ease: LLEGA }, .35)
+      .fromTo(mitades[0], { x: ancha ? 16 : 0, y: ancha ? 0 : -8, opacity: 0 }, { x: 0, y: 0, opacity: 1, duration: .6, ease: LLEGA }, .5)
+      .fromTo(mitades[1], { x: ancha ? -16 : 0, y: ancha ? 0 : -8, opacity: 0 }, { x: 0, y: 0, opacity: 1, duration: .6, ease: LLEGA }, .5);
+    alAsomar(dos, 'top 82%', tl);
+  });
+
+  /* ══ M3 · la imprenta: los hechos llegan a su valor ════════════════ */
+  mm.add(MUEVE, function () {
+    var imp = document.querySelector('.imprenta');
+    var cuentas = gsap.utils.toArray(imp.querySelectorAll('.cuenta'));
+    var celdas = imp.querySelectorAll('.celda');
+    var tl = gsap.timeline({ paused: true })
+      .fromTo(imp, { '--raya': 0 }, { '--raya': 1, duration: .4, ease: 'power2.out' }, 0);
+    cuentas.forEach(function (el) { tl.add(cuenta(el, 1.2), 0); });
+    tl.fromTo(celdas, { clipPath: 'inset(0% 100% 0% 0%)' }, { clipPath: 'inset(0% 0% 0% 0%)', duration: .5, ease: 'power2.inOut', stagger: .08 }, .2)
+      .set(celdas, { clearProps: 'clipPath' });
     tl.data = { cuentas: cuentas };
-    alAsomar(cred, 'top 82%', tl);
+    alAsomar(imp, 'top 88%', tl);
     return function () { cuentas.forEach(restauraCuenta); };
   });
 
   /* ══ M4 · qué hacemos ══════════════════════════════════════════════
-     Desde 1024 × 640 px. Por debajo de 640 de alto la escena no cabe y se
-     queda el estado en filas, igual que en móvil. Entre 640 y 900 no se
-     baja el umbral sin más: tableros y letra se ajustan a la altura. */
-  mm.add({ mueve: MUEVE, escena: '(min-width: 1024px) and (min-height: 640px)' }, function (ctx) {
+     760 px de alto: medido en la ronda 3. Por debajo, la escena no cabe y
+     se queda el estado en filas, igual que en móvil. */
+  mm.add({ mueve: MUEVE, escena: '(min-width: 1024px) and (min-height: 760px)' }, function (ctx) {
     if (!ctx.conditions.mueve) return;
     var seccion = document.querySelector('.hacemos');
     var cajas = gsap.utils.toArray(seccion.querySelectorAll('.caja-pieza'));
@@ -1097,7 +1039,7 @@ function iniciaMovimiento() {
       alAsomar(cajas[0], 'top 80%', armaF);
       alAsomar(cajas[1], 'top 80%', armaS);
       textos.forEach(function (t) {
-        var tlT = escalona(gsap.timeline({ paused: true }), lineasDe(t), { x: -24, opacity: 0 }, { x: 0, opacity: 1, duration: .6, ease: LLEGA }, 0, .07);
+        var tlT = gsap.timeline({ paused: true }).fromTo(lineasDe(t), { x: -24, opacity: 0 }, { x: 0, opacity: 1, duration: .6, ease: LLEGA, stagger: .07 });
         alAsomar(t, 'top 88%', tlT);
       });
       return limpia;
@@ -1132,15 +1074,10 @@ function iniciaMovimiento() {
     var TOTAL = 3.10;
     var PAUSAS = [[0, .45], [1.30, 1.70], [2.70, 3.10]];     // A, F3, S3
     var HUECO = 40, BAJA = 48, ANCHO_MIN = 560;
-    var LETRA_MIN = .7;                                       // --k nunca baja de aquí
     var G = {};
 
     /* Geometría medida sobre el escenario real, no supuesta. Se rehace en
-       cada recálculo de ScrollTrigger (cambio de tamaño, fuentes).
-       1 · los tableros: a tamaño real si caben; si no, a la escala que cabe
-           en el ancho de media escena y en el alto del escenario;
-       2 · la letra: --k empieza en 1 y baja en pasos de 0,04 hasta que los
-           dos textos caben en el alto del escenario.                     */
+       cada recálculo de ScrollTrigger (cambio de tamaño, fuentes). */
     function mide() {
       var W = area.clientWidth, H = area.clientHeight;
       var cs = getComputedStyle(marco);
@@ -1156,17 +1093,10 @@ function iniciaMovimiento() {
       var xTS = xL + bw + aire;
       textos[0].style.width = (xR - aire - sangria) + 'px';
       textos[1].style.width = (W - sangria - xTS) + 'px';
-      var k = 1;
-      seccion.style.setProperty('--k', k);
-      function altoTextos() { return Math.max(textos[0].offsetHeight, textos[1].offsetHeight); }
-      while (altoTextos() > H - 8 && k > LETRA_MIN) {
-        k = Math.round((k - .04) * 100) / 100;
-        seccion.style.setProperty('--k', k);
-      }
       G = {
-        s: s, k: k, xL: xL, xR: xR, y: y,
-        xTF: sangria, yTF: Math.max(0, y + (bh - textos[0].offsetHeight) / 2),
-        xTS: xTS,     yTS: Math.max(0, y + (bh - textos[1].offsetHeight) / 2)
+        s: s, xL: xL, xR: xR, y: y,
+        xTF: sangria, yTF: y + Math.max(0, (bh - textos[0].offsetHeight) / 2),
+        xTS: xTS,     yTS: y + Math.max(0, (bh - textos[1].offsetHeight) / 2)
       };
     }
     mide();
@@ -1238,7 +1168,7 @@ function iniciaMovimiento() {
     alAsomar(seccion, 'top 80%', tlRegla);
     alAsomar(seccion, 'top 45%', ambos);
 
-    /* Quien llega con el tabulador a un botón de la escena lo encuentra a la vista. */
+    /* Quien llega con el tabulador a un enlace de la escena lo encuentra a la vista. */
     function vaA(pos) { var t = tl.scrollTrigger; window.scrollTo(0, Math.round(t.start + (t.end - t.start) * pos / TOTAL) + 1); }
     function alFoco(e) {
       if (textos[0].contains(e.target)) vaA(1.50);
@@ -1249,7 +1179,6 @@ function iniciaMovimiento() {
     return function () {
       seccion.classList.remove('coreografia');
       seccion.removeEventListener('focusin', alFoco);
-      seccion.style.removeProperty('--k');
       cajas.forEach(function (c) { c.style.width = ''; });
       textos.forEach(function (t) { t.style.width = ''; });
       limpia();
@@ -1309,15 +1238,15 @@ function iniciaMovimiento() {
         marcarOscuro(oscuro);
       }
     }
-    /* Un tween de 0,3 s hacia el objetivo, que sustituye al anterior. */
-    function hacia(o) { gsap.to(estadoT, { a: o.a, g: o.g, duration: .3, ease: 'power2.out', overwrite: true, onUpdate: pintaNoche }); }
+    var irA = gsap.quickTo(estadoT, 'a', { duration: .3, ease: 'power2.out', onUpdate: pintaNoche });
+    var irG = gsap.quickTo(estadoT, 'g', { duration: .3, ease: 'power2.out', onUpdate: pintaNoche });
 
     ScrollTrigger.create({
       trigger: puerta,
       start: 'top bottom',
       end: 'top 25%',
-      onUpdate: function (self) { hacia(objetivo(self.progress)); },
-      onRefresh: function (self) { var o = objetivo(self.progress); gsap.killTweensOf(estadoT); estadoT.a = o.a; estadoT.g = o.g; pintaNoche(); }
+      onUpdate: function (self) { var o = objetivo(self.progress); irA(o.a); irG(o.g); },
+      onRefresh: function (self) { var o = objetivo(self.progress); irA(o.a, o.a); irG(o.g, o.g); estadoT.a = o.a; estadoT.g = o.g; pintaNoche(); }
     });
 
     return function () {
@@ -1329,206 +1258,30 @@ function iniciaMovimiento() {
     };
   });
 
-  /* ══ M5 · KLINODA ══════════════════════════════════════════════════
-     El dibujo de su tablero, 1,4 s: se traza la línea de plazos, las cifras
-     cuentan, cada vencimiento cae en su tramo y las filas aterrizan.       */
-  function armaKlinoda(t) {
-    var tl = gsap.timeline({ paused: true });
-    var cuentas = gsap.utils.toArray(t.querySelectorAll('.cuenta'));
-    tl.fromTo(t.querySelector('.k-linea'), { '--raya': 0 }, { '--raya': 1, duration: .5, ease: 'power2.out' }, 0);
-    cuentas.forEach(function (el) { tl.add(cuenta(el, .9), 0); });
-    escalona(tl, t.querySelectorAll('.k-puntos i'), { scale: 0, opacity: 0 }, { scale: 1, opacity: 1, duration: .3, ease: 'power3.out' }, .2, .05);
-    escalona(tl, t.querySelectorAll('.k-tramo > span'), { opacity: 0 }, { opacity: 1, duration: .4, ease: 'power1.out' }, .5, .1);
-    escalona(tl, t.querySelectorAll('.k-fila'), { opacity: 0, y: 8 }, { opacity: 1, y: 0, duration: .4, ease: LLEGA }, .7, .12);
-    tl.data = { cuentas: cuentas };
-    return tl;
-  }
-
-  mm.add({ mueve: MUEVE, escena: '(min-width: 1024px) and (min-height: 640px)' }, function (ctx) {
-    if (!ctx.conditions.mueve) return;
-    var puerta = document.querySelector('.puerta');
-    var tablero = puerta.querySelector('.k-tablero'), texto = puerta.querySelector('.k-texto');
-    var lineas = gsap.utils.toArray(texto.children);
-    var arma = armaKlinoda(tablero);
-    function limpia() { gsap.utils.toArray(tablero.querySelectorAll('.cuenta')).forEach(restauraCuenta); }
-
-    if (!ctx.conditions.escena) {
-      /* En reposo: el tablero se dibuja al entrar y el texto entra por líneas. */
-      alAsomar(tablero, 'top 80%', arma);
-      alAsomar(texto, 'top 88%', escalona(gsap.timeline({ paused: true }), lineas, { x: -24, opacity: 0 }, { x: 0, opacity: 1, duration: .6, ease: LLEGA }, 0, .08));
-      return limpia;
-    }
-    return montaKlinoda(puerta, tablero, texto, lineas, arma, limpia);
+  /* ══ M5 · el portal de KLINODA: la vista se llena ══════════════════
+     Al terminar T. La hoja sube y se asienta, se traza la raya de cabecera,
+     las filas aterrizan una a una y cada punto de aptitud se estampa al
+     llegar su fila. El pie de privacidad llega el último.                */
+  mm.add(MUEVE, function () {
+    var puerta = document.querySelector('.puerta'), portal = puerta.querySelector('.portal');
+    var tl = gsap.timeline({ paused: true })
+      .fromTo(portal, { y: 56, opacity: 0 }, { y: 0, opacity: 1, duration: .5, ease: LLEGA }, 0)
+      .fromTo(portal.querySelector('.th'), { '--raya': 0 }, { '--raya': 1, duration: .3, ease: 'power2.out' }, .35);
+    gsap.utils.toArray(portal.querySelectorAll('.tr')).forEach(function (fila, i) {
+      var t = .55 + i * .14;
+      tl.fromTo(fila, { y: 10, opacity: 0 }, { y: 0, opacity: 1, duration: .4, ease: LLEGA }, t);
+      tl.fromTo(fila, { '--sello': 0 }, { '--sello': 1, duration: .25, ease: 'power3.out' }, t + .2);
+    });
+    tl.fromTo(portal.querySelector('footer'), { '--raya': 0, opacity: 0 }, { '--raya': 1, opacity: 1, duration: .4, ease: 'power2.out' }, 1.1);
+    alAsomar(puerta, 'top 25%', tl);
   });
-
-  /* La escena de KLINODA, después de T. Guion en pantallas (2,1 fijadas):
-
-       A  · el producto     0,00–0,40  nada: tablero gigante bajo una placa
-                                       marino, logotipo y etiqueta en el centro
-       K1 · se levanta      0,40–0,70  la placa se aclara; logotipo y etiqueta
-                                       viajan a la barra del tablero
-       K2 · se lee          0,70–1,10  al llegar, el tablero se dibuja (1,4 s)
-       K3 · se retira       1,10–1,40  se reduce a media escena y cruza a la derecha
-       K4 · su texto        1,40–1,70  tres frases, la pregunta y el botón, por líneas
-       K5 · se lee          1,70–2,10  nada
-
-     Las mismas unidades que la escena de los tableros —0,30 por gesto y 0,40
-     por pausa— y las mismas curvas.                                         */
-  function montaKlinoda(puerta, tablero, texto, lineas, arma, limpia) {
-    var escenario = puerta.querySelector('.k-escenario');
-    var marco = escenario.querySelector('.marco');
-    var area = puerta.querySelector('.k-area');
-    var caja = puerta.querySelector('.k-caja');
-    var placa = caja.querySelector('.k-placa');
-    var logoGrande = caja.querySelector('.k-marca img'), etiqueta = caja.querySelector('.k-etiqueta');
-    var logoBarra = tablero.querySelector('.k-logo'), chip = tablero.querySelector('.k-chip');
-
-    puerta.classList.add('k-coreo');
-
-    var TOTAL = 2.10;
-    var PAUSAS = [[0, .40], [.70, 1.10], [1.70, 2.10]];      // A, K2, K5
-    var HUECO = 40, PLACA = .94;
-    var G = {};
-
-    /* Posición de un elemento dentro de la caja, sin transformaciones. */
-    function dentro(el) {
-      var x = 0, y = 0;
-      for (var n = el; n && n !== caja; n = n.offsetParent) { x += n.offsetLeft; y += n.offsetTop; }
-      return { x: x, y: y, w: el.offsetWidth, h: el.offsetHeight };
-    }
-
-    /* Geometría medida sobre el escenario real. Se rehace en cada recálculo.
-       1 · el tablero ocupa el escenario entero; su letra (--kb) baja hasta
-           que su contenido cabe en el alto;
-       2 · al retirarse mide media escena, como los tableros de servicios;
-       3 · la letra del texto (--kt) baja hasta que cabe;
-       4 · el viaje del logotipo y la etiqueta, de centro a centro.        */
-    function mide() {
-      var W = area.clientWidth, H = area.clientHeight;
-      var cs = getComputedStyle(marco);
-      var sangria = Math.max(0, marco.getBoundingClientRect().left + parseFloat(cs.paddingLeft) - area.getBoundingClientRect().left);
-      caja.style.width = W + 'px';
-      caja.style.height = H + 'px';
-      var kb = 1;
-      puerta.style.setProperty('--kb', kb);
-      tablero.style.height = 'auto';
-      /* si sobra alto, el tablero crece hasta un 25 %; si falta, baja en pasos */
-      kb = Math.max(.6, Math.min(1.25, Math.floor(H / tablero.offsetHeight * .97 * 100) / 100));
-      puerta.style.setProperty('--kb', kb);
-      while (tablero.offsetHeight > H && kb > .6) { kb = Math.round((kb - .04) * 100) / 100; puerta.style.setProperty('--kb', kb); }
-      tablero.style.height = '';
-      var s = Math.min(1, ((W - HUECO) / 2) / W);
-      var xR = W / 2 + HUECO / 2, yK = (H - H * s) / 2;
-      var aire = Math.max(40, Math.min(64, W * .05));
-      texto.style.width = (xR - aire - sangria) + 'px';
-      var kt = 1;
-      puerta.style.setProperty('--kt', kt);
-      while (texto.offsetHeight > H - 8 && kt > .7) { kt = Math.round((kt - .04) * 100) / 100; puerta.style.setProperty('--kt', kt); }
-      var a = dentro(logoGrande), b = dentro(logoBarra), c = dentro(etiqueta), d = dentro(chip);
-      var ls = b.w / a.w, es = d.h / c.h;
-      G = {
-        s: s, xR: xR, yK: yK, kb: kb, kt: kt,
-        xT: sangria, yT: Math.max(0, (H - texto.offsetHeight) / 2),
-        lx: (b.x + b.w / 2) - (a.x + a.w * ls / 2), ly: (b.y + b.h / 2) - (a.y + a.h * ls / 2), ls: ls,
-        ex: (d.x + d.w / 2) - (c.x + c.w * es / 2), ey: (d.y + d.h / 2) - (c.y + c.h * es / 2), es: es
-      };
-    }
-    mide();
-
-    /* El tablero se dibuja al llegar a K2, una sola vez. Si se recarga más
-       abajo, queda dibujado sin animar. */
-    var armado = false;
-    pendientes.push(arma);
-    function armar(alInstante) {
-      if (armado) return;
-      armado = true;
-      arma.__arrancada = true;
-      if (alInstante) { arma.progress(1); return; }
-      arma.data.cuentas.forEach(fijaAncho);
-      arma.play();
-    }
-
-    /* El mismo ajuste al soltar que la escena de los tableros. */
-    var direccion = 1;
-    function ajusta(valor, self) {
-      var d = (self && self.direction) || direccion, p = valor * TOTAL, i;
-      for (i = 0; i < PAUSAS.length; i++) if (p >= PAUSAS[i][0] - .004 && p <= PAUSAS[i][1] + .004) return valor;
-      if (d > 0) { for (i = 0; i < PAUSAS.length; i++) if (PAUSAS[i][0] > p) return PAUSAS[i][0] / TOTAL; return 1; }
-      for (i = PAUSAS.length - 1; i >= 0; i--) if (PAUSAS[i][1] < p) return PAUSAS[i][1] / TOTAL;
-      return 0;
-    }
-
-    var disparo = {
-      trigger: escenario,
-      start: 'top top',
-      end: '+=' + Math.round(TOTAL * 100) + '%',
-      pin: true,
-      scrub: .5,
-      anticipatePin: 1,
-      invalidateOnRefresh: true,
-      refreshPriority: 1,
-      onRefreshInit: mide,
-      onRefresh: function (self) { if (self.progress * TOTAL >= .70) armar(true); },
-      onUpdate: function (self) {
-        if (self.direction) direccion = self.direction;
-        if (self.progress * TOTAL >= .70) armar(false);
-      }
-    };
-    if (AJUSTE_AL_SOLTAR) disparo.snap = { snapTo: ajusta, duration: { min: .3, max: .8 }, delay: .2, ease: 'power1.inOut', inertia: false };
-
-    var tl = gsap.timeline({ defaults: { ease: 'none' }, scrollTrigger: disparo });
-    function g(k) { return function () { return G[k]; }; }
-
-    tl.to({}, { duration: TOTAL }, 0);
-
-    /* A · el producto: el tablero gigante, tapado; logotipo y etiqueta en el centro */
-    tl.set(caja, { x: 0, y: 0, scale: 1 }, 0);
-    tl.set(placa, { opacity: PLACA }, 0);
-    tl.set([logoGrande, etiqueta], { x: 0, y: 0, scale: 1, opacity: 1, transformOrigin: '0% 0%' }, 0);
-    tl.set([logoBarra, chip], { opacity: 0 }, 0);
-    tl.set(texto, { x: g('xT'), y: g('yT'), pointerEvents: 'none' }, 0);
-    tl.set(lineas, { x: -32, opacity: 0 }, 0);
-
-    /* K1 · se levanta la placa y el nombre viaja a la barra del tablero */
-    tl.to(placa, { opacity: 0, duration: .30, ease: 'power2.inOut' }, .40);
-    tl.to(logoGrande, { x: g('lx'), y: g('ly'), scale: g('ls'), duration: .30, ease: 'power3.inOut' }, .40);
-    tl.to(etiqueta, { x: g('ex'), y: g('ey'), scale: g('es'), duration: .30, ease: 'power3.inOut' }, .40);
-    tl.to([logoGrande, etiqueta], { opacity: 0, duration: .08 }, .62);
-    tl.to([logoBarra, chip], { opacity: 1, duration: .08 }, .62);
-
-    /* K2 · se lee: el tablero se dibuja al llegar (ver armar) */
-
-    /* K3 · se retira: se reduce a media escena y cruza a la derecha */
-    tl.to(caja, { x: g('xR'), y: g('yK'), scale: g('s'), duration: .30, ease: 'power3.inOut' }, 1.10);
-
-    /* K4 · su texto, por líneas, en la estela del tablero */
-    tl.to(lineas, { x: 0, opacity: 1, duration: .14, ease: 'power2.out', stagger: .16 / (lineas.length - 1) }, 1.40);
-    tl.set(texto, { pointerEvents: 'auto' }, 1.70);
-
-    /* Quien llega con el tabulador al botón lo encuentra a la vista. */
-    function alFoco(e) {
-      if (!texto.contains(e.target)) return;
-      var t = tl.scrollTrigger;
-      window.scrollTo(0, Math.round(t.start + (t.end - t.start) * 1.90 / TOTAL) + 1);
-    }
-    puerta.addEventListener('focusin', alFoco);
-
-    return function () {
-      puerta.classList.remove('k-coreo');
-      puerta.removeEventListener('focusin', alFoco);
-      ['--kb', '--kt'].forEach(function (p) { puerta.style.removeProperty(p); });
-      caja.style.width = ''; caja.style.height = ''; texto.style.width = '';
-      limpia();
-    };
-  }
 
   /* ══ M6 · el cierre: tres respuestas antes de pedirte nada ═════════ */
   mm.add(MUEVE, function () {
     var c = document.querySelector('.cierre'), tres = c.querySelector('.tres');
     var tl = gsap.timeline({ paused: true })
       .fromTo(c, { '--raya': 0 }, { '--raya': 1, duration: 1, ease: 'power2.inOut' }, 0)     // recuperado
-      .fromTo(c.querySelector('.ref'), { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: .6, ease: LLEGA }, .1)
-      .fromTo(c.querySelector('h2'), { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: .6, ease: LLEGA }, .2)
+      .fromTo([c.querySelector('.ref'), c.querySelector('h2')], { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: .6, ease: LLEGA, stagger: .1 }, .1)
       .fromTo(tres, { '--div': 0 }, { '--div': 1, duration: .5, ease: 'power2.out' }, .45);
     gsap.utils.toArray(tres.children).forEach(function (col, i) {
       var t = .45 + i * .12;

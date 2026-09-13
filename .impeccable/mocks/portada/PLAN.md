@@ -701,3 +701,297 @@ Mixkit no.
 3. Material propio grabado para la portada.
 4. El isotipo vectorial de una tinta.
 5. Cuándo pasar la maqueta al sitio (ver «Para pasarlo al sitio» en la ronda 3).
+
+---
+
+# Ronda 4 — la coreografía, acordada por guion antes de programar
+
+13 de septiembre de 2026. Boris retiró tres límites propios («dos momentos y ya», «máximo dos
+pantallas», «el tema al llegar al cierre») y pidió un guion tiempo a tiempo antes de tocar código.
+Se aprobó con tres ajustes: **software en espejo**, `launch.json` apuntando al servidor con rangos y
+el ajuste al soltar la rueda en **una sola constante**. Copia previa: `C-fusion.r3.html`.
+Capturas: `shots/r4-*.png`.
+
+## Qué se construyó
+
+| Momento | Cómo entra | Qué cuenta |
+|---|---|---|
+| **M0 · Portada** | Al cargar, 1,8 s. Entrada de la ronda C recuperada (16 px, 0,78 s, imagen de 1,05 a 1 en 2 s) y un solo cambio: el titular entra palabra a palabra, cada una desde su máscara | Lo primero que dice la firma se compone delante de ti |
+| M1 · Ficha | El filete se traza y los valores se escriben con máscara | *Retirado en la ronda 5* |
+| M2 · Criterio y mitades | El filete se abre desde el centro, baja la divisoria y las mitades se separan | *Retirado en la ronda 5* |
+| M3 · Imprenta | Las rayas se trazan y 15, 100 y 2.300 cuentan desde cero | *Sustituido en la ronda 5 por las credenciales* |
+| **M4 · Qué hacemos** | Dibujo de los dos tableros a la vez al acercarse (1,6 s cada uno; el trazo «Real» de 1,25 s recuperado) y **escena fijada 3,1 pantallas** | Las dos líneas pesan lo mismo |
+| **T · La noche** | 0,75 pantalla ligada al scroll al entrar KLINODA | De lo que ofrecemos a la prueba de que sabemos hacerlo |
+| **M5 · Portal** | Al terminar T: la hoja sube, las filas aterrizan y cada punto de aptitud se estampa | La vista se llena solo con lo que la empresa puede ver |
+| **M6 · Cierre** | El filete de cobre cruza la banda (recuperado) y las tres respuestas llegan en orden de lectura; el botón, el último | Tres respuestas antes de pedirte nada |
+
+### La escena, en pantallas de desplazamiento
+
+| Tramo | Scroll | Qué se mueve |
+|---|---|---|
+| A · Las dos | 0,00–0,45 | Nada |
+| R1 | 0,45–0,70 | Software se hunde en su mitad |
+| F1 · F2 · F3 | 0,70–1,70 | Finanzas cruza a la derecha, su texto entra a la izquierda por líneas, pausa |
+| R2 · Relevo | 1,70–2,10 | Sale el texto; finanzas se hunde; **después** sube software en su mitad |
+| S1 · S2 · S3 | 2,10–3,10 | En espejo: software cruza a la izquierda, su texto entra a la derecha, pausa |
+
+La regla bajo «Qué hacemos» se parte en dos tramos iguales de cobre, y cada uno se llena solo
+mientras dura su línea.
+
+## Decisiones
+
+- **Espejo, con el relevo en serie.** Software vuelve a su mitad —la derecha—, que es justo donde
+  acaba de quedarse finanzas. Por eso finanzas se hunde entero antes de que suba software: nunca hay
+  dos piezas en el mismo sitio.
+- **El ajuste al soltar** vive en `var AJUSTE_AL_SOLTAR = true;`, arriba del guion de
+  `C-fusion.html`. Dentro de una pausa (A, F3, S3) no mueve nada; fuera de ella lleva a la pausa
+  siguiente en la dirección en que ibas. `false` lo apaga.
+- **KLINODA: botón de contorno**, no cobre, para que el cobre relleno siga siendo solo «Agendar».
+- **La noche sin bajar de AA.** Es una capa marino fija cuya opacidad lleva el scroll (se compone sin
+  repintar la página); los colores del texto los escribe el guion en cada fotograma. Medido antes de
+  construir: entre el 50 y el 59 % de oscuridad ningún color de texto llega a 4,5:1 (la tinta aguanta
+  hasta el 50 %, el blanco pasa desde el 59 %, los grises secundarios fallan desde el 8 %). Así que
+  los grises se funden con la tinta al empezar, el fondo da un paso corto del 50 al 59 % en 0,3 s y el
+  texto cambia a blanco a mitad de ese paso. **Precisión sobre el guion:** el paso ocurre cuando el
+  borde de KLINODA está al 62 % de la pantalla, no a la mitad, porque el recorrido va del 100 % al 25 %.
+- Sin movimiento, KLINODA y el cierre son bandas oscuras por sí mismas.
+
+## Medido a 1440 × 900
+
+- Página: 6.331 px, 7,03 pantallas. Fijado de 1.240 a 4.030 px: **3,10 pantallas** exactas.
+- Escena, 63 puntos del recorrido: **ningún solape** entre tableros, ni de ninguna línea visible sobre
+  un tablero, ni nada fuera de pantalla.
+- Cruces: **+664 px y −664 px**. Tableros de 624 × 587 a tamaño real. Los dos textos alineados con la
+  rejilla (132 px a la izquierda en F3, 1.308 px a la derecha en S3).
+- Títulos a 46 px, cada línea en un solo renglón; los textos miden 469 px en un escenario de 679.
+- Noche, 15 puntos en reposo: **0 fallos de contraste**; el peor, 4,61:1 justo después del paso.
+- Con el tabulador, los dos enlaces de la escena quedan opacos y a la vista.
+
+## Lo que no llegó a verificarse en esta ronda
+
+La segunda pasada (fotogramas exactos de los momentos con reloj, ajuste con rueda, cortes, móvil y
+reducir movimiento) se quedó colgada en su primera parte sin escribir nada, y la paré al empezar la
+ronda 5. No averigüé la causa. Esas comprobaciones se hicieron sobre la versión de la ronda 5. De la
+ronda 4 quedan válidas las diez capturas de la escena (`r4-m4-01` a `r4-m4-10`, posiciones exactas);
+las de los momentos con reloj (`r4-m0-*`, `r4-m123-*`, `r4-m4-dibujo-*`, `r4-m5-*`, `r4-m6-*`) se
+tomaron en tiempo real y van algo más avanzadas de lo que dice su nombre.
+
+## Servidor y panel del navegador
+
+- El servidor con rangos vive en `.impeccable/mocks/servidor.mjs` (el mismo código de arriba).
+- `.claude/launch.json` → `node .impeccable/mocks/servidor.mjs .impeccable/mocks/portada 8779`. Con
+  `maquetas-portada` el panel lo arranca y el vídeo responde 206.
+- Detenidos, tras comprobar que eran esos procesos: el `python -m http.server` del 8777 (PID 23292) y la
+  copia temporal del servidor en el 8779 (PID 23240).
+- `.impeccable/config.json` en la raíz lo creó el gancho del detector: repite la excepción de Plus
+  Jakarta Sans.
+
+---
+
+# Ronda 5 — que todos vean la escena, las credenciales y el botón de cada servicio
+
+13 de septiembre de 2026. La escena de los tableros se queda tal cual. Copia previa:
+`C-fusion.r4.html`. Capturas: `shots/r5-*.png` y la hoja `shots/r5-hoja-cuatro-tamanos.png`.
+
+## 1. La escena desde 1024 × 640
+
+**Por qué no se veía.** El portátil de Boris es 1920 × 1080 con escalado de Windows al 125 %: el
+navegador maximizado trabaja con 1536 px de ancho y unos 730 de alto, y la escena exigía 760. Ese
+escalado es el habitual en portátiles Windows.
+
+**Lo que se hizo, sin bajar el umbral sin más.** El corte pasa a `(min-width: 1024px) and
+(min-height: 640px)` y todo lo vertical se ajusta a la altura disponible:
+
+- márgenes del escenario, del rótulo y del hueco hasta los tableros, con `clamp()` en `vh`;
+- los tableros, a la escala que cabe en el alto del escenario (antes solo contaba el ancho);
+- la letra de los textos, con la variable `--k`: el guion empieza en 1 y la baja en pasos de 0,04
+  hasta que los dos textos caben en el escenario (suelo: 0,7). La entrada nunca baja de 15 px ni los
+  puntos de 14,5 px.
+
+**Medido, sin escalado** (Playwright con Edge):
+
+| Pantalla | Escenario | Tablero | `--k` | Título | Alto de los textos | Problemas en 63 puntos | Página |
+|---|---|---|---|---|---|---|---|
+| 1536 × 730 | 544 px | 578 × 544 | 1 | 46,4 px | 502 px | 0 | 7,58 pantallas |
+| 1366 × 640 | 465 px | 494 × 465 | 0,92 | 40,2 px | 454 px | 0 | 7,88 |
+| 1024 × 640 | 465 px | 444 × 465 | 0,96 | 33,8 px | 453 px | 0 | 8,18 |
+| 1920 × 940 | 729 px | 624 × 587 | 1 | 46,4 px | 502 px | 0 | 7,08 |
+
+En los cuatro: fijado de **3,10 pantallas** exactas; ningún solape, ninguna línea visible sobre un
+tablero y nada fuera del escenario en 63 puntos del recorrido; cada línea de título en un renglón;
+**0 fallos de contraste** en F3, en S3 y en seis puntos de la noche; los dos botones quedan a la vista
+al llegar con el tabulador; sin desbordamiento horizontal; ninguna respuesta de error del servidor.
+
+A 1024 la letra baja menos que a 1366 porque el título ya sale más pequeño (depende del ancho) y la
+columna estrecha lo compensa.
+
+## 2. La banda de debajo de la portada: credenciales
+
+**Fuera:** la ficha ASUNTO / NOSOTROS, la línea «Dos campos. Un criterio.», las dos entradas de servicio
+y la imprenta de seis celdas.
+
+**Dentro: tres cifras, pocas y grandes, cada una con su nota.** Referencia medida en
+rothschildandco.com: cifras de 72 px en serif de trazo fino (peso 300), marino, con la nota debajo.
+Aquí: Plus Jakarta Sans 300 a 100 px en 1536, numeración tabular.
+
+| Cifra | Lo que es | La nota — TEXTO PROPUESTO |
+|---|---|---|
+| **15+** | años en dirección financiera | La trayectoria de Richard Carvajal, fundador de la firma. |
+| **100+** | clientes asesorados | Por Richard Carvajal, en Latinoamérica y Estados Unidos. |
+| **3** | idiomas de trabajo | Español, inglés y alemán, con equipo en Ecuador y Alemania. |
+
+Las dos primeras salen de `home.es.js` (`numbers`) y se atribuyen **por su nombre**: son la trayectoria
+de Richard, no de la firma (PRODUCT.md). La tercera es de la firma y está confirmada.
+
+**La ficha, integrada en una frase** (TEXTO PROPUESTO): «**Richard Carvajal** dirige las finanzas,
+**Boris Carvajal** la tecnología y **Mirella Llanga** la gerencia general.» Sus puntos medios parecían un
+formulario; los tres nombres siguen en la portada, ahora con lo que hace cada uno. Los idiomas pasan a
+la tercera cifra. «Finanzas · Tecnología» se va: ya lo dicen la portada y «Qué hacemos».
+
+**«Dos campos. Un criterio.»** también se va: solo presentaba las dos entradas, y su idea ya está en el
+rótulo de «Qué hacemos» («Dos líneas, una firma.»). Pendiente de confirmación.
+
+**«Más de 2.300 pruebas automáticas», fuera de la portada.** Propuesta: donde ya vive en
+`home.es.js`, el bloque `method` («El método es la garantía»), como prueba de la regla «Probamos lo
+que construimos», o en la página de KLINODA. Al lado de la regla que demuestra, esa cifra sí le dice
+algo a quien la lee.
+
+**El momento M1:** se trazan las rayas entre cifras, cada cifra sube y cuenta (15 y 100), su nota se
+escribe detrás con una máscara y al final se traza la firma. Una vez, al asomar.
+
+**Contradicciones con este plan, retiradas por Boris:** la composición de «el registro» (§3: ficha,
+criterio, mitades, imprenta) y el 50/50 en la primera pantalla (§4.2). El 50/50 queda en la escena y en
+los dos tramos de cobre del rótulo.
+
+**Abierto, sin tocar:** la entrada de la portada dice «CJM Nexus une dirección financiera con quince
+años de trayectoria…», que atribuye los quince años a la firma. Propuesta: «CJM Nexus une la
+dirección financiera de Richard Carvajal, con quince años de trayectoria, y desarrollo de software
+especializado…». Es texto de `home.es.js`: necesita aprobación.
+
+## 3. «Ver el servicio», botón secundario
+
+Al final de cada línea de la escena, «Ver el servicio» deja de ser un enlace subrayado y pasa a ser el
+**botón de contorno** de KLINODA: borde de 1,5 px en el color del texto; al apuntar se rellena de tinta
+con la letra blanca. Entra como la última línea del texto y el salto del tabulador lo encuentra igual.
+
+## 4. KLINODA — lo que se revisó antes del guion
+
+Antes de escribir el guion se revisó, solo leyendo, el portal de empresa en el repositorio de KLINODA
+(`portal_empresa/`), para no inventar módulos. Lo que no puede olvidarse:
+
+- De los cuatro contenidos pedidos, **existen dos**: aptitud (por trabajador) y certificados emitidos
+  (cuántos trabajadores tienen certificado disponible). **No existen** centros de trabajo ni
+  evaluaciones agrupadas por cargo: el cargo es solo una columna.
+- El panel real enseña además «Vencidas», «Vencen en 90 días o menos» (a 30, 60 y 90 días), una línea de
+  resumen y la lista de plazos.
+- El portal real **sí muestra nombres y número de documento**; la demo tiene que omitir esas columnas.
+- El código **prohíbe totales por aptitud**; la demo tampoco puede mostrarlos.
+- Las etiquetas reales son «APTO», «APTO EN OBSERVACIÓN», «APTO CON LIMITACIONES», «NO APTO» e «INGRESO»,
+  «PERIÓDICO», «REINTEGRO», «RETIRO». El `privacy.mockup` aprobado usa otras («Apto», «Con
+  observaciones», «Periódica»).
+- La frase actual de la banda, «Nuestra plataforma para médicos ocupacionales», ya choca con la regla
+  nueva: nada de «para médicos» ni «para empresas».
+
+## El resto de la verificación
+
+- **Credenciales a 1536 × 730**, en tiempo real (`shots/r5-hoja-credenciales.png`): a 0,24 s del
+  disparo las cifras van por 3; a 0,74 s, por 14 y 91, con las notas escribiéndose; al final, «15+»,
+  «100+» y «3».
+- **Ajuste al soltar, con rueda de verdad a 1536 × 730:** soltada bajando en 0,61 pantallas → termina en
+  **1,30** (inicio de F3); dentro de F3 no se mueve (1,50 → 1,50); soltada subiendo en 2,22 → termina en
+  **1,70** (final de F3).
+- **Cortes:** 1000 × 800 y 1280 × 620, sin escena y en filas; 1440 × 900, con escena.
+- **Reducir movimiento** (`shots/r5-reducir-movimiento.png`): sin clase de entrada, sin fijado, sin capa
+  de noche, sin vídeo; KLINODA marino por sí misma y la cabecera se vuelve oscura al llegar; las cifras
+  con su valor final; 0 elementos ocultos; 0 fallos de contraste.
+- **Móvil 390 × 844** (`shots/r5-movil.png`): sin fijado, sin desbordamiento, 0 fallos de contraste en
+  las credenciales ni en KLINODA.
+- **El texto está en el HTML:** las notas, los títulos, los botones y la pregunta, al pedir el HTML sin
+  ejecutar nada. «2.300», «pruebas automáticas», «Asunto» y «Dos campos. Un criterio.» ya no aparecen.
+- **Errores:** ninguna excepción en la página y ninguna respuesta 4xx o 5xx en ninguna de las pasadas.
+
+## Lo que aprendí verificando
+
+Las dos veces que el guion de verificación tocó la línea de tiempo global de GSAP (pausarla y llevarla a
+un instante en la ronda 4, cambiarle la velocidad en la ronda 5) el proceso se quedó colgado en la
+siguiente orden. Los momentos con reloj se capturan en tiempo real, sin tocarla.
+
+**Estados de partida que se perdían.** Con las escenas fijadas activas, el estado de partida de las
+entradas creadas después de ellas (el tablero de KLINODA y el cierre) se perdía al recalcular
+ScrollTrigger: puntos, tarjetas y titular se veían enteros antes de animarse. En móvil, sin escenas
+fijadas, no pasaba. No averigüé la causa dentro de GSAP. El arreglo: cada entrada con reloj queda anotada
+y, tras cada recálculo, las que aún no han arrancado se vuelven a pintar en su estado de partida.
+Comprobado a 1536 × 730 y 390 × 844, al cargar y después de forzar un recálculo; al llegar siguen
+animándose. De paso, las entradas escalonadas pasaron a un `fromTo` por elemento y el tramo T dejó de usar
+`quickTo`; ninguno de los dos cambios era la causa, y los dos se quedan porque no cambian nada visible.
+
+## 4b. KLINODA — la escena, aprobada y construida
+
+Boris aprobó el guion y sus seis puntos: usar los módulos que sí existen en lugar de centros de trabajo
+y evaluaciones por cargo; quitar nombre y documento; etiquetas reales; el logotipo claro tal cual, con su
+lema; la etiqueta «Demo · en desarrollo · datos ficticios» en lugar de «En piloto controlado», y las tres
+frases con el botón «Ver KLINODA». Añadió una nota: **que el tablero no diga tanta información y sea bonito
+y visualmente llamativo.** Capturas: `shots/r5-hoja-klinoda.png` y `shots/r5-klinoda-reposo.png`.
+
+### La escena, en pantallas (2,1 fijadas, después de T)
+
+| Tramo | Scroll | Qué se mueve |
+|---|---|---|
+| A · El producto | 0,00–0,40 | Nada. El tablero ocupa el escenario entero, tapado por una placa marino al 94 %; en el centro, el logotipo claro y la etiqueta |
+| K1 · Se levanta | 0,40–0,70 | La placa desaparece; el logotipo y la etiqueta viajan, de centro a centro, al logotipo oscuro y al distintivo de la barra, y se funden con ellos |
+| K2 · Se lee | 0,70–1,10 | Al llegar, el tablero se dibuja una vez (1,4 s): se traza la línea de plazos, las cifras cuentan, cada vencimiento cae en su tramo y las tarjetas aterrizan |
+| K3 · Se retira | 1,10–1,40 | Se reduce a media escena y cruza a la derecha |
+| K4 · Su texto | 1,40–1,70 | Tres frases, la pregunta y el botón, por líneas, desde −32 px |
+| K5 · Se lee | 1,70–2,10 | Nada |
+
+Las mismas unidades y curvas que la escena de los tableros, y el mismo `AJUSTE_AL_SOLTAR`.
+
+### El tablero: poco texto, mucho gesto
+
+- **Con la marca de KLINODA, no la de CJM Nexus.** Sus colores salen de su propio `base.html`: azul
+  `#1868E8` y `#0B47B0`, verde `#0B7D57` y ámbar `#9C5C05`, sobre `#F4F8FE`.
+- **Tres cifras grandes en trazo fino.** Primera: **11** que vencen en 90 días o menos, con una línea de
+  plazos que tiene **un punto por vencimiento** en tres tramos (4 · 5 · 2), del azul más hondo al más
+  claro según urgencia. Segunda: **3** vencidas, en ámbar. Tercera: **44** trabajadores con certificado
+  disponible, en verde.
+- **Tres tarjetas** de cargo, aptitud y vencimiento, con las etiquetas reales («APTO», «APTO EN
+  OBSERVACIÓN»). Sin tablas.
+- Todo sale de `portal_empresa/panel.html`. Sin nombre ni documento, sin datos clínicos y sin totales
+  por aptitud.
+- Medido en em: la variable `--kb` lo ajusta entero. Si sobra alto crece hasta un 25 %; si falta, baja en
+  pasos. El texto de al lado se ajusta con `--kt`.
+
+### Decisiones y avisos
+
+- **Logotipo claro al 34 % del ancho y placa al 94 %.** Más grande se ven los bordes dentados del
+  recorte: `klinoda-claro.png` salió de quitar el fondo del original. Hace falta, igual que con CJM
+  Nexus, **un vectorial de una tinta**.
+- Salen de la portada la vista «Portal de empresa · Vista de aptitud», la frase «para médicos
+  ocupacionales» (chocaba con la regla nueva) y «En piloto controlado · solo con datos ficticios».
+- **Para pasarlo al sitio:** el `privacy.mockup` aprobado en `klinoda.es.js` usa etiquetas que no son las
+  reales («Apto», «Con observaciones», «Periódica»). El contenido tendrá que ponerse al día con la escena.
+
+### Medido (Playwright con Edge)
+
+| Pantalla | `--kb` | Problemas en 43 puntos | Contraste en K2 y K5 | Viaje del logotipo (desvío) | Página |
+|---|---|---|---|---|---|
+| 1536 × 730 | 1,20 | 0 | 0 fallos | 0,4 · −0,5 px | 9,79 pantallas |
+| 1366 × 640 | 1,04 | 0 | 0 fallos | −0,3 · −0,4 px | 9,97 |
+| 1024 × 640 | 1,04 | 0 | 0 fallos | −0,5 · 0,2 px | 9,90 |
+| 1920 × 940 | 1,25 | 0 | 0 fallos | 0 · −0,4 px | 9,49 |
+
+- **La escena:** en los cuatro tamaños queda fijada **2,10 pantallas**. En 43 puntos del recorrido el
+  tablero no se sale del escenario y ninguna línea visible lo pisa. Ninguna tarjeta se desborda y el
+  tablero no sobra por abajo. Al final de K2 las cifras marcan 11, 3 y 44. El contraste más justo es
+  4,64:1, en la etiqueta «APTO» (11–13 px). Con el tabulador, el botón queda a la vista.
+- **Ajuste al soltar, con rueda, a 1536 × 730:** soltada bajando en 0,61 → termina en **0,70**; subiendo
+  en 1,22 → termina en **1,10**.
+- **Reducir movimiento:** sin escena y sin fijado, 0 elementos ocultos, la banda marino por sí misma, las
+  cifras con su valor final y 0 fallos de contraste.
+- **Móvil 390 × 844:** sin fijado, sin desbordamiento, 0 fallos de contraste.
+- **Texto en el HTML:** están las frases, la pregunta, el botón, la etiqueta y las etiquetas reales. Ya no
+  aparecen «para médicos», «Con observaciones», «Periódica» ni «En piloto controlado».
+- **Errores:** ninguna excepción y ninguna respuesta 4xx o 5xx.
+- **Longitud:** la página pasa de 7,1–8,2 pantallas a **9,5–10**. Son las 2,1 de la escena nueva.
+- Bajo la placa y mientras se levanta se ven las tarjetas con sus cifras a 0. Los puntos y las tarjetas
+  de cargo aparecen al dibujarse en K2: se lee como un panel que se llena.
