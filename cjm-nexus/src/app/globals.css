@@ -3,8 +3,11 @@
 @tailwind utilities;
 
 /* ============================================================
-   Base — sistema «Pulso Cobre»
-   ============================================================ */
+   Base — «el registro de la firma» (DESIGN.md)
+   ============================================================
+   Los tokens y sus variables CSS (--papel, --tinta, --suelo, --tx-1,
+   --curva, --cabecera…) salen de `REGISTRO` en tailwind.config.js.
+   Aquí solo se aplican al documento. */
 @layer base {
   html {
     scroll-behavior: smooth;
@@ -12,19 +15,31 @@
     scroll-padding-top: 5.5rem;
   }
 
+  /* Con «reducir movimiento» todo está en su estado final desde el primer
+     píxel y los estados al apuntar son instantáneos (DESIGN.md, Movimiento). */
   @media (prefers-reduced-motion: reduce) {
     html {
       scroll-behavior: auto;
     }
+    *,
+    *::before,
+    *::after {
+      transition-duration: 0.001ms !important;
+      animation: none !important;
+    }
   }
 
   body {
-    @apply bg-canvas font-sans text-[15px] leading-relaxed text-ink antialiased;
+    /* El suelo y la tinta del tema: de día, papel y marino tinta. */
+    @apply bg-suelo font-sans text-body text-tx-1 antialiased;
   }
 
-  /* Foco de teclado: el mismo en todo el sitio, siempre visible */
+  /* Foco de teclado: el mismo en todo el sitio, siempre visible. Un contorno
+     y no un anillo con relleno: el relleno de `ring-offset` era color papel y
+     sobre marino se veía como un halo claro. */
   :focus-visible {
-    @apply outline-none ring-2 ring-copper ring-offset-2 ring-offset-canvas;
+    outline: 2px solid theme('colors.cobre.DEFAULT');
+    outline-offset: 3px;
   }
 
   ::selection {

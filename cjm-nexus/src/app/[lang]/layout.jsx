@@ -34,10 +34,12 @@ import { SITE_URL } from '../../lib/site';
  *
  * `display: swap` muestra la fuente de reserva mientras carga la definitiva,
  * en lugar de dejar el texto invisible.
+ *
+ * El peso 300 es el de las cifras grandes (`text-cifra`, DESIGN.md).
  */
 const jakarta = Plus_Jakarta_Sans({
   subsets: ['latin'],
-  weight: ['500', '600', '700', '800'],
+  weight: ['300', '500', '600', '700', '800'],
   variable: '--font-jakarta',
   display: 'swap',
 });

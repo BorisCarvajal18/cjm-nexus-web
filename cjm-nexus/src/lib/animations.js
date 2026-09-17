@@ -26,7 +26,81 @@
  */
 import { gsap, prefersReducedMotion } from './gsap';
 
-/** Curva propia del sitio: sale rápido y frena largo. */
+/* ================================================================== */
+/*  EL REGISTRO — constantes de movimiento de DESIGN.md                */
+/* ================================================================== */
+/*
+ * Toda sección nueva mide su movimiento con esto y con nada más. Los
+ * presets de más abajo son del sistema anterior («Pulso Cobre») y se retiran
+ * a medida que se reconstruyen las páginas que los usan.
+ */
+
+/**
+ * Las tres curvas.
+ * · llegar → todas las entradas y los estados al apuntar. Es la `--curva`
+ *            del CSS, cubic-bezier(.16,1,.3,1).
+ * · cruzar → los desplazamientos decididos de las escenas.
+ * · salir  → toda salida, que dura `SALIDA` veces su entrada.
+ */
+export const CURVA = { llegar: 'expo.out', cruzar: 'power3.inOut', salir: 'power2.in' };
+
+/** Una salida dura el 60 % de su entrada. */
+export const SALIDA = 0.6;
+
+/** Duraciones, en segundos: el mínimo y el máximo de cada familia. */
+export const DURACION = {
+  apuntar: [0.18, 0.44], // estados al apuntar
+  entrada: [0.6, 1.8], // la entrada con reloj de una sección
+  tablero: [1.4, 1.6], // el dibujo de un tablero
+};
+
+/**
+ * El reloj ligado al scroll. Se mide en pantallas de desplazamiento: un
+ * gesto (algo se mueve) cuesta 0,30 y una pausa de lectura, 0,40.
+ */
+export const PANTALLAS = { gesto: 0.3, pausa: 0.4 };
+
+/** Suavizado del scrub de las escenas, en segundos. */
+export const SCRUB = 0.5;
+
+/** Lo que dura cada tramo ligado al scroll, en pantallas. */
+export const ESCENA = { tableros: 3.1, klinoda: 2.1, noche: 0.75 };
+
+/**
+ * true  → si la rueda se suelta a mitad de un gesto, la escena lo termina
+ *         hasta la pausa siguiente en la dirección en que se iba.
+ * false → la escena se queda donde se suelte.
+ */
+export const AJUSTE_AL_SOLTAR = true;
+
+/**
+ * Desde este tamaño, y sin «reducir movimiento», las escenas se fijan. Por
+ * debajo se leen en filas sin fijar. No se baja: entre 640 y 900 px de alto
+ * se ajustan piezas y letra con `ESCALA_ALTO`.
+ */
+export const UMBRAL_ESCENAS = '(min-width: 1024px) and (min-height: 640px)';
+
+/** La consulta completa, lista para `gsap.matchMedia().add()`. */
+export const CONSULTA_ESCENAS = `${UMBRAL_ESCENAS} and (prefers-reduced-motion: no-preference)`;
+
+/**
+ * La letra de una escena baja con la variable `--k` en pasos de 0,04 hasta
+ * que el texto cabe en el alto del escenario, sin pasar de 0,7. El tablero
+ * de KLINODA, además, crece hasta 1,25 cuando sobra alto.
+ */
+export const ESCALA_ALTO = { paso: 0.04, minimo: 0.7, maximoKlinoda: 1.25 };
+
+/** ¿Se fijan las escenas en esta pantalla? Solo en cliente. */
+export function fijaEscenas() {
+  if (typeof window === 'undefined' || !window.matchMedia) return false;
+  return window.matchMedia(CONSULTA_ESCENAS).matches;
+}
+
+/* ================================================================== */
+/*  PULSO COBRE — presets del sistema anterior                         */
+/* ================================================================== */
+
+/** Curva del sistema anterior. Lo nuevo usa `CURVA.llegar`. */
 export const EASE = 'power3.out';
 
 /* ------------------------------------------------------------------ */

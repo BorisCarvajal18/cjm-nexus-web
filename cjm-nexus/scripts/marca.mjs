@@ -33,6 +33,55 @@ async function isotipo() {
   await src.clone().resize(32, 32).png({ compressionLevel: 9 }).toFile(`${MARCA}/favicon-32.png`);
 }
 
+/**
+ * Versión CLARA del isotipo, para fondos oscuros.
+ *
+ * El original lleva el dibujo en marino sobre un disco interior casi blanco.
+ * Sobre crema eso funciona; sobre la fotografía del hero o sobre marino el
+ * disco se recorta contra el fondo y la marca se lee como una pegatina
+ * pegada encima, no como parte de la banda.
+ *
+ * La solución es la misma idea que en `klinodaClaro`, pero al revés: aquí
+ * el blanco NO se conserva, se elimina. Se vuelve transparente todo lo casi
+ * blanco —el disco y, de paso, los meridianos del globo, que a 27 px solo
+ * aportan ruido— y toda la tinta restante pasa a blanco puro. Queda un
+ * dibujo de una sola tinta que se apoya en el fondo en lugar de taparlo.
+ *
+ * Se genera desde `logo.png` y no desde el PNG ya reducido: recortar a 1024
+ * y reducir después deja el borde mucho más limpio que al revés.
+ */
+async function isotipoClaro() {
+  const { data, info } = await sharp('public/logo.png')
+    .ensureAlpha()
+    .raw()
+    .toBuffer({ resolveWithObject: true });
+
+  const { width: W, height: H, channels: C } = info;
+
+  for (let p = 0; p < W * H; p += 1) {
+    const i = p * C;
+    if (data[i + 3] < 8) continue;
+
+    const min = Math.min(data[i], data[i + 1], data[i + 2]);
+    if (min > 228) {
+      data[i + 3] = 0; // el disco interior y los meridianos se van
+      continue;
+    }
+    if (min > 198) {
+      // borde suave: lo que roza el blanco se desvanece en lugar de cortarse
+      data[i + 3] = Math.round(data[i + 3] * ((228 - min) / 30));
+    }
+    data[i] = 255;
+    data[i + 1] = 255;
+    data[i + 2] = 255;
+  }
+
+  const raw = { raw: { width: W, height: H, channels: C } };
+  const src = sharp(data, raw);
+  await src.clone().resize(256, 256).png({ compressionLevel: 9 }).toFile(`${MARCA}/cjm-isotipo-claro.png`);
+  await src.clone().resize(512, 512).webp({ quality: 90 }).toFile(`${MARCA}/cjm-isotipo-claro.webp`);
+}
+
 /* ------------------------------------------------------------------ */
 /*  KLINODA                                                            */
 /* ------------------------------------------------------------------ */
@@ -121,6 +170,7 @@ async function klinodaClaro() {
 /* ------------------------------------------------------------------ */
 
 await isotipo();
+await isotipoClaro();
 await klinodaOscuro();
 await klinodaClaro();
 
