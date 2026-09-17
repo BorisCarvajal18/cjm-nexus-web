@@ -40,7 +40,7 @@ El segundo diferencial es **el método como garantía**, no como promesa: decisi
 
 - Dirección financiera externa: diagnóstico financiero ejecutivo, tablero gerencial mensual, flujo de caja proyectado a trece semanas, rentabilidad por línea de negocio, estructura de costos, reunión de dirección documentada.
 - Soluciones digitales: página web a medida publicada en menos de una semana (dominio, alojamiento y mantenimiento incluidos, registrados a nombre de la empresa del cliente); plataformas especializadas por sector; tableros conectados a los datos del cliente; automatización de reportes y documentos con firma electrónica; integraciones con facturación, contabilidad, inventario.
-- Producto propio: **KLINODA**, plataforma de salud ocupacional en Ecuador (repositorio aparte, `C:\dev\plataforma-medicina-ocupacional`). A quién se dirige —a quien hace la evaluación o a la empresa— es una decisión de negocio abierta: la web no la afirma (ver «Reglas de contenido que no se negocian»).
+- Producto propio: **KLINODA**, plataforma de salud ocupacional en Ecuador (repositorio aparte, `C:\dev\plataforma-medicina-ocupacional`). KLINODA S.A.S., sociedad legalmente constituida del Grupo CJM Nexus, es la parte que firma los contratos. Su cliente es la empresa empleadora y el médico ocupacional es usuario y canal de venta (regla 7 de «Reglas de contenido que no se negocian», decidido el 15 de septiembre de 2026).
 
 **Restricciones técnicas de esta web**
 
@@ -59,7 +59,7 @@ Recogidas en `cjm-nexus/docs/preguntas-richard.md` y marcadas con el comentario 
 3. Forma de cobro (mensualidad, proyecto, horas). No sale en la web, pero condiciona qué se puede afirmar.
 4. Cuáles son las preguntas que de verdad le hacen a Richard antes de firmar. Las seis actuales son las que Boris esperaría, no las que Richard escucha.
 
-Otras cosas sin resolver: no existe página «Nosotros» (el menú apunta a la banda de la portada), no existen las páginas legales de Privacidad y Aviso legal (pendientes de la entidad legal de la firma), no hay página de empresa en LinkedIn (`SOCIAL_PROFILES` está vacío a propósito) y **no está decidido quién es el cliente de KLINODA**.
+Otras cosas sin resolver: no existe página «Nosotros» (el menú apunta a la banda de la portada), no existen las páginas legales de Privacidad y Aviso legal (pendientes de la entidad legal de la firma), no hay página de empresa en LinkedIn (`SOCIAL_PROFILES` está vacío a propósito) y **cómo nombra la web la relación entre CJM Nexus y KLINODA** («producto propio», «la prueba de lo que construimos») se queda como está hasta que Boris lo decida. Quién es el cliente de KLINODA ya está decidido (regla 7, 15 de septiembre de 2026).
 
 ## Brand Commitments
 
@@ -78,7 +78,8 @@ Otras cosas sin resolver: no existe página «Nosotros» (el menú apunta a la b
 4. **Nada clínico, ni siquiera inventado.** Ninguna interfaz enseña diagnósticos, antecedentes, exámenes, nombres de persona ni números de documento. Las demos de KLINODA muestran solo módulos que existen en su portal de empresa, con datos ficticios, sus etiquetas reales y sin totales por aptitud.
 5. **Ninguna fecha** de lanzamiento y ninguna afirmación de validez legal o sanitaria.
 6. **El estado se dice; lo que falta no se lista.** La etiqueta pública de KLINODA es «Demo · en desarrollo · datos ficticios».
-7. **No se afirma quién es el cliente de KLINODA.** Se dice «salud ocupacional», nunca «para médicos» ni «para empresas»: esa decisión de negocio sigue abierta.
+7. **El cliente de KLINODA es la empresa empleadora.** Decidido el 15 de septiembre de 2026. La empresa es quien contrata y paga. Los usuarios son su parte administrativa y sus médicos ocupacionales. El médico ocupacional es además el canal de venta: la propone dentro de las empresas donde trabaja. KLINODA no se vende al médico como cliente, porque los datos médicos no pertenecen al médico. Por eso la web habla a dos personas con dos mensajes: a la empresa, cumplimiento y tranquilidad; al médico, una herramienta que le facilita el trabajo y que puede recomendar.
+   _Cambió el 2026-09-15. Antes decía: «No se afirma quién es el cliente de KLINODA. Se dice "salud ocupacional", nunca "para médicos" ni "para empresas": esa decisión de negocio sigue abierta.»_ Los textos del sitio que todavía contradicen la regla están listados en `.impeccable/CONSTRUCCION.md`.
 
 ## Evidence on Hand
 
