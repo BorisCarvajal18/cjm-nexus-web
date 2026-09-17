@@ -1,0 +1,212 @@
+{
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "overused-font",
+        "value": "plus jakarta sans",
+        "createdAt": "2026-09-13T01:26:56.169Z",
+        "reason": "sanctioned exception: Plus Jakarta Sans + Inter recorded as user-confirmed choice of 3-sep-2026 in .impeccable/mocks/portada/.impeccable/config.json"
+      },
+      {
+        "rule": "design-system-font-size",
+        "value": ".76rem",
+        "files": [
+          ".impeccable/mocks/portada/C-fusion.html"
+        ],
+        "createdAt": "2026-09-13T14:39:55.348Z",
+        "reason": "sanctioned exception: C-fusion.html is the portada mock Boris approved on 2026-09-13 and the source DESIGN.md was extracted from; DESIGN.md documents type roles, these literal values are header, sample-interface micro type and intermediate steps of that approved mock"
+      },
+      {
+        "rule": "design-system-font-size",
+        "value": ".82rem",
+        "files": [
+          ".impeccable/mocks/portada/C-fusion.html"
+        ],
+        "createdAt": "2026-09-13T14:39:55.439Z",
+        "reason": "sanctioned exception: C-fusion.html is the portada mock Boris approved on 2026-09-13 and the source DESIGN.md was extracted from; DESIGN.md documents type roles, these literal values are header, sample-interface micro type and intermediate steps of that approved mock"
+      },
+      {
+        "rule": "design-system-font-size",
+        "value": ".84rem",
+        "files": [
+          ".impeccable/mocks/portada/C-fusion.html"
+        ],
+        "createdAt": "2026-09-13T14:39:55.549Z",
+        "reason": "sanctioned exception: C-fusion.html is the portada mock Boris approved on 2026-09-13 and the source DESIGN.md was extracted from; DESIGN.md documents type roles, these literal values are header, sample-interface micro type and intermediate steps of that approved mock"
+      },
+      {
+        "rule": "design-system-font-size",
+        "value": ".85rem",
+        "files": [
+          ".impeccable/mocks/portada/C-fusion.html"
+        ],
+        "createdAt": "2026-09-13T14:39:55.652Z",
+        "reason": "sanctioned exception: C-fusion.html is the portada mock Boris approved on 2026-09-13 and the source DESIGN.md was extracted from; DESIGN.md documents type roles, these literal values are header, sample-interface micro type and intermediate steps of that approved mock"
+      },
+      {
+        "rule": "design-system-font-size",
+        "value": ".86rem",
+        "files": [
+          ".impeccable/mocks/portada/C-fusion.html"
+        ],
+        "createdAt": "2026-09-13T14:39:55.763Z",
+        "reason": "sanctioned exception: C-fusion.html is the portada mock Boris approved on 2026-09-13 and the source DESIGN.md was extracted from; DESIGN.md documents type roles, these literal values are header, sample-interface micro type and intermediate steps of that approved mock"
+      },
+      {
+        "rule": "design-system-font-size",
+        "value": ".8rem",
+        "files": [
+          ".impeccable/mocks/portada/C-fusion.html"
+        ],
+        "createdAt": "2026-09-13T14:39:55.868Z",
+        "reason": "sanctioned exception: C-fusion.html is the portada mock Boris approved on 2026-09-13 and the source DESIGN.md was extracted from; DESIGN.md documents type roles, these literal values are header, sample-interface micro type and intermediate steps of that approved mock"
+      },
+      {
+        "rule": "design-system-font-size",
+        "value": ".9rem",
+        "files": [
+          ".impeccable/mocks/portada/C-fusion.html"
+        ],
+        "createdAt": "2026-09-13T14:39:55.988Z",
+        "reason": "sanctioned exception: C-fusion.html is the portada mock Boris approved on 2026-09-13 and the source DESIGN.md was extracted from; DESIGN.md documents type roles, these literal values are header, sample-interface micro type and intermediate steps of that approved mock"
+      },
+      {
+        "rule": "design-system-font-size",
+        "value": "1.08rem",
+        "files": [
+          ".impeccable/mocks/portada/C-fusion.html"
+        ],
+        "createdAt": "2026-09-13T14:39:56.104Z",
+        "reason": "sanctioned exception: C-fusion.html is the portada mock Boris approved on 2026-09-13 and the source DESIGN.md was extracted from; DESIGN.md documents type roles, these literal values are header, sample-interface micro type and intermediate steps of that approved mock"
+      },
+      {
+        "rule": "design-system-font-size",
+        "value": "1.12rem",
+        "files": [
+          ".impeccable/mocks/portada/C-fusion.html"
+        ],
+        "createdAt": "2026-09-13T14:39:56.217Z",
+        "reason": "sanctioned exception: C-fusion.html is the portada mock Boris approved on 2026-09-13 and the source DESIGN.md was extracted from; DESIGN.md documents type roles, these literal values are header, sample-interface micro type and intermediate steps of that approved mock"
+      },
+      {
+        "rule": "design-system-font-size",
+        "value": "1.18rem",
+        "files": [
+          ".impeccable/mocks/portada/C-fusion.html"
+        ],
+        "createdAt": "2026-09-13T14:39:56.324Z",
+        "reason": "sanctioned exception: C-fusion.html is the portada mock Boris approved on 2026-09-13 and the source DESIGN.md was extracted from; DESIGN.md documents type roles, these literal values are header, sample-interface micro type and intermediate steps of that approved mock"
+      },
+      {
+        "rule": "design-system-font-size",
+        "value": "1.3rem",
+        "files": [
+          ".impeccable/mocks/portada/C-fusion.html"
+        ],
+        "createdAt": "2026-09-13T14:39:56.427Z",
+        "reason": "sanctioned exception: C-fusion.html is the portada mock Boris approved on 2026-09-13 and the source DESIGN.md was extracted from; DESIGN.md documents type roles, these literal values are header, sample-interface micro type and intermediate steps of that approved mock"
+      },
+      {
+        "rule": "design-system-font-size",
+        "value": "1.5rem",
+        "files": [
+          ".impeccable/mocks/portada/C-fusion.html"
+        ],
+        "createdAt": "2026-09-13T14:39:56.540Z",
+        "reason": "sanctioned exception: C-fusion.html is the portada mock Boris approved on 2026-09-13 and the source DESIGN.md was extracted from; DESIGN.md documents type roles, these literal values are header, sample-interface micro type and intermediate steps of that approved mock"
+      },
+      {
+        "rule": "design-system-font-size",
+        "value": "1.7rem",
+        "files": [
+          ".impeccable/mocks/portada/C-fusion.html"
+        ],
+        "createdAt": "2026-09-13T14:39:56.656Z",
+        "reason": "sanctioned exception: C-fusion.html is the portada mock Boris approved on 2026-09-13 and the source DESIGN.md was extracted from; DESIGN.md documents type roles, these literal values are header, sample-interface micro type and intermediate steps of that approved mock"
+      },
+      {
+        "rule": "design-system-font-size",
+        "value": "1.95rem",
+        "files": [
+          ".impeccable/mocks/portada/C-fusion.html"
+        ],
+        "createdAt": "2026-09-13T14:39:56.762Z",
+        "reason": "sanctioned exception: C-fusion.html is the portada mock Boris approved on 2026-09-13 and the source DESIGN.md was extracted from; DESIGN.md documents type roles, these literal values are header, sample-interface micro type and intermediate steps of that approved mock"
+      },
+      {
+        "rule": "design-system-font-size",
+        "value": "1.9rem",
+        "files": [
+          ".impeccable/mocks/portada/C-fusion.html"
+        ],
+        "createdAt": "2026-09-13T14:39:56.861Z",
+        "reason": "sanctioned exception: C-fusion.html is the portada mock Boris approved on 2026-09-13 and the source DESIGN.md was extracted from; DESIGN.md documents type roles, these literal values are header, sample-interface micro type and intermediate steps of that approved mock"
+      },
+      {
+        "rule": "design-system-font-size",
+        "value": "10.5px",
+        "files": [
+          ".impeccable/mocks/portada/C-fusion.html"
+        ],
+        "createdAt": "2026-09-13T14:39:56.948Z",
+        "reason": "sanctioned exception: C-fusion.html is the portada mock Boris approved on 2026-09-13 and the source DESIGN.md was extracted from; DESIGN.md documents type roles, these literal values are header, sample-interface micro type and intermediate steps of that approved mock"
+      },
+      {
+        "rule": "design-system-font-size",
+        "value": "10px",
+        "files": [
+          ".impeccable/mocks/portada/C-fusion.html"
+        ],
+        "createdAt": "2026-09-13T14:39:57.052Z",
+        "reason": "sanctioned exception: C-fusion.html is the portada mock Boris approved on 2026-09-13 and the source DESIGN.md was extracted from; DESIGN.md documents type roles, these literal values are header, sample-interface micro type and intermediate steps of that approved mock"
+      },
+      {
+        "rule": "design-system-font-size",
+        "value": "12.5px",
+        "files": [
+          ".impeccable/mocks/portada/C-fusion.html"
+        ],
+        "createdAt": "2026-09-13T14:39:57.177Z",
+        "reason": "sanctioned exception: C-fusion.html is the portada mock Boris approved on 2026-09-13 and the source DESIGN.md was extracted from; DESIGN.md documents type roles, these literal values are header, sample-interface micro type and intermediate steps of that approved mock"
+      },
+      {
+        "rule": "design-system-font-size",
+        "value": "14.5px",
+        "files": [
+          ".impeccable/mocks/portada/C-fusion.html"
+        ],
+        "createdAt": "2026-09-13T14:39:57.289Z",
+        "reason": "sanctioned exception: C-fusion.html is the portada mock Boris approved on 2026-09-13 and the source DESIGN.md was extracted from; DESIGN.md documents type roles, these literal values are header, sample-interface micro type and intermediate steps of that approved mock"
+      },
+      {
+        "rule": "design-system-font-size",
+        "value": "14px",
+        "files": [
+          ".impeccable/mocks/portada/C-fusion.html"
+        ],
+        "createdAt": "2026-09-13T14:39:57.420Z",
+        "reason": "sanctioned exception: C-fusion.html is the portada mock Boris approved on 2026-09-13 and the source DESIGN.md was extracted from; DESIGN.md documents type roles, these literal values are header, sample-interface micro type and intermediate steps of that approved mock"
+      },
+      {
+        "rule": "design-system-color",
+        "value": "#faf8f5",
+        "files": [
+          ".impeccable/mocks/portada/C-fusion.html"
+        ],
+        "createdAt": "2026-09-13T14:39:57.541Z",
+        "reason": "sanctioned exception: selected-row tint inside a sample interface of the portada mock Boris approved on 2026-09-13"
+      },
+      {
+        "rule": "design-system-radius",
+        "value": "1px",
+        "files": [
+          ".impeccable/mocks/portada/C-fusion.html"
+        ],
+        "createdAt": "2026-09-13T14:39:57.649Z",
+        "reason": "sanctioned exception: 1px radius on 4px-tall progress tracks inside sample interfaces of the portada mock Boris approved on 2026-09-13"
+      }
+    ]
+  }
+}
