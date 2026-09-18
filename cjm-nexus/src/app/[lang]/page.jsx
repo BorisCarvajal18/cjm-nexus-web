@@ -31,7 +31,9 @@
 import FinalCta from '../../blocks/FinalCta';
 import Method from '../../blocks/Method';
 import Credenciales from '../../blocks/registro/Credenciales';
+import Noche from '../../blocks/registro/Noche';
 import Portada from '../../blocks/registro/Portada';
+import PuertaKlinoda from '../../blocks/registro/PuertaKlinoda';
 import QueHacemos from '../../blocks/registro/QueHacemos';
 import SiteFooter from '../../components/SiteFooter';
 import BackToTop from '../../components/ui/BackToTop';
@@ -50,8 +52,10 @@ export default function HomePage({ params }) {
         <Portada content={home.portada} />
         <Credenciales content={home.credenciales} />
         <QueHacemos content={home.hacemos} lang={lang} />
+        <PuertaKlinoda content={home.klinoda} lang={lang} />
         <Method content={home.method} />
         <FinalCta content={home.cta} />
+        <Noche />
       </main>
       <SiteFooter lang={lang} />
       <BackToTop />

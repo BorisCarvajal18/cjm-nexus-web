@@ -26,8 +26,8 @@ Las capturas de verificación van a `.impeccable/construccion/`.
 | 3 | Portada | ✅ Hecha · 2026-09-18 | Vídeo: `hero.webm`, `hero.mp4` y `hero-poster.jpg` de `mocks/portada/img/` a `public/`, y el `<video>` en `Hero.jsx`. El titular entra palabra a palabra desde su máscara y la imagen pasa de 1,05 a 1. **Texto abierto:** la entrada atribuye los quince años a la firma (PLAN.md, ronda 5 §2) |
 | 4 | Credenciales | ✅ Hecha · 2026-09-18 | 15+, 100+ y 3, con atribución a Richard por su nombre. Las notas y la frase de los tres nombres son **texto propuesto sin aprobar** |
 | 5 | Escena de los tableros («Qué hacemos») | ✅ Hecha · 2026-09-18 | Un preset nuevo en `lib/animations.js` con `CONSULTA_ESCENAS`, `ESCENA.tableros` y `AJUSTE_AL_SOLTAR`. Se fija 3,1 pantallas y la letra se ajusta con `--k` |
-| 6 | La noche | Pendiente | Las variables de tema (`--suelo`, `--tx-*`, `--filete*`) ya existen. Falta la capa fija, el disparador que llama a `marcarOscuro()` y el paso corto del 50 al 59 % |
-| 7 | Escena de KLINODA | Pendiente | 2,1 pantallas. Poner al día `privacy.mockup` en `klinoda.es.js` con las etiquetas reales («APTO», «APTO EN OBSERVACIÓN», «PERIÓDICO»…) |
+| 6 | La noche | ✅ Hecha · 2026-09-18 | Las variables de tema (`--suelo`, `--tx-*`, `--filete*`) ya existen. Falta la capa fija, el disparador que llama a `marcarOscuro()` y el paso corto del 50 al 59 % |
+| 7 | Escena de KLINODA | ✅ Hecha · 2026-09-18 | 2,1 pantallas. Poner al día `privacy.mockup` en `klinoda.es.js` con las etiquetas reales («APTO», «APTO EN OBSERVACIÓN», «PERIÓDICO»…) |
 | 8 | Cierre y pie | Pendiente | El titular y los tres bloques del cierre son **texto propuesto sin aprobar** (PLAN.md, ronda 2 §7) |
 | 9 | Páginas de servicios y de KLINODA al sistema nuevo | Pendiente | Hoy siguen con «Pulso Cobre» |
 | 10 | **Reescribir el texto de KLINODA con la decisión del ICP** | Pendiente · sesión propia | Ver abajo |
@@ -62,6 +62,7 @@ construir. Se usan igual; Boris los aprueba o los cambia leyendo esta lista.
 | 3 | `home.es.js` → `portada.entrada` y `meta.description` | «CJM Nexus une la dirección financiera de Richard Carvajal, con quince años de trayectoria, y desarrollo de software especializado…» | Propuesta de PLAN.md (ronda 5 §2). La maqueta atribuía los quince años a la firma, contra la regla 2 de PRODUCT.md |
 | 4 | `home.es.js` → `credenciales.cifras[].quien` | Las tres notas: «La trayectoria de Richard Carvajal, fundador de la firma.», «Por Richard Carvajal, en Latinoamérica y Estados Unidos.», «Español, inglés y alemán, con equipo en Ecuador y Alemania.» | Propuestas en PLAN.md (ronda 5 §2) |
 | 4 | `home.es.js` → `credenciales.firma` | «**Richard Carvajal** dirige las finanzas, **Boris Carvajal** la tecnología y **Mirella Llanga** la gerencia general.» | Propuesta en PLAN.md (ronda 5 §2) |
+| 7 | `home.es.js` → `klinoda.frases[0]` y `[1]` | «KLINODA es una empresa del Grupo CJM Nexus. Su plataforma ordena la salud ocupacional de las empresas en Ecuador.» · «La empresa ve qué certificados vencen y quién está apto para su puesto, sin tener que perseguir un papel.» | Reescritas: la maqueta decía «nuestro producto propio» y «para probar exactamente lo que decimos que sabemos hacer» (reglas 7, 8 y 9 de PRODUCT.md). La tercera frase, la pregunta y el botón son los de la maqueta |
 
 ## Cómo se usa la base (pieza 1)
 
@@ -272,3 +273,35 @@ movimiento», 0 elementos ocultos y la cuenta en 12.
 **Visto al verificar, sin tocar:** el botón «volver arriba» (`BackToTop`, del sistema anterior)
 flota sobre la escena abajo a la derecha. No está en la maqueta ni en DESIGN.md. Se decide en la
 pieza 8.
+
+**Piezas 6 y 7 — la noche y la escena de KLINODA**, en un solo commit: el disparador de la noche es
+la banda de KLINODA, y las dos comparten `registro.css`.
+
+- **La noche** (`blocks/registro/Noche.jsx`): la capa marino fija, el disparador sobre `.puerta`
+  (desde que asoma hasta el 25 % de la pantalla, 0,75 pantalla), los grises que se funden, el paso
+  corto de 0,3 s del 50 al 59 % y `marcarOscuro()` al cruzar. Reescribe las variables del tema en
+  `<html>`. Con «reducir movimiento» no hay noche: KLINODA avisa a la cabecera como zona oscura (y
+  el cierre también, cuando exista). Va la última en `<main>` y, como la maqueta, ordena y recalcula
+  los ScrollTrigger al montarse.
+- **KLINODA** (`blocks/registro/PuertaKlinoda.jsx`, textos en `home.es.js` → `klinoda`): el tablero
+  del portal de empresa con su marca, la placa, el logotipo claro y la etiqueta «Demo · en
+  desarrollo · datos ficticios». El preset está en `lib/animations.js`: `armaKlinoda` y
+  `escenaKlinoda` (A, K1–K5), con `ESCENA.klinoda`, `ESCALA_ALTO.maximoKlinoda` y el mismo ajuste al
+  soltar. Bajo 1024 × 640, filas.
+- **Textos:** las dos primeras frases se reescribieron con las reglas 7, 8 y 9 (ver «Textos por
+  aprobar»). Nada clínico, ninguna fecha, ninguna validez legal, nada de lo que falta.
+- `klinoda.es.js` → `privacy.mockup` pasa a las etiquetas reales: «APTO», «APTO EN OBSERVACIÓN»,
+  «PERIÓDICO», «INGRESO».
+- **Arreglo propio:** en tableros estrechos (consulta de contenedor bajo 700 px) los puntos de la
+  línea de plazos se aplastaban en óvalos; ahora bajan a 0,85 em y no encogen.
+
+**Verificación** (producción): build sin errores. Escena a 1536 × 730 (`p7-klinoda-*`): fijada
+**2,10 pantallas** (espaciador 3,1), `--kb` 1,25; en A la placa al 94 % con el logotipo; en K2 el
+tablero dibujado con 11, 3 y 44; en K5 el tablero a media escena a la derecha y el texto a la
+izquierda; cabecera marino hondo; sin errores. **Contraste de la noche** medido en seis puntos del
+tramo (`p6-noche-*`): el peor, 4,98:1 justo antes del paso; después, 6,2:1 y más. Reposo
+(`p7-klinoda-reposo-*`): con «reducir movimiento», banda marino por sí misma, 0 ocultos, cifras con
+su valor y la cabecera oscura al pasar; en 390 px, sin desbordamiento.
+
+**Visto, sin tocar:** con movimiento la página se queda de noche después de KLINODA, y el bloque del
+método y el cierre antiguos todavía no usan las variables del tema. Se resuelve en la pieza 8.

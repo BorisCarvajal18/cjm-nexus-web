@@ -25,7 +25,7 @@
  *    nada: basta con no hacerlo.
  */
 import { gsap, prefersReducedMotion } from './gsap';
-import { alAsomar, cuenta, trazo } from './registro';
+import { alAsomar, anotaPendiente, cuenta, escalona, fijaAncho, trazo } from './registro';
 
 /* ================================================================== */
 /*  EL REGISTRO — constantes de movimiento de DESIGN.md                */
@@ -358,6 +358,217 @@ export function escenaTableros(seccion, { armaF, armaS, tlRegla, limpia }) {
     textos.forEach((t) => {
       t.style.width = '';
     });
+    limpia();
+  };
+}
+
+/** El dibujo del tablero de KLINODA, 1,4 s: se traza la línea de plazos, las
+    cifras cuentan, cada vencimiento cae en su tramo y las filas aterrizan. */
+export function armaKlinoda(t) {
+  const tl = gsap.timeline({ paused: true });
+  const cuentas = gsap.utils.toArray(t.querySelectorAll('.cuenta'));
+  tl.fromTo(t.querySelector('.k-linea'), { '--raya': 0 }, { '--raya': 1, duration: 0.5, ease: 'power2.out' }, 0);
+  cuentas.forEach((el) => tl.add(cuenta(el, 0.9), 0));
+  escalona(tl, t.querySelectorAll('.k-puntos i'), { scale: 0, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.3, ease: 'power3.out' }, 0.2, 0.05);
+  escalona(tl, t.querySelectorAll('.k-tramo > span'), { opacity: 0 }, { opacity: 1, duration: 0.4, ease: 'power1.out' }, 0.5, 0.1);
+  escalona(tl, t.querySelectorAll('.k-fila'), { opacity: 0, y: 8 }, { opacity: 1, y: 0, duration: 0.4, ease: CURVA.llegar }, 0.7, 0.12);
+  tl.data = { cuentas };
+  return tl;
+}
+
+/**
+ * La escena de KLINODA (DESIGN.md, signature), después de la noche. Guion en
+ * pantallas (`ESCENA.klinoda`, 2,1 fijadas):
+ *
+ *   A  · el producto   0,00–0,40  nada: el tablero ocupa el escenario bajo una
+ *                                 placa marino, con logotipo y etiqueta
+ *   K1 · se levanta    0,40–0,70  la placa se aclara; logotipo y etiqueta
+ *                                 viajan a la barra del tablero
+ *   K2 · se lee        0,70–1,10  al llegar, el tablero se dibuja (1,4 s)
+ *   K3 · se retira     1,10–1,40  se reduce a media escena y cruza a la derecha
+ *   K4 · su texto      1,40–1,70  las frases, la pregunta y el botón, por líneas
+ *   K5 · se lee        1,70–2,10  nada
+ *
+ * Las mismas unidades y curvas que la escena de los tableros. Devuelve la
+ * limpieza. Solo se llama bajo `CONSULTA_ESCENAS`.
+ */
+export function escenaKlinoda(puerta, { arma, limpia }) {
+  const escenario = puerta.querySelector('.k-escenario');
+  const marco = escenario.querySelector('.marco');
+  const area = puerta.querySelector('.k-area');
+  const caja = puerta.querySelector('.k-caja');
+  const tablero = puerta.querySelector('.k-tablero');
+  const texto = puerta.querySelector('.k-texto');
+  const lineas = gsap.utils.toArray(texto.children);
+  const placa = caja.querySelector('.k-placa');
+  const logoGrande = caja.querySelector('.k-marca img');
+  const etiqueta = caja.querySelector('.k-etiqueta');
+  const logoBarra = tablero.querySelector('.k-logo');
+  const chip = tablero.querySelector('.k-chip');
+
+  puerta.classList.add('k-coreo');
+
+  const TOTAL = ESCENA.klinoda;
+  const PAUSAS = [
+    [0, 0.4],
+    [0.7, 1.1],
+    [1.7, 2.1],
+  ]; // A, K2, K5
+  const HUECO = 40;
+  const PLACA = 0.94;
+  let G = {};
+
+  /* Posición de un elemento dentro de la caja, sin transformaciones. */
+  function dentro(el) {
+    let x = 0;
+    let y = 0;
+    for (let n = el; n && n !== caja; n = n.offsetParent) {
+      x += n.offsetLeft;
+      y += n.offsetTop;
+    }
+    return { x, y, w: el.offsetWidth, h: el.offsetHeight };
+  }
+
+  /* Geometría medida sobre el escenario real. Se rehace en cada recálculo.
+     1 · el tablero ocupa el escenario entero; su letra (--kb) crece hasta un
+         25 % si sobra alto y baja en pasos si falta;
+     2 · al retirarse mide media escena, como los tableros de servicios;
+     3 · la letra del texto (--kt) baja hasta que cabe;
+     4 · el viaje del logotipo y la etiqueta, de centro a centro. */
+  function mide() {
+    const W = area.clientWidth;
+    const H = area.clientHeight;
+    const cs = getComputedStyle(marco);
+    const sangria = Math.max(0, marco.getBoundingClientRect().left + parseFloat(cs.paddingLeft) - area.getBoundingClientRect().left);
+    caja.style.width = `${W}px`;
+    caja.style.height = `${H}px`;
+    let kb = 1;
+    puerta.style.setProperty('--kb', kb);
+    tablero.style.height = 'auto';
+    kb = Math.max(0.6, Math.min(ESCALA_ALTO.maximoKlinoda, Math.floor((H / tablero.offsetHeight) * 0.97 * 100) / 100));
+    puerta.style.setProperty('--kb', kb);
+    while (tablero.offsetHeight > H && kb > 0.6) {
+      kb = Math.round((kb - ESCALA_ALTO.paso) * 100) / 100;
+      puerta.style.setProperty('--kb', kb);
+    }
+    tablero.style.height = '';
+    const s = Math.min(1, (W - HUECO) / 2 / W);
+    const xR = W / 2 + HUECO / 2;
+    const yK = (H - H * s) / 2;
+    const aire = Math.max(40, Math.min(64, W * 0.05));
+    texto.style.width = `${xR - aire - sangria}px`;
+    let kt = 1;
+    puerta.style.setProperty('--kt', kt);
+    while (texto.offsetHeight > H - 8 && kt > ESCALA_ALTO.minimo) {
+      kt = Math.round((kt - ESCALA_ALTO.paso) * 100) / 100;
+      puerta.style.setProperty('--kt', kt);
+    }
+    const a = dentro(logoGrande);
+    const b = dentro(logoBarra);
+    const c = dentro(etiqueta);
+    const d = dentro(chip);
+    const ls = b.w / a.w;
+    const es = d.h / c.h;
+    G = {
+      s,
+      xR,
+      yK,
+      kb,
+      kt,
+      xT: sangria,
+      yT: Math.max(0, (H - texto.offsetHeight) / 2),
+      lx: b.x + b.w / 2 - (a.x + (a.w * ls) / 2),
+      ly: b.y + b.h / 2 - (a.y + (a.h * ls) / 2),
+      ls,
+      ex: d.x + d.w / 2 - (c.x + (c.w * es) / 2),
+      ey: d.y + d.h / 2 - (c.y + (c.h * es) / 2),
+      es,
+    };
+  }
+  mide();
+
+  /* El tablero se dibuja al llegar a K2, una sola vez. Si se recarga más
+     abajo, queda dibujado sin animar. */
+  let armado = false;
+  anotaPendiente(arma);
+  function armar(alInstante) {
+    if (armado) return;
+    armado = true;
+    arma.__arrancada = true;
+    if (alInstante) {
+      arma.progress(1);
+      return;
+    }
+    arma.data.cuentas.forEach(fijaAncho);
+    arma.play();
+  }
+
+  let direccion = 1;
+  const tl = gsap.timeline({
+    defaults: { ease: 'none' },
+    scrollTrigger: {
+      trigger: escenario,
+      start: 'top top',
+      end: `+=${Math.round(TOTAL * 100)}%`,
+      pin: true,
+      scrub: SCRUB,
+      anticipatePin: 1,
+      invalidateOnRefresh: true,
+      refreshPriority: 1,
+      onRefreshInit: mide,
+      onRefresh: (self) => {
+        if (self.progress * TOTAL >= 0.7) armar(true);
+      },
+      onUpdate: (self) => {
+        if (self.direction) direccion = self.direction;
+        if (self.progress * TOTAL >= 0.7) armar(false);
+      },
+      snap: snapDeEscena(PAUSAS, TOTAL, () => direccion),
+    },
+  });
+  const g = (clave) => () => G[clave];
+
+  tl.to({}, { duration: TOTAL }, 0);
+
+  /* A · el producto: el tablero entero, tapado; logotipo y etiqueta en el centro */
+  tl.set(caja, { x: 0, y: 0, scale: 1 }, 0);
+  tl.set(placa, { opacity: PLACA }, 0);
+  tl.set([logoGrande, etiqueta], { x: 0, y: 0, scale: 1, opacity: 1, transformOrigin: '0% 0%' }, 0);
+  tl.set([logoBarra, chip], { opacity: 0 }, 0);
+  tl.set(texto, { x: g('xT'), y: g('yT'), pointerEvents: 'none' }, 0);
+  tl.set(lineas, { x: -32, opacity: 0 }, 0);
+
+  /* K1 · se levanta la placa y el nombre viaja a la barra del tablero */
+  tl.to(placa, { opacity: 0, duration: 0.3, ease: 'power2.inOut' }, 0.4);
+  tl.to(logoGrande, { x: g('lx'), y: g('ly'), scale: g('ls'), duration: 0.3, ease: CURVA.cruzar }, 0.4);
+  tl.to(etiqueta, { x: g('ex'), y: g('ey'), scale: g('es'), duration: 0.3, ease: CURVA.cruzar }, 0.4);
+  tl.to([logoGrande, etiqueta], { opacity: 0, duration: 0.08 }, 0.62);
+  tl.to([logoBarra, chip], { opacity: 1, duration: 0.08 }, 0.62);
+
+  /* K2 · se lee: el tablero se dibuja al llegar (ver armar) */
+
+  /* K3 · se retira: se reduce a media escena y cruza a la derecha */
+  tl.to(caja, { x: g('xR'), y: g('yK'), scale: g('s'), duration: 0.3, ease: CURVA.cruzar }, 1.1);
+
+  /* K4 · su texto, por líneas, en la estela del tablero */
+  tl.to(lineas, { x: 0, opacity: 1, duration: 0.14, ease: 'power2.out', stagger: 0.16 / (lineas.length - 1) }, 1.4);
+  tl.set(texto, { pointerEvents: 'auto' }, 1.7);
+
+  /* Quien llega con el tabulador al botón lo encuentra a la vista. */
+  const alFoco = (e) => {
+    if (!texto.contains(e.target)) return;
+    const t = tl.scrollTrigger;
+    window.scrollTo(0, Math.round(t.start + ((t.end - t.start) * 1.9) / TOTAL) + 1);
+  };
+  puerta.addEventListener('focusin', alFoco);
+
+  return () => {
+    puerta.classList.remove('k-coreo');
+    puerta.removeEventListener('focusin', alFoco);
+    ['--kb', '--kt'].forEach((p) => puerta.style.removeProperty(p));
+    caja.style.width = '';
+    caja.style.height = '';
+    texto.style.width = '';
     limpia();
   };
 }

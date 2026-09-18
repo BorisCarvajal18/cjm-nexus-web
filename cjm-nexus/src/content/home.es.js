@@ -158,6 +158,49 @@ export const home = {
     },
   },
 
+  /* KLINODA en la portada (DESIGN.md, M5 y la escena de KLINODA). Fuera de su
+     página es una puerta: enseña el producto, dice su estado y lleva a su
+     página (regla 3 de PRODUCT.md).
+
+     DEMO CON DATOS FICTICIOS. Solo módulos que existen en el portal de
+     empresa de KLINODA (portal_empresa/panel.html): vencidas, vencen en 90
+     días o menos con sus tres plazos, trabajadores con certificado disponible
+     y los plazos por cargo con su aptitud. Sin nombre ni documento, sin datos
+     clínicos y sin totales por aptitud. Etiquetas reales.
+
+     TEXTO POR APROBAR: las dos primeras frases. La maqueta decía «KLINODA es
+     nuestro producto propio…» y «…para probar exactamente lo que decimos que
+     sabemos hacer», que chocan con las reglas 7, 8 y 9 de PRODUCT.md
+     (18-sep-2026). Van a la empresa, que es el cliente. */
+  klinoda: {
+    etiqueta: 'Demo · en desarrollo · datos ficticios',
+    logo: 'KLINODA',
+    seccion: 'Panel de mi empresa',
+    plazos: {
+      rotulo: 'Vencen en 90 días o menos',
+      total: 11,
+      tramos: [
+        { cuantos: 4, que: 'en 30 días o menos' },
+        { cuantos: 5, que: 'entre 31 y 60 días' },
+        { cuantos: 2, que: 'entre 61 y 90 días' },
+      ],
+    },
+    vencidas: { cuantos: 3, rotulo: 'Vencidas' },
+    certificados: { cuantos: 44, rotulo: 'Trabajadores con certificado disponible' },
+    cargos: [
+      { cargo: 'Operador de planta', aptitud: 'APTO', vence: 'Vence 14 oct' },
+      { cargo: 'Conductor', aptitud: 'APTO EN OBSERVACIÓN', observacion: true, vence: 'Vence 22 oct' },
+      { cargo: 'Supervisora de turno', aptitud: 'APTO', vence: 'Vence 03 nov' },
+    ],
+    frases: [
+      'KLINODA es una empresa del Grupo CJM Nexus. Su plataforma ordena la salud ocupacional de las empresas en Ecuador.',
+      'La empresa ve qué certificados vencen y quién está apto para su puesto, sin tener que perseguir un papel.',
+      'Cada vista enseña solo lo que le corresponde: en la de la empresa, lo clínico no existe.',
+    ],
+    pregunta: '¿Quieres conocer más sobre KLINODA?',
+    boton: 'Ver KLINODA',
+  },
+
   method: {
     eyebrow: 'Cómo trabajamos',
     title: 'El método es la garantía.',

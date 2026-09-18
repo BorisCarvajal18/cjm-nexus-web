@@ -125,9 +125,11 @@ export const klinoda = {
       subject: 'Vista de aptitud',
       columns: ['Cargo', 'Evaluación', 'Aptitud'],
       rows: [
-        ['Operador de planta', 'Periódica', 'ok', 'Apto'],
-        ['Supervisora de turno', 'Ingreso', 'ok', 'Apto'],
-        ['Conductor', 'Periódica', 'warn', 'Con observaciones'],
+        // Las etiquetas reales del portal de empresa de KLINODA (revisado en su
+        // repositorio para la ronda 5 de la portada).
+        ['Operador de planta', 'PERIÓDICO', 'ok', 'APTO'],
+        ['Supervisora de turno', 'INGRESO', 'ok', 'APTO'],
+        ['Conductor', 'PERIÓDICO', 'warn', 'APTO EN OBSERVACIÓN'],
       ],
       foot: 'Diagnósticos, antecedentes y exámenes no existen en esta vista.',
     },
