@@ -1,0 +1,254 @@
+/* ══ M4 · qué hacemos ═════════════════════════════════════════════════
+   Estado en reposo: es lo que ve quien no tiene JavaScript, quien pide
+   reducir movimiento y cualquier pantalla de menos de 1024 × 640 px. Cada
+   servicio en su fila, interfaz y texto, todo legible. */
+.hacemos {
+  padding: 96px 0 104px;
+  scroll-margin-top: var(--cabecera);
+  --sangria: clamp(0px, calc((100vw - 1240px) / 2 + 16px), 56px);
+  --k: 1;
+}
+.hacemos .escenario .marco {
+  position: relative;
+}
+.rotulo {
+  position: relative;
+  display: flex;
+  align-items: baseline;
+  gap: 20px;
+  padding-bottom: 20px;
+}
+.rotulo h2 {
+  font-size: clamp(1.6rem, 2.6vw, 2.3rem);
+  line-height: 1.15;
+  letter-spacing: -0.03em;
+  font-weight: 800;
+  color: var(--tx-1);
+}
+.rotulo p {
+  margin-left: auto;
+  max-width: 38ch;
+  font-size: 0.92rem;
+  color: var(--tx-2);
+}
+/* La regla bajo «Qué hacemos». Se traza al asomar; en la escena lleva
+   encima dos tramos iguales de cobre, uno por línea de servicio. */
+.regla {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 2px;
+  pointer-events: none;
+}
+.regla::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 1px;
+  background: var(--filete-fuerte);
+  transform: scaleX(var(--raya, 1));
+  transform-origin: left;
+}
+.regla i {
+  display: none;
+}
+.dos-servicios {
+  display: grid;
+  gap: 72px;
+  margin-top: 48px;
+}
+.servicio {
+  display: grid;
+  grid-template-columns: minmax(0, 640px) minmax(0, 1fr);
+  gap: 56px;
+  align-items: center;
+}
+.texto-servicio .ref {
+  font-size: 11.5px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--tx-3);
+  padding-bottom: 11px;
+  border-bottom: 1px solid var(--filete);
+}
+.texto-servicio h3 {
+  font-size: clamp(1.5rem, 2.2vw, 2rem);
+  line-height: 1.12;
+  letter-spacing: -0.03em;
+  font-weight: 800;
+  margin-top: 16px;
+  color: var(--tx-1);
+}
+.texto-servicio .lead {
+  margin-top: 10px;
+  font-size: 1rem;
+  color: var(--tx-2);
+  max-width: 48ch;
+}
+.texto-servicio .lista {
+  margin-top: 14px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 24px;
+}
+.texto-servicio .lista li {
+  display: flex;
+  gap: 10px;
+  align-items: baseline;
+  font-size: 0.9rem;
+  font-weight: 500;
+  padding: 7px 0;
+  border-top: 1px solid var(--filete);
+  color: var(--tx-1);
+}
+.texto-servicio .lista li::before {
+  content: '';
+  width: 5px;
+  height: 5px;
+  flex: none;
+  border-radius: 50%;
+  background: var(--cobre);
+  transform: translateY(-2px);
+}
+.texto-servicio .boton-contorno {
+  margin-top: 20px;
+}
+
+/* La escena. La añade el guion SOLO con ≥1024 px de ancho, ≥640 px de alto
+   y sin «reducir movimiento». El escenario ocupa la pantalla y se fija 3,1
+   pantallas. Todo lo vertical se ajusta a la altura disponible: los márgenes
+   con vh, los tableros con su escala y la letra con --k, que el guion baja
+   en pasos hasta que los dos textos caben. Nunca se anima alto ni ancho. */
+.hacemos.coreografia {
+  padding: 0;
+}
+.coreografia .escenario {
+  height: 100vh;
+  padding: calc(var(--cabecera) + clamp(10px, 2.6vh, 24px)) 0 clamp(10px, 2.6vh, 24px);
+}
+.coreografia .escenario .marco {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.coreografia .rotulo {
+  padding-bottom: clamp(8px, 1.6vh, 14px);
+  flex: none;
+}
+.coreografia .rotulo h2 {
+  font-size: clamp(1.3rem, min(2.2vw, 3.4vh), 2rem);
+  line-height: 1.15;
+}
+.coreografia .rotulo p {
+  font-size: clamp(0.82rem, 1.5vh, 0.92rem);
+  line-height: 1.45;
+}
+.coreografia .regla i {
+  display: block;
+  position: absolute;
+  bottom: 0;
+  width: calc(50% - 6px);
+  height: 2px;
+  background: var(--cobre);
+  transform: scaleX(0);
+  transform-origin: left;
+}
+.coreografia .regla i:first-child {
+  left: 0;
+}
+.coreografia .regla i:last-child {
+  right: 0;
+}
+/* El escenario sobresale del marco hasta 56 px por lado: las piezas son
+   figuras; el texto sigue alineado con la rejilla de la página. */
+.coreografia .dos-servicios {
+  display: block;
+  position: relative;
+  flex: 1;
+  min-height: 0;
+  margin: clamp(8px, 2.2vh, 20px) calc(-1 * var(--sangria)) 0;
+}
+.coreografia .servicio {
+  display: block;
+}
+.coreografia .caja-pieza {
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 2;
+  max-width: none;
+  transform-origin: 0 0;
+  will-change: transform, opacity;
+  pointer-events: none;
+}
+.coreografia .pieza {
+  height: 560px;
+}
+.coreografia .texto-servicio {
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 1;
+}
+.coreografia .texto-servicio .ref {
+  font-size: 12px;
+  padding-bottom: calc(12px * var(--k));
+}
+.coreografia .texto-servicio h3 {
+  font-size: calc(var(--k) * clamp(2.2rem, 3.2vw, 2.9rem));
+  line-height: 1.04;
+  letter-spacing: -0.036em;
+  margin-top: calc(18px * var(--k));
+}
+.coreografia .texto-servicio .linea {
+  display: block;
+}
+.coreografia .texto-servicio .lead {
+  margin-top: calc(16px * var(--k));
+  font-size: max(15px, calc(var(--k) * clamp(1.02rem, 1.2vw, 1.15rem)));
+  line-height: 1.5;
+  max-width: 44ch;
+}
+.coreografia .texto-servicio .lista {
+  margin-top: calc(18px * var(--k));
+  grid-template-columns: 1fr;
+}
+.coreografia .texto-servicio .lista li {
+  padding: calc(8px * var(--k)) 0;
+  font-size: max(14.5px, calc(0.98rem * var(--k)));
+}
+.coreografia .texto-servicio .boton-contorno {
+  margin-top: calc(22px * var(--k));
+}
+
+@media (max-width: 1100px) {
+  .servicio {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+}
+@media (max-width: 1000px) {
+  .rotulo {
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .rotulo p {
+    margin-left: 0;
+  }
+}
+@media (max-width: 620px) {
+  .hacemos {
+    padding: 60px 0 68px;
+  }
+  .dos-servicios {
+    gap: 56px;
+    margin-top: 32px;
+  }
+  .texto-servicio .lista {
+    grid-template-columns: 1fr;
+  }
+}

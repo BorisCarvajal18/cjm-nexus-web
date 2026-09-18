@@ -6,7 +6,7 @@
  *
  * EL GESTO, una vez al cargar (1,8 s): el titular entra palabra a palabra,
  * cada una desde su máscara, y la imagen se asienta de 1,05 a 1. Lo hace el
- * CSS (`.js-mov` / `.cargada` en registro.css); aquí solo se da la salida,
+ * CSS (`.js-mov` / `.cargada` en estilos/portada.css); aquí solo se da la salida,
  * cuando las fuentes ya están, para que el titular no cambie de letra a mitad
  * del gesto.
  *

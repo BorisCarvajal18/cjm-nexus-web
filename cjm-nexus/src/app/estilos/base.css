@@ -1,0 +1,152 @@
+/* ════════════════════════════════════════════════════════════════════
+   EL REGISTRO · base, botones y enlace
+
+   Pasado de `.impeccable/mocks/portada/C-fusion.html`, la maqueta aprobada
+   el 13 de septiembre de 2026, con sus mismos nombres de clase. Los tokens
+   (--papel, --tinta, --cobre, --tx-1, --curva…) salen de `REGISTRO` en
+   tailwind.config.js.
+
+   El texto está en el HTML desde el principio. Lo que oculta algo para
+   animarlo cuelga siempre de `.js-mov`, una clase que pone el guion de
+   `layout.jsx` antes del primer pintado, y solo en la portada y sin
+   «reducir movimiento». Sin JavaScript todo se ve quieto y entero.
+
+   Las hojas de `estilos/` se cargan en `app/[lang]/layout.jsx`, en este
+   orden: base, portada, credenciales, que-hacemos, cuadros, klinoda, cierre
+   y paginas.
+   ════════════════════════════════════════════════════════════════════ */
+
+.registro {
+  --display: var(--font-jakarta), 'Segoe UI', system-ui, sans-serif;
+  --texto: var(--font-inter), 'Segoe UI', system-ui, sans-serif;
+}
+.registro h1,
+.registro h2,
+.registro h3,
+.registro h4 {
+  font-family: var(--display);
+  margin: 0;
+  text-wrap: balance;
+}
+.registro p {
+  margin: 0;
+}
+.registro ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.num {
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: 'tnum' 1;
+}
+
+/* ══ botones y enlace: estados al apuntar ════════════════════════════ */
+
+/* «Agendar»: el único relleno cobre de la página (The Copper-Fill Rule). */
+.boton {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--cobre-honda);
+  color: #fff;
+  font-family: var(--font-jakarta), 'Segoe UI', system-ui, sans-serif;
+  font-weight: 700;
+  font-size: 0.95rem;
+  line-height: 1.2;
+  padding: 15px 24px;
+  border-radius: 3px;
+  text-decoration: none;
+  box-shadow: 0 2px 3px rgba(11, 17, 34, 0.16), 0 14px 28px -18px rgba(168, 90, 46, 0.85);
+  transition:
+    background-color 0.18s var(--curva),
+    transform 0.2s var(--curva),
+    box-shadow 0.2s var(--curva);
+}
+.boton:hover {
+  background: var(--cobre-presion);
+  transform: translateY(-2px);
+  box-shadow: 0 3px 6px rgba(11, 17, 34, 0.2), 0 20px 36px -20px rgba(168, 90, 46, 0.95);
+}
+.boton:active {
+  transform: translateY(0);
+  background: var(--cobre-presion);
+}
+.boton svg,
+.enlace svg,
+.boton-contorno svg {
+  flex: none;
+  transition: transform 0.22s var(--curva);
+}
+.boton:hover svg,
+.boton-contorno:hover svg {
+  transform: translateX(3px);
+}
+
+/* Botón de contorno: cualquier otra acción. Toma el color del texto, así que
+   sirve igual sobre papel y de noche. */
+.boton-contorno {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-jakarta), 'Segoe UI', system-ui, sans-serif;
+  font-weight: 700;
+  font-size: 0.95rem;
+  line-height: 1.2;
+  color: var(--tx-1);
+  text-decoration: none;
+  padding: 13px 22px;
+  border: 1.5px solid currentColor;
+  border-radius: 3px;
+  transition:
+    background-color 0.18s var(--curva),
+    color 0.18s var(--curva),
+    border-color 0.18s var(--curva);
+}
+.boton-contorno:hover {
+  background: var(--tx-1);
+  border-color: var(--tx-1);
+  color: var(--tx-inverso);
+}
+
+/* Enlace con filete: al apuntar, un segundo filete de cobre se traza de
+   izquierda a derecha en 0,36 s. */
+.enlace {
+  position: relative;
+  font-family: var(--font-jakarta), 'Segoe UI', system-ui, sans-serif;
+  font-weight: 700;
+  font-size: 0.95rem;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  padding-bottom: 5px;
+}
+.enlace::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 1px;
+  background: var(--filete);
+}
+.enlace::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 1.6px;
+  background: var(--cobre);
+  z-index: 1;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.36s var(--curva);
+}
+.enlace:hover::before {
+  transform: scaleX(1);
+}
+.enlace:hover svg {
+  transform: translateY(2px);
+}

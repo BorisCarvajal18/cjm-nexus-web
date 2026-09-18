@@ -1,0 +1,497 @@
+/* ══ la noche (tramo T) ════════════════════════════════════════════════
+   Una capa marino fija detrás de todo el contenido. Su opacidad la lleva el
+   scroll mientras entra la banda de KLINODA: se anima la opacidad de una
+   sola capa, que la tarjeta gráfica compone sin repintar la página. Solo
+   existe con movimiento (`.tema-vivo`, que pone Noche.jsx). */
+.noche {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background: var(--tinta);
+  opacity: 0;
+  pointer-events: none;
+  display: none;
+}
+.tema-vivo .noche {
+  display: block;
+}
+
+/* ══ M5 · KLINODA: la puerta ══════════════════════════════════════════
+   Un tablero del portal de empresa, tapado por una placa marino con el
+   logotipo en el centro. La placa se levanta, el logotipo viaja a la barra
+   del tablero, el tablero se dibuja, se retira a la derecha y deja sitio al
+   texto, la pregunta y el botón.
+
+   El tablero lleva la marca de KLINODA, no la de CJM Nexus: sus azules, su
+   verde y su ámbar salen de su propio base.html y solo viven aquí dentro.
+   Solo módulos que existen en su portal de empresa; sin nombres de persona,
+   sin datos clínicos y sin totales por aptitud (su código los prohíbe). */
+.puerta {
+  border-top: 1px solid var(--filete);
+  --sangria: clamp(0px, calc((100vw - 1240px) / 2 + 16px), 56px);
+  --kb: 1;
+  --kt: 1;
+  --k-acento: var(--klinoda-acento);
+  --k-acento-oscuro: var(--klinoda-acento-oscuro);
+  --k-acento-tinte: #eaf2fe;
+  --k-acento-claro: #8db8f8;
+  --k-tinta: var(--klinoda-tinta);
+  --k-tinta-3: #5c748c;
+  --k-filete: #e1ebf6;
+  --k-fondo: var(--klinoda-fondo);
+  --k-exito: var(--klinoda-exito);
+  --k-exito-tinte: #e7f7f1;
+  --k-atencion: var(--klinoda-atencion);
+  --k-atencion-tinte: #fdf3e3;
+}
+/* Sin movimiento (o sin JavaScript) la banda es oscura por sí misma. Con
+   movimiento es la página entera la que se hace de noche (tramo T). */
+html:not(.tema-vivo) .puerta {
+  background: var(--tinta);
+  color: #fff;
+  --tx-1: #ffffff;
+  --tx-2: rgba(255, 255, 255, 0.82);
+  --tx-3: rgba(255, 255, 255, 0.66);
+  --tx-inverso: var(--tinta);
+  --filete: rgba(255, 255, 255, 0.16);
+  --filete-fuerte: rgba(255, 255, 255, 0.55);
+}
+.puerta .marco {
+  padding-top: 88px;
+  padding-bottom: 88px;
+}
+
+/* En reposo: logotipo y etiqueta, el tablero y el texto. Es lo que ve quien
+   no tiene JavaScript, quien pide reducir movimiento y cualquier pantalla de
+   menos de 1024 × 640 px. */
+.k-area {
+  display: grid;
+  grid-template-columns: minmax(0, 1.3fr) minmax(0, 0.7fr);
+  gap: 64px;
+  align-items: center;
+}
+.k-caja {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 26px;
+  min-width: 0;
+}
+.k-marca {
+  order: -1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+}
+.k-marca img {
+  display: block;
+  width: clamp(190px, 20vw, 250px);
+  height: auto;
+}
+.k-etiqueta {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  color: var(--tx-2);
+  border: 1px solid var(--filete);
+  border-radius: 2px;
+  padding: 6px 12px;
+  white-space: nowrap;
+}
+.k-etiqueta::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--k-acento-claro);
+  flex: none;
+}
+.k-placa {
+  display: none;
+}
+.k-frase {
+  font-size: clamp(1.02rem, 1.25vw, 1.18rem);
+  line-height: 1.5;
+  color: var(--tx-2);
+  max-width: 42ch;
+}
+.k-frase:first-child {
+  color: var(--tx-1);
+}
+.k-frase + .k-frase {
+  margin-top: 0.75em;
+}
+.k-texto .pregunta {
+  margin-top: 28px;
+  font-family: var(--display);
+  font-size: clamp(1.9rem, 3vw, 2.75rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1.08;
+  max-width: 17ch;
+  text-wrap: balance;
+  color: var(--tx-1);
+}
+.k-texto .boton-contorno {
+  margin-top: 26px;
+}
+.puerta:not(.k-coreo) .k-chip {
+  display: none;
+}
+
+/* ── el tablero: medidas en em, para que --kb lo ajuste entero ─────────── */
+.k-tablero {
+  position: relative;
+  container-type: inline-size;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background: var(--k-fondo);
+  color: var(--k-tinta);
+  border-radius: 6px;
+  font-family: var(--texto);
+  font-size: calc(16px * var(--kb));
+  line-height: 1.55;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2), 0 48px 90px -48px rgba(0, 0, 0, 0.7);
+}
+.k-barra {
+  display: flex;
+  align-items: center;
+  gap: 1em;
+  padding: 0.85em 1.4em;
+  background: #fff;
+  border-bottom: 1px solid var(--k-filete);
+  flex: none;
+}
+.k-logo {
+  display: block;
+  height: 1.9em;
+  width: auto;
+}
+.k-seccion {
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: 0.95em;
+  letter-spacing: -0.01em;
+  padding-left: 1em;
+  border-left: 1px solid var(--k-filete);
+}
+.k-chip {
+  margin-left: auto;
+  font-size: 0.7em;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--k-acento-oscuro);
+  background: var(--k-acento-tinte);
+  padding: 0.5em 0.9em;
+  border-radius: 3px;
+  white-space: nowrap;
+}
+.k-cuerpo {
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  grid-template-rows: minmax(0, 1fr) auto;
+  gap: 1em;
+  padding: 1.2em 1.4em 1.4em;
+}
+.k-carta {
+  background: #fff;
+  border: 1px solid var(--k-filete);
+  border-radius: 5px;
+  padding: 1.1em 1.3em;
+  min-width: 0;
+}
+.k-rot {
+  font-size: 0.8em;
+  font-weight: 600;
+  color: var(--k-tinta-3);
+}
+.k-grande {
+  font-family: var(--display);
+  font-weight: 300;
+  font-size: 4.2em;
+  line-height: 1;
+  letter-spacing: -0.04em;
+  color: var(--k-tinta);
+  margin-top: 0.14em;
+}
+.k-plazos .k-grande {
+  font-size: 6.4em;
+  margin-top: 0.06em;
+}
+.k-plazos {
+  grid-row: 1;
+  grid-column: 1;
+  display: flex;
+  flex-direction: column;
+}
+/* La línea de los próximos 90 días: tres tramos, un punto por vencimiento. */
+.k-linea {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  margin-top: auto;
+  padding-top: 1.2em;
+}
+.k-linea::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: calc(1.2em + 0.65em - 1.5px);
+  height: 3px;
+  background: var(--k-filete);
+  transform: scaleX(var(--raya, 1));
+  transform-origin: left;
+}
+.k-tramo {
+  position: relative;
+  min-width: 0;
+  padding-right: 0.8em;
+}
+.k-puntos {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+  height: 1.3em;
+}
+.k-puntos i {
+  display: block;
+  width: 1.3em;
+  height: 1.3em;
+  border-radius: 50%;
+  background: var(--k-acento);
+  box-shadow: 0 0 0 0.28em #fff;
+}
+.k-tramo:nth-child(1) .k-puntos i {
+  background: var(--k-acento-oscuro);
+}
+.k-tramo:nth-child(3) .k-puntos i {
+  background: var(--k-acento-claro);
+}
+.k-tramo > span {
+  display: block;
+  margin-top: 0.8em;
+  font-size: 0.76em;
+  line-height: 1.3;
+  color: var(--k-tinta-3);
+}
+.k-tramo > span b {
+  display: block;
+  font-family: var(--display);
+  font-size: 2.3em;
+  font-weight: 300;
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  color: var(--k-tinta);
+  margin-bottom: 0.12em;
+}
+.k-minis {
+  grid-row: 1;
+  grid-column: 2;
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  gap: 1em;
+  min-height: 0;
+}
+.k-mini {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.k-mini .k-grande {
+  font-size: 4.2em;
+}
+.k-mini.aviso .k-grande {
+  color: var(--k-atencion);
+}
+.k-mini.bien .k-grande {
+  color: var(--k-exito);
+}
+.k-filas {
+  grid-row: 2;
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1em;
+}
+.k-fila {
+  display: flex;
+  flex-direction: column;
+  gap: 0.55em;
+  background: #fff;
+  border: 1px solid var(--k-filete);
+  border-radius: 5px;
+  padding: 0.8em 1em;
+  min-width: 0;
+}
+.k-cargo {
+  font-weight: 600;
+  font-size: 0.9em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.k-pie {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.6em;
+}
+.k-apto {
+  font-size: 0.66em;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: var(--k-exito);
+  background: var(--k-exito-tinte);
+  padding: 0.35em 0.6em;
+  border-radius: 3px;
+  white-space: nowrap;
+}
+.k-apto.obs {
+  color: var(--k-atencion);
+  background: var(--k-atencion-tinte);
+}
+.k-vence {
+  font-size: 0.76em;
+  color: var(--k-tinta-3);
+  white-space: nowrap;
+}
+@container (max-width: 700px) {
+  .k-cuerpo {
+    grid-template-columns: 1fr;
+    grid-template-rows: none;
+  }
+  .k-plazos,
+  .k-minis,
+  .k-filas {
+    grid-column: 1;
+    grid-row: auto;
+  }
+  .k-minis {
+    grid-template-rows: none;
+    grid-template-columns: 1fr 1fr;
+  }
+  .k-filas {
+    grid-template-columns: 1fr;
+  }
+  .k-grande {
+    font-size: 3.2em;
+  }
+  .k-plazos .k-grande {
+    font-size: 5em;
+  }
+  .k-mini .k-grande {
+    font-size: 3em;
+  }
+  /* En un tramo estrecho los puntos no caben a 1,3 em y se aplastaban en
+     óvalos: bajan de tamaño y no encogen. */
+  .k-puntos {
+    gap: 0.3em;
+  }
+  .k-puntos i {
+    flex: none;
+    width: 0.85em;
+    height: 0.85em;
+    box-shadow: 0 0 0 0.2em #fff;
+  }
+}
+
+/* ── la escena: la añade el guion SOLO con ≥1024 × 640 px y sin «reducir
+   movimiento». Se fija 2,1 pantallas. Tablero y texto se colocan por
+   transformación; la letra de los dos (--kb y --kt) baja en pasos hasta
+   que caben en el alto disponible. ─────────────────────────────────────── */
+.k-coreo .k-escenario {
+  height: 100vh;
+  padding: calc(var(--cabecera) + clamp(14px, 4vh, 40px)) 0 clamp(14px, 4vh, 40px);
+}
+.k-coreo .k-escenario .marco {
+  height: 100%;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+.k-coreo .k-area {
+  display: block;
+  position: relative;
+  height: 100%;
+  margin: 0 calc(-1 * var(--sangria));
+}
+.k-coreo .k-caja {
+  position: absolute;
+  left: 0;
+  top: 0;
+  display: block;
+  transform-origin: 0 0;
+  will-change: transform;
+}
+.k-coreo .k-tablero {
+  height: 100%;
+}
+.k-coreo .k-placa {
+  display: block;
+  position: absolute;
+  inset: 0;
+  border-radius: 6px;
+  background: var(--tinta);
+  pointer-events: none;
+}
+.k-coreo .k-marca {
+  position: absolute;
+  inset: 0;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  pointer-events: none;
+}
+.k-coreo .k-marca img {
+  width: min(34%, 460px);
+}
+.k-coreo .k-etiqueta {
+  font-size: 0.95rem;
+  padding: 8px 15px;
+}
+.k-coreo .k-texto {
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+.k-coreo .k-frase {
+  font-size: calc(var(--kt) * clamp(1.02rem, 1.25vw, 1.18rem));
+}
+.k-coreo .k-texto .pregunta {
+  margin-top: calc(28px * var(--kt));
+  font-size: calc(var(--kt) * clamp(2rem, 3.2vw, 2.9rem));
+}
+.k-coreo .k-texto .boton-contorno {
+  margin-top: calc(26px * var(--kt));
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .noche {
+    display: none !important;
+  }
+}
+@media (max-width: 1100px) {
+  .puerta .marco {
+    padding-top: 64px;
+    padding-bottom: 64px;
+  }
+  .k-area {
+    grid-template-columns: 1fr;
+    gap: 44px;
+  }
+}
+@media (max-width: 620px) {
+  .puerta .marco {
+    padding-top: 52px;
+    padding-bottom: 52px;
+  }
+}

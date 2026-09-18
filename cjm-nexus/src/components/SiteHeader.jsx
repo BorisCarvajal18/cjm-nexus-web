@@ -20,7 +20,7 @@
  * tinta, que es lo que se lee sobre papel.
  *
  * EN LA PORTADA, la marca, el menú y los idiomas (`.sec`) entran con ella,
- * escalonados (registro.css). En las demás páginas `.sec` no hace nada.
+ * escalonados (estilos/portada.css). En las demás páginas `.sec` no hace nada.
  *
  * BAJO 1000 PX sale el menú, y BAJO 620 los idiomas y el « · 20 min» del
  * botón. Para no dejar el teléfono sin navegación, en su lugar aparece un

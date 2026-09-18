@@ -2,7 +2,7 @@
  * <SiteFooter /> — pie de todas las páginas, en el sistema del registro.
  *
  * Sigue al cierre en marino hondo, con filetes en lugar de cajas y el
- * subrayado cobre al apuntar de los enlaces (estilos en app/registro.css,
+ * subrayado cobre al apuntar de los enlaces (estilos en app/estilos/cierre.css,
  * `.pie-sitio`). Es una zona oscura: avisa a la cabecera con <DarkSurface />,
  * que es lo único que viaja al navegador.
  *
