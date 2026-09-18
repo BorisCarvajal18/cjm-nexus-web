@@ -2,7 +2,24 @@
 
 **Para:** Richard
 **De:** Boris
-**Actualizado:** 5 de septiembre de 2026
+**Actualizado:** 18 de septiembre de 2026
+
+> ## ✅ RESUELTO — 18 de septiembre de 2026
+>
+> Richard respondió todo. La página de dirección financiera ya no tiene nada bloqueado.
+>
+> 1. **Plazos.** El diagnóstico tarda **de una a dos semanas**. El calendario ya no dice
+>    «Semana 2» como si fuera fijo: el diagnóstico dice «De una a dos semanas» y la puesta en
+>    marcha, «Las dos semanas siguientes».
+> 2. **El diagnóstico se presenta en reunión**, como ya decía la página.
+> 3. **La reunión de dirección es mensual.**
+> 4. **Sí, se levanta un acta** de cada reunión.
+> 5. **La forma de cobro no aparece en la web.** Comprobado en todas las páginas y en el brochure:
+>    ninguna la menciona, y «¿Cuánto cuesta?» remite a la reunión.
+> 6. **Preguntas frecuentes:** aún no hay clientes fijos, así que se quedan las propuestas. Están
+>    anotadas en `.impeccable/CONSTRUCCION.md` para revisarlas cuando lleguen clientes reales.
+>
+> Lo de abajo se conserva como registro de lo que se preguntó.
 
 Las tres páginas de servicios ya están escritas y montadas. Casi todo sale del
 brochure y de lo que ya hacemos, pero quedan **tres cosas escritas suponiendo**.

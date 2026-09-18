@@ -183,13 +183,15 @@ export const finanzas = {
     ],
   },
 
-  /* SUPUESTO — LO MÁS IMPORTANTE DE ESTA PÁGINA.
-     El arranque ya está confirmado por el dueño (5-sep-2026): el primer paso
-     es una conversación estratégica sobre el negocio, no una revisión de doce
-     meses de estados financieros ni una reunión con el contador del cliente.
-     LO QUE SIGUE SIN CONFIRMAR son los plazos —semana 1, semana 2, semanas 3
-     y 4— y si la reunión de dirección es mensual o de otra periodicidad.
-     Es la pregunta 1 de `docs/preguntas-richard.md`. */
+  /* LO MÁS IMPORTANTE DE ESTA PÁGINA. Confirmado por Richard (18-sep-2026,
+     `docs/preguntas-richard.md`, pregunta 1):
+     · el primer paso es una conversación estratégica sobre el negocio, no una
+       revisión de doce meses de estados financieros;
+     · el diagnóstico tarda de una a dos semanas, así que su paso no lleva una
+       semana fija, y el siguiente se cuenta desde que termina;
+     · el diagnóstico se presenta en reunión;
+     · la reunión de dirección es mensual y de cada una se levanta un acta.
+     La forma de cobro no aparece en la web. */
   month: {
     eyebrow: 'Cómo trabajamos',
     title: 'Así es el primer mes, y así son todos los siguientes.',
@@ -205,14 +207,14 @@ export const finanzas = {
       },
       {
         step: '02',
-        when: 'Semana 2',
+        when: 'De una a dos semanas',
         title: 'Diagnóstico financiero',
         text: 'Un documento con el estado real del negocio: rentabilidad por línea, estructura de costos, ciclo de caja y los tres o cuatro puntos que más dinero te están costando hoy. Se presenta en reunión y se discute; no se envía por correo y ya.',
         gives: 'Lo que recibes: el diagnóstico y una lista priorizada de qué atacar primero.',
       },
       {
         step: '03',
-        when: 'Semanas 3 y 4',
+        when: 'Las dos semanas siguientes',
         title: 'Puesta en marcha',
         text: 'Montamos el tablero gerencial y la proyección de flujo de caja a trece semanas con los datos de tu empresa, con los indicadores que importan en tu sector y no con una plantilla genérica.',
         gives: 'Lo que recibes: el tablero funcionando, con tus cifras dentro.',
@@ -313,12 +315,12 @@ export const finanzas = {
     },
   },
 
-  /* SUPUESTO — las seis preguntas de abajo son las que yo esperaría, no las
-     que Richard escucha de verdad en sus reuniones. Las respuestas son
-     conservadoras a propósito: ninguna promete plazo ni resultado, y la del
-     precio no lleva cifra por decisión del dueño —los números se hablan en la
-     reunión, nunca en la web.
-     Es la pregunta 2 de `docs/preguntas-richard.md`. */
+  /* PREGUNTAS PROPUESTAS. Aún no hay clientes fijos de dirección financiera
+     que digan cuáles se hacen de verdad, así que se quedan estas (decidido con
+     Richard el 18-sep-2026). Se revisan cuando lleguen clientes reales: ver
+     «Revisar con clientes reales» en .impeccable/CONSTRUCCION.md. Las
+     respuestas son conservadoras a propósito: ninguna promete plazo ni
+     resultado, y la del precio no lleva cifra ni forma de cobro. */
   faq: {
     eyebrow: 'Preguntas frecuentes',
     title: 'Lo que preguntan antes de empezar.',

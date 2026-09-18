@@ -33,7 +33,8 @@ las páginas interiores en el sistema del registro, los textos de KLINODA con la
 
 **Lo siguiente, fuera de estas piezas:** traducciones EN/DE (ahora que el español está casi cerrado),
 imágenes Open Graph con el titular nuevo, páginas legales, página «Nosotros», isotipo y logotipo de
-KLINODA vectoriales, vídeo propio, y las confirmaciones de Richard.
+KLINODA vectoriales y vídeo propio. Las confirmaciones de Richard llegaron el 18-sep-2026: la
+página de dirección financiera ya no tiene nada bloqueado.
 
 ## Piezas
 
@@ -138,8 +139,16 @@ y también las variables CSS.
 ## Pendientes fuera de estas piezas
 
 Isotipo vectorial de una tinta · material de vídeo propio · traducciones EN/DE · imágenes Open
-Graph con el titular nuevo · páginas legales · página «Nosotros» · confirmaciones de Richard
-(`cjm-nexus/docs/preguntas-richard.md`).
+Graph con el titular nuevo · páginas legales · página «Nosotros».
+
+## Revisar con clientes reales
+
+Textos que se quedan como propuesta porque todavía no hay con quién contrastarlos. No bloquean la
+publicación; se revisan cuando haya clientes.
+
+| Dónde | Qué | Por qué |
+|---|---|---|
+| `servicios.es.js` → `finanzas.faq` | Las siete preguntas frecuentes de dirección financiera | Son las que Boris espera, no las que escucha Richard: aún no hay clientes fijos (Richard, 18-sep-2026) |
 
 ---
 
@@ -426,3 +435,17 @@ Queda solo en `/sistema` (el catálogo interno, pieza 11): «En desarrollo · pi
 390 × 844, y con «reducir movimiento»: sin desbordamiento, sin errores; las escenas siguen fijando
 3,1 y 2,1 pantallas y la noche llega a 1. Con «reducir movimiento» lo único con opacidad 0 en la
 portada es el vídeo y la capa de la noche, que en ese modo no se muestran.
+
+### 2026-09-18 — respuestas de Richard (dirección financiera)
+
+- **Plazos:** el diagnóstico tarda de una a dos semanas. En `finanzas.month`, el paso 02 pasa de
+  «Semana 2» a «De una a dos semanas» y el 03 de «Semanas 3 y 4» a «Las dos semanas siguientes»,
+  que se cuentan desde el diagnóstico. «Semana 1» y «Cada mes, a partir de aquí» se quedan.
+- **Confirmado, sin cambios en la página:** el diagnóstico se presenta en reunión; la reunión de
+  dirección es mensual; se levanta un acta de cada una.
+- **La forma de cobro no aparece en la web.** Buscado en todos los textos (`src/content`, `lib`,
+  componentes) y en el brochure en PDF: ninguno dice mensualidad, horas, proyecto, tarifa ni
+  cuota. Las dos respuestas a «¿Cuánto cuesta?» remiten a la reunión sin cifra ni forma.
+- **Preguntas frecuentes:** se quedan las propuestas, en «Revisar con clientes reales».
+- Se quita el pendiente «confirmaciones de Richard»; `docs/preguntas-richard.md` queda marcado
+  como resuelto. Fuera los comentarios `SUPUESTO` de la página financiera. PRODUCT.md, al día.

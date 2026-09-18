@@ -30,7 +30,7 @@ El segundo diferencial es **el método como garantía**, no como promesa: decisi
 - **Mercados reales hoy: Ecuador y Estados Unidos.** Confirmado el 12 de septiembre de 2026. Alemania es sede de parte del equipo (Boris), no mercado con actividad todavía. Europa y el resto de Latinoamérica son aspiración: no se presentan como negocio en marcha.
 - **La conversión es una reunión, no una compra.** Diagnóstico ejecutivo de 20 minutos vía Calendly (`CALENDLY_URL` en `cjm-nexus/src/lib/site.js`), más WhatsApp Ecuador, WhatsApp Alemania y correo como canales directos.
 - **Idiomas de trabajo:** español, inglés y alemán.
-- **Ritmo del servicio financiero** (redactado, pendiente de confirmación de Richard): semana 1 conversación estratégica con la información que el cliente ya tenga · semana 2 diagnóstico presentado en reunión · semanas 3-4 tablero gerencial y flujo de caja a trece semanas · después, reunión de dirección mensual con acta escrita.
+- **Ritmo del servicio financiero** (confirmado por Richard el 18 de septiembre de 2026): semana 1 conversación estratégica con la información que el cliente ya tenga · el diagnóstico tarda de una a dos semanas y se presenta en reunión · las dos semanas siguientes, tablero gerencial y flujo de caja a trece semanas · después, reunión de dirección mensual con acta de cada reunión. La forma de cobro no se publica.
 - **Ritmo del servicio web:** día 1 conversación y estructura por escrito · días siguientes construcción con enlace navegable y correcciones · menos de una semana hasta publicación. La semana empieza a contar cuando el cliente entrega textos, logotipo e imágenes.
 - **CJM Nexus no maneja ni mueve dinero de clientes** y no pide acceso a cuentas bancarias. Trabaja sobre reportes.
 
@@ -52,12 +52,7 @@ El segundo diferencial es **el método como garantía**, no como promesa: decisi
 
 **Decisiones abiertas — no inventar la respuesta**
 
-Recogidas en `cjm-nexus/docs/preguntas-richard.md` y marcadas con el comentario `SUPUESTO` en `cjm-nexus/src/content/servicios.es.js`. Están escritas en la web a partir de suposiciones razonables y esperan la confirmación de Richard:
-
-1. Plazos reales del servicio financiero, y si el diagnóstico se presenta en reunión o se entrega y ya.
-2. Frecuencia real de la reunión de dirección (mensual, quincenal, según cliente) y si se levanta acta en finanzas como se hace en tecnología.
-3. Forma de cobro (mensualidad, proyecto, horas). No sale en la web, pero condiciona qué se puede afirmar.
-4. Cuáles son las preguntas que de verdad le hacen a Richard antes de firmar. Las seis actuales son las que Boris esperaría, no las que Richard escucha.
+Las preguntas a Richard sobre el servicio financiero quedaron resueltas el 18 de septiembre de 2026 (`cjm-nexus/docs/preguntas-richard.md`). Lo único que sigue abierto de esa lista son las preguntas frecuentes de dirección financiera: aún no hay clientes fijos, así que se quedan las propuestas y se revisan cuando los haya (`.impeccable/CONSTRUCCION.md`, «Revisar con clientes reales»).
 
 Otras cosas sin resolver: no existe página «Nosotros» (el menú apunta a la banda de la portada), no existen las páginas legales de Privacidad y Aviso legal (pendientes de la entidad legal de la firma), no hay página de empresa en LinkedIn (`SOCIAL_PROFILES` está vacío a propósito). Cómo nombra la web la relación entre CJM Nexus y KLINODA ya está decidido (regla 8, 18 de septiembre de 2026), salvo la confirmación del abogado sobre la palabra «Grupo». Quién es el cliente de KLINODA también (regla 7, 15 de septiembre de 2026).
 
