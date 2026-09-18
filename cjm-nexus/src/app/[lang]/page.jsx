@@ -32,7 +32,7 @@ import FinalCta from '../../blocks/FinalCta';
 import Method from '../../blocks/Method';
 import Credenciales from '../../blocks/registro/Credenciales';
 import Portada from '../../blocks/registro/Portada';
-import TwoFields from '../../blocks/TwoFields';
+import QueHacemos from '../../blocks/registro/QueHacemos';
 import SiteFooter from '../../components/SiteFooter';
 import BackToTop from '../../components/ui/BackToTop';
 import SiteHeader from '../../components/SiteHeader';
@@ -49,7 +49,7 @@ export default function HomePage({ params }) {
       <main>
         <Portada content={home.portada} />
         <Credenciales content={home.credenciales} />
-        <TwoFields content={home.fields} mockups={home.mockups} lang={lang} />
+        <QueHacemos content={home.hacemos} lang={lang} />
         <Method content={home.method} />
         <FinalCta content={home.cta} />
       </main>

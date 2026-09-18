@@ -24,6 +24,30 @@
    ÍNDICE DE SERVICIOS  ·  /es/servicios
    ───────────────────────────────────────────────────────────────────── */
 export const servicios = {
+  /* Las interfaces de muestra de las dos tarjetas. Vivían en home.es.js;
+     se quedan aquí hasta rehacer esta página con el sistema nuevo (pieza 9). */
+  mockups: {
+    finanzas: {
+      title: 'Tablero gerencial',
+      subject: 'Junio',
+      kpis: [
+        { label: 'Ventas', value: '$1,24 M', delta: '▲ 12 %', tone: 'ok' },
+        { label: 'Margen', value: '34 %', delta: '▲ 3 pt', tone: 'ok' },
+        { label: 'Caja', value: '45 d', delta: '▼ 4 d', tone: 'warn' },
+      ],
+      seriesLabel: 'Ventas contra meta',
+      series: [42, 48, 45, 58, 63, 72, 78, 88, 96],
+      alert: 'Cartera vencida por encima de 60 días',
+    },
+    plataforma: {
+      title: 'De tus datos al documento',
+      sources: ['Contabilidad', 'Ventas', 'Operación'],
+      core: 'Plataforma',
+      outputs: ['Tablero', 'Documento firmado', 'Alertas'],
+      foot: 'Reglas, permisos y trazabilidad en el centro, no en la pantalla.',
+    },
+  },
+
   meta: {
     title: 'Servicios: dirección financiera y software a medida | CJM Nexus',
     description:

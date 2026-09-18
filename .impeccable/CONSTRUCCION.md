@@ -25,7 +25,7 @@ Las capturas de verificación van a `.impeccable/construccion/`.
 | 2 | Cabecera | ✅ Hecha · 2026-09-18 | Ver el registro de la sesión. Tres estados como `SiteHeader` (transparente sobre la portada, papel al bajar, marino hondo sobre oscuro). Isotipo claro ya en `public/marca/`. Menú fuera bajo 1000 px e idiomas fuera bajo 620 px |
 | 3 | Portada | ✅ Hecha · 2026-09-18 | Vídeo: `hero.webm`, `hero.mp4` y `hero-poster.jpg` de `mocks/portada/img/` a `public/`, y el `<video>` en `Hero.jsx`. El titular entra palabra a palabra desde su máscara y la imagen pasa de 1,05 a 1. **Texto abierto:** la entrada atribuye los quince años a la firma (PLAN.md, ronda 5 §2) |
 | 4 | Credenciales | ✅ Hecha · 2026-09-18 | 15+, 100+ y 3, con atribución a Richard por su nombre. Las notas y la frase de los tres nombres son **texto propuesto sin aprobar** |
-| 5 | Escena de los tableros («Qué hacemos») | Pendiente | Un preset nuevo en `lib/animations.js` con `CONSULTA_ESCENAS`, `ESCENA.tableros` y `AJUSTE_AL_SOLTAR`. Se fija 3,1 pantallas y la letra se ajusta con `--k` |
+| 5 | Escena de los tableros («Qué hacemos») | ✅ Hecha · 2026-09-18 | Un preset nuevo en `lib/animations.js` con `CONSULTA_ESCENAS`, `ESCENA.tableros` y `AJUSTE_AL_SOLTAR`. Se fija 3,1 pantallas y la letra se ajusta con `--k` |
 | 6 | La noche | Pendiente | Las variables de tema (`--suelo`, `--tx-*`, `--filete*`) ya existen. Falta la capa fija, el disparador que llama a `marcarOscuro()` y el paso corto del 50 al 59 % |
 | 7 | Escena de KLINODA | Pendiente | 2,1 pantallas. Poner al día `privacy.mockup` en `klinoda.es.js` con las etiquetas reales («APTO», «APTO EN OBSERVACIÓN», «PERIÓDICO»…) |
 | 8 | Cierre y pie | Pendiente | El titular y los tres bloques del cierre son **texto propuesto sin aprobar** (PLAN.md, ronda 2 §7) |
@@ -242,3 +242,33 @@ el HTML servido.
 disparo las cifras van por 12 y 80; al final, 15+, 100+ y 3 con opacidad 1. Con «reducir
 movimiento», todo quieto con su valor final. En 390 px, las cifras apiladas con filetes
 horizontales.
+
+**Pieza 5 — escena de los tableros** (`blocks/registro/QueHacemos.jsx`, interfaces en
+`components/registro/TableroGerencial.jsx` y `PortalDocumentos.jsx`, textos en `home.es.js` →
+`hacemos`):
+
+- El preset nuevo está en `lib/animations.js`, bloque «EL REGISTRO — los tableros y las escenas
+  fijadas»: `armaFinanzas`, `armaSoftware`, `lineasDe`, `escenaTableros` y el ajuste al soltar
+  (`ajustePausas` y `snapDeEscena`, que respetan `AJUSTE_AL_SOLTAR` y servirán a KLINODA). Usa
+  `ESCENA.tableros`, `SCRUB`, `ESCALA_ALTO` y `UMBRAL_ESCENAS`, y el guion es el de la maqueta: A,
+  R1, F1–F3, R2, S1–S3.
+- Bajo 1024 × 640 o con «reducir movimiento», filas: cada tablero se dibuja al asomar y su texto
+  llega por líneas; con «reducir movimiento», quieto y entero.
+- Textos de la maqueta, que no coinciden del todo con los que tenía `home.es.js` (la lista y la
+  entrada de la línea digital son más cortas). Los botones «Ver el servicio» llevan a las dos
+  páginas de servicio.
+- Sale `blocks/TwoFields.jsx` y, con él, el tercer panel de KLINODA de la portada, que decía «nuestra
+  plataforma para médicos ocupacionales» y «la prueba de lo que construimos». KLINODA vuelve a la
+  portada en la pieza 7.
+- `/servicios` usaba las maquetas de `home.es.js`: pasan a `servicios.es.js` → `servicios.mockups`
+  hasta la pieza 9.
+
+**Verificación** (producción): build sin errores. A 1536 × 730 (`p5-escena-*`): el escenario se fija
+**3,10 pantallas** exactas (el espaciador mide 4,1), tableros de 588 × 544, `--k` 1; en A, los dos
+tableros lado a lado; en F3, finanzas a la derecha con su texto; en S3, software a la izquierda con el
+suyo; ningún error. Móvil y «reducir movimiento» (`p5-filas-*`): sin fijado; con «reducir
+movimiento», 0 elementos ocultos y la cuenta en 12.
+
+**Visto al verificar, sin tocar:** el botón «volver arriba» (`BackToTop`, del sistema anterior)
+flota sobre la escena abajo a la derecha. No está en la maqueta ni en DESIGN.md. Se decide en la
+pieza 8.

@@ -23,7 +23,7 @@ import FinalCta from '../../../blocks/FinalCta';
 import SiteFooter from '../../../components/SiteFooter';
 import SiteHeader from '../../../components/SiteHeader';
 import BackToTop from '../../../components/ui/BackToTop';
-import { getHome, getServicios } from '../../../content';
+import { getServicios } from '../../../content';
 import { defaultLanguage, languages } from '../../../i18n/settings';
 import { pageMetadata } from '../../../lib/seo';
 
@@ -39,7 +39,6 @@ export default function ServiciosPage({ params }) {
   const content = getServicios(lang);
   // Las interfaces de muestra son las mismas de la portada: quien llega desde
   // allí reconoce cada servicio antes de leer el titular.
-  const { mockups } = getHome(lang);
 
   return (
     <>
@@ -48,7 +47,7 @@ export default function ServiciosPage({ params }) {
         <PageHero
           content={{ ...content.hero, secondaryHref: '#contenido' }}
         />
-        <ServiceCards content={content} mockups={mockups} lang={lang} />
+        <ServiceCards content={content} mockups={content.mockups} lang={lang} />
         <FeatureGrid
           content={{
             eyebrow: content.together.eyebrow,

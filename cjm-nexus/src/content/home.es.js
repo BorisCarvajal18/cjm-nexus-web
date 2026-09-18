@@ -68,89 +68,93 @@ export const home = {
       '**Richard Carvajal** dirige las finanzas, **Boris Carvajal** la tecnología y **Mirella Llanga** la gerencia general.',
   },
 
-  fields: {
-    eyebrow: 'Qué hacemos · desliza',
-    panels: [
+  /* «Qué hacemos» (DESIGN.md, M4 y la escena de los tableros). Textos de la
+     maqueta aprobada. Las dos líneas pesan lo mismo (regla 1 de PRODUCT.md):
+     el orden lo marcan «Servicio 01» y «Servicio 02», y nada más.
+
+     Los números de las dos interfaces de muestra ilustran cómo se ve un
+     entregable. No son resultados propios ni de un cliente: por eso llevan
+     debajo «Interfaz de muestra · datos ilustrativos». */
+  hacemos: {
+    titulo: 'Qué hacemos',
+    rotulo: 'Dos líneas, una firma. La misma casa define el número y construye el sistema que lo produce.',
+    muestra: 'Interfaz de muestra · datos ilustrativos',
+    servicios: [
       {
-        index: '01',
-        tone: 'navy',
-        mockup: 'finanzas',
-        eyebrow: 'Servicio 01',
-        title: 'Dirección financiera externa.',
-        text: 'Un director financiero para dueños y gerentes que necesitan claridad para decidir, con entregables concretos cada mes.',
-        items: [
+        ref: 'Servicio 01',
+        // Dos líneas fijas en la escena.
+        titulo: ['Dirección financiera', 'externa.'],
+        lead: 'Un director financiero para dueños y gerentes que necesitan claridad para decidir, con entregables concretos cada mes.',
+        lista: [
           'Diagnóstico financiero ejecutivo',
-          'Flujo de caja proyectado a trece semanas',
-          'Tablero de indicadores y control de costos',
+          'Flujo de caja a trece semanas',
+          'Indicadores y control de costos',
           'Rentabilidad por línea de negocio',
         ],
-        cta: { label: 'Ver el servicio', href: '/servicios/direccion-financiera', variant: 'copper' },
+        boton: 'Ver el servicio',
+        href: '/servicios/direccion-financiera',
       },
       {
-        index: '02',
-        tone: 'copper',
-        mockup: 'plataforma',
-        eyebrow: 'Servicio 02',
-        title: 'Páginas web y sistemas a medida.',
-        text: 'Tu página web profesional publicada en menos de una semana. Y el sistema completo cuando la operación lo pide: normativa, documentos oficiales y datos sensibles.',
-        items: [
-          'Página web a medida, publicada en días',
+        ref: 'Servicio 02',
+        titulo: ['Páginas web y', 'sistemas a medida.'],
+        lead: 'Tu página web profesional publicada en menos de una semana. Y el sistema completo cuando la operación lo pide.',
+        lista: [
+          'Página web a medida, en días',
           'Software especializado por sector',
           'Tableros conectados a tus datos',
-          'Privacidad y trazabilidad desde el diseño',
+          'Privacidad y trazabilidad',
         ],
-        cta: { label: 'Ver el servicio', href: '/servicios/soluciones-digitales', variant: 'navy' },
-      },
-      {
-        index: '03',
-        tone: 'stone',
-        mockup: 'klinoda',
-        eyebrow: 'Producto propio',
-        title: 'KLINODA: la prueba de lo que construimos.',
-        text: 'KLINODA es nuestra plataforma para médicos ocupacionales en Ecuador. Digitaliza un trámite obligatorio lleno de reglas, formularios oficiales y datos sensibles, y lo deja resuelto en minutos. No es un servicio médico: es la prueba de lo que construimos para cualquier sector con normativa estricta.',
-        items: [
-          'Formulario oficial completo por bloques',
-          'Certificados firmados electrónicamente',
-          'La empresa ve la aptitud; nunca lo clínico',
-        ],
-        cta: { label: 'Conocer KLINODA', href: '/klinoda', variant: 'navy' },
+        boton: 'Ver el servicio',
+        href: '/servicios/soluciones-digitales',
       },
     ],
-  },
-
-  /* Interfaces de muestra de los tres paneles. Son ilustraciones del
-     entregable, no resultados: por eso los números son redondos y las
-     empresas genéricas. */
-  mockups: {
-    finanzas: {
-      title: 'Tablero gerencial',
-      subject: 'Junio',
+    tablero: {
+      titulo: 'Tablero gerencial',
+      periodo: 'Junio 2026',
       kpis: [
-        { label: 'Ventas', value: '$1,24 M', delta: '▲ 12 %', tone: 'ok' },
-        { label: 'Margen', value: '34 %', delta: '▲ 3 pt', tone: 'ok' },
-        { label: 'Caja', value: '45 d', delta: '▼ 4 d', tone: 'warn' },
+        { nombre: 'Ventas', cambio: '▲ 12 %', valor: '$1,24 M', chispa: '0,12 9,11 18,12 27,8 36,7 45,4 55,2' },
+        { nombre: 'Margen', cambio: '▲ 3 pt', valor: '34 %', chispa: '0,10 9,12 18,9 27,10 36,6 45,7 55,4' },
+        { nombre: 'Caja', cambio: '▼ 4 d', valor: '45 d', aviso: true, chispa: '0,4 9,5 18,3 27,7 36,8 45,11 55,12' },
+        { nombre: 'Cartera', cambio: '▲ 2 pt', valor: '18 %', aviso: true, chispa: '0,11 9,10 18,11 27,8 36,9 45,6 55,5' },
       ],
-      seriesLabel: 'Ventas contra meta',
-      series: [42, 48, 45, 58, 63, 72, 78, 88, 96],
-      alert: 'Cartera vencida por encima de 60 días',
-    },
-    plataforma: {
-      title: 'De tus datos al documento',
-      sources: ['Contabilidad', 'Ventas', 'Operación'],
-      core: 'Plataforma',
-      outputs: ['Tablero', 'Documento firmado', 'Alertas'],
-      foot: 'Reglas, permisos y trazabilidad en el centro, no en la pantalla.',
-    },
-    klinoda: {
-      title: 'Portal de empresa',
-      subject: 'Vista de aptitud',
-      columns: ['Cargo', 'Evaluación', 'Aptitud'],
-      rows: [
-        ['Operador de planta', 'Periódica', 'ok', 'Apto'],
-        ['Supervisora de turno', 'Ingreso', 'ok', 'Apto'],
-        ['Conductor', 'Periódica', 'warn', 'Con observaciones'],
+      grafico: 'Ventas contra meta',
+      real: 'Real',
+      meta: 'Meta',
+      ejeY: ['1,4 M', '1,1 M', '0,8 M', '0,5 M'],
+      ejeX: ['ENE', 'MAR', 'MAY', 'JUL', 'SEP'],
+      tabla: ['Rentabilidad por línea', 'Ingresos', 'Margen'],
+      lineas: [
+        { nombre: 'Servicios', ingresos: '$612 K', barra: 1, margen: '38 %' },
+        { nombre: 'Producto', ingresos: '$431 K', barra: 0.82, margen: '31 %' },
+        { nombre: 'Mantenimiento', ingresos: '$197 K', barra: 0.63, margen: '24 %' },
       ],
-      foot: 'Diagnósticos, antecedentes y exámenes no existen en esta vista.',
+      alerta: 'Cartera vencida por encima de 60 días',
+    },
+    portal: {
+      titulo: 'Documentos y trazabilidad',
+      rotulo: 'Portal de empresa',
+      columnas: ['Documento', 'Estado'],
+      documentos: [
+        { nombre: 'Informe mensual de resultados', origen: 'Contabilidad · 12 jun', estado: 'Firmado', sel: true },
+        { nombre: 'Acta de reunión de dirección', origen: 'Dirección · 05 jun', estado: 'Firmado' },
+        { nombre: 'Conciliación bancaria', origen: 'Contabilidad · 04 jun', estado: 'En revisión', tipo: 'rev' },
+        { nombre: 'Orden de compra 2418', origen: 'Operación · 03 jun', estado: 'Borrador', tipo: 'bor' },
+        { nombre: 'Reporte de inventario', origen: 'Operación · 01 jun', estado: 'Firmado' },
+      ],
+      cuantos: '5 de 128 documentos',
+      periodo: 'Últimos 30 días',
+      traza: 'Traza del documento',
+      sucesos: [
+        ['Crea el documento', '09:12 · Operación'],
+        ['Valida 12 reglas', '09:20 · Sistema'],
+        ['Adjunta el respaldo', '09:26 · Contabilidad'],
+        ['Firma electrónica', '09:34 · Dirección'],
+        ['Sella y entrega', '09:34 · Sistema'],
+      ],
+      reglas: 'Reglas cumplidas',
+      cumplidas: 12,
+      total: 12,
+      pie: 'Reglas, permisos y trazabilidad en el centro, no en la pantalla.',
     },
   },
 
