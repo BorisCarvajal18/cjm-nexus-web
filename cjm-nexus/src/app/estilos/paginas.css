@@ -379,9 +379,6 @@
 }
 
 /* ── la banda de KLINODA en otras páginas: una puerta ──────────────── */
-.banda-producto {
-  --k-acento-claro: #8db8f8;
-}
 .banda-producto .marco {
   display: grid;
   grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);

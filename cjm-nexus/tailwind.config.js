@@ -35,10 +35,16 @@ const REGISTRO = {
     klinoda: {
       acento: '#1868E8',
       'acento-oscuro': '#0B47B0',
+      'acento-claro': '#8DB8F8',
+      'acento-tinte': '#EAF2FE',
       tinta: '#0A1F33',
+      'tinta-suave': '#5C748C',
+      filete: '#E1EBF6',
       fondo: '#F4F8FE',
       exito: '#0B7D57',
+      'exito-tinte': '#E7F7F1',
       atencion: '#9C5C05',
+      'atencion-tinte': '#FDF3E3',
     },
   },
 

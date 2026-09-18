@@ -4,7 +4,7 @@
  * Vocabulario de movimiento de CJM Nexus (DESIGN.md, Movimiento).
  *
  * Aquí viven las constantes del registro y los presets de las dos escenas
- * fijadas de la portada. Las piezas pequeñas (`cuenta`, `trazo`, `alAsomar`,
+ * fijadas de la portada. Las piezas pequeñas (`cuenta`, `escalona`, `alAsomar`,
  * `useRegistro`…) están en `lib/registro.js`. Ninguna sección inventa su
  * propio movimiento: si hace falta uno nuevo, se escribe aquí.
  *
@@ -17,7 +17,7 @@
  *    movimiento con `gsap.matchMedia()` bajo la condición de movimiento).
  */
 import { gsap } from './gsap';
-import { alAsomar, anotaPendiente, cuenta, escalona, fijaAncho, trazo } from './registro';
+import { alAsomar, anotaPendiente, cuenta, escalona, fijaAncho } from './registro';
 
 /* ================================================================== */
 /*  EL REGISTRO — constantes de movimiento de DESIGN.md                */
@@ -92,7 +92,7 @@ export function fijaEscenas() {
 /* ================================================================== */
 /*
  * Pasado de la maqueta aprobada (`C-fusion.html`, ronda 5) con sus mismos
- * guiones y medidas. Las piezas pequeñas (`trazo`, `cuenta`, `alAsomar`…)
+ * guiones y medidas. Las piezas pequeñas (`cuenta`, `escalona`, `alAsomar`…)
  * están en `lib/registro.js`.
  */
 
@@ -127,41 +127,61 @@ export function snapDeEscena(pausas, total, direccionActual) {
   };
 }
 
-/** El dibujo del tablero gerencial: 1,6 s. */
+/* Una máscara que descubre de izquierda a derecha. Los márgenes negativos
+   dejan fuera del recorte el grosor del trazo y su punta redonda. */
+const TAPADO = 'inset(-12% 103% -12% -3%)';
+const A_LA_VISTA = 'inset(-12% -3% -12% -3%)';
+
+/**
+ * El dibujo del tablero gerencial: 1,6 s.
+ *
+ * Los indicadores aterrizan y su chispa se descubre; la meta se tiende; el
+ * trazo de lo real cruza la meta y se enciende su punta; detrás sale la
+ * proyección y el globo del mes; las filas llenan sus barras y llega el aviso.
+ */
 export function armaFinanzas(p) {
   const tl = gsap.timeline({ paused: true });
-  gsap.utils.toArray(p.querySelectorAll('.chispa polyline')).forEach((pl, i) => trazo(tl, pl, 0.5, 'power2.inOut', i * 0.06));
-  tl.fromTo(p.querySelector('.meta'), { scaleX: 0, transformOrigin: '0% 50%' }, { scaleX: 1, duration: 0.4, ease: 'power2.out' }, 0.1);
-  trazo(tl, p.querySelector('.traza'), 1.25, CURVA.llegar, 0.2);
-  tl.fromTo(p.querySelector('.area'), { opacity: 0 }, { opacity: 1, duration: 0.4, ease: 'power1.out' }, 0.8);
-  tl.fromTo(p.querySelector('.punta'), { scale: 0, transformOrigin: '50% 50%' }, { scale: 1, duration: 0.35, ease: 'power3.out' }, 1.1);
-  gsap.utils.toArray(p.querySelectorAll('.barra .relleno')).forEach((r, i) => {
+  escalona(tl, p.querySelectorAll('.pz-kpi b'), { opacity: 0, y: 6 }, { opacity: 1, y: 0, duration: 0.45, ease: CURVA.llegar }, 0, 0.06);
+  escalona(tl, p.querySelectorAll('.pz-chispa'), { clipPath: TAPADO }, { clipPath: A_LA_VISTA, duration: 0.55, ease: 'power2.inOut' }, 0.05, 0.06);
+  escalona(tl, p.querySelectorAll('.pz-delta'), { opacity: 0 }, { opacity: 1, duration: 0.3, ease: 'power1.out' }, 0.35, 0.06);
+  tl.fromTo(p.querySelector('.pz-capa .meta'), { scaleX: 0, transformOrigin: '0% 50%' }, { scaleX: 1, duration: 0.4, ease: 'power2.out' }, 0.1);
+  tl.fromTo(p.querySelector('.pz-capa-real'), { clipPath: TAPADO }, { clipPath: A_LA_VISTA, duration: 0.95, ease: 'power2.inOut' }, 0.2);
+  tl.fromTo(p.querySelector('.pz-capa .hoy'), { opacity: 0 }, { opacity: 1, duration: 0.3, ease: 'power1.out' }, 0.95);
+  tl.fromTo(p.querySelector('.pz-punta'), { scale: 0 }, { scale: 1, duration: 0.35, ease: 'power3.out' }, 1.05);
+  tl.fromTo(p.querySelector('.pz-capa-proy'), { clipPath: TAPADO }, { clipPath: A_LA_VISTA, duration: 0.45, ease: 'power2.out' }, 1.1);
+  tl.fromTo(p.querySelector('.pz-globo-caja'), { opacity: 0, y: 6 }, { opacity: 1, y: 0, duration: 0.4, ease: CURVA.llegar }, 1.2);
+  escalona(tl, p.querySelectorAll('.pz-reparto i'), { scaleX: 0 }, { scaleX: 1, duration: 0.5, ease: CURVA.llegar }, 0.55, 0.07);
+  escalona(tl, p.querySelectorAll('.pz-tr'), { opacity: 0, y: 6 }, { opacity: 1, y: 0, duration: 0.4, ease: CURVA.llegar }, 0.6, 0.08);
+  gsap.utils.toArray(p.querySelectorAll('.pz-barra-margen .relleno')).forEach((r, i) => {
     const v = parseFloat(r.style.getPropertyValue('--v')) || 1;
-    tl.fromTo(r, { scaleX: 0 }, { scaleX: v, duration: 0.6, ease: CURVA.llegar }, 0.6 + i * 0.08);
+    tl.fromTo(r, { scaleX: 0 }, { scaleX: v, duration: 0.6, ease: CURVA.llegar }, 0.7 + i * 0.08);
   });
-  tl.fromTo(
-    p.querySelector('.alerta'),
-    { '--raya': 0, color: 'rgba(168,90,46,0)' },
-    { '--raya': 1, color: 'rgba(168,90,46,1)', duration: 0.4, ease: 'power2.out' },
-    1.2,
-  );
+  tl.fromTo(p.querySelector('.pz-alerta'), { opacity: 0, y: 6 }, { opacity: 1, y: 0, duration: 0.4, ease: CURVA.llegar }, 1.2);
   return tl;
 }
 
-/** El dibujo del portal de documentos: 1,6 s, igual que el de finanzas. */
+/**
+ * El dibujo del portal de documentos: 1,6 s, igual que el de finanzas.
+ *
+ * Las filas aterrizan con su estado; los 128 se reparten por estado; la traza
+ * baja paso a paso hasta el sello, y las doce reglas se cumplen una a una.
+ */
 export function armaSoftware(p) {
   const tl = gsap.timeline({ paused: true });
-  const estados = p.querySelectorAll('.docs .estado');
-  gsap.utils.toArray(p.querySelectorAll('.docs li')).forEach((li, i) => {
+  const estados = p.querySelectorAll('.pz-docs .pz-estado');
+  gsap.utils.toArray(p.querySelectorAll('.pz-docs > ul > li')).forEach((li, i) => {
     tl.fromTo(li, { opacity: 0, y: -6 }, { opacity: 1, y: 0, duration: 0.35, ease: CURVA.llegar }, i * 0.12);
     tl.fromTo(estados[i], { opacity: 0 }, { opacity: 1, duration: 0.2, ease: 'power1.out' }, i * 0.12 + 0.15);
   });
-  tl.fromTo(p.querySelector('.hilo'), { '--hilo': 0 }, { '--hilo': 1, duration: 0.9, ease: 'power1.inOut' }, 0.3);
-  gsap.utils.toArray(p.querySelectorAll('.suceso')).forEach((s, i) => {
+  escalona(tl, p.querySelectorAll('.pz-reparto-estados .barra i'), { scaleX: 0 }, { scaleX: 1, duration: 0.5, ease: CURVA.llegar }, 0.6, 0.08);
+  tl.fromTo(p.querySelector('.pz-reparto-estados ul'), { opacity: 0 }, { opacity: 1, duration: 0.35, ease: 'power1.out' }, 0.8);
+  tl.fromTo(p.querySelector('.pz-elegido'), { opacity: 0, y: -6 }, { opacity: 1, y: 0, duration: 0.35, ease: CURVA.llegar }, 0.15);
+  tl.fromTo(p.querySelector('.pz-hilo'), { '--hilo': 0 }, { '--hilo': 1, duration: 0.9, ease: 'power1.inOut' }, 0.3);
+  gsap.utils.toArray(p.querySelectorAll('.pz-suceso')).forEach((s, i) => {
     tl.fromTo(s, { opacity: 0, x: -6 }, { opacity: 1, x: 0, duration: 0.25, ease: 'power2.out' }, 0.35 + i * 0.2);
   });
-  tl.fromTo(p.querySelector('.reglas .pista'), { scaleX: 0 }, { scaleX: 1, duration: 0.6, ease: CURVA.llegar }, 1.0);
-  const doce = p.querySelector('.reglas .cuenta');
+  escalona(tl, p.querySelectorAll('.pz-reglas .es-cumplida'), { '--lleno': 0 }, { '--lleno': 1, duration: 0.18, ease: 'power1.out' }, 1.0, 0.04);
+  const doce = p.querySelector('.pz-reglas .cuenta');
   tl.add(cuenta(doce, 0.6), 1.0);
   tl.data = { cuentas: [doce] };
   return tl;
@@ -359,6 +379,7 @@ export function armaKlinoda(t) {
   const cuentas = gsap.utils.toArray(t.querySelectorAll('.cuenta'));
   tl.fromTo(t.querySelector('.k-linea'), { '--raya': 0 }, { '--raya': 1, duration: 0.5, ease: 'power2.out' }, 0);
   cuentas.forEach((el) => tl.add(cuenta(el, 0.9), 0));
+  escalona(tl, t.querySelectorAll('.k-marcas span'), { opacity: 0 }, { opacity: 1, duration: 0.3, ease: 'power1.out' }, 0.25, 0.06);
   escalona(tl, t.querySelectorAll('.k-puntos i'), { scale: 0, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.3, ease: 'power3.out' }, 0.2, 0.05);
   escalona(tl, t.querySelectorAll('.k-tramo > span'), { opacity: 0 }, { opacity: 1, duration: 0.4, ease: 'power1.out' }, 0.5, 0.1);
   escalona(tl, t.querySelectorAll('.k-fila'), { opacity: 0, y: 8 }, { opacity: 1, y: 0, duration: 0.4, ease: CURVA.llegar }, 0.7, 0.12);

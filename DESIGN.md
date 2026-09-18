@@ -18,10 +18,16 @@ colors:
   cobre-claro: "#DD9268"
   klinoda-acento: "#1868E8"
   klinoda-acento-oscuro: "#0B47B0"
+  klinoda-acento-claro: "#8DB8F8"
+  klinoda-acento-tinte: "#EAF2FE"
   klinoda-tinta: "#0A1F33"
+  klinoda-tinta-suave: "#5C748C"
+  klinoda-filete: "#E1EBF6"
   klinoda-fondo: "#F4F8FE"
   klinoda-exito: "#0B7D57"
+  klinoda-exito-tinte: "#E7F7F1"
   klinoda-atencion: "#9C5C05"
+  klinoda-atencion-tinte: "#FDF3E3"
 typography:
   display:
     fontFamily: "Plus Jakarta Sans, Segoe UI, system-ui, sans-serif"
@@ -104,7 +110,7 @@ components:
   interfaz-muestra:
     backgroundColor: "{colors.blanco}"
     textColor: "{colors.tinta}"
-    rounded: "{rounded.md}"
+    rounded: "{rounded.lg}"
   etiqueta-estado:
     backgroundColor: "transparent"
     textColor: "{colors.blanco}"
@@ -146,7 +152,7 @@ El movimiento está escrito, no espolvoreado. Hay dos escenas fijadas que cuenta
   - estados al apuntar, 0,18–0,44 s;
   - entradas, 0,6–1,8 s por sección;
   - dibujo de un tablero, 1,4–1,6 s.
-- **Qué se anima:** solo transformación, opacidad, máscara (`clip-path`), trazo (`stroke-dashoffset`) y variables que escalan filetes. Nunca alto ni ancho.
+- **Qué se anima:** solo transformación, opacidad, máscara (`clip-path`) y variables que escalan filetes. Nunca alto ni ancho. Los trazos de los gráficos se descubren con una máscara de izquierda a derecha, no con `stroke-dashoffset`: el SVG se estira al hueco y un guion medido en unidades del dibujo se queda corto.
 
 **Los dos relojes.**
 1. **Ligado al scroll y reversible.** Lo usan las escenas fijadas y la noche. Se mide en pantallas de desplazamiento: **0,30 por gesto y 0,40 por pausa de lectura**, con `scrub` de 0,5 s.
@@ -162,7 +168,7 @@ El movimiento está escrito, no espolvoreado. Hay dos escenas fijadas que cuenta
 **Un gesto por sección**, sacado de lo que contiene. Ninguno se repite.
 - **Portada:** el titular entra palabra a palabra, cada una desde su máscara, y la imagen se asienta de 1,05 a 1.
 - **Credenciales:** las cifras cuentan y las rayas entre ellas se trazan.
-- **Tableros de servicio:** el trazo del gráfico cruza la meta y las filas aterrizan.
+- **Tableros de servicio:** el trazo del gráfico cruza la meta, detrás sale la proyección y el globo del mes, y las filas aterrizan. En el portal, la traza baja paso a paso hasta el sello y las doce reglas se cumplen una a una. Los dos dibujos duran lo mismo: 1,6 s.
 - **La noche:** el fondo se oscurece ligado al scroll.
 - **KLINODA:** la placa se levanta y su nombre viaja a la barra del tablero.
 - **Cierre:** un filete de cobre cruza la banda.
@@ -186,9 +192,12 @@ Papel cálido y marino tinta, con un solo acento cobre. El azul de KLINODA vive 
 - **Cobre claro** (#DD9268): el acento sobre marino (etiquetas del cierre, punta del gráfico, tramo de la señal de desplazamiento).
 
 ### Tertiary
-- **Azul KLINODA** (#1868E8) y **Azul KLINODA hondo** (#0B47B0): los azules del propio producto, sacados de su `base.html`. Solo dentro de su tablero: puntos de vencimiento, distintivo «Demo».
-- **Tinta KLINODA** (#0A1F33) sobre **Fondo KLINODA** (#F4F8FE): el texto y el suelo de su tablero.
-- **Verde KLINODA** (#0B7D57) y **Ámbar KLINODA** (#9C5C05): estados «APTO» y «APTO EN OBSERVACIÓN», y las cifras de certificados y vencidas.
+- **Azul KLINODA** (#1868E8), **hondo** (#0B47B0), **claro** (#8DB8F8) y su **tinte** (#EAF2FE): los azules del propio producto, sacados de su `base.html`. Solo dentro de su tablero: los puntos de vencimiento (del más urgente al más lejano), la pestaña activa, las fichas de icono y el distintivo «Demo».
+- **Tinta KLINODA** (#0A1F33) y **Tinta suave KLINODA** (#5C748C) sobre **Fondo KLINODA** (#F4F8FE), con filetes **#E1EBF6**: el texto, el suelo y las líneas de su tablero.
+- **Verde KLINODA** (#0B7D57) y **Ámbar KLINODA** (#9C5C05), cada uno con su tinte (#E7F7F1 y #FDF3E3): estados «APTO» y «APTO EN OBSERVACIÓN», y las cifras de certificados y vencidas.
+
+### Dentro de las interfaces de muestra
+La ventana de un tablero de CJM Nexus tiene su propia paleta, fija en los dos temas y definida en `.pieza` (`estilos/cuadros.css`): suelo **#F8F6F2**, filetes **#E3DFD7** y **#ECE9E2**, dos marinos de apoyo para series (**#5B6A8C** y **#A9B2C6**) y dos estados, como en cualquier producto: **verde** (#17694B sobre #E6F2EC) para «va bien» y **cobre presión** (#8F4A22 sobre #FBEFE6) para «pide atención». El verde solo existe dentro de la ventana: en la página, el énfasis sigue siendo cobre. Todos los pares de texto y fondo pasan de 4,5:1.
 
 ### Neutral
 - **Papel** (#F3F1ED): el suelo de día, y el fondo de la cabecera cuando la página ya bajó.
@@ -252,7 +261,7 @@ Plano por defecto. La profundidad es solo para lo que se «pone encima»: las ho
 
 ## Shapes
 
-Esquinas casi rectas, de papel cortado. Etiquetas de estado y chips: 2 px. Botones y hojas: 3 px. El tablero de KLINODA y sus cartas, con el lenguaje algo más blando del producto: 5–6 px. La estructura la dan los filetes de 1 px; el estado activo, un filete de cobre de 2 px que se traza de izquierda a derecha. Los marcadores son círculos pequeños (5–7 px en listas y estados; 1,3 em en la línea de plazos de KLINODA).
+Esquinas casi rectas, de papel cortado. Etiquetas de estado y chips: 2 px. Botones y cartas interiores: 3 px. La ventana de una interfaz de muestra: 5 px, un punto más que lo que contiene. El tablero de KLINODA y sus cartas, con el lenguaje algo más blando del producto: 5–6 px. La estructura la dan los filetes de 1 px; el estado activo, un filete de cobre de 2 px que se traza de izquierda a derecha. Los marcadores son círculos pequeños (5–7 px en listas y estados; 1,3 em en la línea de plazos de KLINODA).
 
 ## Components
 
@@ -276,7 +285,15 @@ Cabecera fija de 72 px con isotipo, «CJM NEXUS» espaciado a 0,2 em, menú en I
 Los enlaces del menú se subrayan en cobre al apuntar. Bajo 1000 px desaparece el menú; bajo 620 px, los idiomas.
 
 ### Interfaces de muestra
-Hojas de papel blanco (3px, sombra de hoja) que enseñan un entregable real, no una ilustración: el tablero gerencial y el portal de documentos y trazabilidad. Miden lo mismo entre sí (520 px; 560 px en la escena), con cabecera, cuerpo y pie. Debajo llevan siempre «Interfaz de muestra · datos ilustrativos». Se dibujan una vez, al acercarse: trazos, barras, filas y traza.
+Ventanas de producto sobre papel blanco (5 px, sombra de hoja) que enseñan un entregable real, no un esquema: el tablero gerencial y el portal de documentos y trazabilidad. Miden lo mismo entre sí (520 px; 560 px en la escena) y están hechas con las mismas piezas (`components/registro/Ventana.jsx`), porque el 50/50 también es material.
+- **Anatomía:** barra de 46 px con el isotipo y el nombre de la vista; riel de iconos; un suelo apenas tintado y, encima, cartas blancas de 3 px con sombra corta. La profundidad va de dentro afuera: suelo, carta, globo.
+- **Tablero gerencial:** cuatro indicadores con su variación (flecha dibujada, verde o cobre) y su chispa; ventas contra meta con lo real, la proyección punteada y el globo del mes en marino; rentabilidad por línea con el reparto de ingresos en una barra; y el aviso del mes en cobre.
+- **Portal de documentos:** buscador, documentos con ficha de icono y etiqueta de estado, el reparto de los 128 por estado, y la traza del documento elegido con un nodo por paso, el sello y doce tramos de reglas.
+- **Los datos cuadran entre sí.** Las tres líneas suman el indicador «Ventas», que es el punto de junio del gráfico; junio está un 12 % sobre mayo; los estados suman 128. Quien sabe de finanzas mira justo eso.
+- **Iconos:** un solo juego propio (`components/registro/Icono.jsx`), de trazo de 1,4 px sobre rejilla de 16. Ningún glifo Unicode hace de icono.
+- **Gráficos:** SVG calculado (`lib/graficos.js`) que se estira al hueco; la letra de los ejes, los puntos y el globo son HTML colocado en porcentajes, para que nada se deforme.
+- **Se adaptan a su propio ancho** con consultas de contenedor, no al de la ventana: bajo 540 px sale el riel y bajo 440 px pasan a una columna.
+- Debajo llevan siempre «Interfaz de muestra · datos ilustrativos». Se dibujan una vez, al acercarse. Donde están quietas, sus filas responden al ratón.
 
 ### Credenciales
 Tres columnas separadas por filetes verticales. En cada una: la cifra en trazo fino, lo que es (Plus Jakarta Sans 700) y a nombre de quién, en Inter. Debajo, una frase firma el equipo con los nombres en negrita.
@@ -290,9 +307,9 @@ Tres columnas separadas por filetes verticales. En cada una: la cifra en trazo f
 La regla del rótulo se parte en dos tramos de cobre iguales, que se llenan mientras dura cada línea.
 
 ### Escena de KLINODA (signature)
-Un tablero del portal de empresa que ocupa el escenario, tapado por una placa marino al 94 % con el logotipo claro y la etiqueta «Demo · en desarrollo · datos ficticios».
+Un tablero del portal de empresa que ocupa el escenario, tapado por una placa marino al 94 % con el logotipo claro y la etiqueta «Demo · en desarrollo · datos ficticios». El tablero es una ventana con la marca de KLINODA: barra con las tres hojas reales de su portal (Plazos, Certificados y Personal), la línea de 90 días con un punto por vencimiento colocado en su día, las dos cifras con su ficha de icono y los plazos por cargo. Solo módulos que existen, sin nombres, sin nada clínico y sin totales por aptitud.
 - **La placa se levanta:** el logotipo y la etiqueta viajan a la barra.
-- **El tablero se dibuja:** cifras en trazo fino, una línea de 90 días con un punto por vencimiento y tarjetas de cargo.
+- **El tablero se dibuja:** cifras en trazo fino, la línea de 90 días con sus marcas y un punto por vencimiento, y tarjetas de cargo.
 - **Se retira** a media escena, a la derecha.
 - **Entran** a la izquierda tres frases, la pregunta y el botón de contorno.
 

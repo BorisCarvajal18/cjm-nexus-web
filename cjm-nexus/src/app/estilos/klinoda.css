@@ -31,18 +31,6 @@
   --sangria: clamp(0px, calc((100vw - 1240px) / 2 + 16px), 56px);
   --kb: 1;
   --kt: 1;
-  --k-acento: var(--klinoda-acento);
-  --k-acento-oscuro: var(--klinoda-acento-oscuro);
-  --k-acento-tinte: #eaf2fe;
-  --k-acento-claro: #8db8f8;
-  --k-tinta: var(--klinoda-tinta);
-  --k-tinta-3: #5c748c;
-  --k-filete: #e1ebf6;
-  --k-fondo: var(--klinoda-fondo);
-  --k-exito: var(--klinoda-exito);
-  --k-exito-tinte: #e7f7f1;
-  --k-atencion: var(--klinoda-atencion);
-  --k-atencion-tinte: #fdf3e3;
 }
 /* Sin movimiento (o sin JavaScript) la banda es oscura por sí misma. Con
    movimiento es la página entera la que se hace de noche (tramo T). */
@@ -107,7 +95,7 @@ html:not(.tema-vivo) .puerta {
   width: 6px;
   height: 6px;
   border-radius: 50%;
-  background: var(--k-acento-claro);
+  background: var(--klinoda-acento-claro);
   flex: none;
 }
 .k-placa {
@@ -143,18 +131,25 @@ html:not(.tema-vivo) .puerta {
   display: none;
 }
 
-/* ── el tablero: medidas en em, para que --kb lo ajuste entero ─────────── */
+/* ── el tablero: medidas en em, para que --kb lo ajuste entero ───────────
+   Una ventana del portal de empresa de KLINODA, con su marca: barra con sus
+   tres hojas reales (Plazos, Certificados y Personal), la línea de 90 días
+   con un punto por vencimiento en su día, las dos cifras y los plazos por
+   cargo. La profundidad va dentro: suelo azulado, cartas blancas con sombra
+   corta y fichas de icono tintadas. */
 .k-tablero {
+  --k-sombra-carta: 0 1px 2px rgba(10, 31, 51, 0.05), 0 0.6em 1.2em -0.9em rgba(10, 31, 51, 0.28);
   position: relative;
   container-type: inline-size;
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  background: var(--k-fondo);
-  color: var(--k-tinta);
+  background: var(--klinoda-fondo);
+  color: var(--klinoda-tinta);
   border-radius: 6px;
   font-family: var(--texto);
-  font-size: calc(16px * var(--kb));
+  /* --kb lo pone la escena; fuera de ella la ventana va a su tamaño. */
+  font-size: calc(16px * var(--kb, 1));
   line-height: 1.55;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2), 0 48px 90px -48px rgba(0, 0, 0, 0.7);
 }
@@ -162,9 +157,10 @@ html:not(.tema-vivo) .puerta {
   display: flex;
   align-items: center;
   gap: 1em;
-  padding: 0.85em 1.4em;
+  padding: 0 1.4em;
+  min-height: 3.6em;
   background: #fff;
-  border-bottom: 1px solid var(--k-filete);
+  border-bottom: 1px solid var(--klinoda-filete);
   flex: none;
 }
 .k-logo {
@@ -178,7 +174,36 @@ html:not(.tema-vivo) .puerta {
   font-size: 0.95em;
   letter-spacing: -0.01em;
   padding-left: 1em;
-  border-left: 1px solid var(--k-filete);
+  border-left: 1px solid var(--klinoda-filete);
+  white-space: nowrap;
+}
+/* Las tres hojas del portal. La que se mira lleva el filete del producto. */
+.k-pestanas {
+  align-self: stretch;
+  display: flex;
+  gap: 0.2em;
+  margin-left: 0.6em;
+  font-size: 0.78em;
+  font-weight: 600;
+  color: var(--klinoda-tinta-suave);
+}
+.k-pestanas span {
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: 0 0.9em;
+}
+.k-pestanas .es-actual {
+  color: var(--klinoda-acento-oscuro);
+}
+.k-pestanas .es-actual::after {
+  content: '';
+  position: absolute;
+  left: 0.9em;
+  right: 0.9em;
+  bottom: -1px;
+  height: 2px;
+  background: var(--klinoda-acento);
 }
 .k-chip {
   margin-left: auto;
@@ -186,8 +211,8 @@ html:not(.tema-vivo) .puerta {
   font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--k-acento-oscuro);
-  background: var(--k-acento-tinte);
+  color: var(--klinoda-acento-oscuro);
+  background: var(--klinoda-acento-tinte);
   padding: 0.5em 0.9em;
   border-radius: 3px;
   white-space: nowrap;
@@ -203,15 +228,38 @@ html:not(.tema-vivo) .puerta {
 }
 .k-carta {
   background: #fff;
-  border: 1px solid var(--k-filete);
+  border: 1px solid var(--klinoda-filete);
   border-radius: 5px;
   padding: 1.1em 1.3em;
   min-width: 0;
+  box-shadow: var(--k-sombra-carta);
+}
+/* La ficha de un icono: el color del dato, sobre su tinte. */
+.k-icono {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 1.9em;
+  height: 1.9em;
+  border-radius: 3px;
+  background: var(--klinoda-acento-tinte);
+  color: var(--klinoda-acento-oscuro);
+}
+.k-icono svg,
+.k-vence svg {
+  width: 1em;
+  height: 1em;
 }
 .k-rot {
+  display: flex;
+  align-items: center;
+  gap: 0.7em;
   font-size: 0.8em;
   font-weight: 600;
-  color: var(--k-tinta-3);
+  color: var(--klinoda-tinta-suave);
+}
+.k-rot .k-icono {
+  font-size: 1.1em;
 }
 .k-grande {
   font-family: var(--display);
@@ -219,7 +267,7 @@ html:not(.tema-vivo) .puerta {
   font-size: 4.2em;
   line-height: 1;
   letter-spacing: -0.04em;
-  color: var(--k-tinta);
+  color: var(--klinoda-tinta);
   margin-top: 0.14em;
 }
 .k-plazos .k-grande {
@@ -232,57 +280,93 @@ html:not(.tema-vivo) .puerta {
   display: flex;
   flex-direction: column;
 }
-/* La línea de los próximos 90 días: tres tramos, un punto por vencimiento. */
+
+/* La línea de los próximos 90 días. Tres tramos, del más urgente al más
+   lejano, y un punto por vencimiento colocado en su día. */
 .k-linea {
-  position: relative;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
   margin-top: auto;
   padding-top: 1.2em;
 }
-.k-linea::before {
+.k-eje {
+  position: relative;
+  height: 2.6em;
+}
+.k-eje::before {
   content: '';
   position: absolute;
   left: 0;
   right: 0;
-  top: calc(1.2em + 0.65em - 1.5px);
-  height: 3px;
-  background: var(--k-filete);
+  top: 0.45em;
+  height: 0.5em;
+  border-radius: 0.25em;
+  background: linear-gradient(
+    90deg,
+    #d5e4fb 0 calc(33.333% - 1px),
+    #fff calc(33.333% - 1px) calc(33.333% + 1px),
+    #e4eefc calc(33.333% + 1px) calc(66.666% - 1px),
+    #fff calc(66.666% - 1px) calc(66.666% + 1px),
+    #eff5fd calc(66.666% + 1px) 100%
+  );
   transform: scaleX(var(--raya, 1));
   transform-origin: left;
 }
+.k-puntos {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0.7em;
+  height: 0;
+}
+.k-puntos i {
+  position: absolute;
+  top: 0;
+  width: 1.1em;
+  height: 1.1em;
+  margin: -0.55em 0 0 -0.55em;
+  border: 0.16em solid #fff;
+  border-radius: 50%;
+  background: var(--klinoda-acento);
+  box-shadow: 0 1px 2px rgba(10, 31, 51, 0.28);
+}
+.k-puntos .t1 {
+  background: var(--klinoda-acento-oscuro);
+}
+.k-puntos .t3 {
+  background: var(--klinoda-acento-claro);
+}
+.k-marcas {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 1.75em;
+  font-size: 0.66em;
+  font-weight: 600;
+  line-height: 1;
+  color: var(--klinoda-tinta-suave);
+}
+.k-marcas span {
+  position: absolute;
+  transform: translateX(-50%);
+}
+.k-marcas span:first-child {
+  transform: none;
+}
+.k-marcas span:last-child {
+  transform: translateX(-100%);
+}
+.k-tramos {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
 .k-tramo {
-  position: relative;
   min-width: 0;
   padding-right: 0.8em;
 }
-.k-puntos {
-  position: relative;
-  display: flex;
-  align-items: center;
-  gap: 0.5em;
-  height: 1.3em;
-}
-.k-puntos i {
-  display: block;
-  width: 1.3em;
-  height: 1.3em;
-  border-radius: 50%;
-  background: var(--k-acento);
-  box-shadow: 0 0 0 0.28em #fff;
-}
-.k-tramo:nth-child(1) .k-puntos i {
-  background: var(--k-acento-oscuro);
-}
-.k-tramo:nth-child(3) .k-puntos i {
-  background: var(--k-acento-claro);
-}
 .k-tramo > span {
   display: block;
-  margin-top: 0.8em;
   font-size: 0.76em;
   line-height: 1.3;
-  color: var(--k-tinta-3);
+  color: var(--klinoda-tinta-suave);
 }
 .k-tramo > span b {
   display: block;
@@ -291,7 +375,7 @@ html:not(.tema-vivo) .puerta {
   font-weight: 300;
   line-height: 1.05;
   letter-spacing: -0.03em;
-  color: var(--k-tinta);
+  color: var(--klinoda-tinta);
   margin-bottom: 0.12em;
 }
 .k-minis {
@@ -303,18 +387,32 @@ html:not(.tema-vivo) .puerta {
   min-height: 0;
 }
 .k-mini {
+  position: relative;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+}
+.k-mini .k-icono {
+  position: absolute;
+  right: 1.2em;
+  top: 1.1em;
 }
 .k-mini .k-grande {
   font-size: 4.2em;
 }
 .k-mini.aviso .k-grande {
-  color: var(--k-atencion);
+  color: var(--klinoda-atencion);
+}
+.k-mini.aviso .k-icono {
+  background: var(--klinoda-atencion-tinte);
+  color: var(--klinoda-atencion);
 }
 .k-mini.bien .k-grande {
-  color: var(--k-exito);
+  color: var(--klinoda-exito);
+}
+.k-mini.bien .k-icono {
+  background: var(--klinoda-exito-tinte);
+  color: var(--klinoda-exito);
 }
 .k-filas {
   grid-row: 2;
@@ -326,19 +424,27 @@ html:not(.tema-vivo) .puerta {
 .k-fila {
   display: flex;
   flex-direction: column;
-  gap: 0.55em;
+  gap: 0.6em;
   background: #fff;
-  border: 1px solid var(--k-filete);
+  border: 1px solid var(--klinoda-filete);
   border-radius: 5px;
   padding: 0.8em 1em;
   min-width: 0;
+  box-shadow: var(--k-sombra-carta);
 }
 .k-cargo {
+  display: flex;
+  align-items: center;
+  gap: 0.6em;
+  min-width: 0;
   font-weight: 600;
   font-size: 0.9em;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+.k-cargo .k-icono {
+  font-size: 0.85em;
 }
 .k-pie {
   display: flex;
@@ -350,20 +456,30 @@ html:not(.tema-vivo) .puerta {
   font-size: 0.66em;
   font-weight: 700;
   letter-spacing: 0.06em;
-  color: var(--k-exito);
-  background: var(--k-exito-tinte);
+  color: var(--klinoda-exito);
+  background: var(--klinoda-exito-tinte);
   padding: 0.35em 0.6em;
   border-radius: 3px;
   white-space: nowrap;
 }
 .k-apto.obs {
-  color: var(--k-atencion);
-  background: var(--k-atencion-tinte);
+  color: var(--klinoda-atencion);
+  background: var(--klinoda-atencion-tinte);
 }
 .k-vence {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4em;
   font-size: 0.76em;
-  color: var(--k-tinta-3);
+  color: var(--klinoda-tinta-suave);
   white-space: nowrap;
+}
+/* Las pestañas solo salen donde caben junto a la etiqueta de estado, que es
+   la que manda: con la letra al máximo (--kb 1,25) la barra pide 1216 px. */
+@container (max-width: 1239px) {
+  .k-pestanas {
+    display: none;
+  }
 }
 @container (max-width: 700px) {
   .k-cuerpo {
@@ -392,16 +508,104 @@ html:not(.tema-vivo) .puerta {
   .k-mini .k-grande {
     font-size: 3em;
   }
-  /* En un tramo estrecho los puntos no caben a 1,3 em y se aplastaban en
-     óvalos: bajan de tamaño y no encogen. */
-  .k-puntos {
-    gap: 0.3em;
+  .k-mini .k-icono {
+    right: 1em;
+    top: 1em;
   }
+  /* En una línea estrecha los puntos bajan de tamaño: once puntos en 300 px
+     no se pisan. */
   .k-puntos i {
-    flex: none;
-    width: 0.85em;
-    height: 0.85em;
-    box-shadow: 0 0 0 0.2em #fff;
+    width: 0.8em;
+    height: 0.8em;
+    margin: -0.4em 0 0 -0.4em;
+  }
+}
+
+/* ── la vista de aptitud de la página de KLINODA ─────────────────────────
+   La misma ventana, con una tabla: cargo, tipo de evaluación y aptitud. */
+.k-vista {
+  font-size: 15px;
+}
+.k-vista .k-cuerpo {
+  display: block;
+  padding: 1.1em 1.2em 1.2em;
+}
+.k-tabla {
+  padding: 0.3em 1.1em 0.2em;
+}
+.k-th,
+.k-tr {
+  display: grid;
+  grid-template-columns: 1.4fr 0.9fr 1.3fr;
+  gap: 0.8em;
+  align-items: center;
+}
+.k-th {
+  padding: 0.9em 0 0.7em;
+  border-bottom: 1px solid var(--klinoda-filete);
+  font-size: 0.68em;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--klinoda-tinta-suave);
+}
+.k-tr {
+  padding: 0.75em 0;
+  border-bottom: 1px solid var(--klinoda-filete);
+}
+.k-tr:last-child {
+  border-bottom: 0;
+}
+.k-tipo {
+  font-size: 0.7em;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: var(--klinoda-tinta-suave);
+}
+.k-vista .k-apto {
+  display: inline-block;
+  font-size: 0.68em;
+}
+.k-nota {
+  display: flex;
+  align-items: center;
+  gap: 0.8em;
+  margin-top: 1em !important;
+  font-size: 0.84em;
+  line-height: 1.4;
+  color: var(--klinoda-tinta-suave);
+}
+.k-nota .k-icono {
+  background: #fff;
+  box-shadow: 0 0 0 1px var(--klinoda-filete);
+}
+/* En el teléfono: la etiqueta de la vista baja a su línea, la columna del
+   tipo de evaluación se retira y el cargo se lee entero, en dos líneas si
+   hace falta. */
+@media (max-width: 620px) {
+  .k-vista .k-barra {
+    flex-wrap: wrap;
+    gap: 0.6em 1em;
+    padding: 0.8em 1.2em;
+  }
+  .k-vista .k-chip {
+    margin-left: 0;
+  }
+}
+@container (max-width: 460px) {
+  .k-th,
+  .k-tr {
+    grid-template-columns: minmax(0, 1fr) auto;
+  }
+  .k-th > :nth-child(2),
+  .k-tr > :nth-child(2) {
+    display: none;
+  }
+  .k-tr .k-cargo {
+    white-space: normal;
+  }
+  .k-tr .k-icono {
+    display: none;
   }
 }
 

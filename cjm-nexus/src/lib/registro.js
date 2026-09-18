@@ -63,14 +63,6 @@ export function escalona(tl, elementos, desde, hasta, pos, cada) {
   return tl;
 }
 
-/** Un trazo que se dibuja. El hueco mide 2 unidades más que el trazo: así la
-    punta redondeada no deja un punto suelto al principio. */
-export function trazo(tl, el, duracion, ease, pos) {
-  const l = el.getTotalLength();
-  el.style.strokeDasharray = `${l} ${l + 2}`;
-  tl.fromTo(el, { strokeDashoffset: l + 2 }, { strokeDashoffset: 0, duration: duracion, ease }, pos);
-}
-
 /* Estados de partida de las entradas que aún no han arrancado. */
 const pendientes = new Set();
 let vigilando = false;

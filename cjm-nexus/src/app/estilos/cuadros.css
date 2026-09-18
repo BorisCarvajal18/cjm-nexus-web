@@ -2,7 +2,17 @@
    El tablero gerencial, el portal de documentos y las hojas de las páginas
    interiores. Papel blanco en los dos temas (The Paper-Sheet Rule): no usan
    las variables del tema y nunca se oscurecen. El tablero de KLINODA, con su
-   marca propia, está en klinoda.css. */
+   marca propia, está en klinoda.css.
+
+   SON VENTANAS DE PRODUCTO, no esquemas: barra, riel de navegación, un suelo
+   apenas tintado y cartas blancas encima. La profundidad vive dentro de la
+   ventana (suelo → carta → globo) y en su sombra, siempre con desplazamiento.
+
+   Todo lo de dentro lleva el prefijo `pz-`: son clases globales y nombres
+   como `.fila`, `.tabla` o `.estado` chocaban con cualquier otra cosa.
+   Se adaptan a su propio ancho (consulta de contenedor), no al de la
+   ventana: la misma pieza vive a 350 px en el teléfono, a 490 px en la
+   página de servicios y a 624 px en la escena. */
 
 /* La caja de una interfaz y su pie «Interfaz de muestra · datos ilustrativos». */
 .caja-pieza {
@@ -16,605 +26,1160 @@
   color: var(--tx-3);
 }
 
-/* ── las interfaces de muestra: papel blanco en los dos temas ────────── */
 .pieza {
-  background: var(--blanco);
-  color: var(--tinta);
-  border: 1px solid var(--linea);
-  border-radius: 3px;
-  height: 520px;
+  /* La paleta de una interfaz de muestra. Fija: no cambia de noche. El verde
+     y el cobre oscuro solo dicen «va bien» y «pide atención» dentro de la
+     ventana, como en cualquier producto; fuera de ella no existen. Todos los
+     pares de texto y fondo pasan de 4,5:1. */
+  --pz-tinta: var(--tinta);
+  --pz-suave: var(--tinta-suave);
+  --pz-gris: var(--gris);
+  --pz-lienzo: #f8f6f2;
+  --pz-linea: #e3dfd7;
+  --pz-linea-fina: #ece9e2;
+  --pz-marino-2: #5b6a8c;
+  --pz-marino-3: #a9b2c6;
+  --pz-marino-tinte: #eef1f6;
+  --pz-ok: #17694b;
+  --pz-ok-tinte: #e6f2ec;
+  --pz-aviso: var(--cobre-presion);
+  --pz-aviso-tinte: #fbefe6;
+  --pz-sombra-carta: 0 1px 1px rgba(20, 31, 58, 0.04), 0 2px 4px -2px rgba(20, 31, 58, 0.06);
+
+  container: pieza / inline-size;
+  position: relative;
   display: flex;
   flex-direction: column;
+  height: 520px;
   overflow: hidden;
+  background: var(--blanco);
+  color: var(--pz-tinta);
+  border: 1px solid #dad5cc;
+  border-radius: 5px;
   font-family: var(--texto);
   font-size: 16px;
   line-height: 1.55;
-  box-shadow: 0 1px 2px rgba(20, 31, 58, 0.05), 0 28px 56px -34px rgba(20, 31, 58, 0.55);
+  box-shadow:
+    0 1px 2px rgba(20, 31, 58, 0.06),
+    0 10px 20px -12px rgba(20, 31, 58, 0.2),
+    0 36px 70px -38px rgba(20, 31, 58, 0.55);
 }
-.pieza > header {
+.pieza ul,
+.pieza ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.pieza p {
+  margin: 0;
+}
+
+/* ── la barra de la ventana ─────────────────────────────────────────── */
+.pz-barra {
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  padding: 15px 20px;
-  border-bottom: 1px solid var(--linea);
+  gap: 10px;
+  flex: none;
+  height: 46px;
+  padding: 0 14px;
+  border-bottom: 1px solid var(--pz-linea);
+  background: var(--blanco);
+}
+.pz-barra img {
+  display: block;
+  flex: none;
+  width: 18px;
+  height: 18px;
+}
+.pz-titulo {
+  min-width: 0;
+  font-family: var(--display);
+  font-size: 0.95rem;
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: -0.014em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.pz-barra-fin {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-left: auto;
   flex: none;
 }
-.pieza > header h4 {
-  font-size: 1rem;
-  font-weight: 800;
-  letter-spacing: -0.014em;
+.pz-vistas {
+  display: inline-flex;
+  padding: 2px;
+  border: 1px solid var(--pz-linea-fina);
+  border-radius: 3px;
+  background: var(--pz-lienzo);
+  font-size: 10.5px;
+  font-weight: 600;
+  line-height: 1.3;
+  color: var(--pz-gris);
 }
-.chip-per {
+.pz-vistas span {
+  padding: 3px 8px;
+  border-radius: 2px;
+}
+.pz-vistas .es-actual {
+  background: var(--blanco);
+  color: var(--pz-tinta);
+  box-shadow: 0 1px 2px rgba(20, 31, 58, 0.14);
+}
+.pz-chip {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  font-size: 11.5px;
-  font-weight: 600;
-  color: var(--tinta-suave);
-  border: 1px solid var(--linea);
-  border-radius: 2px;
-  padding: 4px 9px;
-}
-.rotulo-pieza {
+  padding: 5px 8px;
+  border: 1px solid var(--pz-linea);
+  border-radius: 3px;
   font-size: 11px;
+  font-weight: 600;
+  line-height: 1.3;
+  color: var(--pz-suave);
+  white-space: nowrap;
+  box-shadow: 0 1px 1px rgba(20, 31, 58, 0.04);
+}
+.pz-rotulo {
+  font-size: 10.5px;
   font-weight: 700;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: var(--gris);
+  color: var(--pz-gris);
+  white-space: nowrap;
 }
-.pieza .cuerpo {
+
+/* ── riel y cuerpo ──────────────────────────────────────────────────── */
+.pz-marco {
   flex: 1;
   min-height: 0;
   display: flex;
-  flex-direction: column;
-  padding: 16px 20px 18px;
 }
-.kpis {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 1px;
-  background: var(--linea-fina);
-  border: 1px solid var(--linea-fina);
+.pz-riel {
   flex: none;
+  width: 42px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 10px 0;
+  background: var(--pz-lienzo);
+  border-right: 1px solid var(--pz-linea-fina);
+  color: var(--pz-gris);
 }
-.kpi {
+.pz-riel span {
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 3px;
+}
+.pz-riel .es-actual {
   background: var(--blanco);
-  padding: 11px 13px 10px;
-  min-width: 0;
+  color: var(--pz-tinta);
+  box-shadow: var(--pz-sombra-carta), 0 0 0 1px var(--pz-linea-fina);
 }
-.kpi .fila {
+.pz-cuerpo {
+  flex: 1;
+  min-width: 0;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 12px 14px 14px;
+  background: var(--pz-lienzo);
+}
+.pz-carta {
+  background: var(--blanco);
+  border: 1px solid var(--pz-linea-fina);
+  border-radius: 3px;
+  box-shadow: var(--pz-sombra-carta);
+}
+.pz-th {
+  font-size: 9.5px;
+  font-weight: 700;
+  line-height: 1.3;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--pz-gris);
+}
+.pieza .der {
+  text-align: right;
+}
+
+/* ── tablero gerencial · los cuatro indicadores ─────────────────────── */
+.pz-kpis {
+  flex: none;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 8px;
+}
+.pz-kpi {
+  min-width: 0;
+  padding: 9px 10px 8px;
+  background: var(--blanco);
+  border: 1px solid var(--pz-linea-fina);
+  border-radius: 3px;
+  box-shadow: var(--pz-sombra-carta);
+  color: var(--pz-marino-2);
+}
+.pz-kpi.es-aviso {
+  color: var(--cobre);
+}
+.pz-kpi-cab {
   display: flex;
   justify-content: space-between;
-  align-items: baseline;
+  align-items: center;
   gap: 4px;
 }
-.kpi small {
-  font-size: 10px;
+.pz-kpi small {
+  font-size: 9.5px;
   font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--gris);
+  color: var(--pz-gris);
   white-space: nowrap;
 }
-.kpi i {
-  font-style: normal;
-  font-size: 10.5px;
+.pz-delta {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  padding: 1px 5px 1px 3px;
+  border-radius: 2px;
+  font-size: 10px;
   font-weight: 700;
-  color: var(--tinta-suave);
+  line-height: 1.4;
   white-space: nowrap;
+  color: var(--pz-ok);
+  background: var(--pz-ok-tinte);
 }
-.kpi.aviso i {
-  color: var(--cobre-honda);
+.pz-delta.es-aviso {
+  color: var(--pz-aviso);
+  background: var(--pz-aviso-tinte);
 }
-.kpi b {
+.pz-kpi b {
   display: block;
+  margin-top: 5px;
   font-family: var(--display);
-  font-size: 1.3rem;
+  font-size: 1.24rem;
   font-weight: 800;
-  letter-spacing: -0.03em;
-  margin-top: 3px;
   line-height: 1.15;
+  letter-spacing: -0.03em;
+  color: var(--pz-tinta);
 }
-.kpi .chispa {
+/* La chispa: trazo, área y punta. El SVG se estira al ancho de la carta, así
+   que el trazo no escala y la punta es HTML. */
+.pz-chispa {
+  position: relative;
+  display: block;
+  height: 18px;
+  margin-top: 7px;
+}
+.pz-chispa svg {
   display: block;
   width: 100%;
-  height: 16px;
-  margin-top: 6px;
+  height: 100%;
   overflow: visible;
 }
-.grafico {
-  margin-top: 14px;
+.pz-chispa .linea {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  vector-effect: non-scaling-stroke;
+}
+.pz-chispa .relleno {
+  fill: currentColor;
+  opacity: 0.1;
+}
+.pz-chispa i {
+  position: absolute;
+  width: 5px;
+  height: 5px;
+  margin: -2.5px 0 0 -2.5px;
+  border-radius: 50%;
+  background: currentColor;
+  box-shadow: 0 0 0 2px var(--blanco);
+}
+
+/* ── tablero gerencial · ventas contra meta ─────────────────────────── */
+.pz-grafico {
   flex: 1;
   min-height: 0;
   display: flex;
   flex-direction: column;
+  padding: 10px 12px 9px;
 }
-.grafico .cab {
+.pz-carta-cab {
   display: flex;
   justify-content: space-between;
   align-items: baseline;
-  font-size: 11px;
+  gap: 10px;
+  font-size: 9.5px;
   font-weight: 700;
+  line-height: 1.3;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: var(--gris);
+  color: var(--pz-gris);
 }
-.leyenda {
+.pz-leyenda {
   display: flex;
-  gap: 14px;
-  font-size: 10.5px;
+  gap: 12px;
+  font-size: 10px;
   font-weight: 600;
-  letter-spacing: 0.02em;
+  letter-spacing: 0.01em;
   text-transform: none;
+  white-space: nowrap;
 }
-.leyenda span {
+.pz-leyenda span {
   display: inline-flex;
   align-items: center;
   gap: 5px;
 }
-.leyenda em {
+.pz-leyenda em {
   display: inline-block;
   width: 14px;
   height: 0;
   border-top: 2px solid var(--cobre);
 }
-.leyenda em.meta {
+.pz-leyenda em.proy {
+  border-top: 2px dotted var(--cobre-claro);
+}
+.pz-leyenda em.meta {
   border-top: 1.5px dashed var(--piedra);
 }
-.grafico svg {
-  width: 100%;
+.pz-plano {
   flex: 1;
-  min-height: 96px;
-  margin-top: 6px;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  grid-template-rows: minmax(0, 1fr) auto;
+  column-gap: 8px;
+  margin-top: 12px;
+}
+.pz-eje-y {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin: -4.5px 0;
+  font-size: 9px;
+  font-weight: 600;
+  line-height: 1;
+  text-align: right;
+  color: var(--pz-gris);
+}
+.pz-lienzo {
+  position: relative;
+  min-height: 84px;
+}
+.pz-capa {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
   overflow: visible;
 }
-.tabla {
-  margin-top: 12px;
-  flex: none;
+.pz-capa line,
+.pz-capa path {
+  vector-effect: non-scaling-stroke;
 }
-.tabla .th,
-.tabla .tr {
+.pz-capa .rejilla line {
+  stroke: var(--pz-linea-fina);
+  stroke-width: 1;
+}
+.pz-capa .rejilla line:last-child {
+  stroke: var(--pz-linea);
+}
+.pz-capa .hoy {
+  stroke: var(--piedra);
+  stroke-width: 1;
+  stroke-dasharray: 2 3;
+}
+.pz-capa .meta {
+  stroke: var(--piedra);
+  stroke-width: 1.4;
+  stroke-dasharray: 4 4;
+}
+.pz-capa .traza {
+  fill: none;
+  stroke-width: 2.4;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.pz-capa .proy {
+  fill: none;
+  stroke: var(--cobre-claro);
+  stroke-width: 2.2;
+  stroke-linecap: round;
+  stroke-dasharray: 0.1 6;
+}
+.pz-punta {
+  position: absolute;
+  width: 11px;
+  height: 11px;
+  margin: -5.5px 0 0 -5.5px;
+  border: 2px solid var(--blanco);
+  border-radius: 50%;
+  background: var(--cobre-claro);
+  box-shadow: 0 1px 3px rgba(143, 74, 34, 0.55);
+}
+/* El globo del mes: flota sobre el gráfico, como en el producto. Marino, para
+   que la tinta de la firma también esté dentro de la ventana. */
+.pz-globo {
+  position: absolute;
+  z-index: 1;
+  transform: translate(12px, 9px);
+}
+.pz-globo-caja {
+  display: grid;
+  gap: 1px;
+  padding: 6px 9px 7px;
+  border-radius: 3px;
+  background: var(--tinta);
+  color: var(--blanco);
+  white-space: nowrap;
+  box-shadow: 0 2px 4px rgba(11, 17, 34, 0.2), 0 12px 22px -10px rgba(11, 17, 34, 0.6);
+}
+.pz-globo small {
+  font-size: 8.5px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: #b7bcc8;
+}
+.pz-globo b {
+  font-family: var(--display);
+  font-size: 0.86rem;
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+}
+.pz-globo span {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  font-size: 9.5px;
+  font-weight: 600;
+  line-height: 1.3;
+  color: #8fd8b4;
+}
+.pz-eje-x {
+  grid-column: 2;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 6px;
+  font-size: 9px;
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: 0.06em;
+  color: var(--pz-gris);
+}
+
+/* ── tablero gerencial · rentabilidad por línea ─────────────────────── */
+.pz-tabla {
+  flex: none;
+  padding: 9px 12px 3px;
+}
+.pz-tabla .pz-th,
+.pz-tr {
   display: grid;
   grid-template-columns: 1.35fr 0.72fr 0.95fr;
   gap: 10px;
   align-items: center;
 }
-.tabla .th {
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--gris);
-  padding-bottom: 6px;
-  border-bottom: 1px solid var(--linea);
+/* Los ingresos de las tres líneas, repartidos en una sola barra. Cada tramo
+   lleva el tono de su fila. */
+.pz-reparto {
+  display: flex;
+  gap: 2px;
+  height: 5px;
+  margin: 7px 0 3px;
 }
-.tabla .tr {
-  font-size: 12.5px;
+.pz-reparto i {
+  border-radius: 1px;
+  background: var(--tono);
+  transform-origin: left;
+}
+.pz-tr {
+  padding: 5px 0;
+  border-top: 1px solid var(--pz-linea-fina);
+  font-size: 12px;
   font-weight: 500;
-  padding: 7px 0;
-  border-bottom: 1px solid var(--linea-fina);
+  line-height: 1.4;
 }
-.tabla .tr:last-child {
-  border-bottom: 0;
+.pz-reparto + .pz-tr {
+  border-top: 0;
 }
-.tabla .der {
-  text-align: right;
+.pz-reparto i:nth-child(1),
+.pz-tr.l1 {
+  --tono: var(--pz-tinta);
 }
-.barra {
+.pz-reparto i:nth-child(2),
+.pz-tr.l2 {
+  --tono: var(--pz-marino-2);
+}
+.pz-reparto i:nth-child(3),
+.pz-tr.l3 {
+  --tono: var(--pz-marino-3);
+}
+.pz-linea-nombre {
   display: flex;
   align-items: center;
-  gap: 8px;
-  justify-content: flex-end;
+  gap: 7px;
+  min-width: 0;
 }
-.barra .pista {
+.pz-linea-nombre i {
+  flex: none;
+  width: 7px;
+  height: 7px;
+  border-radius: 2px;
+  background: var(--tono);
+}
+.pz-barra-margen {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 8px;
+}
+.pz-barra-margen .pista {
   width: 46px;
   height: 4px;
-  background: var(--linea-fina);
   border-radius: 1px;
+  background: var(--pz-linea-fina);
   overflow: hidden;
 }
-.barra .relleno {
+.pz-barra-margen .relleno {
   display: block;
   height: 100%;
-  background: var(--piedra);
+  background: var(--tono);
   transform-origin: left;
   transform: scaleX(var(--v));
 }
-.alerta {
-  position: relative;
-  margin-top: 11px;
-  padding-top: 10px;
-  font-size: 0.86rem;
+
+/* El aviso del mes: cobre, que en la casa es «la regla que avisa». */
+.pz-alerta {
+  flex: none;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 10px;
+  border: 1px solid #f1dac8;
+  border-radius: 3px;
+  background: var(--pz-aviso-tinte);
+  font-size: 0.8rem;
   font-weight: 600;
-  color: var(--cobre-honda);
+  line-height: 1.35;
+  color: var(--pz-aviso);
+}
+.pz-alerta svg {
   flex: none;
 }
-.alerta::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 0;
-  height: 1px;
-  background: var(--cobre);
-  transform: scaleX(var(--raya, 1));
-  transform-origin: left;
+.pz-alerta svg:last-child {
+  margin-left: auto;
 }
-.operacion {
-  flex: 1;
-  min-height: 0;
+
+/* ── portal de documentos ───────────────────────────────────────────── */
+.pz-operacion {
   display: grid;
-  grid-template-columns: 1.42fr 1px 1fr;
+  grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+  gap: 10px;
 }
-.docs {
-  padding-right: 18px;
+.pz-docs,
+.pz-traza {
+  min-width: 0;
+  min-height: 0;
   display: flex;
   flex-direction: column;
-  min-width: 0;
+  padding: 10px 12px;
+  background: var(--blanco);
+  border: 1px solid var(--pz-linea-fina);
+  border-radius: 3px;
+  box-shadow: var(--pz-sombra-carta);
 }
-.docs .th {
+.pz-busca {
+  flex: none;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  height: 30px;
+  padding: 0 8px;
+  border: 1px solid var(--pz-linea);
+  border-radius: 3px;
+  background: var(--pz-lienzo);
+  font-size: 11.5px;
+  line-height: 1;
+  color: var(--pz-gris);
+  white-space: nowrap;
+}
+.pz-busca svg {
+  flex: none;
+}
+.pz-filtro {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  white-space: nowrap;
+}
+.pz-docs .pz-th {
+  flex: none;
   display: grid;
   grid-template-columns: 1fr auto;
   gap: 8px;
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--gris);
-  padding-bottom: 8px;
-  border-bottom: 1px solid var(--linea);
+  margin-top: 10px;
+  padding-bottom: 7px;
+  border-bottom: 1px solid var(--pz-linea);
 }
-.docs ul {
+/* Las filas se reparten el alto que haya, hasta un tope: la lista no deja
+   un hueco debajo ni en la escena (560 px) ni en las páginas (520 px). */
+.pz-docs > ul {
   flex: 1;
+  min-height: 0;
   display: flex;
   flex-direction: column;
-  min-height: 0;
 }
-.docs li {
+.pz-docs > ul > li {
+  flex: 1 1 0;
+  max-height: 60px;
   position: relative;
   display: grid;
-  grid-template-columns: 1fr auto;
-  gap: 8px;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  gap: 9px;
   align-items: center;
-  padding: 9px 0 9px 11px;
-  border-bottom: 1px solid var(--linea-fina);
-  min-width: 0;
+  padding: 6px 4px 6px 8px;
+  border-bottom: 1px solid var(--pz-linea-fina);
 }
-.docs li:last-child {
+.pz-docs > ul > li:last-child {
   border-bottom: 0;
 }
-.docs li > span:first-child {
-  display: block;
-  min-width: 0;
+.pz-docs > ul > li.es-elegido {
+  background: #fbf7f2;
 }
-.docs li.sel {
-  background: #faf8f5;
-}
-.docs li.sel::before {
+.pz-docs > ul > li.es-elegido::before {
   content: '';
   position: absolute;
   left: 0;
   top: 7px;
   bottom: 7px;
   width: 2px;
+  border-radius: 1px;
   background: var(--cobre);
 }
-.docs .nom {
+.pz-doc-icono {
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: 26px;
+  height: 26px;
+  border-radius: 3px;
+  background: var(--pz-marino-tinte);
+  color: #44527a;
+}
+.pz-doc-icono.es-rev {
+  background: var(--pz-aviso-tinte);
+  color: var(--pz-aviso);
+}
+.pz-doc-icono.es-bor {
+  background: #f1efea;
+  color: var(--pz-gris);
+}
+.pz-doc-texto {
   display: block;
-  font-size: 12.5px;
+  min-width: 0;
+}
+.pz-doc-texto .nom {
+  display: block;
+  font-size: 12px;
   font-weight: 600;
   line-height: 1.25;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
-.docs .org {
+.pz-doc-texto .org {
   display: block;
-  font-size: 10px;
+  margin-top: 3px;
+  font-size: 9.5px;
   font-weight: 600;
   line-height: 1.2;
   letter-spacing: 0.07em;
   text-transform: uppercase;
-  color: var(--gris);
-  margin-top: 3px;
+  color: var(--pz-gris);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
-.estado {
+.pz-estado {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
-  font-size: 11px;
+  gap: 5px;
+  padding: 2px 7px 2px 6px;
+  border-radius: 2px;
+  font-size: 10.5px;
   font-weight: 600;
-  color: var(--tinta-suave);
+  line-height: 1.4;
   white-space: nowrap;
+  color: var(--pz-ok);
+  background: var(--pz-ok-tinte);
 }
-.estado::before {
+.pz-estado::before {
   content: '';
+  flex: none;
   width: 5px;
   height: 5px;
   border-radius: 50%;
-  background: var(--tinta);
-  flex: none;
+  background: currentColor;
 }
-.estado.rev {
-  color: var(--gris);
+.pz-estado.es-rev {
+  color: var(--pz-aviso);
+  background: var(--pz-aviso-tinte);
 }
-.estado.rev::before {
-  background: var(--piedra);
+.pz-estado.es-bor {
+  color: var(--pz-gris);
+  background: transparent;
+  box-shadow: inset 0 0 0 1px var(--pz-linea);
 }
-.estado.bor {
-  color: var(--gris);
-}
-.estado.bor::before {
+.pz-estado.es-bor::before {
   background: transparent;
   box-shadow: inset 0 0 0 1.2px var(--piedra);
 }
-.docs .pie {
-  display: flex;
-  justify-content: space-between;
+/* Los 128 documentos, por estado. */
+.pz-reparto-estados {
+  flex: none;
   margin-top: auto;
   padding-top: 9px;
-  border-top: 1px solid var(--linea);
+}
+.pz-reparto-estados .barra {
+  display: flex;
+  gap: 2px;
+  height: 5px;
+}
+.pz-reparto-estados .barra i {
+  border-radius: 1px;
+  background: var(--pz-ok);
+  transform-origin: left;
+}
+.pz-reparto-estados .barra .es-rev {
+  background: var(--cobre);
+}
+.pz-reparto-estados .barra .es-bor {
+  background: var(--piedra);
+}
+.pz-reparto-estados ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2px 12px;
+  margin-top: 6px;
   font-size: 10px;
+  font-weight: 600;
+  line-height: 1.4;
+  color: var(--pz-gris);
+}
+.pz-reparto-estados li {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  white-space: nowrap;
+}
+.pz-reparto-estados li::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--pz-ok);
+}
+.pz-reparto-estados li.es-rev::before {
+  background: var(--cobre);
+}
+.pz-reparto-estados li.es-bor::before {
+  background: var(--piedra);
+}
+.pz-reparto-estados b {
   font-weight: 700;
+  color: var(--pz-tinta);
+}
+.pz-paginas {
+  flex: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 9px;
+  padding-top: 8px;
+  border-top: 1px solid var(--pz-linea);
+  font-size: 9.5px;
+  font-weight: 700;
+  line-height: 1.3;
   letter-spacing: 0.09em;
   text-transform: uppercase;
-  color: var(--gris);
+  color: var(--pz-gris);
 }
-.docs .pie i {
-  font-style: normal;
+.pz-paginas {
+  gap: 8px;
+  white-space: nowrap;
 }
-.pieza .raya {
-  background: var(--linea-fina);
+
+/* La traza del documento elegido. */
+.pz-traza .pz-th {
+  flex: none;
+  padding-bottom: 7px;
+  border-bottom: 1px solid var(--pz-linea);
 }
-.traza-col {
-  padding-left: 18px;
+.pz-elegido {
+  flex: none;
   display: flex;
-  flex-direction: column;
-  min-width: 0;
+  align-items: center;
+  gap: 9px;
+  margin-top: 9px;
+  padding: 7px 8px;
+  border: 1px solid var(--pz-linea-fina);
+  border-radius: 3px;
+  background: var(--pz-lienzo);
 }
-.traza-col .th {
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--gris);
-  padding-bottom: 8px;
-  border-bottom: 1px solid var(--linea);
+.pz-elegido .pz-doc-icono {
+  background: var(--blanco);
+  box-shadow: 0 0 0 1px var(--pz-linea-fina);
 }
-.hilo {
+/* Aquí el nombre se lee entero: es el documento del que habla la traza. */
+.pz-elegido .nom {
+  white-space: normal;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+.pz-hilo {
   position: relative;
   flex: 1;
   min-height: 0;
-  padding: 12px 0 4px 18px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  margin-top: 10px !important;
 }
-.hilo::before {
+.pz-hilo::before {
   content: '';
   position: absolute;
-  left: 3px;
-  top: 16px;
-  bottom: 14px;
+  left: 10px;
+  top: 10px;
+  bottom: 12px;
   width: 1.5px;
-  background: var(--linea-fina);
+  background: #ecd6c6;
   transform: scaleY(var(--hilo, 1));
   transform-origin: top;
 }
-.suceso {
+.pz-suceso {
   position: relative;
-  min-width: 0;
+  display: grid;
+  grid-template-columns: 21px minmax(0, 1fr);
+  column-gap: 9px;
+  align-items: center;
 }
-.suceso::before {
-  content: '';
-  position: absolute;
-  left: -18px;
-  top: 4px;
-  width: 7px;
-  height: 7px;
+.pz-suceso .nodo {
+  grid-row: 1 / span 2;
+  display: grid;
+  place-items: center;
+  width: 21px;
+  height: 21px;
+  border: 1.5px solid var(--cobre);
   border-radius: 50%;
-  background: var(--cobre);
+  background: var(--blanco);
+  color: var(--cobre-honda);
 }
-.suceso b {
-  display: block;
-  font-size: 12px;
+.pz-suceso:last-child .nodo {
+  border-color: var(--cobre-honda);
+  background: var(--cobre-honda);
+  color: var(--blanco);
+}
+.pz-suceso b {
+  font-size: 11.5px;
   font-weight: 600;
   line-height: 1.3;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
-.suceso span {
-  display: block;
-  font-size: 10px;
+.pz-suceso > span:last-child {
+  font-size: 9.5px;
   font-weight: 600;
-  line-height: 1.2;
+  line-height: 1.3;
   letter-spacing: 0.06em;
   text-transform: uppercase;
-  color: var(--gris);
-  margin-top: 2px;
+  color: var(--pz-gris);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
-.reglas {
+.pz-reglas {
+  flex: none;
   margin-top: 10px;
   padding-top: 9px;
-  border-top: 1px solid var(--linea-fina);
-  flex: none;
+  border-top: 1px solid var(--pz-linea-fina);
 }
-.reglas .fila {
+.pz-reglas .fila {
   display: flex;
   justify-content: space-between;
-  font-size: 10.5px;
-  font-weight: 600;
-  letter-spacing: 0.06em;
+  font-size: 9.5px;
+  font-weight: 700;
+  line-height: 1.3;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--gris);
+  color: var(--pz-gris);
 }
-.reglas .pista {
+.pz-reglas .cuenta {
+  display: inline-block;
+  text-align: right;
+}
+/* Doce reglas, doce tramos: se llenan uno a uno. */
+.pz-reglas .tramos {
+  display: flex;
+  gap: 2px;
   margin-top: 6px;
-  height: 4px;
-  background: var(--tinta);
+}
+.pz-reglas .tramos i {
+  position: relative;
+  flex: 1;
+  height: 5px;
   border-radius: 1px;
+  background: var(--pz-linea-fina);
+  overflow: hidden;
+}
+.pz-reglas .tramos .es-cumplida::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--pz-tinta);
+  transform: scaleX(var(--lleno, 1));
   transform-origin: left;
 }
-.pieza > footer {
+.pz-pie {
   flex: none;
-  padding: 12px 20px;
-  border-top: 1px solid var(--linea);
-  font-size: 0.8rem;
-  color: var(--tinta-suave);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 14px;
+  border-top: 1px solid var(--pz-linea);
+  font-size: 0.78rem;
+  line-height: 1.4;
+  color: var(--pz-suave);
+}
+.pz-pie svg {
+  flex: none;
+  color: var(--cobre-honda);
 }
 
+/* Al pasar el ratón por una fila, como en el producto. En la escena las
+   piezas no reciben el puntero, así que esto solo vive donde están quietas. */
+@media (hover: hover) {
+  .pz-docs > ul > li,
+  .pz-tr {
+    transition: background-color 0.18s var(--curva);
+  }
+  .pz-docs > ul > li:not(.es-elegido):hover,
+  .pz-tr:hover {
+    background: var(--pz-lienzo);
+  }
+}
+
+/* ── una pieza estrecha: el teléfono y las columnas de /servicios ───── */
+@container pieza (max-width: 540px) {
+  .pz-vistas,
+  .pz-riel {
+    display: none;
+  }
+  .pz-leyenda {
+    gap: 9px;
+  }
+}
+@container pieza (max-width: 440px) {
+  /* El nombre de la vista se lee entero, en dos líneas si hace falta. */
+  .pz-barra {
+    height: auto;
+    min-height: 46px;
+    padding: 8px 12px;
+  }
+  .pz-titulo {
+    white-space: normal;
+  }
+  /* La leyenda baja a su propia línea y el rótulo de la tabla cabe en una. */
+  .pz-carta-cab {
+    flex-wrap: wrap;
+    row-gap: 6px;
+  }
+  .pz-tabla .pz-th,
+  .pz-tr {
+    grid-template-columns: 1.6fr 0.7fr 0.9fr;
+    gap: 8px;
+  }
+  .pz-tabla .pz-th {
+    letter-spacing: 0.06em;
+  }
+  .pz-barra-margen .pista {
+    width: 34px;
+  }
+  .pz-cuerpo {
+    padding: 12px;
+  }
+  .pz-kpis {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .pz-lienzo {
+    min-height: 128px;
+  }
+  /* A la derecha no cabe: el globo pasa al otro lado del punto. */
+  .pz-globo {
+    transform: translate(calc(-100% - 12px), 9px);
+  }
+  .pz-operacion {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .pz-rotulo {
+    font-size: 9.5px;
+    letter-spacing: 0.1em;
+  }
+  .pz-hilo {
+    gap: 12px;
+  }
+  .pz-pie {
+    align-items: flex-start;
+  }
+}
 @media (max-width: 620px) {
   .pieza {
     height: auto;
   }
-  .kpis {
-    grid-template-columns: repeat(2, 1fr);
-  }
-  .grafico svg {
-    min-height: 130px;
-  }
-  .operacion {
-    grid-template-columns: 1fr;
-  }
-  .docs {
-    padding-right: 0;
-  }
-  .pieza .raya {
-    display: none;
-  }
-  .traza-col {
-    padding-left: 0;
-    margin-top: 16px;
-    padding-top: 14px;
-    border-top: 1px solid var(--linea);
-  }
-  .hilo {
-    justify-content: flex-start;
-    gap: 14px;
-    padding-bottom: 12px;
-  }
 }
 
-/* ── hojas de muestra de las páginas: la misma hoja, sin alto fijo ─── */
+/* ══ LAS HOJAS DE LAS PÁGINAS INTERIORES ═══════════════════════════════
+   La misma ventana, sin alto fijo: el tablero gerencial completo de la
+   página de dirección financiera y la vista de aptitud de KLINODA. */
 .pieza.libre {
   height: auto;
 }
-.pieza.libre .cuerpo {
-  gap: 0;
-}
-.lineas-margen li {
+
+/* Dos cartas lado a lado: las ventas de doce meses y el margen por línea. */
+.pz-dos {
   display: grid;
-  grid-template-columns: 1fr auto;
-  gap: 4px 10px;
-  align-items: center;
-  padding: 6px 0;
-  font-size: 12.5px;
-  font-weight: 500;
+  grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr);
+  gap: 10px;
 }
-.lineas-margen .pista {
-  grid-column: 1 / -1;
-  height: 4px;
-  background: var(--linea-fina);
-  border-radius: 1px;
-  overflow: hidden;
-}
-.lineas-margen .pista i {
-  display: block;
-  height: 100%;
-  background: var(--piedra);
-}
-.lineas-margen li.aviso .pista i {
-  background: var(--cobre);
-}
-.avisos-pieza {
-  margin-top: 12px;
-  padding-top: 10px;
-  border-top: 1px solid var(--linea);
-}
-.avisos-pieza li {
-  display: flex;
-  gap: 8px;
-  align-items: baseline;
-  padding: 3px 0;
-  font-size: 0.84rem;
-  font-weight: 600;
-  color: var(--cobre-honda);
-}
-.avisos-pieza li::before {
-  content: '';
-  width: 5px;
-  height: 5px;
+.pieza.libre .pz-grafico {
   flex: none;
-  border-radius: 50%;
-  background: var(--cobre);
-  transform: translateY(-2px);
 }
-.dos-graficos {
+/* Doce meses en barras. El alto de cada una es su porcentaje del techo. */
+.pz-barras {
+  --pie-barras: 15px;
+  position: relative;
   display: grid;
-  grid-template-columns: 1.25fr 1fr;
-  gap: 24px;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: 0 clamp(4px, 1.4cqi, 12px);
+  height: 168px;
   margin-top: 14px;
 }
-
-/* La vista de aptitud de KLINODA: una tabla del portal de empresa, con su
-   logotipo y sus etiquetas reales. */
-.k-vista {
-  --k-exito: var(--klinoda-exito);
-  --k-exito-tinte: #e7f7f1;
-  --k-atencion: var(--klinoda-atencion);
-  --k-atencion-tinte: #fdf3e3;
+.pz-barras .columna {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  height: 100%;
 }
-.k-vista > header img {
+.pz-barras .hueco {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  align-items: flex-end;
+}
+.pz-barras .columna i {
   display: block;
-  height: 26px;
-  width: auto;
+  width: 100%;
+  border-radius: 2px 2px 0 0;
+  background: var(--pz-marino-3);
 }
-.k-vista .th,
-.k-vista .tr {
+.pz-barras .es-sobre i {
+  background: var(--pz-tinta);
+}
+.pz-barras .es-actual i {
+  background: linear-gradient(180deg, var(--cobre-claro), var(--cobre-honda));
+}
+.pz-barras small {
+  flex: none;
+  height: var(--pie-barras);
+  padding-top: 6px;
+  font-size: 9px;
+  font-weight: 600;
+  line-height: 1;
+  text-align: center;
+  color: var(--pz-gris);
+}
+.pz-barras .es-actual small {
+  font-weight: 800;
+  color: var(--pz-tinta);
+}
+/* La meta cruza las doce. Su altura la calcula el componente desde el suelo
+   de las barras, que queda `--pie-barras` por encima del pie de la caja. */
+.pz-barras .meta {
+  position: absolute;
+  left: 0;
+  right: 0;
+  z-index: 1;
+  height: 0;
+  border-top: 1.5px dashed var(--piedra);
+}
+.pz-margenes {
+  padding: 10px 12px 6px;
+}
+.pz-margenes li {
   display: grid;
-  grid-template-columns: 1.3fr 1fr 1.25fr;
-  gap: 10px;
+  grid-template-columns: 1fr auto;
+  gap: 5px 10px;
   align-items: center;
-  padding: 0 20px;
-}
-.k-vista .th {
-  padding-top: 12px;
-  padding-bottom: 8px;
-  border-bottom: 1px solid var(--linea);
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--gris);
-}
-.k-vista .tr {
-  padding-top: 11px;
-  padding-bottom: 11px;
-  border-bottom: 1px solid var(--linea-fina);
-  font-size: 13px;
+  padding: 9px 0;
+  border-top: 1px solid var(--pz-linea-fina);
+  font-size: 12.5px;
   font-weight: 500;
+  line-height: 1.3;
 }
-.k-vista .tr > span:nth-child(2) {
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 0.06em;
-  color: var(--tinta-suave);
+.pz-margenes li:first-child {
+  margin-top: 8px;
 }
-.k-vista .k-apto {
-  justify-self: start;
-  font-size: 10.5px;
+.pz-margenes .pista {
+  grid-column: 1 / -1;
+  height: 5px;
+  border-radius: 1px;
+  background: var(--pz-linea-fina);
+  overflow: hidden;
 }
-
-@media (max-width: 760px) {
-  .dos-graficos {
-    grid-template-columns: 1fr;
+.pz-margenes .pista i {
+  display: block;
+  height: 100%;
+  border-radius: 1px;
+  background: var(--pz-marino-2);
+}
+.pz-margenes li:first-child .pista i {
+  background: var(--pz-tinta);
+}
+.pz-margenes .es-aviso .pista i {
+  background: var(--cobre);
+}
+.pz-avisos {
+  display: grid;
+  gap: 8px;
+}
+.pz-avisos ul {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+}
+.pz-alerta.es-ok {
+  border-color: #cfe6da;
+  background: var(--pz-ok-tinte);
+  color: var(--pz-ok);
+}
+@container pieza (max-width: 700px) {
+  .pz-dos,
+  .pz-avisos ul {
+    grid-template-columns: minmax(0, 1fr);
   }
-}
-@media (max-width: 620px) {
-  .k-vista .th,
-  .k-vista .tr {
-    grid-template-columns: 1.2fr 1fr;
-  }
-  .k-vista .th > :nth-child(2),
-  .k-vista .tr > :nth-child(2) {
-    display: none;
+  .pz-barras {
+    height: 132px;
   }
 }

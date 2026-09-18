@@ -236,17 +236,23 @@ export const finanzas = {
     badge: 'Entregable mensual',
     title: 'Así se ve lo que recibes cada mes.',
     text: 'Las ventas contra la meta, el margen por línea, los días de caja y las alertas que exigen una decisión. Un documento vivo que se revisa en reunión, no un informe que nadie abre.',
+    /* Lo que no es texto (la chispa de cada indicador, las iniciales de los
+       doce meses y el tono de cada alerta) se añadió en la pasada de pulido
+       del 18-sep-2026 para dibujar la hoja como una ventana de producto.
+       `months` es microcopia nueva, por aprobar: de julio a junio. */
     board: {
       title: 'Tablero gerencial',
       subject: 'Empresa Ejemplo · junio',
       kpis: [
-        { label: 'Ventas', value: '$1,24 M', delta: '▲ 12 %', tone: 'ok' },
-        { label: 'Margen', value: '34 %', delta: '▲ 3 pt', tone: 'ok' },
-        { label: 'Caja', value: '45 días', delta: '▼ 4 d', tone: 'warn' },
-        { label: 'Rentabilidad', value: '18,2 %', delta: '▲ 1,5', tone: 'ok' },
+        { label: 'Ventas', value: '$1,24 M', delta: '▲ 12 %', tone: 'ok', spark: '0,12 9,11 18,12 27,8 36,7 45,4 55,2' },
+        { label: 'Margen', value: '34 %', delta: '▲ 3 pt', tone: 'ok', spark: '0,10 9,12 18,9 27,10 36,6 45,7 55,4' },
+        { label: 'Caja', value: '45 días', delta: '▼ 4 d', tone: 'warn', spark: '0,4 9,5 18,3 27,7 36,8 45,11 55,12' },
+        { label: 'Rentabilidad', value: '18,2 %', delta: '▲ 1,5', tone: 'ok', spark: '0,11 9,10 18,11 27,8 36,9 45,6 55,5' },
       ],
       seriesLabel: 'Ventas contra meta',
+      targetLabel: 'meta',
       series: [58, 64, 61, 72, 78, 86, 92, 88, 101, 96, 108, 114],
+      months: ['J', 'A', 'S', 'O', 'N', 'D', 'E', 'F', 'M', 'A', 'M', 'J'],
       target: 95,
       linesLabel: 'Margen por línea',
       lines: [
@@ -256,7 +262,11 @@ export const finanzas = {
         ['Digital', 21, 'neutral'],
       ],
       alertsLabel: 'Alertas del mes',
-      alerts: ['Cartera vencida por encima de 60 días', 'Margen sobre meta en Servicios'],
+      // El segundo dato es el tono: `warn` pide atención, `ok` es buena noticia.
+      alerts: [
+        ['Cartera vencida por encima de 60 días', 'warn'],
+        ['Margen sobre meta en Servicios', 'ok'],
+      ],
     },
   },
 
