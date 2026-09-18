@@ -88,10 +88,8 @@ export const nosotros = {
         id: 'mirella',
         nombre: 'Mirella Llanga',
         cargo: 'Gerente general',
-        // HUECO — qué hace en concreto como gerente general (pregunta 9).
-        // Hasta tenerlo, la línea dice solo lo que ya está aprobado en la
-        // firma de la portada.
-        lidera: 'Lidera la gerencia general de CJM Nexus.',
+        // Qué hace en concreto: dado por Boris el 18-sep-2026.
+        lidera: 'Lidera la gerencia general de CJM Nexus: la operación de la firma y la coordinación entre sus dos líneas.',
         cifras: [],
         // HUECO — desde dónde trabaja: «no por ahora». Sin dato, no se pinta.
         base: null,

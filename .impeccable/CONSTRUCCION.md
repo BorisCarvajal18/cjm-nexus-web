@@ -122,7 +122,7 @@ Textos escritos después de la aprobación del 2026-09-18. Todo lo que no está 
 | 12 | `nosotros.es.js` → `personas.titulo` | «Tres personas, cada una con lo suyo.» | Nuevo |
 | 12 | `nosotros.es.js` → `personas.items[0]` | Richard: «Fundador · Dirección financiera» · «Lidera la dirección financiera de CJM Nexus: el diagnóstico, el tablero de cada mes y la reunión de dirección.» · 15+ años · 100+ clientes en Latinoamérica, Estados Unidos y Europa · Ecuador | Nuevo; las cifras y los hechos salen de PRODUCT.md |
 | 12 | `nosotros.es.js` → `personas.items[1]` | Boris: «Cofundador · Tecnología» · «Lidera la tecnología de CJM Nexus: las páginas web, los sistemas a medida y los tableros conectados a los datos de cada empresa.» · Alemania | Nuevo. No nombra KLINODA a propósito: su plataforma la construye CJM Nexus y no se dice quién la dirige |
-| 12 | `nosotros.es.js` → `personas.items[2]` | Mirella: «Gerente general» · «Lidera la gerencia general de CJM Nexus.» | Provisional: es lo ya aprobado en la firma de la portada, a la espera de la pregunta 9 |
+| 12 | `nosotros.es.js` → `personas.items[2]` | Mirella: «Gerente general» · «Lidera la gerencia general de CJM Nexus: la operación de la firma y la coordinación entre sus dos líneas.» | Frase dada por Boris el 2026-09-18 |
 | 12 | `nosotros.es.js` → `firma` | «Dos líneas, una firma.» y tres puntos, con textos ya aprobados en la portada y en KLINODA; títulos nuevos: «El número y el sistema, en la misma firma», «Ecuador y Alemania», «KLINODA, empresa del Grupo»; el primer punto dice «Quien define el número construye también el sistema que lo produce.» | Títulos nuevos |
 | 9 | `servicios.es.js` → `metodo` | Intro «Las reglas que aplicamos en las dos líneas, con un ejemplo real de cada una.» · Regla 1 «Decidimos por escrito»: «Lo que se decide queda escrito en un acta. Nada se acuerda de palabra.» · finanzas «Cada reunión de dirección, una al mes, termina con su acta.» · software «Trece actas de decisión en KLINODA, cada una con su motivo y sus alternativas…» · Regla 3 «Privacidad por diseño»: «Vemos solo lo que el trabajo necesita, y lo que alguien no debe ver no le llega.» · finanzas «No pedimos acceso a tus cuentas bancarias ni movemos dinero: trabajamos con los reportes que ya tienes.» · software, el de antes | **Aprobado por Boris el 2026-09-18** (propuesta del chat). Se anota aquí porque cambió después de la aprobación general |
 | 12 | `nosotros.es.js` → `metodo` y `cta` | «Ver cómo trabajamos» (a `/servicios#metodo`) y el cierre con el titular aprobado del cierre de la portada | Reutilizados; solo «Ver cómo trabajamos» es nuevo |
@@ -667,7 +667,7 @@ KLINODA (la ficha de Boris ni la nombra), nada de la médica aliada, ni año ni 
 | Boris | Trayectoria, formación e idiomas | «No por ahora» |
 | Boris | Ciudad | Solo «Alemania» |
 | Boris | Enlace a LinkedIn | Falta el enlace |
-| Mirella | **Qué hace en concreto como gerente general** (pregunta 9) | La respuesta llegó con la plantilla sin rellenar. Hoy dice solo «Lidera la gerencia general de CJM Nexus.» |
+| Mirella | ~~Qué hace en concreto como gerente general~~ | ✅ Resuelto el 2026-09-18: «…la operación de la firma y la coordinación entre sus dos líneas.» |
 | Mirella | Trayectoria, formación e idiomas | «No por ahora» |
 | Mirella | Desde dónde trabaja | «No por ahora»: su ficha no lleva lugar |
 | Mirella | Enlace a LinkedIn | Falta el enlace |
@@ -707,3 +707,9 @@ día con Europa.
   `/servicios#metodo` enseña las dos reglas sin sus ejemplos**. Al actualizarlo: dos ejemplos por
   regla, del mismo tamaño y con la misma letra (50/50), cada uno con su referencia (`metodo.etiquetas`:
   «Dirección financiera» / «Soluciones digitales»), tras el filete de cobre de siempre.
+
+### 2026-09-18 — la frase de Mirella
+
+- `nosotros.es.js` → Mirella: «Lidera la gerencia general de CJM Nexus: la operación de la firma y la
+  coordinación entre sus dos líneas.» (Boris). Su `base` sigue en `null`, sin dato: su ficha no lleva
+  lugar. Quedan abiertos sus huecos de trayectoria, formación, lugar y LinkedIn.
