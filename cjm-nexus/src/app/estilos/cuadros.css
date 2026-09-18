@@ -533,6 +533,7 @@
   align-items: center;
   justify-content: flex-end;
   gap: 8px;
+  white-space: nowrap;
 }
 .pz-barra-margen .pista {
   width: 46px;
@@ -1032,6 +1033,17 @@
   }
   .pz-pie {
     align-items: flex-start;
+  }
+}
+/* Un teléfono de 360 px deja la pieza en 320: el margen va sin su barra y la
+   cifra no se parte («38 %» en una línea). */
+@container pieza (max-width: 340px) {
+  .pz-tabla .pz-th,
+  .pz-tr {
+    grid-template-columns: 1.7fr 0.9fr 0.6fr;
+  }
+  .pz-barra-margen .pista {
+    display: none;
   }
 }
 @media (max-width: 620px) {

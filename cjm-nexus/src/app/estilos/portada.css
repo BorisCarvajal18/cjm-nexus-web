@@ -237,4 +237,16 @@
   .portada .enlace {
     align-self: center;
   }
+  /* El crédito de la imagen cruzaba la señal de «sigue». La señal sube y el
+     crédito se centra debajo de ella. */
+  .portada .sigue {
+    bottom: 50px;
+    height: 36px;
+  }
+  .portada .credito {
+    right: 50%;
+    bottom: 14px;
+    transform: translateX(50%);
+    white-space: nowrap;
+  }
 }

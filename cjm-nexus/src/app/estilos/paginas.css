@@ -616,6 +616,11 @@
   .banda-producto.sin-hechos .marco {
     gap: 28px;
   }
+  /* En una columna las dos piezas vuelven a su ancho, como en la portada:
+     a 960 px el gráfico se estiraba hasta quedarse sin alto. */
+  .dos-lineas .caja-pieza {
+    max-width: 640px;
+  }
   .cifras-pag {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     row-gap: 32px;

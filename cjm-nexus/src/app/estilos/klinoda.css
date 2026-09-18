@@ -446,6 +446,7 @@ html:not(.tema-vivo) .puerta {
   min-width: 0;
   box-shadow: var(--k-sombra-carta);
 }
+/* El cargo se lee entero: si la tarjeta es estrecha, en dos líneas. */
 .k-cargo {
   display: flex;
   align-items: center;
@@ -453,9 +454,7 @@ html:not(.tema-vivo) .puerta {
   min-width: 0;
   font-weight: 600;
   font-size: 0.9em;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  line-height: 1.3;
 }
 .k-cargo .k-icono {
   font-size: 0.85em;

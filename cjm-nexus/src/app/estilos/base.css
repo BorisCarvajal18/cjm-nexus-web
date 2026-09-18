@@ -93,6 +93,18 @@
   transform: translateY(0);
   box-shadow: var(--sombra-conversion);
 }
+/* En el teléfono «Agendar diagnóstico ejecutivo · 20 min» no siempre cabe en
+   una línea: menos relleno a los lados y, si aun así parte, que reparta las
+   dos líneas en vez de dejar «min» sola. */
+@media (max-width: 620px) {
+  .boton {
+    padding-inline: 18px;
+  }
+  .boton > span,
+  .boton-contorno > span {
+    text-wrap: balance;
+  }
+}
 .boton svg,
 .enlace svg,
 .boton-contorno svg {
