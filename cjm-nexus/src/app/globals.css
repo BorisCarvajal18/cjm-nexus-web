@@ -46,7 +46,8 @@
   }
 
   ::selection {
-    @apply bg-copper/25;
+    background: theme('colors.cobre.DEFAULT');
+    color: #fff;
   }
 
   /* Los títulos usan la display; el peso hace la jerarquía, no la familia */
@@ -58,70 +59,3 @@
     text-wrap: balance;
   }
 }
-
-/* ============================================================
-   Utilidades propias
-   ============================================================ */
-@layer utilities {
-  /* Texto con gradiente. Atajo de `bg-* bg-clip-text text-transparent`,
-     que aparece tantas veces que merece nombre. */
-  .text-grad {
-    @apply bg-clip-text text-transparent;
-  }
-
-  /* Trazado de los circuitos decorativos. El grosor y el color se fijan aquí
-     para que todos los circuitos del sitio se dibujen igual; lo único que
-     cambia entre secciones es la forma del trazo.
-
-     `stroke-dasharray` lo pone GSAP al preparar el dibujado: sin JavaScript
-     las líneas se ven completas, que es el estado correcto en reposo. */
-  .circuit path,
-  .circuit line,
-  .circuit polyline,
-  .circuit rect,
-  .circuit circle.dibujo {
-    fill: none;
-    stroke: #e8b48a;
-    stroke-width: 1.5;
-    stroke-linecap: round;
-    stroke-linejoin: round;
-  }
-  .circuit .node {
-    fill: #e8b48a;
-  }
-  .circuit .halo {
-    fill: #e8b48a;
-    opacity: 0.3;
-  }
-  .circuit .pulse {
-    fill: #fff;
-    filter: drop-shadow(0 0 6px #e8b48a);
-  }
-
-  /* Oculta la barra de desplazamiento sin bloquear el desplazamiento:
-     lo necesitan los raíles horizontales en móvil. */
-  .no-bar {
-    scrollbar-width: none;
-  }
-  .no-bar::-webkit-scrollbar {
-    display: none;
-  }
-}
-
-/* ============================================================
-   RETIRADO: las mallas decorativas del sitio anterior
-   ============================================================
-   `bg-grid-hero` y `bg-grid-navy` dibujaban una cuadrícula de líneas finas
-   sobre el hero y sobre la banda de tecnología. Se han eliminado y no vuelven.
-
-   Motivo: una malla de fondo solo tiene sentido cuando la superficie ES una
-   cuadrícula —un plano, un mapa, un lienzo de medición—. En una portada
-   corporativa no aporta información y es, además, una de las señas más
-   reconocibles de las páginas hechas con plantilla, que es exactamente de lo
-   que este rediseño quiere alejarse.
-
-   En el sistema nuevo la profundidad la dan los gradientes y los circuitos,
-   que sí significan algo. Las secciones antiguas que aún citan estas clases
-   se borran en la fase 03; mientras tanto se ven sin la malla, que es como
-   deben verse.
-   ============================================================ */

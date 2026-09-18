@@ -16,6 +16,25 @@ capturas a 1536 × 730 y 390 × 844, y con «reducir movimiento»), se hace comm
 Solo se para si algo necesita una decisión de Boris que no esté en DESIGN.md ni en PRODUCT.md.
 Las capturas de verificación van a `.impeccable/construccion/`.
 
+## Estado al 2026-09-18
+
+**Las once piezas están hechas.** La rama `rediseno-2026` tiene la portada de la maqueta aprobada,
+las páginas interiores en el sistema del registro, los textos de KLINODA con las reglas 7, 8 y 9, y
+«Pulso Cobre» retirado. Nada publicado; `main` sin tocar.
+
+**Lo que espera a Boris:**
+
+1. Los textos de «Textos por aprobar» (abajo).
+2. Tres decisiones tomadas por defecto, reversibles: el método en `/servicios#metodo` (pieza 8),
+   las páginas interiores quietas (pieza 9) y el botón de menú bajo 1000 px (pieza 2).
+3. Confirmar con el abogado la palabra «Grupo» (regla 8 de PRODUCT.md).
+4. Poner al día en DESIGN.md el color del foco (`cobre-honda`, pieza 2) y, si se aprueba, las páginas
+   interiores.
+
+**Lo siguiente, fuera de estas piezas:** traducciones EN/DE (ahora que el español está casi cerrado),
+imágenes Open Graph con el titular nuevo, páginas legales, página «Nosotros», isotipo y logotipo de
+KLINODA vectoriales, vídeo propio, y las confirmaciones de Richard.
+
 ## Piezas
 
 | # | Pieza | Estado | Notas |
@@ -31,7 +50,7 @@ Las capturas de verificación van a `.impeccable/construccion/`.
 | 8 | Cierre y pie | ✅ Hecha · 2026-09-18 | El titular y los tres bloques del cierre son **texto propuesto sin aprobar** (PLAN.md, ronda 2 §7) |
 | 9 | Páginas de servicios y de KLINODA al sistema nuevo | ✅ Hecha · 2026-09-18 | Hoy siguen con «Pulso Cobre» |
 | 10 | **Reescribir el texto de KLINODA con la decisión del ICP** | ✅ Hecha · 2026-09-18 | Ver abajo |
-| 11 | Retirar «Pulso Cobre» | Pendiente | Tokens en inglés de `tailwind.config.js` (`navy`, `copper`, `teal`, `ink`, `bg-g-*`, los heredados `indigo`/`slate`…) y los presets antiguos de `lib/animations.js`, cuando ya nada los use. `CalendlyButton.jsx` todavía usa `indigo` |
+| 11 | Retirar «Pulso Cobre» | ✅ Hecha · 2026-09-18 | Tokens en inglés de `tailwind.config.js` (`navy`, `copper`, `teal`, `ink`, `bg-g-*`, los heredados `indigo`/`slate`…) y los presets antiguos de `lib/animations.js`, cuando ya nada los use. `CalendlyButton.jsx` todavía usa `indigo` |
 
 ### Pieza 10 — el texto de KLINODA contradice la decisión del 2026-09-15
 
@@ -385,3 +404,25 @@ propio», «para médicos ocupacionales», «la prueba de lo que construimos» n
 Capturas `p10-*`: sin desbordamiento, sin errores, 0 ocultos.
 
 Queda solo en `/sistema` (el catálogo interno, pieza 11): «En desarrollo · piloto controlado».
+
+**Pieza 11 — retirar «Pulso Cobre»:**
+
+- **Se borra `/sistema`**, el catálogo interno del sistema anterior (no indexable y fuera de toda
+  navegación). Era lo único que seguía usando el kit viejo, y su papel de referencia lo tiene ahora
+  DESIGN.md. Si se quiere un catálogo del registro, se rehace desde cero; el anterior está en git.
+- Fuera el kit `components/ui/` salvo `DarkSurface` (Accordion, BackToTop, Button, Card, Circuit,
+  ExpandingFrame, Field, HighlightTitle, HorizontalRail, Manifesto, PersonCard, Pill, ProjectCard,
+  Reveal, StackedCards, StatCounter, Text, Ticker e `index.js`), `CalendlyButton`, `useCalendly`,
+  `useGsap`, `FinanceCard` y `PlatformCard`.
+- `tailwind.config.js` queda solo con el registro: fuera `navy`, `copper`, `teal`, `stone`, `canvas`,
+  `surface`, `ink`, `hairline`, los heredados (`indigo`, `slate`…), `bg-g-*`, los tamaños `display-*`
+  y `eyebrow`, los radios `xl2`–`4xl`, las sombras viejas, la animación `drop`, `container` y
+  `darkMode`.
+- `lib/animations.js` sin los presets viejos (`reveal`, `parallax`, `horizontalRail`…);
+  `lib/gsap.js` sin `MotionPathPlugin` ni `prefersReducedMotion`; `globals.css` sin `.text-grad`,
+  `.circuit` ni `.no-bar`, y la selección en cobre.
+
+**Verificación:** build sin errores ni avisos. `/es/sistema` da 404. Las cinco páginas a 1536 × 730 y
+390 × 844, y con «reducir movimiento»: sin desbordamiento, sin errores; las escenas siguen fijando
+3,1 y 2,1 pantallas y la noche llega a 1. Con «reducir movimiento» lo único con opacidad 0 en la
+portada es el vídeo y la capa de la noche, que en ese modo no se muestran.
