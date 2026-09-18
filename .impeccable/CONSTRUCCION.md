@@ -24,7 +24,7 @@ Las capturas de verificación van a `.impeccable/construccion/`.
 | 1 | Base del sistema: color, letra, espaciado y constantes de movimiento | ✅ Hecha · 2026-09-17 | Ver «Cómo se usa la base» |
 | 2 | Cabecera | ✅ Hecha · 2026-09-18 | Ver el registro de la sesión. Tres estados como `SiteHeader` (transparente sobre la portada, papel al bajar, marino hondo sobre oscuro). Isotipo claro ya en `public/marca/`. Menú fuera bajo 1000 px e idiomas fuera bajo 620 px |
 | 3 | Portada | ✅ Hecha · 2026-09-18 | Vídeo: `hero.webm`, `hero.mp4` y `hero-poster.jpg` de `mocks/portada/img/` a `public/`, y el `<video>` en `Hero.jsx`. El titular entra palabra a palabra desde su máscara y la imagen pasa de 1,05 a 1. **Texto abierto:** la entrada atribuye los quince años a la firma (PLAN.md, ronda 5 §2) |
-| 4 | Credenciales | Pendiente | 15+, 100+ y 3, con atribución a Richard por su nombre. Las notas y la frase de los tres nombres son **texto propuesto sin aprobar** |
+| 4 | Credenciales | ✅ Hecha · 2026-09-18 | 15+, 100+ y 3, con atribución a Richard por su nombre. Las notas y la frase de los tres nombres son **texto propuesto sin aprobar** |
 | 5 | Escena de los tableros («Qué hacemos») | Pendiente | Un preset nuevo en `lib/animations.js` con `CONSULTA_ESCENAS`, `ESCENA.tableros` y `AJUSTE_AL_SOLTAR`. Se fija 3,1 pantallas y la letra se ajusta con `--k` |
 | 6 | La noche | Pendiente | Las variables de tema (`--suelo`, `--tx-*`, `--filete*`) ya existen. Falta la capa fija, el disparador que llama a `marcarOscuro()` y el paso corto del 50 al 59 % |
 | 7 | Escena de KLINODA | Pendiente | 2,1 pantallas. Poner al día `privacy.mockup` en `klinoda.es.js` con las etiquetas reales («APTO», «APTO EN OBSERVACIÓN», «PERIÓDICO»…) |
@@ -60,6 +60,8 @@ construir. Se usan igual; Boris los aprueba o los cambia leyendo esta lista.
 | Pieza | Dónde (`cjm-nexus/src/content/`) | Texto | Por qué está aquí |
 |---|---|---|---|
 | 3 | `home.es.js` → `portada.entrada` y `meta.description` | «CJM Nexus une la dirección financiera de Richard Carvajal, con quince años de trayectoria, y desarrollo de software especializado…» | Propuesta de PLAN.md (ronda 5 §2). La maqueta atribuía los quince años a la firma, contra la regla 2 de PRODUCT.md |
+| 4 | `home.es.js` → `credenciales.cifras[].quien` | Las tres notas: «La trayectoria de Richard Carvajal, fundador de la firma.», «Por Richard Carvajal, en Latinoamérica y Estados Unidos.», «Español, inglés y alemán, con equipo en Ecuador y Alemania.» | Propuestas en PLAN.md (ronda 5 §2) |
+| 4 | `home.es.js` → `credenciales.firma` | «**Richard Carvajal** dirige las finanzas, **Boris Carvajal** la tecnología y **Mirella Llanga** la gerencia general.» | Propuesta en PLAN.md (ronda 5 §2) |
 
 ## Cómo se usa la base (pieza 1)
 
@@ -216,3 +218,27 @@ cambia, Escape lo cierra y el foco vuelve al botón. El tabulador enseña el con
 exactamente la ventana, el vídeo se reproduce con movimiento y con «reducir movimiento» queda el
 póster quieto, sin `.js-mov` y con todo visible. La cabecera, blanca sobre la portada. El texto está en
 el HTML servido.
+
+**Pieza 4 — credenciales** (`blocks/registro/Credenciales.jsx`, textos en `home.es.js` →
+`credenciales`, movimiento compartido en `lib/registro.js`):
+
+- `lib/registro.js` trae las piezas de movimiento de la maqueta con sus nombres (`cuenta`,
+  `fijaAncho`, `escalona`, `trazo`, `alAsomar` con el repintado de estados de partida tras cada
+  recálculo) y el hook `useRegistro`, que monta un `gsap.matchMedia()` por sección y lo deshace al
+  desmontar. Lo usarán las piezas 5 a 8.
+- 15+, 100+ y 3 en Plus Jakarta Sans 300, con filetes verticales (horizontales bajo 760 px), su
+  nota a nombre de Richard y la frase de la firma. El gesto de la maqueta: rayas que se trazan,
+  cifras que suben y cuentan, notas que se escriben con máscara y la firma al final.
+- La sección lleva `id="equipo"`, así que «Nosotros» del menú aterriza en ella.
+- **Salen de la portada**, porque la maqueta aprobada los sustituye: la cinta de hechos
+  (`FactsTicker`, además un ticker, que DESIGN.md prohíbe), el manifiesto, las cifras antiguas
+  (`Numbers` sigue en la página de KLINODA) y la banda del equipo. Se borran `FactsTicker.jsx`,
+  `ManifestoBlock.jsx`, `Team.jsx` y sus textos (`facts`, `manifesto`, `numbers`, `team`).
+- «Más de 2.300 pruebas» ya no está en la portada; sigue en el bloque del método, como proponía
+  PLAN.md.
+
+**Verificación** (compilación de producción, `next start` en el puerto 3001, entrada `sitio-prod` de
+`launch.json`): build sin errores. Capturas `p4-credenciales-*`: con movimiento, a 0,55 s del
+disparo las cifras van por 12 y 80; al final, 15+, 100+ y 3 con opacidad 1. Con «reducir
+movimiento», todo quieto con su valor final. En 390 px, las cifras apiladas con filetes
+horizontales.

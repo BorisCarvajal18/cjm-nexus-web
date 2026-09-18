@@ -343,6 +343,118 @@
   transition: transform 0.5s var(--curva) 1.3s;
 }
 
+/* ══ M1 · credenciales ════════════════════════════════════════════════
+   Pocas cifras y grandes, cada una con su nota y a nombre de quien la
+   sostiene. Debajo, quién hace qué, en una frase. */
+.credenciales {
+  padding: clamp(56px, 9vh, 96px) 0 clamp(52px, 8vh, 84px);
+  scroll-margin-top: var(--cabecera);
+}
+.cifras {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+.cifras li {
+  position: relative;
+  padding: 4px 40px 0;
+}
+.cifras li:first-child {
+  padding-left: 0;
+}
+.cifras li:last-child {
+  padding-right: 0;
+}
+.cifras li + li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: var(--filete);
+  transform: scaleY(var(--raya, 1));
+  transform-origin: top;
+}
+.credenciales .cifra {
+  font-family: var(--display);
+  font-weight: 300;
+  font-size: clamp(3.6rem, 6.6vw, 6.25rem);
+  line-height: 0.95;
+  letter-spacing: -0.04em;
+  color: var(--tx-1);
+}
+.credenciales .cifra .mas {
+  letter-spacing: 0;
+  margin-left: 0.03em;
+}
+.credenciales .que {
+  margin-top: 20px;
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: 1.08rem;
+  letter-spacing: -0.012em;
+  color: var(--tx-1);
+}
+.credenciales .quien {
+  margin-top: 6px;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: var(--tx-2);
+  max-width: 34ch;
+}
+.credenciales .firma {
+  position: relative;
+  margin-top: clamp(40px, 6vh, 64px);
+  padding-top: 20px;
+  font-size: 1rem;
+  color: var(--tx-2);
+}
+.credenciales .firma::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 1px;
+  background: var(--filete);
+  transform: scaleX(var(--raya, 1));
+  transform-origin: left;
+}
+.credenciales .firma b {
+  font-weight: 600;
+  color: var(--tx-1);
+}
+.cuenta {
+  display: inline-block;
+  text-align: right;
+}
+@media (max-width: 760px) {
+  .cifras {
+    grid-template-columns: 1fr;
+  }
+  .cifras li,
+  .cifras li:first-child,
+  .cifras li:last-child {
+    padding: 28px 0;
+  }
+  .cifras li:first-child {
+    padding-top: 0;
+  }
+  .cifras li + li::before {
+    top: 0;
+    bottom: auto;
+    left: 0;
+    right: 0;
+    width: auto;
+    height: 1px;
+    transform: scaleX(var(--raya, 1));
+    transform-origin: left;
+  }
+  .credenciales .quien {
+    max-width: 40ch;
+  }
+}
+
 /* ══ reducir movimiento: sin vídeo; queda la imagen quieta ═══════════ */
 @media (prefers-reduced-motion: reduce) {
   .fondo > .video {

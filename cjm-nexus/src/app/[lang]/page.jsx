@@ -28,13 +28,10 @@
  * maquetación en `src/blocks/`, de modo que traducir no obliga a tocar
  * ningún componente y cambiar una frase no obliga a leer JSX.
  */
-import FactsTicker from '../../blocks/FactsTicker';
 import FinalCta from '../../blocks/FinalCta';
-import ManifestoBlock from '../../blocks/ManifestoBlock';
 import Method from '../../blocks/Method';
-import Numbers from '../../blocks/Numbers';
+import Credenciales from '../../blocks/registro/Credenciales';
 import Portada from '../../blocks/registro/Portada';
-import Team from '../../blocks/Team';
 import TwoFields from '../../blocks/TwoFields';
 import SiteFooter from '../../components/SiteFooter';
 import BackToTop from '../../components/ui/BackToTop';
@@ -51,12 +48,9 @@ export default function HomePage({ params }) {
       <SiteHeader lang={lang} />
       <main>
         <Portada content={home.portada} />
-        <FactsTicker items={home.facts} />
-        <ManifestoBlock content={home.manifesto} />
+        <Credenciales content={home.credenciales} />
         <TwoFields content={home.fields} mockups={home.mockups} lang={lang} />
-        <Numbers content={home.numbers} />
         <Method content={home.method} />
-        <Team content={home.team} />
         <FinalCta content={home.cta} />
       </main>
       <SiteFooter lang={lang} />

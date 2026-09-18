@@ -39,19 +39,33 @@ export const home = {
     credito: 'Imagen provisional de archivo',
   },
 
-  facts: [
-    'Más de 15 años en dirección financiera',
-    'Más de 100 clientes asesorados',
-    'Un producto propio en desarrollo: KLINODA',
-    'Equipo en Ecuador y Alemania',
-    'Decisiones documentadas en actas',
-    'Más de 2.300 pruebas automáticas',
-  ],
-
-  manifesto: {
-    eyebrow: 'Por qué existimos',
-    text: 'Las empresas medianas venden, crecen y operan todos los días. Pero cuando toca decidir, los números no cuentan una historia clara y el software no está a su altura. Nosotros arreglamos las dos cosas a la vez.',
-    highlight: ['clara', 'altura', 'dos', 'cosas', 'vez'],
+  /* Las credenciales (DESIGN.md, M1). Las cifras de trayectoria son de
+     Richard Carvajal y llevan su nombre al lado (regla 2 de PRODUCT.md).
+     TEXTO POR APROBAR (PLAN.md, ronda 5 §2): las tres notas (`quien`) y la
+     frase de la firma. */
+  credenciales: {
+    etiqueta: 'Trayectoria y equipo',
+    cifras: [
+      {
+        hasta: 15,
+        mas: '+',
+        que: 'años en dirección financiera',
+        quien: 'La trayectoria de Richard Carvajal, fundador de la firma.',
+      },
+      {
+        hasta: 100,
+        mas: '+',
+        que: 'clientes asesorados',
+        quien: 'Por Richard Carvajal, en Latinoamérica y Estados Unidos.',
+      },
+      {
+        valor: '3',
+        que: 'idiomas de trabajo',
+        quien: 'Español, inglés y alemán, con equipo en Ecuador y Alemania.',
+      },
+    ],
+    firma:
+      '**Richard Carvajal** dirige las finanzas, **Boris Carvajal** la tecnología y **Mirella Llanga** la gerencia general.',
   },
 
   fields: {
@@ -140,43 +154,6 @@ export const home = {
     },
   },
 
-  numbers: {
-    eyebrow: 'Medido, no prometido',
-    title: 'Cifras que podemos sostener.',
-    items: [
-      {
-        display: '15+',
-        value: 15,
-        suffix: '+',
-        label: 'años en dirección financiera',
-        note: 'Richard Carvajal, fundador',
-        gradient: 'bg-g-navy',
-      },
-      {
-        display: '100+',
-        value: 100,
-        suffix: '+',
-        label: 'clientes asesorados',
-        note: 'Latinoamérica y Estados Unidos',
-        gradient: 'bg-g-copper',
-      },
-      {
-        display: '2.300+',
-        value: 2300,
-        suffix: '+',
-        label: 'pruebas automáticas',
-        note: 'En KLINODA, hasta hoy',
-        gradient: 'bg-g-teal',
-      },
-      {
-        display: '5,1 s',
-        label: 'para emitir 50 certificados firmados',
-        note: 'Medido con datos ficticios',
-        gradient: 'bg-g-brand',
-      },
-    ],
-  },
-
   method: {
     eyebrow: 'Cómo trabajamos',
     title: 'El método es la garantía.',
@@ -212,19 +189,6 @@ export const home = {
      Tres tarjetas con iniciales dentro de un círculo se leen como un hueco
      esperando a rellenarse; una frase que nombra a los tres y enlaza a su
      página se lee como una decisión. Las fotos van en «Nosotros». */
-  team: {
-    eyebrow: 'Nosotros',
-    title: 'Tres personas, dos países, una firma.',
-    lead: 'Richard Carvajal dirige las finanzas desde Ecuador. Mirella Llanga lleva la operación. Boris Carvajal construye la tecnología desde Alemania.',
-    people: [
-      { name: 'Richard Carvajal', role: 'Fundador · Dirección financiera' },
-      { name: 'Mirella Llanga', role: 'Gerente General' },
-      { name: 'Boris Carvajal', role: 'Cofundador · Tecnología' },
-    ],
-    // Apuntará a /nosotros cuando esa página exista.
-    cta: { label: 'Conocer al equipo', href: '#contacto' },
-  },
-
   cta: {
     eyebrow: 'Siguiente paso',
     title: 'Veinte minutos para entender tu empresa y proponerte un camino.',
