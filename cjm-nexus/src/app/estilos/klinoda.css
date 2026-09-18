@@ -165,7 +165,7 @@ html:not(.tema-vivo) .puerta {
   /* --kb lo pone la escena; fuera de ella la ventana va a su tamaño. */
   font-size: calc(16px * var(--kb, 1));
   line-height: 1.55;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2), 0 48px 90px -48px rgba(0, 0, 0, 0.7);
+  box-shadow: var(--sombra-hoja-noche);
 }
 .k-barra {
   display: flex;

@@ -24,8 +24,9 @@ import { gsap, registerGsap, ScrollTrigger } from './gsap';
 export const MUEVE = '(prefers-reduced-motion: no-preference)';
 export const QUIETO = '(prefers-reduced-motion: reduce)';
 
-/** 1234 → «1.234». */
-export function puntos(n) {
+/** 1234 → «1.234». (Se llamaba `puntos`, que en este sitio son otra cosa: los
+    de un gráfico y los de la línea de plazos.) */
+export function conMillares(n) {
   return String(n).replace(/\B(?=(\d{3})+(?!\d))/g, '.');
 }
 
@@ -40,21 +41,21 @@ export function cuenta(el, duracion) {
     duration: duracion,
     ease: 'power3.out',
     onUpdate: () => {
-      el.textContent = puntos(Math.round(o.v));
+      el.textContent = conMillares(Math.round(o.v));
     },
   });
 }
 
 /** Reserva el ancho del valor final, para que el texto de al lado no baile. */
 export function fijaAncho(el) {
-  el.textContent = puntos(+el.dataset.hasta);
+  el.textContent = conMillares(+el.dataset.hasta);
   el.style.minWidth = `${el.getBoundingClientRect().width}px`;
   el.textContent = '0';
 }
 
 export function restauraCuenta(el) {
   el.style.minWidth = '';
-  el.textContent = puntos(+el.dataset.hasta);
+  el.textContent = conMillares(+el.dataset.hasta);
 }
 
 /** Escalonado a mano: un fromTo por elemento, cada uno en su posición. */

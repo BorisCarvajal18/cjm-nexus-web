@@ -74,8 +74,6 @@ export const servicios = {
 
   cards: [
     {
-      index: '01',
-      tone: 'navy',
       eyebrow: 'Servicio 01',
       title: 'Dirección financiera externa',
       text: 'Un director financiero para dueños y gerentes que necesitan claridad para decidir. Diagnóstico, tablero mensual y una reunión donde se decide con números delante.',
@@ -89,8 +87,6 @@ export const servicios = {
       cta: 'Ver el servicio',
     },
     {
-      index: '02',
-      tone: 'copper',
       eyebrow: 'Servicio 02',
       title: 'Páginas web y sistemas a medida',
       text: 'Tu página web profesional publicada en menos de una semana. Y, cuando el negocio lo pide, el sistema completo con el que trabaja la empresa todos los días.',

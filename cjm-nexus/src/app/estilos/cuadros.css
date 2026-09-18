@@ -34,7 +34,7 @@
   --pz-tinta: var(--tinta);
   --pz-suave: var(--tinta-suave);
   --pz-gris: var(--gris);
-  --pz-lienzo: #f8f6f2;
+  --pz-lienzo: var(--papel-claro);
   --pz-linea: #e3dfd7;
   --pz-linea-fina: #ece9e2;
   --pz-marino-2: #5b6a8c;
@@ -43,7 +43,7 @@
   --pz-ok: #17694b;
   --pz-ok-tinte: #e6f2ec;
   --pz-aviso: var(--cobre-presion);
-  --pz-aviso-tinte: #fbefe6;
+  --pz-aviso-tinte: var(--cobre-tinte);
   --pz-sombra-carta: 0 1px 1px rgba(20, 31, 58, 0.04), 0 2px 4px -2px rgba(20, 31, 58, 0.06);
 
   container: pieza / inline-size;
@@ -59,10 +59,7 @@
   font-family: var(--texto);
   font-size: 16px;
   line-height: 1.55;
-  box-shadow:
-    0 1px 2px rgba(20, 31, 58, 0.06),
-    0 10px 20px -12px rgba(20, 31, 58, 0.2),
-    0 36px 70px -38px rgba(20, 31, 58, 0.55);
+  box-shadow: var(--sombra-hoja);
 }
 /* ── la barra de la ventana ─────────────────────────────────────────── */
 .pz-barra {

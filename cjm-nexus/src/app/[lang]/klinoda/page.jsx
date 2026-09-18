@@ -1,17 +1,18 @@
 /**
  * KLINODA — /es/klinoda
  *
- * ESTA PÁGINA TIENE DOS LECTORES Y LES SIRVE EN ESTE ORDEN. Primero el médico
- * ocupacional, que puede acabar usándolo. Segundo el comprador de software,
- * que llega desde «soluciones digitales» a comprobar si sabemos construir. La
- * misma página vale para los dos porque lo que convence a uno —cómo está
- * hecho por dentro— es exactamente lo que convence al otro.
+ * A QUIÉN LE HABLA (reglas 7, 8 y 9 de PRODUCT.md). El cliente de KLINODA es
+ * la empresa empleadora: a ella va la página, con orden y tranquilidad. El
+ * médico ocupacional es usuario y quien la recomienda, y tiene su sección
+ * (`#medico`). Un tercer lector llega desde «soluciones digitales» a comprobar
+ * si sabemos construir: le sirven la regla de privacidad y las cifras.
  *
  * ORDEN DE LOS BLOQUES, y por qué es ese:
  *  1. Cabecera — qué es, en una frase.
  *  2. Estado — demo en desarrollo con datos ficticios, dicho arriba.
  *  3. El problema — el trámite hecho a mano, con sus tres consecuencias.
  *  4. Cómo funciona — cuatro pasos, y el cuarto es la regla de privacidad.
+ *  4b. Al médico ocupacional — una herramienta que le quita trabajo.
  *  5. La regla, enseñada: el portal de empresa.
  *  6. Cómo está construido — las cifras comprobables.
  *  7. Para quién no es.

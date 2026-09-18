@@ -3,20 +3,26 @@
 /**
  * Quién manda sobre el color de la cabecera.
  *
- * EL PROBLEMA: la cabecera es fija y transparente, y el sitio alterna fondos
- * crema con bandas marino y cobre. Con un solo color, el logotipo y el menú
- * desaparecen justo en las dos secciones más llamativas.
+ * EL PROBLEMA: la cabecera es fija y el sitio alterna papel con bandas marino
+ * (la portada, KLINODA, el cierre, el pie). Con un solo color, el logotipo y el
+ * menú desaparecen justo en las secciones más llamativas.
  *
- * LA SOLUCIÓN NO PUEDE SER MEDIR POSICIONES. La esfera de la portada se
- * expande hasta ocupar la pantalla mientras la sección está fijada: en ese
- * momento el fondo bajo la cabecera es oscuro aunque la sección siga siendo
- * clara, y ningún cálculo de «qué sección toca la cabecera» acierta.
+ * LA SOLUCIÓN NO ES MEDIR QUÉ HAY DEBAJO. En la portada la página entera se
+ * hace de noche ligada al scroll (<Noche />): el fondo bajo la cabecera pasa a
+ * oscuro sin que ninguna sección haya cambiado de sitio, y ningún cálculo de
+ * «qué sección toca la cabecera» acierta.
  *
  * Así que cada zona oscura AVISA cuando entra y cuando sale, y aquí se lleva
  * la cuenta. Es un contador y no un booleano porque dos zonas pueden
  * solaparse durante una transición; con un booleano, la primera en salir
  * apagaría el modo oscuro mientras la segunda sigue activa.
  */
+import { registerGsap, ScrollTrigger } from './gsap';
+
+/** Alto de la cabecera fija, en px. Es `espacio.cabecera` de
+    tailwind.config.js: si cambia allí, cambia aquí. */
+export const ALTO_CABECERA = 72;
+
 let cuenta = 0;
 const oyentes = new Set();
 
@@ -38,8 +44,30 @@ export function alCambiarSuperficie(fn) {
   return () => oyentes.delete(fn);
 }
 
-/** Reinicia la cuenta. Necesario al cambiar de página. */
-export function reiniciarSuperficie() {
-  cuenta = 0;
-  avisar();
+/**
+ * Vigila una zona oscura: avisa a la cabecera mientras la zona está debajo de
+ * ella. Devuelve la función que deja de vigilar.
+ *
+ * `alFinal`, solo para la última sección de la página: si mide menos que la
+ * pantalla, su borde nunca llegaría a la cabecera.
+ */
+export function vigilaZonaOscura(el, { alFinal = false } = {}) {
+  registerGsap();
+  let dentro = false;
+  const disparador = ScrollTrigger.create({
+    trigger: el,
+    start: alFinal ? `clamp(top ${ALTO_CABECERA}px)` : `top ${ALTO_CABECERA}px`,
+    end: `bottom ${ALTO_CABECERA}px`,
+    onToggle: (self) => {
+      if (self.isActive === dentro) return;
+      dentro = self.isActive;
+      marcarOscuro(dentro);
+    },
+  });
+  return () => {
+    // Si deja de vigilarse con la zona activa hay que devolver su punto a la
+    // cuenta, o la cabecera se quedaría blanca sobre fondo claro.
+    if (dentro) marcarOscuro(false);
+    disparador.kill();
+  };
 }

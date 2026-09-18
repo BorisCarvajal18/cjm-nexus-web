@@ -26,7 +26,7 @@ import { defaultLanguage, languages, localeMap } from '../../i18n/settings';
 import { organizationSchema } from '../../lib/seo';
 import { SITE_URL } from '../../lib/site';
 
-/* Fuentes del sistema «Pulso Cobre».
+/* Las dos familias del registro (DESIGN.md, Typography).
  *
  * PLUS JAKARTA SANS para titulares, INTER para texto. Elegida por el dueño el
  * 3 de septiembre de 2026 entre cuatro parejas comparadas sobre la misma

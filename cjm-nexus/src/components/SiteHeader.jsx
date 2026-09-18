@@ -34,6 +34,7 @@ import { getSitio } from '../content';
 import { languages } from '../i18n/settings';
 import { alCambiarSuperficie } from '../lib/surface';
 import { navLinks } from '../lib/site';
+import Flecha from './registro/Flecha';
 
 /** La misma ruta en otro idioma: /es/klinoda → /de/klinoda. */
 function enIdioma(ruta, idioma) {
@@ -41,25 +42,6 @@ function enIdioma(ruta, idioma) {
   if (languages.includes(partes[1])) partes[1] = idioma;
   else partes.splice(1, 0, idioma);
   return partes.join('/').replace(/\/$/, '') || `/${idioma}`;
-}
-
-function Flecha() {
-  return (
-    <svg
-      width="13"
-      height="13"
-      viewBox="0 0 15 15"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="1.7"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      aria-hidden="true"
-      className="transition-transform duration-200 ease-llegar group-hover:translate-x-[3px]"
-    >
-      <path d="M2 7.5h10.5M8.5 3.5 12.5 7.5 8.5 11.5" />
-    </svg>
-  );
 }
 
 export default function SiteHeader({ lang = 'es', ctaHref }) {
@@ -175,7 +157,7 @@ export default function SiteHeader({ lang = 'es', ctaHref }) {
               {t.agendar}
               <span className="max-[620px]:hidden">{t.agendarDetalle}</span>
             </span>
-            <Flecha />
+            <Flecha size={13} className="transition-transform duration-200 ease-llegar group-hover:translate-x-[3px]" />
           </a>
 
           <button

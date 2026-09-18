@@ -31,25 +31,13 @@ import { alAsomar, anotaPendiente, cuenta, escalona, fijaAncho } from './registr
  * · llegar → todas las entradas y los estados al apuntar. Es la `--curva`
  *            del CSS, cubic-bezier(.16,1,.3,1).
  * · cruzar → los desplazamientos decididos de las escenas.
- * · salir  → toda salida, que dura `SALIDA` veces su entrada.
+ * · salir  → toda salida, que dura el 60 % de su entrada.
  */
 export const CURVA = { llegar: 'expo.out', cruzar: 'power3.inOut', salir: 'power2.in' };
 
-/** Una salida dura el 60 % de su entrada. */
-export const SALIDA = 0.6;
-
-/** Duraciones, en segundos: el mínimo y el máximo de cada familia. */
-export const DURACION = {
-  apuntar: [0.18, 0.44], // estados al apuntar
-  entrada: [0.6, 1.8], // la entrada con reloj de una sección
-  tablero: [1.4, 1.6], // el dibujo de un tablero
-};
-
-/**
- * El reloj ligado al scroll. Se mide en pantallas de desplazamiento: un
- * gesto (algo se mueve) cuesta 0,30 y una pausa de lectura, 0,40.
- */
-export const PANTALLAS = { gesto: 0.3, pausa: 0.4 };
+/* Las duraciones de cada familia, lo que cuesta un gesto (0,30 pantalla) y una
+   pausa de lectura (0,40), y que una salida dura el 60 % de su entrada están
+   en DESIGN.md («Movimiento»). Aquí solo van los valores que el código lee. */
 
 /** Suavizado del scrub de las escenas, en segundos. */
 export const SCRUB = 0.5;
@@ -71,21 +59,12 @@ export const AJUSTE_AL_SOLTAR = true;
  */
 export const UMBRAL_ESCENAS = '(min-width: 1024px) and (min-height: 640px)';
 
-/** La consulta completa, lista para `gsap.matchMedia().add()`. */
-export const CONSULTA_ESCENAS = `${UMBRAL_ESCENAS} and (prefers-reduced-motion: no-preference)`;
-
 /**
  * La letra de una escena baja con la variable `--k` en pasos de 0,04 hasta
  * que el texto cabe en el alto del escenario, sin pasar de 0,7. El tablero
  * de KLINODA, además, crece hasta 1,25 cuando sobra alto.
  */
 export const ESCALA_ALTO = { paso: 0.04, minimo: 0.7, maximoKlinoda: 1.25 };
-
-/** ¿Se fijan las escenas en esta pantalla? Solo en cliente. */
-export function fijaEscenas() {
-  if (typeof window === 'undefined' || !window.matchMedia) return false;
-  return window.matchMedia(CONSULTA_ESCENAS).matches;
-}
 
 /* ================================================================== */
 /*  EL REGISTRO — los tableros y las escenas fijadas                   */
@@ -101,7 +80,7 @@ export function fijaEscenas() {
  * nada; fuera de ella lleva a la pausa siguiente en la dirección en que se
  * iba. `pausas` en pantallas, `total` en pantallas.
  */
-export function ajustePausas(pausas, total, direccionActual) {
+function ajustePausas(pausas, total, direccionActual) {
   return (valor, self) => {
     const d = self?.direction || direccionActual();
     const p = valor * total;
@@ -116,7 +95,7 @@ export function ajustePausas(pausas, total, direccionActual) {
 }
 
 /** Las opciones del `snap` de una escena, o nada si el ajuste está apagado. */
-export function snapDeEscena(pausas, total, direccionActual) {
+function snapDeEscena(pausas, total, direccionActual) {
   if (!AJUSTE_AL_SOLTAR) return undefined;
   return {
     snapTo: ajustePausas(pausas, total, direccionActual),
@@ -125,6 +104,62 @@ export function snapDeEscena(pausas, total, direccionActual) {
     ease: 'power1.inOut',
     inertia: false,
   };
+}
+
+/** Cuánto sobresale el escenario del marco por la izquierda: el texto de las
+    escenas se alinea con la rejilla de la página, no con el escenario. */
+function sangriaDe(marco, area) {
+  const relleno = parseFloat(getComputedStyle(marco).paddingLeft);
+  return Math.max(0, marco.getBoundingClientRect().left + relleno - area.getBoundingClientRect().left);
+}
+
+/** Baja una variable de escala (`--k`, `--kb`, `--kt`) en pasos de
+    `ESCALA_ALTO.paso` hasta que `cabe()` o toca el mínimo. Devuelve el valor. */
+function encoge(el, variable, cabe, { desde = 1, minimo = ESCALA_ALTO.minimo } = {}) {
+  let k = desde;
+  el.style.setProperty(variable, k);
+  while (!cabe() && k > minimo) {
+    k = Math.round((k - ESCALA_ALTO.paso) * 100) / 100;
+    el.style.setProperty(variable, k);
+  }
+  return k;
+}
+
+/**
+ * La línea de tiempo de una escena fijada: el escenario se fija `total`
+ * pantallas, el scroll la recorre con `SCRUB` y, al soltar, se ajusta a la
+ * pausa siguiente. `mide` rehace la geometría antes de cada recálculo.
+ */
+function lineaFijada(escenario, { total, pausas, mide, alRecalcular, alAvanzar }) {
+  let direccion = 1;
+  const tl = gsap.timeline({
+    defaults: { ease: 'none' },
+    scrollTrigger: {
+      trigger: escenario,
+      start: 'top top',
+      end: `+=${Math.round(total * 100)}%`,
+      pin: true,
+      scrub: SCRUB,
+      anticipatePin: 1,
+      invalidateOnRefresh: true,
+      refreshPriority: 1,
+      onRefreshInit: mide,
+      onRefresh: alRecalcular,
+      onUpdate: (self) => {
+        if (self.direction) direccion = self.direction;
+        alAvanzar?.(self);
+      },
+      snap: snapDeEscena(pausas, total, () => direccion),
+    },
+  });
+  tl.to({}, { duration: total }, 0);
+  return tl;
+}
+
+/** Lleva el scroll al punto `pos` (en pantallas) de una escena de `total`. */
+function irAlPunto(tl, pos, total) {
+  const t = tl.scrollTrigger;
+  window.scrollTo(0, Math.round(t.start + ((t.end - t.start) * pos) / total) + 1);
 }
 
 /* Una máscara que descubre de izquierda a derecha. Los márgenes negativos
@@ -214,7 +249,7 @@ export function lineasDe(t) {
  *
  * Las dos líneas miden exactamente 1,00 pantalla, con la misma distancia, la
  * misma curva y la misma letra; solo cambia la dirección. Devuelve la
- * limpieza. Solo se llama bajo `CONSULTA_ESCENAS`.
+ * limpieza. Solo se llama con `UMBRAL_ESCENAS` y con movimiento.
  */
 export function escenaTableros(seccion, { armaF, armaS, tlRegla, limpia }) {
   const escenario = seccion.querySelector('.escenario');
@@ -248,8 +283,7 @@ export function escenaTableros(seccion, { armaF, armaS, tlRegla, limpia }) {
   function mide() {
     const W = area.clientWidth;
     const H = area.clientHeight;
-    const cs = getComputedStyle(marco);
-    const sangria = Math.max(0, marco.getBoundingClientRect().left + parseFloat(cs.paddingLeft) - area.getBoundingClientRect().left);
+    const sangria = sangriaDe(marco, area);
     const col = (W - HUECO) / 2;
     const ancho = Math.max(ANCHO_MIN, col);
     cajas.forEach((c) => {
@@ -266,13 +300,7 @@ export function escenaTableros(seccion, { armaF, armaS, tlRegla, limpia }) {
     const xTS = xL + bw + aire;
     textos[0].style.width = `${xR - aire - sangria}px`;
     textos[1].style.width = `${W - sangria - xTS}px`;
-    let k = 1;
-    seccion.style.setProperty('--k', k);
-    const altoTextos = () => Math.max(textos[0].offsetHeight, textos[1].offsetHeight);
-    while (altoTextos() > H - 8 && k > ESCALA_ALTO.minimo) {
-      k = Math.round((k - ESCALA_ALTO.paso) * 100) / 100;
-      seccion.style.setProperty('--k', k);
-    }
+    const k = encoge(seccion, '--k', () => Math.max(textos[0].offsetHeight, textos[1].offsetHeight) <= H - 8);
     G = {
       s,
       k,
@@ -287,28 +315,8 @@ export function escenaTableros(seccion, { armaF, armaS, tlRegla, limpia }) {
   }
   mide();
 
-  let direccion = 1;
-  const tl = gsap.timeline({
-    defaults: { ease: 'none' },
-    scrollTrigger: {
-      trigger: escenario,
-      start: 'top top',
-      end: `+=${Math.round(TOTAL * 100)}%`,
-      pin: true,
-      scrub: SCRUB,
-      anticipatePin: 1,
-      invalidateOnRefresh: true,
-      refreshPriority: 1,
-      onRefreshInit: mide,
-      onUpdate: (self) => {
-        if (self.direction) direccion = self.direction;
-      },
-      snap: snapDeEscena(PAUSAS, TOTAL, () => direccion),
-    },
-  });
+  const tl = lineaFijada(escenario, { total: TOTAL, pausas: PAUSAS, mide });
   const g = (clave, mas = 0) => () => G[clave] + mas;
-
-  tl.to({}, { duration: TOTAL }, 0);
 
   /* A · las dos, lado a lado y del mismo tamaño */
   tl.set(cajas[0], { x: g('xL'), y: g('y'), scale: g('s'), opacity: 1 }, 0);
@@ -348,13 +356,9 @@ export function escenaTableros(seccion, { armaF, armaS, tlRegla, limpia }) {
   alAsomar(seccion, 'top 45%', ambos);
 
   /* Quien llega con el tabulador a un botón de la escena lo encuentra a la vista. */
-  const vaA = (pos) => {
-    const t = tl.scrollTrigger;
-    window.scrollTo(0, Math.round(t.start + ((t.end - t.start) * pos) / TOTAL) + 1);
-  };
   const alFoco = (e) => {
-    if (textos[0].contains(e.target)) vaA(1.5);
-    else if (textos[1].contains(e.target)) vaA(2.9);
+    if (textos[0].contains(e.target)) irAlPunto(tl, 1.5, TOTAL);
+    else if (textos[1].contains(e.target)) irAlPunto(tl, 2.9, TOTAL);
   };
   seccion.addEventListener('focusin', alFoco);
 
@@ -401,7 +405,7 @@ export function armaKlinoda(t) {
  *   K5 · se lee        1,70–2,10  nada
  *
  * Las mismas unidades y curvas que la escena de los tableros. Devuelve la
- * limpieza. Solo se llama bajo `CONSULTA_ESCENAS`.
+ * limpieza. Solo se llama con `UMBRAL_ESCENAS` y con movimiento.
  */
 export function escenaKlinoda(puerta, { arma, limpia }) {
   const escenario = puerta.querySelector('.k-escenario');
@@ -427,6 +431,8 @@ export function escenaKlinoda(puerta, { arma, limpia }) {
   ]; // A, K2, K5
   const HUECO = 40;
   const PLACA = 0.94;
+  const KB_MINIMO = 0.6; // la letra del tablero no baja de aquí
+  const SE_DIBUJA = 0.7; // K2: desde esta pantalla el tablero está dibujado
   let G = {};
 
   /* Posición de un elemento dentro de la caja, sin transformaciones. */
@@ -449,31 +455,25 @@ export function escenaKlinoda(puerta, { arma, limpia }) {
   function mide() {
     const W = area.clientWidth;
     const H = area.clientHeight;
-    const cs = getComputedStyle(marco);
-    const sangria = Math.max(0, marco.getBoundingClientRect().left + parseFloat(cs.paddingLeft) - area.getBoundingClientRect().left);
+    const sangria = sangriaDe(marco, area);
     caja.style.width = `${W}px`;
     caja.style.height = `${H}px`;
-    let kb = 1;
-    puerta.style.setProperty('--kb', kb);
+    // Se mide a su alto natural con la letra en 1 y se parte de la escala que
+    // llenaría el escenario (con un 3 % de holgura); si aun así no cabe, baja.
+    puerta.style.setProperty('--kb', 1);
     tablero.style.height = 'auto';
-    kb = Math.max(0.6, Math.min(ESCALA_ALTO.maximoKlinoda, Math.floor((H / tablero.offsetHeight) * 0.97 * 100) / 100));
-    puerta.style.setProperty('--kb', kb);
-    while (tablero.offsetHeight > H && kb > 0.6) {
-      kb = Math.round((kb - ESCALA_ALTO.paso) * 100) / 100;
-      puerta.style.setProperty('--kb', kb);
-    }
+    const llena = Math.floor((H / tablero.offsetHeight) * 0.97 * 100) / 100;
+    const kb = encoge(puerta, '--kb', () => tablero.offsetHeight <= H, {
+      desde: Math.max(KB_MINIMO, Math.min(ESCALA_ALTO.maximoKlinoda, llena)),
+      minimo: KB_MINIMO,
+    });
     tablero.style.height = '';
     const s = Math.min(1, (W - HUECO) / 2 / W);
     const xR = W / 2 + HUECO / 2;
     const yK = (H - H * s) / 2;
     const aire = Math.max(40, Math.min(64, W * 0.05));
     texto.style.width = `${xR - aire - sangria}px`;
-    let kt = 1;
-    puerta.style.setProperty('--kt', kt);
-    while (texto.offsetHeight > H - 8 && kt > ESCALA_ALTO.minimo) {
-      kt = Math.round((kt - ESCALA_ALTO.paso) * 100) / 100;
-      puerta.style.setProperty('--kt', kt);
-    }
+    const kt = encoge(puerta, '--kt', () => texto.offsetHeight <= H - 8);
     const a = dentro(logoGrande);
     const b = dentro(logoBarra);
     const c = dentro(etiqueta);
@@ -514,32 +514,18 @@ export function escenaKlinoda(puerta, { arma, limpia }) {
     arma.play();
   }
 
-  let direccion = 1;
-  const tl = gsap.timeline({
-    defaults: { ease: 'none' },
-    scrollTrigger: {
-      trigger: escenario,
-      start: 'top top',
-      end: `+=${Math.round(TOTAL * 100)}%`,
-      pin: true,
-      scrub: SCRUB,
-      anticipatePin: 1,
-      invalidateOnRefresh: true,
-      refreshPriority: 1,
-      onRefreshInit: mide,
-      onRefresh: (self) => {
-        if (self.progress * TOTAL >= 0.7) armar(true);
-      },
-      onUpdate: (self) => {
-        if (self.direction) direccion = self.direction;
-        if (self.progress * TOTAL >= 0.7) armar(false);
-      },
-      snap: snapDeEscena(PAUSAS, TOTAL, () => direccion),
+  const tl = lineaFijada(escenario, {
+    total: TOTAL,
+    pausas: PAUSAS,
+    mide,
+    alRecalcular: (self) => {
+      if (self.progress * TOTAL >= SE_DIBUJA) armar(true);
+    },
+    alAvanzar: (self) => {
+      if (self.progress * TOTAL >= SE_DIBUJA) armar(false);
     },
   });
   const g = (clave) => () => G[clave];
-
-  tl.to({}, { duration: TOTAL }, 0);
 
   /* A · el producto: el tablero entero, tapado; logotipo y etiqueta en el centro */
   tl.set(caja, { x: 0, y: 0, scale: 1 }, 0);
@@ -567,9 +553,7 @@ export function escenaKlinoda(puerta, { arma, limpia }) {
 
   /* Quien llega con el tabulador al botón lo encuentra a la vista. */
   const alFoco = (e) => {
-    if (!texto.contains(e.target)) return;
-    const t = tl.scrollTrigger;
-    window.scrollTo(0, Math.round(t.start + ((t.end - t.start) * 1.9) / TOTAL) + 1);
+    if (texto.contains(e.target)) irAlPunto(tl, 1.9, TOTAL);
   };
   puerta.addEventListener('focusin', alFoco);
 
