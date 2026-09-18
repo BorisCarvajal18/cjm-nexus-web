@@ -237,7 +237,7 @@ export const klinoda = {
   cta: {
     eyebrow: 'Siguiente paso',
     title: 'Veinte minutos para ver KLINODA con los ojos de tu empresa.',
-    text: 'Te enseñamos cómo funciona, con datos ficticios, y nos cuentas cómo lleváis hoy la salud ocupacional. Si eres médico ocupacional, también queremos escucharte.',
+    text: 'Te enseñamos cómo funciona, con datos ficticios, y nos cuentas cómo lleva hoy tu empresa la salud ocupacional. Si eres médico ocupacional, también queremos escucharte.',
     primary: 'Agendar una conversación',
     secondary: 'Escribir a CJM Nexus',
   },

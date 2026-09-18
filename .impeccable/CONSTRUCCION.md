@@ -25,11 +25,15 @@ las páginas interiores en el sistema del registro, los textos de KLINODA con la
 **Lo que espera a Boris:**
 
 1. Los textos de «Textos por aprobar» (abajo).
-2. Tres decisiones tomadas por defecto, reversibles: el método en `/servicios#metodo` (pieza 8),
-   las páginas interiores quietas (pieza 9) y el botón de menú bajo 1000 px (pieza 2).
+2. ~~Tres decisiones tomadas por defecto~~ **Aprobadas por Boris el 2026-09-18:** el método en
+   `/servicios#metodo` (pieza 8), el botón de menú bajo 1000 px (pieza 2) y el foco en
+   `cobre-honda` (pieza 2). Las páginas interiores quietas (pieza 9) **no** se aprueban: tendrán un
+   momento de movimiento por página; el guion está abajo, en «Movimiento de las páginas
+   interiores», y se programa después de juntar `fable-pulido`.
 3. Confirmar con el abogado la palabra «Grupo» (regla 8 de PRODUCT.md).
-4. Poner al día en DESIGN.md el color del foco (`cobre-honda`, pieza 2) y, si se aprueba, las páginas
-   interiores.
+4. **Después de juntar `fable-pulido`** (no antes: esa rama está cambiando DESIGN.md): poner al día
+   en DESIGN.md el color del foco, que dice «contorno cobre» y ahora es `cobre-honda`, en
+   «Buttons» (Hover / Focus) y en «Global». También añadir las páginas interiores.
 
 **Lo siguiente, fuera de estas piezas:** traducciones EN/DE (ahora que el español está casi cerrado),
 imágenes Open Graph con el titular nuevo, páginas legales, página «Nosotros», isotipo y logotipo de
@@ -449,3 +453,130 @@ portada es el vídeo y la capa de la noche, que en ese modo no se muestran.
 - **Preguntas frecuentes:** se quedan las propuestas, en «Revisar con clientes reales».
 - Se quita el pendiente «confirmaciones de Richard»; `docs/preguntas-richard.md` queda marcado
   como resuelto. Fuera los comentarios `SUPUESTO` de la página financiera. PRODUCT.md, al día.
+
+### 2026-09-18 — español latinoamericano, cifras autorizadas y decisiones aprobadas
+
+Ronda solo de textos y documentos: en paralelo, otro chat pule el diseño en la rama `fable-pulido`
+(su propio worktree). Aquí no se tocaron CSS, componentes ni DESIGN.md.
+
+- `git push origin rediseno-2026`.
+- **PRODUCT.md:** las cifras 2.300+ pruebas, 13 actas y 5,1 s quedan autorizadas para las páginas
+  públicas (Boris, 2026-09-18), y la regla 10: español latinoamericano, tuteo al cliente, «ustedes»
+  cuando el cliente habla a la firma, nunca «vosotros».
+- **Textos corregidos** (siete):
+  - `klinoda.es.js` → `cta.text`: «cómo lleváis hoy» → «cómo lleva hoy tu empresa».
+  - `servicios.es.js` → `digital.web.includes`: «con vosotros» → «contigo».
+  - `servicios.es.js` → `digital.systems.steps[0]`: «cómo trabajáis» → «cómo trabaja tu equipo».
+  - `servicios.es.js` → `digital.systems.steps[3]`: «que ya tenéis» → «que ya tienes».
+  - `servicios.es.js` → `digital.faq`: «¿Qué necesitáis de mí?» → «¿Qué necesitan de mí?» y
+    «¿Trabajáis con empresas fuera de Ecuador?» → «¿Trabajan con empresas fuera de Ecuador?».
+  - `home.es.js` → `portada.imagen` (el texto alternativo): «un portátil» → «una laptop».
+- **Decisiones aprobadas:** método en `/servicios#metodo`, botón de menú en móvil y foco en
+  `cobre-honda`. Pendiente: poner el foco al día en DESIGN.md tras juntar `fable-pulido`.
+
+**Verificación:** `npm run build` sin errores. Búsqueda en todo `cjm-nexus/src/content` (pronombres
+«vosotros/os/vuestro», presentes en -áis/-éis, pretéritos en -steis, imperativos en -ad/-ed/-id y
+vocabulario de España): 0 coincidencias en el texto visible. La única que salta es `id="metodo"`
+dentro de un comentario, que no es un imperativo.
+
+## Movimiento de las páginas interiores — guion (sin programar)
+
+Se programa **después de juntar `fable-pulido`**. Un momento por página, sacado de su contenido;
+ninguno se repite y ninguno es un desvanecido genérico. Mismas reglas que la portada: curvas
+`CURVA.llegar` (`expo.out`), `CURVA.cruzar` (`power3.inOut`) y `CURVA.salir` (`power2.in`, 60 % de su
+entrada); solo transformación, opacidad, máscara, trazo y variables de filete; con reloj una sola
+vez al asomar (`alAsomar`, con su estado final si la página se carga más abajo) o ligado al scroll y
+reversible. Con «reducir movimiento» y sin JavaScript, todo en su estado final desde el primer
+píxel. El texto nunca se oculta para esperar a una animación: se mueve lo que ya se lee.
+
+
+### `/servicios` — «Las dos hojas, a la vez»
+
+**Qué cuenta:** el 50/50. Las dos líneas llegan con el mismo gesto, en el mismo instante y durante
+el mismo tiempo. **Dónde:** las dos interfaces de muestra de `ServiceCards`. **Reloj:** con reloj,
+una vez, cuando el borde superior de las hojas llega al 80 % de la pantalla. Las dos comparten
+disparador en escritorio, porque están a la misma altura.
+
+| Tiempo | Hoja de finanzas | Hoja de software |
+|---|---|---|
+| 0,00–0,70 s | Sube de +28 px a 0 y pasa de opacidad 0 a 1. `CURVA.llegar` | Lo mismo, en el mismo fotograma |
+| 0,10–0,80 s | Su sombra de hoja crece de ninguna a `shadow-hoja`: se «posa» sobre el papel | Igual |
+| 0,20–0,75 s | El filete bajo «Servicio 01» se traza de izquierda a derecha (`scaleX` 0→1, `power2.out`) | El filete bajo «Servicio 02», igual y a la vez |
+
+- **Total:** 0,8 s. Dentro de las hojas no se dibuja nada: el dibujo interior es el gesto de
+  Dirección financiera y no se repite aquí.
+- **Móvil (una columna):** cada hoja tiene su propio disparador al 80 %, con el mismo guion y los
+  mismos tiempos.
+- **Con «reducir movimiento» o sin JavaScript:** hojas quietas, con su sombra y sus filetes enteros.
+
+### `/servicios/direccion-financiera` — «El tablero se dibuja»
+
+**Qué cuenta:** esto es lo que recibes cada mes, y se arma con tus datos. **Dónde:** el tablero
+completo de `BoardShowcase` (`#entregable`). **Reloj:** con reloj, una vez, cuando el borde superior
+del tablero llega al 75 %. Duración 1,6 s, dentro de la familia «dibujo de un tablero» de DESIGN.md
+(1,4–1,6 s).
+
+| Tiempo | Qué se mueve | Curva |
+|---|---|---|
+| 0,00–0,90 s | Las doce barras de ventas crecen desde la base (`scaleY` 0→1, origen abajo), escalonadas 0,05 s | `CURVA.llegar` |
+| 0,10–0,50 s | La línea discontinua de la meta se extiende de izquierda a derecha (`scaleX` 0→1) | `power2.out` |
+| 0,30–1,40 s | El trazo de ventas se dibuja encima de las barras (`stroke-dashoffset`) y cruza la meta. Es el degradado permitido: sale apagado y llega encendido | `CURVA.llegar` |
+| 0,60–1,30 s | Las cuatro barras de margen por línea se llenan hasta su porcentaje (`scaleX`, origen izquierda), escalonadas 0,08 s | `CURVA.llegar` |
+| 1,20–1,60 s | El filete de «Alertas del mes» se traza y las dos alertas pasan de opacidad 0 a 1, con 0,08 s entre una y otra | `power2.out` |
+
+- **Lo que no se mueve:** las cuatro cifras de la cabecera (ventas, margen, caja, rentabilidad) están
+  quietas desde el principio. Contar cifras es el gesto de las credenciales de la portada.
+- **Móvil:** el mismo guion; el disparador pasa al 85 %, porque el tablero es más alto que la pantalla.
+- **Con «reducir movimiento» o sin JavaScript:** el tablero dibujado entero.
+- **Si la página se carga más abajo:** estado final, sin animar (`alAsomar`).
+
+### `/servicios/soluciones-digitales` — «La semana, en una línea»
+
+**Qué cuenta:** «publicada en menos de una semana», recorrida paso a paso. **Dónde:** los tres pasos
+de la página web (`#web`: «Día 1», «Los días siguientes», «Menos de una semana»). Los cuatro pasos de
+los sistemas a medida se quedan quietos: un solo momento por página. **Reloj:** ligado al scroll y
+reversible, con `scrub` 0,5 s. Empieza cuando el borde superior de los pasos llega al 85 % de la
+pantalla y termina cuando llega al 40 %: unos 0,45 de pantalla.
+
+| Progreso | Qué se mueve |
+|---|---|
+| 0–100 % | Un filete de cobre de 2 px recorre el borde superior de las tres columnas, de izquierda a derecha y de forma continua (`scaleX` 0→1 sobre una capa encima del filete de 1 px). Sin curva propia: la marca el dedo |
+| 0 %, 33 % y 66 % | Cuando el filete llega al inicio de cada columna, un punto de cobre de 5 px delante de su «cuándo» aparece (`scale` 0→1, 0,3 s, `CURVA.llegar`). Si se sube, se apaga en 0,18 s (`CURVA.salir`) |
+| 100 % | La línea termina en el borde derecho de «Menos de una semana». No hay punto final ni rebote |
+
+- **Contraste:** el texto de los pasos no cambia de color ni de opacidad en ningún momento. Solo se
+  mueven el filete y los puntos, así que se lee igual en cualquier punto del recorrido.
+- **Móvil (columnas apiladas, por debajo de 760 px):** la misma idea en vertical. Cada columna traza su
+  filete superior de izquierda a derecha al cruzar el 70 % de la pantalla, ligado al scroll, y su
+  punto aparece al completarse.
+- **Con «reducir movimiento» o sin JavaScript:** los tres filetes en cobre enteros y los tres puntos
+  visibles.
+
+### `/klinoda` — «Lo que no existe, no aparece»
+
+**Qué cuenta:** la regla de privacidad. La vista de la empresa se llena de cargo, evaluación y
+aptitud, y nada más. **Dónde:** la vista de aptitud de `Privacy` (`#privacidad`). **Reloj:** con reloj,
+una vez, cuando el borde superior de la hoja llega al 80 %. Duración 1,5 s.
+
+| Tiempo | Qué se mueve | Curva |
+|---|---|---|
+| 0,00–0,40 s | El filete bajo la cabecera de columnas («Cargo · Evaluación · Aptitud») se traza de izquierda a derecha | `power2.out` |
+| 0,15–0,75 s | Las tres filas aterrizan una a una: de −8 px a 0 y de opacidad 0 a 1, con 0,12 s entre cada fila. Cargo y evaluación llegan juntos | `CURVA.llegar` |
+| 0,55–1,05 s | Las etiquetas de aptitud («APTO», «APTO EN OBSERVACIÓN») se estampan en el orden de las filas: `scale` 0,92→1 y opacidad 0→1, con 0,12 s entre cada una | `power3.out` |
+| 1,10–1,50 s | Sobre el pie se traza un filete de cobre de 2 px y la frase «Diagnósticos, antecedentes y exámenes no existen en esta vista.» pasa de opacidad 0 a 1 | `power2.out` |
+
+- **Lo que no se hace, a propósito:** ningún hueco ni columna vacía se anima. Lo clínico no existe en
+  esta vista, así que no se enseña «apareciendo» ni «tapándose».
+- **Móvil:** el mismo guion; la columna de evaluación está oculta y sus tiempos se saltan sin dejar
+  hueco.
+- **Con «reducir movimiento» o sin JavaScript:** la tabla entera, con su filete y su pie.
+
+### Para las cuatro páginas
+
+- **La llegada:** la cabecera de cada página (`PageHero`) se queda quieta a propósito. El salto
+  desde la portada lo resuelve el primer momento de cada página. Si al probarlo sigue notándose, la
+  siguiente pieza a mirar sería la cabecera del sitio, que es lo único que viaja entre páginas, no un
+  desvanecido en cada titular.
+- **Implementación prevista:** cada momento en un preset de `lib/animations.js` y cada sección con
+  `useRegistro`, bajo `MUEVE`, con `alAsomar` para los de reloj. Los disparadores se revisan después
+  de juntar `fable-pulido`, porque esa rama puede cambiar alturas y espaciados.

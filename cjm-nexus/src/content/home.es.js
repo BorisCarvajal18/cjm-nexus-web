@@ -34,7 +34,7 @@ export const home = {
     agendar: 'Agendar diagnóstico ejecutivo · 20 min',
     verQueHacemos: 'Ver qué hacemos',
     nota: 'Sin costo · sin compromiso · 20 minutos',
-    imagen: 'Tres personas trabajan en una mesa con informes, gráficos impresos y un portátil, vistas desde arriba.',
+    imagen: 'Tres personas trabajan en una mesa con informes, gráficos impresos y una laptop, vistas desde arriba.',
     // El vídeo es un clip de archivo hasta que exista material propio.
     credito: 'Imagen provisional de archivo',
   },

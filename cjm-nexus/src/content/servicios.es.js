@@ -423,7 +423,7 @@ export const digital = {
     includes: [
       'Diseño propio, no una plantilla con el logotipo cambiado',
       'Se ve bien en el teléfono, que es por donde te van a mirar',
-      'Textos redactados o corregidos con vosotros',
+      'Textos redactados o corregidos contigo',
       'Formulario de contacto y enlace directo a WhatsApp',
       'Preparada para que Google la lea bien',
       'Dominio y alojamiento incluidos, y a nombre de tu empresa',
@@ -493,7 +493,7 @@ export const digital = {
         step: '01',
         when: 'Al principio',
         title: 'Entender el proceso real',
-        text: 'Dos o tres sesiones para ver cómo trabajáis de verdad todos los días, no cómo lo describe el manual. Salimos con el alcance escrito y una propuesta con precio.',
+        text: 'Dos o tres sesiones para ver cómo trabaja tu equipo de verdad todos los días, no cómo lo describe el manual. Salimos con el alcance escrito y una propuesta con precio.',
         gives: 'Lo que recibes: el alcance por escrito y el precio, antes de comprometer nada.',
       },
       {
@@ -507,7 +507,7 @@ export const digital = {
         step: '03',
         when: 'Al terminar',
         title: 'Puesta en marcha',
-        text: 'Pasamos la información que ya tenéis, enseñamos a usarlo a quien lo va a usar y acompañamos las primeras semanas de uso real, que son las que de verdad prueban un sistema.',
+        text: 'Pasamos la información que ya tienes, enseñamos a usarlo a quien lo va a usar y acompañamos las primeras semanas de uso real, que son las que de verdad prueban un sistema.',
         gives: 'Lo que recibes: el sistema en marcha y a tu equipo sabiendo usarlo.',
       },
       {
@@ -574,7 +574,7 @@ export const digital = {
         a: 'Sí, y la condición está a la vista: la semana empieza a contar cuando tenemos tus textos, tu logotipo y tus imágenes. Con eso en la mano, tu web está publicada en menos de siete días. Lo que suele alargar un proyecto no es programar, es esperar el material.',
       },
       {
-        q: '¿Qué necesitáis de mí?',
+        q: '¿Qué necesitan de mí?',
         a: 'Tu logotipo, las imágenes que quieras usar y una conversación sobre tu empresa. Los textos los podemos escribir nosotros a partir de esa conversación y tú los corriges; no hace falta que llegues con nada redactado.',
       },
       {
@@ -598,7 +598,7 @@ export const digital = {
         a: 'Entonces el camino es el otro: empezamos entendiendo tu proceso real, sale un alcance escrito con precio, y desde las primeras semanas puedes entrar a probar lo que llevamos construido. Eso se mide en meses, no en días, y lo decimos desde el principio.',
       },
       {
-        q: '¿Trabajáis con empresas fuera de Ecuador?',
+        q: '¿Trabajan con empresas fuera de Ecuador?',
         a: 'Sí. El equipo técnico está en Alemania y trabajamos en español, inglés y alemán.',
       },
     ],

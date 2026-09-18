@@ -77,6 +77,7 @@ Otras cosas sin resolver: no existe página «Nosotros» (el menú apunta a la b
    _Cambió el 2026-09-15. Antes decía: «No se afirma quién es el cliente de KLINODA. Se dice "salud ocupacional", nunca "para médicos" ni "para empresas": esa decisión de negocio sigue abierta.»_ Los textos del sitio que todavía contradicen la regla están listados en `.impeccable/CONSTRUCCION.md`.
 8. **KLINODA se presenta como «Empresa del Grupo CJM Nexus».** Decidido el 18 de septiembre de 2026. Nunca más «producto propio» ni «la prueba de lo que construimos», en ninguna página ni en ningún metadato. **Pendiente:** confirmar con el abogado que «Grupo» es la palabra jurídicamente correcta para la relación entre CJM Nexus y KLINODA S.A.S. Hasta entonces se usa, y se cambia en un solo sitio si el abogado dice otra cosa.
 9. **Nunca «plataforma para médicos ocupacionales».** Decidido el 18 de septiembre de 2026. Es la consecuencia de la regla 7: el cliente es la empresa. Al médico se le habla como usuario y como quien la recomienda, nunca como el destinatario de la plataforma.
+10. **Español latinoamericano en todo el sitio.** Decidido por Boris el 18 de septiembre de 2026. Al cliente se le tutea («tu empresa», «te lo decimos»). Cuando es el cliente quien se dirige a la firma, «ustedes» («¿Trabajan con empresas fuera de Ecuador?», «¿Qué necesitan de mí?»). Nunca «vosotros» ni sus formas: «necesitáis», «tenéis», «trabajáis», «os», «vuestro». El vocabulario, el de Ecuador: «laptop», «costo», «celular» antes que «portátil», «coste» o «móvil». Vale también para las traducciones cuando se escriban desde el español.
 
 ## Evidence on Hand
 
@@ -85,6 +86,7 @@ Otras cosas sin resolver: no existe página «Nosotros» (el menú apunta a la b
 - Más de 15 años en dirección financiera (Richard Carvajal, fundador).
 - Más de 100 clientes asesorados (Latinoamérica y Estados Unidos). Es la trayectoria de Richard, no cartera activa de CJM Nexus como firma.
 - KLINODA, comprobado en su repositorio el 5 de septiembre de 2026: 2.382 pruebas automáticas, 13 actas de decisión, y 50 certificados firmados en 5,1 segundos (acta 0012, medido con datos ficticios).
+  **Autorizadas para las páginas públicas** por Boris el 18 de septiembre de 2026, tal como aparecen: «2.300+ pruebas automáticas», «13 actas de decisión» y «5,1 s para emitir 50 certificados firmados», siempre con su condición («con datos ficticios»). No cuentan como «cifras de avance interno» de las que no se publican.
 - El brochure corporativo: `cjm-nexus/public/Brochure CJM Nexus.pdf`.
 - Esta misma web, que es real y se puede mirar.
 
