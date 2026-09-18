@@ -15,6 +15,7 @@
  */
 import { home as homeEs } from './home.es';
 import { klinoda as klinodaEs } from './klinoda.es';
+import { nosotros as nosotrosEs } from './nosotros.es';
 import { sitio as sitioEs } from './sitio.es';
 import { digital as digitalEs, finanzas as finanzasEs, servicios as serviciosEs } from './servicios.es';
 
@@ -24,6 +25,7 @@ const FINANZAS = { es: finanzasEs, en: finanzasEs, de: finanzasEs };
 const DIGITAL = { es: digitalEs, en: digitalEs, de: digitalEs };
 const KLINODA = { es: klinodaEs, en: klinodaEs, de: klinodaEs };
 const SITIO = { es: sitioEs, en: sitioEs, de: sitioEs };
+const NOSOTROS = { es: nosotrosEs, en: nosotrosEs, de: nosotrosEs };
 
 export function getHome(lang) {
   return HOME[lang] ?? HOME.es;
@@ -47,4 +49,8 @@ export function getKlinoda(lang) {
 
 export function getSitio(lang) {
   return SITIO[lang] ?? SITIO.es;
+}
+
+export function getNosotros(lang) {
+  return NOSOTROS[lang] ?? NOSOTROS.es;
 }

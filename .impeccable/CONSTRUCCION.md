@@ -56,6 +56,7 @@ página de dirección financiera ya no tiene nada bloqueado.
 | 9 | Páginas de servicios y de KLINODA al sistema nuevo | ✅ Hecha · 2026-09-18 | Hoy siguen con «Pulso Cobre» |
 | 10 | **Reescribir el texto de KLINODA con la decisión del ICP** | ✅ Hecha · 2026-09-18 | Ver abajo |
 | 11 | Retirar «Pulso Cobre» | ✅ Hecha · 2026-09-18 | Tokens en inglés de `tailwind.config.js` (`navy`, `copper`, `teal`, `ink`, `bg-g-*`, los heredados `indigo`/`slate`…) y los presets antiguos de `lib/animations.js`, cuando ya nada los use. `CalendlyButton.jsx` todavía usa `indigo` |
+| 12 | Página «Nosotros» | Texto escrito · 2026-09-18 · **sin programar** | Ver «Pieza 12» abajo. Se programa después de juntar `fable-pulido` |
 
 ### Pieza 10 — el texto de KLINODA contradice la decisión del 2026-09-15
 
@@ -109,6 +110,21 @@ traducir. Un texto nuevo que se escriba al construir vuelve a entrar como «por 
 **Fuera de esta aprobación:** la microcopia que añadió Fable en `fable-pulido` (vistas, proyección,
 buscar, sello, pestañas, meses…) se revisa al juntar esa rama. Las preguntas frecuentes de dirección
 financiera siguen en «Revisar con clientes reales».
+
+## Textos por aprobar
+
+Textos escritos después de la aprobación del 2026-09-18. Todo lo que no está aquí está aprobado.
+
+| Pieza | Dónde (`cjm-nexus/src/content/`) | Texto | Por qué está aquí |
+|---|---|---|---|
+| 12 | `nosotros.es.js` → `meta` | «Nosotros: quién está detrás de CJM Nexus» · «Las personas que dirigen CJM Nexus: Richard Carvajal en dirección financiera, Boris Carvajal en tecnología y Mirella Llanga en la gerencia general. Equipo en Ecuador y Alemania.» | Nuevo |
+| 12 | `nosotros.es.js` → `hero` | Ceja «Nosotros» · «Quién está detrás de CJM Nexus.» (énfasis en «detrás») · «Una firma de dos líneas —dirección financiera externa y soluciones digitales— con equipo en Ecuador y Alemania. Estas son las tres personas que la dirigen, con su nombre y lo que hace cada una.» · botón «Conocer al equipo» | Nuevo |
+| 12 | `nosotros.es.js` → `personas.titulo` | «Tres personas, cada una con lo suyo.» | Nuevo |
+| 12 | `nosotros.es.js` → `personas.items[0]` | Richard: «Fundador · Dirección financiera» · «Lidera la dirección financiera de CJM Nexus: el diagnóstico, el tablero de cada mes y la reunión de dirección.» · 15+ años · 100+ clientes en Latinoamérica, Estados Unidos y Europa · Ecuador | Nuevo; las cifras y los hechos salen de PRODUCT.md |
+| 12 | `nosotros.es.js` → `personas.items[1]` | Boris: «Cofundador · Tecnología» · «Lidera la tecnología de CJM Nexus: las páginas web, los sistemas a medida y los tableros conectados a los datos de cada empresa.» · Alemania | Nuevo. No nombra KLINODA a propósito: su plataforma la construye CJM Nexus y no se dice quién la dirige |
+| 12 | `nosotros.es.js` → `personas.items[2]` | Mirella: «Gerente general» · «Lidera la gerencia general de CJM Nexus.» | Provisional: es lo ya aprobado en la firma de la portada, a la espera de la pregunta 9 |
+| 12 | `nosotros.es.js` → `firma` | «Dos líneas, una firma.» y tres puntos, con textos ya aprobados en la portada y en KLINODA; títulos nuevos: «El número y el sistema, en la misma casa», «Ecuador y Alemania», «KLINODA, empresa del Grupo» | Títulos nuevos |
+| 12 | `nosotros.es.js` → `metodo` y `cta` | «Ver cómo trabajamos» (a `/servicios#metodo`) y el cierre con el titular aprobado del cierre de la portada | Reutilizados; solo «Ver cómo trabajamos» es nuevo |
 
 ## Cómo se usa la base (pieza 1)
 
@@ -612,3 +628,51 @@ una vez, cuando el borde superior de la hoja llega al 80 %. Duración 1,5 s.
 
 **Verificación:** build sin errores. Capturas a 1536 × 730: `aprobados-credenciales.png`,
 `aprobados-cierre.png` y `aprobados-klinoda-entrada.png`.
+
+### 2026-09-18 — pieza 12: el texto de «Nosotros»
+
+`cjm-nexus/src/content/nosotros.es.js`, con la misma forma que los otros archivos de contenido, y
+`getNosotros()` en `content/index.js`. No hay página todavía: se programa después de juntar
+`fable-pulido`.
+
+**Estructura propuesta** (de arriba abajo):
+
+1. **Cabecera** (`hero`, claves de `PageHero`): qué es la firma en una frase y que aquí están sus
+   tres personas. «Agendar» y «Conocer al equipo» (→ `#personas`).
+2. **El equipo** (`personas`): tres fichas iguales, en el orden de la firma de la portada. Cada una:
+   retrato (previsto, hoy vacío), nombre, cargo, una línea de lo que lidera, dónde está y LinkedIn.
+   Solo Richard lleva cifras, porque son su trayectoria (regla 2).
+3. **La firma** (`firma`): dos líneas en una casa, Ecuador y Alemania, y KLINODA como empresa del
+   Grupo, con su estado y el enlace a su página (regla 3: una puerta).
+4. **Cómo trabajamos** (`metodo`): una línea y el enlace a `/servicios#metodo`.
+5. **Cierre** (`cta`, claves de `FinalCta`).
+
+**Sin fotos, y completa igual.** Cada ficha trae `retrato: null`. Al programarla: si no hay retrato,
+la ficha no deja hueco ni recuadro gris: empieza por el nombre. Cuando llegue un retrato se rellenan
+`src` y `alt` (ruta prevista `public/equipo/<id>.jpg`) y aparece encima del nombre, con el mismo
+tamaño en las tres fichas. Nada de fotos de archivo. Igual con `linkedinHref: null`: sin enlace no
+se pinta nada; con enlace, «LinkedIn» como enlace con filete.
+
+**Lo que no dice, a propósito:** nada de la relación familiar, nada de quién dirige la plataforma de
+KLINODA (la ficha de Boris ni la nombra), nada de la médica aliada, ni año ni lugar de constitución.
+
+**Huecos marcados (`HUECO` en el archivo), para completar después:**
+
+| Persona | Hueco | Estado |
+|---|---|---|
+| Richard | Trayectoria (cargos, sectores) y formación | «No por ahora» |
+| Richard | Ciudad e idiomas | Solo «Ecuador» |
+| Richard | Enlace a LinkedIn | Falta el enlace |
+| Boris | Trayectoria, formación e idiomas | «No por ahora» |
+| Boris | Ciudad | Solo «Alemania» |
+| Boris | Enlace a LinkedIn | Falta el enlace |
+| Mirella | **Qué hace en concreto como gerente general** (pregunta 9) | La respuesta llegó con la plantilla sin rellenar. Hoy dice solo «Lidera la gerencia general de CJM Nexus.» |
+| Mirella | Trayectoria, formación e idiomas | «No por ahora» |
+| Mirella | Desde dónde trabaja | «No por ahora»: su ficha no lleva lugar |
+| Mirella | Enlace a LinkedIn | Falta el enlace |
+| Las tres | Retratos | Sin fecha |
+
+**Al programarla** (fuera de esta ronda, que es solo de textos): el enlace «Nosotros» del menú y del
+pie pasa de `/${lang}#equipo` a `/${lang}/nosotros` en `lib/site.js`; la página nueva entra en
+`sitemap.js`; y el comentario de `lib/seo.js` que dice «Latinoamérica y Estados Unidos» se pone al
+día con Europa.
