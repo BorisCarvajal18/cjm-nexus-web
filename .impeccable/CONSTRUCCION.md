@@ -777,3 +777,27 @@ interfaz cambiados: 0 hallazgos en las reglas generales; en las del sistema de d
 tamaños de letra heredados de `portada.css`, `klinoda.css` y `paginas.css`, que no son de esta
 pasada. Capturas en `.impeccable/pulido/capturas/`.
 
+
+### 2026-09-19 — `fable-pulido` juntado y logo claro de KLINODA (provisional)
+
+- **Unión de `fable-pulido`** (`2b90089`), aprobada entera por Boris salvo el logo de KLINODA. Solo
+  chocó este archivo: se conservan los textos aprobados, la pieza 12, el método y el registro de
+  Fable, y su microcopia pasa a «Textos aprobados». DESIGN.md ya decía «cobre hondo» en el foco.
+  Desde aquí programa un solo chat.
+- **Logo claro nuevo** (`public/marca/klinoda-claro.png` · `.webp`, 1400 × 377): sale del original
+  del repositorio de KLINODA, copiado como `public/marca/klinoda-origen.png` (2087 × 753), con
+  `node scripts/marca.mjs klinodaClaro`. Negativo de una tinta: blanco, nodos en el turquesa de la
+  escena y bordes suaves sin halo. Se muestra a 438 px como mucho: aguanta densidad 3.
+- **El lema, como texto:** «Cada persona. Una historia completa.» sale de la imagen (en el teléfono
+  medía unos 6 px) y la web lo escribe debajo del logo (`home.es.js` → `klinoda.lema`, clase
+  `.k-lema`): 20 px en la escena, 15 px en reposo. En la escena no viaja a la barra: se desvanece en
+  0,15 s (`CURVA.salir`) cuando la placa empieza a levantarse. Es el único cambio de la animación.
+- **Capturas:** `logo-antes-1536x730.png`, `logo-antes-390x844.png`,
+  `logo-despues-1536x730-0.2.png` (placa), `logo-despues-1536x730-0.9.png` (tablero, con el logo ya
+  en la barra), `logo-despues-390x844.png` y `-quieto.png`.
+- **Sin tocar, a revisar:** `klinoda.png` (el de fondos claros: barra del tablero y vista de aptitud)
+  sigue saliendo del JPEG antiguo, en morado y turquesa, con el lema dentro a unos 3 px. No se ve mal a
+  su tamaño, pero sus colores no son los del original bueno (negro y verde). Qué versión de color es la
+  marca de KLINODA lo decide Boris.
+- **PROVISIONAL.** Sigue pendiente el **logo vectorial** de KLINODA (SVG), igual que el isotipo de
+  CJM Nexus. Esta versión es un PNG rehecho desde un PNG: se sustituye en cuanto llegue el vectorial.

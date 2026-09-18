@@ -207,6 +207,9 @@ export const home = {
   klinoda: {
     etiqueta: 'Demo · en desarrollo · datos ficticios',
     logo: 'KLINODA',
+    // El lema de KLINODA. Iba dentro de la imagen y no se leía a su tamaño:
+    // ahora es texto, con la letra del sitio.
+    lema: 'Cada persona. Una historia completa.',
     seccion: 'Panel de mi empresa',
     /* MICROCOPIA NUEVA DE LA PASADA DE PULIDO (18-sep-2026), por aprobar: las
        tres pestañas. Son los rótulos reales de las tres hojas de su portal

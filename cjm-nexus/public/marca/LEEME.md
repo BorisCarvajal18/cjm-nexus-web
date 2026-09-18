@@ -32,20 +32,23 @@ mismo guion, desde `public/logo.png`.
 | Archivo | Qué es | Dónde se usa |
 |---|---|---|
 | `klinoda.png` · `.webp` | Versión de marca sobre fondos claros | Página del proyecto, tarjetas |
-| `klinoda-claro.png` · `.webp` | Versión invertida, en blanco | Bandas marino y cobre |
-| `klinoda-origen.jpg` | Original recibido | Solo referencia |
+| `klinoda-claro.png` · `.webp` | Versión clara, en blanco con los nodos turquesa, **sin el lema**, 1400 px | Placa de la escena y bandas oscuras |
+| `klinoda-origen.png` | Original del repositorio de KLINODA (2087 × 753, negro y verde) | Fuente de `klinoda-claro`; no se publica en ninguna página |
+| `klinoda-origen.jpg` | Original antiguo (708 × 257, morado y turquesa) | Fuente de `klinoda.png` |
 
-**Por qué hay dos versiones.** El original es un JPEG con fondo blanco. Al
-volver transparente el blanco desaparece también el documento blanco que va
-dentro de la «K», de modo que sobre marino se ve el fondo a través del dibujo.
-La versión clara se genera de otra forma: se recorta únicamente el fondo
-exterior con un relleno por inundación desde los bordes, el documento interior
-se conserva blanco y el morado de la marca se pasa a blanco. Los nodos
-turquesa se mantienen en las dos.
+**Por qué hay dos versiones.** `klinoda.png`, para fondos claros, sale del JPEG
+antiguo: se vuelve transparente todo el blanco. `klinoda-claro.png` sale desde el
+2026-09-19 del original bueno del repositorio de KLINODA. Cada píxel se
+descompone en negro, verde y fondo, y la transparencia es la suma de las dos
+tintas: el borde conserva su suavizado sin dientes ni halo. El negro pasa a
+blanco y el verde al turquesa de los nodos. Es un negativo de una tinta, así que
+lo blanco de dentro de la «K» deja ver el fondo. **No lleva el lema** («Cada
+persona. Una historia completa.»): a su tamaño no se leía, y la web lo escribe
+como texto (`home.es.js` → `klinoda.lema`).
 
 ## Pendiente
 
-Ninguno de los originales es vectorial: los PDF recibidos llevan dentro una
+Ninguno de los originales es vectorial (tampoco `klinoda-origen.png`, que es un PNG grande): los PDF recibidos llevan dentro una
 imagen JPEG. Con un archivo vectorial de verdad (SVG, AI o EPS) los logotipos
 se verían nítidos a cualquier tamaño, pesarían una fracción y no haría falta
 recortar fondos. Merece la pena pedírselo a quien diseñó la marca.

@@ -172,7 +172,8 @@ export default function PuertaKlinoda({ content, lang }) {
               <div className="k-placa" aria-hidden="true" />
               <div className="k-marca">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src="/marca/klinoda-claro.png" width="630" height="176" alt={k.logo} />
+                <img src="/marca/klinoda-claro.png" width="1400" height="377" alt={k.logo} />
+                <p className="k-lema">{k.lema}</p>
                 <p className="k-etiqueta">{k.etiqueta}</p>
               </div>
             </div>

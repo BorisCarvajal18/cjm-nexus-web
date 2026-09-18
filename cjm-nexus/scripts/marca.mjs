@@ -1,7 +1,8 @@
 /**
  * Genera los archivos de marca de `public/marca/` a partir de los originales.
  *
- *   node scripts/marca.mjs
+ *   node scripts/marca.mjs              (todas)
+ *   node scripts/marca.mjs klinodaClaro (solo una)
  *
  * Se ejecuta a mano, no en cada compilación: los originales cambian una vez al
  * año como mucho y los resultados se versionan. Existe para que dentro de seis
@@ -115,64 +116,81 @@ async function klinodaOscuro() {
 }
 
 /**
- * Versión INVERTIDA, para las bandas marino y cobre.
+ * Versión CLARA, para la placa marino de la escena y las bandas oscuras.
  *
- * Aquí no vale el mismo recorte: al volver transparente todo el blanco
- * desaparece el documento de dentro de la «K» y sobre marino se ve el fondo a
- * través del dibujo. Así que se recorta SOLO el fondo exterior, con un relleno
- * por inundación desde los bordes, y después el morado de marca se pasa a
- * blanco. Los nodos turquesa se quedan como están: son el acento de KLINODA.
+ * Sale de `klinoda-origen.png`, el original del repositorio de KLINODA
+ * (2087 × 753, negro y verde sobre blanco roto, bordes limpios), no del JPEG
+ * de 708 px recortado a mano, que daba bordes dentados.
+ *
+ * CÓMO: cada píxel se descompone en cuánto tiene de negro, de verde y de
+ * fondo (mínimos cuadrados sobre las tres componentes). La transparencia es
+ * negro + verde, así que el borde conserva su suavizado sin halo. El negro
+ * pasa a blanco y el verde al turquesa de los nodos de la escena. Es un
+ * negativo de una sola tinta: lo blanco de dentro de la «K» (la hoja, los
+ * anillos, la línea) se vuelve transparente, como el fondo.
+ *
+ * SIN LA FRASE. «Cada persona. Una historia completa.» medía unos 6 px de
+ * alto en el teléfono. Se borra de la imagen y la web la escribe como texto
+ * (`home.es.js` → `klinoda.lema`).
+ *
+ * Sale a 1400 px de ancho: se muestra a 460 como mucho, así que aguanta
+ * pantallas de densidad 3.
  */
 async function klinodaClaro() {
-  const { data, info } = await sharp(`${MARCA}/klinoda-origen.jpg`)
-    .trim({ threshold: 12 })
-    .ensureAlpha()
+  const FONDO = [249, 248, 245];
+  const NEGRO = [12, 12, 12];
+  const VERDE = [4, 238, 142];
+  const TURQUESA = [52, 136, 148];
+  const FRASE = { x: 560, y: 470 }; // a la derecha del símbolo y bajo la palabra
+
+  const { data, info } = await sharp(`${MARCA}/klinoda-origen.png`)
+    .removeAlpha()
     .raw()
     .toBuffer({ resolveWithObject: true });
+  const { width: W, height: H } = info;
+  const out = Buffer.alloc(W * H * 4);
 
-  const { width: W, height: H, channels: C } = info;
-  const fondo = new Uint8Array(W * H);
-  const pila = [];
-  for (let x = 0; x < W; x += 1) pila.push([x, 0], [x, H - 1]);
-  for (let y = 0; y < H; y += 1) pila.push([0, y], [W - 1, y]);
-
-  while (pila.length) {
-    const [x, y] = pila.pop();
-    if (x < 0 || y < 0 || x >= W || y >= H) continue;
-    const p = y * W + x;
-    if (fondo[p] || !esClaro(data, p * C)) continue;
-    fondo[p] = 1;
-    pila.push([x + 1, y], [x - 1, y], [x, y + 1], [x, y - 1]);
-  }
+  const d1 = NEGRO.map((c, i) => c - FONDO[i]);
+  const d2 = VERDE.map((c, i) => c - FONDO[i]);
+  const a11 = d1.reduce((s, v) => s + v * v, 0);
+  const a12 = d1.reduce((s, v, i) => s + v * d2[i], 0);
+  const a22 = d2.reduce((s, v) => s + v * v, 0);
+  const det = a11 * a22 - a12 * a12;
+  const lim = (v) => Math.min(1, Math.max(0, v));
 
   for (let p = 0; p < W * H; p += 1) {
-    const i = p * C;
-    if (fondo[p]) {
-      data[i + 3] = 0;
-      continue;
-    }
-    const [r, g, b] = [data[i], data[i + 1], data[i + 2]];
-    const esTurquesa = g > r + 25 && g > 110;
-    if (esTurquesa) continue;
-    const esMorado = b > r && b > 90 && r < 150;
-    if (esMorado) {
-      data[i] = 255;
-      data[i + 1] = 255;
-      data[i + 2] = 255;
-    }
+    if (p % W >= FRASE.x && ((p / W) | 0) >= FRASE.y) continue;
+    const q = [0, 1, 2].map((c) => data[p * 3 + c] - FONDO[c]);
+    const b1 = q.reduce((s, v, i) => s + v * d1[i], 0);
+    const b2 = q.reduce((s, v, i) => s + v * d2[i], 0);
+    const k = lim((a22 * b1 - a12 * b2) / det);
+    const g = lim((a11 * b2 - a12 * b1) / det);
+    const alfa = Math.min(1, k + g);
+    if (alfa < 0.02) continue;
+    const t = g / (k + g);
+    const o = p * 4;
+    for (let c = 0; c < 3; c += 1) out[o + c] = Math.round(255 * (1 - t) + TURQUESA[c] * t);
+    out[o + 3] = Math.round(alfa * 255);
   }
 
-  const raw = { raw: { width: W, height: H, channels: C } };
-  await sharp(data, raw).png({ compressionLevel: 9 }).toFile(`${MARCA}/klinoda-claro.png`);
-  await sharp(data, raw).webp({ quality: 92 }).toFile(`${MARCA}/klinoda-claro.webp`);
+  const { data: recortado } = await sharp(out, { raw: { width: W, height: H, channels: 4 } })
+    .trim({ threshold: 1 })
+    .png()
+    .toBuffer({ resolveWithObject: true });
+  const src = sharp(recortado).resize({ width: 1400 });
+  await src.clone().png({ compressionLevel: 9 }).toFile(`${MARCA}/klinoda-claro.png`);
+  await src.clone().webp({ quality: 92, alphaQuality: 100 }).toFile(`${MARCA}/klinoda-claro.webp`);
 }
 
 /* ------------------------------------------------------------------ */
 
-await isotipo();
-await isotipoClaro();
-await klinodaOscuro();
-await klinodaClaro();
+/* `node scripts/marca.mjs` las rehace todas; con un nombre, solo esa
+   (`node scripts/marca.mjs klinodaClaro`). */
+const TAREAS = { isotipo, isotipoClaro, klinodaOscuro, klinodaClaro };
+const solo = process.argv[2];
+for (const [nombre, tarea] of Object.entries(TAREAS)) {
+  if (!solo || solo === nombre) await tarea();
+}
 
 for (const archivo of readdirSync(MARCA).sort()) {
   if (archivo.endsWith('.md')) continue;

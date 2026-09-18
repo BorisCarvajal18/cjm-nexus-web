@@ -418,6 +418,8 @@ export function escenaKlinoda(puerta, { arma, limpia }) {
   const placa = caja.querySelector('.k-placa');
   const logoGrande = caja.querySelector('.k-marca img');
   const etiqueta = caja.querySelector('.k-etiqueta');
+  // El lema no viaja a la barra: se desvanece mientras la placa se levanta.
+  const lema = caja.querySelector('.k-lema');
   const logoBarra = tablero.querySelector('.k-logo');
   const chip = tablero.querySelector('.k-chip');
 
@@ -539,6 +541,10 @@ export function escenaKlinoda(puerta, { arma, limpia }) {
   tl.to(placa, { opacity: 0, duration: 0.3, ease: 'power2.inOut' }, 0.4);
   tl.to(logoGrande, { x: g('lx'), y: g('ly'), scale: g('ls'), duration: 0.3, ease: CURVA.cruzar }, 0.4);
   tl.to(etiqueta, { x: g('ex'), y: g('ey'), scale: g('es'), duration: 0.3, ease: CURVA.cruzar }, 0.4);
+  if (lema) {
+    tl.set(lema, { opacity: 1 }, 0);
+    tl.to(lema, { opacity: 0, duration: 0.15, ease: CURVA.salir }, 0.4);
+  }
   tl.to([logoGrande, etiqueta], { opacity: 0, duration: 0.08 }, 0.62);
   tl.to([logoBarra, chip], { opacity: 1, duration: 0.08 }, 0.62);
 
