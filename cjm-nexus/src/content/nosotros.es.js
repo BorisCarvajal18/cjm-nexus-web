@@ -112,8 +112,8 @@ export const nosotros = {
     titulo: 'Dos líneas, una firma.',
     items: [
       {
-        titulo: 'El número y el sistema, en la misma casa',
-        texto: 'La misma casa define el número y construye el sistema que lo produce.',
+        titulo: 'El número y el sistema, en la misma firma',
+        texto: 'Quien define el número construye también el sistema que lo produce.',
       },
       {
         titulo: 'Ecuador y Alemania',

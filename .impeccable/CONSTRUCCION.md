@@ -123,7 +123,7 @@ Textos escritos después de la aprobación del 2026-09-18. Todo lo que no está 
 | 12 | `nosotros.es.js` → `personas.items[0]` | Richard: «Fundador · Dirección financiera» · «Lidera la dirección financiera de CJM Nexus: el diagnóstico, el tablero de cada mes y la reunión de dirección.» · 15+ años · 100+ clientes en Latinoamérica, Estados Unidos y Europa · Ecuador | Nuevo; las cifras y los hechos salen de PRODUCT.md |
 | 12 | `nosotros.es.js` → `personas.items[1]` | Boris: «Cofundador · Tecnología» · «Lidera la tecnología de CJM Nexus: las páginas web, los sistemas a medida y los tableros conectados a los datos de cada empresa.» · Alemania | Nuevo. No nombra KLINODA a propósito: su plataforma la construye CJM Nexus y no se dice quién la dirige |
 | 12 | `nosotros.es.js` → `personas.items[2]` | Mirella: «Gerente general» · «Lidera la gerencia general de CJM Nexus.» | Provisional: es lo ya aprobado en la firma de la portada, a la espera de la pregunta 9 |
-| 12 | `nosotros.es.js` → `firma` | «Dos líneas, una firma.» y tres puntos, con textos ya aprobados en la portada y en KLINODA; títulos nuevos: «El número y el sistema, en la misma casa», «Ecuador y Alemania», «KLINODA, empresa del Grupo» | Títulos nuevos |
+| 12 | `nosotros.es.js` → `firma` | «Dos líneas, una firma.» y tres puntos, con textos ya aprobados en la portada y en KLINODA; títulos nuevos: «El número y el sistema, en la misma firma», «Ecuador y Alemania», «KLINODA, empresa del Grupo»; el primer punto dice «Quien define el número construye también el sistema que lo produce.» | Títulos nuevos |
 | 12 | `nosotros.es.js` → `metodo` y `cta` | «Ver cómo trabajamos» (a `/servicios#metodo`) y el cierre con el titular aprobado del cierre de la portada | Reutilizados; solo «Ver cómo trabajamos» es nuevo |
 
 ## Cómo se usa la base (pieza 1)
@@ -676,3 +676,15 @@ KLINODA (la ficha de Boris ni la nombra), nada de la médica aliada, ni año ni 
 pie pasa de `/${lang}#equipo` a `/${lang}/nosotros` en `lib/site.js`; la página nueva entra en
 `sitemap.js`; y el comentario de `lib/seo.js` que dice «Latinoamérica y Estados Unidos» se pone al
 día con Europa.
+
+### 2026-09-18 — «casa» fuera, y lo que queda de «Nosotros»
+
+- **«Casa» sale del sitio** (en Latinoamérica suena raro para una firma). Tres textos:
+  `home.es.js` → `hacemos.rotulo`: «Dos líneas, una firma. Quien define el número construye también
+  el sistema que lo produce.»; `nosotros.es.js` → `firma.items[0]`: «El número y el sistema, en la
+  misma firma» y «Quien define el número construye también el sistema que lo produce.» Ya no queda
+  ninguna «casa» en `src/content`.
+- **Mirella, sin aplicar:** el cambio llegó con los marcadores «[FRASE DE BORIS]» y «[CIUDAD O PAÍS]»
+  sin rellenar. Siguen los huecos de la pieza 12 (qué hace en concreto y desde dónde trabaja).
+- **El método de `/servicios`** rompe el 50/50: sus cuatro evidencias son de KLINODA. Hay una
+  propuesta en el chat del 2026-09-18, pendiente de Boris; no se ha aplicado.

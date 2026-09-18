@@ -77,7 +77,7 @@ export const home = {
      debajo «Interfaz de muestra · datos ilustrativos». */
   hacemos: {
     titulo: 'Qué hacemos',
-    rotulo: 'Dos líneas, una firma. La misma casa define el número y construye el sistema que lo produce.',
+    rotulo: 'Dos líneas, una firma. Quien define el número construye también el sistema que lo produce.',
     muestra: 'Interfaz de muestra · datos ilustrativos',
     servicios: [
       {
