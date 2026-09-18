@@ -593,7 +593,7 @@ html:not(.tema-vivo) .puerta {
   display: flex;
   align-items: center;
   gap: 0.8em;
-  margin-top: 1em !important;
+  margin-top: 1em;
   font-size: 0.84em;
   line-height: 1.4;
   color: var(--klinoda-tinta-suave);

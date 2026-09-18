@@ -169,8 +169,12 @@ export default function SiteHeader({ lang = 'es', ctaHref }) {
             href={cta}
             className="group inline-flex items-center gap-2 whitespace-nowrap rounded-md bg-cobre-honda bg-conversion px-[15px] py-[9px] font-display text-[.82rem] font-bold text-white no-underline shadow-[inset_0_1px_0_rgba(255,255,255,.2)] transition-colors duration-200 ease-llegar hover:bg-cobre-presion hover:bg-none active:bg-cobre-presion active:bg-none max-[620px]:px-3 max-[620px]:py-2 max-[620px]:text-[.76rem]"
           >
-            {t.agendar}
-            <span className="max-[620px]:hidden">{t.agendarDetalle}</span>
+            {/* Etiqueta y detalle en un solo bloque: el hueco del botón es
+                para la flecha, no para partir «Agendar · 20 min». */}
+            <span>
+              {t.agendar}
+              <span className="max-[620px]:hidden">{t.agendarDetalle}</span>
+            </span>
             <Flecha />
           </a>
 

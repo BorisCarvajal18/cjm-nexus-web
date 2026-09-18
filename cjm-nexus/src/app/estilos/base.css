@@ -20,18 +20,21 @@
   --display: var(--font-jakarta), 'Segoe UI', system-ui, sans-serif;
   --texto: var(--font-inter), 'Segoe UI', system-ui, sans-serif;
 }
-.registro h1,
-.registro h2,
-.registro h3,
-.registro h4 {
+/* El reinicio va dentro de `:where()`, que no suma especificidad: así lo
+   pisa cualquier clase. Antes, `.registro p { margin: 0 }` le ganaba a
+   `.muestra`, `.titulo-pag` o `.entrada-pag`, que tienen una sola clase, y
+   sus márgenes no se aplicaban: la referencia, el título y la entrada de
+   varias secciones iban pegados. */
+.registro :where(h1, h2, h3, h4) {
   font-family: var(--display);
   margin: 0;
   text-wrap: balance;
 }
-.registro p {
+.registro :where(p) {
   margin: 0;
+  text-wrap: pretty;
 }
-.registro ul {
+.registro :where(ul, ol) {
   margin: 0;
   padding: 0;
   list-style: none;
@@ -119,12 +122,16 @@
   transition:
     background-color 0.18s var(--curva),
     color 0.18s var(--curva),
-    border-color 0.18s var(--curva);
+    border-color 0.18s var(--curva),
+    transform 0.18s var(--curva);
 }
 .boton-contorno:hover {
   background: var(--tx-1);
   border-color: var(--tx-1);
   color: var(--tx-inverso);
+}
+.boton-contorno:active {
+  transform: translateY(1px);
 }
 
 /* Enlace con filete: al apuntar, un segundo filete de cobre se traza de

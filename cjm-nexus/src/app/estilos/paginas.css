@@ -310,6 +310,31 @@
 .preguntas summary::-webkit-details-marker {
   display: none;
 }
+.preguntas summary {
+  transition: color 0.18s var(--curva);
+}
+.preguntas summary .mas {
+  transition: transform 0.22s var(--curva);
+}
+@media (hover: hover) {
+  .preguntas summary:hover {
+    color: var(--cobre-presion);
+  }
+  .preguntas summary:hover .mas {
+    transform: scale(1.2);
+  }
+}
+/* La respuesta llega con la curva de la casa. Con «reducir movimiento» no hay
+   animación (globals.css) y aparece entera. */
+.preguntas details[open] > p {
+  animation: respuesta 0.44s var(--curva);
+}
+@keyframes respuesta {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+}
 .preguntas summary .mas {
   position: relative;
   width: 14px;
@@ -369,8 +394,10 @@
 .oferta .incluye {
   margin-top: 22px;
 }
+/* El rótulo de los pasos va sobre el filete de las columnas, no encima. */
 .oferta .sub {
   margin-top: 44px;
+  margin-bottom: 14px;
 }
 .oferta .nota-pag {
   margin-top: 24px;
@@ -405,8 +432,16 @@
 .banda-producto .k-etiqueta {
   margin-top: 20px;
 }
-.banda-producto .boton-contorno {
+.banda-producto .accion {
   margin-top: 28px;
+}
+/* Sin cifras, el botón ocupa la derecha, a la altura del texto. */
+.banda-producto.sin-hechos .marco {
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+}
+.banda-producto.sin-hechos .accion {
+  margin-top: 0;
 }
 .hechos {
   display: grid;
@@ -574,8 +609,12 @@
 
 @media (max-width: 1100px) {
   .dos-lineas,
-  .banda-producto .marco {
+  .banda-producto .marco,
+  .banda-producto.sin-hechos .marco {
     grid-template-columns: 1fr;
+  }
+  .banda-producto.sin-hechos .marco {
+    gap: 28px;
   }
   .cifras-pag {
     grid-template-columns: repeat(2, minmax(0, 1fr));
