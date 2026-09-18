@@ -22,8 +22,8 @@ Las capturas de verificación van a `.impeccable/construccion/`.
 las páginas interiores en el sistema del registro, los textos de KLINODA con las reglas 7, 8 y 9, y
 «Pulso Cobre» retirado. Nada publicado; `main` sin tocar.
 
-**Rama `fable-pulido` (2026-09-18), desde `rediseno-2026`: la pasada final de pulido.** Siete commits
-separados por tema (css, cuadros, color, pulido, responsive, código y este informe), para quedarse con
+**Rama `fable-pulido` (2026-09-18), desde `rediseno-2026`: la pasada final de pulido.** Nueve commits
+separados por tema (css, cuadros, color, pulido, responsive, código, este informe y un último arreglo de cuadros), para quedarse con
 unos y descartar otros. El informe, con capturas de antes y después, está en
 `.impeccable/pulido/INFORME.md`. Nada publicado; `main` y `rediseno-2026` sin tocar.
 
@@ -500,10 +500,17 @@ capturas de antes y después: `.impeccable/pulido/INFORME.md`.
    teléfono y tableta.
 7. `refactor(codigo)`: duplicaciones de las dos escenas y de las zonas oscuras, restos sin uso,
    `puntos` → `conMillares`, README y comentarios caducados. Escenas idénticas píxel a píxel.
+8. `docs(pulido)`: el informe y estos documentos.
+9. `fix(cuadros)`: la última pasada del detector marcó seis colores sueltos en `cuadros.css`; ahora
+   todo sale de un token. Excepciones acotadas y con motivo en `.impeccable/config.json` (la
+   microletra y el radio de 1 px de las ventanas; cinco tamaños de la cabecera, heredados de la
+   maqueta). Sigue en pie, sin tocar, `1.2rem` del menú del teléfono (pieza 2).
 
 **Verificación:** `npm run build` sin errores ni avisos (20 páginas estáticas; la portada pesa 2,4 kB
 más de JS). Las cinco páginas en los seis tamaños: sin desbordamiento horizontal, sin elementos fuera
 de la ventana y sin errores de consola. Con «reducir movimiento», todo quieto y entero. Recorrido con
 el tabulador en portada y página de servicio. Detector de Impeccable sobre los 28 archivos de
-interfaz cambiados: 0 hallazgos. Capturas en `.impeccable/pulido/capturas/`.
+interfaz cambiados: 0 hallazgos en las reglas generales; en las del sistema de diseño quedan los
+tamaños de letra heredados de `portada.css`, `klinoda.css` y `paginas.css`, que no son de esta
+pasada. Capturas en `.impeccable/pulido/capturas/`.
 

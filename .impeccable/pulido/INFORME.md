@@ -21,7 +21,8 @@ la verdad. **Ningún texto aprobado cambió.**
 | 5 | `2f91167` `style(pulido)` | El reinicio de márgenes, la banda de KLINODA, «Agendar · 20 min», preguntas | Sí |
 | 6 | `0059749` `fix(responsive)` | Arreglos de teléfono y tableta | Sí |
 | 7 | `a7e5f87` `refactor(codigo)` | Duplicaciones, restos, nombres, README y comentarios | Sí. **Depende del 2 y del 3**: hace que los cuadros lean los tokens de color |
-| 8 | `docs(pulido)` | Este informe, CONSTRUCCION.md y DESIGN.md | Sí |
+| 8 | `28466d7` `docs(pulido)` | Este informe, CONSTRUCCION.md y DESIGN.md | Sí |
+| 9 | `8c3b0e8` `fix(cuadros)` | Ningún color suelto en las ventanas: todo sale de un token. Salió de la última pasada del detector | Va con el 2 |
 
 Para descartar uno: `git revert <hash>`. El 7 es el último de código a propósito, para que se pueda
 quitar limpio. Si descartas el 3 (color) quedándote con el 7, hay que devolver a `cuadros.css` tres
@@ -176,7 +177,7 @@ con puntos suspensivos a 768; en `/servicios` a una columna el gráfico se estir
 | «Reducir movimiento» | Todo quieto y entero: sin vídeo, sin fijado y sin noche; KLINODA y el cierre, bandas marino por sí mismas |
 | Teclado | Portada: 18 paradas; dirección financiera: 23. **Todas con contorno de foco y a la vista**, también los botones dentro de las escenas. El menú del teléfono abre con Enter, cierra con Escape y devuelve el foco |
 | Contraste AA | Calculado par a par para todo color nuevo: mínimo 4,55:1 (texto secundario de KLINODA sobre su fondo). El tramo de la noche no se tocó |
-| Detector de Impeccable | 0 hallazgos en los 28 archivos de interfaz cambiados |
+| Detector de Impeccable | Reglas generales: 0 hallazgos en los 28 archivos de interfaz cambiados. Reglas del sistema de diseño: `cuadros.css`, 0 (seis colores sueltos corregidos y una excepción registrada); ver abajo lo heredado |
 
 ---
 
@@ -216,8 +217,15 @@ texto de la firma, y cualquiera se quita borrando una línea.
 
 - **Antes de publicar:** «Privacidad» y «Aviso legal» del pie llevan a `#`; `/en` y `/de` sirven
   español y son indexables; las imágenes Open Graph siguen con el eslogan antiguo.
-- El detector sigue marcando tamaños de letra fuera de la rampa de DESIGN.md en `portada.css` y
-  `SiteHeader.jsx`. Vienen de la maqueta aprobada; no son de esta pasada.
+- **Excepciones del detector que registré yo** (`.impeccable/config.json`, acotadas por archivo y con
+  su motivo; ninguna la has confirmado tú): la microletra de las ventanas (9–12,5 px) y el radio de
+  1 px de sus barras de 4 a 6 px de alto, en `cuadros.css`, que son la misma clase de excepción ya
+  sancionada para la maqueta; y cinco tamaños de letra de `SiteHeader.jsx`, que son los de la
+  cabecera de la maqueta aprobada.
+- **Lo que el detector sigue marcando y no toqué**, porque viene de antes: tamaños de letra fuera de
+  la rampa de DESIGN.md en `portada.css`, `klinoda.css` y `paginas.css` (16 en esta última, de la
+  pieza 9), y `1.2rem` en los enlaces del menú del teléfono (pieza 2). Lo limpio sería añadir esos
+  pasos a la rampa de DESIGN.md o traerlos a ella; es una decisión de sistema, no de pulido.
 - `.impeccable/design.json` está más viejo que DESIGN.md (ya lo estaba). Se regenera con
   `/impeccable document`.
 - `public/logo.png` (817 KB) no lo usa la web; solo el guion de marca. Hay versiones `.webp` de los
