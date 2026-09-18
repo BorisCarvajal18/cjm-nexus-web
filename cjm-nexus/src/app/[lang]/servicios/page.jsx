@@ -20,6 +20,7 @@ import PageHero from '../../../blocks/pages/PageHero';
 import ProductBand from '../../../blocks/pages/ProductBand';
 import ServiceCards from '../../../blocks/pages/ServiceCards';
 import FinalCta from '../../../blocks/FinalCta';
+import Method from '../../../blocks/Method';
 import SiteFooter from '../../../components/SiteFooter';
 import SiteHeader from '../../../components/SiteHeader';
 import BackToTop from '../../../components/ui/BackToTop';
@@ -58,6 +59,7 @@ export default function ServiciosPage({ params }) {
           columns={3}
         />
         <ProductBand content={content.product} href={`/${lang}/klinoda`} />
+        <Method content={content.metodo} />
         <FinalCta content={content.cta} />
       </main>
       <SiteFooter lang={lang} />

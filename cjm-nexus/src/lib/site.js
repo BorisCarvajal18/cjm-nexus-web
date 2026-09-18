@@ -35,7 +35,7 @@ export function navLinks(lang = 'es') {
   return [
     { href: `/${lang}/servicios`, label: 'Servicios' },
     { href: `/${lang}/klinoda`, label: 'KLINODA' },
-    { href: `/${lang}#metodo`, label: 'Método' },
+    { href: `/${lang}/servicios#metodo`, label: 'Método' },
     { href: `/${lang}#equipo`, label: 'Nosotros' },
     // Todas las paginas terminan con la misma seccion de cierre, con
     // id="contacto". Un ancla suelta lleva a la de la pagina donde estas, y
@@ -81,7 +81,7 @@ export function footerColumns(lang = 'es') {
       title: 'Empresa',
       links: [
         { label: 'KLINODA', href: `/${lang}/klinoda` },
-        { label: 'Método', href: `/${lang}#metodo` },
+        { label: 'Método', href: `/${lang}/servicios#metodo` },
         { label: 'Nosotros', href: `/${lang}#equipo` },
         { label: 'Contacto', href: `/${lang}#contacto` },
       ],

@@ -24,6 +24,39 @@
    ÍNDICE DE SERVICIOS  ·  /es/servicios
    ───────────────────────────────────────────────────────────────────── */
 export const servicios = {
+  /* El método. Vivía en la portada, que la maqueta aprobada no incluye;
+     se muestra en esta página, con id="metodo", hasta rehacerla (pieza 9). */
+  metodo: {
+    eyebrow: 'Cómo trabajamos',
+    title: 'El método es la garantía.',
+    intro: 'Cuatro reglas que aplicamos en cada proyecto, con un ejemplo real de cada una.',
+    items: [
+      {
+        title: 'Decidimos por escrito',
+        text: 'Cada decisión relevante queda en un acta numerada con su motivo y sus alternativas. Nada se acuerda de palabra.',
+        evidence: 'Trece actas en KLINODA, desde la elección del stack hasta la firma electrónica.',
+      },
+      {
+        title: 'Probamos lo que construimos',
+        text: 'Pruebas automáticas y controles de seguridad en cada cambio. Si algo se rompe, falla la compilación, no el cliente.',
+        evidence:
+          'Más de 2.300 pruebas y una matriz que comprueba cada pantalla contra cada tipo de usuario.',
+      },
+      {
+        title: 'Privacidad por diseño',
+        text: 'Lo que alguien no debe ver no sale de la base de datos. La regla vive en el modelo, no en la pantalla.',
+        evidence:
+          'El portal de empresa de KLINODA solo consume una lista cerrada de campos, y una prueba falla si se cuela un dato clínico.',
+      },
+      {
+        title: 'Nada real hasta validar',
+        text: 'Datos ficticios hasta que el especialista y el abogado den el visto bueno. Un producto serio no se prueba con personas reales.',
+        evidence:
+          'KLINODA opera en piloto controlado y el sistema se niega a arrancar si alguien intenta autorizar datos reales por configuración.',
+      },
+    ],
+  },
+
   /* Las interfaces de muestra de las dos tarjetas. Vivían en home.es.js;
      se quedan aquí hasta rehacer esta página con el sistema nuevo (pieza 9). */
   mockups: {

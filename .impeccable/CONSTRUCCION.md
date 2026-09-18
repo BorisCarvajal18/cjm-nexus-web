@@ -28,7 +28,7 @@ Las capturas de verificación van a `.impeccable/construccion/`.
 | 5 | Escena de los tableros («Qué hacemos») | ✅ Hecha · 2026-09-18 | Un preset nuevo en `lib/animations.js` con `CONSULTA_ESCENAS`, `ESCENA.tableros` y `AJUSTE_AL_SOLTAR`. Se fija 3,1 pantallas y la letra se ajusta con `--k` |
 | 6 | La noche | ✅ Hecha · 2026-09-18 | Las variables de tema (`--suelo`, `--tx-*`, `--filete*`) ya existen. Falta la capa fija, el disparador que llama a `marcarOscuro()` y el paso corto del 50 al 59 % |
 | 7 | Escena de KLINODA | ✅ Hecha · 2026-09-18 | 2,1 pantallas. Poner al día `privacy.mockup` en `klinoda.es.js` con las etiquetas reales («APTO», «APTO EN OBSERVACIÓN», «PERIÓDICO»…) |
-| 8 | Cierre y pie | Pendiente | El titular y los tres bloques del cierre son **texto propuesto sin aprobar** (PLAN.md, ronda 2 §7) |
+| 8 | Cierre y pie | ✅ Hecha · 2026-09-18 | El titular y los tres bloques del cierre son **texto propuesto sin aprobar** (PLAN.md, ronda 2 §7) |
 | 9 | Páginas de servicios y de KLINODA al sistema nuevo | Pendiente | Hoy siguen con «Pulso Cobre» |
 | 10 | **Reescribir el texto de KLINODA con la decisión del ICP** | Pendiente · sesión propia | Ver abajo |
 | 11 | Retirar «Pulso Cobre» | Pendiente | Tokens en inglés de `tailwind.config.js` (`navy`, `copper`, `teal`, `ink`, `bg-g-*`, los heredados `indigo`/`slate`…) y los presets antiguos de `lib/animations.js`, cuando ya nada los use. `CalendlyButton.jsx` todavía usa `indigo` |
@@ -63,6 +63,7 @@ construir. Se usan igual; Boris los aprueba o los cambia leyendo esta lista.
 | 4 | `home.es.js` → `credenciales.cifras[].quien` | Las tres notas: «La trayectoria de Richard Carvajal, fundador de la firma.», «Por Richard Carvajal, en Latinoamérica y Estados Unidos.», «Español, inglés y alemán, con equipo en Ecuador y Alemania.» | Propuestas en PLAN.md (ronda 5 §2) |
 | 4 | `home.es.js` → `credenciales.firma` | «**Richard Carvajal** dirige las finanzas, **Boris Carvajal** la tecnología y **Mirella Llanga** la gerencia general.» | Propuesta en PLAN.md (ronda 5 §2) |
 | 7 | `home.es.js` → `klinoda.frases[0]` y `[1]` | «KLINODA es una empresa del Grupo CJM Nexus. Su plataforma ordena la salud ocupacional de las empresas en Ecuador.» · «La empresa ve qué certificados vencen y quién está apto para su puesto, sin tener que perseguir un papel.» | Reescritas: la maqueta decía «nuestro producto propio» y «para probar exactamente lo que decimos que sabemos hacer» (reglas 7, 8 y 9 de PRODUCT.md). La tercera frase, la pregunta y el botón son los de la maqueta |
+| 8 | `home.es.js` → `cierre.titular` y `cierre.tres` | «Veinte minutos con **quien va a hacer el trabajo**.» y los tres bloques «Con quién hablas», «Qué pasa en la reunión», «Qué te llevas» | Propuestos en PLAN.md (ronda 2 §7) |
 
 ## Cómo se usa la base (pieza 1)
 
@@ -305,3 +306,30 @@ su valor y la cabecera oscura al pasar; en 390 px, sin desbordamiento.
 
 **Visto, sin tocar:** con movimiento la página se queda de noche después de KLINODA, y el bloque del
 método y el cierre antiguos todavía no usan las variables del tema. Se resuelve en la pieza 8.
+
+**Pieza 8 — cierre y pie** (`blocks/registro/Cierre.jsx`, `components/SiteFooter.jsx`, textos en
+`home.es.js` → `cierre` y `sitio.es.js` → `pie`):
+
+- El cierre de la maqueta: banda marino a marino hondo, «Siguiente paso», el titular, las tres
+  respuestas con filetes, «Agendar» (abre Calendly), la nota y los tres canales. El gesto: el filete
+  de cobre que cruza la banda y las respuestas que suben. Lleva `id="contacto"`, así que el
+  «Agendar» de la cabecera y de la portada aterrizan en él.
+- **El pie** no está en la maqueta: se pasó al sistema nuevo siguiendo el cierre. Marino hondo,
+  isotipo claro con «CJM NEXUS» espaciado, rótulos en versalitas cobre claro con su filete y enlaces
+  con el subrayado cobre al apuntar. Mismos enlaces y textos que antes, ahora en `sitio.es.js`. Vale
+  para todas las páginas.
+- **La portada queda como la maqueta:** portada, credenciales, qué hacemos, KLINODA y cierre. Salen
+  de ella el bloque del método, el cierre antiguo (`FinalCta` sigue en las otras páginas) y el
+  botón «volver arriba».
+- **Decisión mía, a revisar:** el método (`Method.jsx` con sus textos, ahora en `servicios.es.js` →
+  `metodo`) pasa a `/servicios#metodo`, y «Método» del menú y del pie apunta ahí. Motivo: la maqueta
+  aprobada no lo lleva, DESIGN.md enumera lo que va en la portada, y dejar «Método» sin destino
+  rompe el principio 5 de PRODUCT.md. Si prefieres otra cosa (quitarlo del menú, o una página
+  propia), es un cambio de dos líneas en `lib/site.js`.
+
+**Verificación** (producción): build sin errores. Capturas `p8-cierre-*`: el cierre y el pie a 1536 ×
+730 y 390 × 844, con y sin «reducir movimiento»; 0 ocultos al terminar la entrada; la cabecera marino
+hondo sobre los dos; «Agendar» lleva a Calendly; sin desbordamiento. Anclas comprobadas en el HTML
+servido: `/es` tiene `#equipo` y `#contacto`; `/es/servicios`, `#metodo`. En `/es` no aparecen ya
+«producto propio», «para médicos ocupacionales» ni «la prueba de lo que construimos» (siguen en
+`/es/servicios` y `/es/klinoda`: piezas 9 y 10).

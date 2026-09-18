@@ -201,47 +201,34 @@ export const home = {
     boton: 'Ver KLINODA',
   },
 
-  method: {
-    eyebrow: 'Cómo trabajamos',
-    title: 'El método es la garantía.',
-    intro: 'Cuatro reglas que aplicamos en cada proyecto, con un ejemplo real de cada una.',
-    items: [
-      {
-        title: 'Decidimos por escrito',
-        text: 'Cada decisión relevante queda en un acta numerada con su motivo y sus alternativas. Nada se acuerda de palabra.',
-        evidence: 'Trece actas en KLINODA, desde la elección del stack hasta la firma electrónica.',
-      },
-      {
-        title: 'Probamos lo que construimos',
-        text: 'Pruebas automáticas y controles de seguridad en cada cambio. Si algo se rompe, falla la compilación, no el cliente.',
-        evidence:
-          'Más de 2.300 pruebas y una matriz que comprueba cada pantalla contra cada tipo de usuario.',
-      },
-      {
-        title: 'Privacidad por diseño',
-        text: 'Lo que alguien no debe ver no sale de la base de datos. La regla vive en el modelo, no en la pantalla.',
-        evidence:
-          'El portal de empresa de KLINODA solo consume una lista cerrada de campos, y una prueba falla si se cuela un dato clínico.',
-      },
-      {
-        title: 'Nada real hasta validar',
-        text: 'Datos ficticios hasta que el especialista y el abogado den el visto bueno. Un producto serio no se prueba con personas reales.',
-        evidence:
-          'KLINODA opera en piloto controlado y el sistema se niega a arrancar si alguien intenta autorizar datos reales por configuración.',
-      },
-    ],
-  },
-
   /* En la portada el equipo va como banda corta, sin fotografías ni fichas.
      Tres tarjetas con iniciales dentro de un círculo se leen como un hueco
      esperando a rellenarse; una frase que nombra a los tres y enlaza a su
      página se lee como una decisión. Las fotos van en «Nosotros». */
-  cta: {
-    eyebrow: 'Siguiente paso',
-    title: 'Veinte minutos para entender tu empresa y proponerte un camino.',
-    text: 'Diagnóstico, dirección financiera o una solución a medida. Sin compromiso, en español, inglés o alemán.',
-    primary: 'Agendar diagnóstico ejecutivo',
-    secondary: 'Escribir a CJM Nexus',
+  /* El cierre (DESIGN.md, M6). TEXTO POR APROBAR (PLAN.md, ronda 2 §7): el
+     titular y los tres bloques. Nombra a los dos, Richard y Boris, porque las
+     dos audiencias pesan igual (PRODUCT.md). En el titular, lo que va entre
+     asteriscos dobles va en 800. */
+  cierre: {
+    ref: 'Siguiente paso',
+    titular: 'Veinte minutos con **quien va a hacer el trabajo**.',
+    tres: [
+      {
+        titulo: 'Con quién hablas',
+        texto: 'Richard Carvajal en dirección financiera, Boris Carvajal en tecnología. No hay un comercial de por medio.',
+      },
+      {
+        titulo: 'Qué pasa en la reunión',
+        texto: 'Nos cuentas cómo decides hoy, con qué información y qué te falta. Preguntamos: no venimos a presentar.',
+      },
+      {
+        titulo: 'Qué te llevas',
+        texto: 'Qué conviene ordenar primero y en qué orden. Y si no somos la casa adecuada, te lo decimos en esa misma reunión.',
+      },
+    ],
+    agendar: 'Agendar diagnóstico ejecutivo · 20 min',
+    nota: 'Sin costo · sin compromiso · en español, inglés o alemán',
+    canales: 'Otros canales',
   },
 };
 
