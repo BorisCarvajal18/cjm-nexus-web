@@ -124,6 +124,7 @@ Textos escritos después de la aprobación del 2026-09-18. Todo lo que no está 
 | 12 | `nosotros.es.js` → `personas.items[1]` | Boris: «Cofundador · Tecnología» · «Lidera la tecnología de CJM Nexus: las páginas web, los sistemas a medida y los tableros conectados a los datos de cada empresa.» · Alemania | Nuevo. No nombra KLINODA a propósito: su plataforma la construye CJM Nexus y no se dice quién la dirige |
 | 12 | `nosotros.es.js` → `personas.items[2]` | Mirella: «Gerente general» · «Lidera la gerencia general de CJM Nexus.» | Provisional: es lo ya aprobado en la firma de la portada, a la espera de la pregunta 9 |
 | 12 | `nosotros.es.js` → `firma` | «Dos líneas, una firma.» y tres puntos, con textos ya aprobados en la portada y en KLINODA; títulos nuevos: «El número y el sistema, en la misma firma», «Ecuador y Alemania», «KLINODA, empresa del Grupo»; el primer punto dice «Quien define el número construye también el sistema que lo produce.» | Títulos nuevos |
+| 9 | `servicios.es.js` → `metodo` | Intro «Las reglas que aplicamos en las dos líneas, con un ejemplo real de cada una.» · Regla 1 «Decidimos por escrito»: «Lo que se decide queda escrito en un acta. Nada se acuerda de palabra.» · finanzas «Cada reunión de dirección, una al mes, termina con su acta.» · software «Trece actas de decisión en KLINODA, cada una con su motivo y sus alternativas…» · Regla 3 «Privacidad por diseño»: «Vemos solo lo que el trabajo necesita, y lo que alguien no debe ver no le llega.» · finanzas «No pedimos acceso a tus cuentas bancarias ni movemos dinero: trabajamos con los reportes que ya tienes.» · software, el de antes | **Aprobado por Boris el 2026-09-18** (propuesta del chat). Se anota aquí porque cambió después de la aprobación general |
 | 12 | `nosotros.es.js` → `metodo` y `cta` | «Ver cómo trabajamos» (a `/servicios#metodo`) y el cierre con el titular aprobado del cierre de la portada | Reutilizados; solo «Ver cómo trabajamos» es nuevo |
 
 ## Cómo se usa la base (pieza 1)
@@ -688,3 +689,21 @@ día con Europa.
   sin rellenar. Siguen los huecos de la pieza 12 (qué hace en concreto y desde dónde trabaja).
 - **El método de `/servicios`** rompe el 50/50: sus cuatro evidencias son de KLINODA. Hay una
   propuesta en el chat del 2026-09-18, pendiente de Boris; no se ha aplicado.
+
+### 2026-09-18 — el método, al 50/50
+
+- **Aprobado por Boris** (propuesta del chat): el método de `/servicios#metodo` queda con dos reglas,
+  «Decidimos por escrito» y «Privacidad por diseño», cada una con un ejemplo de dirección financiera
+  y uno de software (`servicios.es.js` → `metodo`). Nueva intro: «Las reglas que aplicamos en las dos
+  líneas, con un ejemplo real de cada una.»; la misma frase en `nosotros.es.js` → `metodo.texto`.
+- **Fuera:** «Nada real hasta validar» (solo de KLINODA, y listaba lo que falta: regla 6) y, por
+  ahora, «Probamos lo que construimos».
+- **Pregunta para Richard:** ¿hay alguna práctica real en dirección financiera que haga el papel de
+  «probamos lo que construimos», algo que se revise o se compruebe antes de entregar (el tablero,
+  el diagnóstico, la proyección de caja)? Si la hay, la regla vuelve con un ejemplo de cada línea;
+  si no, se queda fuera. No se rellena con una suposición.
+- **Componente pendiente (después de juntar `fable-pulido`):** el campo `evidence` pasa a
+  `ejemplos: { finanzas, software }`. `blocks/Method.jsx` todavía pinta `evidence`, así que **hoy
+  `/servicios#metodo` enseña las dos reglas sin sus ejemplos**. Al actualizarlo: dos ejemplos por
+  regla, del mismo tamaño y con la misma letra (50/50), cada uno con su referencia (`metodo.etiquetas`:
+  «Dirección financiera» / «Soluciones digitales»), tras el filete de cobre de siempre.

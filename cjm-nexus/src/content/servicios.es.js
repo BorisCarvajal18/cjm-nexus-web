@@ -29,30 +29,37 @@ export const servicios = {
   metodo: {
     eyebrow: 'Cómo trabajamos',
     title: 'El método es la garantía.',
-    intro: 'Cuatro reglas que aplicamos en cada proyecto, con un ejemplo real de cada una.',
+    intro: 'Las reglas que aplicamos en las dos líneas, con un ejemplo real de cada una.',
+    // Las referencias de los dos ejemplos de cada regla.
+    etiquetas: { finanzas: 'Dirección financiera', software: 'Soluciones digitales' },
+    /* EL 50/50 TAMBIÉN AQUÍ (regla 1 de PRODUCT.md): cada regla lleva un
+       ejemplo de dirección financiera y uno de software, y solo entra una
+       regla si las dos líneas tienen evidencia real. Aprobado por Boris el
+       18-sep-2026. Fuera, a propósito:
+       · «Probamos lo que construimos»: sin práctica financiera real que la
+         respalde. Vuelve si Richard la da (pregunta en CONSTRUCCION.md).
+       · «Nada real hasta validar»: solo es de KLINODA, y listaba lo que falta
+         (regla 6). El estado de KLINODA ya se dice en su página.
+       `ejemplos` sustituye al antiguo `evidence`; el componente `Method`
+       todavía no lo pinta (se pone al día después de juntar fable-pulido). */
     items: [
       {
         title: 'Decidimos por escrito',
-        text: 'Cada decisión relevante queda en un acta numerada con su motivo y sus alternativas. Nada se acuerda de palabra.',
-        evidence: 'Trece actas en KLINODA, desde la elección del stack hasta la firma electrónica.',
-      },
-      {
-        title: 'Probamos lo que construimos',
-        text: 'Pruebas automáticas y controles de seguridad en cada cambio. Si algo se rompe, falla la compilación, no el cliente.',
-        evidence:
-          'Más de 2.300 pruebas y una matriz que comprueba cada pantalla contra cada tipo de usuario.',
+        text: 'Lo que se decide queda escrito en un acta. Nada se acuerda de palabra.',
+        ejemplos: {
+          finanzas: 'Cada reunión de dirección, una al mes, termina con su acta.',
+          software:
+            'Trece actas de decisión en KLINODA, cada una con su motivo y sus alternativas, desde la elección del stack hasta la firma electrónica.',
+        },
       },
       {
         title: 'Privacidad por diseño',
-        text: 'Lo que alguien no debe ver no sale de la base de datos. La regla vive en el modelo, no en la pantalla.',
-        evidence:
-          'El portal de empresa de KLINODA solo consume una lista cerrada de campos, y una prueba falla si se cuela un dato clínico.',
-      },
-      {
-        title: 'Nada real hasta validar',
-        text: 'Datos ficticios hasta que el especialista y el abogado den el visto bueno. Un producto serio no se prueba con personas reales.',
-        evidence:
-          'KLINODA es una demo con datos ficticios y el sistema se niega a arrancar si alguien intenta autorizar datos reales por configuración.',
+        text: 'Vemos solo lo que el trabajo necesita, y lo que alguien no debe ver no le llega.',
+        ejemplos: {
+          finanzas: 'No pedimos acceso a tus cuentas bancarias ni movemos dinero: trabajamos con los reportes que ya tienes.',
+          software:
+            'El portal de empresa de KLINODA solo consume una lista cerrada de campos, y una prueba falla si se cuela un dato clínico.',
+        },
       },
     ],
   },

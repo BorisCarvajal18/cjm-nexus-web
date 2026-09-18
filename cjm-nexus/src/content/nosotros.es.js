@@ -132,7 +132,7 @@ export const nosotros = {
   /* Un solo enlace a cómo trabajamos, que vive en /servicios#metodo. */
   metodo: {
     etiqueta: 'Cómo trabajamos',
-    texto: 'Cuatro reglas que aplicamos en cada proyecto, con un ejemplo real de cada una.',
+    texto: 'Las reglas que aplicamos en las dos líneas, con un ejemplo real de cada una.',
     enlace: 'Ver cómo trabajamos',
     href: '/servicios#metodo',
   },
