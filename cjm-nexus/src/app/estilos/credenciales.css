@@ -38,9 +38,12 @@
   letter-spacing: -0.04em;
   color: var(--tx-1);
 }
+/* El «+» es el único cobre de la banda. Cobre hondo: a este tamaño pide 3:1
+   y da 4,5:1 sobre papel. */
 .credenciales .cifra .mas {
   letter-spacing: 0;
   margin-left: 0.03em;
+  color: var(--cobre-honda);
 }
 .credenciales .que {
   margin-top: 20px;

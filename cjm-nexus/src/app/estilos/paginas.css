@@ -20,10 +20,13 @@
 }
 
 /* ── la cabecera de página ─────────────────────────────────────────── */
+/* Arranca un escalón de luz por encima del papel y se funde con él: la
+   página se abre con aire sin dejar de ser papel. */
 .pag-cabeza {
   padding-top: calc(var(--cabecera) + clamp(48px, 11vh, 112px));
   padding-bottom: clamp(48px, 8vh, 88px);
   border-bottom: 1px solid var(--filete);
+  background: linear-gradient(180deg, var(--papel-claro) 0%, var(--papel) 100%);
 }
 .pag-cabeza h1 {
   margin-top: 18px;
@@ -84,7 +87,7 @@
   background: var(--papel-hondo);
 }
 .oscura {
-  background: var(--tinta);
+  background: var(--tinta) var(--degradado-marino);
   color: #fff;
   --tx-1: #ffffff;
   --tx-2: rgba(255, 255, 255, 0.82);

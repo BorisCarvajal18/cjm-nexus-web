@@ -45,9 +45,20 @@
     outline-offset: 3px;
   }
 
+  /* Lo que pinta el navegador también es de la casa: la selección, la barra
+     de desplazamiento y los controles nativos. Cobre hondo y no cobre en la
+     selección: con la letra blanca da 5:1. */
   ::selection {
-    background: theme('colors.cobre.DEFAULT');
+    background: theme('colors.cobre.honda');
     color: #fff;
+  }
+  html {
+    accent-color: theme('colors.cobre.honda');
+    scrollbar-color: theme('colors.piedra') theme('colors.papel.DEFAULT');
+  }
+  /* De noche (la pone Noche.jsx) la barra se oscurece con la página. */
+  html[data-tema='oscuro'] {
+    scrollbar-color: #3a4666 theme('colors.tinta.honda');
   }
 
   /* Los títulos usan la display; el peso hace la jerarquía, no la familia */

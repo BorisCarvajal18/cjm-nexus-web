@@ -5,7 +5,7 @@
  * repositorio, extraído de la portada aprobada el 13 de septiembre de 2026.
  * Sus tokens llevan nombre en español y viven en el bloque `REGISTRO` de
  * abajo: colores (`papel`, `tinta`, `cobre`…), letra (`text-display`,
- * `text-cifra`…), radios, espaciado y sombras.
+ * `text-cifra`…), radios, espaciado, sombras y degradados.
  *
  * El sistema anterior («Pulso Cobre», 3 de septiembre) se retiró el 18 de
  * septiembre de 2026: sus tokens en inglés (`navy`, `copper`, `teal`, `ink`,
@@ -18,19 +18,25 @@ const plugin = require('tailwindcss/plugin');
 
 /* ══ REGISTRO — los tokens de DESIGN.md ═════════════════════════════════
    Una sola fuente: de aquí salen las clases de Tailwind Y las variables CSS
-   (`--papel`, `--tinta-honda`, `--cobre`…) que escribe el plugin del final.
+   (`--papel`, `--tinta-honda`, `--cobre`, `--sombra-hoja`,
+   `--degradado-marino`…) que escribe el plugin del final.
    Si un valor cambia en DESIGN.md, cambia aquí y en ningún otro sitio. */
 const REGISTRO = {
   colores: {
-    papel: { DEFAULT: '#F3F1ED', hondo: '#EDEAE3' },
+    // `claro` es el suelo de las ventanas de muestra y el arranque de las
+    // cabeceras de página: un escalón de luz por encima del papel.
+    papel: { DEFAULT: '#F3F1ED', hondo: '#EDEAE3', claro: '#F8F6F2' },
     blanco: '#FFFFFF',
-    tinta: { DEFAULT: '#141F3A', honda: '#0B1122', suave: '#4E5870' },
+    // `viva` es el marino con más azul: la luz de arriba de la noche y el
+    // tinte del velo de la portada. Nunca es color de texto.
+    tinta: { DEFAULT: '#141F3A', honda: '#0B1122', suave: '#4E5870', viva: '#18264C' },
     gris: '#5A6375',
     // Filetes y trazos. Solo es texto sobre fondo oscuro.
     piedra: '#B9B1A7',
     linea: { DEFAULT: '#DDD8D0', fina: '#E8E4DC' },
     // El único acento. `honda` es el relleno de «Agendar» y de nada más.
-    cobre: { DEFAULT: '#C9784A', honda: '#A85A2E', presion: '#8F4A22', claro: '#DD9268' },
+    // `tinte` es el fondo de lo que pide atención dentro de una ventana.
+    cobre: { DEFAULT: '#C9784A', honda: '#A85A2E', presion: '#8F4A22', claro: '#DD9268', tinte: '#FBEFE6' },
     // Solo dentro del tablero de KLINODA. Nunca fuera de él.
     klinoda: {
       acento: '#1868E8',
@@ -93,10 +99,29 @@ const REGISTRO = {
   marco: '1240px',
 
   // Solo se levanta lo que se «pone encima» (The Flat-By-Default Rule).
+  // Siempre con desplazamiento y en capas: contacto, cercanía y caída.
   sombras: {
-    hoja: '0 1px 2px rgba(20,31,58,.05), 0 28px 56px -34px rgba(20,31,58,.55)',
+    hoja: '0 1px 2px rgba(20,31,58,.06), 0 10px 20px -12px rgba(20,31,58,.2), 0 36px 70px -38px rgba(20,31,58,.55)',
     'hoja-noche': '0 2px 6px rgba(0,0,0,.2), 0 48px 90px -48px rgba(0,0,0,.7)',
-    conversion: '0 2px 3px rgba(11,17,34,.16), 0 14px 28px -18px rgba(168,90,46,.85)',
+    conversion: 'inset 0 1px 0 rgba(255,255,255,.2), 0 2px 3px rgba(11,17,34,.16), 0 14px 28px -18px rgba(168,90,46,.85)',
+    'conversion-alta': 'inset 0 1px 0 rgba(255,255,255,.16), 0 3px 6px rgba(11,17,34,.2), 0 22px 38px -20px rgba(168,90,46,.95)',
+  },
+
+  /* LOS DEGRADADOS (The Tonal Gradient Rule). Todos son de un mismo tono a
+     otro más hondo: dan cuerpo y luz, nunca cambian de color. Ninguno va en
+     texto.
+     · marino     → las bandas de noche, de marino vivo a marino hondo.
+     · cierre     → la banda de cierre, que termina donde empieza el pie.
+     · conversion → el relleno de «Agendar»: cobre con la luz arriba. El tono
+                    más claro da 4,7:1 con la letra blanca.
+     · cobre      → el trazo del dato y la regla de progreso, de apagado a
+                    encendido. */
+  degradados: {
+    marino: 'linear-gradient(180deg, #18264C 0%, #141F3A 44%, #101A33 100%)',
+    cierre: 'linear-gradient(180deg, #141F3A 0%, #101A33 55%, #0B1122 100%)',
+    conversion: 'linear-gradient(180deg, #AE5E30 0%, #9E5429 100%)',
+    'conversion-presion': 'linear-gradient(180deg, #96501F 0%, #874519 100%)',
+    cobre: 'linear-gradient(90deg, #A85A2E 0%, #C9784A 60%, #DD9268 100%)',
   },
 
   /* Las curvas de DESIGN.md para las transiciones de CSS (estados al apuntar).
@@ -109,6 +134,10 @@ const REGISTRO = {
     salir: 'cubic-bezier(.32,0,.67,0)',
   },
 };
+
+/** { hoja: '…' } → { '--sombra-hoja': '…' } */
+const conPrefijo = (valores, prefijo) =>
+  Object.fromEntries(Object.entries(valores).map(([nombre, valor]) => [`--${prefijo}-${nombre}`, valor]));
 
 /** { papel: { DEFAULT, hondo } } → { '--papel': …, '--papel-hondo': … } */
 function variables(colores, prefijo = '') {
@@ -146,6 +175,7 @@ module.exports = {
       spacing: REGISTRO.espacio,
       maxWidth: { marco: REGISTRO.marco },
       boxShadow: REGISTRO.sombras,
+      backgroundImage: REGISTRO.degradados,
       transitionTimingFunction: REGISTRO.curvas,
     },
   },
@@ -155,6 +185,8 @@ module.exports = {
       addBase({
         ':root': {
           ...variables(REGISTRO.colores),
+          ...conPrefijo(REGISTRO.sombras, 'sombra'),
+          ...conPrefijo(REGISTRO.degradados, 'degradado'),
           ...REGISTRO.tema,
           '--curva': REGISTRO.curvas.llegar,
           '--cabecera': REGISTRO.espacio.cabecera,

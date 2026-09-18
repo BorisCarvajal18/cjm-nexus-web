@@ -50,20 +50,28 @@
   opacity: 1;
 }
 
-/* El velo: el primero de los tres degradados permitidos. */
+/* El velo. Dos capas, las dos en marino:
+   · de arriba abajo, el velo de siempre, pero en marino vivo (#18264C) y no en
+     marino hondo: un velo casi negro deja el metraje gris; uno con azul lo
+     tiñe de la casa y se ve más rico sin oscurecer más;
+   · detrás del texto, una sombra ancha que asegura el 4,5:1 de la entrada y
+     de la nota aunque el vídeo pase por una zona clara (papeles sobre la
+     mesa). No es un halo: no tiene color propio ni borde que se lea. */
 .velo {
   position: absolute;
   inset: 0;
   z-index: 1;
   pointer-events: none;
-  background: linear-gradient(
-    180deg,
-    rgba(11, 17, 34, 0.66) 0%,
-    rgba(11, 17, 34, 0.4) 24%,
-    rgba(11, 17, 34, 0.4) 48%,
-    rgba(11, 17, 34, 0.56) 76%,
-    rgba(11, 17, 34, 0.88) 100%
-  );
+  background:
+    radial-gradient(ellipse 62% 54% at 50% 54%, rgba(11, 17, 34, 0.34) 0%, rgba(11, 17, 34, 0) 100%),
+    linear-gradient(
+      180deg,
+      rgba(14, 22, 48, 0.72) 0%,
+      rgba(24, 38, 76, 0.42) 24%,
+      rgba(24, 38, 76, 0.4) 48%,
+      rgba(16, 26, 54, 0.58) 76%,
+      rgba(11, 17, 34, 0.92) 100%
+    );
 }
 .portada .marco {
   position: relative;
@@ -103,7 +111,7 @@
 .portada .nota {
   margin-top: 20px;
   font-size: 0.84rem;
-  color: rgba(255, 255, 255, 0.8);
+  color: rgba(255, 255, 255, 0.88);
 }
 .portada .enlace {
   color: #fff;

@@ -11,6 +11,8 @@
  *   50 %     paso corto del 50 al 59 % en 0,3 s: el texto pasa a blanco, la
  *            cabecera se vuelve oscura (`marcarOscuro`) y cambia el logotipo
  *   59–100 % termina de oscurecerse; los grises vuelven a su tono de noche
+ *   90–100 % entra la hondura: la capa gana su degradado de marino vivo a
+ *            marino hondo (`.noche::after`, estilos/klinoda.css)
  *
  * Por qué el paso: medido, entre el 50 y el 59 % ningún color de texto llega
  * a 4,5:1 (la tinta aguanta hasta el 50 %; el blanco pasa desde el 59 %). El
@@ -37,6 +39,9 @@ const TINTA = [20, 31, 58];
 const TX2 = [78, 88, 112];
 const TX3 = [90, 99, 117];
 const CRUCE = 0.545;
+/* Desde qué oscuridad entra la hondura. Por debajo, la capa es marino plano,
+   que es contra lo que están hechas las cuentas de contraste del tramo. */
+const HONDURA_DESDE = 0.9;
 const VARIABLES = ['--tx-1', '--tx-2', '--tx-3', '--tx-inverso', '--filete', '--filete-fuerte'];
 
 const lim = (x) => (x < 0 ? 0 : x > 1 ? 1 : x);
@@ -89,6 +94,7 @@ export default function Noche() {
         const oscuro = a >= CRUCE;
         const s = raiz.style;
         noche.style.opacity = a.toFixed(4);
+        noche.style.setProperty('--hondura', lim((a - HONDURA_DESDE) / (1 - HONDURA_DESDE)).toFixed(3));
         if (!oscuro) {
           s.setProperty('--tx-1', '#141F3A');
           s.setProperty('--tx-2', mezcla(TX2, TINTA, gr));
@@ -134,6 +140,7 @@ export default function Noche() {
         gsap.killTweensOf(estado);
         VARIABLES.forEach((v) => raiz.style.removeProperty(v));
         noche.style.opacity = '';
+        noche.style.removeProperty('--hondura');
         raiz.classList.remove('tema-vivo');
         raiz.removeAttribute('data-tema');
         if (estado.oscuro) marcarOscuro(false);

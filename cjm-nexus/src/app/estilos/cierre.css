@@ -3,7 +3,7 @@
    oscuro por sí mismo, con movimiento o sin él. */
 .cierre {
   position: relative;
-  background: linear-gradient(180deg, var(--tinta) 0%, #101a31 55%, var(--tinta-honda) 100%);
+  background: var(--tinta) var(--degradado-cierre);
   color: #fff;
   text-align: center;
   scroll-margin-top: var(--cabecera);
@@ -15,7 +15,8 @@
   right: 0;
   top: 0;
   height: 1px;
-  background: rgba(201, 120, 74, 0.55);
+  background: var(--degradado-cobre);
+  opacity: 0.7;
   transform: scaleX(var(--raya, 1));
   transform-origin: left;
 }

@@ -2,7 +2,14 @@
    Una capa marino fija detrás de todo el contenido. Su opacidad la lleva el
    scroll mientras entra la banda de KLINODA: se anima la opacidad de una
    sola capa, que la tarjeta gráfica compone sin repintar la página. Solo
-   existe con movimiento (`.tema-vivo`, que pone Noche.jsx). */
+   existe con movimiento (`.tema-vivo`, que pone Noche.jsx).
+
+   LA HONDURA. Mientras oscurece, la capa es marino plano: las cuentas de
+   contraste del tramo (Noche.jsx) están hechas contra ese color y no se
+   tocan. Cuando la noche ya está hecha (del 90 % en adelante, con el texto
+   en blanco y más de 12:1), entra una segunda capa que le da cuerpo: marino
+   vivo arriba, marino hondo abajo. El punto más claro, #18264C, deja el texto
+   más tenue de la noche en 5,9:1. */
 .noche {
   position: fixed;
   inset: 0;
@@ -11,6 +18,13 @@
   opacity: 0;
   pointer-events: none;
   display: none;
+}
+.noche::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--degradado-marino);
+  opacity: var(--hondura, 0);
 }
 .tema-vivo .noche {
   display: block;
@@ -35,7 +49,7 @@
 /* Sin movimiento (o sin JavaScript) la banda es oscura por sí misma. Con
    movimiento es la página entera la que se hace de noche (tramo T). */
 html:not(.tema-vivo) .puerta {
-  background: var(--tinta);
+  background: var(--tinta) var(--degradado-marino);
   color: #fff;
   --tx-1: #ffffff;
   --tx-2: rgba(255, 255, 255, 0.82);
@@ -644,7 +658,7 @@ html:not(.tema-vivo) .puerta {
   position: absolute;
   inset: 0;
   border-radius: 6px;
-  background: var(--tinta);
+  background: var(--tinta) linear-gradient(160deg, var(--tinta-viva) 0%, var(--tinta) 48%, var(--tinta-honda) 100%);
   pointer-events: none;
 }
 .k-coreo .k-marca {

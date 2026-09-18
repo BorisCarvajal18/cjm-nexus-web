@@ -43,12 +43,18 @@
 
 /* ══ botones y enlace: estados al apuntar ════════════════════════════ */
 
-/* «Agendar»: el único relleno cobre de la página (The Copper-Fill Rule). */
+/* «Agendar»: el único relleno cobre de la página (The Copper-Fill Rule).
+   El cobre lleva la luz arriba (degradado tonal, de cobre a cobre) y un filo
+   claro en el borde superior: se lee como una pieza, no como un rectángulo
+   pintado. El tono de presión es una segunda capa que aparece al apuntar,
+   porque un degradado no se puede transicionar y una opacidad sí. */
 .boton {
+  position: relative;
+  isolation: isolate;
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  background: var(--cobre-honda);
+  background: var(--cobre-honda) var(--degradado-conversion);
   color: #fff;
   font-family: var(--font-jakarta), 'Segoe UI', system-ui, sans-serif;
   font-weight: 700;
@@ -57,20 +63,32 @@
   padding: 15px 24px;
   border-radius: 3px;
   text-decoration: none;
-  box-shadow: 0 2px 3px rgba(11, 17, 34, 0.16), 0 14px 28px -18px rgba(168, 90, 46, 0.85);
+  box-shadow: var(--sombra-conversion);
   transition:
-    background-color 0.18s var(--curva),
     transform 0.2s var(--curva),
     box-shadow 0.2s var(--curva);
 }
+.boton::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: inherit;
+  background: var(--degradado-conversion-presion);
+  opacity: 0;
+  transition: opacity 0.18s var(--curva);
+}
 .boton:hover {
-  background: var(--cobre-presion);
   transform: translateY(-2px);
-  box-shadow: 0 3px 6px rgba(11, 17, 34, 0.2), 0 20px 36px -20px rgba(168, 90, 46, 0.95);
+  box-shadow: var(--sombra-conversion-alta);
+}
+.boton:hover::before,
+.boton:active::before {
+  opacity: 1;
 }
 .boton:active {
   transform: translateY(0);
-  background: var(--cobre-presion);
+  box-shadow: var(--sombra-conversion);
 }
 .boton svg,
 .enlace svg,
