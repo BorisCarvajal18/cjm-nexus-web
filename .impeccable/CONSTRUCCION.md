@@ -23,7 +23,7 @@ Las capturas de verificación van a `.impeccable/construccion/`.
 | 0 | Ordenar los archivos sin commit | ✅ Hecha · 2026-09-17 | Ver la nota de la sesión |
 | 1 | Base del sistema: color, letra, espaciado y constantes de movimiento | ✅ Hecha · 2026-09-17 | Ver «Cómo se usa la base» |
 | 2 | Cabecera | ✅ Hecha · 2026-09-18 | Ver el registro de la sesión. Tres estados como `SiteHeader` (transparente sobre la portada, papel al bajar, marino hondo sobre oscuro). Isotipo claro ya en `public/marca/`. Menú fuera bajo 1000 px e idiomas fuera bajo 620 px |
-| 3 | Portada | Pendiente | Vídeo: `hero.webm`, `hero.mp4` y `hero-poster.jpg` de `mocks/portada/img/` a `public/`, y el `<video>` en `Hero.jsx`. El titular entra palabra a palabra desde su máscara y la imagen pasa de 1,05 a 1. **Texto abierto:** la entrada atribuye los quince años a la firma (PLAN.md, ronda 5 §2) |
+| 3 | Portada | ✅ Hecha · 2026-09-18 | Vídeo: `hero.webm`, `hero.mp4` y `hero-poster.jpg` de `mocks/portada/img/` a `public/`, y el `<video>` en `Hero.jsx`. El titular entra palabra a palabra desde su máscara y la imagen pasa de 1,05 a 1. **Texto abierto:** la entrada atribuye los quince años a la firma (PLAN.md, ronda 5 §2) |
 | 4 | Credenciales | Pendiente | 15+, 100+ y 3, con atribución a Richard por su nombre. Las notas y la frase de los tres nombres son **texto propuesto sin aprobar** |
 | 5 | Escena de los tableros («Qué hacemos») | Pendiente | Un preset nuevo en `lib/animations.js` con `CONSULTA_ESCENAS`, `ESCENA.tableros` y `AJUSTE_AL_SOLTAR`. Se fija 3,1 pantallas y la letra se ajusta con `--k` |
 | 6 | La noche | Pendiente | Las variables de tema (`--suelo`, `--tx-*`, `--filete*`) ya existen. Falta la capa fija, el disparador que llama a `marcarOscuro()` y el paso corto del 50 al 59 % |
@@ -59,6 +59,7 @@ construir. Se usan igual; Boris los aprueba o los cambia leyendo esta lista.
 
 | Pieza | Dónde (`cjm-nexus/src/content/`) | Texto | Por qué está aquí |
 |---|---|---|---|
+| 3 | `home.es.js` → `portada.entrada` y `meta.description` | «CJM Nexus une la dirección financiera de Richard Carvajal, con quince años de trayectoria, y desarrollo de software especializado…» | Propuesta de PLAN.md (ronda 5 §2). La maqueta atribuía los quince años a la firma, contra la regla 2 de PRODUCT.md |
 
 ## Cómo se usa la base (pieza 1)
 
@@ -194,3 +195,24 @@ Los 21 de código eran idénticos a su última versión en git.
 desbordamiento horizontal, sin errores. En la portada, recorrida entera: transparente → papel →
 marino hondo con isotipo claro sobre las zonas oscuras. Panel móvil: se abre, `aria-expanded`
 cambia, Escape lo cierra y el foco vuelve al botón. El tabulador enseña el contorno cobre hondo.
+
+**Pieza 3 — portada** (`blocks/registro/Portada.jsx`, estilos en `app/registro.css`, textos en
+`home.es.js` → `portada`):
+
+- Vídeo provisional de archivo (`public/portada/hero.webm`, `hero.mp4` y `hero-poster.jpg`) bajo el
+  velo de cinco paradas. Sin `autoplay`: lo arranca el guion sin «reducir movimiento» ni ahorro de
+  datos, y se pausa fuera de pantalla. Debajo, el primer fotograma respira de 1 a 1,06 en 24 s.
+- La entrada: el titular palabra a palabra desde su máscara, la imagen de 1,05 a 1, la entrada, los
+  botones y la nota escalonados, y la marca, el menú y los idiomas de la cabecera con ellos. La
+  clase `.js-mov` la pone un guion en `<head>` (`layout.jsx`) antes del primer pintado, **solo en la
+  portada** y sin «reducir movimiento»; seguro de 2,5 s.
+- `registro.css` lleva también los botones del sistema: `.boton` (Agendar), `.boton-contorno` y
+  `.enlace` con filete, más `components/registro/Flecha.jsx`.
+- Fuera `blocks/Hero.jsx` y `blocks/HeroDiagram.jsx` (la esfera y su aurora), y `home.hero`. El JSON-LD
+  de Organization toma ahora `portada.entrada`.
+- El botón y «Ver qué hacemos» apuntan a `#contacto` y `#campos`, como en el sitio.
+
+**Verificación:** build sin errores. Capturas `p3-portada-*`: a 1536 × 730 y 390 × 844 la portada mide
+exactamente la ventana, el vídeo se reproduce con movimiento y con «reducir movimiento» queda el
+póster quieto, sin `.js-mov` y con todo visible. La cabecera, blanca sobre la portada. El texto está en
+el HTML servido.

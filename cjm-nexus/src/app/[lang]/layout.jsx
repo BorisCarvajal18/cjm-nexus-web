@@ -13,6 +13,7 @@
 import { Inter, Plus_Jakarta_Sans } from 'next/font/google';
 
 import '../globals.css';
+import '../registro.css';
 import { getHome } from '../../content';
 import { defaultLanguage, languages, localeMap } from '../../i18n/settings';
 import { organizationSchema } from '../../lib/seo';
@@ -104,14 +105,23 @@ export function generateMetadata({ params }) {
   };
 }
 
+const ENTRADA = `(function(){var r=document.documentElement;if(location.pathname.split('/').filter(Boolean).length!==1)return;if(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches)return;r.classList.add('js-mov');setTimeout(function(){r.classList.add('cargada')},2500)})();`;
+
 export default function LangLayout({ children, params }) {
   const lang = languages.includes(params.lang) ? params.lang : defaultLanguage;
   // JSON-LD de Organization, con la descripción del propio contenido.
-  const orgJsonLd = organizationSchema({ lang, description: getHome(lang).hero.lead });
+  const orgJsonLd = organizationSchema({ lang, description: getHome(lang).portada.entrada });
 
   return (
     <html lang={lang} className={`${jakarta.variable} ${inter.variable}`} suppressHydrationWarning>
       <head>
+        {/* Antes del primer pintado, y solo en la portada: con movimiento
+            permitido, la portada arranca en su estado de entrada (`.js-mov`
+            en registro.css). Sin JavaScript o con «reducir movimiento» no se
+            añade nada y todo se ve quieto desde el principio. Seguro: si el
+            guion de la portada no llegara a ejecutarse, a los 2,5 s se
+            muestra igual. */}
+        <script dangerouslySetInnerHTML={{ __html: ENTRADA }} />
         {/* Preconexión a Calendly (el widget se inyecta bajo demanda) */}
         <link rel="preconnect" href="https://assets.calendly.com" />
         {/* Datos estructurados: Organization (renderizado en servidor) */}

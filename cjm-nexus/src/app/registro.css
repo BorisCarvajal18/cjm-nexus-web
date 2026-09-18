@@ -1,0 +1,381 @@
+/* ════════════════════════════════════════════════════════════════════
+   EL REGISTRO — las secciones de la portada (DESIGN.md)
+
+   Pasado de `.impeccable/mocks/portada/C-fusion.html`, la maqueta aprobada
+   el 13 de septiembre de 2026, con sus mismos nombres de clase. Los tokens
+   (--papel, --tinta, --cobre, --tx-1, --curva…) salen de `REGISTRO` en
+   tailwind.config.js.
+
+   El texto está en el HTML desde el principio. Lo que oculta algo para
+   animarlo cuelga siempre de `.js-mov`, una clase que pone el guion de
+   `layout.jsx` antes del primer pintado, y solo en la portada y sin
+   «reducir movimiento». Sin JavaScript todo se ve quieto y entero.
+   ════════════════════════════════════════════════════════════════════ */
+
+.registro {
+  --display: var(--font-jakarta), 'Segoe UI', system-ui, sans-serif;
+  --texto: var(--font-inter), 'Segoe UI', system-ui, sans-serif;
+}
+.registro h1,
+.registro h2,
+.registro h3,
+.registro h4 {
+  font-family: var(--display);
+  margin: 0;
+  text-wrap: balance;
+}
+.registro p {
+  margin: 0;
+}
+.registro ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.num {
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: 'tnum' 1;
+}
+
+/* ══ botones y enlace: estados al apuntar ════════════════════════════ */
+
+/* «Agendar»: el único relleno cobre de la página (The Copper-Fill Rule). */
+.boton {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--cobre-honda);
+  color: #fff;
+  font-family: var(--font-jakarta), 'Segoe UI', system-ui, sans-serif;
+  font-weight: 700;
+  font-size: 0.95rem;
+  line-height: 1.2;
+  padding: 15px 24px;
+  border-radius: 3px;
+  text-decoration: none;
+  box-shadow: 0 2px 3px rgba(11, 17, 34, 0.16), 0 14px 28px -18px rgba(168, 90, 46, 0.85);
+  transition:
+    background-color 0.18s var(--curva),
+    transform 0.2s var(--curva),
+    box-shadow 0.2s var(--curva);
+}
+.boton:hover {
+  background: var(--cobre-presion);
+  transform: translateY(-2px);
+  box-shadow: 0 3px 6px rgba(11, 17, 34, 0.2), 0 20px 36px -20px rgba(168, 90, 46, 0.95);
+}
+.boton:active {
+  transform: translateY(0);
+  background: var(--cobre-presion);
+}
+.boton svg,
+.enlace svg,
+.boton-contorno svg {
+  flex: none;
+  transition: transform 0.22s var(--curva);
+}
+.boton:hover svg,
+.boton-contorno:hover svg {
+  transform: translateX(3px);
+}
+
+/* Botón de contorno: cualquier otra acción. Toma el color del texto, así que
+   sirve igual sobre papel y de noche. */
+.boton-contorno {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-jakarta), 'Segoe UI', system-ui, sans-serif;
+  font-weight: 700;
+  font-size: 0.95rem;
+  line-height: 1.2;
+  color: var(--tx-1);
+  text-decoration: none;
+  padding: 13px 22px;
+  border: 1.5px solid currentColor;
+  border-radius: 3px;
+  transition:
+    background-color 0.18s var(--curva),
+    color 0.18s var(--curva),
+    border-color 0.18s var(--curva);
+}
+.boton-contorno:hover {
+  background: var(--tx-1);
+  border-color: var(--tx-1);
+  color: var(--tx-inverso);
+}
+
+/* Enlace con filete: al apuntar, un segundo filete de cobre se traza de
+   izquierda a derecha en 0,36 s. */
+.enlace {
+  position: relative;
+  font-family: var(--font-jakarta), 'Segoe UI', system-ui, sans-serif;
+  font-weight: 700;
+  font-size: 0.95rem;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  padding-bottom: 5px;
+}
+.enlace::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 1px;
+  background: var(--filete);
+}
+.enlace::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 1.6px;
+  background: var(--cobre);
+  z-index: 1;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.36s var(--curva);
+}
+.enlace:hover::before {
+  transform: scaleX(1);
+}
+.enlace:hover svg {
+  transform: translateY(2px);
+}
+
+/* ══ M0 · portada ═════════════════════════════════════════════════════ */
+.portada {
+  position: relative;
+  min-height: 100vh;
+  min-height: 100svh;
+  display: flex;
+  align-items: center;
+  overflow: clip;
+  isolation: isolate;
+  background: var(--tinta-honda);
+}
+.portada > .fondo {
+  position: absolute;
+  inset: 0;
+}
+.fondo > .foto,
+.fondo > .video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 50%;
+}
+
+/* La imagen respira: de 1 a 1,06 en 24 s. `alternate` hace el viaje de
+   vuelta, así que no hay salto al reiniciar; solo se anima `transform`. Es el
+   primer fotograma del propio vídeo y queda debajo de él: es lo que se ve
+   mientras carga, si no puede reproducirse y con ahorro de datos. */
+.fondo > .foto {
+  will-change: transform;
+  animation: respira 24s ease-in-out infinite alternate;
+}
+@keyframes respira {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.06);
+  }
+}
+
+/* El vídeo entra sobre la imagen cuando ya está reproduciendo, nunca antes:
+   así no hay un fotograma negro. */
+.fondo > .video {
+  opacity: 0;
+  transition: opacity 0.9s var(--curva);
+}
+.fondo > .video.en-marcha {
+  opacity: 1;
+}
+
+/* El velo: el primero de los tres degradados permitidos. */
+.velo {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: linear-gradient(
+    180deg,
+    rgba(11, 17, 34, 0.66) 0%,
+    rgba(11, 17, 34, 0.4) 24%,
+    rgba(11, 17, 34, 0.4) 48%,
+    rgba(11, 17, 34, 0.56) 76%,
+    rgba(11, 17, 34, 0.88) 100%
+  );
+}
+.portada .marco {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding-top: 96px;
+  padding-bottom: 118px;
+}
+.portada h1 {
+  color: #fff;
+  font-size: clamp(2.15rem, 4.7vw, 4.1rem);
+  line-height: 1.03;
+  letter-spacing: -0.036em;
+  font-weight: 500;
+  max-width: 17ch;
+}
+.portada h1 b {
+  font-weight: 800;
+}
+.portada .entrada {
+  margin-top: 22px;
+  max-width: 50ch;
+  font-size: clamp(1rem, 1.2vw, 1.12rem);
+  color: rgba(255, 255, 255, 0.95);
+}
+.portada .acciones {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 26px;
+  margin-top: 34px;
+  flex-wrap: wrap;
+}
+.portada .nota {
+  margin-top: 20px;
+  font-size: 0.84rem;
+  color: rgba(255, 255, 255, 0.8);
+}
+.portada .enlace {
+  color: #fff;
+}
+.portada .enlace::after {
+  background: rgba(255, 255, 255, 0.42);
+}
+.portada .credito {
+  position: absolute;
+  right: 20px;
+  bottom: 18px;
+  z-index: 2;
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.66);
+  background: rgba(11, 17, 34, 0.46);
+  padding: 5px 9px;
+  border-radius: 2px;
+}
+/* Señal de que hay más abajo. */
+.portada .sigue {
+  position: absolute;
+  left: 50%;
+  bottom: 30px;
+  z-index: 2;
+  width: 1px;
+  height: 44px;
+  margin-left: -0.5px;
+  background: rgba(255, 255, 255, 0.32);
+}
+.portada .sigue i {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 1px;
+  height: 14px;
+  background: var(--cobre-claro);
+}
+
+/* ── M0 · la entrada: al cargar, una vez, 1,8 s ─────────────────────────
+   Cada pieza sube 16 px en 0,78 s y la imagen asienta de 1,05 a 1 en 2 s. El
+   titular entra palabra a palabra, cada palabra desde su propia máscara. Lo
+   pone en marcha la clase .cargada (Portada.jsx, o el seguro de 2,5 s del
+   guion de layout.jsx). */
+.p {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: top;
+  padding: 0.1em 0.04em 0.18em;
+  margin: -0.1em -0.04em -0.18em;
+}
+.p > span {
+  display: inline-block;
+}
+.js-mov .p > span {
+  transform: translateY(118%);
+}
+.js-mov.cargada .p > span {
+  transform: none;
+  transition: transform 0.8s var(--curva) calc(0.16s + var(--i) * 45ms);
+}
+.js-mov .sec {
+  opacity: 0;
+  transform: translateY(16px);
+}
+.js-mov.cargada .sec {
+  opacity: 1;
+  transform: none;
+  transition:
+    opacity 0.78s var(--curva) var(--d, 0s),
+    transform 0.78s var(--curva) var(--d, 0s);
+}
+.js-mov .portada > .fondo {
+  transform: scale(1.05);
+}
+.js-mov.cargada .portada > .fondo {
+  transform: none;
+  transition: transform 2s var(--curva);
+}
+.js-mov .portada .sigue {
+  transform: scaleY(0);
+  transform-origin: top;
+}
+.js-mov.cargada .portada .sigue {
+  transform: none;
+  transition: transform 0.5s var(--curva) 1.3s;
+}
+
+/* ══ reducir movimiento: sin vídeo; queda la imagen quieta ═══════════ */
+@media (prefers-reduced-motion: reduce) {
+  .fondo > .video {
+    display: none !important;
+  }
+}
+
+/* ══ adaptación ═══════════════════════════════════════════════════════ */
+@media (max-width: 620px) {
+  .portada .marco {
+    padding-top: 88px;
+    padding-bottom: 104px;
+  }
+  .portada h1 {
+    font-size: clamp(1.95rem, 8.6vw, 2.7rem);
+    max-width: 15ch;
+  }
+  .portada .entrada {
+    font-size: 1rem;
+  }
+  .portada .acciones {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 16px;
+    width: 100%;
+    max-width: 420px;
+  }
+  .portada .boton {
+    width: 100%;
+    justify-content: space-between;
+    padding: 15px 18px;
+  }
+  .portada .enlace {
+    align-self: center;
+  }
+}

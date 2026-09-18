@@ -30,10 +30,10 @@
  */
 import FactsTicker from '../../blocks/FactsTicker';
 import FinalCta from '../../blocks/FinalCta';
-import Hero from '../../blocks/Hero';
 import ManifestoBlock from '../../blocks/ManifestoBlock';
 import Method from '../../blocks/Method';
 import Numbers from '../../blocks/Numbers';
+import Portada from '../../blocks/registro/Portada';
 import Team from '../../blocks/Team';
 import TwoFields from '../../blocks/TwoFields';
 import SiteFooter from '../../components/SiteFooter';
@@ -50,7 +50,7 @@ export default function HomePage({ params }) {
     <>
       <SiteHeader lang={lang} />
       <main>
-        <Hero content={home.hero} />
+        <Portada content={home.portada} />
         <FactsTicker items={home.facts} />
         <ManifestoBlock content={home.manifesto} />
         <TwoFields content={home.fields} mockups={home.mockups} lang={lang} />

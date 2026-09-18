@@ -18,25 +18,25 @@ export const home = {
   meta: {
     title: 'Dirección financiera y software especializado | CJM Nexus',
     description:
-      'CJM Nexus une dirección financiera con quince años de trayectoria y desarrollo de software especializado, para PYMEs y empresas medianas que quieren crecer con control.',
+      'CJM Nexus une la dirección financiera de Richard Carvajal, con quince años de trayectoria, y desarrollo de software especializado, para PYMEs y empresas medianas que quieren crecer con control.',
   },
 
-  hero: {
-    eyebrow: 'Finanzas · Tecnología · Ecuador y Alemania',
-    title: 'Finanzas claras y software a la altura de tu empresa.',
-    // Estas dos palabras van en gradiente dentro del titular.
-    highlight: ['claras', 'altura'],
-    lead: 'CJM Nexus une dirección financiera con quince años de trayectoria y desarrollo de software especializado, para empresas que quieren crecer con control.',
-    primary: 'Agendar diagnóstico ejecutivo · 20 min',
-    secondary: 'Ver qué hacemos',
-    note: 'Sin costo · sin compromiso · en español, inglés o alemán',
-    scroll: 'Desliza',
-    // Aparece dentro de la esfera cuando ocupa la pantalla entera, justo
-    // donde los dos dibujos se juntan en una sola línea.
-    reveal: {
-      title: 'Dos campos. Un criterio.',
-      text: 'Control: en los números y en el software.',
-    },
+  /* La portada (DESIGN.md, M0). Textos de la maqueta aprobada, C-fusion.html.
+     En el titular, las palabras entre asteriscos van en 800. */
+  portada: {
+    titular: 'Finanzas *claras* y software a la *altura* de tu empresa.',
+    // TEXTO POR APROBAR (PLAN.md, ronda 5 §2): la maqueta decía «une dirección
+    // financiera con quince años de trayectoria», que atribuye los quince años
+    // a la firma y choca con la regla 2 de PRODUCT.md. Esta es la propuesta
+    // del plan, que se los da a Richard Carvajal por su nombre.
+    entrada:
+      'CJM Nexus une la dirección financiera de Richard Carvajal, con quince años de trayectoria, y desarrollo de software especializado, para empresas que quieren crecer con control.',
+    agendar: 'Agendar diagnóstico ejecutivo · 20 min',
+    verQueHacemos: 'Ver qué hacemos',
+    nota: 'Sin costo · sin compromiso · 20 minutos',
+    imagen: 'Tres personas trabajan en una mesa con informes, gráficos impresos y un portátil, vistas desde arriba.',
+    // El vídeo es un clip de archivo hasta que exista material propio.
+    credito: 'Imagen provisional de archivo',
   },
 
   facts: [

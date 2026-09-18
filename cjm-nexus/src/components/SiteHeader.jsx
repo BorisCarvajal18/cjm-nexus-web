@@ -19,6 +19,9 @@
  * Arriba de una página clara (sin zona oscura) va transparente con letra
  * tinta, que es lo que se lee sobre papel.
  *
+ * EN LA PORTADA, la marca, el menú y los idiomas (`.sec`) entran con ella,
+ * escalonados (registro.css). En las demás páginas `.sec` no hace nada.
+ *
  * BAJO 1000 PX sale el menú, y BAJO 620 los idiomas y el « · 20 min» del
  * botón. Para no dejar el teléfono sin navegación, en su lugar aparece un
  * botón que abre el menú en un panel de papel bajo la cabecera, con los
@@ -127,7 +130,7 @@ export default function SiteHeader({ lang = 'es', ctaHref }) {
       className={`fixed inset-x-0 top-0 z-40 border-b transition-colors duration-300 ease-out ${estado}`}
     >
       <div className="marco flex h-cabecera items-center gap-9 max-[620px]:gap-3">
-        <a href={`/${lang}`} className="inline-flex items-center gap-[11px] no-underline" aria-label={t.inicio}>
+        <a href={`/${lang}`} style={{ '--d': '.06s' }} className="sec inline-flex items-center gap-[11px] no-underline" aria-label={t.inicio}>
           <img
             src={oscuro ? '/marca/cjm-isotipo-claro.png' : '/marca/cjm-isotipo.png'}
             alt=""
@@ -140,7 +143,7 @@ export default function SiteHeader({ lang = 'es', ctaHref }) {
           </span>
         </a>
 
-        <nav aria-label={t.menu} className="ml-auto flex gap-[26px] max-[1000px]:hidden">
+        <nav aria-label={t.menu} style={{ '--d': '.1s' }} className="sec ml-auto flex gap-[26px] max-[1000px]:hidden">
           {links.map((link) => (
             <a
               key={link.href}
@@ -157,7 +160,8 @@ export default function SiteHeader({ lang = 'es', ctaHref }) {
           lang={lang}
           ruta={ruta}
           etiqueta={t.idiomas}
-          className="max-[1000px]:ml-auto max-[620px]:hidden"
+          style={{ '--d': '.14s' }}
+          className="sec max-[1000px]:ml-auto max-[620px]:hidden"
         />
 
         <div className="flex items-center gap-3 max-[620px]:ml-auto">
@@ -224,9 +228,9 @@ export default function SiteHeader({ lang = 'es', ctaHref }) {
 }
 
 /** ES · EN · DE. El actual en negrita; los otros llevan a la misma página. */
-function Idiomas({ lang, ruta, etiqueta, className = '' }) {
+function Idiomas({ lang, ruta, etiqueta, className = '', style }) {
   return (
-    <nav aria-label={etiqueta} className={className}>
+    <nav aria-label={etiqueta} className={className} style={style}>
       <ul className="flex gap-[9px] text-[12.5px] font-semibold uppercase tracking-[.08em]">
         {languages.map((idioma) => (
           <li key={idioma}>
