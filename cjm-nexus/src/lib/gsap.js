@@ -64,6 +64,24 @@ export function registerGsap() {
     if (!document.hidden) ScrollTrigger.refresh();
   });
 
+  /* EL ANCLA DE LA URL (/es/servicios#metodo desde otra página).
+   *
+   * Con `scroll-behavior: smooth` el navegador baja al ancla poco a poco. El
+   * primer recálculo de ScrollTrigger, al cargar, guarda la posición de ese
+   * instante (arriba del todo) y la vuelve a poner con `scrollTo`, que corta
+   * el viaje: la página se quedaba arriba. Con «reducir movimiento» el salto
+   * es instantáneo y no pasaba. Tras ese primer recálculo, que es también
+   * cuando las escenas fijadas ya tienen su alto, se salta al ancla sin
+   * animación. Una sola vez. */
+  if (window.location.hash) {
+    const alAncla = () => {
+      ScrollTrigger.removeEventListener('refresh', alAncla);
+      const destino = document.getElementById(decodeURIComponent(window.location.hash.slice(1)));
+      destino?.scrollIntoView({ behavior: 'instant', block: 'start' });
+    };
+    ScrollTrigger.addEventListener('refresh', alAncla);
+  }
+
   return gsap;
 }
 

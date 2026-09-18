@@ -860,7 +860,7 @@ no arrancó esta vez): `npm run build` sin errores ni avisos. `/es/nosotros` y `
 sin errores de consola ni respuestas 4xx/5xx. El menú marca «Nosotros» con `aria-current`.
 Capturas `p12-nosotros-*` (página entera, arriba y fichas) y `p12-metodo-*` (la sección entera).
 
-**Visto, sin tocar (de antes, en todo el sitio):** con movimiento activo, al cargar una página con
+**Visto, sin tocar (de antes, en todo el sitio)** — ✅ arreglado el 2026-09-19, ver abajo: con movimiento activo, al cargar una página con
 ancla (`/es/servicios#metodo`, `/es/klinoda#privacidad`) la página se queda arriba. Con «reducir
 movimiento» llega bien. Sospecha: el `scroll-behavior: smooth` de `globals.css` en la carga. Afecta
 a «Método» del menú desde cualquier otra página.
@@ -895,3 +895,20 @@ desbordamiento, 0 ocultos, sin errores ni respuestas 4xx/5xx. `/es/klinoda` llev
 el correo sale `mailto:experiencia@cjmnexus.com?subject=KLINODA`. El menú es Servicios, Método,
 Nosotros y Contacto; el pie, igual en «Empresa». `/sitemap.xml` no tiene `/klinoda`. Capturas
 `alcance-*` (aviso, «Nosotros», método y menú; el del teléfono, con el panel abierto).
+
+### 2026-09-19 — las anclas al cargar una página
+
+- **La causa:** con `scroll-behavior: smooth`, el navegador baja al ancla poco a poco, y el primer
+  recálculo de ScrollTrigger al cargar guardaba la posición de ese instante (arriba) y la volvía a
+  poner con `scrollTo(0, 0)`, cortando el viaje. Con «reducir movimiento» el salto es instantáneo y
+  no pasaba. No era `globals.css`: se vio registrando cada `scrollTo` durante la carga.
+- **El arreglo** (`lib/gsap.js`, dentro de `registerGsap`): si la URL trae ancla, tras el primer
+  recálculo de ScrollTrigger se salta a ella sin animación, una sola vez. Es también el momento en
+  que las escenas fijadas de la portada ya tienen su alto, así que `/es#contacto` cae bien. El
+  desplazamiento suave de las anclas dentro de la misma página no cambia.
+
+**Verificación** (producción, Chrome sin ventana, 1536 × 730 y 390 × 844, con y sin «reducir
+movimiento»): clic real en «Método» desde `/es/nosotros` (en el teléfono, con el panel del menú
+abierto) → `#metodo` a 88 px de arriba, bajo la cabecera. Cargas directas: `/es/servicios#metodo`
+88, `/es/nosotros#personas` 86–88, `/es/servicios/soluciones-digitales#web` 86–88 y `/es#contacto`
+153–160 (el cierre es lo último de la página y no puede subir más). Capturas `anclas-menu-metodo-*`.
