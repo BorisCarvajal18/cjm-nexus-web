@@ -1,21 +1,32 @@
-import StackedCards from '../components/ui/StackedCards';
-import { SectionHeading } from '../components/ui/Text';
-
 /**
- * Las cuatro reglas de trabajo, en tarjetas que se apilan.
+ * Las cuatro reglas de trabajo, cada una con su ejemplo comprobable.
  *
  * Es la sección que gana al comprador escéptico, y funciona por una sola
- * razón: cada regla lleva un ejemplo comprobable en lugar de un adjetivo.
- * «Somos rigurosos» no dice nada; «trece actas de decisión en KLINODA» sí.
- *
- * El apilado es apropiado aquí porque las cuatro reglas SON una secuencia:
- * se decide, se prueba, se protege y solo entonces se pasa a datos reales.
+ * razón: cada regla lleva un ejemplo en lugar de un adjetivo. «Somos
+ * rigurosos» no dice nada; «trece actas de decisión» sí. En filas con
+ * filetes; el ejemplo, tras un filete de cobre.
  */
 export default function Method({ content }) {
   return (
-    <section id="metodo" className="container py-[12vh]">
-      <SectionHeading eyebrow={content.eyebrow} title={content.title} intro={content.intro} />
-      <StackedCards className="mt-10" items={content.items} />
+    <section id="metodo" className="registro seccion">
+      <div className="marco">
+        <div className="cabeza-seccion">
+          <p className="ref-pag">{content.eyebrow}</p>
+          <h2>{content.title}</h2>
+          {content.intro ? <p className="intro">{content.intro}</p> : null}
+        </div>
+        <ol className="reglas-pag">
+          {content.items.map((regla) => (
+            <li key={regla.title}>
+              <h3>{regla.title}</h3>
+              <div>
+                <p>{regla.text}</p>
+                {regla.evidence ? <p className="ejemplo">{regla.evidence}</p> : null}
+              </div>
+            </li>
+          ))}
+        </ol>
+      </div>
     </section>
   );
 }

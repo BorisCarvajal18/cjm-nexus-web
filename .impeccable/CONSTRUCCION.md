@@ -29,7 +29,7 @@ Las capturas de verificación van a `.impeccable/construccion/`.
 | 6 | La noche | ✅ Hecha · 2026-09-18 | Las variables de tema (`--suelo`, `--tx-*`, `--filete*`) ya existen. Falta la capa fija, el disparador que llama a `marcarOscuro()` y el paso corto del 50 al 59 % |
 | 7 | Escena de KLINODA | ✅ Hecha · 2026-09-18 | 2,1 pantallas. Poner al día `privacy.mockup` en `klinoda.es.js` con las etiquetas reales («APTO», «APTO EN OBSERVACIÓN», «PERIÓDICO»…) |
 | 8 | Cierre y pie | ✅ Hecha · 2026-09-18 | El titular y los tres bloques del cierre son **texto propuesto sin aprobar** (PLAN.md, ronda 2 §7) |
-| 9 | Páginas de servicios y de KLINODA al sistema nuevo | Pendiente | Hoy siguen con «Pulso Cobre» |
+| 9 | Páginas de servicios y de KLINODA al sistema nuevo | ✅ Hecha · 2026-09-18 | Hoy siguen con «Pulso Cobre» |
 | 10 | **Reescribir el texto de KLINODA con la decisión del ICP** | Pendiente · sesión propia | Ver abajo |
 | 11 | Retirar «Pulso Cobre» | Pendiente | Tokens en inglés de `tailwind.config.js` (`navy`, `copper`, `teal`, `ink`, `bg-g-*`, los heredados `indigo`/`slate`…) y los presets antiguos de `lib/animations.js`, cuando ya nada los use. `CalendlyButton.jsx` todavía usa `indigo` |
 
@@ -64,6 +64,8 @@ construir. Se usan igual; Boris los aprueba o los cambia leyendo esta lista.
 | 4 | `home.es.js` → `credenciales.firma` | «**Richard Carvajal** dirige las finanzas, **Boris Carvajal** la tecnología y **Mirella Llanga** la gerencia general.» | Propuesta en PLAN.md (ronda 5 §2) |
 | 7 | `home.es.js` → `klinoda.frases[0]` y `[1]` | «KLINODA es una empresa del Grupo CJM Nexus. Su plataforma ordena la salud ocupacional de las empresas en Ecuador.» · «La empresa ve qué certificados vencen y quién está apto para su puesto, sin tener que perseguir un papel.» | Reescritas: la maqueta decía «nuestro producto propio» y «para probar exactamente lo que decimos que sabemos hacer» (reglas 7, 8 y 9 de PRODUCT.md). La tercera frase, la pregunta y el botón son los de la maqueta |
 | 8 | `home.es.js` → `cierre.titular` y `cierre.tres` | «Veinte minutos con **quien va a hacer el trabajo**.» y los tres bloques «Con quién hablas», «Qué pasa en la reunión», «Qué te llevas» | Propuestos en PLAN.md (ronda 2 §7) |
+| 9 | `servicios.es.js` → `servicios.product` | Ceja «Empresa del Grupo CJM Nexus»; entrada «Su plataforma ordena la salud ocupacional de las empresas en Ecuador: un trámite obligatorio, lleno de reglas, formularios oficiales y datos sensibles, resuelto en minutos.»; estado «Demo · en desarrollo · datos ficticios» | Decía «Producto propio» y «la prueba pública de lo que construimos» (reglas 8 y 9) |
+| 9 | `servicios.es.js` → `digital.proof` | Ceja «Lo que ya existe»; entrada «KLINODA, empresa del Grupo CJM Nexus, lleva la salud ocupacional de las empresas en Ecuador… Su plataforma la construimos nosotros. Y esta misma web…»; estado | Decía «La prueba» y «KLINODA es nuestra plataforma» (reglas 8 y 9) |
 
 ## Cómo se usa la base (pieza 1)
 
@@ -333,3 +335,27 @@ hondo sobre los dos; «Agendar» lleva a Calendly; sin desbordamiento. Anclas co
 servido: `/es` tiene `#equipo` y `#contacto`; `/es/servicios`, `#metodo`. En `/es` no aparecen ya
 «producto propio», «para médicos ocupacionales» ni «la prueba de lo que construimos» (siguen en
 `/es/servicios` y `/es/klinoda`: piezas 9 y 10).
+
+**Pieza 9 — páginas interiores al sistema nuevo** (`/servicios`, las dos páginas de servicio y
+`/klinoda`; CSS en `registro.css`, bloque «PÁGINAS INTERIORES»):
+
+- Se reescribieron con el vocabulario del registro, conservando props y textos: `PageHero`,
+  `Symptoms`, `Steps` (+ `StepItem`), `BoardShowcase`, `FeatureGrid`, `Fit`, `Faq`, `Offer`,
+  `ProductBand`, `ServiceCards`, `StatusBanner`, `Privacy`, `Numbers`, `Method` y `FinalCta` (ahora
+  la misma banda que el cierre de la portada), más las hojas `ManagementBoard` y `KlinodaCard`.
+- Fuera, por DESIGN.md: los orbes difuminados, las tarjetas, los números grandes de las ofertas y
+  de los pasos (ahora referencias en versalitas), los degradados de las marcas y el parallax.
+- `/servicios` enseña las dos interfaces de muestra de la portada al 50/50 (datos de
+  `home.es.js` → `hacemos`); se borra `servicios.mockups`.
+- **Decisión mía, a revisar:** las páginas interiores están **quietas**, sin entradas al hacer
+  scroll. Son páginas de lectura y la maqueta solo define el movimiento de la portada; DESIGN.md
+  pide que cada gesto salga del contenido y que ninguno se repita, y repetir un «aparecer» en cada
+  bloque es justo lo que prohíbe. `Reveal` sigue existiendo solo para `/sistema`.
+- Sale el botón «volver arriba» de todas las páginas.
+- Las bandas de KLINODA de `/servicios` y de soluciones digitales se reescribieron con las reglas 8 y 9
+  y llevan su etiqueta de estado (ver «Textos por aprobar»). La página `/klinoda` conserva sus textos
+  hasta la pieza 10.
+
+**Verificación** (producción, `p9-*`, capturas de página entera): build sin errores; las cuatro
+páginas a 1536 × 730 y 390 × 844 sin desbordamiento horizontal, sin errores de consola ni respuestas
+4xx/5xx, y 0 elementos ocultos también con «reducir movimiento».

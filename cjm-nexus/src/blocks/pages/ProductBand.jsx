@@ -1,59 +1,49 @@
-import Button from '../../components/ui/Button';
+import Flecha from '../../components/registro/Flecha';
 import DarkSurface from '../../components/ui/DarkSurface';
-import Reveal from '../../components/ui/Reveal';
-import { Eyebrow } from '../../components/ui/Text';
 
 /**
- * KLINODA como prueba, no como servicio.
+ * La banda de KLINODA en las páginas que no son la suya: una puerta (regla 3
+ * de PRODUCT.md). Enseña qué es, dice su estado si lo trae y lleva a su
+ * página. Aparece una sola vez por página.
  *
- * APARECE UNA SOLA VEZ POR PÁGINA Y SIEMPRE ETIQUETADA «PRODUCTO PROPIO».
- * Es la regla que decidió el dueño y tiene un motivo comercial: un sitio que
- * dedica varios bloques a una plataforma de medicina ocupacional hace pensar
- * que la firma se dedica a la medicina ocupacional. Nombrado una vez, en su
- * sitio, dice otra cosa —esta empresa tiene un producto propio— que es
- * exactamente el posicionamiento que se busca.
+ * KLINODA es una empresa del Grupo CJM Nexus (regla 8): nunca «producto
+ * propio» ni «la prueba de lo que construimos». Su cliente es la empresa
+ * (regla 7).
  *
- * Las cifras que lleva son de construcción (pruebas, actas, tiempo de
- * emisión medido con datos ficticios), nunca clínicas ni de pacientes. No hay
- * capturas del producto con datos, ni siquiera inventados.
+ * Marino, como la banda de KLINODA de la portada sin movimiento. Las cifras
+ * son de construcción (pruebas, actas, tiempo medido con datos ficticios),
+ * nunca clínicas.
+ *
+ * La usa también la página de KLINODA para la banda de quien la construye,
+ * sin estado.
  */
 export default function ProductBand({ content, href = '#contacto' }) {
+  const hechos = content.facts ?? [];
   return (
-    <DarkSurface as="section" className="container py-[6vh]">
-      <div className="relative overflow-hidden rounded-xl4 bg-navy-deep px-6 py-[9vh] text-white sm:px-10">
-        <span
-          aria-hidden="true"
-          className="pointer-events-none absolute -right-[10vw] -top-[14vw] h-[38vw] w-[38vw] rounded-full bg-teal opacity-60 blur-[70px]"
-        />
-        <span
-          aria-hidden="true"
-          className="pointer-events-none absolute -bottom-[18vw] -left-[8vw] h-[32vw] w-[32vw] rounded-full bg-copper opacity-50 blur-[70px]"
-        />
-
-        <Reveal className="relative max-w-[46rem]">
-          <Eyebrow tone="light">{content.eyebrow}</Eyebrow>
-          <h2 className="mt-4 text-display-md">{content.title}</h2>
-          <p className="mt-4 max-w-[42rem] text-white/80">{content.text}</p>
-
-          {content.facts ? (
-            <ul className="mt-8 flex flex-wrap gap-x-10 gap-y-4 border-t border-white/15 pt-6">
-              {content.facts.map((fact) => (
-                <li key={fact.label}>
-                  <b className="block font-display text-[1.7rem] font-extrabold tabular-nums">
-                    {fact.value}
-                  </b>
-                  <span className="text-[.82rem] text-white/65">{fact.label}</span>
-                </li>
-              ))}
-            </ul>
-          ) : null}
-
-          <div className="mt-8">
-            <Button href={href} variant="white" size="lg">
-              {content.cta}
-            </Button>
+    <DarkSurface as="section" className="registro seccion oscura banda-producto">
+      <div className="marco">
+        <div>
+          <p className="ref-pag">{content.eyebrow}</p>
+          <h2>{content.title}</h2>
+          <p className="texto">{content.text}</p>
+          {content.estado ? <p className="k-etiqueta">{content.estado}</p> : null}
+          <div>
+            <a className="boton-contorno" href={href}>
+              <span>{content.cta}</span>
+              <Flecha />
+            </a>
           </div>
-        </Reveal>
+        </div>
+        {hechos.length ? (
+          <ul className="hechos" style={{ '--n': hechos.length }}>
+            {hechos.map((h) => (
+              <li key={h.label}>
+                <b className="num">{h.value}</b>
+                <span>{h.label}</span>
+              </li>
+            ))}
+          </ul>
+        ) : null}
       </div>
     </DarkSurface>
   );

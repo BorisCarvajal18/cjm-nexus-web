@@ -35,7 +35,6 @@ import ProductBand from '../../../../blocks/pages/ProductBand';
 import FinalCta from '../../../../blocks/FinalCta';
 import SiteFooter from '../../../../components/SiteFooter';
 import SiteHeader from '../../../../components/SiteHeader';
-import BackToTop from '../../../../components/ui/BackToTop';
 import { getDigital } from '../../../../content';
 import { defaultLanguage, languages } from '../../../../i18n/settings';
 import { faqSchema, pageMetadata, serviceSchema } from '../../../../lib/seo';
@@ -78,7 +77,6 @@ export default function SolucionesDigitalesPage({ params }) {
         <FinalCta content={content.cta} />
       </main>
       <SiteFooter lang={lang} />
-      <BackToTop />
     </>
   );
 }

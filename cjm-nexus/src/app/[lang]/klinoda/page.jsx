@@ -35,7 +35,6 @@ import FinalCta from '../../../blocks/FinalCta';
 import Numbers from '../../../blocks/Numbers';
 import SiteFooter from '../../../components/SiteFooter';
 import SiteHeader from '../../../components/SiteHeader';
-import BackToTop from '../../../components/ui/BackToTop';
 import { getKlinoda } from '../../../content';
 import { defaultLanguage, languages } from '../../../i18n/settings';
 import { pageMetadata, softwareSchema } from '../../../lib/seo';
@@ -85,7 +84,6 @@ export default function KlinodaPage({ params }) {
         <FinalCta content={content.cta} />
       </main>
       <SiteFooter lang={lang} />
-      <BackToTop />
     </>
   );
 }

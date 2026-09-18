@@ -57,30 +57,6 @@ export const servicios = {
     ],
   },
 
-  /* Las interfaces de muestra de las dos tarjetas. Vivían en home.es.js;
-     se quedan aquí hasta rehacer esta página con el sistema nuevo (pieza 9). */
-  mockups: {
-    finanzas: {
-      title: 'Tablero gerencial',
-      subject: 'Junio',
-      kpis: [
-        { label: 'Ventas', value: '$1,24 M', delta: '▲ 12 %', tone: 'ok' },
-        { label: 'Margen', value: '34 %', delta: '▲ 3 pt', tone: 'ok' },
-        { label: 'Caja', value: '45 d', delta: '▼ 4 d', tone: 'warn' },
-      ],
-      seriesLabel: 'Ventas contra meta',
-      series: [42, 48, 45, 58, 63, 72, 78, 88, 96],
-      alert: 'Cartera vencida por encima de 60 días',
-    },
-    plataforma: {
-      title: 'De tus datos al documento',
-      sources: ['Contabilidad', 'Ventas', 'Operación'],
-      core: 'Plataforma',
-      outputs: ['Tablero', 'Documento firmado', 'Alertas'],
-      foot: 'Reglas, permisos y trazabilidad en el centro, no en la pantalla.',
-    },
-  },
-
   meta: {
     title: 'Servicios: dirección financiera y software a medida | CJM Nexus',
     description:
@@ -151,12 +127,15 @@ export const servicios = {
     ],
   },
 
-  /* Franja de KLINODA. Una sola vez, etiquetada producto propio: la firma
-     tiene un producto, no se dedica a la medicina ocupacional. */
+  /* Franja de KLINODA. Una sola vez: es una puerta a su página (regla 3 de
+     PRODUCT.md). KLINODA es una empresa del Grupo CJM Nexus (regla 8), nunca
+     «producto propio»; dice su estado (regla 6).
+     TEXTO POR APROBAR: la ceja y la entrada, reescritas el 18-sep-2026. */
   product: {
-    eyebrow: 'Producto propio',
+    eyebrow: 'Empresa del Grupo CJM Nexus',
     title: 'KLINODA',
-    text: 'Nuestra plataforma para medicina ocupacional en Ecuador. Un trámite obligatorio, lleno de reglas, formularios oficiales y datos sensibles, resuelto en minutos. Es la prueba pública de lo que construimos.',
+    text: 'Su plataforma ordena la salud ocupacional de las empresas en Ecuador: un trámite obligatorio, lleno de reglas, formularios oficiales y datos sensibles, resuelto en minutos.',
+    estado: 'Demo · en desarrollo · datos ficticios',
     cta: 'Conocer KLINODA',
   },
 
@@ -563,13 +542,16 @@ export const digital = {
     ],
   },
 
-  /* La prueba. Sin clientes de páginas web todavía, las dos únicas pruebas
-     honestas son el producto propio y esta misma web. Y funcionan: quien
-     está leyendo esto ya está dentro de una de ellas. */
+  /* Lo que ya existe. Sin clientes de páginas web todavía, las dos únicas
+     pruebas honestas son la plataforma de KLINODA, que construimos para una
+     empresa del Grupo, y esta misma web.
+     TEXTO POR APROBAR: la ceja y la entrada, reescritas el 18-sep-2026 con
+     las reglas 7, 8 y 9 de PRODUCT.md. */
   proof: {
-    eyebrow: 'La prueba',
+    eyebrow: 'Lo que ya existe',
     title: 'No lo decimos: lo construimos.',
-    text: 'KLINODA es nuestra plataforma para medicina ocupacional en Ecuador: digitaliza un trámite obligatorio lleno de reglas, formularios oficiales y datos clínicos que la empresa no puede ver. Y esta misma web, la que estás leyendo, la hicimos nosotros con el mismo criterio con el que haríamos la tuya.',
+    text: 'KLINODA, empresa del Grupo CJM Nexus, lleva la salud ocupacional de las empresas en Ecuador: un trámite obligatorio lleno de reglas, formularios oficiales y datos clínicos que la empresa no puede ver. Su plataforma la construimos nosotros. Y esta misma web, la que estás leyendo, la hicimos con el mismo criterio con el que haríamos la tuya.',
+    estado: 'Demo · en desarrollo · datos ficticios',
     facts: [
       { value: '2.300+', label: 'pruebas automáticas en KLINODA' },
       { value: '13', label: 'actas de decisión' },

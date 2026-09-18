@@ -32,8 +32,7 @@ import Symptoms from '../../../../blocks/pages/Symptoms';
 import FinalCta from '../../../../blocks/FinalCta';
 import SiteFooter from '../../../../components/SiteFooter';
 import SiteHeader from '../../../../components/SiteHeader';
-import BackToTop from '../../../../components/ui/BackToTop';
-import { getFinanzas } from '../../../../content';
+import { getFinanzas, getHome } from '../../../../content';
 import { defaultLanguage, languages } from '../../../../i18n/settings';
 import { faqSchema, pageMetadata, serviceSchema } from '../../../../lib/seo';
 
@@ -72,14 +71,13 @@ export default function DireccionFinancieraPage({ params }) {
         <PageHero content={{ ...content.hero, secondaryHref: '#entregable' }} />
         <Symptoms content={content.symptoms} />
         <Steps content={content.month} />
-        <BoardShowcase content={content.deliverable} />
+        <BoardShowcase content={content.deliverable} muestra={getHome(lang).hacemos.muestra} />
         <FeatureGrid content={content.deliverables} columns={3} />
         <Fit content={content.fit} />
         <Faq content={content.faq} />
         <FinalCta content={content.cta} />
       </main>
       <SiteFooter lang={lang} />
-      <BackToTop />
     </>
   );
 }

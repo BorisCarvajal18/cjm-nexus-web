@@ -23,8 +23,7 @@ import FinalCta from '../../../blocks/FinalCta';
 import Method from '../../../blocks/Method';
 import SiteFooter from '../../../components/SiteFooter';
 import SiteHeader from '../../../components/SiteHeader';
-import BackToTop from '../../../components/ui/BackToTop';
-import { getServicios } from '../../../content';
+import { getHome, getServicios } from '../../../content';
 import { defaultLanguage, languages } from '../../../i18n/settings';
 import { pageMetadata } from '../../../lib/seo';
 
@@ -48,7 +47,7 @@ export default function ServiciosPage({ params }) {
         <PageHero
           content={{ ...content.hero, secondaryHref: '#contenido' }}
         />
-        <ServiceCards content={content} mockups={content.mockups} lang={lang} />
+        <ServiceCards content={content} muestras={getHome(lang).hacemos} lang={lang} />
         <FeatureGrid
           content={{
             eyebrow: content.together.eyebrow,
@@ -63,7 +62,6 @@ export default function ServiciosPage({ params }) {
         <FinalCta content={content.cta} />
       </main>
       <SiteFooter lang={lang} />
-      <BackToTop />
     </>
   );
 }

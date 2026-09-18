@@ -1,83 +1,51 @@
-import FinanceCard from '../../components/mockups/FinanceCard';
-import PlatformCard from '../../components/mockups/PlatformCard';
-import Button from '../../components/ui/Button';
-import Reveal from '../../components/ui/Reveal';
-import { Eyebrow } from '../../components/ui/Text';
+import Flecha from '../../components/registro/Flecha';
+import PortalDocumentos from '../../components/registro/PortalDocumentos';
+import TableroGerencial from '../../components/registro/TableroGerencial';
 
 /**
- * Los dos servicios, en dos bloques grandes.
+ * Los dos servicios, lado a lado y al 50/50 (regla 1 de PRODUCT.md): mismo
+ * ancho, misma letra, misma pieza. El orden lo marcan «Servicio 01» y
+ * «Servicio 02», y nada más.
  *
- * NO ES EL CARRUSEL HORIZONTAL DE LA PORTADA, y es una decisión, no un
- * olvido. Allí el recorrido lateral sirve para que tres paneles pasen por
- * delante de alguien que todavía no sabe qué vendemos. Aquí ya lo sabe: ha
- * hecho clic en «Servicios» para comparar los dos y decidir a cuál entra.
- * Comparar exige verlos a la vez, y un carrusel obliga a recordar el panel
- * anterior en lugar de mirarlo.
+ * NO ES UN CARRUSEL: quien llega aquí quiere comparar, y comparar exige ver
+ * los dos a la vez.
  *
- * SE REUTILIZAN LAS INTERFACES DE MUESTRA de la portada. Que sean las mismas
- * es bueno: quien llega desde la portada reconoce el servicio de un vistazo,
- * antes de leer el titular.
+ * LAS INTERFACES DE MUESTRA SON LAS DE LA PORTADA (`muestras`, los datos de
+ * `home.es.js` → `hacemos`): quien llega desde allí reconoce el servicio
+ * antes de leer el titular. Debajo, siempre, «Interfaz de muestra · datos
+ * ilustrativos».
  */
-const FONDOS = {
-  navy: 'bg-navy-deep bg-[radial-gradient(60%_60%_at_30%_30%,#C9784A,transparent_65%),radial-gradient(60%_60%_at_80%_70%,#3B4E7A,transparent_65%)]',
-  copper:
-    'bg-copper-deep bg-[radial-gradient(60%_60%_at_70%_25%,#E8B48A,transparent_65%),radial-gradient(60%_60%_at_25%_75%,#1E2D4F,transparent_65%)]',
-};
+const PIEZAS = [TableroGerencial, PortalDocumentos];
 
-const MOCKUPS = [FinanceCard, PlatformCard];
-
-export default function ServiceCards({ content, mockups, lang }) {
+export default function ServiceCards({ content, muestras, lang }) {
+  const datos = [muestras.tablero, muestras.portal];
   return (
-    <section id="contenido" className="container grid gap-8 py-[6vh]">
-      {content.cards.map((card, i) => {
-        const Mockup = MOCKUPS[i];
-        const datos = i === 0 ? mockups.finanzas : mockups.plataforma;
-
-        return (
-          <Reveal
-            key={card.index}
-            y={30}
-            as="article"
-            className="grid overflow-hidden rounded-xl4 border border-hairline bg-surface shadow-soft lg:grid-cols-[1.05fr_1fr]"
-          >
-            <div className="p-7 sm:p-10">
-              <Eyebrow>{card.eyebrow}</Eyebrow>
-              <h2 className="mt-3 text-display-sm">{card.title}</h2>
-              <p className="mt-4 max-w-[38ch] text-ink-soft">{card.text}</p>
-
-              <ul className="mt-6 grid gap-[.5rem]">
+    <section id="contenido" className="registro seccion">
+      <div className="marco dos-lineas">
+        {content.cards.map((card, i) => {
+          const Pieza = PIEZAS[i];
+          return (
+            <article key={card.index}>
+              <p className="ref-pag">{card.eyebrow}</p>
+              <h2>{card.title}</h2>
+              <p className="lead">{card.text}</p>
+              <ul className="lista-pag fuerte">
                 {card.items.map((item) => (
-                  <li key={item} className="flex items-center gap-3 text-[.93rem] font-semibold">
-                    <span
-                      aria-hidden="true"
-                      className={`h-[9px] w-[9px] flex-none rounded-full ${
-                        card.tone === 'navy' ? 'bg-g-navy' : 'bg-g-copper'
-                      }`}
-                    />
-                    {item}
-                  </li>
+                  <li key={item}>{item}</li>
                 ))}
               </ul>
-
-              <div className="mt-8">
-                <Button href={`/${lang}${card.href}`} variant={card.tone === 'navy' ? 'navy' : 'copper'}>
-                  {card.cta}
-                </Button>
+              <a className="boton-contorno" href={`/${lang}${card.href}`}>
+                <span>{card.cta}</span>
+                <Flecha />
+              </a>
+              <div className="caja-pieza">
+                <Pieza datos={datos[i]} />
+                <p className="muestra">{muestras.muestra}</p>
               </div>
-            </div>
-
-            {/* La interfaz de muestra. Se oculta por debajo de escritorio: en
-                un móvil quedaría reducida a un rectángulo ilegible que solo
-                alarga la página. */}
-            <div className="relative hidden items-center justify-center overflow-hidden p-[8%] lg:flex">
-              <div aria-hidden="true" className={`absolute inset-0 ${FONDOS[card.tone]}`} />
-              <div className="relative w-full max-w-[24rem]">
-                <Mockup data={datos} />
-              </div>
-            </div>
-          </Reveal>
-        );
-      })}
+            </article>
+          );
+        })}
+      </div>
     </section>
   );
 }
