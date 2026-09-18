@@ -576,12 +576,14 @@
   color: var(--tx-2);
 }
 
-/* ── el método: cuatro reglas, cada una con su ejemplo ─────────────── */
+/* ── el método: cada regla con un ejemplo de cada línea ────────────── */
+/* La regla a la izquierda; a la derecha sus dos ejemplos al 50/50, en
+   columnas del mismo ancho, con la misma letra y el mismo filete de cobre. */
 .reglas-pag > li {
   display: grid;
   grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
-  gap: 8px 48px;
-  padding: 24px 0;
+  gap: 20px 48px;
+  padding: 28px 0;
   border-top: 1px solid var(--filete);
 }
 .reglas-pag > li:last-child {
@@ -593,16 +595,163 @@
   letter-spacing: -0.02em;
   color: var(--tx-1);
 }
-.reglas-pag p {
+.reglas-pag .enunciado p {
+  margin-top: 8px;
+  max-width: 40ch;
   color: var(--tx-2);
-  max-width: 56ch;
+}
+.reglas-pag .ejemplos {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px 32px;
 }
 .reglas-pag .ejemplo {
-  margin-top: 12px;
   padding-left: 14px;
   border-left: 2px solid var(--cobre);
+}
+.reglas-pag .ejemplo p:last-child {
+  margin-top: 6px;
+  max-width: 40ch;
   font-size: 0.92rem;
   font-weight: 500;
+  color: var(--tx-1);
+}
+
+/* ── «Nosotros»: las tres fichas ────────────────────────────────────── */
+/* Tres columnas iguales con filetes verticales, como las credenciales. Sin
+   retrato, la ficha empieza por el cargo; el pie (lugar y LinkedIn) va abajo
+   del todo para que los lugares queden en la misma línea. */
+.fichas {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin-top: 36px;
+}
+.ficha {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  padding: 4px 36px 0;
+}
+.ficha:first-child {
+  padding-left: 0;
+}
+.ficha:last-child {
+  padding-right: 0;
+}
+.ficha + .ficha {
+  border-left: 1px solid var(--filete);
+}
+.ficha .retrato {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  margin-bottom: 24px;
+  border-radius: 2px;
+}
+.ficha h3 {
+  margin-top: 14px;
+  font-size: clamp(1.45rem, 2.1vw, 1.8rem);
+  line-height: 1.1;
+  letter-spacing: -0.028em;
+  font-weight: 800;
+  color: var(--tx-1);
+}
+.ficha .lidera,
+.ficha .trayectoria {
+  margin-top: 12px;
+  max-width: 38ch;
+  color: var(--tx-2);
+}
+.cifras-ficha {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0 24px;
+  margin-top: 28px;
+  padding-top: 18px;
+  border-top: 1px solid var(--filete);
+}
+.cifras-ficha b {
+  display: block;
+  font-family: var(--display);
+  font-size: clamp(2.2rem, 3vw, 2.75rem);
+  font-weight: 300;
+  line-height: 0.95;
+  letter-spacing: -0.04em;
+  color: var(--tx-1);
+}
+/* El «+» en cobre hondo, como en las credenciales de la portada. */
+.cifras-ficha .mas {
+  margin-left: 0.03em;
+  letter-spacing: 0;
+  color: var(--cobre-honda);
+}
+.cifras-ficha span:not(.mas) {
+  display: block;
+  margin-top: 10px;
+  font-size: 0.88rem;
+  line-height: 1.45;
+  color: var(--tx-2);
+}
+.pie-ficha {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px 24px;
+  margin-top: auto;
+  padding-top: 32px;
+}
+.pie-ficha .base {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--tx-1);
+}
+.pie-ficha .base::before {
+  content: '';
+  width: 5px;
+  height: 5px;
+  flex: none;
+  border-radius: 50%;
+  background: var(--cobre);
+}
+
+/* ── «Nosotros»: la firma y el remite al método ─────────────────────── */
+.firma-puntos > li {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding-bottom: 0;
+  border-bottom: 0;
+}
+.firma-puntos .k-etiqueta {
+  margin-top: 16px;
+}
+.firma-puntos .enlace {
+  margin-top: 18px;
+}
+.remite {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 18px 48px;
+  margin-top: 56px;
+  padding-top: 22px;
+  border-top: 1px solid var(--filete-fuerte);
+}
+.remite .texto {
+  margin-top: 10px;
+  max-width: 52ch;
+  font-family: var(--display);
+  font-size: 1.12rem;
+  font-weight: 700;
+  line-height: 1.35;
+  letter-spacing: -0.012em;
   color: var(--tx-1);
 }
 
@@ -642,6 +791,33 @@
   .puntos-pag {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
+  /* Las fichas, una bajo otra con filetes horizontales, como las cifras. */
+  .fichas,
+  .firma-puntos {
+    grid-template-columns: 1fr;
+  }
+  .ficha,
+  .ficha:first-child,
+  .ficha:last-child {
+    padding: 28px 0 32px;
+  }
+  .ficha + .ficha {
+    border-left: 0;
+    border-top: 1px solid var(--filete);
+  }
+  .ficha .retrato {
+    max-width: 280px;
+  }
+  .firma-puntos > li {
+    padding-bottom: 22px;
+  }
+  .firma-puntos > li + li {
+    border-top: 1px solid var(--filete);
+  }
+  .pie-ficha {
+    justify-content: flex-start;
+    padding-top: 22px;
+  }
   .pasos.en-columnas {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -668,7 +844,8 @@
     border-top: 1px solid var(--filete);
     margin-top: 18px;
   }
-  .cifras-pag {
+  .cifras-pag,
+  .reglas-pag .ejemplos {
     grid-template-columns: 1fr;
   }
   .cifras-pag li,

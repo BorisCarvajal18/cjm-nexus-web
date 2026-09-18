@@ -42,7 +42,7 @@ unos y descartar otros. El informe, con capturas de antes y después, está en
    «cobre hondo» en el foco (Colors y Buttons).
 
 **Lo siguiente, fuera de estas piezas:** traducciones EN/DE (ahora que el español está casi cerrado),
-imágenes Open Graph con el titular nuevo, páginas legales, página «Nosotros», isotipo y logotipo de
+imágenes Open Graph con el titular nuevo, páginas legales, isotipo y logotipo de
 KLINODA vectoriales y vídeo propio. Las confirmaciones de Richard llegaron el 18-sep-2026: la
 página de dirección financiera ya no tiene nada bloqueado.
 
@@ -62,7 +62,7 @@ página de dirección financiera ya no tiene nada bloqueado.
 | 9 | Páginas de servicios y de KLINODA al sistema nuevo | ✅ Hecha · 2026-09-18 | Hoy siguen con «Pulso Cobre» |
 | 10 | **Reescribir el texto de KLINODA con la decisión del ICP** | ✅ Hecha · 2026-09-18 | Ver abajo |
 | 11 | Retirar «Pulso Cobre» | ✅ Hecha · 2026-09-18 | Tokens en inglés de `tailwind.config.js` (`navy`, `copper`, `teal`, `ink`, `bg-g-*`, los heredados `indigo`/`slate`…) y los presets antiguos de `lib/animations.js`, cuando ya nada los use. `CalendlyButton.jsx` todavía usa `indigo` |
-| 12 | Página «Nosotros» | Texto escrito · 2026-09-18 · **sin programar** | Ver «Pieza 12» abajo. Se programa después de juntar `fable-pulido` |
+| 12 | Página «Nosotros» | ✅ Hecha · 2026-09-19 | `/es/nosotros`, sin fotos y quieta. Sus textos siguen en «Textos por aprobar». Ver el registro del 2026-09-19 |
 
 ### Pieza 10 — el texto de KLINODA contradice la decisión del 2026-09-15
 
@@ -199,7 +199,7 @@ en ese orden desde el layout. `registro.css` ya no existe.
 ## Pendientes fuera de estas piezas
 
 Isotipo vectorial de una tinta · material de vídeo propio · traducciones EN/DE · imágenes Open
-Graph con el titular nuevo · páginas legales · página «Nosotros».
+Graph con el titular nuevo · páginas legales · retratos y LinkedIn del equipo para «Nosotros».
 
 ## Revisar con clientes reales
 
@@ -727,7 +727,7 @@ día con Europa.
   «probamos lo que construimos», algo que se revise o se compruebe antes de entregar (el tablero,
   el diagnóstico, la proyección de caja)? Si la hay, la regla vuelve con un ejemplo de cada línea;
   si no, se queda fuera. No se rellena con una suposición.
-- **Componente pendiente (después de juntar `fable-pulido`):** el campo `evidence` pasa a
+- ~~**Componente pendiente**~~ ✅ Hecho el 2026-09-19 (ver el registro de ese día). El campo `evidence` pasa a
   `ejemplos: { finanzas, software }`. `blocks/Method.jsx` todavía pinta `evidence`, así que **hoy
   `/servicios#metodo` enseña las dos reglas sin sus ejemplos**. Al actualizarlo: dos ejemplos por
   regla, del mismo tamaño y con la misma letra (50/50), cada uno con su referencia (`metodo.etiquetas`:
@@ -814,3 +814,43 @@ pasada. Capturas en `.impeccable/pulido/capturas/`.
   `logo-fondo-claro-despues-*`, de la barra (`barra-`) y de la vista de aptitud (`vista-`), a
   1536 × 730 y 390 × 844. Sin errores.
 - Sigue pendiente el vectorial de KLINODA.
+
+### 2026-09-19 — pieza 12 programada y el método al 50/50
+
+**«Nosotros»** (`app/[lang]/nosotros/page.jsx`; bloques `blocks/pages/Personas.jsx` y `Firma.jsx`;
+estilos en `estilos/paginas.css`, bloque «Nosotros»). Textos sin tocar, todos de `nosotros.es.js`.
+
+- **Orden:** `PageHero` («Conocer al equipo» → `#personas`), las tres fichas, «Dos líneas, una
+  firma» sobre papel hondo con el remite a `/servicios#metodo` al pie, y `FinalCta`.
+- **Las fichas:** tres columnas iguales con filetes verticales, como las credenciales (una bajo
+  otra con filetes horizontales por debajo de 1000 px). Cargo en versalitas, nombre en 800, lo que
+  lidera y, solo en la de Richard, sus dos cifras en trazo fino con el «+» en cobre hondo. Abajo
+  del todo el pie, con el lugar tras un punto de cobre: Ecuador y Alemania quedan en la misma línea.
+- **Lo que no tiene dato no se pinta:** sin retrato la ficha empieza por el cargo; sin lugar ni
+  LinkedIn no hay pie (Mirella). `trayectoria`, `retrato` y `linkedinHref` ya se pintan en cuanto se
+  rellenen (retrato 4:5 encima del cargo, igual en las tres; «LinkedIn» como enlace con filete).
+  `personas.retratoPendiente` («Retrato pendiente») no se usa, a propósito.
+- **KLINODA** en la firma es una puerta: su texto, la etiqueta de estado y «Ver KLINODA».
+- Los enlaces del contenido (`/klinoda`, `/servicios#metodo`) llevan el idioma delante en el
+  componente. Enlace con filete nuevo `.enlace.adelante` (`base.css`): flecha a la derecha que
+  avanza 3 px, para los que llevan a otra página.
+- `lib/site.js`: «Nosotros» del menú y del pie a `/${lang}/nosotros` (fuera la nota de
+  provisional). `sitemap.js`: `/nosotros`, prioridad 0,6. `lib/seo.js`: el comentario dice
+  Latinoamérica, Estados Unidos y Europa.
+
+**El método** (`blocks/Method.jsx`): cada regla en una fila, con su título y su texto a la
+izquierda y los dos ejemplos a la derecha, en dos columnas del mismo ancho, la misma letra y el
+mismo filete de cobre, cada uno con su referencia de `metodo.etiquetas`. Bajo 760 px, apilados:
+finanzas y después software, como Servicio 01 y 02. La clase del título de la regla es
+`.enunciado`: `.regla` ya es la raya de «Qué hacemos» (`que-hacemos.css`) y lo sacaba de la vista.
+
+**Verificación** (producción, Chrome sin ventana con puppeteer-core en `C:\cap`; Edge sin ventana
+no arrancó esta vez): `npm run build` sin errores ni avisos. `/es/nosotros` y `/es/servicios#metodo` a
+1536 × 730 y 390 × 844, con y sin «reducir movimiento»: sin desbordamiento horizontal, 0 ocultos,
+sin errores de consola ni respuestas 4xx/5xx. El menú marca «Nosotros» con `aria-current`.
+Capturas `p12-nosotros-*` (página entera, arriba y fichas) y `p12-metodo-*` (la sección entera).
+
+**Visto, sin tocar (de antes, en todo el sitio):** con movimiento activo, al cargar una página con
+ancla (`/es/servicios#metodo`, `/es/klinoda#privacidad`) la página se queda arriba. Con «reducir
+movimiento» llega bien. Sospecha: el `scroll-behavior: smooth` de `globals.css` en la carga. Afecta
+a «Método» del menú desde cualquier otra página.

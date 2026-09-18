@@ -40,8 +40,8 @@ export const servicios = {
          respalde. Vuelve si Richard la da (pregunta en CONSTRUCCION.md).
        · «Nada real hasta validar»: solo es de KLINODA, y listaba lo que falta
          (regla 6). El estado de KLINODA ya se dice en su página.
-       `ejemplos` sustituye al antiguo `evidence`; el componente `Method`
-       todavía no lo pinta (se pone al día después de juntar fable-pulido). */
+       `ejemplos` sustituye al antiguo `evidence`: `Method` pinta los dos,
+       lado a lado y con la misma letra. */
     items: [
       {
         title: 'Decidimos por escrito',

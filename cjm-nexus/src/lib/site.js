@@ -25,18 +25,13 @@ export const SOCIAL_PROFILES = [];
  * visitante de su idioma y daría un 404. Por eso el menú y el pie son
  * funciones que reciben el idioma y no constantes: es imposible olvidarse
  * del prefijo si no existe la forma de escribirlo sin él.
- *
- * PROVISIONAL: solo queda «Nosotros» apuntando a su banda de la portada,
- * hasta que exista su página. Un enlace que lleva a una página inexistente es
- * peor que uno que lleva a menos de lo prometido: el primero es un callejón
- * sin salida, el segundo un adelanto.
  */
 export function navLinks(lang = 'es') {
   return [
     { href: `/${lang}/servicios`, label: 'Servicios' },
     { href: `/${lang}/klinoda`, label: 'KLINODA' },
     { href: `/${lang}/servicios#metodo`, label: 'Método' },
-    { href: `/${lang}#equipo`, label: 'Nosotros' },
+    { href: `/${lang}/nosotros`, label: 'Nosotros' },
     // Todas las paginas terminan con la misma seccion de cierre, con
     // id="contacto". Un ancla suelta lleva a la de la pagina donde estas, y
     // no obliga a cargar la portada para pedir una reunion.
@@ -82,7 +77,7 @@ export function footerColumns(lang = 'es') {
       links: [
         { label: 'KLINODA', href: `/${lang}/klinoda` },
         { label: 'Método', href: `/${lang}/servicios#metodo` },
-        { label: 'Nosotros', href: `/${lang}#equipo` },
+        { label: 'Nosotros', href: `/${lang}/nosotros` },
         { label: 'Contacto', href: `/${lang}#contacto` },
       ],
     },

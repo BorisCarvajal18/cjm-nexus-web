@@ -9,8 +9,9 @@
  * sitio: el eslogan en inglés, que ya no se usa en ninguna parte; y el
  * alcance «Latinoamérica, Estados Unidos y Europa», que era el del sitio
  * anterior y no se sostiene. La firma opera desde Ecuador y Alemania, y eso
- * es lo que se declara. La trayectoria de Richard en Latinoamérica y Estados
- * Unidos se cuenta donde corresponde: en su ficha, con su nombre.
+ * es lo que se declara. La trayectoria de Richard en Latinoamérica, Estados
+ * Unidos y Europa se cuenta donde corresponde: en su ficha, con su nombre
+ * (/nosotros).
  */
 import { languages } from '../i18n/settings';
 import { SITE_URL, SOCIAL_PROFILES } from './site';

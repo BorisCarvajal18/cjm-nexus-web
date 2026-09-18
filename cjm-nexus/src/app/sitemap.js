@@ -17,6 +17,7 @@ const RUTAS = [
   { path: '/servicios/direccion-financiera', priority: 0.9 },
   { path: '/servicios/soluciones-digitales', priority: 0.9 },
   { path: '/klinoda', priority: 0.8 },
+  { path: '/nosotros', priority: 0.6 },
 ];
 
 export default function sitemap() {
