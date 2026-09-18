@@ -460,11 +460,14 @@ html:not(.tema-vivo) .puerta {
 .k-cargo .k-icono {
   font-size: 0.85em;
 }
+/* La etiqueta y la fecha van en una línea; si la tarjeta es estrecha y la
+   etiqueta larga («APTO EN OBSERVACIÓN»), la fecha baja en vez de cortarse. */
 .k-pie {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
-  gap: 0.6em;
+  gap: 0.4em 0.6em;
 }
 .k-apto {
   font-size: 0.66em;
@@ -492,6 +495,12 @@ html:not(.tema-vivo) .puerta {
    la que manda: con la letra al máximo (--kb 1,25) la barra pide 1216 px. */
 @container (max-width: 1239px) {
   .k-pestanas {
+    display: none;
+  }
+}
+/* Con las tres tarjetas de cargo en menos de 900 px, la fecha va sin icono. */
+@container (max-width: 900px) {
+  .k-vence svg {
     display: none;
   }
 }
