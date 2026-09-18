@@ -323,6 +323,60 @@
         ],
         "createdAt": "2026-09-18T20:39:16.661Z",
         "reason": "sanctioned exception: micro type inside the sample interfaces (product-window UI at 9–12.5 px), the same class of values already sanctioned for the approved mock C-fusion.html; DESIGN.md documents page type roles, not the type inside a sample product window. Decided by Claude during the fable-pulido pass, 2026-09-18, not user-confirmed"
+      },
+      {
+        "rule": "design-system-radius",
+        "value": "1px",
+        "files": [
+          "cjm-nexus/src/app/estilos/cuadros.css"
+        ],
+        "createdAt": "2026-09-18T21:28:19.624Z",
+        "reason": "sanctioned exception: 1px radius on 4-6 px tall bars (progress tracks, revenue and status split bars, rule segments) inside the sample interfaces; the same exception already sanctioned for the approved mock C-fusion.html. A 2px token radius on a 5px bar reads as a pill, against the near-square 'papel cortado' shapes of DESIGN.md. Decided by Claude during the fable-pulido pass, 2026-09-18, not user-confirmed"
+      },
+      {
+        "rule": "design-system-font-size",
+        "value": "14px",
+        "files": [
+          "cjm-nexus/src/components/SiteHeader.jsx"
+        ],
+        "createdAt": "2026-09-18T21:28:19.748Z",
+        "reason": "sanctioned exception: header type sizes of the portada mock Boris approved on 2026-09-13 (C-fusion.html), carried verbatim to the site in pieza 2; the same values are already sanctioned for the mock file. Pre-existing, not introduced by the fable-pulido pass. Recorded by Claude, 2026-09-18, not user-confirmed"
+      },
+      {
+        "rule": "design-system-font-size",
+        "value": "12.5px",
+        "files": [
+          "cjm-nexus/src/components/SiteHeader.jsx"
+        ],
+        "createdAt": "2026-09-18T21:28:19.912Z",
+        "reason": "sanctioned exception: header type sizes of the portada mock Boris approved on 2026-09-13 (C-fusion.html), carried verbatim to the site in pieza 2; the same values are already sanctioned for the mock file. Pre-existing, not introduced by the fable-pulido pass. Recorded by Claude, 2026-09-18, not user-confirmed"
+      },
+      {
+        "rule": "design-system-font-size",
+        "value": "14.5px",
+        "files": [
+          "cjm-nexus/src/components/SiteHeader.jsx"
+        ],
+        "createdAt": "2026-09-18T21:28:20.068Z",
+        "reason": "sanctioned exception: header type sizes of the portada mock Boris approved on 2026-09-13 (C-fusion.html), carried verbatim to the site in pieza 2; the same values are already sanctioned for the mock file. Pre-existing, not introduced by the fable-pulido pass. Recorded by Claude, 2026-09-18, not user-confirmed"
+      },
+      {
+        "rule": "design-system-font-size",
+        "value": ".82rem",
+        "files": [
+          "cjm-nexus/src/components/SiteHeader.jsx"
+        ],
+        "createdAt": "2026-09-18T21:28:20.214Z",
+        "reason": "sanctioned exception: header type sizes of the portada mock Boris approved on 2026-09-13 (C-fusion.html), carried verbatim to the site in pieza 2; the same values are already sanctioned for the mock file. Pre-existing, not introduced by the fable-pulido pass. Recorded by Claude, 2026-09-18, not user-confirmed"
+      },
+      {
+        "rule": "design-system-font-size",
+        "value": ".76rem",
+        "files": [
+          "cjm-nexus/src/components/SiteHeader.jsx"
+        ],
+        "createdAt": "2026-09-18T21:28:20.380Z",
+        "reason": "sanctioned exception: header type sizes of the portada mock Boris approved on 2026-09-13 (C-fusion.html), carried verbatim to the site in pieza 2; the same values are already sanctioned for the mock file. Pre-existing, not introduced by the fable-pulido pass. Recorded by Claude, 2026-09-18, not user-confirmed"
       }
     ]
   }

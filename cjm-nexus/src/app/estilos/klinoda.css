@@ -312,7 +312,7 @@ html:not(.tema-vivo) .puerta {
   right: 0;
   top: 0.45em;
   height: 0.5em;
-  border-radius: 0.25em;
+  border-radius: 3px;
   background: linear-gradient(
     90deg,
     #d5e4fb 0 calc(33.333% - 1px),
