@@ -251,7 +251,7 @@ Nunca en texto, nunca de un color a otro, y nada de orbes, manchas ni halos: lo 
 ### Named Rules
 **The Tabular Numbers Rule.** Toda cifra lleva `font-variant-numeric: tabular-nums`. Un tablero financiero cuyas columnas no cuadran dice que no sabemos de esto.
 
-**The Weight Not Color Rule.** El énfasis se hace con peso (500 → 800) o con tamaño, nunca con color ni con degradado.
+**The Weight Not Color Rule.** El énfasis se hace con peso (500 → 800) o con tamaño, nunca con color ni con degradado. El «+» de las credenciales va en cobre hondo y no es una excepción: no enfatiza una palabra, es la marca de «más de» junto a la cifra, y es el único cobre de esa banda.
 
 ## Layout
 
