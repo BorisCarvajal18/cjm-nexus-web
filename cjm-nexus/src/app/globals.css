@@ -36,9 +36,12 @@
 
   /* Foco de teclado: el mismo en todo el sitio, siempre visible. Un contorno
      y no un anillo con relleno: el relleno de `ring-offset` era color papel y
-     sobre marino se veía como un halo claro. */
+     sobre marino se veía como un halo claro.
+     Cobre hondo y no cobre: el cobre #C9784A da 2,97:1 sobre papel, por
+     debajo del 3:1 de contraste no textual (WCAG 1.4.11). El hondo da 4,5:1
+     sobre papel y 3,7:1 sobre marino hondo, así que vale en los dos temas. */
   :focus-visible {
-    outline: 2px solid theme('colors.cobre.DEFAULT');
+    outline: 2px solid theme('colors.cobre.honda');
     outline-offset: 3px;
   }
 

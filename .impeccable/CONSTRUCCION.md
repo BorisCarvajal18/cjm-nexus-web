@@ -10,8 +10,11 @@ Orden de lectura para retomar:
 3. `.impeccable/mocks/portada/PLAN.md`, sobre todo «Para pasarlo al sitio».
 4. `.impeccable/mocks/portada/C-fusion.html`: la portada aprobada, la referencia visual.
 
-Regla de trabajo: **una pieza por sesión**. Cada una se construye, se verifica, se hace commit y
-se para para que Boris la revise.
+Regla de trabajo (desde el 2026-09-18): las piezas van **en su orden, una tras otra**. Cada una
+se construye con `C-fusion.html` como referencia, se verifica (`npm run build` sin errores,
+capturas a 1536 × 730 y 390 × 844, y con «reducir movimiento»), se hace commit y se marca aquí.
+Solo se para si algo necesita una decisión de Boris que no esté en DESIGN.md ni en PRODUCT.md.
+Las capturas de verificación van a `.impeccable/construccion/`.
 
 ## Piezas
 
@@ -19,7 +22,7 @@ se para para que Boris la revise.
 |---|---|---|---|
 | 0 | Ordenar los archivos sin commit | ✅ Hecha · 2026-09-17 | Ver la nota de la sesión |
 | 1 | Base del sistema: color, letra, espaciado y constantes de movimiento | ✅ Hecha · 2026-09-17 | Ver «Cómo se usa la base» |
-| 2 | Cabecera | Pendiente | Tres estados como `SiteHeader` (transparente sobre la portada, papel al bajar, marino hondo sobre oscuro). Isotipo claro ya en `public/marca/`. Menú fuera bajo 1000 px e idiomas fuera bajo 620 px |
+| 2 | Cabecera | ✅ Hecha · 2026-09-18 | Ver el registro de la sesión. Tres estados como `SiteHeader` (transparente sobre la portada, papel al bajar, marino hondo sobre oscuro). Isotipo claro ya en `public/marca/`. Menú fuera bajo 1000 px e idiomas fuera bajo 620 px |
 | 3 | Portada | Pendiente | Vídeo: `hero.webm`, `hero.mp4` y `hero-poster.jpg` de `mocks/portada/img/` a `public/`, y el `<video>` en `Hero.jsx`. El titular entra palabra a palabra desde su máscara y la imagen pasa de 1,05 a 1. **Texto abierto:** la entrada atribuye los quince años a la firma (PLAN.md, ronda 5 §2) |
 | 4 | Credenciales | Pendiente | 15+, 100+ y 3, con atribución a Richard por su nombre. Las notas y la frase de los tres nombres son **texto propuesto sin aprobar** |
 | 5 | Escena de los tableros («Qué hacemos») | Pendiente | Un preset nuevo en `lib/animations.js` con `CONSULTA_ESCENAS`, `ESCENA.tableros` y `AJUSTE_AL_SOLTAR`. Se fija 3,1 pantallas y la letra se ajusta con `--k` |
@@ -48,6 +51,14 @@ cumplimiento legal y tranquilidad. Al médico, una herramienta que le facilita e
 puede recomendar. Mientras Boris no lo decida, **no se toca** cómo la web nombra la relación entre
 CJM Nexus y KLINODA («producto propio», «la prueba de lo que construimos»). Los números de línea
 son del 2026-09-17: compruébalos antes de editar.
+
+## Textos por aprobar
+
+Textos que están en el sitio pero que PLAN.md marca como propuestos, o que se escribieron al
+construir. Se usan igual; Boris los aprueba o los cambia leyendo esta lista.
+
+| Pieza | Dónde (`cjm-nexus/src/content/`) | Texto | Por qué está aquí |
+|---|---|---|---|
 
 ## Cómo se usa la base (pieza 1)
 
@@ -80,10 +91,9 @@ y también las variables CSS.
 
 ## Detalles conocidos, sin arreglar
 
-- **Contraste del foco.** El contorno cobre `#C9784A` sobre papel da unos 2,97:1, justo por debajo
-  del 3:1 de contraste no textual. Ya pasaba con el anillo anterior, que era del mismo color, y es
-  el valor que fija DESIGN.md. Hay que decidirlo al construir la cabecera: `cobre-honda` daría más
-  de 4,5:1.
+- ~~**Contraste del foco.**~~ Resuelto en la pieza 2: el contorno pasa a `cobre-honda` (4,5:1 sobre
+  papel, 3,7:1 sobre marino hondo). DESIGN.md sigue diciendo «contorno cobre»; conviene poner al
+  día esa línea cuando se revise el documento.
 - **OneDrive y `.next`.** Un segundo `npm run build` seguido puede fallar con `EINVAL: readlink …
   .next\…`. Es OneDrive bloqueando la carpeta, no el código: se borra `cjm-nexus/.next` y se
   vuelve a compilar.
@@ -149,3 +159,38 @@ Los 21 de código eran idénticos a su última versión en git.
   - `rounded-lg` pasa de 8 a 5 px en `PlatformCard` y en `/sistema`.
 - **Capturas:** portada, servicios y KLINODA a 1280 y 375 px, con las entradas terminadas. No se
   ve nada roto.
+
+### 2026-09-18 — decisiones nuevas y pieza 2
+
+**Antes de empezar:**
+
+- `git push origin rediseno-2026`: los 6 commits que solo estaban en este equipo ya están en GitHub.
+- PRODUCT.md, reglas 8 y 9: KLINODA es «Empresa del Grupo CJM Nexus» (nunca más «producto propio» ni
+  «la prueba de lo que construimos»; falta que el abogado confirme la palabra «Grupo») y nunca
+  «plataforma para médicos ocupacionales». La frase de DESIGN.md que decía «el producto propio» se
+  ajustó.
+
+**Pieza 2 — cabecera** (`components/SiteHeader.jsx`, textos en `content/sitio.es.js`):
+
+- Los tres estados de la maqueta: transparente con letra blanca sobre zona oscura, papel con filete al
+  bajar y marino hondo al bajar sobre zona oscura. Arriba de una página clara va transparente con letra
+  tinta. El isotipo claro va con letra blanca y el original sobre papel.
+- Menú en Inter 500 a 14,5 px con subrayado cobre que se traza al apuntar; la página actual lo lleva
+  fijo (`aria-current`). Idiomas ES · EN · DE como enlaces reales a la misma página en otro idioma.
+  Botón «Agendar · 20 min» en cobre hondo, 3 px, con la flecha que avanza 3 px.
+- Bajo 1000 px sale el menú y bajo 620 px los idiomas y « · 20 min», como dice DESIGN.md.
+- **Desviación a revisar:** la maqueta no tiene nada que sustituya al menú bajo 1000 px, y el teléfono se
+  quedaría sin navegación (el caso principal, PRODUCT.md). Se conserva un botón de dos filetes que abre
+  un panel de papel bajo la cabecera, con los enlaces y los idiomas. Escape lo cierra y devuelve el foco.
+- **El menú no es el de la maqueta:** la maqueta dice «Servicios, Proyectos, Método, Nosotros,
+  Contacto» con «Proyectos» sin destino. Se mantiene el menú del sitio, con «KLINODA» en lugar de
+  «Proyectos», porque un enlace a ninguna parte es peor (principio 5 de PRODUCT.md).
+- Foco en `cobre-honda` en todo el sitio (ver «Detalles conocidos»).
+- La entrada escalonada de la cabecera (`.sec` en la maqueta) es parte de la entrada de la portada:
+  va con la pieza 3.
+
+**Verificación:** `npm run build` sin errores ni avisos. Capturas `p2-cabecera-*` a 1536 × 730 y
+390 × 844, con y sin «reducir movimiento», arriba y a 600 px: papel con letra tinta al bajar, sin
+desbordamiento horizontal, sin errores. En la portada, recorrida entera: transparente → papel →
+marino hondo con isotipo claro sobre las zonas oscuras. Panel móvil: se abre, `aria-expanded`
+cambia, Escape lo cierra y el foco vuelve al botón. El tabulador enseña el contorno cobre hondo.

@@ -1,47 +1,79 @@
 'use client';
 
 /**
- * <SiteHeader /> — cabecera fija de todo el sitio.
+ * <SiteHeader /> — cabecera fija de todo el sitio (DESIGN.md, Navigation).
  *
- * LA MARCA SE COMPONE, NO SE PONE. El logotipo completo que existe es un JPEG
- * con fondo blanco: sobre el crema de la página se le vería el recuadro. Así
- * que se monta el isotipo, que sí tiene transparencia, con el nombre escrito
- * en Plus Jakarta Sans — que es además la tipografía del sistema. El día que
- * llegue un vectorial se sustituye aquí y en el pie, y nada más.
+ * 72 px con el isotipo, «CJM NEXUS» espaciado, el menú, los idiomas y el
+ * botón pequeño de «Agendar». Es la cabecera de la portada aprobada
+ * (`C-fusion.html`), pasada a React.
  *
- * SE ADAPTA AL FONDO QUE TIENE DEBAJO. Sobre las bandas oscuras el texto pasa
- * a blanco: sin eso, la cabecera desaparece justo en las dos secciones más
- * llamativas. Lo decide un ScrollTrigger por sección oscura, no un cálculo de
- * posiciones a mano.
+ * TRES ESTADOS, de la combinación de dos avisos:
+ * - `scrolled`: la página bajó más de 24 px.
+ * - `onDark`: una zona oscura está debajo (`lib/surface.js`). La cabecera no
+ *   averigua qué hay debajo: cada banda oscura avisa al entrar y al salir.
  *
- * En móvil el menú es un panel que ocupa la pantalla. Se cierra con Escape,
- * al pulsar fuera y al elegir un enlace, y devuelve el foco al botón.
+ *   arriba, sobre la portada   → transparente, letra blanca, isotipo claro
+ *   bajando, sobre papel       → papel con filete, letra tinta, isotipo original
+ *   bajando, sobre zona oscura → marino hondo, letra blanca, isotipo claro
+ *
+ * Arriba de una página clara (sin zona oscura) va transparente con letra
+ * tinta, que es lo que se lee sobre papel.
+ *
+ * BAJO 1000 PX sale el menú, y BAJO 620 los idiomas y el « · 20 min» del
+ * botón. Para no dejar el teléfono sin navegación, en su lugar aparece un
+ * botón que abre el menú en un panel de papel bajo la cabecera, con los
+ * idiomas. Se cierra con Escape y al elegir un enlace, y devuelve el foco.
  */
 import { useEffect, useRef, useState } from 'react';
+import { usePathname } from 'next/navigation';
 
+import { getSitio } from '../content';
+import { languages } from '../i18n/settings';
 import { alCambiarSuperficie } from '../lib/surface';
 import { navLinks } from '../lib/site';
-import Button from './ui/Button';
 
-export default function SiteHeader({ lang = 'es', ctaLabel = 'Agendar diagnóstico', ctaHref }) {
+/** La misma ruta en otro idioma: /es/klinoda → /de/klinoda. */
+function enIdioma(ruta, idioma) {
+  const partes = (ruta || '/').split('/');
+  if (languages.includes(partes[1])) partes[1] = idioma;
+  else partes.splice(1, 0, idioma);
+  return partes.join('/').replace(/\/$/, '') || `/${idioma}`;
+}
+
+function Flecha() {
+  return (
+    <svg
+      width="13"
+      height="13"
+      viewBox="0 0 15 15"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.7"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+      className="transition-transform duration-200 ease-llegar group-hover:translate-x-[3px]"
+    >
+      <path d="M2 7.5h10.5M8.5 3.5 12.5 7.5 8.5 11.5" />
+    </svg>
+  );
+}
+
+export default function SiteHeader({ lang = 'es', ctaHref }) {
+  const t = getSitio(lang).cabecera;
   /* Los enlaces se calculan con el idioma de la página. Ver `navLinks` en
      `lib/site.js`: ninguna ruta del sitio existe sin su prefijo de idioma. */
   const links = navLinks(lang);
-  // Mismo criterio que el enlace «Contacto»: el cierre de ESTA pagina.
+  // Todas las páginas terminan en la sección de cierre, con id="contacto".
   const cta = ctaHref ?? '#contacto';
+  const ruta = usePathname();
   const [open, setOpen] = useState(false);
   const [onDark, setOnDark] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const menuButton = useRef(null);
 
-  /* La cabecera no averigua qué hay debajo: se lo dicen. Cada banda oscura
-     avisa al entrar y al salir, y aquí solo se escucha. */
   useEffect(() => alCambiarSuperficie(setOnDark), []);
 
-  /* Al salir de la portada, la cabecera gana fondo propio.
-     Sobre la portada va suelta, para que la primera pantalla se vea entera;
-     a partir de ahí pasa por encima de secciones de todos los colores, y sin
-     un fondo detrás el menú se pierde en cuanto el contenido tiene contraste. */
   useEffect(() => {
     const alDesplazar = () => setScrolled(window.scrollY > 24);
     alDesplazar();
@@ -49,10 +81,14 @@ export default function SiteHeader({ lang = 'es', ctaLabel = 'Agendar diagnósti
     return () => window.removeEventListener('scroll', alDesplazar);
   }, []);
 
-  /* Cerrar el panel con Escape y bloquear el desplazamiento de fondo. */
+  /* Panel abierto: Escape lo cierra y el fondo no se desplaza. */
   useEffect(() => {
     if (!open) return undefined;
-    const onKey = (event) => event.key === 'Escape' && setOpen(false);
+    const onKey = (event) => {
+      if (event.key !== 'Escape') return;
+      setOpen(false);
+      menuButton.current?.focus();
+    };
     document.body.style.overflow = 'hidden';
     window.addEventListener('keydown', onKey);
     return () => {
@@ -61,66 +97,78 @@ export default function SiteHeader({ lang = 'es', ctaLabel = 'Agendar diagnósti
     };
   }, [open]);
 
+  /* Si la ventana se ensancha con el panel abierto, el panel sobra. */
+  useEffect(() => {
+    if (!open) return undefined;
+    const ancho = window.matchMedia('(min-width: 1001px)');
+    const alCambiar = (e) => e.matches && setOpen(false);
+    ancho.addEventListener('change', alCambiar);
+    return () => ancho.removeEventListener('change', alCambiar);
+  }, [open]);
+
   const close = () => {
     setOpen(false);
     menuButton.current?.focus();
   };
 
-  const tone = onDark ? 'text-white' : 'text-ink';
-  const fondo = scrolled
-    ? onDark
-      ? 'bg-navy-deep border-white/10'
-      : 'bg-canvas border-hairline'
-    : 'bg-transparent border-transparent';
+  // Con el panel abierto la cabecera es papel: el panel cuelga de ella.
+  const oscuro = onDark && !open;
+  const conFondo = scrolled || open;
+  const estado = conFondo
+    ? oscuro
+      ? 'bg-tinta-honda border-white/10 text-white'
+      : 'bg-papel border-linea text-tinta'
+    : `bg-transparent border-transparent ${oscuro ? 'text-white' : 'text-tinta'}`;
+
+  const actual = (href) => ruta && !href.includes('#') && ruta.replace(/\/$/, '') === href;
 
   return (
     <header
-      className={`fixed inset-x-0 top-0 z-40 border-b transition-colors duration-300 ${tone} ${fondo}`}
+      className={`fixed inset-x-0 top-0 z-40 border-b transition-colors duration-300 ease-out ${estado}`}
     >
-      <div className="container flex h-[72px] items-center justify-between gap-4">
-        <a href={`/${lang}`} className="flex items-center gap-[.55rem]" aria-label="CJM Nexus, inicio">
+      <div className="marco flex h-cabecera items-center gap-9 max-[620px]:gap-3">
+        <a href={`/${lang}`} className="inline-flex items-center gap-[11px] no-underline" aria-label={t.inicio}>
           <img
-            src="/marca/cjm-isotipo.png"
+            src={oscuro ? '/marca/cjm-isotipo-claro.png' : '/marca/cjm-isotipo.png'}
             alt=""
-            width="34"
-            height="34"
-            className="h-[34px] w-[34px] shrink-0 rounded-full bg-white/95 object-contain p-[2px] shadow-soft"
+            width="28"
+            height="28"
+            className="block h-7 w-7 flex-none max-[620px]:h-[25px] max-[620px]:w-[25px]"
           />
-          <span className="font-display text-[.98rem] font-extrabold uppercase tracking-[.04em]">
-            CJM Nexus
+          <span className="whitespace-nowrap font-display text-[14px] font-bold uppercase tracking-[.2em] max-[620px]:text-[12.5px] max-[620px]:tracking-[.17em]">
+            {t.marca}
           </span>
         </a>
 
-        {/* La píldora del menú necesita BORDE Y FONDO propios. Translúcida
-            sobre el crema de la portada no se separaba del fondo y el menú
-            desaparecía, que es justo lo que había que arreglar. */}
-        <nav
-          aria-label="Principal"
-          className={`hidden items-center gap-[.15rem] rounded-full border p-[.3rem] lg:flex ${
-            onDark
-              ? 'border-white/25 bg-white/15'
-              : 'border-hairline bg-white/90 shadow-[0_1px_2px_rgba(26,34,56,.06),0_8px_24px_-16px_rgba(26,34,56,.35)]'
-          }`}
-        >
+        <nav aria-label={t.menu} className="ml-auto flex gap-[26px] max-[1000px]:hidden">
           {links.map((link) => (
             <a
               key={link.href}
               href={link.href}
-              className={`rounded-full px-[.9rem] py-[.45rem] text-[.82rem] font-bold transition-colors ${
-                onDark ? 'text-white/85 hover:bg-white/20 hover:text-white' : 'text-ink hover:bg-g-navy hover:text-white'
-              }`}
+              aria-current={actual(link.href) ? 'page' : undefined}
+              className="relative py-[5px] text-[14.5px] font-medium no-underline opacity-[.84] transition-opacity duration-200 after:absolute after:inset-x-0 after:bottom-0 after:h-[1.5px] after:origin-left after:scale-x-0 after:bg-cobre after:transition-transform after:duration-[340ms] after:ease-llegar after:content-[''] hover:opacity-100 hover:after:scale-x-100 aria-[current=page]:opacity-100 aria-[current=page]:after:scale-x-100"
             >
               {link.label}
             </a>
           ))}
         </nav>
 
-        <div className="flex items-center gap-2">
-          {/* Cobre y no marino: sobre el crema de la portada el marino se
-              apaga, y en todo el sistema lo que se pulsa es cobre. */}
-          <Button href={cta} variant="copper" size="sm" className="hidden sm:inline-flex">
-            {ctaLabel}
-          </Button>
+        <Idiomas
+          lang={lang}
+          ruta={ruta}
+          etiqueta={t.idiomas}
+          className="max-[1000px]:ml-auto max-[620px]:hidden"
+        />
+
+        <div className="flex items-center gap-3 max-[620px]:ml-auto">
+          <a
+            href={cta}
+            className="group inline-flex items-center gap-2 whitespace-nowrap rounded-md bg-cobre-honda px-[15px] py-[9px] font-display text-[.82rem] font-bold text-white no-underline transition-colors duration-200 ease-llegar hover:bg-cobre-presion active:bg-cobre-presion max-[620px]:px-3 max-[620px]:py-2 max-[620px]:text-[.76rem]"
+          >
+            {t.agendar}
+            <span className="max-[620px]:hidden">{t.agendarDetalle}</span>
+            <Flecha />
+          </a>
 
           <button
             ref={menuButton}
@@ -128,52 +176,77 @@ export default function SiteHeader({ lang = 'es', ctaLabel = 'Agendar diagnósti
             onClick={() => setOpen((v) => !v)}
             aria-expanded={open}
             aria-controls="menu-movil"
-            className={`grid h-10 w-10 place-items-center rounded-full border lg:hidden ${
-              onDark ? 'border-white/25 bg-white/10' : 'border-hairline bg-white/70'
-            }`}
+            className="-mr-2 grid h-10 w-10 place-items-center min-[1001px]:hidden"
           >
-            <span className="sr-only">{open ? 'Cerrar menú' : 'Abrir menú'}</span>
-            <span aria-hidden="true" className="relative block h-[14px] w-[20px]">
+            <span className="sr-only">{open ? t.cerrarMenu : t.abrirMenu}</span>
+            <span aria-hidden="true" className="relative block h-[10px] w-[18px]">
               <span
-                className={`absolute left-0 block h-[2px] w-full rounded-full bg-current transition-transform duration-200 ${open ? 'top-[6px] rotate-45' : 'top-0'}`}
+                className={`absolute left-0 block h-[1.5px] w-full bg-current transition-transform duration-200 ease-llegar ${open ? 'top-[4px] rotate-45' : 'top-0'}`}
               />
               <span
-                className={`absolute left-0 top-[6px] block h-[2px] w-full rounded-full bg-current transition-opacity duration-200 ${open ? 'opacity-0' : 'opacity-100'}`}
-              />
-              <span
-                className={`absolute left-0 block h-[2px] w-full rounded-full bg-current transition-transform duration-200 ${open ? 'top-[6px] -rotate-45' : 'top-[12px]'}`}
+                className={`absolute left-0 block h-[1.5px] w-full bg-current transition-transform duration-200 ease-llegar ${open ? 'top-[4px] -rotate-45' : 'top-[8.5px]'}`}
               />
             </span>
           </button>
         </div>
       </div>
 
-      {/* Panel móvil */}
+      {/* Panel del menú bajo 1000 px. Cuelga de la cabecera, que sigue a la
+          vista con el botón para cerrarlo. */}
       {open ? (
         <div
           id="menu-movil"
-          className="fixed inset-0 z-50 bg-canvas px-6 pb-10 pt-[72px] text-ink lg:hidden"
+          className="fixed inset-x-0 bottom-0 top-cabecera overflow-y-auto border-t border-linea bg-papel text-tinta min-[1001px]:hidden"
         >
-          <nav aria-label="Principal" className="grid gap-1 border-t border-hairline pt-6">
-            {links.map((link, i) => (
-              <a
-                key={link.href}
-                href={link.href}
-                onClick={close}
-                className="flex items-baseline gap-3 border-b border-hairline py-4 font-display text-[1.15rem] font-extrabold"
-              >
-                <span className="text-[.7rem] font-extrabold text-copper-deep">
-                  {String(i + 1).padStart(2, '0')}
-                </span>
-                {link.label}
-              </a>
-            ))}
-          </nav>
-          <Button href={cta} variant="copper" className="mt-8 w-full" onClick={close}>
-            {ctaLabel}
-          </Button>
+          <div className="marco pb-10 pt-4">
+            <nav aria-label={t.menu}>
+              <ul>
+                {links.map((link) => (
+                  <li key={link.href} className="border-b border-linea">
+                    <a
+                      href={link.href}
+                      onClick={close}
+                      aria-current={actual(link.href) ? 'page' : undefined}
+                      className="flex py-4 font-display text-[1.2rem] font-bold tracking-[-0.01em] no-underline aria-[current=page]:text-cobre-honda"
+                    >
+                      {link.label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </nav>
+            <Idiomas lang={lang} ruta={ruta} etiqueta={t.idiomas} className="mt-7 min-[621px]:hidden" />
+          </div>
         </div>
       ) : null}
     </header>
+  );
+}
+
+/** ES · EN · DE. El actual en negrita; los otros llevan a la misma página. */
+function Idiomas({ lang, ruta, etiqueta, className = '' }) {
+  return (
+    <nav aria-label={etiqueta} className={className}>
+      <ul className="flex gap-[9px] text-[12.5px] font-semibold uppercase tracking-[.08em]">
+        {languages.map((idioma) => (
+          <li key={idioma}>
+            {idioma === lang ? (
+              <span aria-current="true" className="font-bold">
+                {idioma}
+              </span>
+            ) : (
+              <a
+                href={enIdioma(ruta, idioma)}
+                hrefLang={idioma}
+                lang={idioma}
+                className="no-underline opacity-70 transition-opacity duration-200 hover:opacity-100"
+              >
+                {idioma}
+              </a>
+            )}
+          </li>
+        ))}
+      </ul>
+    </nav>
   );
 }
