@@ -30,7 +30,7 @@ Las capturas de verificación van a `.impeccable/construccion/`.
 | 7 | Escena de KLINODA | ✅ Hecha · 2026-09-18 | 2,1 pantallas. Poner al día `privacy.mockup` en `klinoda.es.js` con las etiquetas reales («APTO», «APTO EN OBSERVACIÓN», «PERIÓDICO»…) |
 | 8 | Cierre y pie | ✅ Hecha · 2026-09-18 | El titular y los tres bloques del cierre son **texto propuesto sin aprobar** (PLAN.md, ronda 2 §7) |
 | 9 | Páginas de servicios y de KLINODA al sistema nuevo | ✅ Hecha · 2026-09-18 | Hoy siguen con «Pulso Cobre» |
-| 10 | **Reescribir el texto de KLINODA con la decisión del ICP** | Pendiente · sesión propia | Ver abajo |
+| 10 | **Reescribir el texto de KLINODA con la decisión del ICP** | ✅ Hecha · 2026-09-18 | Ver abajo |
 | 11 | Retirar «Pulso Cobre» | Pendiente | Tokens en inglés de `tailwind.config.js` (`navy`, `copper`, `teal`, `ink`, `bg-g-*`, los heredados `indigo`/`slate`…) y los presets antiguos de `lib/animations.js`, cuando ya nada los use. `CalendlyButton.jsx` todavía usa `indigo` |
 
 ### Pieza 10 — el texto de KLINODA contradice la decisión del 2026-09-15
@@ -66,6 +66,11 @@ construir. Se usan igual; Boris los aprueba o los cambia leyendo esta lista.
 | 8 | `home.es.js` → `cierre.titular` y `cierre.tres` | «Veinte minutos con **quien va a hacer el trabajo**.» y los tres bloques «Con quién hablas», «Qué pasa en la reunión», «Qué te llevas» | Propuestos en PLAN.md (ronda 2 §7) |
 | 9 | `servicios.es.js` → `servicios.product` | Ceja «Empresa del Grupo CJM Nexus»; entrada «Su plataforma ordena la salud ocupacional de las empresas en Ecuador: un trámite obligatorio, lleno de reglas, formularios oficiales y datos sensibles, resuelto en minutos.»; estado «Demo · en desarrollo · datos ficticios» | Decía «Producto propio» y «la prueba pública de lo que construimos» (reglas 8 y 9) |
 | 9 | `servicios.es.js` → `digital.proof` | Ceja «Lo que ya existe»; entrada «KLINODA, empresa del Grupo CJM Nexus, lleva la salud ocupacional de las empresas en Ecuador… Su plataforma la construimos nosotros. Y esta misma web…»; estado | Decía «La prueba» y «KLINODA es nuestra plataforma» (reglas 8 y 9) |
+| 10 | `klinoda.es.js` → `meta` | Título «KLINODA · Salud ocupacional para empresas»; descripción «KLINODA, empresa del Grupo CJM Nexus, ordena la salud ocupacional de las empresas en Ecuador…» | Reglas 7, 8 y 9 |
+| 10 | `klinoda.es.js` → `hero` | Ceja «Empresa del Grupo CJM Nexus»; titular «La salud ocupacional de tu empresa, en orden y a la vista.»; entrada y nota «Demo · en desarrollo · datos ficticios» | A la empresa: orden y tranquilidad |
+| 10 | `klinoda.es.js` → `status.text` y `problem.text` | El estado sin la frase de las validaciones pendientes (regla 6: no listar lo que falta); el problema contado desde la empresa | |
+| 10 | `klinoda.es.js` → `medico` (**sección nueva**) | «Una herramienta que te quita trabajo, y que puedes recomendar.» con tres puntos | Al médico: usuario y canal (regla 7). Los tres puntos salen de lo que ya decía la página |
+| 10 | `klinoda.es.js` → `fit`, `company`, `cta` | «Para qué empresa es», «Quién construye su plataforma» y el cierre «Veinte minutos para ver KLINODA con los ojos de tu empresa.» | Decían «Eres médico ocupacional…», «nuestro producto» y «Si trabajas en medicina ocupacional…» |
 
 ## Cómo se usa la base (pieza 1)
 
@@ -359,3 +364,24 @@ servido: `/es` tiene `#equipo` y `#contacto`; `/es/servicios`, `#metodo`. En `/e
 **Verificación** (producción, `p9-*`, capturas de página entera): build sin errores; las cuatro
 páginas a 1536 × 730 y 390 × 844 sin desbordamiento horizontal, sin errores de consola ni respuestas
 4xx/5xx, y 0 elementos ocultos también con «reducir movimiento».
+
+**Pieza 10 — los textos de KLINODA** (`klinoda.es.js`; la página suma la sección `#medico`):
+
+- Dos mensajes. **A la empresa**, orden y tranquilidad: ve qué trabajadores están aptos y qué
+  certificados vencen, y lo clínico nunca llega a ella. Se dice lo que el sistema hace, nunca que
+  cumple una norma (PRODUCT.md, voz), así que «cumplimiento» no aparece como afirmación.
+  **Al médico**, una sección propia: una herramienta que le quita trabajo y que puede proponer en
+  las empresas donde evalúa; KLINODA la contrata la empresa.
+- Nada clínico, ninguna fecha, ninguna validez legal. El estado es la etiqueta pública «Demo · en
+  desarrollo · datos ficticios» y ya no menciona las validaciones pendientes (regla 6). «Piloto
+  controlado» sale de todos los textos visibles, también de la evidencia del método en
+  `servicios.es.js` y de la nota de las cifras.
+- Los cuatro sitios que listaba esta pieza (`home.es.js` 96, `klinoda.es.js` 35, 42 y 183) ya no
+  existen o están reescritos.
+
+**Verificación:** build sin errores. En el HTML servido de las cinco páginas no aparecen «producto
+propio», «para médicos ocupacionales», «la prueba de lo que construimos» ni «piloto controlado»;
+«Empresa del Grupo CJM Nexus» aparece en portada, servicios, soluciones digitales y KLINODA.
+Capturas `p10-*`: sin desbordamiento, sin errores, 0 ocultos.
+
+Queda solo en `/sistema` (el catálogo interno, pieza 11): «En desarrollo · piloto controlado».

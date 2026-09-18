@@ -19,9 +19,18 @@
  *  5. NADA DE BLOQUEOS, RIESGOS NI DETALLES DE SEGURIDAD. Una lista de lo que
  *     falta es un documento interno; publicarla no es transparencia, es dar
  *     material a quien no debe tenerlo.
- *  6. EL ESTADO SE DICE, Y SE DICE PRIMERO. Piloto controlado y solo con
- *     datos ficticios. Ocultarlo sería mentir; contarlo bien es el mejor
+ *  6. EL ESTADO SE DICE, Y SE DICE PRIMERO: «Demo · en desarrollo · datos
+ *     ficticios». Lo que falta no se lista. Ocultarlo sería mentir; contarlo bien es el mejor
  *     argumento que tiene la página, porque casi nadie trabaja así.
+ *
+ * DOS PERSONAS, DOS MENSAJES (reglas 7, 8 y 9 de PRODUCT.md, 15 y 18 de
+ * septiembre de 2026). KLINODA es una empresa del Grupo CJM Nexus, nunca
+ * «producto propio». Su cliente es la empresa: a ella se le habla de orden y
+ * tranquilidad, diciendo lo que el sistema hace, nunca que cumple una norma.
+ * El médico ocupacional es usuario y quien la recomienda: a él se le habla de
+ * una herramienta que le quita trabajo. Nunca «plataforma para médicos».
+ * TEXTOS POR APROBAR: todos los reescritos el 18-sep-2026 (ver
+ * .impeccable/CONSTRUCCION.md).
  *
  * Las cifras están comprobadas en el repositorio del producto el 5 de
  * septiembre de 2026: 2.382 pruebas automáticas, 13 actas de decisión, y los
@@ -30,19 +39,19 @@
  */
 export const klinoda = {
   meta: {
-    title: 'KLINODA · Plataforma de medicina ocupacional | CJM Nexus',
+    title: 'KLINODA · Salud ocupacional para empresas | CJM Nexus',
     description:
-      'KLINODA es el producto propio de CJM Nexus: una plataforma para médicos ocupacionales en Ecuador que resuelve la evaluación y su certificado en minutos, con la privacidad escrita en el modelo de datos.',
+      'KLINODA, empresa del Grupo CJM Nexus, ordena la salud ocupacional de las empresas en Ecuador: la empresa ve qué trabajadores están aptos y qué certificados vencen, y lo clínico nunca llega a ella.',
   },
 
   hero: {
-    eyebrow: 'Producto propio',
-    title: 'KLINODA: la evaluación médica ocupacional, resuelta en minutos.',
-    highlight: ['resuelta', 'en', 'minutos.'],
-    lead: 'Nuestra plataforma para médicos ocupacionales en Ecuador. El médico completa la evaluación por bloques, el certificado sale firmado electrónicamente y la empresa ve únicamente si la persona es apta. Nada más.',
+    eyebrow: 'Empresa del Grupo CJM Nexus',
+    title: 'La salud ocupacional de tu empresa, en orden y a la vista.',
+    highlight: ['orden', 'vista.'],
+    lead: 'KLINODA ordena la salud ocupacional de las empresas en Ecuador. La empresa ve qué trabajadores están aptos y qué certificados vencen. El médico ocupacional hace la evaluación por bloques y el certificado sale firmado electrónicamente. Lo clínico nunca llega a la empresa.',
     primary: 'Hablar de KLINODA · 20 min',
     secondary: 'Ver cómo funciona',
-    note: 'En piloto controlado · solo con datos ficticios',
+    note: 'Demo · en desarrollo · datos ficticios',
   },
 
   /* EL ESTADO VA ARRIBA, no escondido al final. Un producto en piloto que lo
@@ -50,13 +59,13 @@ export const klinoda = {
      producto con esa información enterrada, como alguien a quien pillaron. */
   status: {
     label: 'Dónde está hoy',
-    text: 'KLINODA funciona en piloto controlado y trabaja exclusivamente con datos ficticios. No atiende pacientes reales y no lo hará hasta que el especialista y el abogado den su visto bueno. Es una decisión, no una limitación técnica: el propio sistema se niega a arrancar si alguien intenta autorizar datos reales cambiando la configuración.',
+    text: 'KLINODA es una demo en desarrollo y trabaja exclusivamente con datos ficticios. No atiende a personas reales. Es una decisión, no una limitación técnica: el propio sistema se niega a arrancar si alguien intenta autorizar datos reales cambiando la configuración.',
   },
 
   problem: {
     eyebrow: 'El problema',
     title: 'Un trámite obligatorio, lleno de reglas y hecho a mano.',
-    text: 'La evaluación médica ocupacional tiene formulario oficial, secciones que dependen unas de otras y un certificado al final. En la mayoría de los consultorios se resuelve con documentos de Word, plantillas copiadas y un archivador. Funciona, hasta que hay veinte trabajadores el mismo día.',
+    text: 'Cada trabajador necesita su evaluación y su certificado de aptitud, con formulario oficial y un vencimiento. En muchas empresas eso vive entre correos, documentos de Word y el archivador del consultorio. Funciona, hasta que hay veinte trabajadores el mismo día o alguien pregunta qué certificados vencen este mes.',
     items: [
       {
         title: 'Se copia y se pega',
@@ -106,6 +115,29 @@ export const klinoda = {
         title: 'Ve la aptitud, y solo la aptitud',
         text: 'En su portal aparece el cargo, el tipo de evaluación y si la persona es apta. El diagnóstico, los antecedentes y los exámenes no están ahí: no es que estén ocultos, es que la consulta no los pide.',
         gives: 'La respuesta que la empresa necesita, sin la información que no le corresponde.',
+      },
+    ],
+  },
+
+  /* EL MENSAJE PARA EL MÉDICO OCUPACIONAL (regla 7). No es el cliente: usa
+     KLINODA y puede proponerla en las empresas donde trabaja. */
+  medico: {
+    eyebrow: 'Para el médico ocupacional',
+    title: 'Una herramienta que te quita trabajo, y que puedes recomendar.',
+    intro:
+      'KLINODA la contrata la empresa. Tú la usas para hacer tus evaluaciones, y puedes proponerla en las empresas donde las haces.',
+    items: [
+      {
+        title: 'Por bloques, sin copiar y pegar',
+        text: 'El formulario oficial dividido en secciones. Lo que ya está en el sistema no se vuelve a teclear.',
+      },
+      {
+        title: 'El certificado, sin procesador de textos',
+        text: 'Sale firmado electrónicamente, uno o una tanda entera, sin montar cada documento a mano.',
+      },
+      {
+        title: 'Lo clínico se queda contigo',
+        text: 'La empresa ve la aptitud y nada más. El resto no llega a su pantalla porque la consulta no lo pide.',
       },
     ],
   },
@@ -164,7 +196,7 @@ export const klinoda = {
       {
         display: '5,1 s',
         label: 'para emitir 50 certificados firmados',
-        note: 'Medido en el piloto, con datos ficticios',
+        note: 'Medido en la demo, con datos ficticios',
         gradient: 'bg-g-copper',
       },
       {
@@ -177,40 +209,39 @@ export const klinoda = {
   },
 
   fit: {
-    eyebrow: 'Para quién es',
-    title: 'A quién le sirve y a quién no.',
+    eyebrow: 'Para qué empresa es',
+    title: 'A qué empresa le sirve y a cuál no.',
     yes: {
       title: 'Tiene sentido si',
       items: [
-        'Eres médico ocupacional y hoy resuelves las evaluaciones con plantillas y documentos sueltos.',
-        'Atiendes empresas que mandan varios trabajadores el mismo día.',
-        'Necesitas entregar certificados firmados sin montar cada uno a mano.',
-        'Te preocupa que información clínica termine donde no debe.',
+        'Tus trabajadores necesitan evaluaciones de ingreso, periódicas o de salida, y hoy las sigues con correos y hojas de cálculo.',
+        'Quieres saber qué certificados vencen antes de que venzan.',
+        'Necesitas saber si cada persona está apta para su puesto sin recibir información clínica que no te corresponde.',
+        'Envías varios trabajadores a evaluar el mismo día.',
       ],
     },
     no: {
       title: 'No es lo tuyo si',
       items: [
-        'Buscas un sistema de historia clínica general: KLINODA hace medicina ocupacional y nada más.',
-        'Necesitas ponerlo a trabajar con pacientes reales de inmediato. Hoy está en piloto y con datos ficticios, y esa decisión no se salta por un cliente.',
+        'Buscas un sistema de historia clínica general: KLINODA hace salud ocupacional y nada más.',
+        'Necesitas ponerlo a trabajar con personas reales de inmediato. Hoy es una demo con datos ficticios, y esa decisión no se salta por un cliente.',
       ],
     },
   },
 
-  /* La franja que devuelve a la firma. Quien llega a esta página desde fuera
-     tiene que salir sabiendo de quién es el producto: es la mitad del motivo
-     por el que la página existe. */
+  /* La franja que devuelve a la firma: quien llega desde fuera tiene que
+     salir sabiendo quién construye la plataforma. */
   company: {
-    eyebrow: 'Quién lo construye',
+    eyebrow: 'Quién construye su plataforma',
     title: 'El mismo criterio, para tu empresa.',
-    text: 'KLINODA lo construye CJM Nexus. Las actas, las pruebas y la privacidad escrita en el modelo de datos no son un lujo que nos damos con nuestro producto: es la forma en que trabajamos también cuando el sistema es de un cliente.',
+    text: 'La plataforma de KLINODA la construye CJM Nexus, la firma del grupo que hace software a medida. Las actas, las pruebas y la privacidad escrita en el modelo de datos son la forma en que trabajamos también cuando el sistema es de un cliente.',
     cta: 'Ver soluciones digitales',
   },
 
   cta: {
     eyebrow: 'Siguiente paso',
-    title: 'Si trabajas en medicina ocupacional, queremos escucharte.',
-    text: 'Veinte minutos para enseñarte cómo funciona y para que nos digas qué le falta. El piloto se construye escuchando a quien hace este trabajo todos los días.',
+    title: 'Veinte minutos para ver KLINODA con los ojos de tu empresa.',
+    text: 'Te enseñamos cómo funciona, con datos ficticios, y nos cuentas cómo lleváis hoy la salud ocupacional. Si eres médico ocupacional, también queremos escucharte.',
     primary: 'Agendar una conversación',
     secondary: 'Escribir a CJM Nexus',
   },

@@ -9,7 +9,7 @@
  *
  * ORDEN DE LOS BLOQUES, y por qué es ese:
  *  1. Cabecera — qué es, en una frase.
- *  2. Estado — piloto y datos ficticios, dicho arriba y no al final.
+ *  2. Estado — demo en desarrollo con datos ficticios, dicho arriba.
  *  3. El problema — el trámite hecho a mano, con sus tres consecuencias.
  *  4. Cómo funciona — cuatro pasos, y el cuarto es la regla de privacidad.
  *  5. La regla, enseñada: el portal de empresa.
@@ -77,6 +77,7 @@ export default function KlinodaPage({ params }) {
           id="problema"
         />
         <Steps content={content.how} />
+        <FeatureGrid content={content.medico} columns={3} id="medico" />
         <Privacy content={content.privacy} />
         <Numbers content={content.built} />
         <Fit content={content.fit} />

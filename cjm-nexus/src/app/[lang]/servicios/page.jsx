@@ -12,7 +12,7 @@
  *  3. Por qué están en la misma firma — el argumento que hace que la
  *     combinación valga más que la suma, y sin el cual esto parecen dos
  *     empresas compartiendo un logotipo.
- *  4. KLINODA, una sola vez y etiquetado producto propio.
+ *  4. KLINODA, una sola vez: empresa del Grupo CJM Nexus, con su estado.
  *  5. Cierre — la reunión.
  */
 import FeatureGrid from '../../../blocks/pages/FeatureGrid';

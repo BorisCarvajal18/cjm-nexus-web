@@ -52,7 +52,7 @@ export const servicios = {
         title: 'Nada real hasta validar',
         text: 'Datos ficticios hasta que el especialista y el abogado den el visto bueno. Un producto serio no se prueba con personas reales.',
         evidence:
-          'KLINODA opera en piloto controlado y el sistema se niega a arrancar si alguien intenta autorizar datos reales por configuración.',
+          'KLINODA es una demo con datos ficticios y el sistema se niega a arrancar si alguien intenta autorizar datos reales por configuración.',
       },
     ],
   },
