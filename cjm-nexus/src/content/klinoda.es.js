@@ -48,7 +48,7 @@ export const klinoda = {
     eyebrow: 'Empresa del Grupo CJM Nexus',
     title: 'La salud ocupacional de tu empresa, en orden y a la vista.',
     highlight: ['orden', 'vista.'],
-    lead: 'KLINODA ordena la salud ocupacional de las empresas en Ecuador. La empresa ve qué trabajadores están aptos y qué certificados vencen. El médico ocupacional hace la evaluación por bloques y el certificado sale firmado electrónicamente. Lo clínico nunca llega a la empresa.',
+    lead: 'KLINODA ordena la salud ocupacional de tu empresa. Ves qué trabajadores están aptos y qué certificados vencen. El médico ocupacional hace la evaluación en la plataforma y el certificado sale firmado electrónicamente. Lo clínico nunca llega a tu pantalla.',
     primary: 'Hablar de KLINODA · 20 min',
     secondary: 'Ver cómo funciona',
     note: 'Demo · en desarrollo · datos ficticios',
@@ -184,7 +184,7 @@ export const klinoda = {
       {
         display: '2.300+',
         label: 'pruebas automáticas',
-        note: 'Se ejecutan en cada cambio, antes de que nada llegue a producción',
+        note: 'Se ejecutan en cada cambio, antes de darlo por bueno.',
       },
       {
         display: '13',
@@ -230,7 +230,7 @@ export const klinoda = {
   company: {
     eyebrow: 'Quién construye su plataforma',
     title: 'El mismo criterio, para tu empresa.',
-    text: 'La plataforma de KLINODA la construye CJM Nexus, la firma del grupo que hace software a medida. Las actas, las pruebas y la privacidad escrita en el modelo de datos son la forma en que trabajamos también cuando el sistema es de un cliente.',
+    text: 'La plataforma de KLINODA la construye el área digital de CJM Nexus. Las actas, las pruebas y la privacidad escrita en el modelo de datos son la forma en que trabajamos también cuando el sistema es de un cliente.',
     cta: 'Ver soluciones digitales',
   },
 

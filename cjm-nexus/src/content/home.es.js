@@ -18,7 +18,7 @@ export const home = {
   meta: {
     title: 'Dirección financiera y software especializado | CJM Nexus',
     description:
-      'CJM Nexus une la dirección financiera de Richard Carvajal, con quince años de trayectoria, y desarrollo de software especializado, para PYMEs y empresas medianas que quieren crecer con control.',
+      'CJM Nexus une la dirección financiera de Richard Carvajal, con quince años de trayectoria, y el desarrollo de software especializado, para PYMEs y empresas medianas que quieren crecer con control.',
   },
 
   /* La portada (DESIGN.md, M0). Textos de la maqueta aprobada, C-fusion.html.
@@ -30,7 +30,7 @@ export const home = {
     // a la firma y choca con la regla 2 de PRODUCT.md. Esta es la propuesta
     // del plan, que se los da a Richard Carvajal por su nombre.
     entrada:
-      'CJM Nexus une la dirección financiera de Richard Carvajal, con quince años de trayectoria, y desarrollo de software especializado, para empresas que quieren crecer con control.',
+      'CJM Nexus une la dirección financiera de Richard Carvajal, con quince años de trayectoria, y el desarrollo de software especializado. Para empresas que quieren crecer con control.',
     agendar: 'Agendar diagnóstico ejecutivo · 20 min',
     verQueHacemos: 'Ver qué hacemos',
     nota: 'Sin costo · sin compromiso · 20 minutos',
@@ -56,7 +56,7 @@ export const home = {
         hasta: 100,
         mas: '+',
         que: 'clientes asesorados',
-        quien: 'Por Richard Carvajal, en Latinoamérica y Estados Unidos.',
+        quien: 'Asesorados por Richard Carvajal en Latinoamérica, Estados Unidos y Europa.',
       },
       {
         valor: '3',
@@ -65,7 +65,7 @@ export const home = {
       },
     ],
     firma:
-      '**Richard Carvajal** dirige las finanzas, **Boris Carvajal** la tecnología y **Mirella Llanga** la gerencia general.',
+      '**Richard Carvajal** lidera la dirección financiera, **Boris Carvajal** la tecnología y **Mirella Llanga** la gerencia general.',
   },
 
   /* «Qué hacemos» (DESIGN.md, M4 y la escena de los tableros). Textos de la
@@ -194,7 +194,7 @@ export const home = {
     ],
     frases: [
       'KLINODA es una empresa del Grupo CJM Nexus. Su plataforma ordena la salud ocupacional de las empresas en Ecuador.',
-      'La empresa ve qué certificados vencen y quién está apto para su puesto, sin tener que perseguir un papel.',
+      'Ves qué certificados vencen y quién está apto para su puesto, sin perseguir un solo papel.',
       'Cada vista enseña solo lo que le corresponde: en la de la empresa, lo clínico no existe.',
     ],
     pregunta: '¿Quieres conocer más sobre KLINODA?',
@@ -215,7 +215,7 @@ export const home = {
     tres: [
       {
         titulo: 'Con quién hablas',
-        texto: 'Richard Carvajal en dirección financiera, Boris Carvajal en tecnología. No hay un comercial de por medio.',
+        texto: 'Richard Carvajal en dirección financiera, Boris Carvajal en tecnología: las mismas personas que después hacen el trabajo.',
       },
       {
         titulo: 'Qué pasa en la reunión',
@@ -223,7 +223,7 @@ export const home = {
       },
       {
         titulo: 'Qué te llevas',
-        texto: 'Qué conviene ordenar primero y en qué orden. Y si no somos la casa adecuada, te lo decimos en esa misma reunión.',
+        texto: 'Qué conviene ordenar primero y en qué orden. Y si no somos los indicados, te lo decimos en esa misma reunión.',
       },
     ],
     agendar: 'Agendar diagnóstico ejecutivo · 20 min',

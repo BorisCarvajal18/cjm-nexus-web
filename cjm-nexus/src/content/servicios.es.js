@@ -134,7 +134,7 @@ export const servicios = {
   product: {
     eyebrow: 'Empresa del Grupo CJM Nexus',
     title: 'KLINODA',
-    text: 'Su plataforma ordena la salud ocupacional de las empresas en Ecuador: un trámite obligatorio, lleno de reglas, formularios oficiales y datos sensibles, resuelto en minutos.',
+    text: 'Su plataforma ordena la salud ocupacional de las empresas en Ecuador: un trámite obligatorio, lleno de reglas, formularios oficiales y datos sensibles, ordenado en un solo lugar.',
     estado: 'Demo · en desarrollo · datos ficticios',
     cta: 'Conocer KLINODA',
   },
@@ -552,7 +552,7 @@ export const digital = {
   proof: {
     eyebrow: 'Lo que ya existe',
     title: 'No lo decimos: lo construimos.',
-    text: 'KLINODA, empresa del Grupo CJM Nexus, lleva la salud ocupacional de las empresas en Ecuador: un trámite obligatorio lleno de reglas, formularios oficiales y datos clínicos que la empresa no puede ver. Su plataforma la construimos nosotros. Y esta misma web, la que estás leyendo, la hicimos con el mismo criterio con el que haríamos la tuya.',
+    text: 'KLINODA es una empresa del Grupo CJM Nexus dedicada a la salud ocupacional en Ecuador: un trámite obligatorio lleno de reglas, formularios oficiales y datos clínicos que la empresa no puede ver. Su plataforma la construye nuestra área digital. Y esta misma web, la que estás leyendo, la hicimos con el mismo criterio con el que haríamos la tuya.',
     estado: 'Demo · en desarrollo · datos ficticios',
     facts: [
       { value: '2.300+', label: 'pruebas automáticas en KLINODA' },

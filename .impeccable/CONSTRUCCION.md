@@ -76,25 +76,39 @@ puede recomendar. Mientras Boris no lo decida, **no se toca** cómo la web nombr
 CJM Nexus y KLINODA («producto propio», «la prueba de lo que construimos»). Los números de línea
 son del 2026-09-17: compruébalos antes de editar.
 
-## Textos por aprobar
+## Textos aprobados · 2026-09-18
 
-Textos que están en el sitio pero que PLAN.md marca como propuestos, o que se escribieron al
-construir. Se usan igual; Boris los aprueba o los cambia leyendo esta lista.
+Boris revisó la lista de «Textos por aprobar» el 18 de septiembre de 2026. Once textos cambiaron
+(marcados «cambiado») y el resto quedó aprobado tal cual. Esta es la versión final, lista para
+traducir. Un texto nuevo que se escriba al construir vuelve a entrar como «por aprobar».
 
-| Pieza | Dónde (`cjm-nexus/src/content/`) | Texto | Por qué está aquí |
+| Pieza | Dónde (`cjm-nexus/src/content/`) | Texto final | Estado |
 |---|---|---|---|
-| 3 | `home.es.js` → `portada.entrada` y `meta.description` | «CJM Nexus une la dirección financiera de Richard Carvajal, con quince años de trayectoria, y desarrollo de software especializado…» | Propuesta de PLAN.md (ronda 5 §2). La maqueta atribuía los quince años a la firma, contra la regla 2 de PRODUCT.md |
-| 4 | `home.es.js` → `credenciales.cifras[].quien` | Las tres notas: «La trayectoria de Richard Carvajal, fundador de la firma.», «Por Richard Carvajal, en Latinoamérica y Estados Unidos.», «Español, inglés y alemán, con equipo en Ecuador y Alemania.» | Propuestas en PLAN.md (ronda 5 §2) |
-| 4 | `home.es.js` → `credenciales.firma` | «**Richard Carvajal** dirige las finanzas, **Boris Carvajal** la tecnología y **Mirella Llanga** la gerencia general.» | Propuesta en PLAN.md (ronda 5 §2) |
-| 7 | `home.es.js` → `klinoda.frases[0]` y `[1]` | «KLINODA es una empresa del Grupo CJM Nexus. Su plataforma ordena la salud ocupacional de las empresas en Ecuador.» · «La empresa ve qué certificados vencen y quién está apto para su puesto, sin tener que perseguir un papel.» | Reescritas: la maqueta decía «nuestro producto propio» y «para probar exactamente lo que decimos que sabemos hacer» (reglas 7, 8 y 9 de PRODUCT.md). La tercera frase, la pregunta y el botón son los de la maqueta |
-| 8 | `home.es.js` → `cierre.titular` y `cierre.tres` | «Veinte minutos con **quien va a hacer el trabajo**.» y los tres bloques «Con quién hablas», «Qué pasa en la reunión», «Qué te llevas» | Propuestos en PLAN.md (ronda 2 §7) |
-| 9 | `servicios.es.js` → `servicios.product` | Ceja «Empresa del Grupo CJM Nexus»; entrada «Su plataforma ordena la salud ocupacional de las empresas en Ecuador: un trámite obligatorio, lleno de reglas, formularios oficiales y datos sensibles, resuelto en minutos.»; estado «Demo · en desarrollo · datos ficticios» | Decía «Producto propio» y «la prueba pública de lo que construimos» (reglas 8 y 9) |
-| 9 | `servicios.es.js` → `digital.proof` | Ceja «Lo que ya existe»; entrada «KLINODA, empresa del Grupo CJM Nexus, lleva la salud ocupacional de las empresas en Ecuador… Su plataforma la construimos nosotros. Y esta misma web…»; estado | Decía «La prueba» y «KLINODA es nuestra plataforma» (reglas 8 y 9) |
-| 10 | `klinoda.es.js` → `meta` | Título «KLINODA · Salud ocupacional para empresas»; descripción «KLINODA, empresa del Grupo CJM Nexus, ordena la salud ocupacional de las empresas en Ecuador…» | Reglas 7, 8 y 9 |
-| 10 | `klinoda.es.js` → `hero` | Ceja «Empresa del Grupo CJM Nexus»; titular «La salud ocupacional de tu empresa, en orden y a la vista.»; entrada y nota «Demo · en desarrollo · datos ficticios» | A la empresa: orden y tranquilidad |
-| 10 | `klinoda.es.js` → `status.text` y `problem.text` | El estado sin la frase de las validaciones pendientes (regla 6: no listar lo que falta); el problema contado desde la empresa | |
-| 10 | `klinoda.es.js` → `medico` (**sección nueva**) | «Una herramienta que te quita trabajo, y que puedes recomendar.» con tres puntos | Al médico: usuario y canal (regla 7). Los tres puntos salen de lo que ya decía la página |
-| 10 | `klinoda.es.js` → `fit`, `company`, `cta` | «Para qué empresa es», «Quién construye su plataforma» y el cierre «Veinte minutos para ver KLINODA con los ojos de tu empresa.» | Decían «Eres médico ocupacional…», «nuestro producto» y «Si trabajas en medicina ocupacional…» |
+| 3 | `home.es.js` → `portada.entrada` | «CJM Nexus une la dirección financiera de Richard Carvajal, con quince años de trayectoria, y el desarrollo de software especializado. Para empresas que quieren crecer con control.» | Cambiado |
+| 3 | `home.es.js` → `meta.description` | «CJM Nexus une la dirección financiera de Richard Carvajal, con quince años de trayectoria, y el desarrollo de software especializado, para PYMEs y empresas medianas que quieren crecer con control.» | Cambiado (se añade «el») |
+| 4 | `home.es.js` → `credenciales.cifras[0].quien` | «La trayectoria de Richard Carvajal, fundador de la firma.» | Aprobado |
+| 4 | `home.es.js` → `credenciales.cifras[1].quien` | «Asesorados por Richard Carvajal en Latinoamérica, Estados Unidos y Europa.» | Cambiado |
+| 4 | `home.es.js` → `credenciales.cifras[2].quien` | «Español, inglés y alemán, con equipo en Ecuador y Alemania.» | Aprobado |
+| 4 | `home.es.js` → `credenciales.firma` | «**Richard Carvajal** lidera la dirección financiera, **Boris Carvajal** la tecnología y **Mirella Llanga** la gerencia general.» | Cambiado |
+| 7 | `home.es.js` → `klinoda.frases[0]` | «KLINODA es una empresa del Grupo CJM Nexus. Su plataforma ordena la salud ocupacional de las empresas en Ecuador.» | Aprobado |
+| 7 | `home.es.js` → `klinoda.frases[1]` | «Ves qué certificados vencen y quién está apto para su puesto, sin perseguir un solo papel.» | Cambiado |
+| 8 | `home.es.js` → `cierre.titular` | «Veinte minutos con **quien va a hacer el trabajo**.» | Aprobado |
+| 8 | `home.es.js` → `cierre.tres[0]` | «Con quién hablas» · «Richard Carvajal en dirección financiera, Boris Carvajal en tecnología: las mismas personas que después hacen el trabajo.» | Cambiado |
+| 8 | `home.es.js` → `cierre.tres[1]` | «Qué pasa en la reunión» · «Nos cuentas cómo decides hoy, con qué información y qué te falta. Preguntamos: no venimos a presentar.» | Aprobado |
+| 8 | `home.es.js` → `cierre.tres[2]` | «Qué te llevas» · «Qué conviene ordenar primero y en qué orden. Y si no somos los indicados, te lo decimos en esa misma reunión.» | Cambiado |
+| 9 | `servicios.es.js` → `servicios.product` | Ceja «Empresa del Grupo CJM Nexus» · «Su plataforma ordena la salud ocupacional de las empresas en Ecuador: un trámite obligatorio, lleno de reglas, formularios oficiales y datos sensibles, ordenado en un solo lugar.» · estado «Demo · en desarrollo · datos ficticios» | Cambiado (la entrada) |
+| 9 | `servicios.es.js` → `digital.proof` | Ceja «Lo que ya existe» · «KLINODA es una empresa del Grupo CJM Nexus dedicada a la salud ocupacional en Ecuador: un trámite obligatorio lleno de reglas, formularios oficiales y datos clínicos que la empresa no puede ver. Su plataforma la construye nuestra área digital. Y esta misma web, la que estás leyendo, la hicimos con el mismo criterio con el que haríamos la tuya.» · estado | Cambiado (la entrada) |
+| 10 | `klinoda.es.js` → `meta` | «KLINODA · Salud ocupacional para empresas \| CJM Nexus» · «KLINODA, empresa del Grupo CJM Nexus, ordena la salud ocupacional de las empresas en Ecuador: la empresa ve qué trabajadores están aptos y qué certificados vencen, y lo clínico nunca llega a ella.» | Aprobado |
+| 10 | `klinoda.es.js` → `hero` | Ceja «Empresa del Grupo CJM Nexus» · «La salud ocupacional de tu empresa, en orden y a la vista.» · «KLINODA ordena la salud ocupacional de tu empresa. Ves qué trabajadores están aptos y qué certificados vencen. El médico ocupacional hace la evaluación en la plataforma y el certificado sale firmado electrónicamente. Lo clínico nunca llega a tu pantalla.» · nota «Demo · en desarrollo · datos ficticios» | Cambiado (la entrada) |
+| 10 | `klinoda.es.js` → `status.text` y `problem.text` | El estado sin las validaciones pendientes; el problema contado desde la empresa (texto en el archivo) | Aprobado |
+| 10 | `klinoda.es.js` → `medico` | «Una herramienta que te quita trabajo, y que puedes recomendar.» con sus tres puntos | Aprobado |
+| 10 | `klinoda.es.js` → `built.items[0].note` | «Se ejecutan en cada cambio, antes de darlo por bueno.» | Cambiado |
+| 10 | `klinoda.es.js` → `fit` y `cta` | «Para qué empresa es» y «Veinte minutos para ver KLINODA con los ojos de tu empresa.» | Aprobado |
+| 10 | `klinoda.es.js` → `company.text` | «La plataforma de KLINODA la construye el área digital de CJM Nexus. Las actas, las pruebas y la privacidad escrita en el modelo de datos son la forma en que trabajamos también cuando el sistema es de un cliente.» | Cambiado |
+
+**Fuera de esta aprobación:** la microcopia que añadió Fable en `fable-pulido` (vistas, proyección,
+buscar, sello, pestañas, meses…) se revisa al juntar esa rama. Las preguntas frecuentes de dirección
+financiera siguen en «Revisar con clientes reales».
 
 ## Cómo se usa la base (pieza 1)
 
@@ -580,3 +594,21 @@ una vez, cuando el borde superior de la hoja llega al 80 %. Duración 1,5 s.
 - **Implementación prevista:** cada momento en un preset de `lib/animations.js` y cada sección con
   `useRegistro`, bajo `MUEVE`, con `alAsomar` para los de reloj. Los disparadores se revisan después
   de juntar `fable-pulido`, porque esa rama puede cambiar alturas y espaciados.
+
+### 2026-09-18 — textos aprobados
+
+- Boris aprobó la lista de «Textos por aprobar»: once cambios aplicados y el resto aprobado tal cual.
+  La tabla pasa a «Textos aprobados · 2026-09-18», con el texto final de cada fila.
+- **Los 100+ clientes de Richard: Latinoamérica, Estados Unidos y Europa** (Boris). Cambiado en
+  PRODUCT.md (Evidence on Hand) y en la nota de las credenciales. «Mercados reales hoy: Ecuador y
+  Estados Unidos» no cambia: habla de dónde opera la firma hoy, no de la trayectoria de Richard.
+  El comentario de `lib/seo.js` todavía dice «Latinoamérica y Estados Unidos»; es código, fuera de
+  esta ronda, y no cambia lo que declara la web.
+- **«Nosotros» (pieza 12), pendiente:** `nosotros.es.js` todavía no existe. Faltan las respuestas
+  sobre cada persona (preguntas 1, 2, 3, 5, 7, 9 y 10 de la ronda anterior). Cuando se escriba,
+  los 100+ clientes van con Latinoamérica, Estados Unidos y Europa.
+- `highlight` comprobado: ningún texto cambiado tiene palabras resaltadas. El titular de `/klinoda`
+  y sus `highlight` no cambian.
+
+**Verificación:** build sin errores. Capturas a 1536 × 730: `aprobados-credenciales.png`,
+`aprobados-cierre.png` y `aprobados-klinoda-entrada.png`.

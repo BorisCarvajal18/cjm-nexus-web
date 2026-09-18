@@ -84,7 +84,7 @@ Otras cosas sin resolver: no existe página «Nosotros» (el menú apunta a la b
 **Lo que sí se puede sostener**
 
 - Más de 15 años en dirección financiera (Richard Carvajal, fundador).
-- Más de 100 clientes asesorados (Latinoamérica y Estados Unidos). Es la trayectoria de Richard, no cartera activa de CJM Nexus como firma.
+- Más de 100 clientes asesorados (Latinoamérica, Estados Unidos y Europa; Europa confirmada por Boris el 18 de septiembre de 2026). Es la trayectoria de Richard, no cartera activa de CJM Nexus como firma.
 - KLINODA, comprobado en su repositorio el 5 de septiembre de 2026: 2.382 pruebas automáticas, 13 actas de decisión, y 50 certificados firmados en 5,1 segundos (acta 0012, medido con datos ficticios).
   **Autorizadas para las páginas públicas** por Boris el 18 de septiembre de 2026, tal como aparecen: «2.300+ pruebas automáticas», «13 actas de decisión» y «5,1 s para emitir 50 certificados firmados», siempre con su condición («con datos ficticios»). No cuentan como «cifras de avance interno» de las que no se publican.
 - El brochure corporativo: `cjm-nexus/public/Brochure CJM Nexus.pdf`.
