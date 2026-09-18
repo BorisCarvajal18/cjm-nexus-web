@@ -2,7 +2,7 @@
   "name": "cjm-nexus-web",
   "private": true,
   "version": "0.2.0",
-  "description": "Web corporativa one-page de CJM Nexus (Next.js, SSG trilingüe) — Connecting Finance. Technology. Global Growth.",
+  "description": "Web corporativa de CJM Nexus (Next.js, SSG trilingüe) — Connecting Finance. Technology. Global Growth.",
   "scripts": {
     "dev": "next dev",
     "build": "next build",

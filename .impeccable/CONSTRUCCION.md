@@ -22,8 +22,15 @@ Las capturas de verificación van a `.impeccable/construccion/`.
 las páginas interiores en el sistema del registro, los textos de KLINODA con las reglas 7, 8 y 9, y
 «Pulso Cobre» retirado. Nada publicado; `main` sin tocar.
 
+**Rama `fable-pulido` (2026-09-18), desde `rediseno-2026`: la pasada final de pulido.** Nueve commits
+separados por tema (css, cuadros, color, pulido, responsive, código, este informe y un último arreglo de cuadros), para quedarse con
+unos y descartar otros. El informe, con capturas de antes y después, está en
+`.impeccable/pulido/INFORME.md`. Nada publicado; `main` y `rediseno-2026` sin tocar.
+
 **Lo que espera a Boris:**
 
+0. Revisar `fable-pulido` con su informe y decidir qué commits se quedan. Lo nuevo por aprobar es la
+   microcopia de las interfaces de muestra (última fila de «Textos por aprobar»).
 1. Los textos de «Textos por aprobar» (abajo).
 2. ~~Tres decisiones tomadas por defecto~~ **Aprobadas por Boris el 2026-09-18:** el método en
    `/servicios#metodo` (pieza 8), el botón de menú bajo 1000 px (pieza 2) y el foco en
@@ -31,9 +38,8 @@ las páginas interiores en el sistema del registro, los textos de KLINODA con la
    momento de movimiento por página; el guion está abajo, en «Movimiento de las páginas
    interiores», y se programa después de juntar `fable-pulido`.
 3. Confirmar con el abogado la palabra «Grupo» (regla 8 de PRODUCT.md).
-4. **Después de juntar `fable-pulido`** (no antes: esa rama está cambiando DESIGN.md): poner al día
-   en DESIGN.md el color del foco, que dice «contorno cobre» y ahora es `cobre-honda`, en
-   «Buttons» (Hover / Focus) y en «Global». También añadir las páginas interiores.
+4. ~~Poner al día en DESIGN.md el color del foco~~ ✅ Hecho: al juntar `fable-pulido`, DESIGN.md ya dice
+   «cobre hondo» en el foco (Colors y Buttons).
 
 **Lo siguiente, fuera de estas piezas:** traducciones EN/DE (ahora que el español está casi cerrado),
 imágenes Open Graph con el titular nuevo, páginas legales, página «Nosotros», isotipo y logotipo de
@@ -106,9 +112,13 @@ traducir. Un texto nuevo que se escriba al construir vuelve a entrar como «por 
 | 10 | `klinoda.es.js` → `built.items[0].note` | «Se ejecutan en cada cambio, antes de darlo por bueno.» | Cambiado |
 | 10 | `klinoda.es.js` → `fit` y `cta` | «Para qué empresa es» y «Veinte minutos para ver KLINODA con los ojos de tu empresa.» | Aprobado |
 | 10 | `klinoda.es.js` → `company.text` | «La plataforma de KLINODA la construye el área digital de CJM Nexus. Las actas, las pruebas y la privacidad escrita en el modelo de datos son la forma en que trabajamos también cuando el sistema es de un cliente.» | Cambiado |
+| pulido | `home.es.js` → `hacemos.tablero` | Vistas «Mes», «Trimestre», «Año»; leyenda «Proyección»; globo «JUN · $1,24 M · 10 % sobre meta» | Aprobado con la pasada de Fable (Boris, 2026-09-18). Microcopia dentro de la interfaz de muestra: rótulos de producto, no texto de la firma |
+| pulido | `home.es.js` → `hacemos.portal` | «Buscar documento»; «Sello 9F3A · C21E»; el reparto «96 Firmado · 21 En revisión · 11 Borrador» (suma los 128) | Igual. El reparto usa las mismas palabras de la columna «Estado» |
+| pulido | `home.es.js` → `klinoda.pestanas` | «Plazos», «Certificados», «Personal» | Son los rótulos reales de las tres hojas de su portal de empresa (`portal_empresa/panel.html`). No se inventa ningún módulo (regla 4 de PRODUCT.md) |
+| pulido | `servicios.es.js` → `finanzas.deliverable.board.months` | Las iniciales de doce meses, de julio a junio | Para el eje del tablero completo |
 
-**Fuera de esta aprobación:** la microcopia que añadió Fable en `fable-pulido` (vistas, proyección,
-buscar, sello, pestañas, meses…) se revisa al juntar esa rama. Las preguntas frecuentes de dirección
+**La microcopia de Fable** (vistas, proyección, buscar, sello, pestañas, meses…) entró al juntar
+`fable-pulido` y queda aprobada con su pasada (filas «pulido» de la tabla). Las preguntas frecuentes de dirección
 financiera siguen en «Revisar con clientes reales».
 
 ## Textos por aprobar
@@ -130,11 +140,13 @@ Textos escritos después de la aprobación del 2026-09-18. Todo lo que no está 
 ## Cómo se usa la base (pieza 1)
 
 Una sola fuente: el bloque `REGISTRO` de `cjm-nexus/tailwind.config.js`. De ahí salen las clases
-y también las variables CSS.
+y también las variables CSS. El CSS escrito a mano vive en `cjm-nexus/src/app/estilos/`, una hoja
+por sección (base, portada, credenciales, que-hacemos, cuadros, klinoda, cierre y paginas), cargadas
+en ese orden desde el layout. `registro.css` ya no existe.
 
-- **Color:** `papel`, `papel-hondo`, `blanco`, `tinta`, `tinta-honda`, `tinta-suave`, `gris`,
-  `piedra`, `linea`, `linea-fina`, `cobre`, `cobre-honda`, `cobre-presion`, `cobre-claro` y
-  `klinoda-*` (solo dentro de su tablero).
+- **Color:** `papel`, `papel-hondo`, `papel-claro`, `blanco`, `tinta`, `tinta-honda`, `tinta-viva`,
+  `tinta-suave`, `gris`, `piedra`, `linea`, `linea-fina`, `cobre`, `cobre-honda`, `cobre-presion`,
+  `cobre-claro`, `cobre-tinte` y `klinoda-*` (solo dentro de su tablero; ahora con sus tintes).
   - Tema (cambia de noche): `bg-suelo`, `bg-suelo-alto`, `text-tx-1/2/3`, `text-tx-inverso`,
     `border-filete`, `border-filete-fuerte`. Son variables, así que no admiten `/opacidad`.
   - Las mismas en CSS: `var(--papel)`, `var(--tinta-honda)`, `var(--suelo)`…
@@ -147,11 +159,18 @@ y también las variables CSS.
 - **Espaciado:** clases `.marco` (1240 px con canales de 32 px, y 20 px bajo 620) y `.seccion`
   (88 px arriba y abajo, 64 bajo 1100 y 52 bajo 620). Tokens `h-cabecera`, `px-canal`,
   `sangria-escena`, `max-w-marco`… y la variable `--cabecera`.
-- **Sombras:** `shadow-hoja`, `shadow-hoja-noche`, `shadow-conversion`.
+- **Sombras:** `shadow-hoja`, `shadow-hoja-noche`, `shadow-conversion` y `shadow-conversion-alta`;
+  en CSS, `var(--sombra-hoja)`…
+- **Degradados** (The Tonal Gradient Rule): `bg-marino`, `bg-cierre`, `bg-conversion`,
+  `bg-conversion-presion` y `bg-cobre`; en CSS, `var(--degradado-marino)`…
 - **Curvas en CSS:** `ease-llegar` (= `--curva`), `ease-cruzar`, `ease-salir`.
 - **Movimiento en GSAP** (`cjm-nexus/src/lib/animations.js`, bloque «EL REGISTRO»): `CURVA`,
-  `SALIDA`, `DURACION`, `PANTALLAS`, `SCRUB`, `ESCENA`, `AJUSTE_AL_SOLTAR`, `UMBRAL_ESCENAS`,
-  `CONSULTA_ESCENAS` (para `gsap.matchMedia`), `ESCALA_ALTO` y `fijaEscenas()`.
+  `SCRUB`, `ESCENA`, `AJUSTE_AL_SOLTAR`, `UMBRAL_ESCENAS` y `ESCALA_ALTO`. Las duraciones, lo que
+  cuesta un gesto y una pausa, y el 60 % de las salidas están en DESIGN.md: las constantes que los
+  repetían (`SALIDA`, `DURACION`, `PANTALLAS`, `CONSULTA_ESCENAS`, `fijaEscenas()`) no las leía nadie
+  y se retiraron en `fable-pulido`.
+- **Interfaces de muestra:** `components/registro/Ventana.jsx` (barra, riel, indicador, estado),
+  `Icono.jsx` (el juego de iconos) y `lib/graficos.js` (la geometría de los gráficos).
 - **Global** (`globals.css`): el cuerpo en papel y tinta a 16 px / 1,55. El foco es un contorno
   cobre de 2 px separado 3 px. Con «reducir movimiento», transiciones instantáneas y ninguna
   animación CSS.
@@ -167,6 +186,12 @@ y también las variables CSS.
 - **Verificar con el panel del navegador oculto.** Con el panel oculto, el navegador pausa los
   fotogramas y las entradas de GSAP se quedan en su estado de partida: el texto sale atenuado en
   la captura. Hacer una captura pequeña, esperar 3 s y repetir: cada captura fuerza un fotograma.
+- **El primer `npm run build` en una carpeta recién clonada puede quedarse colgado** sin usar CPU
+  ni escribir nada (visto en el worktree de `fable-pulido`, con `node_modules` recién instalado dentro
+  de OneDrive). Se mata el proceso, se borra `cjm-nexus/.next` y el segundo intento compila.
+- **Capturas automáticas con Edge sin ventana** (puppeteer-core): el perfil del navegador tiene que ir
+  en una ruta corta; la de la carpeta temporal de la sesión pasa del límite de Windows y Edge se
+  cierra sin decir nada.
 - **Los 21 archivos del sitio anterior borrados hoy** reaparecieron sin commit, idénticos a lo que
   ya se había borrado. Lo más probable es que fuera OneDrive restaurándolos. Si vuelven, esa es la
   causa, y siguen en el historial de git.
@@ -713,3 +738,42 @@ día con Europa.
 - `nosotros.es.js` → Mirella: «Lidera la gerencia general de CJM Nexus: la operación de la firma y la
   coordinación entre sus dos líneas.» (Boris). Su `base` sigue en `null`, sin dato: su ficha no lleva
   lugar. Quedan abiertos sus huecos de trayectoria, formación, lugar y LinkedIn.
+
+### 2026-09-18 — rama `fable-pulido`: la pasada final de pulido
+
+Encargo de Boris: llevar al máximo los cuadros y el color, pulir todo lo mejorable, que funcione en
+seis tamaños y dejar el código más limpio, sin tocar textos ni las reglas de PRODUCT.md. Informe con
+capturas de antes y después: `.impeccable/pulido/INFORME.md`.
+
+**Commits, en su orden** (cada uno se puede quedar o descartar; el informe dice cuáles dependen de cuáles):
+
+1. `refactor(css)`: `registro.css` (2.822 líneas) partido en ocho hojas por sección. Solo mueve:
+   32 capturas idénticas píxel a píxel.
+2. `feat(cuadros)`: las interfaces de muestra pasan a ser ventanas de producto (tablero gerencial,
+   portal de documentos, tablero y vista de aptitud de KLINODA, tablero completo de finanzas). Juego de
+   iconos propio, piezas compartidas, gráficos calculados y consultas de contenedor.
+3. `feat(color)`: marino vivo, papel claro y tinte de cobre; sombras y degradados como tokens; la noche
+   con hondura (solo del 90 % en adelante: el tramo del 50 al 59 % no se toca); velo de la portada en
+   marino vivo; «Agendar» con la luz arriba. DESIGN.md: The Tonal Gradient Rule.
+4. `fix(cuadros)`: la fecha de una tarjeta de cargo de KLINODA se cortaba en filas.
+5. `style(pulido)`: el reinicio `.registro p/h/ul` le ganaba a las clases de una palabra y sus
+   márgenes no se aplicaban (referencia, título y cifras pegados en varias secciones); banda de
+   KLINODA sin cifras; «Agendar · 20 min» con hueco doble; preguntas frecuentes; estados.
+6. `fix(responsive)`: 390, 768, 1024, 1366, 1536 y 1920 sin desbordes ni solapes; arreglos de
+   teléfono y tableta.
+7. `refactor(codigo)`: duplicaciones de las dos escenas y de las zonas oscuras, restos sin uso,
+   `puntos` → `conMillares`, README y comentarios caducados. Escenas idénticas píxel a píxel.
+8. `docs(pulido)`: el informe y estos documentos.
+9. `fix(cuadros)`: la última pasada del detector marcó seis colores sueltos en `cuadros.css`; ahora
+   todo sale de un token. Excepciones acotadas y con motivo en `.impeccable/config.json` (la
+   microletra y el radio de 1 px de las ventanas; cinco tamaños de la cabecera, heredados de la
+   maqueta). Sigue en pie, sin tocar, `1.2rem` del menú del teléfono (pieza 2).
+
+**Verificación:** `npm run build` sin errores ni avisos (20 páginas estáticas; la portada pesa 2,4 kB
+más de JS). Las cinco páginas en los seis tamaños: sin desbordamiento horizontal, sin elementos fuera
+de la ventana y sin errores de consola. Con «reducir movimiento», todo quieto y entero. Recorrido con
+el tabulador en portada y página de servicio. Detector de Impeccable sobre los 28 archivos de
+interfaz cambiados: 0 hallazgos en las reglas generales; en las del sistema de diseño quedan los
+tamaños de letra heredados de `portada.css`, `klinoda.css` y `paginas.css`, que no son de esta
+pasada. Capturas en `.impeccable/pulido/capturas/`.
+

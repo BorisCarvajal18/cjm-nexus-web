@@ -17,10 +17,10 @@
  *  7. Preguntas — las objeciones que quedan en pie.
  *  8. Cierre — la reunión.
  *
- * PENDIENTE ANTES DE PUBLICAR: los bloques 3 y 7 están escritos a partir de
- * suposiciones y necesitan la revisión de Richard. Están marcados con
- * «SUPUESTO» en `src/content/servicios.es.js` y recogidos en
- * `docs/preguntas-richard.md`.
+ * Los plazos del bloque 3 los confirmó Richard el 18 de septiembre de 2026
+ * (`docs/preguntas-richard.md`). Las preguntas del bloque 7 siguen siendo
+ * las propuestas hasta que haya clientes con quienes contrastarlas
+ * (`.impeccable/CONSTRUCCION.md`, «Revisar con clientes reales»).
  */
 import BoardShowcase from '../../../../blocks/pages/BoardShowcase';
 import Faq from '../../../../blocks/pages/Faq';

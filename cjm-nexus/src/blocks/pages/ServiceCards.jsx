@@ -25,7 +25,7 @@ export default function ServiceCards({ content, muestras, lang }) {
         {content.cards.map((card, i) => {
           const Pieza = PIEZAS[i];
           return (
-            <article key={card.index}>
+            <article key={card.href}>
               <p className="ref-pag">{card.eyebrow}</p>
               <h2>{card.title}</h2>
               <p className="lead">{card.text}</p>

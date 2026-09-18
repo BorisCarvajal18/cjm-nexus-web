@@ -2,9 +2,10 @@
  * La flecha de los botones y del enlace con filete (DESIGN.md, Buttons).
  * `abajo` es la del enlace que lleva a una sección de la misma página.
  */
-export default function Flecha({ abajo = false, size = 15 }) {
+export default function Flecha({ abajo = false, size = 15, className }) {
   return (
     <svg
+      className={className}
       width={size}
       height={size}
       viewBox="0 0 15 15"

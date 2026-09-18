@@ -19,21 +19,24 @@ import DarkSurface from '../../components/ui/DarkSurface';
  */
 export default function ProductBand({ content, href = '#contacto' }) {
   const hechos = content.facts ?? [];
+  const boton = (
+    <a className="boton-contorno" href={href}>
+      <span>{content.cta}</span>
+      <Flecha />
+    </a>
+  );
   return (
-    <DarkSurface as="section" className="registro seccion oscura banda-producto">
+    <DarkSurface as="section" className={`registro seccion oscura banda-producto${hechos.length ? '' : ' sin-hechos'}`}>
       <div className="marco">
         <div>
           <p className="ref-pag">{content.eyebrow}</p>
           <h2>{content.title}</h2>
           <p className="texto">{content.text}</p>
           {content.estado ? <p className="k-etiqueta">{content.estado}</p> : null}
-          <div>
-            <a className="boton-contorno" href={href}>
-              <span>{content.cta}</span>
-              <Flecha />
-            </a>
-          </div>
+          {hechos.length ? <div className="accion">{boton}</div> : null}
         </div>
+        {/* A la derecha van las cifras. Si la banda no las trae, va el botón:
+            la mitad derecha no se queda vacía. */}
         {hechos.length ? (
           <ul className="hechos" style={{ '--n': hechos.length }}>
             {hechos.map((h) => (
@@ -43,7 +46,9 @@ export default function ProductBand({ content, href = '#contacto' }) {
               </li>
             ))}
           </ul>
-        ) : null}
+        ) : (
+          <div className="accion">{boton}</div>
+        )}
       </div>
     </DarkSurface>
   );

@@ -7,7 +7,7 @@
  */
 const nextConfig = {
   reactStrictMode: true,
-  // El proyecto no incluye configuración de ESLint; no bloquear el build por ello.
+  // El lint se pasa aparte (`npm run lint`); un aviso no debe tumbar un despliegue.
   eslint: { ignoreDuringBuilds: true },
 };
 

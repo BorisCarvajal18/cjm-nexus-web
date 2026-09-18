@@ -108,9 +108,18 @@ export const home = {
         href: '/servicios/soluciones-digitales',
       },
     ],
+    /* LOS DATOS CUADRAN ENTRE SÍ, como en un tablero de verdad: las tres líneas
+       suman $1,24 M, que es el indicador «Ventas» y el punto de junio del
+       gráfico; junio está un 12 % sobre mayo; y el trazo cruza la meta entre
+       abril y mayo. Quien sabe de finanzas mira justo eso.
+
+       MICROCOPIA NUEVA DE LA PASADA DE PULIDO (18-sep-2026), por aprobar:
+       `vistas`, `proyeccion` y `ventas.globo`. Son rótulos de la interfaz de
+       muestra, no texto de la firma. */
     tablero: {
       titulo: 'Tablero gerencial',
       periodo: 'Junio 2026',
+      vistas: ['Mes', 'Trimestre', 'Año'],
       kpis: [
         { nombre: 'Ventas', cambio: '▲ 12 %', valor: '$1,24 M', chispa: '0,12 9,11 18,12 27,8 36,7 45,4 55,2' },
         { nombre: 'Margen', cambio: '▲ 3 pt', valor: '34 %', chispa: '0,10 9,12 18,9 27,10 36,6 45,7 55,4' },
@@ -120,8 +129,19 @@ export const home = {
       grafico: 'Ventas contra meta',
       real: 'Real',
       meta: 'Meta',
+      proyeccion: 'Proyección',
       ejeY: ['1,4 M', '1,1 M', '0,8 M', '0,5 M'],
       ejeX: ['ENE', 'MAR', 'MAY', 'JUL', 'SEP'],
+      // En millones, de enero a septiembre. Lo real llega hasta junio, que es
+      // el periodo del tablero; de julio en adelante es proyección. La escala
+      // es la de `ejeY` y la meta va de enero a septiembre.
+      ventas: {
+        escala: [0.5, 1.4],
+        real: [0.82, 0.88, 0.85, 0.97, 1.11, 1.24],
+        proyeccion: [1.27, 1.31, 1.36],
+        meta: [1.0, 1.2],
+        globo: { mes: 'JUN', valor: '$1,24 M', nota: '10 % sobre meta' },
+      },
       tabla: ['Rentabilidad por línea', 'Ingresos', 'Margen'],
       lineas: [
         { nombre: 'Servicios', ingresos: '$612 K', barra: 1, margen: '38 %' },
@@ -130,9 +150,14 @@ export const home = {
       ],
       alerta: 'Cartera vencida por encima de 60 días',
     },
+    /* MICROCOPIA NUEVA DE LA PASADA DE PULIDO (18-sep-2026), por aprobar:
+       `buscar`, `sello` y los números de `reparto` (los 128 documentos por
+       estado, con las mismas palabras de la columna «Estado»). El tercer dato
+       de cada suceso es su icono, no texto. */
     portal: {
       titulo: 'Documentos y trazabilidad',
       rotulo: 'Portal de empresa',
+      buscar: 'Buscar documento',
       columnas: ['Documento', 'Estado'],
       documentos: [
         { nombre: 'Informe mensual de resultados', origen: 'Contabilidad · 12 jun', estado: 'Firmado', sel: true },
@@ -143,13 +168,20 @@ export const home = {
       ],
       cuantos: '5 de 128 documentos',
       periodo: 'Últimos 30 días',
+      // Los 128, por estado. Suman lo que dice `cuantos`.
+      reparto: [
+        { estado: 'Firmado', cuantos: 96 },
+        { estado: 'En revisión', cuantos: 21, tipo: 'rev' },
+        { estado: 'Borrador', cuantos: 11, tipo: 'bor' },
+      ],
       traza: 'Traza del documento',
+      sello: 'Sello 9F3A · C21E',
       sucesos: [
-        ['Crea el documento', '09:12 · Operación'],
-        ['Valida 12 reglas', '09:20 · Sistema'],
-        ['Adjunta el respaldo', '09:26 · Contabilidad'],
-        ['Firma electrónica', '09:34 · Dirección'],
-        ['Sella y entrega', '09:34 · Sistema'],
+        ['Crea el documento', '09:12 · Operación', 'documento'],
+        ['Valida 12 reglas', '09:20 · Sistema', 'regla'],
+        ['Adjunta el respaldo', '09:26 · Contabilidad', 'clip'],
+        ['Firma electrónica', '09:34 · Dirección', 'firma'],
+        ['Sella y entrega', '09:34 · Sistema', 'sello'],
       ],
       reglas: 'Reglas cumplidas',
       cumplidas: 12,
@@ -176,13 +208,22 @@ export const home = {
     etiqueta: 'Demo · en desarrollo · datos ficticios',
     logo: 'KLINODA',
     seccion: 'Panel de mi empresa',
+    /* MICROCOPIA NUEVA DE LA PASADA DE PULIDO (18-sep-2026), por aprobar: las
+       tres pestañas. Son los rótulos reales de las tres hojas de su portal
+       de empresa (portal_empresa/panel.html: «Plazos», «Certificados» y
+       «Personal»), sin inventar ningún módulo (regla 4 de PRODUCT.md). */
+    pestanas: ['Plazos', 'Certificados', 'Personal'],
     plazos: {
       rotulo: 'Vencen en 90 días o menos',
       total: 11,
+      // Las marcas del eje, en días. Solo cifras.
+      eje: [0, 30, 60, 90],
+      // `dias`: a cuántos días vence cada evaluación del tramo. Sitúa cada
+      // punto en la línea de 90 días; hay tantos como dice `cuantos`.
       tramos: [
-        { cuantos: 4, que: 'en 30 días o menos' },
-        { cuantos: 5, que: 'entre 31 y 60 días' },
-        { cuantos: 2, que: 'entre 61 y 90 días' },
+        { cuantos: 4, que: 'en 30 días o menos', dias: [6, 13, 21, 27] },
+        { cuantos: 5, que: 'entre 31 y 60 días', dias: [34, 40, 46, 52, 58] },
+        { cuantos: 2, que: 'entre 61 y 90 días', dias: [69, 84] },
       ],
     },
     vencidas: { cuantos: 3, rotulo: 'Vencidas' },

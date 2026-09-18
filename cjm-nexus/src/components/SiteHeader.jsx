@@ -20,7 +20,7 @@
  * tinta, que es lo que se lee sobre papel.
  *
  * EN LA PORTADA, la marca, el menú y los idiomas (`.sec`) entran con ella,
- * escalonados (registro.css). En las demás páginas `.sec` no hace nada.
+ * escalonados (estilos/portada.css). En las demás páginas `.sec` no hace nada.
  *
  * BAJO 1000 PX sale el menú, y BAJO 620 los idiomas y el « · 20 min» del
  * botón. Para no dejar el teléfono sin navegación, en su lugar aparece un
@@ -34,6 +34,7 @@ import { getSitio } from '../content';
 import { languages } from '../i18n/settings';
 import { alCambiarSuperficie } from '../lib/surface';
 import { navLinks } from '../lib/site';
+import Flecha from './registro/Flecha';
 
 /** La misma ruta en otro idioma: /es/klinoda → /de/klinoda. */
 function enIdioma(ruta, idioma) {
@@ -41,25 +42,6 @@ function enIdioma(ruta, idioma) {
   if (languages.includes(partes[1])) partes[1] = idioma;
   else partes.splice(1, 0, idioma);
   return partes.join('/').replace(/\/$/, '') || `/${idioma}`;
-}
-
-function Flecha() {
-  return (
-    <svg
-      width="13"
-      height="13"
-      viewBox="0 0 15 15"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="1.7"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      aria-hidden="true"
-      className="transition-transform duration-200 ease-llegar group-hover:translate-x-[3px]"
-    >
-      <path d="M2 7.5h10.5M8.5 3.5 12.5 7.5 8.5 11.5" />
-    </svg>
-  );
 }
 
 export default function SiteHeader({ lang = 'es', ctaHref }) {
@@ -167,11 +149,15 @@ export default function SiteHeader({ lang = 'es', ctaHref }) {
         <div className="flex items-center gap-3 max-[620px]:ml-auto">
           <a
             href={cta}
-            className="group inline-flex items-center gap-2 whitespace-nowrap rounded-md bg-cobre-honda px-[15px] py-[9px] font-display text-[.82rem] font-bold text-white no-underline transition-colors duration-200 ease-llegar hover:bg-cobre-presion active:bg-cobre-presion max-[620px]:px-3 max-[620px]:py-2 max-[620px]:text-[.76rem]"
+            className="group inline-flex items-center gap-2 whitespace-nowrap rounded-md bg-cobre-honda bg-conversion px-[15px] py-[9px] font-display text-[.82rem] font-bold text-white no-underline shadow-[inset_0_1px_0_rgba(255,255,255,.2)] transition-colors duration-200 ease-llegar hover:bg-cobre-presion hover:bg-none active:bg-cobre-presion active:bg-none max-[620px]:px-3 max-[620px]:py-2 max-[620px]:text-[.76rem]"
           >
-            {t.agendar}
-            <span className="max-[620px]:hidden">{t.agendarDetalle}</span>
-            <Flecha />
+            {/* Etiqueta y detalle en un solo bloque: el hueco del botón es
+                para la flecha, no para partir «Agendar · 20 min». */}
+            <span>
+              {t.agendar}
+              <span className="max-[620px]:hidden">{t.agendarDetalle}</span>
+            </span>
+            <Flecha size={13} className="transition-transform duration-200 ease-llegar group-hover:translate-x-[3px]" />
           </a>
 
           <button

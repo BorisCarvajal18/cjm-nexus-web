@@ -21,9 +21,13 @@
  * por aptitud.
  */
 import Flecha from '../../components/registro/Flecha';
+import Icono from '../../components/registro/Icono';
 import { armaKlinoda, CURVA, escenaKlinoda, UMBRAL_ESCENAS } from '../../lib/animations';
 import { gsap } from '../../lib/gsap';
 import { alAsomar, escalona, MUEVE, restauraCuenta, useRegistro } from '../../lib/registro';
+
+/** Lo que abarca la línea de plazos del tablero, en días. */
+const DIAS = 90;
 
 export default function PuertaKlinoda({ content, lang }) {
   const raiz = useRegistro((mm, puerta) => {
@@ -67,36 +71,64 @@ export default function PuertaKlinoda({ content, lang }) {
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img className="k-logo" src="/marca/klinoda.png" width="630" height="176" alt="" />
                   <span className="k-seccion">{k.seccion}</span>
+                  <span className="k-pestanas" aria-hidden="true">
+                    {k.pestanas.map((p, i) => (
+                      <span key={p} className={i === 0 ? 'es-actual' : undefined}>
+                        {p}
+                      </span>
+                    ))}
+                  </span>
                   <span className="k-chip" aria-hidden="true">
                     {k.etiqueta}
                   </span>
                 </header>
                 <div className="k-cuerpo">
                   <div className="k-carta k-plazos">
-                    <p className="k-rot">{k.plazos.rotulo}</p>
+                    <p className="k-rot">
+                      <span className="k-icono" aria-hidden="true">
+                        <Icono nombre="calendario" />
+                      </span>
+                      {k.plazos.rotulo}
+                    </p>
                     <p className="k-grande num">
                       <span className="cuenta" data-hasta={k.plazos.total}>
                         {k.plazos.total}
                       </span>
                     </p>
+                    {/* La línea de 90 días: tres tramos y un punto por
+                        vencimiento, cada uno en su día. */}
                     <div className="k-linea">
-                      {k.plazos.tramos.map((t) => (
-                        <div key={t.que} className="k-tramo">
-                          <div className="k-puntos" aria-hidden="true">
-                            {Array.from({ length: t.cuantos }, (_, i) => (
-                              <i key={i} />
-                            ))}
-                          </div>
-                          <span>
-                            <b className="num">{t.cuantos}</b>
-                            {t.que}
-                          </span>
+                      <div className="k-eje" aria-hidden="true">
+                        <div className="k-puntos">
+                          {k.plazos.tramos.flatMap((t, n) =>
+                            t.dias.map((dia) => <i key={dia} className={`t${n + 1}`} style={{ left: `${(dia / DIAS) * 100}%` }} />),
+                          )}
                         </div>
-                      ))}
+                        <div className="k-marcas num">
+                          {k.plazos.eje.map((m) => (
+                            <span key={m} style={{ left: `${(m / DIAS) * 100}%` }}>
+                              {m}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
+                      <div className="k-tramos">
+                        {k.plazos.tramos.map((t) => (
+                          <div key={t.que} className="k-tramo">
+                            <span>
+                              <b className="num">{t.cuantos}</b>
+                              {t.que}
+                            </span>
+                          </div>
+                        ))}
+                      </div>
                     </div>
                   </div>
                   <div className="k-minis">
                     <div className="k-carta k-mini aviso">
+                      <span className="k-icono" aria-hidden="true">
+                        <Icono nombre="vencida" />
+                      </span>
                       <p className="k-grande num">
                         <span className="cuenta" data-hasta={k.vencidas.cuantos}>
                           {k.vencidas.cuantos}
@@ -105,6 +137,9 @@ export default function PuertaKlinoda({ content, lang }) {
                       <p className="k-rot">{k.vencidas.rotulo}</p>
                     </div>
                     <div className="k-carta k-mini bien">
+                      <span className="k-icono" aria-hidden="true">
+                        <Icono nombre="certificado" />
+                      </span>
                       <p className="k-grande num">
                         <span className="cuenta" data-hasta={k.certificados.cuantos}>
                           {k.certificados.cuantos}
@@ -116,10 +151,18 @@ export default function PuertaKlinoda({ content, lang }) {
                   <div className="k-filas">
                     {k.cargos.map((c) => (
                       <div key={c.cargo} className="k-fila">
-                        <span className="k-cargo">{c.cargo}</span>
+                        <span className="k-cargo">
+                          <span className="k-icono" aria-hidden="true">
+                            <Icono nombre="maletin" />
+                          </span>
+                          {c.cargo}
+                        </span>
                         <span className="k-pie">
                           <span className={`k-apto${c.observacion ? ' obs' : ''}`}>{c.aptitud}</span>
-                          <span className="k-vence num">{c.vence}</span>
+                          <span className="k-vence num">
+                            <Icono nombre="calendario" />
+                            {c.vence}
+                          </span>
                         </span>
                       </div>
                     ))}

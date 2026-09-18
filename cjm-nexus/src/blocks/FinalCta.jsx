@@ -1,6 +1,6 @@
 /**
  * El cierre de las páginas interiores: la misma banda que el cierre de la
- * portada (`.cierre` en registro.css), con el texto de cada página.
+ * portada (`.cierre` en estilos/cierre.css), con el texto de cada página.
  *
  * «Agendar» es el único relleno cobre y abre Calendly; «Escribir» es el
  * botón de contorno. Debajo, los tres canales directos, porque hay gente que

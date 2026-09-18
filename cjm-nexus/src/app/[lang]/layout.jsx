@@ -13,13 +13,20 @@
 import { Inter, Plus_Jakarta_Sans } from 'next/font/google';
 
 import '../globals.css';
-import '../registro.css';
+import '../estilos/base.css';
+import '../estilos/portada.css';
+import '../estilos/credenciales.css';
+import '../estilos/que-hacemos.css';
+import '../estilos/cuadros.css';
+import '../estilos/klinoda.css';
+import '../estilos/cierre.css';
+import '../estilos/paginas.css';
 import { getHome } from '../../content';
 import { defaultLanguage, languages, localeMap } from '../../i18n/settings';
 import { organizationSchema } from '../../lib/seo';
 import { SITE_URL } from '../../lib/site';
 
-/* Fuentes del sistema «Pulso Cobre».
+/* Las dos familias del registro (DESIGN.md, Typography).
  *
  * PLUS JAKARTA SANS para titulares, INTER para texto. Elegida por el dueño el
  * 3 de septiembre de 2026 entre cuatro parejas comparadas sobre la misma
@@ -117,7 +124,7 @@ export default function LangLayout({ children, params }) {
       <head>
         {/* Antes del primer pintado, y solo en la portada: con movimiento
             permitido, la portada arranca en su estado de entrada (`.js-mov`
-            en registro.css). Sin JavaScript o con «reducir movimiento» no se
+            en estilos/portada.css). Sin JavaScript o con «reducir movimiento» no se
             añade nada y todo se ve quieto desde el principio. Seguro: si el
             guion de la portada no llegara a ejecutarse, a los 2,5 s se
             muestra igual. */}
