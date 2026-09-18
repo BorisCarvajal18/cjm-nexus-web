@@ -40,7 +40,7 @@ El segundo diferencial es **el método como garantía**, no como promesa: decisi
 
 - Dirección financiera externa: diagnóstico financiero ejecutivo, tablero gerencial mensual, flujo de caja proyectado a trece semanas, rentabilidad por línea de negocio, estructura de costos, reunión de dirección documentada.
 - Soluciones digitales: página web a medida publicada en menos de una semana (dominio, alojamiento y mantenimiento incluidos, registrados a nombre de la empresa del cliente); plataformas especializadas por sector; tableros conectados a los datos del cliente; automatización de reportes y documentos con firma electrónica; integraciones con facturación, contabilidad, inventario.
-- Empresa del Grupo CJM Nexus: **KLINODA**, plataforma de salud ocupacional en Ecuador (repositorio aparte, `C:\dev\plataforma-medicina-ocupacional`). KLINODA S.A.S., sociedad legalmente constituida del Grupo CJM Nexus, es la parte que firma los contratos. Su cliente es la empresa empleadora y el médico ocupacional es usuario y canal de venta (regla 7 de «Reglas de contenido que no se negocian», decidido el 15 de septiembre de 2026).
+- Empresa del Grupo CJM Nexus: **KLINODA**, plataforma de salud ocupacional en Ecuador (repositorio aparte, `C:\dev\plataforma-medicina-ocupacional`). KLINODA S.A.S., sociedad legalmente constituida del Grupo CJM Nexus, es la parte que firma los contratos. **Tendrá su propia web pública** (decidido por Boris el 19 de septiembre de 2026): en esta web, `/klinoda` es solo un aviso sin indexar que redirigirá allí, y KLINODA no está en el menú. Su cliente es la empresa empleadora y el médico ocupacional es usuario y canal de venta (regla 7 de «Reglas de contenido que no se negocian», decidido el 15 de septiembre de 2026).
 
 **Restricciones técnicas de esta web**
 
@@ -54,7 +54,7 @@ El segundo diferencial es **el método como garantía**, no como promesa: decisi
 
 Las preguntas a Richard sobre el servicio financiero quedaron resueltas el 18 de septiembre de 2026 (`cjm-nexus/docs/preguntas-richard.md`). Lo único que sigue abierto de esa lista son las preguntas frecuentes de dirección financiera: aún no hay clientes fijos, así que se quedan las propuestas y se revisan cuando los haya (`.impeccable/CONSTRUCCION.md`, «Revisar con clientes reales»).
 
-Otras cosas sin resolver: no existe página «Nosotros» (el menú apunta a la banda de la portada), no existen las páginas legales de Privacidad y Aviso legal (pendientes de la entidad legal de la firma), no hay página de empresa en LinkedIn (`SOCIAL_PROFILES` está vacío a propósito). Cómo nombra la web la relación entre CJM Nexus y KLINODA ya está decidido (regla 8, 18 de septiembre de 2026), salvo la confirmación del abogado sobre la palabra «Grupo». Quién es el cliente de KLINODA también (regla 7, 15 de septiembre de 2026).
+Otras cosas sin resolver: no existen las páginas legales de Privacidad y Aviso legal (pendientes de la entidad legal de la firma), no hay página de empresa en LinkedIn (`SOCIAL_PROFILES` está vacío a propósito). Cómo nombra la web la relación entre CJM Nexus y KLINODA ya está decidido (regla 8, 18 de septiembre de 2026), salvo la confirmación del abogado sobre la palabra «Grupo». Quién es el cliente de KLINODA también (regla 7, 15 de septiembre de 2026).
 
 ## Brand Commitments
 
@@ -63,7 +63,7 @@ Otras cosas sin resolver: no existe página «Nosotros» (el menú apunta a la b
 - Equipo nombrado en público: Richard Carvajal (fundador, dirección financiera, Ecuador), Mirella Llanga (gerente general), Boris Carvajal (cofundador, tecnología, Alemania).
 - **Voz:** frase corta, sujeto concreto, cero jerga de consultora. Se nombra la objeción antes que el beneficio. La letra pequeña va a la vista porque es lo que hace creíble la promesa («en una semana desde que tenemos tus textos»). El texto dice lo que el sistema hace, nunca que cumple una norma.
 - **Confidencial, no publicable sin autorización:** identidad de la médica aliada de KLINODA, participación familiar en el desarrollo, cifras de avance interno y cualquier fecha de lanzamiento.
-- **Reglas públicas de KLINODA** (acordadas con el dueño, ver cabecera de `cjm-nexus/src/content/klinoda.es.js`): ninguna pantalla con datos de paciente ni siquiera inventados; ninguna afirmación de validez legal o sanitaria; ninguna fecha de lanzamiento; ningún nombre de los profesionales que acompañan; nada de riesgos ni detalles de seguridad; y el estado se dice, y se dice primero.
+- **Reglas públicas de KLINODA** (acordadas con el dueño; la versión larga está en la cabecera de `cjm-nexus/src/content/klinoda.es.js` en el commit `f4bd24d`): ninguna pantalla con datos de paciente ni siquiera inventados; ninguna afirmación de validez legal o sanitaria; ninguna fecha de lanzamiento; ningún nombre de los profesionales que acompañan; nada de riesgos ni detalles de seguridad; y el estado se dice, y se dice primero.
 
 **Reglas de contenido que no se negocian.** Confirmadas por Boris al aprobar la portada, el 13 de septiembre de 2026. Valen para cualquier página, no solo la portada.
 
@@ -93,7 +93,7 @@ Otras cosas sin resolver: no existe página «Nosotros» (el menú apunta a la b
 **Ausencias que no se rellenan inventando**
 
 - **No hay ningún cliente de páginas web todavía.** Por eso no hay portafolio, ni número, ni testimonio en la página de soluciones digitales. Las dos únicas pruebas son KLINODA y esta web. La página ya tiene el sitio evidente donde ponerlos cuando lleguen.
-- No hay casos de estudio financieros publicables, ni logotipos de clientes, ni prensa, ni fotografías del equipo (las fotos esperan a la página «Nosotros»).
+- No hay casos de estudio financieros publicables, ni logotipos de clientes, ni prensa, ni fotografías del equipo (la página «Nosotros» existe sin fotos y las pinta en cuanto lleguen).
 - Los números de las interfaces de muestra (tablero gerencial, portal de empresa) ilustran cómo se ve un entregable, igual que la captura de pantalla de cualquier producto. **Nunca se presentan como resultados propios ni de un cliente.** Llevan al pie «Interfaz de muestra · datos ilustrativos».
 
 ## Product Principles

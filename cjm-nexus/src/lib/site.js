@@ -25,11 +25,14 @@ export const SOCIAL_PROFILES = [];
  * visitante de su idioma y daría un 404. Por eso el menú y el pie son
  * funciones que reciben el idioma y no constantes: es imposible olvidarse
  * del prefijo si no existe la forma de escribirlo sin él.
+ *
+ * KLINODA NO ESTÁ EN EL MENÚ NI EN EL PIE desde el 2026-09-19: tendrá su
+ * propia web, y /klinoda es solo un aviso. Se llega desde sus bandas.
+ * «Portafolio» entra cuando exista el primer ejemplo.
  */
 export function navLinks(lang = 'es') {
   return [
     { href: `/${lang}/servicios`, label: 'Servicios' },
-    { href: `/${lang}/klinoda`, label: 'KLINODA' },
     { href: `/${lang}/servicios#metodo`, label: 'Método' },
     { href: `/${lang}/nosotros`, label: 'Nosotros' },
     // Todas las paginas terminan con la misma seccion de cierre, con
@@ -75,7 +78,6 @@ export function footerColumns(lang = 'es') {
     {
       title: 'Empresa',
       links: [
-        { label: 'KLINODA', href: `/${lang}/klinoda` },
         { label: 'Método', href: `/${lang}/servicios#metodo` },
         { label: 'Nosotros', href: `/${lang}/nosotros` },
         { label: 'Contacto', href: `/${lang}#contacto` },

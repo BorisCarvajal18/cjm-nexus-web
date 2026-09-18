@@ -16,6 +16,19 @@ capturas a 1536 × 730 y 390 × 844, y con «reducir movimiento»), se hace comm
 Solo se para si algo necesita una decisión de Boris que no esté en DESIGN.md ni en PRODUCT.md.
 Las capturas de verificación van a `.impeccable/construccion/`.
 
+## Cambio de alcance · 2026-09-19
+
+Decidido por Boris el 19 de septiembre de 2026:
+
+- **KLINODA tendrá su propia web pública.** La página larga `/klinoda` de esta web se retira y queda
+  un aviso corto, sin indexar y fuera del sitemap. El día que exista su web se escribe su dirección
+  en `KLINODA_WEB` (`cjm-nexus/src/lib/destinos.mjs`) y `/klinoda` redirige allí. KLINODA sale del
+  menú y del pie. La escena de la portada y los botones que llevan a `/klinoda` (portada,
+  servicios, soluciones digitales, «Nosotros») se quedan igual. La página retirada sigue en git
+  (commit `f4bd24d`).
+- **Habrá un portafolio con tres portadas de ejemplo**, en un encargo aparte. «Portafolio» entra en
+  el menú cuando exista el primer ejemplo.
+
 ## Estado al 2026-09-18
 
 **Las once piezas están hechas.** La rama `rediseno-2026` tiene la portada de la maqueta aprobada,
@@ -105,7 +118,7 @@ traducir. Un texto nuevo que se escriba al construir vuelve a entrar como «por 
 | 8 | `home.es.js` → `cierre.tres[2]` | «Qué te llevas» · «Qué conviene ordenar primero y en qué orden. Y si no somos los indicados, te lo decimos en esa misma reunión.» | Cambiado |
 | 9 | `servicios.es.js` → `servicios.product` | Ceja «Empresa del Grupo CJM Nexus» · «Su plataforma ordena la salud ocupacional de las empresas en Ecuador: un trámite obligatorio, lleno de reglas, formularios oficiales y datos sensibles, ordenado en un solo lugar.» · estado «Demo · en desarrollo · datos ficticios» | Cambiado (la entrada) |
 | 9 | `servicios.es.js` → `digital.proof` | Ceja «Lo que ya existe» · «KLINODA es una empresa del Grupo CJM Nexus dedicada a la salud ocupacional en Ecuador: un trámite obligatorio lleno de reglas, formularios oficiales y datos clínicos que la empresa no puede ver. Su plataforma la construye nuestra área digital. Y esta misma web, la que estás leyendo, la hicimos con el mismo criterio con el que haríamos la tuya.» · estado | Cambiado (la entrada) |
-| 10 | `klinoda.es.js` → `meta` | «KLINODA · Salud ocupacional para empresas \| CJM Nexus» · «KLINODA, empresa del Grupo CJM Nexus, ordena la salud ocupacional de las empresas en Ecuador: la empresa ve qué trabajadores están aptos y qué certificados vencen, y lo clínico nunca llega a ella.» | Aprobado |
+| 10 | ~~`klinoda.es.js` → `meta`~~ **Retirado el 2026-09-19 con la página** (esta fila y las siguientes de la pieza 10 siguen en git, commit `f4bd24d`) | «KLINODA · Salud ocupacional para empresas \| CJM Nexus» · «KLINODA, empresa del Grupo CJM Nexus, ordena la salud ocupacional de las empresas en Ecuador: la empresa ve qué trabajadores están aptos y qué certificados vencen, y lo clínico nunca llega a ella.» | Aprobado |
 | 10 | `klinoda.es.js` → `hero` | Ceja «Empresa del Grupo CJM Nexus» · «La salud ocupacional de tu empresa, en orden y a la vista.» · «KLINODA ordena la salud ocupacional de tu empresa. Ves qué trabajadores están aptos y qué certificados vencen. El médico ocupacional hace la evaluación en la plataforma y el certificado sale firmado electrónicamente. Lo clínico nunca llega a tu pantalla.» · nota «Demo · en desarrollo · datos ficticios» | Cambiado (la entrada) |
 | 10 | `klinoda.es.js` → `status.text` y `problem.text` | El estado sin las validaciones pendientes; el problema contado desde la empresa (texto en el archivo) | Aprobado |
 | 10 | `klinoda.es.js` → `medico` | «Una herramienta que te quita trabajo, y que puedes recomendar.» con sus tres puntos | Aprobado |
@@ -120,6 +133,14 @@ traducir. Un texto nuevo que se escriba al construir vuelve a entrar como «por 
 **La microcopia de Fable** (vistas, proyección, buscar, sello, pestañas, meses…) entró al juntar
 `fable-pulido` y queda aprobada con su pasada (filas «pulido» de la tabla). Las preguntas frecuentes de dirección
 financiera siguen en «Revisar con clientes reales».
+
+**Aprobados el 2026-09-19 (el aviso de `/klinoda`, `klinoda.es.js` → `meta` y `aviso`):** título
+«KLINODA · Empresa del Grupo CJM Nexus | CJM Nexus»; descripción «KLINODA es una empresa del Grupo
+CJM Nexus. Su plataforma ordena la salud ocupacional de las empresas en Ecuador. Su web está en
+camino.»; ceja «Empresa del Grupo CJM Nexus»; titular «La web de KLINODA está en camino.» (en
+negrita «en camino»); entrada, la primera frase de KLINODA de la portada; «Mientras tanto, si tu
+empresa quiere saber más, escríbenos.»; la etiqueta de estado; «Escribir a CJM Nexus» (correo con el
+asunto «KLINODA») y «Volver al inicio».
 
 ## Textos por aprobar
 
@@ -199,7 +220,9 @@ en ese orden desde el layout. `registro.css` ya no existe.
 ## Pendientes fuera de estas piezas
 
 Isotipo vectorial de una tinta · material de vídeo propio · traducciones EN/DE · imágenes Open
-Graph con el titular nuevo · páginas legales · retratos y LinkedIn del equipo para «Nosotros».
+Graph con el titular nuevo · páginas legales · retratos y LinkedIn del equipo para «Nosotros» ·
+**portafolio con tres portadas de ejemplo** (encargo aparte) · **web propia de KLINODA** (cuando
+exista, su dirección en `KLINODA_WEB`).
 
 ## Revisar con clientes reales
 
@@ -608,26 +631,13 @@ pantalla y termina cuando llega al 40 %: unos 0,45 de pantalla.
 - **Con «reducir movimiento» o sin JavaScript:** los tres filetes en cobre enteros y los tres puntos
   visibles.
 
-### `/klinoda` — «Lo que no existe, no aparece»
+### ~~`/klinoda`~~ — retirado el 2026-09-19
 
-**Qué cuenta:** la regla de privacidad. La vista de la empresa se llena de cargo, evaluación y
-aptitud, y nada más. **Dónde:** la vista de aptitud de `Privacy` (`#privacidad`). **Reloj:** con reloj,
-una vez, cuando el borde superior de la hoja llega al 80 %. Duración 1,5 s.
+La página larga de KLINODA se retiró (cambio de alcance, arriba). Su momento, «Lo que no existe, no
+aparece», se cae con ella; el guion sigue en git (commit `f4bd24d`). El aviso que la sustituye no
+lleva movimiento.
 
-| Tiempo | Qué se mueve | Curva |
-|---|---|---|
-| 0,00–0,40 s | El filete bajo la cabecera de columnas («Cargo · Evaluación · Aptitud») se traza de izquierda a derecha | `power2.out` |
-| 0,15–0,75 s | Las tres filas aterrizan una a una: de −8 px a 0 y de opacidad 0 a 1, con 0,12 s entre cada fila. Cargo y evaluación llegan juntos | `CURVA.llegar` |
-| 0,55–1,05 s | Las etiquetas de aptitud («APTO», «APTO EN OBSERVACIÓN») se estampan en el orden de las filas: `scale` 0,92→1 y opacidad 0→1, con 0,12 s entre cada una | `power3.out` |
-| 1,10–1,50 s | Sobre el pie se traza un filete de cobre de 2 px y la frase «Diagnósticos, antecedentes y exámenes no existen en esta vista.» pasa de opacidad 0 a 1 | `power2.out` |
-
-- **Lo que no se hace, a propósito:** ningún hueco ni columna vacía se anima. Lo clínico no existe en
-  esta vista, así que no se enseña «apareciendo» ni «tapándose».
-- **Móvil:** el mismo guion; la columna de evaluación está oculta y sus tiempos se saltan sin dejar
-  hueco.
-- **Con «reducir movimiento» o sin JavaScript:** la tabla entera, con su filete y su pie.
-
-### Para las cuatro páginas
+### Para las tres páginas
 
 - **La llegada:** la cabecera de cada página (`PageHero`) se queda quieta a propósito. El salto
   desde la portada lo resuelve el primer momento de cada página. Si al probarlo sigue notándose, la
@@ -854,3 +864,34 @@ Capturas `p12-nosotros-*` (página entera, arriba y fichas) y `p12-metodo-*` (la
 ancla (`/es/servicios#metodo`, `/es/klinoda#privacidad`) la página se queda arriba. Con «reducir
 movimiento» llega bien. Sospecha: el `scroll-behavior: smooth` de `globals.css` en la carga. Afecta
 a «Método» del menú desde cualquier otra página.
+
+### 2026-09-19 — cambio de alcance: KLINODA, aviso corto
+
+- **`/klinoda`** (`app/[lang]/klinoda/page.jsx`): una cabecera de página que ocupa la pantalla, con
+  la ceja, el titular, la entrada, la segunda línea, la etiqueta de estado, «Escribir a CJM Nexus»
+  (botón de contorno, `mailto:` con el asunto «KLINODA») y «Volver al inicio» (enlace con filete).
+  Sin «Agendar» en la página: el relleno cobre sigue en la cabecera. `robots: noindex, follow`.
+  Estilos en `paginas.css`, bloque «el aviso de KLINODA».
+- **La redirección** vive en un solo sitio: `KLINODA_WEB` en `src/lib/destinos.mjs` (`.mjs` porque
+  la lee también `next.config.mjs`). Con `null`, ninguna redirección; con una dirección,
+  `/:lang(es|en|de)/klinoda` → esa dirección, temporal. Comprobado cargando la configuración con
+  un valor de prueba: sale la regla; con `null`, la lista vacía.
+- **Menú y pie** sin KLINODA (`lib/site.js`). `sitemap.js` sin `/klinoda`.
+- **Fuera del código activo** (siguen en git): el contenido largo de `klinoda.es.js` (reescrito solo
+  con `meta` y `aviso`), `blocks/pages/Privacy.jsx`, `StatusBanner.jsx`, `blocks/Numbers.jsx` y
+  `components/mockups/KlinodaCard.jsx`, que solo usaba esa página; y su CSS: la vista de aptitud de
+  `klinoda.css` (`.k-vista`, `.k-tabla`, `.k-th`, `.k-tr`, `.k-tipo`, `.k-nota`), y `.estado-pag` y
+  `.cifras-pag` de `paginas.css`. Comprobado antes: ninguna otra página usa `klinoda.es.js`, y la
+  escena de la portada no usa ninguna de esas clases (`k-tramo` no es `k-tr`). `Steps`, `Fit` y
+  `FeatureGrid` se quedan: los usan las páginas de servicio.
+- **Guion de movimiento:** el momento de `/klinoda` se cae; los de `/servicios`, dirección
+  financiera y soluciones digitales siguen igual.
+- **PRODUCT.md:** la web propia de KLINODA, y fuera las líneas caducadas de «Nosotros».
+- Los puntos 5 y 6 del encargo («Nosotros» y el método) ya estaban hechos en `f4bd24d`.
+
+**Verificación** (producción, Chrome sin ventana): build sin errores ni avisos. `/es/klinoda`,
+`/es/nosotros` y `/es/servicios` a 1536 × 730 y 390 × 844, con y sin «reducir movimiento»: sin
+desbordamiento, 0 ocultos, sin errores ni respuestas 4xx/5xx. `/es/klinoda` lleva `noindex, follow`;
+el correo sale `mailto:experiencia@cjmnexus.com?subject=KLINODA`. El menú es Servicios, Método,
+Nosotros y Contacto; el pie, igual en «Empresa». `/sitemap.xml` no tiene `/klinoda`. Capturas
+`alcance-*` (aviso, «Nosotros», método y menú; el del teléfono, con el panel abierto).

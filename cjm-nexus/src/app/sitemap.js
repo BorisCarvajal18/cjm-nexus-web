@@ -10,13 +10,13 @@ import { defaultLanguage, languages } from '../i18n/settings';
 
 /* Prioridad relativa dentro del sitio, no una nota de calidad: la portada
    primero, luego las páginas que tienen que cerrar reuniones, y el índice de
-   servicios detrás porque es sobre todo un punto de paso. */
+   servicios detrás porque es sobre todo un punto de paso. /klinoda no está:
+   es un aviso sin indexar hasta que KLINODA tenga su propia web. */
 const RUTAS = [
   { path: '', priority: 1 },
   { path: '/servicios', priority: 0.7 },
   { path: '/servicios/direccion-financiera', priority: 0.9 },
   { path: '/servicios/soluciones-digitales', priority: 0.9 },
-  { path: '/klinoda', priority: 0.8 },
   { path: '/nosotros', priority: 0.6 },
 ];
 

@@ -1055,7 +1055,7 @@
 
 /* ══ LAS HOJAS DE LAS PÁGINAS INTERIORES ═══════════════════════════════
    La misma ventana, sin alto fijo: el tablero gerencial completo de la
-   página de dirección financiera y la vista de aptitud de KLINODA. */
+   página de dirección financiera. */
 .pieza.libre {
   height: auto;
 }

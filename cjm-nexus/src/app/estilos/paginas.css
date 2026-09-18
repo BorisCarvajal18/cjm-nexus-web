@@ -1,6 +1,6 @@
 /* ══ PÁGINAS INTERIORES ═════════════════════════════════════════════════
-   Servicios, dirección financiera, soluciones digitales y KLINODA, con el
-   vocabulario de la portada: papel y marino, filetes de 1 px en lugar de
+   Servicios, dirección financiera, soluciones digitales, «Nosotros» y el
+   aviso de KLINODA, con el vocabulario de la portada: papel y marino, filetes de 1 px en lugar de
    cajas, referencias en versalitas, cifras tabulares y hojas blancas para
    las interfaces de muestra. Sin orbes, sin tarjetas de icono y sin
    numeración grande (DESIGN.md, Don'ts).
@@ -512,70 +512,6 @@
   max-width: none;
 }
 
-/* ── el estado, dicho arriba ────────────────────────────────────────── */
-.estado-pag .marco > div {
-  display: grid;
-  grid-template-columns: 220px minmax(0, 1fr);
-  gap: 10px 32px;
-  padding: 22px 0;
-  border-top: 2px solid var(--cobre);
-  border-bottom: 1px solid var(--filete);
-}
-.estado-pag h2 {
-  display: flex;
-  align-items: center;
-  gap: 9px;
-}
-.estado-pag h2::before {
-  content: '';
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: var(--cobre);
-  flex: none;
-}
-.estado-pag p {
-  max-width: 66ch;
-  color: var(--tx-2);
-}
-
-/* ── cifras de construcción (KLINODA) ───────────────────────────────── */
-.cifras-pag {
-  display: grid;
-  grid-template-columns: repeat(var(--n, 4), minmax(0, 1fr));
-  margin-top: 36px;
-}
-.cifras-pag li {
-  padding: 4px 28px 0;
-}
-.cifras-pag li:first-child {
-  padding-left: 0;
-}
-.cifras-pag li + li {
-  border-left: 1px solid var(--filete);
-}
-.cifras-pag b {
-  display: block;
-  font-family: var(--display);
-  font-size: clamp(2.6rem, 4.4vw, 4rem);
-  font-weight: 300;
-  line-height: 0.95;
-  letter-spacing: -0.04em;
-  color: var(--tx-1);
-}
-.cifras-pag .que {
-  margin-top: 16px;
-  font-family: var(--display);
-  font-weight: 700;
-  font-size: 1rem;
-  color: var(--tx-1);
-}
-.cifras-pag .quien {
-  margin-top: 4px;
-  font-size: 0.9rem;
-  color: var(--tx-2);
-}
-
 /* ── el método: cada regla con un ejemplo de cada línea ────────────── */
 /* La regla a la izquierda; a la derecha sus dos ejemplos al 50/50, en
    columnas del mismo ancho, con la misma letra y el mismo filete de cobre. */
@@ -755,6 +691,29 @@
   color: var(--tx-1);
 }
 
+/* ── el aviso de KLINODA ────────────────────────────────────────────── */
+/* Una cabecera de página que ocupa la pantalla: la página es solo esto, y el
+   pie no sube a media altura. */
+.aviso-klinoda {
+  min-height: 100svh;
+  display: flex;
+  align-items: center;
+  border-bottom: 0;
+}
+.aviso-klinoda .marco {
+  width: 100%;
+}
+.aviso-klinoda .segunda {
+  margin-top: 12px;
+}
+.aviso-klinoda .k-etiqueta {
+  margin-top: 28px;
+}
+/* En el teléfono el botón ocupa el ancho; el enlace, solo lo suyo. */
+.aviso-klinoda .enlace {
+  align-self: flex-start;
+}
+
 @media (max-width: 1100px) {
   .dos-lineas,
   .banda-producto .marco,
@@ -768,14 +727,6 @@
      a 960 px el gráfico se estiraba hasta quedarse sin alto. */
   .dos-lineas .caja-pieza {
     max-width: 640px;
-  }
-  .cifras-pag {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    row-gap: 32px;
-  }
-  .cifras-pag li:nth-child(odd) {
-    padding-left: 0;
-    border-left: 0;
   }
 }
 @media (max-width: 1000px) {
@@ -821,9 +772,6 @@
   .pasos.en-columnas {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
-  .estado-pag .marco > div {
-    grid-template-columns: 1fr;
-  }
 }
 @media (max-width: 760px) {
   .frases,
@@ -844,15 +792,8 @@
     border-top: 1px solid var(--filete);
     margin-top: 18px;
   }
-  .cifras-pag,
   .reglas-pag .ejemplos {
     grid-template-columns: 1fr;
-  }
-  .cifras-pag li,
-  .cifras-pag li + li {
-    padding: 20px 0 0;
-    border-left: 0;
-    border-top: 1px solid var(--filete);
   }
 }
 @media (max-width: 620px) {

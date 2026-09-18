@@ -1,89 +1,68 @@
 /**
- * KLINODA — /es/klinoda
+ * KLINODA — /es/klinoda: un aviso corto, no una página vacía.
  *
- * A QUIÉN LE HABLA (reglas 7, 8 y 9 de PRODUCT.md). El cliente de KLINODA es
- * la empresa empleadora: a ella va la página, con orden y tranquilidad. El
- * médico ocupacional es usuario y quien la recomienda, y tiene su sección
- * (`#medico`). Un tercer lector llega desde «soluciones digitales» a comprobar
- * si sabemos construir: le sirven la regla de privacidad y las cifras.
+ * CAMBIO DE ALCANCE (Boris, 2026-09-19): KLINODA tendrá su propia web y la
+ * página larga se retiró (sigue en git, commit f4bd24d). Aquí queda lo justo
+ * para quien llega desde las bandas de KLINODA: que su web está en camino,
+ * qué es, su estado, y escribirnos o volver.
  *
- * ORDEN DE LOS BLOQUES, y por qué es ese:
- *  1. Cabecera — qué es, en una frase.
- *  2. Estado — demo en desarrollo con datos ficticios, dicho arriba.
- *  3. El problema — el trámite hecho a mano, con sus tres consecuencias.
- *  4. Cómo funciona — cuatro pasos, y el cuarto es la regla de privacidad.
- *  4b. Al médico ocupacional — una herramienta que le quita trabajo.
- *  5. La regla, enseñada: el portal de empresa.
- *  6. Cómo está construido — las cifras comprobables.
- *  7. Para quién no es.
- *  8. Quién lo construye — la vuelta a la firma.
- *  9. Cierre.
- *
- * LAS SEIS REGLAS DE PUBLICACIÓN (ninguna pantalla con datos de paciente,
- * ninguna afirmación de validez legal o sanitaria, ninguna fecha, ningún
- * nombre de los profesionales que acompañan, ningún bloqueo ni detalle de
- * seguridad, y el estado dicho primero) están escritas en la cabecera de
- * `src/content/klinoda.es.js`. Antes de tocar un texto de esta página, leerlas.
+ * - NO SE INDEXA (`robots: noindex`) y no está en el sitemap.
+ * - EL DÍA QUE EXISTA SU WEB se escribe su dirección en `KLINODA_WEB`
+ *   (`src/lib/destinos.mjs`) y `next.config.mjs` redirige esta ruta allí.
+ * - Sin «Agendar» en la página: el relleno cobre sigue en la cabecera. Aquí
+ *   la acción es el botón de contorno (The Copper-Fill Rule).
+ * - Quieta, y el texto está en el HTML.
  */
-import FeatureGrid from '../../../blocks/pages/FeatureGrid';
-import Fit from '../../../blocks/pages/Fit';
-import PageHero from '../../../blocks/pages/PageHero';
-import Privacy from '../../../blocks/pages/Privacy';
-import ProductBand from '../../../blocks/pages/ProductBand';
-import StatusBanner from '../../../blocks/pages/StatusBanner';
-import Steps from '../../../blocks/pages/Steps';
-import FinalCta from '../../../blocks/FinalCta';
-import Numbers from '../../../blocks/Numbers';
+import Flecha from '../../../components/registro/Flecha';
+import Resaltado from '../../../components/registro/Resaltado';
 import SiteFooter from '../../../components/SiteFooter';
 import SiteHeader from '../../../components/SiteHeader';
 import { getKlinoda } from '../../../content';
 import { defaultLanguage, languages } from '../../../i18n/settings';
-import { pageMetadata, softwareSchema } from '../../../lib/seo';
+import { pageMetadata } from '../../../lib/seo';
+import { CONTACTS } from '../../../lib/site';
 
 const idioma = (lang) => (languages.includes(lang) ? lang : defaultLanguage);
 const RUTA = '/klinoda';
 
 export function generateMetadata({ params }) {
   const lang = idioma(params.lang);
-  return pageMetadata({ lang, path: RUTA, meta: getKlinoda(lang).meta });
+  return {
+    ...pageMetadata({ lang, path: RUTA, meta: getKlinoda(lang).meta }),
+    robots: { index: false, follow: true },
+  };
 }
 
 export default function KlinodaPage({ params }) {
   const lang = idioma(params.lang);
-  const content = getKlinoda(lang);
-
-  const datos = softwareSchema({
-    name: 'KLINODA',
-    description: content.meta.description,
-    url: `/${lang}${RUTA}`,
-  });
+  const a = getKlinoda(lang).aviso;
+  const correo = CONTACTS.find((c) => c.key === 'email').href;
 
   return (
     <>
       <SiteHeader lang={lang} />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(datos) }}
-      />
       <main>
-        <PageHero content={{ ...content.hero, secondaryHref: '#proceso' }} />
-        <StatusBanner content={content.status} />
-        {/* <FeatureGrid /> llama `intro` al párrafo de entrada; aquí se llama
-            `text`. Se traduce en la composición y no renombrando el contenido:
-            el archivo de textos se lee como prosa, no como un formulario que
-            hay que rellenar con las claves correctas. */}
-        <FeatureGrid
-          content={{ ...content.problem, intro: content.problem.text }}
-          columns={3}
-          id="problema"
-        />
-        <Steps content={content.how} />
-        <FeatureGrid content={content.medico} columns={3} id="medico" />
-        <Privacy content={content.privacy} />
-        <Numbers content={content.built} />
-        <Fit content={content.fit} />
-        <ProductBand content={content.company} href={`/${lang}/servicios/soluciones-digitales`} />
-        <FinalCta content={content.cta} />
+        <section className="registro pag-cabeza aviso-klinoda">
+          <div className="marco">
+            <p className="ref-pag">{a.eyebrow}</p>
+            <h1>
+              <Resaltado title={a.title} highlight={a.highlight} />
+            </h1>
+            <p className="entrada">{a.lead}</p>
+            <p className="entrada segunda">{a.segunda}</p>
+            <p className="k-etiqueta">{a.estado}</p>
+            <div className="acciones">
+              <a className="boton-contorno" href={`${correo}?subject=${encodeURIComponent(a.asunto)}`}>
+                <span>{a.escribir}</span>
+                <Flecha />
+              </a>
+              <a className="enlace adelante" href={`/${lang}`}>
+                <span>{a.volver}</span>
+                <Flecha />
+              </a>
+            </div>
+          </div>
+        </section>
       </main>
       <SiteFooter lang={lang} />
     </>
