@@ -87,61 +87,26 @@ async function isotipoClaro() {
 /*  KLINODA                                                            */
 /* ------------------------------------------------------------------ */
 
-/** Píxel casi blanco. */
-const esClaro = (d, i) => Math.min(d[i], d[i + 1], d[i + 2]) > 232;
-
 /**
- * Versión para FONDOS CLAROS.
- *
- * Vuelve transparente todo el blanco, incluido el documento que va dentro de
- * la «K». Sobre crema o blanco eso no se nota —el hueco muestra el fondo de la
- * página— y el recorte queda limpio.
- */
-async function klinodaOscuro() {
-  const { data, info } = await sharp(`${MARCA}/klinoda-origen.jpg`)
-    .trim({ threshold: 12 })
-    .ensureAlpha()
-    .raw()
-    .toBuffer({ resolveWithObject: true });
-
-  for (let i = 0; i < data.length; i += info.channels) {
-    const min = Math.min(data[i], data[i + 1], data[i + 2]);
-    if (min > 236) data[i + 3] = 0;
-    else if (min > 205) data[i + 3] = Math.round(((236 - min) / 31) * 255); // borde suave
-  }
-
-  const raw = { raw: { width: info.width, height: info.height, channels: info.channels } };
-  await sharp(data, raw).png({ compressionLevel: 9 }).toFile(`${MARCA}/klinoda.png`);
-  await sharp(data, raw).webp({ quality: 92 }).toFile(`${MARCA}/klinoda.webp`);
-}
-
-/**
- * Versión CLARA, para la placa marino de la escena y las bandas oscuras.
- *
- * Sale de `klinoda-origen.png`, el original del repositorio de KLINODA
- * (2087 × 753, negro y verde sobre blanco roto, bordes limpios), no del JPEG
- * de 708 px recortado a mano, que daba bordes dentados.
+ * KLINODA desde su original (`klinoda-origen.png`, 2087 × 753, del repositorio
+ * de KLINODA: negro y verde sobre blanco roto, bordes limpios).
  *
  * CÓMO: cada píxel se descompone en cuánto tiene de negro, de verde y de
  * fondo (mínimos cuadrados sobre las tres componentes). La transparencia es
- * negro + verde, así que el borde conserva su suavizado sin halo. El negro
- * pasa a blanco y el verde al turquesa de los nodos de la escena. Es un
- * negativo de una sola tinta: lo blanco de dentro de la «K» (la hoja, los
- * anillos, la línea) se vuelve transparente, como el fondo.
+ * negro + verde, así que el borde conserva su suavizado sin halo. Después el
+ * negro se pinta de `tinta` y el verde de `acento`. Lo blanco de dentro de la
+ * «K» (la hoja, los anillos, la línea) se vuelve transparente, como el fondo.
  *
- * SIN LA FRASE. «Cada persona. Una historia completa.» medía unos 6 px de
- * alto en el teléfono. Se borra de la imagen y la web la escribe como texto
- * (`home.es.js` → `klinoda.lema`).
- *
- * Sale a 1400 px de ancho: se muestra a 460 como mucho, así que aguanta
- * pantallas de densidad 3.
+ * SIN LA FRASE. «Cada persona. Una historia completa.» no se lee a los
+ * tamaños en que se usa: se borra de la imagen (todo lo que queda a la derecha
+ * del símbolo y por debajo de la palabra). Donde hace falta, la web la
+ * escribe como texto (`home.es.js` → `klinoda.lema`).
  */
-async function klinodaClaro() {
+async function klinodaDesdeOriginal({ tinta, acento, ancho, nombre }) {
   const FONDO = [249, 248, 245];
   const NEGRO = [12, 12, 12];
   const VERDE = [4, 238, 142];
-  const TURQUESA = [52, 136, 148];
-  const FRASE = { x: 560, y: 470 }; // a la derecha del símbolo y bajo la palabra
+  const FRASE = { x: 560, y: 470 };
 
   const { data, info } = await sharp(`${MARCA}/klinoda-origen.png`)
     .removeAlpha()
@@ -169,7 +134,7 @@ async function klinodaClaro() {
     if (alfa < 0.02) continue;
     const t = g / (k + g);
     const o = p * 4;
-    for (let c = 0; c < 3; c += 1) out[o + c] = Math.round(255 * (1 - t) + TURQUESA[c] * t);
+    for (let c = 0; c < 3; c += 1) out[o + c] = Math.round(tinta[c] * (1 - t) + acento[c] * t);
     out[o + 3] = Math.round(alfa * 255);
   }
 
@@ -177,9 +142,39 @@ async function klinodaClaro() {
     .trim({ threshold: 1 })
     .png()
     .toBuffer({ resolveWithObject: true });
-  const src = sharp(recortado).resize({ width: 1400 });
-  await src.clone().png({ compressionLevel: 9 }).toFile(`${MARCA}/klinoda-claro.png`);
-  await src.clone().webp({ quality: 92, alphaQuality: 100 }).toFile(`${MARCA}/klinoda-claro.webp`);
+  const src = sharp(recortado).resize({ width: ancho });
+  await src.clone().png({ compressionLevel: 9 }).toFile(`${MARCA}/${nombre}.png`);
+  await src.clone().webp({ quality: 92, alphaQuality: 100 }).toFile(`${MARCA}/${nombre}.webp`);
+}
+
+/**
+ * Versión para FONDOS CLAROS: la barra del tablero y la vista de aptitud.
+ *
+ * Con la marca de KLINODA, la de su plataforma: morado y turquesa, tomados
+ * exactos de `static/marca/klinoda-logo-app.png` de su repositorio. Se usa a
+ * unos 30–36 px de alto; sale a 800 px de ancho, de sobra para densidad 3.
+ */
+async function klinodaOscuro() {
+  await klinodaDesdeOriginal({
+    tinta: [62, 54, 118], // #3E3676
+    acento: [50, 133, 145], // #328591
+    ancho: 800,
+    nombre: 'klinoda',
+  });
+}
+
+/**
+ * Versión CLARA, para la placa marino de la escena y las bandas oscuras: un
+ * negativo de una tinta, en blanco, con los nodos en el turquesa de la
+ * escena. Se muestra a 460 px como mucho; sale a 1400, para densidad 3.
+ */
+async function klinodaClaro() {
+  await klinodaDesdeOriginal({
+    tinta: [255, 255, 255],
+    acento: [52, 136, 148],
+    ancho: 1400,
+    nombre: 'klinoda-claro',
+  });
 }
 
 /* ------------------------------------------------------------------ */

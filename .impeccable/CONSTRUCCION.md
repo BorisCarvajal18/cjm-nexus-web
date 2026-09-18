@@ -795,9 +795,22 @@ pasada. Capturas en `.impeccable/pulido/capturas/`.
 - **Capturas:** `logo-antes-1536x730.png`, `logo-antes-390x844.png`,
   `logo-despues-1536x730-0.2.png` (placa), `logo-despues-1536x730-0.9.png` (tablero, con el logo ya
   en la barra), `logo-despues-390x844.png` y `-quieto.png`.
-- **Sin tocar, a revisar:** `klinoda.png` (el de fondos claros: barra del tablero y vista de aptitud)
-  sigue saliendo del JPEG antiguo, en morado y turquesa, con el lema dentro a unos 3 px. No se ve mal a
-  su tamaño, pero sus colores no son los del original bueno (negro y verde). Qué versión de color es la
-  marca de KLINODA lo decide Boris.
+- ~~`klinoda.png` sigue saliendo del JPEG antiguo~~ Resuelto el mismo día: ver abajo.
 - **PROVISIONAL.** Sigue pendiente el **logo vectorial** de KLINODA (SVG), igual que el isotipo de
   CJM Nexus. Esta versión es un PNG rehecho desde un PNG: se sustituye en cuanto llegue el vectorial.
+
+### 2026-09-19 — `klinoda.png` desde el original, en morado y turquesa
+
+- **Decisión de Boris:** la marca de KLINODA es morado y turquesa, la de su plataforma.
+- `klinoda.png` · `.webp` (fondos claros: barra del tablero y vista de aptitud) sale ahora del mismo
+  original que la versión clara, con la función común `klinodaDesdeOriginal()` de `scripts/marca.mjs`:
+  el negro pasa a morado `#3E3676` y el verde a turquesa `#328591`, los dos tomados exactos de
+  `static/marca/klinoda-logo-app.png` del repositorio de KLINODA. 800 × 215, 38 KB (antes 104 KB).
+- **Sin la frase:** solo el símbolo y la palabra KLINODA. El lema ya sale como texto en la escena.
+- `klinoda-claro` se rehízo con la misma función y salió idéntico. `klinoda-origen.jpg` ya no se usa.
+- Proporciones de la imagen al día en `PuertaKlinoda.jsx` y `KlinodaCard.jsx` (800 × 215). El alto
+  en pantalla no cambia (1,9 em); al quitar la frase, la palabra ocupa el alto del símbolo.
+- **Capturas** (a densidad 2, con recorte del elemento): `logo-fondo-claro-antes-*` y
+  `logo-fondo-claro-despues-*`, de la barra (`barra-`) y de la vista de aptitud (`vista-`), a
+  1536 × 730 y 390 × 844. Sin errores.
+- Sigue pendiente el vectorial de KLINODA.

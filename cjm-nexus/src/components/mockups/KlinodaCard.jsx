@@ -16,7 +16,7 @@ export default function KlinodaCard({ data }) {
     <div className="k-tablero k-vista">
       <header className="k-barra">
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img className="k-logo" src="/marca/klinoda.png" width="630" height="176" alt="KLINODA" />
+        <img className="k-logo" src="/marca/klinoda.png" width="800" height="215" alt="KLINODA" />
         <span className="k-seccion">{data.title}</span>
         <span className="k-chip">{data.subject}</span>
       </header>

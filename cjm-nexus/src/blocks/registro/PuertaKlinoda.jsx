@@ -69,7 +69,7 @@ export default function PuertaKlinoda({ content, lang }) {
               <div className="k-tablero">
                 <header className="k-barra">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img className="k-logo" src="/marca/klinoda.png" width="630" height="176" alt="" />
+                  <img className="k-logo" src="/marca/klinoda.png" width="800" height="215" alt="" />
                   <span className="k-seccion">{k.seccion}</span>
                   <span className="k-pestanas" aria-hidden="true">
                     {k.pestanas.map((p, i) => (

@@ -31,20 +31,21 @@ mismo guion, desde `public/logo.png`.
 
 | Archivo | Qué es | Dónde se usa |
 |---|---|---|
-| `klinoda.png` · `.webp` | Versión de marca sobre fondos claros | Página del proyecto, tarjetas |
+| `klinoda.png` · `.webp` | Versión para fondos claros, en morado `#3E3676` y turquesa `#328591` (los de su plataforma), **sin el lema**, 800 px | Barra del tablero y vista de aptitud |
 | `klinoda-claro.png` · `.webp` | Versión clara, en blanco con los nodos turquesa, **sin el lema**, 1400 px | Placa de la escena y bandas oscuras |
-| `klinoda-origen.png` | Original del repositorio de KLINODA (2087 × 753, negro y verde) | Fuente de `klinoda-claro`; no se publica en ninguna página |
-| `klinoda-origen.jpg` | Original antiguo (708 × 257, morado y turquesa) | Fuente de `klinoda.png` |
+| `klinoda-origen.png` | Original del repositorio de KLINODA (2087 × 753, negro y verde) | Fuente de las dos versiones; no se publica en ninguna página |
+| `klinoda-origen.jpg` | Original antiguo (708 × 257) | Ya no se usa; se conserva como referencia |
 
-**Por qué hay dos versiones.** `klinoda.png`, para fondos claros, sale del JPEG
-antiguo: se vuelve transparente todo el blanco. `klinoda-claro.png` sale desde el
-2026-09-19 del original bueno del repositorio de KLINODA. Cada píxel se
-descompone en negro, verde y fondo, y la transparencia es la suma de las dos
-tintas: el borde conserva su suavizado sin dientes ni halo. El negro pasa a
-blanco y el verde al turquesa de los nodos. Es un negativo de una tinta, así que
-lo blanco de dentro de la «K» deja ver el fondo. **No lleva el lema** («Cada
-persona. Una historia completa.»): a su tamaño no se leía, y la web lo escribe
-como texto (`home.es.js` → `klinoda.lema`).
+**Cómo se hacen.** Las dos salen desde el 2026-09-19 del mismo original bueno,
+con `klinodaDesdeOriginal()` en `scripts/marca.mjs`. Cada píxel se descompone en
+negro, verde y fondo, y la transparencia es la suma de las dos tintas: el borde
+conserva su suavizado sin dientes ni halo. Después el negro se pinta de un color y
+el verde de otro. Para fondos claros, morado y turquesa, la marca de la plataforma
+de KLINODA, con los valores exactos de `static/marca/klinoda-logo-app.png` de su
+repositorio. Para fondos oscuros, blanco y el turquesa de la escena. Lo blanco de
+dentro de la «K» se vuelve transparente, como el fondo. **Ninguna lleva el lema**
+(«Cada persona. Una historia completa.»): a los tamaños en que se usan no se lee.
+Donde hace falta, la web lo escribe como texto (`home.es.js` → `klinoda.lema`).
 
 ## Pendiente
 
