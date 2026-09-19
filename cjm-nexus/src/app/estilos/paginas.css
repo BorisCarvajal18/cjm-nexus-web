@@ -955,8 +955,23 @@
     justify-content: flex-start;
     padding-top: 22px;
   }
+  /* Los pasos de las ofertas dejan las columnas: en dos columnas, el tercero
+     de tres quedaba huérfano y la línea de la semana se partía en dos. */
   .pasos.en-columnas {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    display: block;
+  }
+}
+/* En tableta, los pasos de las ofertas van en filas, como «Cómo trabajamos» de
+   dirección financiera: el «cuándo» a la izquierda. Bajo 760 px, apilados. */
+@media (min-width: 761px) and (max-width: 1000px) {
+  .pasos.en-columnas > li {
+    display: grid;
+    grid-template-columns: 150px minmax(0, 1fr);
+    gap: 8px 24px;
+    padding: 22px 0;
+  }
+  .pasos.en-columnas .cuando {
+    margin-bottom: 0;
   }
 }
 @media (max-width: 760px) {
