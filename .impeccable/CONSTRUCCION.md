@@ -1061,3 +1061,22 @@ Nosotros, Contacto. Capturas `portafolio-*` (página, página entera, menú y To
 - **Lo siguiente:** la traducción. Empieza por la propuesta 5: proponer a Boris los textos alemanes que
   cambian de sentido (titular, lema del pie, credenciales, «Dos líneas, una firma») antes de programar
   la portada alemana. Siguen esperando B1 (legales) y C8 (imágenes para compartir).
+
+### 2026-09-19 — el método pasa a «Nosotros» y sale del menú
+
+- **Decisión de Boris:** «Método» en el menú parecía una página y llevaba a una sección de
+  `/servicios`; y con dos reglas es poco para el menú principal. Fuera del menú y del pie, en los tres
+  idiomas: **Inicio, Servicios, Portafolio, Nosotros y Contacto**.
+- La sección (`blocks/Method.jsx`, sin cambios de texto ni de diseño) va ahora en `/nosotros`, después
+  de «Dos líneas, una firma» y en lugar del remite «Cómo trabajamos» con su enlace. El ancla es
+  `/nosotros#metodo`. Sus textos pasaron de `servicios.es.js` a `nosotros.es.js` → `metodo`. En
+  `/servicios` ya no está.
+- **Alemán:** `Method` recibe `lineas`; donde la dirección financiera no existe (`i18n/rutas.mjs`), se
+  pinta solo el ejemplo de software, a lo ancho. `Firma` ya no necesita saber del método.
+- **Aprobados por Boris:** el texto de la 404 y «Preguntas sobre la web y los sistemas.». Sigue por
+  confirmar el teléfono de inglés y alemán.
+
+**Verificación** (producción): build sin errores ni avisos. Ningún enlace a `/servicios#metodo` en el
+código ni en el HTML servido de las siete páginas; «Método» no aparece en el menú ni en el pie de
+`/es`, `/en` ni `/de`. `/es/nosotros#metodo` llega a 88 px. En `/de/nosotros`, un ejemplo por regla.
+Capturas `hecho-metodo-*` en `.impeccable/revision/`.

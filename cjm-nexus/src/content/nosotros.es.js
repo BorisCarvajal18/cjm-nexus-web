@@ -127,12 +127,46 @@ export const nosotros = {
     ],
   },
 
-  /* Un solo enlace a cómo trabajamos, que vive en /servicios#metodo. */
+  /* El método: cómo trabaja la firma. Vive aquí, con id="metodo", desde el
+     2026-09-19 (antes estaba en /servicios y en el menú; Boris: «parece una
+     página y no lleva a ninguna parte»). Textos aprobados, sin cambios. En
+     alemán se pinta solo el ejemplo de software (PRODUCT.md, regla 1). */
   metodo: {
-    etiqueta: 'Cómo trabajamos',
-    texto: 'Las reglas que aplicamos en las dos líneas, con un ejemplo real de cada una.',
-    enlace: 'Ver cómo trabajamos',
-    href: '/servicios#metodo',
+    eyebrow: 'Cómo trabajamos',
+    title: 'El método es la garantía.',
+    intro: 'Las reglas que aplicamos en las dos líneas, con un ejemplo real de cada una.',
+    // Las referencias de los dos ejemplos de cada regla.
+    etiquetas: { finanzas: 'Dirección financiera', software: 'Soluciones digitales' },
+    /* EL 50/50 TAMBIÉN AQUÍ (regla 1 de PRODUCT.md): cada regla lleva un
+       ejemplo de dirección financiera y uno de software, y solo entra una
+       regla si las dos líneas tienen evidencia real. Aprobado por Boris el
+       18-sep-2026. Fuera, a propósito:
+       · «Probamos lo que construimos»: sin práctica financiera real que la
+         respalde. Vuelve si Richard la da (pregunta en CONSTRUCCION.md).
+       · «Nada real hasta validar»: solo es de KLINODA, y listaba lo que falta
+         (regla 6). El estado de KLINODA ya se dice en su página.
+       `ejemplos` sustituye al antiguo `evidence`: `Method` pinta los dos,
+       lado a lado y con la misma letra. */
+    items: [
+      {
+        title: 'Decidimos por escrito',
+        text: 'Lo que se decide queda escrito en un acta. Nada se acuerda de palabra.',
+        ejemplos: {
+          finanzas: 'Cada reunión de dirección, una al mes, termina con su acta.',
+          software:
+            'Trece actas de decisión en KLINODA, cada una con su motivo y sus alternativas, desde la elección del stack hasta la firma electrónica.',
+        },
+      },
+      {
+        title: 'Privacidad por diseño',
+        text: 'Vemos solo lo que el trabajo necesita, y lo que alguien no debe ver no le llega.',
+        ejemplos: {
+          finanzas: 'No pedimos acceso a tus cuentas bancarias ni movemos dinero: trabajamos con los reportes que ya tienes.',
+          software:
+            'El portal de empresa de KLINODA solo consume una lista cerrada de campos, y una prueba falla si se cuela un dato clínico.',
+        },
+      },
+    ],
   },
 
   /* El cierre (mismas claves que el de las otras páginas interiores). */

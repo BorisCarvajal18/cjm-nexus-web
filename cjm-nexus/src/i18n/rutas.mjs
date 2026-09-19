@@ -42,7 +42,7 @@ export function idiomasDe(path) {
 /**
  * La dirección de `path` en `lang`, con su idioma delante. Si la página no
  * existe en ese idioma, la que va en su lugar (y el ancla se pierde: era de
- * la otra página). Acepta ancla: '/servicios#metodo'.
+ * la otra página). Acepta ancla: '/nosotros#metodo'.
  */
 export function destinoEn(lang, pathConAncla) {
   const [path, ancla] = pathConAncla.split('#');

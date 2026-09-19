@@ -9,7 +9,8 @@
  *  1. Cabecera — qué es la firma y que aquí están sus tres personas.
  *  2. El equipo — tres fichas iguales, en el orden de la firma de la portada.
  *  3. La firma — dos líneas, Ecuador y Alemania, y KLINODA como puerta. Con
- *     el remite a cómo trabajamos (/servicios#metodo).
+ *  3b. El método (#metodo): las reglas de trabajo, con un ejemplo de cada
+ *     línea; en alemán, solo el de software.
  *  4. Cierre.
  *
  * SIN FOTOS, Y COMPLETA IGUAL: lo que no tiene dato (retrato, LinkedIn,
@@ -22,9 +23,11 @@ import Firma from '../../../blocks/pages/Firma';
 import PageHero from '../../../blocks/pages/PageHero';
 import Personas from '../../../blocks/pages/Personas';
 import FinalCta from '../../../blocks/FinalCta';
+import Method from '../../../blocks/Method';
 import SiteFooter from '../../../components/SiteFooter';
 import SiteHeader from '../../../components/SiteHeader';
 import { getNosotros } from '../../../content';
+import { existe } from '../../../i18n/rutas.mjs';
 import { defaultLanguage, languages } from '../../../i18n/settings';
 import { pageMetadata } from '../../../lib/seo';
 
@@ -46,7 +49,8 @@ export default function NosotrosPage({ params }) {
       <main>
         <PageHero content={content.hero} />
         <Personas content={content.personas} />
-        <Firma content={content.firma} metodo={content.metodo} lang={lang} />
+        <Firma content={content.firma} lang={lang} />
+        <Method content={content.metodo} lineas={existe(lang, '/servicios/direccion-financiera') ? undefined : ['software']} />
         <FinalCta content={content.cta} lang={lang} />
       </main>
       <SiteFooter lang={lang} />

@@ -11,12 +11,15 @@
  * su referencia (`etiquetas`); ninguno va encima del otro. Bajo 760 px se
  * apilan en el orden de siempre: Servicio 01 y Servicio 02.
  *
+ * `lineas`: en alemán la dirección financiera no se ofrece, y el método va
+ * solo con el ejemplo de software (lo decide la página con `i18n/rutas.mjs`).
+ *
  * En filas con filetes: la regla a la izquierda, sus dos ejemplos a la
  * derecha. Quieta; el texto está entero en el HTML.
  */
 const LINEAS = ['finanzas', 'software'];
 
-export default function Method({ content }) {
+export default function Method({ content, lineas = LINEAS }) {
   return (
     <section id="metodo" className="registro seccion">
       <div className="marco">
@@ -32,8 +35,8 @@ export default function Method({ content }) {
                 <h3>{regla.title}</h3>
                 <p>{regla.text}</p>
               </div>
-              <ul className="ejemplos">
-                {LINEAS.map((linea) => (
+              <ul className={`ejemplos${lineas.length === 1 ? ' uno' : ''}`}>
+                {lineas.map((linea) => (
                   <li key={linea} className="ejemplo">
                     <p className="ref-pag">{content.etiquetas[linea]}</p>
                     <p>{regla.ejemplos[linea]}</p>

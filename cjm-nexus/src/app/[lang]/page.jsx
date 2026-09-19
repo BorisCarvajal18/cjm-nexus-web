@@ -18,7 +18,7 @@
  * KLINODA. Va la última porque ordena y recalcula los ScrollTrigger.
  *
  * El método, el equipo, la cinta de hechos y las cifras antiguas salieron de
- * la portada con la maqueta. El método vive ahora en /servicios (#metodo).
+ * la portada con la maqueta. El método vive en /nosotros (#metodo).
  *
  * Este archivo solo COMPONE. Los textos viven en `src/content/` y la
  * maquetación en `src/blocks/registro/`.

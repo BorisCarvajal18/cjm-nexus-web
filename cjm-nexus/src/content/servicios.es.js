@@ -20,45 +20,6 @@
    ÍNDICE DE SERVICIOS  ·  /es/servicios
    ───────────────────────────────────────────────────────────────────── */
 export const servicios = {
-  /* El método, en esta página con id="metodo" (el menú lleva aquí). */
-  metodo: {
-    eyebrow: 'Cómo trabajamos',
-    title: 'El método es la garantía.',
-    intro: 'Las reglas que aplicamos en las dos líneas, con un ejemplo real de cada una.',
-    // Las referencias de los dos ejemplos de cada regla.
-    etiquetas: { finanzas: 'Dirección financiera', software: 'Soluciones digitales' },
-    /* EL 50/50 TAMBIÉN AQUÍ (regla 1 de PRODUCT.md): cada regla lleva un
-       ejemplo de dirección financiera y uno de software, y solo entra una
-       regla si las dos líneas tienen evidencia real. Aprobado por Boris el
-       18-sep-2026. Fuera, a propósito:
-       · «Probamos lo que construimos»: sin práctica financiera real que la
-         respalde. Vuelve si Richard la da (pregunta en CONSTRUCCION.md).
-       · «Nada real hasta validar»: solo es de KLINODA, y listaba lo que falta
-         (regla 6). El estado de KLINODA ya se dice en su página.
-       `ejemplos` sustituye al antiguo `evidence`: `Method` pinta los dos,
-       lado a lado y con la misma letra. */
-    items: [
-      {
-        title: 'Decidimos por escrito',
-        text: 'Lo que se decide queda escrito en un acta. Nada se acuerda de palabra.',
-        ejemplos: {
-          finanzas: 'Cada reunión de dirección, una al mes, termina con su acta.',
-          software:
-            'Trece actas de decisión en KLINODA, cada una con su motivo y sus alternativas, desde la elección del stack hasta la firma electrónica.',
-        },
-      },
-      {
-        title: 'Privacidad por diseño',
-        text: 'Vemos solo lo que el trabajo necesita, y lo que alguien no debe ver no le llega.',
-        ejemplos: {
-          finanzas: 'No pedimos acceso a tus cuentas bancarias ni movemos dinero: trabajamos con los reportes que ya tienes.',
-          software:
-            'El portal de empresa de KLINODA solo consume una lista cerrada de campos, y una prueba falla si se cuela un dato clínico.',
-        },
-      },
-    ],
-  },
-
   meta: {
     title: 'Servicios: dirección financiera y software a medida | CJM Nexus',
     description:

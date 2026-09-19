@@ -64,7 +64,7 @@ export function registerGsap() {
     if (!document.hidden) ScrollTrigger.refresh();
   });
 
-  /* EL ANCLA DE LA URL (/es/servicios#metodo desde otra página).
+  /* EL ANCLA DE LA URL (/es/nosotros#metodo desde otra página).
    *
    * El desplazamiento suave ya no actúa al cargar (`.suave` en globals.css),
    * pero esto queda de seguro. Con `scroll-behavior: smooth` el navegador

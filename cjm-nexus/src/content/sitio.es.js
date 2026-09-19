@@ -22,7 +22,6 @@ export const sitio = {
     inicio: 'Inicio',
     servicios: 'Servicios',
     portafolio: 'Portafolio',
-    metodo: 'Método',
     nosotros: 'Nosotros',
     contacto: 'Contacto',
   },
@@ -34,7 +33,7 @@ export const sitio = {
     tel: 'Teléfono',
     email: 'Correo',
   },
-  /* La página 404. TEXTO POR APROBAR (2026-09-19). */
+  /* La página 404. Aprobado por Boris el 2026-09-19. */
   noEncontrada: {
     eyebrow: 'Error 404',
     title: 'Esta página no existe.',
@@ -55,7 +54,6 @@ export const sitio = {
       digital: 'Soluciones digitales',
       portafolio: 'Portafolio',
       inicio: 'Inicio',
-      metodo: 'Método',
       nosotros: 'Nosotros',
       contacto: 'Contacto',
       privacidad: 'Privacidad',

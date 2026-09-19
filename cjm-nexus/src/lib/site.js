@@ -52,7 +52,6 @@ export function navLinks(lang = 'es') {
     { clave: 'inicio', path: '' },
     { clave: 'servicios', path: '/servicios' },
     { clave: 'portafolio', path: '/portafolio' },
-    { clave: 'metodo', path: '/servicios#metodo', soloSiExiste: true },
     { clave: 'nosotros', path: '/nosotros' },
     // Todas las paginas terminan con la misma seccion de cierre, con
     // id="contacto". Un ancla suelta lleva a la de la pagina donde estas, y
@@ -99,8 +98,7 @@ export function footerColumns(lang = 'es') {
       clave: 'empresa',
       links: enlaces(lang, [
         { clave: 'inicio', path: '' },
-        { clave: 'metodo', path: '/servicios#metodo', soloSiExiste: true },
-        { clave: 'nosotros', path: '/nosotros' },
+            { clave: 'nosotros', path: '/nosotros' },
         { clave: 'contacto', path: '#contacto' },
       ]),
     },
