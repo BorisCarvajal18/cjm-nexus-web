@@ -11,9 +11,11 @@
  */
 import Flecha from '../components/registro/Flecha';
 import DarkSurface from '../components/ui/DarkSurface';
-import { CALENDLY_URL, CONTACTS } from '../lib/site';
+import { getSitio } from '../content';
+import { CALENDLY_URL, contactos, CORREO } from '../lib/site';
 
-export default function FinalCta({ content }) {
+export default function FinalCta({ content, lang = 'es' }) {
+  const { canales } = getSitio(lang);
   return (
     <DarkSurface as="section" id="contacto" className="registro cierre">
       <div className="marco">
@@ -26,16 +28,17 @@ export default function FinalCta({ content }) {
             <Flecha />
           </a>
           {content.secondary ? (
-            <a className="boton-contorno" href="mailto:experiencia@cjmnexus.com">
+            <a className="boton-contorno" href={CORREO}>
               <span>{content.secondary}</span>
               <Flecha />
             </a>
           ) : null}
         </div>
         <div className="canales">
-          {CONTACTS.map((canal) => (
+          {contactos(lang).map((canal) => (
             <a key={canal.key} href={canal.href}>
-              {canal.label}
+              {canales[canal.key]}
+              {canal.conValor ? ` ${canal.value}` : null}
             </a>
           ))}
         </div>

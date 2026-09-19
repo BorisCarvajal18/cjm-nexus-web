@@ -32,7 +32,7 @@ import Symptoms from '../../../../blocks/pages/Symptoms';
 import FinalCta from '../../../../blocks/FinalCta';
 import SiteFooter from '../../../../components/SiteFooter';
 import SiteHeader from '../../../../components/SiteHeader';
-import { getFinanzas, getHome } from '../../../../content';
+import { getFinanzas, getHome, getSitio } from '../../../../content';
 import { defaultLanguage, languages } from '../../../../i18n/settings';
 import { faqSchema, pageMetadata, serviceSchema } from '../../../../lib/seo';
 
@@ -53,7 +53,7 @@ export default function DireccionFinancieraPage({ params }) {
      que en la página dice otra cosa. */
   const datos = [
     serviceSchema({
-      name: 'Dirección financiera externa',
+      name: content.meta.servicio,
       description: content.meta.description,
       url: `/${lang}${RUTA}`,
     }),
@@ -69,13 +69,13 @@ export default function DireccionFinancieraPage({ params }) {
       />
       <main>
         <PageHero content={{ ...content.hero, secondaryHref: '#entregable' }} />
-        <Symptoms content={content.symptoms} />
+        <Symptoms content={content.symptoms} comillas={getSitio(lang).comillas} />
         <Steps content={content.month} />
         <BoardShowcase content={content.deliverable} muestra={getHome(lang).hacemos.muestra} />
         <FeatureGrid content={content.deliverables} columns={3} />
         <Fit content={content.fit} />
         <Faq content={content.faq} />
-        <FinalCta content={content.cta} />
+        <FinalCta content={content.cta} lang={lang} />
       </main>
       <SiteFooter lang={lang} />
     </>

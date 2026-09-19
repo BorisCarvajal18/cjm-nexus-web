@@ -12,7 +12,7 @@
  * ausencia es una de las señales que resta seriedad a un sitio B2B.
  */
 import { getSitio } from '../content';
-import { CONTACTS, footerColumns } from '../lib/site';
+import { contactos, footerColumns } from '../lib/site';
 import DarkSurface from './ui/DarkSurface';
 
 export default function SiteFooter({ lang = 'es' }) {
@@ -28,10 +28,10 @@ export default function SiteFooter({ lang = 'es' }) {
           </a>
           <p className="lema">{t.pie.lema}</p>
           <ul className="contactos" aria-label={t.pie.contacto}>
-            {CONTACTS.map((contact) => (
+            {contactos(lang).map((contact) => (
               <li key={contact.key}>
                 <a href={contact.href}>
-                  <span>{contact.label}: </span>
+                  <span>{t.canales[contact.key]}: </span>
                   {contact.value}
                 </a>
               </li>
@@ -40,12 +40,12 @@ export default function SiteFooter({ lang = 'es' }) {
         </div>
 
         {footerColumns(lang).map((column) => (
-          <nav key={column.title} aria-label={column.title}>
-            <h2>{column.title}</h2>
+          <nav key={column.clave} aria-label={t.pie.columnas[column.clave]}>
+            <h2>{t.pie.columnas[column.clave]}</h2>
             <ul>
               {column.links.map((link) => (
-                <li key={link.label}>
-                  <a href={link.href}>{link.label}</a>
+                <li key={link.clave}>
+                  <a href={link.href}>{t.pie.enlaces[link.clave]}</a>
                 </li>
               ))}
             </ul>

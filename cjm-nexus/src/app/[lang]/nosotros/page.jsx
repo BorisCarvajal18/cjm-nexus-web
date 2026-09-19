@@ -47,7 +47,7 @@ export default function NosotrosPage({ params }) {
         <PageHero content={content.hero} />
         <Personas content={content.personas} />
         <Firma content={content.firma} metodo={content.metodo} lang={lang} />
-        <FinalCta content={content.cta} />
+        <FinalCta content={content.cta} lang={lang} />
       </main>
       <SiteFooter lang={lang} />
     </>

@@ -34,7 +34,7 @@ export default function PortafolioPage({ params }) {
       <main>
         <PageHero content={content.hero} />
         <Portadas content={content} />
-        <FinalCta content={content.cta} />
+        <FinalCta content={content.cta} lang={lang} />
       </main>
       <SiteFooter lang={lang} />
     </>

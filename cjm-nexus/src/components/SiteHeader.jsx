@@ -45,7 +45,8 @@ function enIdioma(ruta, idioma) {
 }
 
 export default function SiteHeader({ lang = 'es', ctaHref }) {
-  const t = getSitio(lang).cabecera;
+  const sitio = getSitio(lang);
+  const t = sitio.cabecera;
   /* Los enlaces se calculan con el idioma de la página. Ver `navLinks` en
      `lib/site.js`: ninguna ruta del sitio existe sin su prefijo de idioma. */
   const links = navLinks(lang);
@@ -133,7 +134,7 @@ export default function SiteHeader({ lang = 'es', ctaHref }) {
               aria-current={actual(link.href) ? 'page' : undefined}
               className="relative py-[5px] text-[14.5px] font-medium no-underline opacity-[.84] transition-opacity duration-200 after:absolute after:inset-x-0 after:bottom-0 after:h-[1.5px] after:origin-left after:scale-x-0 after:bg-cobre after:transition-transform after:duration-[340ms] after:ease-llegar after:content-[''] hover:opacity-100 hover:after:scale-x-100 aria-[current=page]:opacity-100 aria-[current=page]:after:scale-x-100"
             >
-              {link.label}
+              {sitio.menu[link.clave]}
             </a>
           ))}
         </nav>
@@ -199,7 +200,7 @@ export default function SiteHeader({ lang = 'es', ctaHref }) {
                       aria-current={actual(link.href) ? 'page' : undefined}
                       className="flex py-4 font-display text-[1.2rem] font-bold tracking-[-0.01em] no-underline aria-[current=page]:text-cobre-honda"
                     >
-                      {link.label}
+                      {sitio.menu[link.clave]}
                     </a>
                   </li>
                 ))}

@@ -151,6 +151,8 @@ export const servicios = {
 export const finanzas = {
   meta: {
     title: 'Dirección financiera externa para empresas medianas | CJM Nexus',
+    // El nombre del servicio en los datos estructurados (JSON-LD).
+    servicio: 'Dirección financiera externa',
     description:
       'Un director financiero externo: diagnóstico, tablero gerencial mensual, flujo de caja a trece semanas y una reunión mensual donde se decide con números delante.',
   },
@@ -394,6 +396,8 @@ export const finanzas = {
 export const digital = {
   meta: {
     title: 'Páginas web y sistemas a medida | CJM Nexus',
+    // El nombre del servicio en los datos estructurados (JSON-LD).
+    servicio: 'Desarrollo de software especializado',
     description:
       'Tu página web profesional publicada en menos de una semana, y sistemas a medida para operaciones con normativa, documentos oficiales y datos sensibles.',
   },

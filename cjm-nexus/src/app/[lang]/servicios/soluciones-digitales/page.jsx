@@ -53,7 +53,7 @@ export default function SolucionesDigitalesPage({ params }) {
 
   const datos = [
     serviceSchema({
-      name: 'Desarrollo de software especializado',
+      name: content.meta.servicio,
       description: content.meta.description,
       url: `/${lang}${RUTA}`,
     }),
@@ -74,7 +74,7 @@ export default function SolucionesDigitalesPage({ params }) {
         <FeatureGrid content={content.guarantees} columns={2} numbered />
         <ProductBand content={content.proof} href={`/${lang}/klinoda`} />
         <Faq content={content.faq} />
-        <FinalCta content={content.cta} />
+        <FinalCta content={content.cta} lang={lang} />
       </main>
       <SiteFooter lang={lang} />
     </>

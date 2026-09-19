@@ -46,7 +46,7 @@ export default function HomePage({ params }) {
         <Credenciales content={home.credenciales} />
         <QueHacemos content={home.hacemos} lang={lang} />
         <PuertaKlinoda content={home.klinoda} lang={lang} />
-        <Cierre content={home.cierre} />
+        <Cierre content={home.cierre} lang={lang} />
         <Noche />
       </main>
       <SiteFooter lang={lang} />

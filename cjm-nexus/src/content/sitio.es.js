@@ -2,8 +2,8 @@
  * Textos comunes a todas las páginas: la cabecera y el pie.
  *
  * Salen de la portada aprobada (`.impeccable/mocks/portada/C-fusion.html`).
- * Las etiquetas del menú siguen en `lib/site.js` (`navLinks`), porque van
- * atadas a sus rutas.
+ * Las rutas del menú y del pie están en `lib/site.js`; aquí, sus textos, por
+ * la misma `clave`.
  */
 export const sitio = {
   cabecera: {
@@ -17,9 +17,42 @@ export const sitio = {
     abrirMenu: 'Abrir menú',
     cerrarMenu: 'Cerrar menú',
   },
+  /* El menú (y el panel del teléfono). Claves de `navLinks` en lib/site.js. */
+  menu: {
+    inicio: 'Inicio',
+    servicios: 'Servicios',
+    portafolio: 'Portafolio',
+    metodo: 'Método',
+    nosotros: 'Nosotros',
+    contacto: 'Contacto',
+  },
+  /* Los canales directos. Claves de `contactos()` en lib/site.js. WhatsApp
+     solo existe en español; «Teléfono» es el de inglés y alemán. */
+  canales: {
+    waEc: 'WhatsApp Ecuador',
+    waDe: 'WhatsApp Alemania',
+    tel: 'Teléfono',
+    email: 'Correo',
+  },
+  /* Las comillas de una cita: «…» en español, “…” en inglés, „…“ en alemán. */
+  comillas: ['«', '»'],
   pie: {
     lema: 'Dirección financiera y software especializado para empresas que crecen con control. Ecuador y Alemania.',
     contacto: 'Contacto',
+    /* Claves de `footerColumns` en lib/site.js. */
+    columnas: { servicios: 'Servicios', empresa: 'Empresa', legal: 'Legal' },
+    enlaces: {
+      dosServicios: 'Los dos servicios',
+      finanzas: 'Dirección financiera',
+      digital: 'Soluciones digitales',
+      portafolio: 'Portafolio',
+      inicio: 'Inicio',
+      metodo: 'Método',
+      nosotros: 'Nosotros',
+      contacto: 'Contacto',
+      privacidad: 'Privacidad',
+      avisoLegal: 'Aviso legal',
+    },
     derechos: '© 2026 CJM Nexus',
     idiomas: 'ES · EN · DE',
   },

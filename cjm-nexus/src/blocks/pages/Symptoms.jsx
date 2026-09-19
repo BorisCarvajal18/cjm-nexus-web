@@ -6,7 +6,7 @@
  * gerente ya ha pensado, y al leerla se reconoce. Sobre papel hondo, con un
  * filete entre frase y frase.
  */
-export default function Symptoms({ content }) {
+export default function Symptoms({ content, comillas = ['«', '»'] }) {
   return (
     <section className="registro seccion banda-honda">
       <div className="marco">
@@ -16,7 +16,11 @@ export default function Symptoms({ content }) {
         </div>
         <div className="frases">
           {content.items.map((frase) => (
-            <p key={frase}>«{frase}»</p>
+            <p key={frase}>
+              {comillas[0]}
+              {frase}
+              {comillas[1]}
+            </p>
           ))}
         </div>
       </div>

@@ -13,7 +13,7 @@
  * Unidos y Europa se cuenta donde corresponde: en su ficha, con su nombre
  * (/nosotros).
  */
-import { languages } from '../i18n/settings';
+import { languages, localeMap } from '../i18n/settings';
 import { SITE_URL, SOCIAL_PROFILES } from './site';
 
 /**
@@ -88,6 +88,9 @@ export function pageMetadata({ lang, path = '', meta }) {
       title: meta.title,
       description: meta.description,
       url: ruta,
+      // El `openGraph` de una página sustituye entero al del layout: sin esto,
+      // las páginas interiores perdían su `og:locale`.
+      locale: localeMap[lang],
       images: [{ url: `/og-${lang}.png`, width: 1200, height: 630, alt: 'CJM Nexus' }],
     },
     twitter: {

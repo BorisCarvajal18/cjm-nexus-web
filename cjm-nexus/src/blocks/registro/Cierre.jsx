@@ -20,9 +20,11 @@ import Negritas from '../../components/registro/Negritas';
 import { CURVA } from '../../lib/animations';
 import { gsap } from '../../lib/gsap';
 import { alAsomar, MUEVE, useRegistro } from '../../lib/registro';
-import { CALENDLY_URL, CONTACTS } from '../../lib/site';
+import { getSitio } from '../../content';
+import { CALENDLY_URL, contactos } from '../../lib/site';
 
-export default function Cierre({ content }) {
+export default function Cierre({ content, lang = 'es' }) {
+  const { canales } = getSitio(lang);
   const raiz = useRegistro((mm, c) => {
     mm.add(MUEVE, () => {
       const tres = c.querySelector('.tres');
@@ -65,9 +67,10 @@ export default function Cierre({ content }) {
         </a>
         <p className="nota">{content.nota}</p>
         <nav className="canales" aria-label={content.canales}>
-          {CONTACTS.map((canal) => (
+          {contactos(lang).map((canal) => (
             <a key={canal.key} href={canal.href}>
-              {canal.label}
+              {canales[canal.key]}
+              {canal.conValor ? ` ${canal.value}` : null}
             </a>
           ))}
         </nav>

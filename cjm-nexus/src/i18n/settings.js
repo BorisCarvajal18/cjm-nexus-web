@@ -6,4 +6,4 @@ export const languages = ['es', 'en', 'de'];
 export const defaultLanguage = 'es';
 
 /** Locale Open Graph por idioma */
-export const localeMap = { es: 'es_ES', en: 'en_US', de: 'de_DE' };
+export const localeMap = { es: 'es_EC', en: 'en_US', de: 'de_DE' };

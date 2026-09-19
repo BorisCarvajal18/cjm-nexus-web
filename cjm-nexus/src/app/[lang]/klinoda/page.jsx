@@ -20,7 +20,7 @@ import SiteHeader from '../../../components/SiteHeader';
 import { getKlinoda } from '../../../content';
 import { defaultLanguage, languages } from '../../../i18n/settings';
 import { pageMetadata } from '../../../lib/seo';
-import { CONTACTS } from '../../../lib/site';
+import { CORREO } from '../../../lib/site';
 
 const idioma = (lang) => (languages.includes(lang) ? lang : defaultLanguage);
 const RUTA = '/klinoda';
@@ -36,7 +36,7 @@ export function generateMetadata({ params }) {
 export default function KlinodaPage({ params }) {
   const lang = idioma(params.lang);
   const a = getKlinoda(lang).aviso;
-  const correo = CONTACTS.find((c) => c.key === 'email').href;
+  const correo = CORREO;
 
   return (
     <>

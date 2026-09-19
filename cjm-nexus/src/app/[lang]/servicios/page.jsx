@@ -59,7 +59,7 @@ export default function ServiciosPage({ params }) {
         />
         <ProductBand content={content.product} href={`/${lang}/klinoda`} />
         <Method content={content.metodo} />
-        <FinalCta content={content.cta} />
+        <FinalCta content={content.cta} lang={lang} />
       </main>
       <SiteFooter lang={lang} />
     </>
