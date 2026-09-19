@@ -15,7 +15,7 @@
 import Negritas from '../../components/registro/Negritas';
 import { CURVA } from '../../lib/animations';
 import { gsap } from '../../lib/gsap';
-import { alAsomar, cuenta, escalona, MUEVE, restauraCuenta, useRegistro } from '../../lib/registro';
+import { alAsomar, conMillares, cuenta, escalona, MUEVE, restauraCuenta, useRegistro } from '../../lib/registro';
 
 export default function Credenciales({ content }) {
   const raiz = useRegistro((mm, cred) => {
@@ -62,7 +62,7 @@ export default function Credenciales({ content }) {
                 {c.hasta !== undefined ? (
                   <>
                     <span className="cuenta" data-hasta={c.hasta}>
-                      {c.hasta}
+                      {conMillares(c.hasta)}
                     </span>
                     <span className="mas">{c.mas}</span>
                   </>

@@ -1,5 +1,10 @@
 # Traducción EN / DE — fase 1: propuesta
 
+> **Estado (2026-09-19):** las tres fases hechas. Inglés en `68027f3`; alemán en el commit siguiente a
+> `0320141`. Detalle y verificación en CONSTRUCCION.md. Después de la propuesta, Boris decidió además que
+> los idiomas de trabajo son español e inglés (ver PRODUCT.md): donde este documento diga «Deutsch,
+> Englisch und Spanisch» o «3 idiomas», manda esa decisión.
+
 > 2026-09-19 · **Solo propuesta: no se ha tocado ningún archivo del sitio.** Boris aprueba o corrige, y
 > después se programan el inglés (fase 2) y el alemán (fase 3).
 

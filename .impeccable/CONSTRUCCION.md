@@ -1107,5 +1107,40 @@ Ningún texto en español en el HTML servido ni en el JSON-LD. hreflang y sitema
 inglesas (sin `/klinoda`). Títulos de la escena en dos líneas a 1280 y 1536 (`--k` 1). En español solo
 cambió lo decidido. Capturas `en-*` en `.impeccable/traduccion/`.
 
-**Pendiente:** «Talk to us» de las tres portadas a `/en#contacto` (no se tocó: Boris pidió no tocar las
-portadas; decidir). Fase 3, el alemán.
+**Pendiente:** ~~«Talk to us» de las tres portadas a `/en#contacto`~~ hecho (ver abajo). ~~Fase 3, el
+alemán~~ hecha (ver abajo).
+
+### 2026-09-19 — traducción, fase 3: el alemán
+
+- **Antes, en español e inglés** (Boris; commit `0320141`): nadie del equipo trabaja con soltura en
+  alemán. «Trabajamos en español, inglés y alemán» → «en español e inglés»; la tercera cifra de las
+  credenciales pasa a «2 países · Equipo en Ecuador y Berlín». PRODUCT.md, al día. Inglés: «with fifteen
+  years of experience» y «grow with control». «Talk to us» de las tres portadas → `/en#contacto`.
+- **El alemán:** `home.de.js`, `servicios.de.js` (solo `digital`), `nosotros.de.js`, `portafolio.de.js`,
+  `klinoda.de.js` y `sitio.de.js`, con *Sie* y lo aprobado en `.impeccable/TRADUCCION.md`. En alemán se
+  dice, en el cierre de la portada, en «Über uns» y en la pregunta «Sitzt Ihr Team in Deutschland?»:
+  «Das erste Gespräch ist auf Englisch. Ihre Website entsteht auf Deutsch, und die Texte stimmen wir mit
+  Ihnen ab.» Por eso «Qué incluye» dice «Texte, die wir mit Ihnen abstimmen» y no promete que los
+  escribamos. La nota de los cierres: «auf Englisch oder Spanisch».
+- **La portada alemana** (`variante: 'digital'`, `app/[lang]/page.jsx`): portada («Angebot ansehen» →
+  `#web`), credenciales «< 7» Tage · «2.300+» Tests in KLINODA · «Berlin» Team vor Ort, la oferta de la
+  web de la página de servicio (con su momento y las tres portadas), KLINODA como `ProductBand` sin
+  cifras, y el cierre. Sin la escena de los tableros, la de KLINODA ni la noche.
+- **Código:** `Portada` lee `verQueHacemosHref` (por defecto `#campos`); `Credenciales` pinta la cifra con
+  `conMillares` («2.300» desde el HTML); `Noche`, sin la escena de KLINODA, hace que el cierre avise a la
+  cabecera como zona oscura. En español e inglés, nada cambia.
+- **Retoques propios sobre la propuesta, a revisar:** «El método es la garantía» → «Die Methode ist der
+  Beleg» (evita «Garantie», como en «Unsere Zusagen»); «Tres personas, cada una con lo suyo» → «Drei
+  Menschen, drei Aufgaben» (sin masculino genérico); la tercera credencial, «Berlin» · «Team vor Ort» ·
+  «Boris Carvajal leitet die Technik von Berlin aus.»
+
+**Verificación** (producción): build sin errores, 24 páginas. Las cinco páginas alemanas y la 404 a
+1536 × 730 y 390 × 844: sin desbordamiento, nada fuera de la ventana, nada cortado, sin errores de
+consola, `lang="de"`. Ningún texto en español en el HTML ni en el JSON-LD. **Ninguna ruta a la dirección
+financiera** en el HTML alemán ni en el sitemap; `/de/servicios` → soluciones digitales y
+`/de/servicios/direccion-financiera` → `/de` (307). Sitemap alemán: `/de`, soluciones digitales,
+portafolio y nosotros. La cabecera, marino hondo sobre el cierre alemán y papel sobre las credenciales
+(también en `/es` y `/en`). Capturas `de-*` en `.impeccable/traduccion/`.
+
+**Sigue pendiente antes de publicar `/de`:** Impressum y Datenschutz (TRADUCCION.md, §4); imágenes para
+compartir por idioma (C8).

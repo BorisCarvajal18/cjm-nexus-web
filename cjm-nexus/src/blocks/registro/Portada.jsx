@@ -141,7 +141,8 @@ export default function Portada({ content }) {
             <span>{content.agendar}</span>
             <Flecha />
           </a>
-          <a className="enlace" href="#campos">
+          {/* En alemán la portada no tiene «Qué hacemos»: lleva a la oferta (#web). */}
+          <a className="enlace" href={content.verQueHacemosHref ?? '#campos'}>
             {content.verQueHacemos}
             <Flecha abajo size={14} />
           </a>
