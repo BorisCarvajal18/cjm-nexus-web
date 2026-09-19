@@ -6,26 +6,21 @@
  * tres páginas está aquí, en orden. No hace falta abrir ningún otro archivo
  * para corregir una frase.
  *
- * MARCA «SUPUESTO»: los comentarios que empiezan por SUPUESTO señalan lo que
- * está escrito a partir de una suposición razonable y NO de un dato
- * confirmado. Son exactamente las frases que hay que confirmar o corregir
- * antes de publicar. Están recogidas también en `docs/preguntas-richard.md`,
- * que es la lista para revisar en una sola sentada.
- *
  * REGLA AL EDITAR: cada afirmación sobre la firma tiene que poder responder
  * «¿dónde está eso?». Los números de las interfaces de muestra ilustran cómo
  * se ve un entregable, igual que la captura de pantalla de cualquier
  * producto; nunca se presentan como resultados de un cliente.
  *
- * Borrador escrito el 5 de septiembre de 2026, pendiente de revisión.
+ * Textos aprobados por Boris (18 y 19 de septiembre de 2026; ver
+ * .impeccable/CONSTRUCCION.md). Las preguntas frecuentes de dirección
+ * financiera se revisan cuando haya clientes reales.
  */
 
 /* ─────────────────────────────────────────────────────────────────────
    ÍNDICE DE SERVICIOS  ·  /es/servicios
    ───────────────────────────────────────────────────────────────────── */
 export const servicios = {
-  /* El método. Vivía en la portada, que la maqueta aprobada no incluye;
-     se muestra en esta página, con id="metodo", hasta rehacerla (pieza 9). */
+  /* El método, en esta página con id="metodo" (el menú lleva aquí). */
   metodo: {
     eyebrow: 'Cómo trabajamos',
     title: 'El método es la garantía.',
@@ -132,8 +127,7 @@ export const servicios = {
 
   /* Franja de KLINODA. Una sola vez: es una puerta a su página (regla 3 de
      PRODUCT.md). KLINODA es una empresa del Grupo CJM Nexus (regla 8), nunca
-     «producto propio»; dice su estado (regla 6).
-     TEXTO POR APROBAR: la ceja y la entrada, reescritas el 18-sep-2026. */
+     «producto propio»; dice su estado (regla 6). */
   product: {
     eyebrow: 'Empresa del Grupo CJM Nexus',
     title: 'KLINODA',
@@ -238,11 +232,12 @@ export const finanzas = {
   deliverable: {
     badge: 'Entregable mensual',
     title: 'Así se ve lo que recibes cada mes.',
-    text: 'Las ventas contra la meta, el margen por línea, los días de caja y las alertas que exigen una decisión. Un documento vivo que se revisa en reunión, no un informe que nadie abre.',
+    text: 'Las ventas contra la meta, el margen por línea, los días de caja y las alertas que exigen una decisión. Un documento vivo que se revisa en reunión.',
     /* Lo que no es texto (la chispa de cada indicador, las iniciales de los
        doce meses y el tono de cada alerta) se añadió en la pasada de pulido
        del 18-sep-2026 para dibujar la hoja como una ventana de producto.
-       `months` es microcopia nueva, por aprobar: de julio a junio. */
+       `months`: de julio a junio. LOS DATOS CUADRAN: junio (114) está un
+       12 % sobre mayo (102), como dice el indicador «Ventas». */
     board: {
       title: 'Tablero gerencial',
       subject: 'Empresa Ejemplo · junio',
@@ -250,11 +245,11 @@ export const finanzas = {
         { label: 'Ventas', value: '$1,24 M', delta: '▲ 12 %', tone: 'ok', spark: '0,12 9,11 18,12 27,8 36,7 45,4 55,2' },
         { label: 'Margen', value: '34 %', delta: '▲ 3 pt', tone: 'ok', spark: '0,10 9,12 18,9 27,10 36,6 45,7 55,4' },
         { label: 'Caja', value: '45 días', delta: '▼ 4 d', tone: 'warn', spark: '0,4 9,5 18,3 27,7 36,8 45,11 55,12' },
-        { label: 'Rentabilidad', value: '18,2 %', delta: '▲ 1,5', tone: 'ok', spark: '0,11 9,10 18,11 27,8 36,9 45,6 55,5' },
+        { label: 'Rentabilidad', value: '18,2 %', delta: '▲ 1,5 pt', tone: 'ok', spark: '0,11 9,10 18,11 27,8 36,9 45,6 55,5' },
       ],
       seriesLabel: 'Ventas contra meta',
       targetLabel: 'meta',
-      series: [58, 64, 61, 72, 78, 86, 92, 88, 101, 96, 108, 114],
+      series: [58, 64, 61, 72, 78, 86, 92, 88, 101, 96, 102, 114],
       months: ['J', 'A', 'S', 'O', 'N', 'D', 'E', 'F', 'M', 'A', 'M', 'J'],
       target: 95,
       linesLabel: 'Margen por línea',
@@ -391,9 +386,10 @@ export const finanzas = {
    buscando algo del tamaño de KLINODA.
 
    NO HAY NINGÚN CLIENTE DE PÁGINAS WEB TODAVÍA, y por eso aquí no aparece ni
-   un portafolio, ni un número, ni un testimonio. La prueba son KLINODA y esta
-   misma web, que es de verdad y se puede mirar. Cuando existan los primeros
-   clientes, esta página tendrá un sitio evidente donde ponerlos.
+   un número ni un testimonio. Las pruebas son KLINODA, esta misma web y las
+   tres portadas de ejemplo de /portafolio (conceptos, marcas ficticias).
+   Cuando existan los primeros clientes, esta página tendrá un sitio evidente
+   donde ponerlos.
    ───────────────────────────────────────────────────────────────────── */
 export const digital = {
   meta: {
@@ -407,7 +403,7 @@ export const digital = {
     title: 'Tu web publicada en una semana. Y el sistema que venga después.',
     highlight: ['en', 'una', 'semana.'],
     lead: 'Dos formas de trabajar con nosotros. Una página web profesional, hecha a tu medida y publicada en días. Y, cuando el negocio lo pide, sistemas completos para operaciones llenas de reglas, documentos oficiales y datos que no pueden salir de donde deben estar.',
-    primary: 'Contar tu caso · 20 min',
+    primary: 'Agendar una conversación · 20 min',
     secondary: 'Ver las dos formas',
     note: 'Sin costo · sin compromiso',
   },
@@ -434,7 +430,7 @@ export const digital = {
        una sola cifra, que es distinto de esquivarla. */
     includesLabel: 'Qué incluye',
     includes: [
-      'Diseño propio, no una plantilla con el logotipo cambiado',
+      'Diseño propio',
       'Se ve bien en el teléfono, que es por donde te van a mirar',
       'Textos redactados o corregidos contigo',
       'Formulario de contacto y enlace directo a WhatsApp',
@@ -546,7 +542,7 @@ export const digital = {
       },
       {
         title: 'Probamos lo que construimos',
-        text: 'Pruebas automáticas en cada cambio. Si algo se rompe, falla antes de llegar a producción y no lo descubre tu equipo un lunes por la mañana.',
+        text: 'En los sistemas a medida, pruebas automáticas en cada cambio. Si algo se rompe, falla antes de llegar a producción y no lo descubre tu equipo un lunes por la mañana.',
       },
       {
         title: 'Privacidad por diseño',
@@ -561,9 +557,7 @@ export const digital = {
 
   /* Lo que ya existe. Sin clientes de páginas web todavía, las dos únicas
      pruebas honestas son la plataforma de KLINODA, que construimos para una
-     empresa del Grupo, y esta misma web.
-     TEXTO POR APROBAR: la ceja y la entrada, reescritas el 18-sep-2026 con
-     las reglas 7, 8 y 9 de PRODUCT.md. */
+     empresa del Grupo, y esta misma web. Reglas 7, 8 y 9 de PRODUCT.md. */
   proof: {
     eyebrow: 'Lo que ya existe',
     title: 'No lo decimos: lo construimos.',
@@ -577,12 +571,12 @@ export const digital = {
     cta: 'Conocer KLINODA',
   },
 
-  /* SUPUESTO — dos de estas respuestas comprometen cosas que hay que
-     confirmar: qué entra en el precio de una web y quién paga el dominio y el
-     alojamiento. Están en la pregunta 3 de `docs/preguntas-richard.md`. */
+  /* Dominio, alojamiento y mantenimiento van incluidos (confirmado el
+     5-sep-2026); el mantenimiento cubre cambios pequeños (Boris,
+     19-sep-2026). Ninguna respuesta lleva precio. */
   faq: {
     eyebrow: 'Preguntas frecuentes',
-    title: 'Lo que preguntan antes de empezar.',
+    title: 'Preguntas sobre la web y los sistemas.',
     items: [
       {
         q: '¿De verdad en una semana?',
@@ -602,11 +596,11 @@ export const digital = {
       },
       {
         q: '¿Quién la mantiene después?',
-        a: 'Nosotros. El mantenimiento va incluido: que siga en línea, actualizada y segura, y los cambios que vayas necesitando. No te dejamos con la web publicada y a ver qué pasa, que es donde se cae la mayoría.',
+        a: 'Nosotros. El mantenimiento va incluido: que siga en línea, actualizada y segura, con cambios pequeños incluidos. No te dejamos con la web publicada y a ver qué pasa, que es donde se cae la mayoría.',
       },
       {
         q: '¿Cuánto cuesta?',
-        a: 'Depende de lo que necesites, y por eso lo hablamos en la reunión en vez de poner una tarifa aquí. Son veinte minutos, sales con una propuesta cerrada y sin sorpresas después.',
+        a: 'Depende de lo que necesites, y por eso lo hablamos en la reunión en vez de poner una tarifa aquí. En veinte minutos sales sabiendo qué necesitas; la propuesta cerrada te llega después, por escrito.',
       },
       {
         q: '¿Y si lo que necesito es un sistema, no una web?',
@@ -623,7 +617,7 @@ export const digital = {
     eyebrow: 'Siguiente paso',
     title: 'Cuéntanos qué necesitas y te decimos cuánto tarda.',
     text: 'Veinte minutos para saber si lo tuyo es una web en una semana o un sistema de varios meses. Sin compromiso.',
-    primary: 'Agendar una conversación',
+    primary: 'Agendar una conversación · 20 min',
     secondary: 'Escribir a CJM Nexus',
   },
 };

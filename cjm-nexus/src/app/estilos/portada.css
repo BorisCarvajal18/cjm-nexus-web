@@ -119,20 +119,6 @@
 .portada .enlace::after {
   background: rgba(255, 255, 255, 0.42);
 }
-.portada .credito {
-  position: absolute;
-  right: 20px;
-  bottom: 18px;
-  z-index: 2;
-  font-size: 10.5px;
-  font-weight: 600;
-  letter-spacing: 0.09em;
-  text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.66);
-  background: rgba(11, 17, 34, 0.46);
-  padding: 5px 9px;
-  border-radius: 2px;
-}
 /* Señal de que hay más abajo. */
 .portada .sigue {
   position: absolute;
@@ -237,16 +223,9 @@
   .portada .enlace {
     align-self: center;
   }
-  /* El crédito de la imagen cruzaba la señal de «sigue». La señal sube y el
-     crédito se centra debajo de ella. */
+  /* En el teléfono la señal de «sigue» va algo más arriba y más corta. */
   .portada .sigue {
     bottom: 50px;
     height: 36px;
-  }
-  .portada .credito {
-    right: 50%;
-    bottom: 14px;
-    transform: translateX(50%);
-    white-space: nowrap;
   }
 }

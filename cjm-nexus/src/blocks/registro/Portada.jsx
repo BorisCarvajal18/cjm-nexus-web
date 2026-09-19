@@ -11,7 +11,10 @@
  * del gesto.
  *
  * EL VÍDEO no lleva `autoplay`: lo arranca este guion solo si el sistema no
- * pide reducir movimiento ni ahorro de datos, y se pausa fuera de pantalla.
+ * pide reducir movimiento ni ahorro de datos y la red no es lenta (2G o 3G),
+ * y se pausa fuera de pantalla. El archivo lo elige el guion: hasta 760 px de
+ * ancho, la versión ligera (`hero-movil`, 960 × 540, menos de 500 KB); por
+ * encima, la completa (1920 × 1080, 1,75 MB).
  * Mientras carga, o si no puede reproducirse, se ve su primer fotograma, que
  * respira de 1 a 1,06. El paso de uno a otro no se nota.
  */
@@ -52,9 +55,15 @@ export default function Portada({ content }) {
     if (!v) return undefined;
     v.muted = true;
     const calma = window.matchMedia('(prefers-reduced-motion: reduce)');
-    const ahorro = !!navigator.connection?.saveData;
+    const red = navigator.connection;
+    const ahorro = !!red?.saveData || /(^|-)(2g|3g)$/.test(red?.effectiveType ?? '');
     const arranca = () => {
       if (calma.matches || ahorro) return;
+      if (!v.getAttribute('src')) {
+        const nombre = window.matchMedia('(max-width: 760px)').matches ? 'hero-movil' : 'hero';
+        const webm = v.canPlayType('video/webm; codecs="vp9"');
+        v.src = `/portada/${nombre}.${webm ? 'webm' : 'mp4'}`;
+      }
       v.preload = 'auto';
       v.play()?.catch?.(() => {
         /* se queda la imagen */
@@ -94,10 +103,8 @@ export default function Portada({ content }) {
       <div className="fondo">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img className="foto" src="/portada/hero-poster.jpg" alt={content.imagen} fetchPriority="high" />
-        <video ref={video} className="video" muted loop playsInline preload="none" aria-hidden="true" tabIndex={-1}>
-          <source src="/portada/hero.webm" type="video/webm" />
-          <source src="/portada/hero.mp4" type="video/mp4" />
-        </video>
+        {/* Sin `src` en el HTML: el archivo lo pone el guion (ver arriba). */}
+        <video ref={video} className="video" muted loop playsInline preload="none" aria-hidden="true" tabIndex={-1} />
       </div>
       <div className="velo" aria-hidden="true" />
       <div className="marco">
@@ -131,7 +138,6 @@ export default function Portada({ content }) {
           {content.nota}
         </p>
       </div>
-      <p className="credito">{content.credito}</p>
       <div className="sigue" aria-hidden="true">
         <i />
       </div>

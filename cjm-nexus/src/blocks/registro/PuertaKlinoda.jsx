@@ -183,7 +183,7 @@ export default function PuertaKlinoda({ content, lang }) {
                   {f}
                 </p>
               ))}
-              <p className="pregunta">{k.pregunta}</p>
+              <h2 className="pregunta">{k.pregunta}</h2>
               <a className="boton-contorno" href={`/${lang}/klinoda`}>
                 <span>{k.boton}</span>
                 <Flecha />

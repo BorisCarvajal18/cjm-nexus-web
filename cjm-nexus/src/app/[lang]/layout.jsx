@@ -131,8 +131,6 @@ export default function LangLayout({ children, params }) {
             guion de la portada no llegara a ejecutarse, a los 2,5 s se
             muestra igual. */}
         <script dangerouslySetInnerHTML={{ __html: ENTRADA }} />
-        {/* Preconexión a Calendly (el widget se inyecta bajo demanda) */}
-        <link rel="preconnect" href="https://assets.calendly.com" />
         {/* Datos estructurados: Organization (renderizado en servidor) */}
         <script
           type="application/ld+json"

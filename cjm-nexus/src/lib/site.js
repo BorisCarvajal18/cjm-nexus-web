@@ -32,6 +32,9 @@ export const SOCIAL_PROFILES = [];
  */
 export function navLinks(lang = 'es') {
   return [
+    // «Inicio» primero: desde una página interior es la vuelta a la portada
+    // más visible (el isotipo también lleva, pero no todo el mundo lo sabe).
+    { href: `/${lang}`, label: 'Inicio' },
     { href: `/${lang}/servicios`, label: 'Servicios' },
     { href: `/${lang}/portafolio`, label: 'Portafolio' },
     { href: `/${lang}/servicios#metodo`, label: 'Método' },
@@ -80,6 +83,7 @@ export function footerColumns(lang = 'es') {
     {
       title: 'Empresa',
       links: [
+        { label: 'Inicio', href: `/${lang}` },
         { label: 'Método', href: `/${lang}/servicios#metodo` },
         { label: 'Nosotros', href: `/${lang}/nosotros` },
         { label: 'Contacto', href: `/${lang}#contacto` },

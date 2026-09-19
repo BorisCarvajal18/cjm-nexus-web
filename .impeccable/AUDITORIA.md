@@ -1,5 +1,10 @@
 # Auditoría de la web en español — 2026-09-19
 
+> **Estado al cierre de la ronda de arreglos (2026-09-19):** resueltos B2, B4, C1–C7, C9 y D1–D4, y
+> un arreglo que no estaba en la lista: «Inicio» en el menú. **Esperan, por decisión de Boris:** B1
+> (legales), B3 (traducciones) y C8 (imágenes para compartir). D5 queda cubierto por C5. Detalle al
+> final, en «Ronda de arreglos».
+
 Revisión completa de `rediseno-2026` (commit `a7862c9`) como la vería un cliente, antes de traducir.
 **No se cambió ningún archivo del sitio.** Capturas en `.impeccable/auditoria/`.
 
@@ -39,7 +44,7 @@ local.
 
 ## Bloquea publicar
 
-### B1 · No hay páginas legales
+### B1 · No hay páginas legales — ⏸ espera (Boris)
 
 - **Dónde:** el pie de todas las páginas. «Privacidad» y «Aviso legal» apuntan a `#`.
 - **Captura:** `h-pie-legal.png`.
@@ -50,7 +55,7 @@ local.
   *Datenschutz*) con los datos de la entidad legal. Necesita la entidad y el abogado. Mientras no
   existan, no publicar.
 
-### B2 · «Imagen provisional de archivo» a la vista en la portada
+### B2 · «Imagen provisional de archivo» a la vista en la portada — ✅ resuelto
 
 - **Dónde:** portada, esquina inferior derecha del vídeo (`home.es.js` → `portada.credito`).
 - **Captura:** `h-credito-portada.png`.
@@ -59,7 +64,7 @@ local.
 - **Propuesta:** o vídeo propio, o quitar el rótulo. Un clip de archivo con licencia no obliga a
   decir que es provisional; si la licencia pide crédito, poner el del autor en el pie.
 
-### B3 · `/en` y `/de` sirven la web en español
+### B3 · `/en` y `/de` sirven la web en español — ⏸ espera (traducciones)
 
 - **Dónde:** todas las páginas bajo `/en` y `/de`, el selector «ES · EN · DE» de la cabecera y el pie, y
   `sitemap.xml`.
@@ -70,7 +75,7 @@ local.
 - **Propuesta:** publicar con las traducciones. Si hubiera que publicar antes: quitar EN y DE del
   selector y del sitemap y poner `noindex` en `/en` y `/de`.
 
-### B4 · Las tres portadas cargan las fuentes desde Google
+### B4 · Las tres portadas cargan las fuentes desde Google — ✅ resuelto
 
 - **Dónde:** `public/portafolio/regulars/`, `chalkline/` y `towpath/` → `fonts.googleapis.com`.
 - **Por qué bloquea (para Berlín):** cargar Google Fonts desde los servidores de Google, sin
@@ -85,7 +90,7 @@ local.
 
 ## Conviene arreglar
 
-### C1 · Contraste por debajo de AA en dos portadas
+### C1 · Contraste por debajo de AA en dos portadas — ✅ resuelto
 
 - **Dónde:** Chalkline, cinco textos del cajetín (`#6e6c66` sobre `#e4e3de`, **4,08:1**); Towpath,
   la etiqueta «Concept homepage · fictional brand» (`#a4b0d8` sobre `#23409a`, **4,3:1**).
@@ -94,7 +99,7 @@ local.
 - **Propuesta:** oscurecer el gris de Chalkline (alrededor de `#5c5a55` da ≥ 4,5:1) y aclarar el
   de Towpath (alrededor de `#bcc6e8`). Es tocar el diseño de las portadas: decide Boris.
 
-### C2 · Los datos del tablero de dirección financiera no cuadran
+### C2 · Los datos del tablero de dirección financiera no cuadran — ✅ resuelto
 
 - **Dónde:** `/servicios/direccion-financiera#entregable` (`servicios.es.js` →
   `finanzas.deliverable.board`).
@@ -106,7 +111,7 @@ local.
 - **Propuesta:** mayo a 102 (así junio queda un 11,8 % arriba) o el indicador a «▲ 6 %», y
   «▲ 1,5 pt».
 
-### C3 · El vídeo de la portada pesa 1,75 MB y se descarga también en el teléfono
+### C3 · El vídeo de la portada pesa 1,75 MB y se descarga también en el teléfono — ✅ resuelto
 
 - **Dónde:** portada (`/portada/hero.webm`), el 99 % de lo que pesa la página.
 - **Medido:** en el teléfono con red lenta simulada, el elemento principal tarda **2,4 s** en
@@ -114,14 +119,14 @@ local.
 - **Propuesta:** en el teléfono, o con ahorro de datos o red lenta (`navigator.connection`), quedarse
   con el póster; y una versión del vídeo por debajo de 600 KB para pantallas pequeñas.
 
-### C4 · Conexión a Calendly en todas las páginas, sin que nadie la pida
+### C4 · Conexión a Calendly en todas las páginas, sin que nadie la pida — ✅ resuelto
 
 - **Dónde:** `app/[lang]/layout.jsx`, `<link rel="preconnect" href="https://assets.calendly.com">`.
 - **Por qué:** abre una conexión con un tercero (y le da la IP) en cada visita. «Agendar» es un
   enlace normal a calendly.com, no un widget, así que no gana nada. En Alemania suma al punto B4.
 - **Propuesta:** quitar el `preconnect`.
 
-### C5 · La acción principal tiene tres nombres
+### C5 · La acción principal tiene tres nombres — ✅ resuelto
 
 - **Dónde:** en todo el sitio es «Agendar diagnóstico ejecutivo». En soluciones digitales es
   «Contar tu caso · 20 min» (cabecera) y «Agendar una conversación» (cierre). Las tres llevan al mismo
@@ -131,7 +136,7 @@ local.
 - **Propuesta:** decidir si la línea web tiene su evento de Calendly («Conversación · 20 min») o si
   se unifica el nombre. Corregir la tilde en Calendly.
 
-### C6 · Promesas que PRODUCT.md no respalda
+### C6 · Promesas que PRODUCT.md no respalda — ✅ resuelto
 
 - **Soluciones digitales, «¿Quién la mantiene después?»:** «el mantenimiento va incluido: … y los
   cambios que vayas necesitando». Es una promesa abierta; PRODUCT.md solo dice «mantenimiento
@@ -147,7 +152,7 @@ local.
   dos ofertas. En KLINODA es cierto; en una web de una semana, hay que confirmarlo o acotarlo a los
   sistemas.
 
-### C7 · Frases repetidas
+### C7 · Frases repetidas — ✅ resuelto
 
 - «un informe que nadie abre», dos veces en dirección financiera (intro del mes y entregable).
 - «plantilla con el logotipo cambiado», tres veces en `#web`: el título («no parece una
@@ -157,7 +162,7 @@ local.
   pero fácil de variar).
 - **Propuesta:** dejar una de cada una. Son textos aprobados: decide Boris.
 
-### C8 · Imágenes para compartir con el eslogan viejo
+### C8 · Imágenes para compartir con el eslogan viejo — ⏸ espera (con las traducciones)
 
 - **Dónde:** `og-es.png`, `og-en.png` y `og-de.png`, en todas las páginas. Ya anotado en
   CONSTRUCCION.md.
@@ -165,7 +170,7 @@ local.
   retiró. Para Berlín, LinkedIn es el canal principal.
 - **Propuesta:** rehacerlas con el titular nuevo, una por idioma, cuando existan las traducciones.
 
-### C9 · Documentos y comentarios desactualizados antes de traducir
+### C9 · Documentos y comentarios desactualizados antes de traducir — ✅ resuelto
 
 - **PRODUCT.md:** «Mercados reales hoy: Ecuador y Estados Unidos» (ahora es Berlín primero), «no
   hay portafolio» y «las fotos esperan a la página “Nosotros”».
@@ -179,15 +184,15 @@ local.
 
 ## Detalle
 
-- **D1 · La portada no tiene título para KLINODA ni para las credenciales.** El esquema de títulos
+- ✅ **D1 · La portada no tiene título para KLINODA ni para las credenciales.** El esquema de títulos
   pasa de «Qué hacemos» al cierre; con un lector de pantalla no se puede saltar a KLINODA. Propuesta:
   la pregunta «¿Quieres conocer más sobre KLINODA?» como `h2`, o un `h2` visualmente oculto.
-- **D2 · Títulos pegados en dos portadas:** en Chalkline, el `h2` se lee «…Prenzlauer BergOn site
+- ✅ **D2 · Títulos pegados en dos portadas:** en Chalkline, el `h2` se lee «…Prenzlauer BergOn site
   now…», y en Towpath el `h1`, «TowpathNeighbourhood barber…»: dos `span` sin espacio entre ellos.
   Propuesta: un espacio o un salto entre los dos.
-- **D3 · Fechas que caducan en las muestras:** «Junio 2026» en el tablero de la portada. Propuesta:
+- ✅ **D3 · Fechas que caducan en las muestras:** «Junio 2026» en el tablero de la portada. Propuesta:
   el mes sin año.
-- **D4 · Texto cortado con puntos suspensivos a propósito** en el portal de documentos («Informe
+- ✅ **D4 · Texto cortado con puntos suspensivos a propósito** en el portal de documentos («Informe
   mensual de r…»). Es diseño de producto, pero en 1536 px corta los tres primeros documentos.
   Propuesta: nombres más cortos en la muestra.
 - **D5 · El evento de Calendly está en inglés** y en hora de Europa central: bien para Berlín, raro
@@ -231,3 +236,37 @@ local.
 
 Servidor de desarrollo encendido en `http://localhost:3000/es` (entrada `sitio` de
 `.claude/launch.json`).
+
+---
+
+## Ronda de arreglos — 2026-09-19
+
+Decisiones de Boris: un solo evento de Calendly para todo; en Berlín solo la línea digital; WhatsApp
+solo en español. Verificado sobre la compilación de producción; capturas `arreglo-*`.
+
+| Punto | Qué se hizo | Comprobado |
+|---|---|---|
+| Menú | «Inicio» primero, hacia la portada de cada idioma, en el menú de escritorio, en el panel del teléfono y en el pie (columna «Empresa»). Se marca en la portada (`aria-current`, subrayado cobre). El isotipo sigue llevando al inicio | A 1536, 1024 y 390 px, sin desborde. `arreglo-menu-inicio-*.png` |
+| B2 | Fuera «Imagen provisional de archivo» (`portada.credito`) y su CSS. La señal «sigue» del teléfono no cambia de sitio | No aparece en el HTML |
+| B4 | Fuentes de las portadas en `public/portafolio/<nombre>/fuentes/` (woff2, subconjunto latino, con ä ö ü ß €) y `@font-face` en su `<style>`. Fuera los `<link>` a Google | Ninguna petición a `googleapis` ni `gstatic`; las familias cargan |
+| C1 | Chalkline: `--hormigon` de `#6E6C66` a `#5C5A55` (5,4:1). Towpath: la etiqueta del concepto sin la opacidad del 80 % (`--crema-suave`, 5,8:1) | axe: 0 infracciones en las tres portadas. `arreglo-contraste-*.png` |
+| C2 | Mayo pasa de 108 a 102 (junio, 114, queda un 11,8 % arriba: «▲ 12 %») y «▲ 1,5 pt» | `arreglo-tablero-financiera.png` |
+| C3 | Versión ligera del vídeo (`hero-movil.webm`, 482 KB; `.mp4`, 412 KB; 960 × 540). El guion la elige hasta 760 px de ancho; con ahorro de datos o red 2G/3G no se carga vídeo y queda el póster | 1536 px: `hero.webm`; 390 px: `hero-movil.webm`; 3G o ahorro de datos: solo el póster |
+| C4 | Fuera el `preconnect` a Calendly | Ningún `preconnect` en la página |
+| C5 | Todo el sitio va al mismo `CALENDLY_URL`. Soluciones digitales y `/portafolio`: «Agendar una conversación · 20 min» (cabecera y cierre); el resto sigue con «Agendar diagnóstico ejecutivo» | Texto servido |
+| C6 | Mantenimiento: «con cambios pequeños incluidos». «¿Cuánto cuesta?» (web): «En veinte minutos sales sabiendo qué necesitas; la propuesta cerrada te llega después, por escrito.» Garantía de pruebas: «En los sistemas a medida, pruebas automáticas en cada cambio…». Sistemas a medida sin cambios (confirmados) | HTML servido |
+| C7 | Una sola aparición de cada frase, la primera (tabla abajo) | HTML servido |
+| C9 | PRODUCT.md al día (mercados, conversión y canales, portafolio). Fuera los «TEXTO POR APROBAR», «SUPUESTO», «microcopia por aprobar» y «sin programar» caducados de `home.es.js`, `servicios.es.js` y `nosotros.es.js`. Los `HUECO` de «Nosotros» se quedan: son datos que faltan de verdad | Sin coincidencias en `src/content` |
+| D1 | «¿Quieres conocer más sobre KLINODA?» pasa a `h2` (misma clase, mismo aspecto), y las credenciales tienen un `h2` solo para lectores de pantalla («Trayectoria y equipo») en lugar de `aria-label` | Esquema de la portada: Trayectoria y equipo · Qué hacemos · ¿Quieres conocer más sobre KLINODA? · cierre |
+| D2 | Un espacio entre los dos `span` del `h2` de Chalkline y del `h1` de Towpath | «Prenzlauer Berg On site now», «Towpath Neighbourhood…» |
+| D3 | «Junio 2026» → «Junio» | — |
+| D4 | «Informe mensual», «Acta de dirección» y «Conciliación» | Los nombres ya no se cortan. **Queda uno:** el origen «Contabilidad · 04 jun» de la conciliación, porque su etiqueta «En revisión» es más ancha. No se tocó: sería otro texto |
+
+**C7, antes y después:**
+
+| Dónde | Antes | Después |
+|---|---|---|
+| Dirección financiera, entregable | «…Un documento vivo que se revisa en reunión, no un informe que nadie abre.» | «…Un documento vivo que se revisa en reunión.» (la frase se queda en la intro del mes) |
+| Soluciones digitales, «Qué incluye» | «Diseño propio, no una plantilla con el logotipo cambiado» | «Diseño propio» («plantilla» sigue en el título y «logotipo cambiado» en la entrada) |
+| Portada, credenciales | «clientes asesorados» · «Asesorados por Richard Carvajal en Latinoamérica, Estados Unidos y Europa.» | «clientes asesorados» · «Por Richard Carvajal en Latinoamérica, Estados Unidos y Europa.» |
+| Soluciones digitales, preguntas | «Lo que preguntan antes de empezar.» (igual que en dirección financiera) | **«Preguntas sobre la web y los sistemas.»**: texto nuevo, pendiente de que Boris lo apruebe |

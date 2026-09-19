@@ -48,8 +48,13 @@ export default function Credenciales({ content }) {
   });
 
   return (
-    <section ref={raiz} className="registro credenciales" id="equipo" aria-label={content.etiqueta}>
+    <section ref={raiz} className="registro credenciales" id="equipo" aria-labelledby="credenciales-titulo">
       <div className="marco">
+        {/* Título para el lector de pantalla y el esquema de la página; a la
+            vista, la banda se explica sola. */}
+        <h2 id="credenciales-titulo" className="sr-only">
+          {content.etiqueta}
+        </h2>
         <ul className="cifras">
           {content.cifras.map((c) => (
             <li key={c.que}>

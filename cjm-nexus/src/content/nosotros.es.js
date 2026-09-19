@@ -1,5 +1,5 @@
 /**
- * Textos de la página «Nosotros» — /es/nosotros (pieza 12, sin programar).
+ * Textos de la página «Nosotros» — /es/nosotros (pieza 12).
  *
  * POR QUÉ EXISTE: la portada nombra a tres personas y hasta ahora no había
  * dónde conocerlas. Quien va a confiarnos sus finanzas o la salud ocupacional
@@ -23,8 +23,8 @@
  * `alt` y aparecen en su sitio. Nada de fotos de archivo de personas.
  *
  * Español latinoamericano, tuteo al lector (regla 10 de PRODUCT.md).
- * TEXTOS POR APROBAR: todo lo que no viene de un texto ya aprobado (ver
- * CONSTRUCCION.md, pieza 12).
+ * Los huecos (`HUECO`) son datos que faltan de verdad: se rellenan, no se
+ * inventan, y sin dato no se pinta nada.
  */
 export const nosotros = {
   meta: {

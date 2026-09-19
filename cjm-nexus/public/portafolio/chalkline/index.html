@@ -14,16 +14,24 @@
      filete, como un cajetín (Laing O'Rourke); el contacto directo a la vista
      (Uribe & Schwarzkopf), aquí por teléfono.
      Fotos: Christian Lue y Olek Buzunov, Unsplash (ver FUENTES.md). -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Encode+Sans:wdth,wght@75..125,400..800&display=swap" rel="stylesheet">
+<!-- Fuentes servidas desde esta carpeta (sin pasar por Google: RGPD). -->
+<style>
+@font-face {
+  font-family: 'Encode Sans';
+  font-style: normal;
+  font-weight: 400 800;
+  font-stretch: 75% 125%;
+  font-display: swap;
+  src: url(fuentes/encode-sans-400-800.woff2) format('woff2');
+}
+</style>
 <style>
   :root {
     --grafito: #1B1B19;
     --grafito-alto: #2A2A27;
     --cemento: #E4E3DE;
     --cemento-alto: #EFEEEA;
-    --hormigon: #6E6C66;
+    --hormigon: #5C5A55; /* 5,4:1 sobre el cajetín (antes #6E6C66, 4,1:1: AUDITORIA.md C1) */
     --niebla: #C9C8C2;
     --blanco: #FFFFFF;
     --linea: rgba(27, 27, 25, .16);
@@ -243,7 +251,7 @@
         </figure>
         <div class="datos">
           <div class="datos-cab">
-            <h2 id="ficha-titulo">3-room flat, Prenzlauer Berg<span>On site now: 94 m² with 3,60 m ceilings</span></h2>
+            <h2 id="ficha-titulo">3-room flat, Prenzlauer Berg <span>On site now: 94 m² with 3,60 m ceilings</span></h2>
             <a href="#">Read the site diary</a>
           </div>
           <dl>

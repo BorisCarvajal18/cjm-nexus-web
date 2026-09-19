@@ -1010,3 +1010,23 @@ a 160 (fin de página). Capturas `mov-*` (`-inicio`, `-medio` en soluciones digi
 844 sin desbordamiento ni errores; los tres enlaces abren su portada (200, todas las imágenes
 cargan), con `noindex` y el correo de «Talk to us». El menú: Servicios, Portafolio, Método,
 Nosotros, Contacto. Capturas `portafolio-*` (página, página entera, menú y Towpath abierta).
+
+### 2026-09-19 — auditoría y ronda de arreglos
+
+- **Auditoría** de la web en español antes de traducir: `.impeccable/AUDITORIA.md` (capturas en
+  `.impeccable/auditoria/`). Boris la revisó y decidió: un solo evento de Calendly; en Berlín solo la
+  línea digital; WhatsApp solo en español (en alemán, teléfono y correo).
+- **Arreglado** (detalle y comprobación en AUDITORIA.md, «Ronda de arreglos»): «Inicio» en el menú,
+  en el panel del teléfono y en el pie; fuera «Imagen provisional de archivo»; fuentes de las
+  portadas servidas desde su carpeta; contraste de Chalkline y Towpath; el tablero de dirección
+  financiera cuadra; vídeo ligero para pantallas pequeñas y póster con red lenta o ahorro de datos;
+  fuera el `preconnect` a Calendly; el nombre de la acción («Agendar una conversación · 20 min» en
+  soluciones digitales y `/portafolio`); las promesas de C6; las frases repetidas; PRODUCT.md y los
+  comentarios caducados; títulos de la portada y de las portadas; «Junio» sin año; nombres cortos en
+  el portal.
+- **Por aprobar:** «Preguntas sobre la web y los sistemas.», el título nuevo de las preguntas de
+  soluciones digitales (antes repetía el de dirección financiera).
+- **Esperan:** B1 (páginas legales), B3 (traducciones) y C8 (imágenes para compartir).
+- El vídeo ligero se hizo con `ffmpeg-static`, instalado fuera del repositorio.
+
+**Verificación:** build sin errores ni avisos; detalle por punto en AUDITORIA.md.

@@ -23,7 +23,7 @@ export const portafolio = {
     title: 'Tres negocios, tres portadas que no se parecen.',
     highlight: ['no', 'se', 'parecen.'],
     lead: 'Así se ve la primera pantalla de una web que hacemos en una semana. Son conceptos para marcas ficticias de Berlín: ningún negocio existe, pero cada portada está hecha como si lo fuera.',
-    primary: 'Agendar diagnóstico ejecutivo · 20 min',
+    primary: 'Agendar una conversación · 20 min',
     secondary: 'Ver las portadas',
     secondaryHref: '#portadas',
   },
@@ -62,7 +62,7 @@ export const portafolio = {
     eyebrow: 'Siguiente paso',
     title: 'Veinte minutos para hablar de la tuya.',
     text: 'Sin costo · sin compromiso · en español, inglés o alemán.',
-    primary: 'Agendar diagnóstico ejecutivo',
+    primary: 'Agendar una conversación · 20 min',
     secondary: 'Escribir a CJM Nexus',
   },
 };

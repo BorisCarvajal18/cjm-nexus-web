@@ -25,24 +25,18 @@ export const home = {
      En el titular, las palabras entre asteriscos van en 800. */
   portada: {
     titular: 'Finanzas *claras* y software a la *altura* de tu empresa.',
-    // TEXTO POR APROBAR (PLAN.md, ronda 5 §2): la maqueta decía «une dirección
-    // financiera con quince años de trayectoria», que atribuye los quince años
-    // a la firma y choca con la regla 2 de PRODUCT.md. Esta es la propuesta
-    // del plan, que se los da a Richard Carvajal por su nombre.
+    // Los quince años son de Richard Carvajal y llevan su nombre (regla 2 de
+    // PRODUCT.md).
     entrada:
       'CJM Nexus une la dirección financiera de Richard Carvajal, con quince años de trayectoria, y el desarrollo de software especializado. Para empresas que quieren crecer con control.',
     agendar: 'Agendar diagnóstico ejecutivo · 20 min',
     verQueHacemos: 'Ver qué hacemos',
     nota: 'Sin costo · sin compromiso · 20 minutos',
     imagen: 'Tres personas trabajan en una mesa con informes, gráficos impresos y una laptop, vistas desde arriba.',
-    // El vídeo es un clip de archivo hasta que exista material propio.
-    credito: 'Imagen provisional de archivo',
   },
 
   /* Las credenciales (DESIGN.md, M1). Las cifras de trayectoria son de
-     Richard Carvajal y llevan su nombre al lado (regla 2 de PRODUCT.md).
-     TEXTO POR APROBAR (PLAN.md, ronda 5 §2): las tres notas (`quien`) y la
-     frase de la firma. */
+     Richard Carvajal y llevan su nombre al lado (regla 2 de PRODUCT.md). */
   credenciales: {
     etiqueta: 'Trayectoria y equipo',
     cifras: [
@@ -56,7 +50,7 @@ export const home = {
         hasta: 100,
         mas: '+',
         que: 'clientes asesorados',
-        quien: 'Asesorados por Richard Carvajal en Latinoamérica, Estados Unidos y Europa.',
+        quien: 'Por Richard Carvajal en Latinoamérica, Estados Unidos y Europa.',
       },
       {
         valor: '3',
@@ -111,14 +105,10 @@ export const home = {
     /* LOS DATOS CUADRAN ENTRE SÍ, como en un tablero de verdad: las tres líneas
        suman $1,24 M, que es el indicador «Ventas» y el punto de junio del
        gráfico; junio está un 12 % sobre mayo; y el trazo cruza la meta entre
-       abril y mayo. Quien sabe de finanzas mira justo eso.
-
-       MICROCOPIA NUEVA DE LA PASADA DE PULIDO (18-sep-2026), por aprobar:
-       `vistas`, `proyeccion` y `ventas.globo`. Son rótulos de la interfaz de
-       muestra, no texto de la firma. */
+       abril y mayo. Quien sabe de finanzas mira justo eso. */
     tablero: {
       titulo: 'Tablero gerencial',
-      periodo: 'Junio 2026',
+      periodo: 'Junio',
       vistas: ['Mes', 'Trimestre', 'Año'],
       kpis: [
         { nombre: 'Ventas', cambio: '▲ 12 %', valor: '$1,24 M', chispa: '0,12 9,11 18,12 27,8 36,7 45,4 55,2' },
@@ -150,19 +140,18 @@ export const home = {
       ],
       alerta: 'Cartera vencida por encima de 60 días',
     },
-    /* MICROCOPIA NUEVA DE LA PASADA DE PULIDO (18-sep-2026), por aprobar:
-       `buscar`, `sello` y los números de `reparto` (los 128 documentos por
-       estado, con las mismas palabras de la columna «Estado»). El tercer dato
-       de cada suceso es su icono, no texto. */
+    /* Los números de `reparto` suman los 128 documentos, con las mismas
+       palabras de la columna «Estado». El tercer dato de cada suceso es su
+       icono, no texto. */
     portal: {
       titulo: 'Documentos y trazabilidad',
       rotulo: 'Portal de empresa',
       buscar: 'Buscar documento',
       columnas: ['Documento', 'Estado'],
       documentos: [
-        { nombre: 'Informe mensual de resultados', origen: 'Contabilidad · 12 jun', estado: 'Firmado', sel: true },
-        { nombre: 'Acta de reunión de dirección', origen: 'Dirección · 05 jun', estado: 'Firmado' },
-        { nombre: 'Conciliación bancaria', origen: 'Contabilidad · 04 jun', estado: 'En revisión', tipo: 'rev' },
+        { nombre: 'Informe mensual', origen: 'Contabilidad · 12 jun', estado: 'Firmado', sel: true },
+        { nombre: 'Acta de dirección', origen: 'Dirección · 05 jun', estado: 'Firmado' },
+        { nombre: 'Conciliación', origen: 'Contabilidad · 04 jun', estado: 'En revisión', tipo: 'rev' },
         { nombre: 'Orden de compra 2418', origen: 'Operación · 03 jun', estado: 'Borrador', tipo: 'bor' },
         { nombre: 'Reporte de inventario', origen: 'Operación · 01 jun', estado: 'Firmado' },
       ],
@@ -200,10 +189,8 @@ export const home = {
      y los plazos por cargo con su aptitud. Sin nombre ni documento, sin datos
      clínicos y sin totales por aptitud. Etiquetas reales.
 
-     TEXTO POR APROBAR: las dos primeras frases. La maqueta decía «KLINODA es
-     nuestro producto propio…» y «…para probar exactamente lo que decimos que
-     sabemos hacer», que chocan con las reglas 7, 8 y 9 de PRODUCT.md
-     (18-sep-2026). Van a la empresa, que es el cliente. */
+     Las frases van a la empresa, que es el cliente (reglas 7, 8 y 9 de
+     PRODUCT.md). */
   klinoda: {
     etiqueta: 'Demo · en desarrollo · datos ficticios',
     logo: 'KLINODA',
@@ -211,8 +198,7 @@ export const home = {
     // ahora es texto, con la letra del sitio.
     lema: 'Cada persona. Una historia completa.',
     seccion: 'Panel de mi empresa',
-    /* MICROCOPIA NUEVA DE LA PASADA DE PULIDO (18-sep-2026), por aprobar: las
-       tres pestañas. Son los rótulos reales de las tres hojas de su portal
+    /* Las tres pestañas son los rótulos reales de las tres hojas de su portal
        de empresa (portal_empresa/panel.html: «Plazos», «Certificados» y
        «Personal»), sin inventar ningún módulo (regla 4 de PRODUCT.md). */
     pestanas: ['Plazos', 'Certificados', 'Personal'],
@@ -245,12 +231,7 @@ export const home = {
     boton: 'Ver KLINODA',
   },
 
-  /* En la portada el equipo va como banda corta, sin fotografías ni fichas.
-     Tres tarjetas con iniciales dentro de un círculo se leen como un hueco
-     esperando a rellenarse; una frase que nombra a los tres y enlaza a su
-     página se lee como una decisión. Las fotos van en «Nosotros». */
-  /* El cierre (DESIGN.md, M6). TEXTO POR APROBAR (PLAN.md, ronda 2 §7): el
-     titular y los tres bloques. Nombra a los dos, Richard y Boris, porque las
+  /* El cierre (DESIGN.md, M6). Nombra a los dos, Richard y Boris, porque las
      dos audiencias pesan igual (PRODUCT.md). En el titular, lo que va entre
      asteriscos dobles va en 800. */
   cierre: {
