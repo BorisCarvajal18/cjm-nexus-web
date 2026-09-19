@@ -37,7 +37,7 @@ export const sitio = {
   },
   comillas: ['“', '”'],
   pie: {
-    lema: 'Fractional CFO services and specialized software for companies that want to grow in control. Ecuador and Berlin.',
+    lema: 'Fractional CFO services and specialized software for companies that want to grow with control. Ecuador and Berlin.',
     contacto: 'Contact',
     columnas: { servicios: 'Services', empresa: 'Company', legal: 'Legal' },
     enlaces: {

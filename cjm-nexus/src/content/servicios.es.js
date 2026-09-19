@@ -322,7 +322,7 @@ export const finanzas = {
       },
       {
         q: '¿Trabajan a distancia?',
-        a: 'Sí. Tenemos equipo en Ecuador y en Berlín, y trabajamos en español, inglés y alemán. Las reuniones son por videollamada salvo que haga falta estar presente.',
+        a: 'Sí. Tenemos equipo en Ecuador y en Berlín, y trabajamos en español e inglés. Las reuniones son por videollamada salvo que haga falta estar presente.',
       },
     ],
   },
@@ -573,7 +573,7 @@ export const digital = {
       },
       {
         q: '¿Trabajan con empresas fuera de Ecuador?',
-        a: 'Sí. El equipo técnico está en Berlín y trabajamos en español, inglés y alemán.',
+        a: 'Sí. El equipo técnico está en Berlín y trabajamos en español e inglés.',
       },
     ],
   },

@@ -115,7 +115,7 @@ export const nosotros = {
       },
       {
         titulo: 'Ecuador y Berlín',
-        texto: 'Equipo en Ecuador y Berlín. Trabajamos en español, inglés y alemán.',
+        texto: 'Equipo en Ecuador y Berlín. Trabajamos en español e inglés.',
       },
       {
         titulo: 'KLINODA, empresa del Grupo',

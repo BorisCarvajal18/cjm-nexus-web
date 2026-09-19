@@ -79,7 +79,7 @@ export const nosotros = {
       },
       {
         titulo: 'Ecuador and Berlin',
-        texto: 'A team in Ecuador and Berlin. We work in English, Spanish and German.',
+        texto: 'A team in Ecuador and Berlin. We work in English and Spanish.',
       },
       {
         titulo: 'KLINODA, a Group company',

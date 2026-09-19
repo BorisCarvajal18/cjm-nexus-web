@@ -284,7 +284,7 @@ export const finanzas = {
       },
       {
         q: 'Do you work remotely?',
-        a: 'Yes. We have a team in Ecuador and in Berlin, and we work in English, Spanish and German. Meetings are by video call unless being there in person is needed.',
+        a: 'Yes. We have a team in Ecuador and in Berlin, and we work in English and Spanish. Meetings are by video call unless being there in person is needed.',
       },
     ],
   },
@@ -497,7 +497,7 @@ export const digital = {
       },
       {
         q: 'Do you work with international companies?',
-        a: 'Yes. Our technical team is based in Berlin, and we work in English, Spanish and German.',
+        a: 'Yes. Our technical team is based in Berlin, and we work in English and Spanish.',
       },
     ],
   },

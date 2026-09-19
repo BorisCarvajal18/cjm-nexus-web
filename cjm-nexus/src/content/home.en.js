@@ -15,13 +15,13 @@ export const home = {
   meta: {
     title: 'Fractional CFO services and specialized software | CJM Nexus',
     description:
-      "CJM Nexus brings together Richard Carvajal's financial leadership, fifteen years in the making, and specialized software development, for small and midsize businesses that want to grow in control.",
+      "CJM Nexus brings together Richard Carvajal's financial leadership, with fifteen years of experience, and specialized software development, for small and midsize businesses that want to grow with control.",
   },
 
   portada: {
     titular: '*Clear* finances and software that *measures up* to your business.',
     entrada:
-      "CJM Nexus brings together Richard Carvajal's financial leadership, fifteen years in the making, and specialized software development. For companies that want to grow in control.",
+      "CJM Nexus brings together Richard Carvajal's financial leadership, with fifteen years of experience, and specialized software development. For companies that want to grow with control.",
     agendar: 'Book a diagnostic call · 20 min',
     verQueHacemos: 'See what we do',
     nota: 'Free · no commitment · 20 minutes',
@@ -44,9 +44,9 @@ export const home = {
         quien: 'By Richard Carvajal in Latin America, the US and Europe.',
       },
       {
-        valor: '3',
-        que: 'working languages',
-        quien: 'English, Spanish and German, with a team in Ecuador and Berlin.',
+        valor: '2',
+        que: 'countries',
+        quien: 'A team in Ecuador and Berlin.',
       },
     ],
     firma:

@@ -53,9 +53,9 @@ export const home = {
         quien: 'Por Richard Carvajal en Latinoamérica, Estados Unidos y Europa.',
       },
       {
-        valor: '3',
-        que: 'idiomas de trabajo',
-        quien: 'Español, inglés y alemán, con equipo en Ecuador y Berlín.',
+        valor: '2',
+        que: 'países',
+        quien: 'Equipo en Ecuador y Berlín.',
       },
     ],
     firma:
