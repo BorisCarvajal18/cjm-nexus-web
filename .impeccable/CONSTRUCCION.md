@@ -1030,3 +1030,14 @@ Nosotros, Contacto. Capturas `portafolio-*` (página, página entera, menú y To
 - El vídeo ligero se hizo con `ffmpeg-static`, instalado fuera del repositorio.
 
 **Verificación:** build sin errores ni avisos; detalle por punto en AUDITORIA.md.
+
+### 2026-09-19 — revisión general antes de traducir (solo propuestas)
+
+- `.impeccable/REVISION-GENERAL.md`: diez propuestas ordenadas por impacto, de dos miradas
+  independientes (diseño y preparación para traducir), verificadas contra el código y en el navegador,
+  con capturas de antes y maquetas del después en `.impeccable/revision/`. Las miradas de experiencia,
+  código y rendimiento se descartaron por decisión de Boris. **No se cambió ningún archivo del sitio.**
+- Decisiones de Boris para la traducción: inglés, todo el sitio; alemán, solo la línea digital y
+  «Nosotros», con *Sie* y sin WhatsApp; Berlín, primer mercado de la línea digital.
+- **Espera a Boris:** marcar sí o no en la tabla del informe, y las cuatro decisiones previas a la
+  portada alemana (propuesta 5).
