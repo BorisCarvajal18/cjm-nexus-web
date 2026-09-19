@@ -23,9 +23,21 @@ import { useEffect, useRef } from 'react';
 import Flecha from '../../components/registro/Flecha';
 import useDarkSection from '../../hooks/useDarkSection';
 
-/** «Finanzas *claras* y…» → palabras, con las marcadas en 800. */
+/**
+ * «Finanzas *claras* y…» → palabras, con las marcadas en 800. Un tramo entre
+ * asteriscos puede tener varias palabras («*auf Augenhöhe*»): se marca el
+ * tramo y después se parte por palabras, que es como entra el titular.
+ */
 function palabras(titular) {
-  return titular.split(' ').map((p) => ({ texto: p.replace(/\*/g, ''), fuerte: p.startsWith('*') }));
+  let dentro = false;
+  return titular.split(' ').map((p) => {
+    const abre = p.startsWith('*');
+    const cierra = p.slice(abre ? 1 : 0).includes('*');
+    const fuerte = dentro || abre;
+    if (abre && !cierra) dentro = true;
+    if (cierra) dentro = false;
+    return { texto: p.replace(/\*/g, ''), fuerte };
+  });
 }
 
 export default function Portada({ content }) {
