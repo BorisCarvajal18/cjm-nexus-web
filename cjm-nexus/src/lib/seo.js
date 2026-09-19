@@ -13,7 +13,8 @@
  * Unidos y Europa se cuenta donde corresponde: en su ficha, con su nombre
  * (/nosotros).
  */
-import { languages, localeMap } from '../i18n/settings';
+import { idiomasDe } from '../i18n/rutas.mjs';
+import { localeMap } from '../i18n/settings';
 import { SITE_URL, SOCIAL_PROFILES } from './site';
 
 /**
@@ -78,7 +79,8 @@ export function pageMetadata({ lang, path = '', meta }) {
     alternates: {
       canonical: ruta,
       languages: {
-        ...Object.fromEntries(languages.map((l) => [l, `/${l}${path}`])),
+        // Solo los idiomas en los que esta página existe (`i18n/rutas.mjs`).
+        ...Object.fromEntries(idiomasDe(path).map((l) => [l, `/${l}${path}`])),
         'x-default': `/es${path}`,
       },
     },

@@ -33,11 +33,18 @@ import FinalCta from '../../../../blocks/FinalCta';
 import SiteFooter from '../../../../components/SiteFooter';
 import SiteHeader from '../../../../components/SiteHeader';
 import { getFinanzas, getHome, getSitio } from '../../../../content';
+import { existe } from '../../../../i18n/rutas.mjs';
 import { defaultLanguage, languages } from '../../../../i18n/settings';
 import { faqSchema, pageMetadata, serviceSchema } from '../../../../lib/seo';
 
 const idioma = (lang) => (languages.includes(lang) ? lang : defaultLanguage);
 const RUTA = '/servicios/direccion-financiera';
+
+/* Esta página no existe en todos los idiomas (`i18n/rutas.mjs`): donde no
+   existe no se genera, y `next.config.mjs` redirige a la más cercana. */
+export function generateStaticParams({ params }) {
+  return existe(params.lang, RUTA) ? [{}] : [];
+}
 
 export function generateMetadata({ params }) {
   const lang = idioma(params.lang);

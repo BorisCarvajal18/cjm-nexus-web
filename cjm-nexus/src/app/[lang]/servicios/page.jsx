@@ -24,10 +24,17 @@ import Method from '../../../blocks/Method';
 import SiteFooter from '../../../components/SiteFooter';
 import SiteHeader from '../../../components/SiteHeader';
 import { getHome, getServicios } from '../../../content';
+import { existe } from '../../../i18n/rutas.mjs';
 import { defaultLanguage, languages } from '../../../i18n/settings';
 import { pageMetadata } from '../../../lib/seo';
 
 const idioma = (lang) => (languages.includes(lang) ? lang : defaultLanguage);
+
+/* Esta página no existe en todos los idiomas (`i18n/rutas.mjs`): donde no
+   existe no se genera, y `next.config.mjs` redirige a la más cercana. */
+export function generateStaticParams({ params }) {
+  return existe(params.lang, '/servicios') ? [{}] : [];
+}
 
 export function generateMetadata({ params }) {
   const lang = idioma(params.lang);

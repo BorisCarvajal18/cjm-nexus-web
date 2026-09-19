@@ -42,7 +42,7 @@ export default function KlinodaPage({ params }) {
     <>
       <SiteHeader lang={lang} />
       <main>
-        <section className="registro pag-cabeza aviso-klinoda">
+        <section className="registro pag-cabeza aviso-pag">
           <div className="marco">
             <p className="ref-pag">{a.eyebrow}</p>
             <h1>

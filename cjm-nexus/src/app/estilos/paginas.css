@@ -707,26 +707,26 @@
   color: var(--tx-1);
 }
 
-/* ── el aviso de KLINODA ────────────────────────────────────────────── */
+/* ── una página de aviso: KLINODA y la 404 ────────────────────────────────────────────── */
 /* Una cabecera de página que ocupa la pantalla: la página es solo esto, y el
    pie no sube a media altura. */
-.aviso-klinoda {
+.aviso-pag {
   min-height: 100svh;
   display: flex;
   align-items: center;
   border-bottom: 0;
 }
-.aviso-klinoda .marco {
+.aviso-pag .marco {
   width: 100%;
 }
-.aviso-klinoda .segunda {
+.aviso-pag .segunda {
   margin-top: 12px;
 }
-.aviso-klinoda .k-etiqueta {
+.aviso-pag .k-etiqueta {
   margin-top: 28px;
 }
 /* En el teléfono el botón ocupa el ancho; el enlace, solo lo suyo. */
-.aviso-klinoda .enlace {
+.aviso-pag .enlace {
   align-self: flex-start;
 }
 

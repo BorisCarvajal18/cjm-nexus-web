@@ -34,6 +34,14 @@ export const sitio = {
     tel: 'Teléfono',
     email: 'Correo',
   },
+  /* La página 404. TEXTO POR APROBAR (2026-09-19). */
+  noEncontrada: {
+    eyebrow: 'Error 404',
+    title: 'Esta página no existe.',
+    highlight: 'no existe.',
+    lead: 'Puede que el enlace esté mal escrito o que la página se haya movido.',
+    volver: 'Volver al inicio',
+  },
   /* Las comillas de una cita: «…» en español, “…” en inglés, „…“ en alemán. */
   comillas: ['«', '»'],
   pie: {

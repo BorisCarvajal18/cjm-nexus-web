@@ -33,15 +33,16 @@ import { usePathname } from 'next/navigation';
 import { getSitio } from '../content';
 import { languages } from '../i18n/settings';
 import { alCambiarSuperficie } from '../lib/surface';
+import { destinoEn } from '../i18n/rutas.mjs';
 import { navLinks } from '../lib/site';
 import Flecha from './registro/Flecha';
 
-/** La misma ruta en otro idioma: /es/klinoda → /de/klinoda. */
+/** La misma página en otro idioma: /es/klinoda → /de/klinoda. Si allí no
+    existe (la línea financiera en alemán), la más cercana: `i18n/rutas.mjs`. */
 function enIdioma(ruta, idioma) {
   const partes = (ruta || '/').split('/');
-  if (languages.includes(partes[1])) partes[1] = idioma;
-  else partes.splice(1, 0, idioma);
-  return partes.join('/').replace(/\/$/, '') || `/${idioma}`;
+  const sinIdioma = languages.includes(partes[1]) ? `/${partes.slice(2).join('/')}` : ruta || '/';
+  return destinoEn(idioma, sinIdioma.replace(/\/$/, ''));
 }
 
 export default function SiteHeader({ lang = 'es', ctaHref }) {

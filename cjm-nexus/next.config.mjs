@@ -5,6 +5,7 @@
  *
  * @type {import('next').NextConfig}
  */
+import { redirecciones } from './src/i18n/rutas.mjs';
 import { KLINODA_WEB } from './src/lib/destinos.mjs';
 
 const nextConfig = {
@@ -15,9 +16,13 @@ const nextConfig = {
   // Cuando exista la web de KLINODA (`src/lib/destinos.mjs`), /klinoda en
   // cada idioma lleva allí. Temporal, para poder volver atrás sin que los
   // navegadores la recuerden.
+  // Y las páginas que no existen en un idioma (en alemán, la línea financiera)
+  // llevan a la más cercana que sí existe: `src/i18n/rutas.mjs`.
   async redirects() {
-    if (!KLINODA_WEB) return [];
-    return [{ source: '/:lang(es|en|de)/klinoda', destination: KLINODA_WEB, permanent: false }];
+    const klinoda = KLINODA_WEB
+      ? [{ source: '/:lang(es|en|de)/klinoda', destination: KLINODA_WEB, permanent: false }]
+      : [];
+    return [...klinoda, ...redirecciones()];
   },
 };
 

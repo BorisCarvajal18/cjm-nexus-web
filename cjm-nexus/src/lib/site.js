@@ -7,6 +7,8 @@
  * llevan una `clave`, y su texto está en `src/content/sitio.<idioma>.js`.
  */
 
+import { destinoEn, existe } from '../i18n/rutas.mjs';
+
 /** URL canónica (robots, sitemap, metadata, hreflang). */
 export const SITE_URL = 'https://www.cjmnexus.com';
 
@@ -31,22 +33,32 @@ export const SOCIAL_PROFILES = [];
  * propia web, y /klinoda es solo un aviso. Se llega desde sus bandas.
  * «Portafolio» entró el 2026-09-19, con sus tres portadas de ejemplo.
  */
+/* Un enlace interno: su dirección en este idioma (`destinoEn`). Con
+   `soloSiExiste`, si la página no existe en el idioma el enlace no sale; sin
+   él, lleva a la que va en su lugar (en alemán, «Servicios» es soluciones
+   digitales). Ver `i18n/rutas.mjs`. */
+function enlaces(lang, lista) {
+  return lista
+    .filter((e) => !e.soloSiExiste || existe(lang, e.path.split('#')[0]))
+    .map(({ clave, path, href }) => ({ clave, href: href ?? destinoEn(lang, path) }));
+}
+
 export function navLinks(lang = 'es') {
   // Las etiquetas están en `src/content/sitio.<idioma>.js` → `menu`, por
   // `clave`. «Inicio» va primero: desde una página interior es la vuelta a la
   // portada más visible (el isotipo también lleva, pero no todo el mundo lo
   // sabe).
-  return [
-    { clave: 'inicio', href: `/${lang}` },
-    { clave: 'servicios', href: `/${lang}/servicios` },
-    { clave: 'portafolio', href: `/${lang}/portafolio` },
-    { clave: 'metodo', href: `/${lang}/servicios#metodo` },
-    { clave: 'nosotros', href: `/${lang}/nosotros` },
+  return enlaces(lang, [
+    { clave: 'inicio', path: '' },
+    { clave: 'servicios', path: '/servicios' },
+    { clave: 'portafolio', path: '/portafolio' },
+    { clave: 'metodo', path: '/servicios#metodo', soloSiExiste: true },
+    { clave: 'nosotros', path: '/nosotros' },
     // Todas las paginas terminan con la misma seccion de cierre, con
     // id="contacto". Un ancla suelta lleva a la de la pagina donde estas, y
     // no obliga a cargar la portada para pedir una reunion.
     { clave: 'contacto', href: '#contacto' },
-  ];
+  ]);
 }
 
 /**
@@ -76,21 +88,21 @@ export function footerColumns(lang = 'es') {
   return [
     {
       clave: 'servicios',
-      links: [
-        { clave: 'dosServicios', href: `/${lang}/servicios` },
-        { clave: 'finanzas', href: `/${lang}/servicios/direccion-financiera` },
-        { clave: 'digital', href: `/${lang}/servicios/soluciones-digitales` },
-        { clave: 'portafolio', href: `/${lang}/portafolio` },
-      ],
+      links: enlaces(lang, [
+        { clave: 'dosServicios', path: '/servicios', soloSiExiste: true },
+        { clave: 'finanzas', path: '/servicios/direccion-financiera', soloSiExiste: true },
+        { clave: 'digital', path: '/servicios/soluciones-digitales' },
+        { clave: 'portafolio', path: '/portafolio' },
+      ]),
     },
     {
       clave: 'empresa',
-      links: [
-        { clave: 'inicio', href: `/${lang}` },
-        { clave: 'metodo', href: `/${lang}/servicios#metodo` },
-        { clave: 'nosotros', href: `/${lang}/nosotros` },
-        { clave: 'contacto', href: `/${lang}#contacto` },
-      ],
+      links: enlaces(lang, [
+        { clave: 'inicio', path: '' },
+        { clave: 'metodo', path: '/servicios#metodo', soloSiExiste: true },
+        { clave: 'nosotros', path: '/nosotros' },
+        { clave: 'contacto', path: '#contacto' },
+      ]),
     },
     {
       clave: 'legal',
