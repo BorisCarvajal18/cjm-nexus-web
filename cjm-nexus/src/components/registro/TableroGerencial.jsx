@@ -17,8 +17,10 @@ import { BarraVentana, Indicador, Riel } from './Ventana';
 const RIEL = ['tablero', 'flujo', 'rentabilidad', 'costos', 'documento'];
 const CAJA = `0 0 ${ANCHO} ${ALTO}`;
 
-/** «$612 K» → 612. Para repartir la barra de ingresos por línea. */
-const cifra = (texto) => parseFloat(texto.replace(/[^\d,]/g, '').replace(',', '.')) || 0;
+/** «$612 K» o «$612K» → 612; «1,24» o «1.24» → 1.24. Para repartir la barra
+    de ingresos por línea. Acepta la coma decimal del español y del alemán y el
+    punto del inglés (las cifras de la muestra no llevan separador de millares). */
+const cifra = (texto) => parseFloat(texto.replace(/[^\d.,]/g, '').replace(',', '.')) || 0;
 
 export default function TableroGerencial({ datos }) {
   const { ventas } = datos;

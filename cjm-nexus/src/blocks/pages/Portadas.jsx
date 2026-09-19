@@ -18,7 +18,7 @@ export default function Portadas({ content }) {
   return (
     <section id="portadas" className="registro seccion">
       <div className="marco">
-        <p className="nota-portadas">{content.idioma}</p>
+        {content.idioma ? <p className="nota-portadas">{content.idioma}</p> : null}
         {content.portadas.map((p) => {
           const href = `/portafolio/${p.id}/index.html`;
           return (

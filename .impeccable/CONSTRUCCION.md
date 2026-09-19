@@ -1080,3 +1080,32 @@ Nosotros, Contacto. Capturas `portafolio-*` (página, página entera, menú y To
 código ni en el HTML servido de las siete páginas; «Método» no aparece en el menú ni en el pie de
 `/es`, `/en` ni `/de`. `/es/nosotros#metodo` llega a 88 px. En `/de/nosotros`, un ejemplo por regla.
 Capturas `hecho-metodo-*` en `.impeccable/revision/`.
+
+### 2026-09-19 — traducción, fases 1 y 2: la propuesta y el inglés
+
+- **Fase 1:** `.impeccable/TRADUCCION.md` (glosario, textos alemanes que cambian de sentido, qué se adapta
+  por página), aprobada por Boris con seis respuestas que están al principio del documento.
+- **Decisiones que tocan el español** (Boris): «Berlín» en lugar de «Alemania» para el equipo, en los tres
+  idiomas; la reunión es **en español o inglés** (Boris hace las llamadas en inglés), así que la nota de
+  los cierres dice «en español o inglés». PRODUCT.md, al día. «WhatsApp Alemania» se queda: nombra el
+  país del número. El JSON-LD ya no declara alemán en el teléfono de Alemania.
+- **Fase 2, el inglés:** `home.en.js`, `servicios.en.js`, `nosotros.en.js`, `portafolio.en.js`,
+  `klinoda.en.js` y `sitio.en.js`, con las mismas claves que el español (comprobado con un script).
+  Inglés americano; dólares y formato de EE. UU. en las muestras de finanzas («$1.24M», «34%», «Jun 12»);
+  «Fractional CFO»; «APTO» → «FIT»; «Our commitments»; WhatsApp como opción en «What's included».
+- **Código, sin cambio visible en español:** `cifra()` acepta punto o coma decimal; `ManagementBoard`
+  lee `board.porcentaje` (en inglés, sin espacio); `conMillares()` usa coma en inglés; el selector de
+  idioma dice «English», «Deutsch», «Español» al lector de pantalla (`languageNames`); la nota del
+  portafolio no se pinta si viene vacía (en inglés sobra decir que las portadas están en inglés).
+- **`NEXT_DIST_DIR`** (`next.config.mjs`): compilar en `.next-prod` para no pisar el `.next` de un
+  servidor de desarrollo encendido. Entrada `sitio-prod-aparte` en `launch.json` (sin versionar).
+
+**Verificación** (producción, Chrome sin ventana, `C:\cap\idioma.mjs` y `muestras.mjs`): build sin errores.
+Las siete páginas inglesas y la 404 a 1536 × 730 y 390 × 844: sin desbordamiento, nada fuera de la
+ventana, ningún texto cortado (salvo los de 1 px solo para lectores), sin errores de consola, `lang="en"`.
+Ningún texto en español en el HTML servido ni en el JSON-LD. hreflang y sitemap con las seis rutas
+inglesas (sin `/klinoda`). Títulos de la escena en dos líneas a 1280 y 1536 (`--k` 1). En español solo
+cambió lo decidido. Capturas `en-*` en `.impeccable/traduccion/`.
+
+**Pendiente:** «Talk to us» de las tres portadas a `/en#contacto` (no se tocó: Boris pidió no tocar las
+portadas; decidir). Fase 3, el alemán.

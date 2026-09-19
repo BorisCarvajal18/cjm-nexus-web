@@ -31,7 +31,7 @@ import { useEffect, useRef, useState } from 'react';
 import { usePathname } from 'next/navigation';
 
 import { getSitio } from '../content';
-import { languages } from '../i18n/settings';
+import { languageNames, languages } from '../i18n/settings';
 import { alCambiarSuperficie } from '../lib/surface';
 import { destinoEn } from '../i18n/rutas.mjs';
 import { navLinks } from '../lib/site';
@@ -223,7 +223,7 @@ function Idiomas({ lang, ruta, etiqueta, className = '', style }) {
         {languages.map((idioma) => (
           <li key={idioma}>
             {idioma === lang ? (
-              <span aria-current="true" className="font-bold">
+              <span aria-current="true" aria-label={languageNames[idioma]} className="font-bold">
                 {idioma}
               </span>
             ) : (
@@ -231,6 +231,7 @@ function Idiomas({ lang, ruta, etiqueta, className = '', style }) {
                 href={enIdioma(ruta, idioma)}
                 hrefLang={idioma}
                 lang={idioma}
+                aria-label={languageNames[idioma]}
                 className="no-underline opacity-70 transition-opacity duration-200 hover:opacity-100"
               >
                 {idioma}

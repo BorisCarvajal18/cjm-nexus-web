@@ -10,6 +10,9 @@ import { KLINODA_WEB } from './src/lib/destinos.mjs';
 
 const nextConfig = {
   reactStrictMode: true,
+  // Con NEXT_DIST_DIR se compila en otra carpeta: así una compilación de
+  // producción no pisa el `.next` de un servidor de desarrollo encendido.
+  distDir: process.env.NEXT_DIST_DIR || '.next',
   // El lint se pasa aparte (`npm run lint`); un aviso no debe tumbar un despliegue.
   eslint: { ignoreDuringBuilds: true },
 

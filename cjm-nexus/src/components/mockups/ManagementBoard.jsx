@@ -81,7 +81,7 @@ export default function ManagementBoard({ data }) {
                 {data.lines.map(([nombre, pct, tono]) => (
                   <li key={nombre} className={tono === 'warn' ? 'es-aviso' : undefined}>
                     <span>{nombre}</span>
-                    <span className="num">{pct} %</span>
+                    <span className="num">{pct}{data.porcentaje ?? ' %'}</span>
                     <span className="pista" aria-hidden="true">
                       <i style={{ width: `${Math.min(100, pct * 2)}%` }} />
                     </span>

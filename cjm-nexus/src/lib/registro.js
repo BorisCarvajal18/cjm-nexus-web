@@ -24,10 +24,12 @@ import { gsap, registerGsap, ScrollTrigger } from './gsap';
 export const MUEVE = '(prefers-reduced-motion: no-preference)';
 export const QUIETO = '(prefers-reduced-motion: reduce)';
 
-/** 1234 → «1.234». (Se llamaba `puntos`, que en este sitio son otra cosa: los
-    de un gráfico y los de la línea de plazos.) */
+/** 1234 → «1.234» (en inglés, «1,234»: lo decide el `lang` de la página).
+    (Se llamaba `puntos`, que en este sitio son otra cosa: los de un gráfico y
+    los de la línea de plazos.) */
 export function conMillares(n) {
-  return String(n).replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+  const separador = typeof document !== 'undefined' && document.documentElement.lang === 'en' ? ',' : '.';
+  return String(n).replace(/\B(?=(\d{3})+(?!\d))/g, separador);
 }
 
 /** Una cifra que cuenta desde cero hasta su `data-hasta`. Se pone a cero
