@@ -1144,3 +1144,27 @@ portafolio y nosotros. La cabecera, marino hondo sobre el cierre alemán y papel
 
 **Sigue pendiente antes de publicar `/de`:** Impressum y Datenschutz (TRADUCCION.md, §4); imágenes para
 compartir por idioma (C8).
+
+### 2026-09-19 — KLINODA vuelve a la portada alemana, y el inglés es el idioma principal
+
+Decisiones de Boris:
+
+- **La portada alemana recupera la escena de KLINODA y la noche**, como en español e inglés, en lugar de
+  la banda sencilla: es la prueba más visual de lo que construye el equipo digital. La escena de los dos
+  tableros sigue fuera del alemán. `home.de.js` → `klinoda` lleva las claves de la escena: rótulos del
+  portal en alemán con datos ficticios («Fristen», «Bescheinigungen», «Personal»; «Überfällig»;
+  «GEEIGNET» y «GEEIGNET UNTER BEOBACHTUNG»; fechas «Fällig 14.10.»; cargos como funciones:
+  «Anlagenbedienung», «Fahrdienst», «Schichtleitung») y el texto en la línea de lo aprobado («ein
+  Unternehmen der CJM-Nexus-Gruppe für Arbeitsmedizin in Ecuador. Seine Plattform baut unser
+  Digitalteam.»). Lema: «Jeder Mensch. Die ganze Geschichte.»
+- **El inglés es el idioma principal:** `defaultLanguage = 'en'`; «/» lleva siempre a `/en`
+  (`middleware.js` ya no mira el idioma del navegador); x-default a `/en` en las páginas, la portada y
+  el sitemap, que ahora también lo declara; los tres idiomas con la misma prioridad. PRODUCT.md al día.
+- **Se publica en los tres idiomas**, alemán incluido (pendiente de que Boris diga «publica»).
+
+**Verificación** (producción): build sin errores. `/` → `/en` (307) con navegador en inglés, español,
+alemán y sin idioma. x-default `/en…` en `/es`, `/en`, `/de` y en las interiores; sitemap igual. Portada
+alemana a 1536 × 730 y 390 × 844: sin desbordamiento ni errores; la escena se fija y pasa por placa,
+tablero y texto; en el teléfono y con «reducir movimiento», en filas; nada cortado en el portal (la
+etiqueta «GEEIGNET UNTER BEOBACHTUNG» cabe en una línea); ninguna ruta a la dirección financiera ni
+texto en español. Capturas `de-klinoda-*` y `de-portada-*` en `.impeccable/traduccion/`.

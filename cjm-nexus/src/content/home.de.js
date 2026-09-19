@@ -11,6 +11,9 @@
  * uns», en la línea de Richard. Nadie del equipo trabaja con soltura en
  * alemán: la primera conversación es en inglés, y se dice.
  *
+ * La escena de KLINODA y la noche vuelven a la portada alemana (Boris,
+ * 2026-09-19); la de los dos tableros, no.
+ *
  * La oferta de la web que va en medio es la de la página de servicio
  * (`servicios.de.js` → `digital.web`), no una copia.
  */
@@ -61,14 +64,43 @@ export const home = {
       '**Boris Carvajal** leitet die Technik, **Mirella Llanga** die Geschäftsführung. Gegründet hat die Firma **Richard Carvajal**.',
   },
 
-  /* KLINODA como banda (`ProductBand`), sin cifras: ya están en las
-     credenciales y en la página de servicio. Una puerta (regla 3). */
+  /* La escena de KLINODA (Boris, 2026-09-19: vuelve con la noche, como en
+     español e inglés). Una puerta (regla 3): enseña el producto, dice su
+     estado y lleva a su página. Demo con datos ficticios y solo los módulos
+     de su portal de empresa, con los rótulos en alemán: fechas «14.10.»,
+     «GEEIGNET» por «APTO» y los cargos como funciones, sin masculino genérico.
+     El texto, en la línea de lo aprobado: empresa del Grupo CJM Nexus, y su
+     plataforma la construye nuestro equipo digital. */
   klinoda: {
-    eyebrow: 'Ein Unternehmen der CJM-Nexus-Gruppe',
-    title: 'KLINODA',
-    text: 'Seine Plattform, gebaut von unserem Digitalteam, bringt Ordnung in die Arbeitsmedizin von Unternehmen in Ecuador: ein Pflichtverfahren voller Regeln, amtlicher Formulare und sensibler Daten, an einem Ort geordnet.',
-    estado: 'Demo · in Entwicklung · fiktive Daten',
-    cta: 'Mehr zu KLINODA',
+    etiqueta: 'Demo · in Entwicklung · fiktive Daten',
+    logo: 'KLINODA',
+    lema: 'Jeder Mensch. Die ganze Geschichte.',
+    seccion: 'Mein Unternehmen',
+    pestanas: ['Fristen', 'Bescheinigungen', 'Personal'],
+    plazos: {
+      rotulo: 'Fällig in 90 Tagen oder weniger',
+      total: 11,
+      eje: [0, 30, 60, 90],
+      tramos: [
+        { cuantos: 4, que: 'in 30 Tagen oder weniger', dias: [6, 13, 21, 27] },
+        { cuantos: 5, que: 'in 31 bis 60 Tagen', dias: [34, 40, 46, 52, 58] },
+        { cuantos: 2, que: 'in 61 bis 90 Tagen', dias: [69, 84] },
+      ],
+    },
+    vencidas: { cuantos: 3, rotulo: 'Überfällig' },
+    certificados: { cuantos: 44, rotulo: 'Beschäftigte mit verfügbarer Bescheinigung' },
+    cargos: [
+      { cargo: 'Anlagenbedienung', aptitud: 'GEEIGNET', vence: 'Fällig 14.10.' },
+      { cargo: 'Fahrdienst', aptitud: 'GEEIGNET UNTER BEOBACHTUNG', observacion: true, vence: 'Fällig 22.10.' },
+      { cargo: 'Schichtleitung', aptitud: 'GEEIGNET', vence: 'Fällig 03.11.' },
+    ],
+    frases: [
+      'KLINODA ist ein Unternehmen der CJM-Nexus-Gruppe für Arbeitsmedizin in Ecuador. Seine Plattform baut unser Digitalteam.',
+      'Das Unternehmen sieht, welche Bescheinigungen ablaufen und wer für seine Stelle geeignet ist, ohne einem einzigen Papier hinterherzulaufen.',
+      'Jede Ansicht zeigt nur, was ihr zusteht: In der Ansicht des Unternehmens gibt es keine medizinischen Daten.',
+    ],
+    pregunta: 'Möchten Sie mehr über KLINODA erfahren?',
+    boton: 'Mehr zu KLINODA',
   },
 
   /* El cierre: nombra a Boris y dice que la primera conversación es en

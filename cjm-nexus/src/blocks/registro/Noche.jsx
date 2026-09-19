@@ -63,8 +63,8 @@ export default function Noche() {
     const mm = gsap.matchMedia();
 
     mm.add(MUEVE, () => {
-      /* Sin la escena de KLINODA (la portada alemana) no hay noche: el cierre,
-         oscuro por sí mismo, avisa a la cabecera como cualquier zona oscura. */
+      /* Una portada sin la escena de KLINODA no tiene noche: el cierre, oscuro
+         por sí mismo, avisa a la cabecera como cualquier zona oscura. */
       if (!puerta) {
         const cierre = document.querySelector('.cierre');
         return cierre ? vigilaZonaOscura(cierre, { alFinal: true }) : undefined;

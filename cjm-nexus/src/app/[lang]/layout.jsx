@@ -81,7 +81,7 @@ export function generateMetadata({ params }) {
     description: meta.description,
     alternates: {
       canonical: `/${lang}`,
-      // hreflang recíproco entre los tres idiomas + x-default al español
+      // hreflang recíproco entre los tres idiomas + x-default al idioma principal (el inglés)
       languages: { es: '/es', en: '/en', de: '/de', 'x-default': `/${defaultLanguage}` },
     },
     openGraph: {

@@ -14,7 +14,7 @@
  * (/nosotros).
  */
 import { idiomasDe } from '../i18n/rutas.mjs';
-import { localeMap } from '../i18n/settings';
+import { defaultLanguage, localeMap } from '../i18n/settings';
 import { SITE_URL, SOCIAL_PROFILES } from './site';
 
 /**
@@ -81,7 +81,8 @@ export function pageMetadata({ lang, path = '', meta }) {
       languages: {
         // Solo los idiomas en los que esta página existe (`i18n/rutas.mjs`).
         ...Object.fromEntries(idiomasDe(path).map((l) => [l, `/${l}${path}`])),
-        'x-default': `/es${path}`,
+        // El idioma principal (el inglés); si la página no existe en él, el español.
+        'x-default': `/${idiomasDe(path).includes(defaultLanguage) ? defaultLanguage : 'es'}${path}`,
       },
     },
     openGraph: {

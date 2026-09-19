@@ -17,10 +17,12 @@ export default function sitemap() {
   const lastModified = new Date();
 
   return RUTAS.filter((ruta) => ruta.sitemap !== false).flatMap((ruta) => {
+    const xDefault = ruta.langs.includes(defaultLanguage) ? defaultLanguage : ruta.langs[0];
     const alternates = {
-      languages: Object.fromEntries(
-        ruta.langs.map((l) => [l, `${SITE_URL}/${l}${ruta.path}`]),
-      ),
+      languages: {
+        ...Object.fromEntries(ruta.langs.map((l) => [l, `${SITE_URL}/${l}${ruta.path}`])),
+        'x-default': `${SITE_URL}/${xDefault}${ruta.path}`,
+      },
     };
 
     // Solo los idiomas en los que la página existe.
@@ -28,9 +30,8 @@ export default function sitemap() {
       url: `${SITE_URL}/${lang}${ruta.path}`,
       lastModified,
       changeFrequency: 'monthly',
-      // El español es el idioma escrito; el inglés y el alemán todavía sirven
-      // ese mismo contenido, así que pesan menos hasta que se traduzcan.
-      priority: lang === defaultLanguage ? ruta.priority : ruta.priority - 0.2,
+      // Los tres idiomas están escritos: pesan lo mismo.
+      priority: ruta.priority,
       alternates,
     }));
   });

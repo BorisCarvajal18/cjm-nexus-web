@@ -1,26 +1,18 @@
 /**
  * Middleware — solo actúa sobre la raíz "/".
- * Redirige "/" al idioma preferido del navegador (Accept-Language) y, si no
- * hay coincidencia, al español por defecto. Las URLs /es, /en y /de son
- * estáticas y no pasan por aquí.
+ *
+ * «/» lleva SIEMPRE al idioma principal, el inglés (Boris, 2026-09-19: «quien
+ * entra a cjmnexus.com a secas llega a /en»). Ya no se mira el idioma del
+ * navegador: antes, un navegador en español caía en /es. Las URLs /es, /en y
+ * /de son estáticas y no pasan por aquí; desde cualquiera de ellas el
+ * selector de idioma lleva a las otras.
  */
 import { NextResponse } from 'next/server';
-import { defaultLanguage, languages } from './i18n/settings';
-
-function pickLocale(acceptLanguage) {
-  if (!acceptLanguage) return null;
-  const requested = acceptLanguage.split(',').map((part) => part.split(';')[0].trim().toLowerCase());
-  for (const tag of requested) {
-    const base = tag.split('-')[0];
-    if (languages.includes(base)) return base;
-  }
-  return null;
-}
+import { defaultLanguage } from './i18n/settings';
 
 export function middleware(request) {
-  const locale = pickLocale(request.headers.get('accept-language')) || defaultLanguage;
   const url = request.nextUrl.clone();
-  url.pathname = `/${locale}`;
+  url.pathname = `/${defaultLanguage}`;
   return NextResponse.redirect(url);
 }
 

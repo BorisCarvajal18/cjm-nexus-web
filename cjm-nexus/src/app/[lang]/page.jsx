@@ -24,8 +24,10 @@
  * REVISION-GENERAL.md, aprobada en .impeccable/TRADUCCION.md): en Berlín solo
  * se ofrece la línea digital, así que no hay dos líneas que pesar. Portada →
  * credenciales de la línea digital → la oferta de la web en una semana (con
- * su momento y las tres portadas) → KLINODA como banda → cierre. Sin la
- * escena de los tableros ni la de KLINODA; <Noche /> solo avisa del cierre.
+ * su momento y las tres portadas) → la escena de KLINODA con la noche →
+ * cierre. Sin la escena de los tableros (el 50/50). KLINODA vuelve con su
+ * escena por decisión de Boris (2026-09-19): es la prueba más visual de lo
+ * que construye el equipo digital.
  *
  * Este archivo solo COMPONE. Los textos viven en `src/content/` y la
  * maquetación en `src/blocks/registro/`.
@@ -37,7 +39,6 @@ import Portada from '../../blocks/registro/Portada';
 import PuertaKlinoda from '../../blocks/registro/PuertaKlinoda';
 import QueHacemos from '../../blocks/registro/QueHacemos';
 import Offer from '../../blocks/pages/Offer';
-import ProductBand from '../../blocks/pages/ProductBand';
 import SiteFooter from '../../components/SiteFooter';
 import SiteHeader from '../../components/SiteHeader';
 import { getDigital, getHome, getPortafolio } from '../../content';
@@ -55,7 +56,7 @@ export default function HomePage({ params }) {
           <Portada content={home.portada} />
           <Credenciales content={home.credenciales} />
           <Offer content={getDigital(lang).web} id="web" semana lang={lang} portafolio={getPortafolio(lang)} />
-          <ProductBand content={home.klinoda} href={`/${lang}/klinoda`} />
+          <PuertaKlinoda content={home.klinoda} lang={lang} />
           <Cierre content={home.cierre} lang={lang} />
           <Noche />
         </main>
