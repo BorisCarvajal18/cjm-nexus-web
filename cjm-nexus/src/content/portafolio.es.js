@@ -61,7 +61,7 @@ export const portafolio = {
   cta: {
     eyebrow: 'Siguiente paso',
     title: 'Veinte minutos para hablar de la tuya.',
-    text: 'Sin costo · sin compromiso · en español, inglés o alemán.',
+    text: 'Sin costo · sin compromiso · en español o inglés.',
     primary: 'Agendar una conversación · 20 min',
     secondary: 'Escribir a CJM Nexus',
   },

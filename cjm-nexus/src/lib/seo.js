@@ -8,7 +8,7 @@
  * DOS COSAS QUE SE RETIRARON AQUÍ, y por el mismo motivo que en el resto del
  * sitio: el eslogan en inglés, que ya no se usa en ninguna parte; y el
  * alcance «Latinoamérica, Estados Unidos y Europa», que era el del sitio
- * anterior y no se sostiene. La firma opera desde Ecuador y Alemania, y eso
+ * anterior y no se sostiene. La firma opera desde Ecuador y Berlín, y eso
  * es lo que se declara. La trayectoria de Richard en Latinoamérica, Estados
  * Unidos y Europa se cuenta donde corresponde: en su ficha, con su nombre
  * (/nosotros).
@@ -46,7 +46,7 @@ export function organizationSchema({ lang, description }) {
         telephone: '+4915755849100',
         contactType: 'customer service',
         areaServed: 'DE',
-        availableLanguage: ['de', 'en', 'es'],
+        availableLanguage: ['en', 'es'],
       },
     ],
   };

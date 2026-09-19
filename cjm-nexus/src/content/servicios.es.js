@@ -100,7 +100,7 @@ export const servicios = {
   cta: {
     eyebrow: 'Siguiente paso',
     title: 'Veinte minutos para entender tu empresa y proponerte un camino.',
-    text: 'Vengas por los números, por el software o por los dos. Sin compromiso, en español, inglés o alemán.',
+    text: 'Vengas por los números, por el software o por los dos. Sin compromiso, en español o inglés.',
     primary: 'Agendar diagnóstico ejecutivo',
     secondary: 'Escribir a CJM Nexus',
   },
@@ -322,7 +322,7 @@ export const finanzas = {
       },
       {
         q: '¿Trabajan a distancia?',
-        a: 'Sí. Tenemos equipo en Ecuador y en Alemania, y trabajamos en español, inglés y alemán. Las reuniones son por videollamada salvo que haga falta estar presente.',
+        a: 'Sí. Tenemos equipo en Ecuador y en Berlín, y trabajamos en español, inglés y alemán. Las reuniones son por videollamada salvo que haga falta estar presente.',
       },
     ],
   },
@@ -573,7 +573,7 @@ export const digital = {
       },
       {
         q: '¿Trabajan con empresas fuera de Ecuador?',
-        a: 'Sí. El equipo técnico está en Alemania y trabajamos en español, inglés y alemán.',
+        a: 'Sí. El equipo técnico está en Berlín y trabajamos en español, inglés y alemán.',
       },
     ],
   },

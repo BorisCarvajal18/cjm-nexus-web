@@ -44,7 +44,7 @@ export const sitio = {
   /* Las comillas de una cita: «…» en español, “…” en inglés, „…“ en alemán. */
   comillas: ['«', '»'],
   pie: {
-    lema: 'Dirección financiera y software especializado para empresas que crecen con control. Ecuador y Alemania.',
+    lema: 'Dirección financiera y software especializado para empresas que crecen con control. Ecuador y Berlín.',
     contacto: 'Contacto',
     /* Claves de `footerColumns` en lib/site.js. */
     columnas: { servicios: 'Servicios', empresa: 'Empresa', legal: 'Legal' },

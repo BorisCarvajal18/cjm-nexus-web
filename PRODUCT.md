@@ -17,7 +17,7 @@ Ambas audiencias evalúan antes de escribir: leen la web entera, en el teléfono
 
 ## Product Purpose
 
-CJM Nexus es una firma de dos líneas —**dirección financiera externa** y **soluciones digitales a medida**— con equipo en Ecuador y Alemania. Esta web es la web corporativa: su trabajo es que un dueño o gerente entienda qué hace la firma, se convenza de que puede sostener lo que dice, y agende el **diagnóstico ejecutivo de 20 minutos** (Calendly). Ese agendamiento es la única conversión.
+CJM Nexus es una firma de dos líneas —**dirección financiera externa** y **soluciones digitales a medida**— con equipo en Ecuador y Berlín. Esta web es la web corporativa: su trabajo es que un dueño o gerente entienda qué hace la firma, se convenza de que puede sostener lo que dice, y agende el **diagnóstico ejecutivo de 20 minutos** (Calendly). Ese agendamiento es la única conversión.
 
 ## Positioning
 
@@ -28,8 +28,8 @@ El segundo diferencial es **el método como garantía**, no como promesa: decisi
 ## Operating Context
 
 - **Mercados: Berlín primero, después Ecuador** (decisión de Boris, 19 de septiembre de 2026). En Berlín solo se ofrece la **línea digital** (sobre todo la web en una semana); **la dirección financiera no se ofrece allí**. En Ecuador, las dos líneas. Antes (12 de septiembre de 2026) decía: «Mercados reales hoy: Ecuador y Estados Unidos; Alemania es sede de parte del equipo, no mercado». Europa fuera de Berlín y el resto de Latinoamérica siguen siendo aspiración: no se presentan como negocio en marcha.
-- **La conversión es una reunión, no una compra.** Un solo evento de Calendly de 20 minutos para todo el sitio (`CALENDLY_URL` en `cjm-nexus/src/lib/site.js`, decisión del 19 de septiembre de 2026). Se llama «Agendar diagnóstico ejecutivo» en todo el sitio salvo en soluciones digitales y `/portafolio`, donde es «Agendar una conversación · 20 min». Canales directos: **en español**, WhatsApp Ecuador, WhatsApp Alemania y correo; **en alemán**, sin WhatsApp: teléfono y correo.
-- **Idiomas de trabajo:** español, inglés y alemán.
+- **La conversión es una reunión, no una compra.** Un solo evento de Calendly de 20 minutos para todo el sitio (`CALENDLY_URL` en `cjm-nexus/src/lib/site.js`, decisión del 19 de septiembre de 2026). Se llama «Agendar diagnóstico ejecutivo» en todo el sitio salvo en soluciones digitales y `/portafolio`, donde es «Agendar una conversación · 20 min». Canales directos: **en español**, WhatsApp Ecuador, WhatsApp Alemania y correo; **en inglés y en alemán**, sin WhatsApp: teléfono (+49 1575 5849100) y correo.
+- **Idiomas de trabajo:** español, inglés y alemán. **La reunión de veinte minutos es en español o en inglés** (Boris, 19 de septiembre de 2026): Boris, en Berlín, hace las llamadas en inglés, no en alemán. Por eso la nota de los cierres dice «en español o inglés» en los tres idiomas, y en alemán el cierre dice con claridad que la primera conversación es en inglés. La web sí existe en alemán.
 - **Ritmo del servicio financiero** (confirmado por Richard el 18 de septiembre de 2026): semana 1 conversación estratégica con la información que el cliente ya tenga · el diagnóstico tarda de una a dos semanas y se presenta en reunión · las dos semanas siguientes, tablero gerencial y flujo de caja a trece semanas · después, reunión de dirección mensual con acta de cada reunión. La forma de cobro no se publica.
 - **Ritmo del servicio web:** día 1 conversación y estructura por escrito · días siguientes construcción con enlace navegable y correcciones · menos de una semana hasta publicación. La semana empieza a contar cuando el cliente entrega textos, logotipo e imágenes.
 - **CJM Nexus no maneja ni mueve dinero de clientes** y no pide acceso a cuentas bancarias. Trabaja sobre reportes.
@@ -60,7 +60,7 @@ Otras cosas sin resolver: no existen las páginas legales de Privacidad y Aviso 
 
 - Nombre: **CJM Nexus**. Tagline en inglés: _Connecting Finance. Technology. Global Growth._
 - Logotipo oficial en `cjm-nexus/public/logo.png`; material de marca en `cjm-nexus/public/marca/`; imágenes Open Graph por idioma.
-- Equipo nombrado en público: Richard Carvajal (fundador, dirección financiera, Ecuador), Mirella Llanga (gerente general), Boris Carvajal (cofundador, tecnología, Alemania).
+- Equipo nombrado en público: Richard Carvajal (fundador, dirección financiera, Ecuador), Mirella Llanga (gerente general), Boris Carvajal (cofundador, tecnología, Berlín; la web dice «Berlín», no «Alemania», desde el 19 de septiembre de 2026).
 - **Voz:** frase corta, sujeto concreto, cero jerga de consultora. Se nombra la objeción antes que el beneficio. La letra pequeña va a la vista porque es lo que hace creíble la promesa («en una semana desde que tenemos tus textos»). El texto dice lo que el sistema hace, nunca que cumple una norma.
 - **Confidencial, no publicable sin autorización:** identidad de la médica aliada de KLINODA, participación familiar en el desarrollo, cifras de avance interno y cualquier fecha de lanzamiento.
 - **Reglas públicas de KLINODA** (acordadas con el dueño; la versión larga está en la cabecera de `cjm-nexus/src/content/klinoda.es.js` en el commit `f4bd24d`): ninguna pantalla con datos de paciente ni siquiera inventados; ninguna afirmación de validez legal o sanitaria; ninguna fecha de lanzamiento; ningún nombre de los profesionales que acompañan; nada de riesgos ni detalles de seguridad; y el estado se dice, y se dice primero.

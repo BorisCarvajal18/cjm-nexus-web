@@ -30,7 +30,7 @@ export const nosotros = {
   meta: {
     title: 'Nosotros: quién está detrás de CJM Nexus | CJM Nexus',
     description:
-      'Las personas que dirigen CJM Nexus: Richard Carvajal en dirección financiera, Boris Carvajal en tecnología y Mirella Llanga en la gerencia general. Equipo en Ecuador y Alemania.',
+      'Las personas que dirigen CJM Nexus: Richard Carvajal en dirección financiera, Boris Carvajal en tecnología y Mirella Llanga en la gerencia general. Equipo en Ecuador y Berlín.',
   },
 
   /* La cabecera de la página (mismas claves que `PageHero`). */
@@ -38,7 +38,7 @@ export const nosotros = {
     eyebrow: 'Nosotros',
     title: 'Quién está detrás de CJM Nexus.',
     highlight: ['detrás'],
-    lead: 'Una firma de dos líneas —dirección financiera externa y soluciones digitales— con equipo en Ecuador y Alemania. Estas son las tres personas que la dirigen, con su nombre y lo que hace cada una.',
+    lead: 'Una firma de dos líneas —dirección financiera externa y soluciones digitales— con equipo en Ecuador y Berlín. Estas son las tres personas que la dirigen, con su nombre y lo que hace cada una.',
     primary: 'Agendar diagnóstico ejecutivo · 20 min',
     secondary: 'Conocer al equipo',
     secondaryHref: '#personas',
@@ -76,7 +76,7 @@ export const nosotros = {
         cargo: 'Cofundador · Tecnología',
         lidera: 'Lidera la tecnología de CJM Nexus: las páginas web, los sistemas a medida y los tableros conectados a los datos de cada empresa.',
         cifras: [],
-        base: 'Alemania',
+        base: 'Berlín',
         // HUECO — trayectoria, formación e idiomas: «no por ahora».
         trayectoria: null,
         // HUECO — enlace a su perfil de LinkedIn.
@@ -114,8 +114,8 @@ export const nosotros = {
         texto: 'Quien define el número construye también el sistema que lo produce.',
       },
       {
-        titulo: 'Ecuador y Alemania',
-        texto: 'Equipo en Ecuador y Alemania. Trabajamos en español, inglés y alemán.',
+        titulo: 'Ecuador y Berlín',
+        texto: 'Equipo en Ecuador y Berlín. Trabajamos en español, inglés y alemán.',
       },
       {
         titulo: 'KLINODA, empresa del Grupo',
@@ -173,7 +173,7 @@ export const nosotros = {
   cta: {
     eyebrow: 'Siguiente paso',
     title: 'Veinte minutos con quien va a hacer el trabajo.',
-    text: 'Sin costo · sin compromiso · en español, inglés o alemán.',
+    text: 'Sin costo · sin compromiso · en español o inglés.',
     primary: 'Agendar diagnóstico ejecutivo',
     secondary: 'Escribir a CJM Nexus',
   },

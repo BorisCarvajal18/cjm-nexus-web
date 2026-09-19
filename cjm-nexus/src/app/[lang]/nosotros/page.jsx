@@ -8,7 +8,7 @@
  * ORDEN DE LOS BLOQUES:
  *  1. Cabecera — qué es la firma y que aquí están sus tres personas.
  *  2. El equipo — tres fichas iguales, en el orden de la firma de la portada.
- *  3. La firma — dos líneas, Ecuador y Alemania, y KLINODA como puerta. Con
+ *  3. La firma — dos líneas, Ecuador y Berlín, y KLINODA como puerta. Con
  *  3b. El método (#metodo): las reglas de trabajo, con un ejemplo de cada
  *     línea; en alemán, solo el de software.
  *  4. Cierre.

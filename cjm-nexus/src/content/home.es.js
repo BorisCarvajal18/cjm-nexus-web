@@ -55,7 +55,7 @@ export const home = {
       {
         valor: '3',
         que: 'idiomas de trabajo',
-        quien: 'Español, inglés y alemán, con equipo en Ecuador y Alemania.',
+        quien: 'Español, inglés y alemán, con equipo en Ecuador y Berlín.',
       },
     ],
     firma:
@@ -252,7 +252,7 @@ export const home = {
       },
     ],
     agendar: 'Agendar diagnóstico ejecutivo · 20 min',
-    nota: 'Sin costo · sin compromiso · en español, inglés o alemán',
+    nota: 'Sin costo · sin compromiso · en español o inglés',
     canales: 'Otros canales',
   },
 };
