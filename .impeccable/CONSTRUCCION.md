@@ -1041,3 +1041,23 @@ Nosotros, Contacto. Capturas `portafolio-*` (página, página entera, menú y To
   «Nosotros», con *Sie* y sin WhatsApp; Berlín, primer mercado de la línea digital.
 - **Espera a Boris:** marcar sí o no en la tabla del informe, y las cuatro decisiones previas a la
   portada alemana (propuesta 5).
+
+### 2026-09-19 — propuestas de la revisión general, aplicadas
+
+- Boris aprobó las propuestas 1, 2, 3, 4, 6, 7, 8, 9 y 10 de `REVISION-GENERAL.md`; están programadas,
+  un commit por propuesta (`ba70948` … `ec30e04`). El detalle, las diferencias con cada maqueta y la
+  verificación están en ese informe, sección «Lo aplicado».
+- **Decisiones para la traducción** (también en PRODUCT.md): inglés, todo el sitio, sin WhatsApp;
+  alemán, solo la línea digital y «Nosotros», con *Sie*, sin WhatsApp, con excepción escrita al 50/50;
+  la dirección financiera solo se nombra en alemán en «Nosotros», en la línea de Richard, como servicio
+  para clientes de Latinoamérica; el método en alemán, solo con el ejemplo de software; las rutas
+  alemanas que no existen redirigen.
+- **Piezas nuevas que conviene conocer:** `src/i18n/rutas.mjs` (qué página existe en qué idioma),
+  `contactos(lang)` y las claves de menú y pie en `lib/site.js` con sus textos en `sitio.es.js`,
+  `docs/limites-traduccion.md`, `blocks/pages/TiraPortadas.jsx` y `FiguraPortada.jsx`, la 404
+  (`app/[lang]/not-found.jsx` y `[...resto]`), y `PageHero` con `figura`.
+- **Por aprobar:** el texto de la 404 (`sitio.es.js` → `noEncontrada`), «Preguntas sobre la web y los
+  sistemas.» (de la ronda anterior) y el teléfono de inglés y alemán (+49 1575 5849100).
+- **Lo siguiente:** la traducción. Empieza por la propuesta 5: proponer a Boris los textos alemanes que
+  cambian de sentido (titular, lema del pie, credenciales, «Dos líneas, una firma») antes de programar
+  la portada alemana. Siguen esperando B1 (legales) y C8 (imágenes para compartir).

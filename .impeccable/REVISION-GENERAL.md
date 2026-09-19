@@ -1,5 +1,10 @@
 # Revisión general antes de traducir — 2026-09-19
 
+> **Estado (2026-09-19, tarde):** Boris aprobó las propuestas 1, 2, 3, 4, 6, 7, 8, 9 y 10, y **están
+> programadas**, un commit por propuesta (ver «Lo aplicado», al final). **La 5 espera a la fase de
+> traducción**, con sus decisiones ya tomadas; de ella solo se hizo la estructura que la hace posible
+> (la 1 y la 4).
+
 Revisión con ojos frescos de `rediseno-2026` (commit `4ae1361`). **Solo propuestas: no se cambió
 ningún archivo del sitio.** Boris decide cuáles se aplican.
 
@@ -253,3 +258,37 @@ sustituye.
 **Orden recomendado si se aprueban todas:** 8 y 9 (pequeñas, y protegen la traducción); 4 y 1 (la
 estructura de idiomas); 3, 10, 6, 2 y 7 (diseño, antes de traducir para no maquetar dos veces); y la 5
 al final, cuando Boris haya tomado sus cuatro decisiones.
+
+---
+
+## Lo aplicado — 2026-09-19
+
+**Decisiones de Boris:** excepción escrita al 50/50 en alemán (solo la línea digital); la dirección
+financiera solo se nombra en alemán en «Nosotros», en la línea de Richard, como servicio para clientes
+de Latinoamérica; los textos alemanes que cambian de sentido se proponen antes de programarlos; el
+método en alemán, solo con el ejemplo de software; **el inglés tampoco lleva WhatsApp**; las rutas
+alemanas que no existen **redirigen** a la más cercana.
+
+Capturas del resultado en `.impeccable/revision/hecho-<n>-*.png`, a 1536 × 730 y 390 × 844 (y a
+820 × 1180 en la 6 y la 10).
+
+| # | Commit | Qué quedó | Diferencias con la propuesta |
+|---|---|---|---|
+| 8 | `ba70948` | `Resaltado` marca la frase (primera aparición) y avisa en desarrollo si no está; la portada acepta tramos `*de varias palabras*` | Ninguna. El HTML en español sale idéntico |
+| 9 | `3f358b0` | Las etiquetas de estado parten (la escena de KLINODA conserva su línea única); el menú pasa al botón bajo **1100 px** (a 1101 px «Agendar» queda a 32 px del borde; antes, a 9); `hyphens` en los titulares `:lang(de)`; `cjm-nexus/docs/limites-traduccion.md` | DESIGN.md al día con el corte nuevo |
+| 4 | `29412a2` | Menú, pie y canales en `sitio.es.js` por clave; `contactos(lang)`: WhatsApp solo en español, teléfono y correo en inglés y alemán; nombre del servicio del JSON-LD, `og:locale` en las interiores, `es_EC` y comillas de cita por idioma | En los cierres, el teléfono se pinta **con su número** («Teléfono +49 …»): la etiqueta sola no sirve en un computador. El número es el mismo del WhatsApp de Alemania: **confirmar con Boris** |
+| 1 | `733b193` | `src/i18n/rutas.mjs`; lo leen sitemap, hreflang, selector de idioma, menú, pie, `next.config.mjs` y el `generateStaticParams` de `/servicios` y dirección financiera. En alemán: `/de/servicios` → soluciones digitales y `/de/servicios/direccion-financiera` → `/de` (307); menú y pie sin «Método»; «Nosotros» sin el remite al método. **404 propia** en el idioma de la ruta | La 404 lleva **texto nuevo por aprobar** (`sitio.es.js` → `noEncontrada`): «Error 404» · «Esta página no existe.» · «Puede que el enlace esté mal escrito o que la página se haya movido.» · «Volver al inicio». La ruta comodín que la sirve es la única página no estática. `content/index.js` no se tocó: `/de` sigue sirviendo el español hasta la traducción, y la portada `/de` aún enseña las dos líneas (es la propuesta 5) |
+| 3 | `59d885c` | La tira de las tres portadas bajo la cabecera de `#web`, con su referencia, la etiqueta de concepto y el enlace, que sube desde el final; en el teléfono, una sola | Ninguna |
+| 10 | `381d31c` | Entre 761 y 1000 px, los pasos de las dos ofertas en filas | El movimiento no hizo falta tocarlo: bajo 1000 px ya trazaba un filete por paso |
+| 6 | `e85c277` | «Nosotros» en tres filas; en tableta, dos columnas con las cifras bajo el nombre; en el teléfono, una | El retrato, cuando llegue, va sobre el cargo (160 px), no como columna aparte |
+| 2 | `3394476` | `PageHero` con `figura`: el tablero gerencial de la portada en dirección financiera y la portada de Regulars con su etiqueta en soluciones digitales; las cabeceras bajan su aire | En el teléfono la pieza va entera bajo los botones (no recortada a 260 px). «Ver tres portadas de ejemplo» sale ahora dos veces en soluciones digitales: en la cabecera y en la tira de `#web` |
+| 7 | `ec30e04` | El tablero (fijo al bajar) y los seis entregables, en una sección | «Qué hay dentro, en concreto.» es ahora un `h3` de 1,35 rem |
+
+**Un fallo mío, corregido:** al dar formato con Prettier sin configuración, el commit de la 2 cambió
+comillas simples por dobles en siete archivos; el commit de la 7 los devuelve al estilo del proyecto.
+
+**Verificación final** (compilación de producción): build sin errores ni avisos. Las diez páginas en
+tres tamaños, con y sin «reducir movimiento» (60 combinaciones): sin desbordes, sin elementos fuera
+de la ventana, sin errores de consola, axe sin infracciones, ningún enlace interno roto. Anclas
+`#metodo`, `#web` y `#entregable` a 88 px, con y sin movimiento. Redirecciones alemanas, hreflang y
+sitemap comprobados con `curl`.
