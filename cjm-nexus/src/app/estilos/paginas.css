@@ -1077,7 +1077,35 @@
   max-width: 52ch;
   color: var(--tx-2);
 }
+/* El tablero de dirección financiera y, a su lado, «Qué hay dentro». */
+.entregable-dos {
+  display: grid;
+  grid-template-columns: minmax(0, 1.25fr) minmax(0, 0.75fr);
+  gap: 40px 56px;
+  align-items: start;
+  margin-top: 32px;
+}
 .caja-pieza.entregable {
   max-width: none;
-  margin-top: 32px;
+  position: sticky;
+  top: calc(var(--cabecera) + 32px);
+}
+.entregable-lista .titulo-lista {
+  margin-top: 10px;
+  font-size: 1.35rem;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  font-weight: 800;
+  color: var(--tx-1);
+}
+.entregable-lista .puntos-pag {
+  margin-top: 6px;
+}
+@media (max-width: 1000px) {
+  .entregable-dos {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .caja-pieza.entregable {
+    position: static;
+  }
 }

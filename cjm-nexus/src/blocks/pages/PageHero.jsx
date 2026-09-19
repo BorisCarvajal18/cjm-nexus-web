@@ -1,6 +1,6 @@
-import Flecha from "../../components/registro/Flecha";
-import Resaltado from "../../components/registro/Resaltado";
-import { CALENDLY_URL } from "../../lib/site";
+import Flecha from '../../components/registro/Flecha';
+import Resaltado from '../../components/registro/Resaltado';
+import { CALENDLY_URL } from '../../lib/site';
 
 /**
  * Cabecera de las páginas interiores, en el sistema del registro.
@@ -20,10 +20,7 @@ import { CALENDLY_URL } from "../../lib/site";
  */
 export default function PageHero({ content, figura }) {
   return (
-    <section
-      id="top"
-      className={`registro pag-cabeza ${figura ? "con-figura" : "sin-figura"}`}
-    >
+    <section id="top" className={`registro pag-cabeza ${figura ? 'con-figura' : 'sin-figura'}`}>
       <div className="marco">
         <div className="texto-cabeza">
           <p className="ref-pag">{content.eyebrow}</p>
@@ -37,10 +34,7 @@ export default function PageHero({ content, figura }) {
               <Flecha />
             </a>
             {content.secondary ? (
-              <a
-                className="boton-contorno"
-                href={content.secondaryHref ?? "#contenido"}
-              >
+              <a className="boton-contorno" href={content.secondaryHref ?? '#contenido'}>
                 <span>{content.secondary}</span>
                 <Flecha abajo />
               </a>

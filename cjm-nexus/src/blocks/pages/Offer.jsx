@@ -1,6 +1,6 @@
-import PasosSemana from "./PasosSemana";
-import { StepItem } from "./Steps";
-import TiraPortadas from "./TiraPortadas";
+import PasosSemana from './PasosSemana';
+import { StepItem } from './Steps';
+import TiraPortadas from './TiraPortadas';
 
 /**
  * Una de las dos ofertas de la página de soluciones digitales.
@@ -24,19 +24,9 @@ import TiraPortadas from "./TiraPortadas";
  * las tres portadas de ejemplo bajo su cabecera, con el enlace de
  * `content.portafolio` (que viene sin idioma). Ver <TiraPortadas />.
  */
-export default function Offer({
-  content,
-  tone = "plain",
-  id,
-  semana = false,
-  lang = "es",
-  portafolio,
-}) {
+export default function Offer({ content, tone = 'plain', id, semana = false, lang = 'es', portafolio }) {
   return (
-    <section
-      id={id}
-      className={`registro seccion oferta ${tone === "muted" ? "banda-honda" : ""}`}
-    >
+    <section id={id} className={`registro seccion oferta ${tone === 'muted' ? 'banda-honda' : ''}`}>
       <div className="marco">
         <div className="cabeza">
           <div>
@@ -69,7 +59,7 @@ export default function Offer({
         ) : null}
 
         {content.items ? (
-          <ul className="puntos-pag" style={{ "--n": 4 }}>
+          <ul className="puntos-pag" style={{ '--n': 4 }}>
             {content.items.map((item) => (
               <li key={item.title}>
                 <h3>{item.title}</h3>
@@ -83,10 +73,7 @@ export default function Offer({
         {semana ? (
           <PasosSemana steps={content.steps} />
         ) : (
-          <ol
-            className="pasos en-columnas"
-            style={{ "--n": content.steps.length > 3 ? 4 : 3 }}
-          >
+          <ol className="pasos en-columnas" style={{ '--n': content.steps.length > 3 ? 4 : 3 }}>
             {content.steps.map((paso) => (
               <StepItem key={paso.step} paso={paso} />
             ))}

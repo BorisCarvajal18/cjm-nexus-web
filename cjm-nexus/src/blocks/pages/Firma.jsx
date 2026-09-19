@@ -1,5 +1,5 @@
-import Flecha from "../../components/registro/Flecha";
-import { destinoEn, existe } from "../../i18n/rutas.mjs";
+import Flecha from '../../components/registro/Flecha';
+import { destinoEn, existe } from '../../i18n/rutas.mjs';
 
 /**
  * «Dos líneas, una firma.»: tres puntos sobre la firma, en columnas con
@@ -19,20 +19,14 @@ export default function Firma({ content, metodo, lang }) {
           <p className="ref-pag">{content.etiqueta}</p>
           <h2>{content.titulo}</h2>
         </div>
-        <ul
-          className="puntos-pag firma-puntos"
-          style={{ "--n": content.items.length }}
-        >
+        <ul className="puntos-pag firma-puntos" style={{ '--n': content.items.length }}>
           {content.items.map((item) => (
             <li key={item.titulo}>
               <h3>{item.titulo}</h3>
               <p>{item.texto}</p>
               {item.estado ? <p className="k-etiqueta">{item.estado}</p> : null}
               {item.href ? (
-                <a
-                  className="enlace adelante"
-                  href={destinoEn(lang, item.href)}
-                >
+                <a className="enlace adelante" href={destinoEn(lang, item.href)}>
                   <span>{item.enlace}</span>
                   <Flecha />
                 </a>
@@ -42,7 +36,7 @@ export default function Firma({ content, metodo, lang }) {
         </ul>
         {/* El método vive en /servicios: donde esa página no existe (alemán),
             el remite no sale. */}
-        {existe(lang, metodo.href.split("#")[0]) ? (
+        {existe(lang, metodo.href.split('#')[0]) ? (
           <div className="remite">
             <div>
               <p className="ref-pag">{metodo.etiqueta}</p>

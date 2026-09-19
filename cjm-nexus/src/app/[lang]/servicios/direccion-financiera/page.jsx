@@ -12,7 +12,8 @@
  *     problema que en la descripción de un servicio.
  *  3. El mes de trabajo — la respuesta a la pregunta que de verdad se hace.
  *  4. El tablero — la prueba de que el entregable existe y tiene forma.
- *  5. Entregables — la letra pequeña de lo anterior, en concreto.
+ *  5. Entregables — la letra pequeña de lo anterior, en concreto, al lado
+ *     del tablero (misma sección).
  *  6. Para quién no es — lo que hace creíble todo lo de arriba.
  *  7. Preguntas — las objeciones que quedan en pie.
  *  8. Cierre — la reunión.
@@ -22,24 +23,23 @@
  * las propuestas hasta que haya clientes con quienes contrastarlas
  * (`.impeccable/CONSTRUCCION.md`, «Revisar con clientes reales»).
  */
-import BoardShowcase from "../../../../blocks/pages/BoardShowcase";
-import Faq from "../../../../blocks/pages/Faq";
-import FeatureGrid from "../../../../blocks/pages/FeatureGrid";
-import Fit from "../../../../blocks/pages/Fit";
-import PageHero from "../../../../blocks/pages/PageHero";
-import TableroGerencial from "../../../../components/registro/TableroGerencial";
-import Steps from "../../../../blocks/pages/Steps";
-import Symptoms from "../../../../blocks/pages/Symptoms";
-import FinalCta from "../../../../blocks/FinalCta";
-import SiteFooter from "../../../../components/SiteFooter";
-import SiteHeader from "../../../../components/SiteHeader";
-import { getFinanzas, getHome, getSitio } from "../../../../content";
-import { existe } from "../../../../i18n/rutas.mjs";
-import { defaultLanguage, languages } from "../../../../i18n/settings";
-import { faqSchema, pageMetadata, serviceSchema } from "../../../../lib/seo";
+import BoardShowcase from '../../../../blocks/pages/BoardShowcase';
+import Faq from '../../../../blocks/pages/Faq';
+import Fit from '../../../../blocks/pages/Fit';
+import PageHero from '../../../../blocks/pages/PageHero';
+import TableroGerencial from '../../../../components/registro/TableroGerencial';
+import Steps from '../../../../blocks/pages/Steps';
+import Symptoms from '../../../../blocks/pages/Symptoms';
+import FinalCta from '../../../../blocks/FinalCta';
+import SiteFooter from '../../../../components/SiteFooter';
+import SiteHeader from '../../../../components/SiteHeader';
+import { getFinanzas, getHome, getSitio } from '../../../../content';
+import { existe } from '../../../../i18n/rutas.mjs';
+import { defaultLanguage, languages } from '../../../../i18n/settings';
+import { faqSchema, pageMetadata, serviceSchema } from '../../../../lib/seo';
 
 const idioma = (lang) => (languages.includes(lang) ? lang : defaultLanguage);
-const RUTA = "/servicios/direccion-financiera";
+const RUTA = '/servicios/direccion-financiera';
 
 /* Esta página no existe en todos los idiomas (`i18n/rutas.mjs`): donde no
    existe no se genera, y `next.config.mjs` redirige a la más cercana. */
@@ -73,13 +73,10 @@ export default function DireccionFinancieraPage({ params }) {
   return (
     <>
       <SiteHeader lang={lang} />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(datos) }}
-      />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(datos) }} />
       <main>
         <PageHero
-          content={{ ...content.hero, secondaryHref: "#entregable" }}
+          content={{ ...content.hero, secondaryHref: '#entregable' }}
           figura={
             // El tablero de la portada, quieto: el momento de esta página sigue
             // siendo «El tablero se dibuja», más abajo.
@@ -89,16 +86,10 @@ export default function DireccionFinancieraPage({ params }) {
             </div>
           }
         />
-        <Symptoms
-          content={content.symptoms}
-          comillas={getSitio(lang).comillas}
-        />
+        <Symptoms content={content.symptoms} comillas={getSitio(lang).comillas} />
         <Steps content={content.month} />
-        <BoardShowcase
-          content={content.deliverable}
-          muestra={muestras.muestra}
-        />
-        <FeatureGrid content={content.deliverables} columns={3} />
+        {/* El tablero y «Qué hay dentro», en una sola sección (REVISION-GENERAL 7). */}
+        <BoardShowcase content={content.deliverable} muestra={muestras.muestra} entregables={content.deliverables} />
         <Fit content={content.fit} />
         <Faq content={content.faq} />
         <FinalCta content={content.cta} lang={lang} />

@@ -1,4 +1,4 @@
-import Flecha from "../../components/registro/Flecha";
+import Flecha from '../../components/registro/Flecha';
 
 /**
  * Las tres personas de «Nosotros», cada una en una fila de registro separada
@@ -46,12 +46,7 @@ export default function Personas({ content }) {
                   <div className="pie-ficha">
                     {p.base ? <p className="base">{p.base}</p> : null}
                     {p.linkedinHref ? (
-                      <a
-                        className="enlace adelante"
-                        href={p.linkedinHref}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
+                      <a className="enlace adelante" href={p.linkedinHref} target="_blank" rel="noopener noreferrer">
                         <span>{content.linkedin}</span>
                         <Flecha />
                       </a>
@@ -61,19 +56,15 @@ export default function Personas({ content }) {
               </div>
               <div className="que">
                 <p className="lidera">{p.lidera}</p>
-                {p.trayectoria ? (
-                  <p className="trayectoria">{p.trayectoria}</p>
-                ) : null}
+                {p.trayectoria ? <p className="trayectoria">{p.trayectoria}</p> : null}
               </div>
               {p.cifras.length ? (
                 <ul className="cifras-ficha">
                   {p.cifras.map((c) => (
                     <li key={c.valor}>
                       <b className="num">
-                        {c.valor.replace(/\+$/, "")}
-                        {c.valor.endsWith("+") ? (
-                          <span className="mas">+</span>
-                        ) : null}
+                        {c.valor.replace(/\+$/, '')}
+                        {c.valor.endsWith('+') ? <span className="mas">+</span> : null}
                       </b>
                       <span>{c.que}</span>
                     </li>
