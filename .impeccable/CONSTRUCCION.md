@@ -1168,3 +1168,25 @@ alemana a 1536 × 730 y 390 × 844: sin desbordamiento ni errores; la escena se 
 tablero y texto; en el teléfono y con «reducir movimiento», en filas; nada cortado en el portal (la
 etiqueta «GEEIGNET UNTER BEOBACHTUNG» cabe en una línea); ninguna ruta a la dirección financiera ni
 texto en español. Capturas `de-klinoda-*` y `de-portada-*` en `.impeccable/traduccion/`.
+
+### 2026-09-19 — publicado en cjmnexus.com
+
+- **Copia de seguridad:** etiqueta `sitio-anterior` en `e7f98f7` (el `main` anterior), subida a GitHub.
+- **`main` → `0ead8f3`** por fast-forward (`e7f98f7..0ead8f3`, 80 commits). `git checkout main` falló
+  dos veces con «cannot stat 'cjm-nexus': Invalid argument» (OneDrive; abortó sin tocar nada, también con
+  el servidor parado). Se hizo lo mismo sin cambiar de rama en el disco: `git fetch . rediseno-2026:main`
+  y `git push origin main`, que solo admiten fast-forward. **Para la próxima vez:** esa es la forma de
+  avanzar `main` en esta carpeta.
+- **Vercel:** despliegue de producción `6541481474`, correcto.
+
+**Comprobado en https://www.cjmnexus.com** (Chrome sin ventana): `/` → `/en` (307), también con navegador
+en español; `cjmnexus.com` → `www` (308). Las 19 páginas de los tres idiomas a 1536 × 730 y 390 × 844:
+200, `lang` correcto, sin desbordamiento, sin errores de consola ni respuestas 4xx/5xx. `/de/servicios` y
+`/de/servicios/direccion-financiera` redirigen. «Agendar» abre Calendly (clic real en `/en` y en
+soluciones digitales en español). Las tres portadas del portafolio: 200, imágenes completas, «Talk to us»
+→ `/en#contacto`. Sitemap y robots, 200. Capturas de las tres portadas a los dos tamaños en
+`.impeccable/publicacion/`.
+
+**Cómo volver al sitio anterior si hiciera falta:** en Vercel, *Instant Rollback* al despliegue anterior
+(inmediato, sin tocar git); o `git revert` de los commits en `main` (sin reescribir historia). El estado
+anterior está en la etiqueta `sitio-anterior`.
