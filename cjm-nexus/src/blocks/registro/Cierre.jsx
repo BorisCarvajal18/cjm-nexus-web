@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 /**
  * <Cierre /> — M6 (DESIGN.md). Termina el documento y empieza una decisión.
@@ -15,34 +15,79 @@
  * Es oscuro por sí mismo. Con «reducir movimiento» avisa a la cabecera como
  * zona oscura (<Noche />); con movimiento, la página ya es de noche.
  */
-import Flecha from '../../components/registro/Flecha';
-import Negritas from '../../components/registro/Negritas';
-import { CURVA } from '../../lib/animations';
-import { gsap } from '../../lib/gsap';
-import { alAsomar, MUEVE, useRegistro } from '../../lib/registro';
-import { getSitio } from '../../content';
-import { CALENDLY_URL, contactos } from '../../lib/site';
+import Flecha from "../../components/registro/Flecha";
+import Negritas from "../../components/registro/Negritas";
+import { CURVA } from "../../lib/animations";
+import { gsap } from "../../lib/gsap";
+import { alAsomar, MUEVE, useRegistro } from "../../lib/registro";
+import { getSitio } from "../../content";
+import { CALENDLY_URL, contactos } from "../../lib/site";
 
-export default function Cierre({ content, lang = 'es' }) {
+export default function Cierre({ content, lang = "es" }) {
   const { canales } = getSitio(lang);
   const raiz = useRegistro((mm, c) => {
     mm.add(MUEVE, () => {
-      const tres = c.querySelector('.tres');
+      const tres = c.querySelector(".tres");
       const tl = gsap
         .timeline({ paused: true })
-        .fromTo(c, { '--raya': 0 }, { '--raya': 1, duration: 1, ease: 'power2.inOut' }, 0)
-        .fromTo(c.querySelector('.ref'), { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.6, ease: CURVA.llegar }, 0.1)
-        .fromTo(c.querySelector('h2'), { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.6, ease: CURVA.llegar }, 0.2)
-        .fromTo(tres, { '--div': 0 }, { '--div': 1, duration: 0.5, ease: 'power2.out' }, 0.45);
+        .fromTo(
+          c,
+          { "--raya": 0 },
+          { "--raya": 1, duration: 1, ease: "power2.inOut" },
+          0,
+        )
+        .fromTo(
+          c.querySelector(".ref"),
+          { opacity: 0, y: 12 },
+          { opacity: 1, y: 0, duration: 0.6, ease: CURVA.llegar },
+          0.1,
+        )
+        .fromTo(
+          c.querySelector("h2"),
+          { opacity: 0, y: 12 },
+          { opacity: 1, y: 0, duration: 0.6, ease: CURVA.llegar },
+          0.2,
+        )
+        .fromTo(
+          tres,
+          { "--div": 0 },
+          { "--div": 1, duration: 0.5, ease: "power2.out" },
+          0.45,
+        );
       gsap.utils.toArray(tres.children).forEach((col, i) => {
         const t = 0.45 + i * 0.12;
-        tl.fromTo(col.querySelector('h3'), { opacity: 0, y: 8 }, { opacity: 1, y: 0, duration: 0.4, ease: CURVA.llegar }, t);
-        tl.fromTo(col.querySelector('p'), { opacity: 0 }, { opacity: 1, duration: 0.5, ease: 'power1.out' }, t + 0.12);
+        tl.fromTo(
+          col.querySelector("h3"),
+          { opacity: 0, y: 8 },
+          { opacity: 1, y: 0, duration: 0.4, ease: CURVA.llegar },
+          t,
+        );
+        tl.fromTo(
+          col.querySelector("p"),
+          { opacity: 0 },
+          { opacity: 1, duration: 0.5, ease: "power1.out" },
+          t + 0.12,
+        );
       });
-      tl.fromTo(c.querySelector('.boton'), { opacity: 0 }, { opacity: 1, duration: 0.5, ease: 'power1.out' }, 1.1)
-        .fromTo(c.querySelector('.nota'), { opacity: 0, y: 8 }, { opacity: 1, y: 0, duration: 0.5, ease: CURVA.llegar }, 1.16)
-        .fromTo(c.querySelector('.canales'), { opacity: 0 }, { opacity: 1, duration: 0.4, ease: 'power1.out' }, 1.25);
-      alAsomar(c, 'top 70%', tl);
+      tl.fromTo(
+        c.querySelector(".boton"),
+        { opacity: 0 },
+        { opacity: 1, duration: 0.5, ease: "power1.out" },
+        1.1,
+      )
+        .fromTo(
+          c.querySelector(".nota"),
+          { opacity: 0, y: 8 },
+          { opacity: 1, y: 0, duration: 0.5, ease: CURVA.llegar },
+          1.16,
+        )
+        .fromTo(
+          c.querySelector(".canales"),
+          { opacity: 0 },
+          { opacity: 1, duration: 0.4, ease: "power1.out" },
+          1.25,
+        );
+      alAsomar(c, "top 70%", tl);
     });
   });
 

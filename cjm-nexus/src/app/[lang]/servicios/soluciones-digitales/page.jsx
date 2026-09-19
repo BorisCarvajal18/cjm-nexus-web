@@ -30,6 +30,7 @@
 import Faq from '../../../../blocks/pages/Faq';
 import FeatureGrid from '../../../../blocks/pages/FeatureGrid';
 import Offer from '../../../../blocks/pages/Offer';
+import FiguraPortada from '../../../../blocks/pages/FiguraPortada';
 import PageHero from '../../../../blocks/pages/PageHero';
 import ProductBand from '../../../../blocks/pages/ProductBand';
 import FinalCta from '../../../../blocks/FinalCta';
@@ -50,6 +51,7 @@ export function generateMetadata({ params }) {
 export default function SolucionesDigitalesPage({ params }) {
   const lang = idioma(params.lang);
   const content = getDigital(lang);
+  const portafolio = getPortafolio(lang);
 
   const datos = [
     serviceSchema({
@@ -68,8 +70,11 @@ export default function SolucionesDigitalesPage({ params }) {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(datos) }}
       />
       <main>
-        <PageHero content={{ ...content.hero, secondaryHref: '#web' }} />
-        <Offer content={content.web} id="web" semana lang={lang} portafolio={getPortafolio(lang)} />
+        <PageHero
+          content={{ ...content.hero, secondaryHref: '#web' }}
+          figura={<FiguraPortada portafolio={portafolio} enlace={content.web.portafolio} lang={lang} />}
+        />
+        <Offer content={content.web} id="web" semana lang={lang} portafolio={portafolio} />
         <Offer content={content.systems} id="sistemas" tone="muted" />
         <FeatureGrid content={content.guarantees} columns={2} numbered />
         <ProductBand content={content.proof} href={`/${lang}/klinoda`} />

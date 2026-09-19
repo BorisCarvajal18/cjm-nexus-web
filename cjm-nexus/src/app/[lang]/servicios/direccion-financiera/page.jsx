@@ -22,23 +22,24 @@
  * las propuestas hasta que haya clientes con quienes contrastarlas
  * (`.impeccable/CONSTRUCCION.md`, «Revisar con clientes reales»).
  */
-import BoardShowcase from '../../../../blocks/pages/BoardShowcase';
-import Faq from '../../../../blocks/pages/Faq';
-import FeatureGrid from '../../../../blocks/pages/FeatureGrid';
-import Fit from '../../../../blocks/pages/Fit';
-import PageHero from '../../../../blocks/pages/PageHero';
-import Steps from '../../../../blocks/pages/Steps';
-import Symptoms from '../../../../blocks/pages/Symptoms';
-import FinalCta from '../../../../blocks/FinalCta';
-import SiteFooter from '../../../../components/SiteFooter';
-import SiteHeader from '../../../../components/SiteHeader';
-import { getFinanzas, getHome, getSitio } from '../../../../content';
-import { existe } from '../../../../i18n/rutas.mjs';
-import { defaultLanguage, languages } from '../../../../i18n/settings';
-import { faqSchema, pageMetadata, serviceSchema } from '../../../../lib/seo';
+import BoardShowcase from "../../../../blocks/pages/BoardShowcase";
+import Faq from "../../../../blocks/pages/Faq";
+import FeatureGrid from "../../../../blocks/pages/FeatureGrid";
+import Fit from "../../../../blocks/pages/Fit";
+import PageHero from "../../../../blocks/pages/PageHero";
+import TableroGerencial from "../../../../components/registro/TableroGerencial";
+import Steps from "../../../../blocks/pages/Steps";
+import Symptoms from "../../../../blocks/pages/Symptoms";
+import FinalCta from "../../../../blocks/FinalCta";
+import SiteFooter from "../../../../components/SiteFooter";
+import SiteHeader from "../../../../components/SiteHeader";
+import { getFinanzas, getHome, getSitio } from "../../../../content";
+import { existe } from "../../../../i18n/rutas.mjs";
+import { defaultLanguage, languages } from "../../../../i18n/settings";
+import { faqSchema, pageMetadata, serviceSchema } from "../../../../lib/seo";
 
 const idioma = (lang) => (languages.includes(lang) ? lang : defaultLanguage);
-const RUTA = '/servicios/direccion-financiera';
+const RUTA = "/servicios/direccion-financiera";
 
 /* Esta página no existe en todos los idiomas (`i18n/rutas.mjs`): donde no
    existe no se genera, y `next.config.mjs` redirige a la más cercana. */
@@ -54,6 +55,8 @@ export function generateMetadata({ params }) {
 export default function DireccionFinancieraPage({ params }) {
   const lang = idioma(params.lang);
   const content = getFinanzas(lang);
+  // Las interfaces de muestra de la portada: el tablero de la cabecera y el rótulo.
+  const muestras = getHome(lang).hacemos;
 
   /* Datos estructurados. Las preguntas se derivan del MISMO array que se
      pinta más abajo: así es imposible que el buscador enseñe una respuesta
@@ -75,10 +78,26 @@ export default function DireccionFinancieraPage({ params }) {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(datos) }}
       />
       <main>
-        <PageHero content={{ ...content.hero, secondaryHref: '#entregable' }} />
-        <Symptoms content={content.symptoms} comillas={getSitio(lang).comillas} />
+        <PageHero
+          content={{ ...content.hero, secondaryHref: "#entregable" }}
+          figura={
+            // El tablero de la portada, quieto: el momento de esta página sigue
+            // siendo «El tablero se dibuja», más abajo.
+            <div className="caja-pieza">
+              <TableroGerencial datos={muestras.tablero} />
+              <p className="muestra">{muestras.muestra}</p>
+            </div>
+          }
+        />
+        <Symptoms
+          content={content.symptoms}
+          comillas={getSitio(lang).comillas}
+        />
         <Steps content={content.month} />
-        <BoardShowcase content={content.deliverable} muestra={getHome(lang).hacemos.muestra} />
+        <BoardShowcase
+          content={content.deliverable}
+          muestra={muestras.muestra}
+        />
         <FeatureGrid content={content.deliverables} columns={3} />
         <Fit content={content.fit} />
         <Faq content={content.faq} />

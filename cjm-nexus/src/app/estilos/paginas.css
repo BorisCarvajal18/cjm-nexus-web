@@ -28,6 +28,37 @@
   border-bottom: 1px solid var(--filete);
   background: linear-gradient(180deg, var(--papel-claro) 0%, var(--papel) 100%);
 }
+/* Sin pieza, o con ella: menos aire, para que a 730 px de alto asome lo que
+   sigue. El aviso de KLINODA y la 404 no llevan ninguna de las dos clases. */
+.pag-cabeza.sin-figura,
+.pag-cabeza.con-figura {
+  padding-top: calc(var(--cabecera) + clamp(40px, 7vh, 72px));
+  padding-bottom: clamp(40px, 6vh, 64px);
+}
+/* Con pieza: el texto de siempre y, a la derecha, el entregable de la página. */
+.pag-cabeza.con-figura .marco {
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+  gap: 40px 64px;
+  align-items: center;
+}
+.figura-cabeza {
+  min-width: 0;
+}
+.figura-cabeza .caja-pieza {
+  max-width: none;
+}
+.figura-cabeza .previa {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--linea);
+  border-radius: 5px;
+  box-shadow: var(--sombra-hoja);
+}
+.figura-cabeza .pie-portada {
+  margin-top: 16px;
+}
 .pag-cabeza h1 {
   margin-top: 18px;
   font-size: clamp(2.15rem, 4.7vw, 4.1rem);
@@ -888,6 +919,12 @@
 }
 
 @media (max-width: 1100px) {
+  .pag-cabeza.con-figura .marco {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .figura-cabeza {
+    max-width: 640px;
+  }
   .dos-lineas,
   .banda-producto .marco,
   .banda-producto.sin-hechos .marco {

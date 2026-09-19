@@ -9,12 +9,12 @@
  * Es una banda oscura: avisa a la cabecera con <DarkSurface />, que es lo
  * único que viaja al navegador.
  */
-import Flecha from '../components/registro/Flecha';
-import DarkSurface from '../components/ui/DarkSurface';
-import { getSitio } from '../content';
-import { CALENDLY_URL, contactos, CORREO } from '../lib/site';
+import Flecha from "../components/registro/Flecha";
+import DarkSurface from "../components/ui/DarkSurface";
+import { getSitio } from "../content";
+import { CALENDLY_URL, contactos, CORREO } from "../lib/site";
 
-export default function FinalCta({ content, lang = 'es' }) {
+export default function FinalCta({ content, lang = "es" }) {
   const { canales } = getSitio(lang);
   return (
     <DarkSurface as="section" id="contacto" className="registro cierre">
