@@ -604,41 +604,34 @@
   color: var(--tx-1);
 }
 
-/* ── «Nosotros»: las tres fichas ────────────────────────────────────── */
-/* Tres columnas iguales con filetes verticales, como las credenciales. Sin
-   retrato, la ficha empieza por el cargo; el pie (lugar y LinkedIn) va abajo
-   del todo para que los lugares queden en la misma línea. */
+/* ── «Nosotros»: tres filas de registro ─────────────────────────────── */
+/* Una fila por persona, con filete: quién es, lo que lidera y sus cifras. Una
+   celda sin cifras se lee como «sin anotación», no como un hueco. */
 .fichas {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  margin-top: 36px;
+  margin-top: 8px;
 }
 .ficha {
-  display: flex;
-  flex-direction: column;
-  min-width: 0;
-  padding: 4px 36px 0;
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.2fr) minmax(0, 0.9fr);
+  gap: 8px 48px;
+  align-items: start;
+  padding: 32px 0;
+  border-top: 1px solid var(--filete);
 }
 .ficha:first-child {
-  padding-left: 0;
-}
-.ficha:last-child {
-  padding-right: 0;
-}
-.ficha + .ficha {
-  border-left: 1px solid var(--filete);
+  border-top: 0;
 }
 .ficha .retrato {
   display: block;
-  width: 100%;
+  width: 160px;
   height: auto;
   aspect-ratio: 4 / 5;
   object-fit: cover;
-  margin-bottom: 24px;
+  margin-bottom: 20px;
   border-radius: 2px;
 }
 .ficha h3 {
-  margin-top: 14px;
+  margin-top: 12px;
   font-size: clamp(1.45rem, 2.1vw, 1.8rem);
   line-height: 1.1;
   letter-spacing: -0.028em;
@@ -647,17 +640,16 @@
 }
 .ficha .lidera,
 .ficha .trayectoria {
-  margin-top: 12px;
-  max-width: 38ch;
+  max-width: 46ch;
   color: var(--tx-2);
+}
+.ficha .trayectoria {
+  margin-top: 12px;
 }
 .cifras-ficha {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 0 24px;
-  margin-top: 28px;
-  padding-top: 18px;
-  border-top: 1px solid var(--filete);
 }
 .cifras-ficha b {
   display: block;
@@ -685,10 +677,8 @@
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  justify-content: space-between;
-  gap: 12px 24px;
-  margin-top: auto;
-  padding-top: 32px;
+  gap: 10px 24px;
+  margin-top: 14px;
 }
 .pie-ficha .base {
   display: flex;
@@ -928,32 +918,26 @@
   .cabeza-portada {
     grid-template-columns: 1fr;
   }
-  /* Las fichas, una bajo otra con filetes horizontales, como las cifras. */
-  .fichas,
+  /* Las filas de «Nosotros»: dos columnas, con las cifras bajo quién es. */
+  .ficha {
+    grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+  }
+  .ficha .que {
+    grid-column: 2;
+    grid-row: 1;
+  }
+  .ficha .cifras-ficha {
+    grid-column: 1;
+    margin-top: 16px;
+  }
   .firma-puntos {
     grid-template-columns: 1fr;
-  }
-  .ficha,
-  .ficha:first-child,
-  .ficha:last-child {
-    padding: 28px 0 32px;
-  }
-  .ficha + .ficha {
-    border-left: 0;
-    border-top: 1px solid var(--filete);
-  }
-  .ficha .retrato {
-    max-width: 280px;
   }
   .firma-puntos > li {
     padding-bottom: 22px;
   }
   .firma-puntos > li + li {
     border-top: 1px solid var(--filete);
-  }
-  .pie-ficha {
-    justify-content: flex-start;
-    padding-top: 22px;
   }
   /* Los pasos de las ofertas dejan las columnas: en dos columnas, el tercero
      de tres quedaba huérfano y la línea de la semana se partía en dos. */
@@ -995,6 +979,20 @@
   }
   .reglas-pag .ejemplos {
     grid-template-columns: 1fr;
+  }
+  /* «Nosotros» en el teléfono: todo en una columna, en su orden. */
+  .ficha {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 14px;
+    padding: 28px 0;
+  }
+  .ficha .que,
+  .ficha .cifras-ficha {
+    grid-column: 1;
+    grid-row: auto;
+  }
+  .ficha .cifras-ficha {
+    margin-top: 6px;
   }
   /* La tira de la oferta: en el teléfono, una sola, la del teléfono. */
   .tira-portadas ul {
