@@ -50,7 +50,7 @@ negro con dorado; y un guiso en olla de barro para el restaurante, porque dos fo
 Google Fonts, licencia OFL. Distintas entre sí y de las de CJM Nexus (Plus Jakarta Sans e Inter).
 
 - **Tres Ollas:** Caprasimo (rótulo pintado de picantería) y Figtree.
-- **Cordel:** Instrument Sans, con su eje de anchura para las cifras.
+- **Cordel:** Encode Sans, grotesca de aire técnico, con su eje de anchura para el titular y las cifras.
 - **Orilla:** Rozha One (didona gruesa de rótulo y cartel del XIX) y Hanken Grotesk.
 
 ## Referencias
