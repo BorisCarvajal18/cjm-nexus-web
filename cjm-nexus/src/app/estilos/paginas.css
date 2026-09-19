@@ -829,7 +829,6 @@
   font-weight: 600;
   letter-spacing: 0.03em;
   color: var(--tx-2);
-  white-space: nowrap;
 }
 .etiqueta-concepto::before {
   content: '';

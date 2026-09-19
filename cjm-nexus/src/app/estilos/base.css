@@ -30,6 +30,12 @@
   margin: 0;
   text-wrap: balance;
 }
+/* En alemán las palabras compuestas no caben en un titular de teléfono
+   («Unternehmenssoftware» a 34 px): se parten con guion. */
+.registro :where(h1, h2, h3):lang(de) {
+  hyphens: auto;
+  overflow-wrap: break-word;
+}
 .registro :where(p) {
   margin: 0;
   text-wrap: pretty;

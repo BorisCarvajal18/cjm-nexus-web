@@ -113,6 +113,10 @@ html:not(.tema-vivo) .puerta {
   border: 1px solid var(--filete);
   border-radius: 2px;
   padding: 6px 12px;
+}
+/* Solo en la escena va en una línea: ahí viaja a la barra y se mide. Fuera,
+   puede partir: en una columna estrecha (o en alemán) no cabía. */
+.k-coreo .k-etiqueta {
   white-space: nowrap;
 }
 .k-etiqueta::before {

@@ -229,3 +229,9 @@
     height: 36px;
   }
 }
+
+/* Cada palabra del titular es un bloque con máscara y no puede partirse. En
+   alemán, una palabra más ancha que la pantalla se limita a ella y parte. */
+.portada h1 .p:lang(de) {
+  max-width: 100%;
+}

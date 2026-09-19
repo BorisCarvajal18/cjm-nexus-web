@@ -258,7 +258,7 @@ Nunca en texto, nunca de un color a otro, y nada de orbes, manchas ni halos: lo 
 - **Rejilla:** un marco de 1240 px con canales de 32 px (20 px bajo 620 px), sobre una cabecera fija de 72 px. Las secciones respiran 88–96 px arriba y abajo, 64 px bajo 1100 px y 52 px bajo 620 px. La portada ocupa `100svh`.
 - **El 50/50 es geometría:** las dos líneas usan columnas del mismo ancho, piezas de la misma altura, la misma letra y el mismo recorrido.
 - **Escenas fijadas:** el escenario ocupa la pantalla y sobresale del marco hasta 56 px por lado. Las piezas son figuras; el texto sigue alineado con la rejilla. Las piezas van a tamaño real (624 px de ancho a 1440) y solo se reducen si no caben.
-- **Cortes:** 1100 px (servicios y KLINODA pasan a una columna), 1000 px (sin menú, credenciales y cierre en una columna), 760 px (cifras apiladas) y 620 px (móvil). El tablero de KLINODA reordena sus cartas con una consulta de contenedor a 700 px.
+- **Cortes:** 1100 px (servicios y KLINODA pasan a una columna, y sale el menú), 1000 px (credenciales y cierre en una columna), 760 px (cifras apiladas) y 620 px (móvil). El tablero de KLINODA reordena sus cartas con una consulta de contenedor a 700 px.
 - **El teléfono es el caso principal:** todo se lee en filas, sin fijar nada.
 
 ## Elevation & Depth
@@ -296,7 +296,7 @@ Cabecera fija de 72 px con isotipo, «CJM NEXUS» espaciado a 0,2 em, menú en I
 - **Papel, con filete y letra tinta**, en cuanto la página baja.
 - **Marino hondo** cuando una zona oscura avisa.
 
-Los enlaces del menú se subrayan en cobre al apuntar. Bajo 1000 px desaparece el menú; bajo 620 px, los idiomas.
+Los enlaces del menú se subrayan en cobre al apuntar. Bajo 1100 px el menú pasa al botón de dos filetes (con seis elementos no cabe antes, y menos en alemán); bajo 620 px salen los idiomas.
 
 ### Interfaces de muestra
 Ventanas de producto sobre papel blanco (5 px, sombra de hoja) que enseñan un entregable real, no un esquema: el tablero gerencial y el portal de documentos y trazabilidad. Miden lo mismo entre sí (520 px; 560 px en la escena) y están hechas con las mismas piezas (`components/registro/Ventana.jsx`), porque el 50/50 también es material.

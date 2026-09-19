@@ -22,7 +22,7 @@
  * EN LA PORTADA, la marca, el menú y los idiomas (`.sec`) entran con ella,
  * escalonados (estilos/portada.css). En las demás páginas `.sec` no hace nada.
  *
- * BAJO 1000 PX sale el menú, y BAJO 620 los idiomas y el « · 20 min» del
+ * BAJO 1100 PX sale el menú (con seis elementos no cabe antes; ver REVISION-GENERAL.md, 9), y BAJO 620 los idiomas y el « · 20 min» del
  * botón. Para no dejar el teléfono sin navegación, en su lugar aparece un
  * botón que abre el menú en un panel de papel bajo la cabecera, con los
  * idiomas. Se cierra con Escape y al elegir un enlace, y devuelve el foco.
@@ -85,7 +85,7 @@ export default function SiteHeader({ lang = 'es', ctaHref }) {
   /* Si la ventana se ensancha con el panel abierto, el panel sobra. */
   useEffect(() => {
     if (!open) return undefined;
-    const ancho = window.matchMedia('(min-width: 1001px)');
+    const ancho = window.matchMedia('(min-width: 1101px)');
     const alCambiar = (e) => e.matches && setOpen(false);
     ancho.addEventListener('change', alCambiar);
     return () => ancho.removeEventListener('change', alCambiar);
@@ -125,7 +125,7 @@ export default function SiteHeader({ lang = 'es', ctaHref }) {
           </span>
         </a>
 
-        <nav aria-label={t.menu} style={{ '--d': '.1s' }} className="sec ml-auto flex gap-[26px] max-[1000px]:hidden">
+        <nav aria-label={t.menu} style={{ '--d': '.1s' }} className="sec ml-auto flex gap-[26px] max-[1100px]:hidden">
           {links.map((link) => (
             <a
               key={link.href}
@@ -143,7 +143,7 @@ export default function SiteHeader({ lang = 'es', ctaHref }) {
           ruta={ruta}
           etiqueta={t.idiomas}
           style={{ '--d': '.14s' }}
-          className="sec max-[1000px]:ml-auto max-[620px]:hidden"
+          className="sec max-[1100px]:ml-auto max-[620px]:hidden"
         />
 
         <div className="flex items-center gap-3 max-[620px]:ml-auto">
@@ -166,7 +166,7 @@ export default function SiteHeader({ lang = 'es', ctaHref }) {
             onClick={() => setOpen((v) => !v)}
             aria-expanded={open}
             aria-controls="menu-movil"
-            className="-mr-2 grid h-10 w-10 place-items-center min-[1001px]:hidden"
+            className="-mr-2 grid h-10 w-10 place-items-center min-[1101px]:hidden"
           >
             <span className="sr-only">{open ? t.cerrarMenu : t.abrirMenu}</span>
             <span aria-hidden="true" className="relative block h-[10px] w-[18px]">
@@ -181,12 +181,12 @@ export default function SiteHeader({ lang = 'es', ctaHref }) {
         </div>
       </div>
 
-      {/* Panel del menú bajo 1000 px. Cuelga de la cabecera, que sigue a la
+      {/* Panel del menú bajo 1100 px. Cuelga de la cabecera, que sigue a la
           vista con el botón para cerrarlo. */}
       {open ? (
         <div
           id="menu-movil"
-          className="fixed inset-x-0 bottom-0 top-cabecera overflow-y-auto border-t border-linea bg-papel text-tinta min-[1001px]:hidden"
+          className="fixed inset-x-0 bottom-0 top-cabecera overflow-y-auto border-t border-linea bg-papel text-tinta min-[1101px]:hidden"
         >
           <div className="marco pb-10 pt-4">
             <nav aria-label={t.menu}>
