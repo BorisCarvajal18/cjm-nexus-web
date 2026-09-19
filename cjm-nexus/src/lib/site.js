@@ -28,11 +28,12 @@ export const SOCIAL_PROFILES = [];
  *
  * KLINODA NO ESTÁ EN EL MENÚ NI EN EL PIE desde el 2026-09-19: tendrá su
  * propia web, y /klinoda es solo un aviso. Se llega desde sus bandas.
- * «Portafolio» entra cuando exista el primer ejemplo.
+ * «Portafolio» entró el 2026-09-19, con sus tres portadas de ejemplo.
  */
 export function navLinks(lang = 'es') {
   return [
     { href: `/${lang}/servicios`, label: 'Servicios' },
+    { href: `/${lang}/portafolio`, label: 'Portafolio' },
     { href: `/${lang}/servicios#metodo`, label: 'Método' },
     { href: `/${lang}/nosotros`, label: 'Nosotros' },
     // Todas las paginas terminan con la misma seccion de cierre, con
@@ -73,6 +74,7 @@ export function footerColumns(lang = 'es') {
         { label: 'Los dos servicios', href: `/${lang}/servicios` },
         { label: 'Dirección financiera', href: `/${lang}/servicios/direccion-financiera` },
         { label: 'Soluciones digitales', href: `/${lang}/servicios/soluciones-digitales` },
+        { label: 'Portafolio', href: `/${lang}/portafolio` },
       ],
     },
     {

@@ -1,3 +1,4 @@
+import Flecha from '../../components/registro/Flecha';
 import PasosSemana from './PasosSemana';
 import { StepItem } from './Steps';
 
@@ -18,8 +19,11 @@ import { StepItem } from './Steps';
  *
  * `semana`: los pasos de la página web llevan el momento de la página, «La
  * semana, en una línea» (<PasosSemana />). Los del sistema, quietos.
+ *
+ * `content.portafolio`: el enlace a las portadas de ejemplo, al final de la
+ * oferta de la página web (el enlace del contenido viene sin idioma).
  */
-export default function Offer({ content, tone = 'plain', id, semana = false }) {
+export default function Offer({ content, tone = 'plain', id, semana = false, lang = 'es' }) {
   return (
     <section id={id} className={`registro seccion oferta ${tone === 'muted' ? 'banda-honda' : ''}`}>
       <div className="marco">
@@ -68,6 +72,13 @@ export default function Offer({ content, tone = 'plain', id, semana = false }) {
         )}
 
         {content.note ? <p className="nota-pag">{content.note}</p> : null}
+
+        {content.portafolio ? (
+          <a className="enlace adelante a-portafolio" href={`/${lang}${content.portafolio.href}`}>
+            <span>{content.portafolio.enlace}</span>
+            <Flecha />
+          </a>
+        ) : null}
       </div>
     </section>
   );

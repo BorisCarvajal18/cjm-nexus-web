@@ -382,7 +382,7 @@
         "rule": "design-system-font",
         "value": "*",
         "files": [
-          ".impeccable/mocks/portafolio/restaurante.html"
+          "cjm-nexus/public/portafolio/regulars/index.html"
         ],
         "createdAt": "2026-09-19T00:56:05.641Z",
         "reason": "Maqueta de portafolio con marca ficticia propia: por encargo de Boris (2026-09-19) tiene que ser distinta de CJM Nexus, así que DESIGN.md no aplica"
@@ -391,7 +391,7 @@
         "rule": "design-system-font-size",
         "value": "*",
         "files": [
-          ".impeccable/mocks/portafolio/restaurante.html"
+          "cjm-nexus/public/portafolio/regulars/index.html"
         ],
         "createdAt": "2026-09-19T00:56:05.768Z",
         "reason": "Maqueta de portafolio con marca ficticia propia: por encargo de Boris (2026-09-19) tiene que ser distinta de CJM Nexus, así que DESIGN.md no aplica"
@@ -400,7 +400,7 @@
         "rule": "design-system-color",
         "value": "*",
         "files": [
-          ".impeccable/mocks/portafolio/restaurante.html"
+          "cjm-nexus/public/portafolio/regulars/index.html"
         ],
         "createdAt": "2026-09-19T00:56:05.905Z",
         "reason": "Maqueta de portafolio con marca ficticia propia: por encargo de Boris (2026-09-19) tiene que ser distinta de CJM Nexus, así que DESIGN.md no aplica"
@@ -409,7 +409,7 @@
         "rule": "design-system-radius",
         "value": "*",
         "files": [
-          ".impeccable/mocks/portafolio/restaurante.html"
+          "cjm-nexus/public/portafolio/regulars/index.html"
         ],
         "createdAt": "2026-09-19T00:56:06.045Z",
         "reason": "Maqueta de portafolio con marca ficticia propia: por encargo de Boris (2026-09-19) tiene que ser distinta de CJM Nexus, así que DESIGN.md no aplica"
@@ -418,7 +418,7 @@
         "rule": "design-system-shadow",
         "value": "*",
         "files": [
-          ".impeccable/mocks/portafolio/restaurante.html"
+          "cjm-nexus/public/portafolio/regulars/index.html"
         ],
         "createdAt": "2026-09-19T00:56:06.189Z",
         "reason": "Maqueta de portafolio con marca ficticia propia: por encargo de Boris (2026-09-19) tiene que ser distinta de CJM Nexus, así que DESIGN.md no aplica"
@@ -427,7 +427,7 @@
         "rule": "design-system-spacing",
         "value": "*",
         "files": [
-          ".impeccable/mocks/portafolio/restaurante.html"
+          "cjm-nexus/public/portafolio/regulars/index.html"
         ],
         "createdAt": "2026-09-19T00:56:06.334Z",
         "reason": "Maqueta de portafolio con marca ficticia propia: por encargo de Boris (2026-09-19) tiene que ser distinta de CJM Nexus, así que DESIGN.md no aplica"
@@ -436,7 +436,7 @@
         "rule": "design-system-font",
         "value": "*",
         "files": [
-          ".impeccable/mocks/portafolio/constructora.html"
+          "cjm-nexus/public/portafolio/chalkline/index.html"
         ],
         "createdAt": "2026-09-19T00:56:06.469Z",
         "reason": "Maqueta de portafolio con marca ficticia propia: por encargo de Boris (2026-09-19) tiene que ser distinta de CJM Nexus, así que DESIGN.md no aplica"
@@ -445,7 +445,7 @@
         "rule": "design-system-font-size",
         "value": "*",
         "files": [
-          ".impeccable/mocks/portafolio/constructora.html"
+          "cjm-nexus/public/portafolio/chalkline/index.html"
         ],
         "createdAt": "2026-09-19T00:56:06.610Z",
         "reason": "Maqueta de portafolio con marca ficticia propia: por encargo de Boris (2026-09-19) tiene que ser distinta de CJM Nexus, así que DESIGN.md no aplica"
@@ -454,7 +454,7 @@
         "rule": "design-system-color",
         "value": "*",
         "files": [
-          ".impeccable/mocks/portafolio/constructora.html"
+          "cjm-nexus/public/portafolio/chalkline/index.html"
         ],
         "createdAt": "2026-09-19T00:56:06.735Z",
         "reason": "Maqueta de portafolio con marca ficticia propia: por encargo de Boris (2026-09-19) tiene que ser distinta de CJM Nexus, así que DESIGN.md no aplica"
@@ -463,7 +463,7 @@
         "rule": "design-system-radius",
         "value": "*",
         "files": [
-          ".impeccable/mocks/portafolio/constructora.html"
+          "cjm-nexus/public/portafolio/chalkline/index.html"
         ],
         "createdAt": "2026-09-19T00:56:06.874Z",
         "reason": "Maqueta de portafolio con marca ficticia propia: por encargo de Boris (2026-09-19) tiene que ser distinta de CJM Nexus, así que DESIGN.md no aplica"
@@ -472,7 +472,7 @@
         "rule": "design-system-shadow",
         "value": "*",
         "files": [
-          ".impeccable/mocks/portafolio/constructora.html"
+          "cjm-nexus/public/portafolio/chalkline/index.html"
         ],
         "createdAt": "2026-09-19T00:56:07.000Z",
         "reason": "Maqueta de portafolio con marca ficticia propia: por encargo de Boris (2026-09-19) tiene que ser distinta de CJM Nexus, así que DESIGN.md no aplica"
@@ -481,7 +481,7 @@
         "rule": "design-system-spacing",
         "value": "*",
         "files": [
-          ".impeccable/mocks/portafolio/constructora.html"
+          "cjm-nexus/public/portafolio/chalkline/index.html"
         ],
         "createdAt": "2026-09-19T00:56:07.152Z",
         "reason": "Maqueta de portafolio con marca ficticia propia: por encargo de Boris (2026-09-19) tiene que ser distinta de CJM Nexus, así que DESIGN.md no aplica"
@@ -490,7 +490,7 @@
         "rule": "design-system-font",
         "value": "*",
         "files": [
-          ".impeccable/mocks/portafolio/barberia.html"
+          "cjm-nexus/public/portafolio/towpath/index.html"
         ],
         "createdAt": "2026-09-19T00:56:07.282Z",
         "reason": "Maqueta de portafolio con marca ficticia propia: por encargo de Boris (2026-09-19) tiene que ser distinta de CJM Nexus, así que DESIGN.md no aplica"
@@ -499,7 +499,7 @@
         "rule": "design-system-font-size",
         "value": "*",
         "files": [
-          ".impeccable/mocks/portafolio/barberia.html"
+          "cjm-nexus/public/portafolio/towpath/index.html"
         ],
         "createdAt": "2026-09-19T00:56:07.423Z",
         "reason": "Maqueta de portafolio con marca ficticia propia: por encargo de Boris (2026-09-19) tiene que ser distinta de CJM Nexus, así que DESIGN.md no aplica"
@@ -508,7 +508,7 @@
         "rule": "design-system-color",
         "value": "*",
         "files": [
-          ".impeccable/mocks/portafolio/barberia.html"
+          "cjm-nexus/public/portafolio/towpath/index.html"
         ],
         "createdAt": "2026-09-19T00:56:07.562Z",
         "reason": "Maqueta de portafolio con marca ficticia propia: por encargo de Boris (2026-09-19) tiene que ser distinta de CJM Nexus, así que DESIGN.md no aplica"
@@ -517,7 +517,7 @@
         "rule": "design-system-radius",
         "value": "*",
         "files": [
-          ".impeccable/mocks/portafolio/barberia.html"
+          "cjm-nexus/public/portafolio/towpath/index.html"
         ],
         "createdAt": "2026-09-19T00:56:07.699Z",
         "reason": "Maqueta de portafolio con marca ficticia propia: por encargo de Boris (2026-09-19) tiene que ser distinta de CJM Nexus, así que DESIGN.md no aplica"
@@ -526,7 +526,7 @@
         "rule": "design-system-shadow",
         "value": "*",
         "files": [
-          ".impeccable/mocks/portafolio/barberia.html"
+          "cjm-nexus/public/portafolio/towpath/index.html"
         ],
         "createdAt": "2026-09-19T00:56:07.838Z",
         "reason": "Maqueta de portafolio con marca ficticia propia: por encargo de Boris (2026-09-19) tiene que ser distinta de CJM Nexus, así que DESIGN.md no aplica"
@@ -535,7 +535,7 @@
         "rule": "design-system-spacing",
         "value": "*",
         "files": [
-          ".impeccable/mocks/portafolio/barberia.html"
+          "cjm-nexus/public/portafolio/towpath/index.html"
         ],
         "createdAt": "2026-09-19T00:56:07.985Z",
         "reason": "Maqueta de portafolio con marca ficticia propia: por encargo de Boris (2026-09-19) tiene que ser distinta de CJM Nexus, así que DESIGN.md no aplica"

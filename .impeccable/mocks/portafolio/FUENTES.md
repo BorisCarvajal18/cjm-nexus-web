@@ -1,5 +1,10 @@
 # Portafolio · fuentes de las maquetas
 
+**Desde el 2026-09-19 las portadas viven en el sitio:** `cjm-nexus/public/portafolio/regulars/`,
+`chalkline/` y `towpath/` (cada una con su `index.html` y sus imágenes), y se enseñan en
+`/es/portafolio`. Aquí quedan estas notas y las capturas de Fable. Al pasarlas se añadió `noindex` y
+«Talk to us» pasó a un correo (ver CONSTRUCCION.md); el diseño no cambió.
+
 Tres portadas de ejemplo para la oferta «tu web en menos de una semana»: solo la primera pantalla,
 en HTML y CSS puros, sin framework. Marcas ficticias.
 

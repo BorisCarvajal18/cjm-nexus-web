@@ -17,6 +17,7 @@ const RUTAS = [
   { path: '/servicios', priority: 0.7 },
   { path: '/servicios/direccion-financiera', priority: 0.9 },
   { path: '/servicios/soluciones-digitales', priority: 0.9 },
+  { path: '/portafolio', priority: 0.8 },
   { path: '/nosotros', priority: 0.6 },
 ];
 

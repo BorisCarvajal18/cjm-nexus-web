@@ -473,6 +473,8 @@ export const digital = {
        «en una semana desde que tenemos tus textos y tu logotipo» suena a
        alguien que ya lo ha hecho y sabe dónde se atasca. */
     note: 'La semana empieza a contar cuando tenemos lo tuyo: textos, logotipo e imágenes. Si aún no los tienes, te ayudamos a prepararlos, y eso lleva su tiempo aparte.',
+    // Aprobado por Boris el 2026-09-19: lleva a /portafolio.
+    portafolio: { enlace: 'Ver tres portadas de ejemplo', href: '/portafolio' },
   },
 
   /* ── OFERTA 02 · LOS SISTEMAS ────────────────────────────────────── */

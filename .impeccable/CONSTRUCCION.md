@@ -27,7 +27,19 @@ Decidido por Boris el 19 de septiembre de 2026:
   servicios, soluciones digitales, «Nosotros») se quedan igual. La página retirada sigue en git
   (commit `f4bd24d`).
 - **Habrá un portafolio con tres portadas de ejemplo**, en un encargo aparte. «Portafolio» entra en
-  el menú cuando exista el primer ejemplo.
+  el menú cuando exista el primer ejemplo. ✅ Entró el 2026-09-19 (ver abajo).
+
+## Cambio de mercado · 2026-09-19
+
+Decidido por Boris: **la oferta de web en una semana se vende primero en Berlín y después en
+Ecuador.** Por eso las tres portadas de ejemplo son de marcas ficticias de Berlín y están en inglés
+(Regulars, Chalkline y Towpath; commit `0362dd9`). La versión ecuatoriana en español (Tres Ollas,
+Cordel, Orilla) queda en git (`98aafc2`) para cuando toque Ecuador. El sitio sigue en español
+mientras llegan las traducciones.
+
+**Pendiente:** «Talk to us» de las tres portadas va hoy a
+`mailto:experiencia@cjmnexus.com?subject=Website like this`. **Cuando `/en` esté traducido, pasa a
+`/en#contacto`** (una línea en cada `public/portafolio/<nombre>/index.html`).
 
 ## Estado al 2026-09-18
 
@@ -971,3 +983,30 @@ transformado y las variables sin tocar (estado final). Anclas `#metodo`, `#web`,
 `#personas` y el clic en «Método»: a 88 px, con y sin movimiento, en los dos tamaños; `/es#contacto`
 a 160 (fin de página). Capturas `mov-*` (`-inicio`, `-medio` en soluciones digitales, `-final` y
 `-quieto`).
+
+### 2026-09-19 — pieza del portafolio: /portafolio
+
+- **Las portadas, al sitio:** `git mv` de `.impeccable/mocks/portafolio/` a
+  `cjm-nexus/public/portafolio/regulars/`, `chalkline/` y `towpath/` (`index.html` e imágenes). Se
+  abren a pantalla completa en `/portafolio/<nombre>/index.html`. Cambios, sin tocar el diseño:
+  `<meta name="robots" content="noindex, nofollow">`, un icono vacío (sin él pedían `/favicon.ico`
+  y daban 404) y «Talk to us» a un correo con el asunto «Website like this». Las excepciones del
+  detector de Impeccable siguen a los archivos a su ruta nueva (`.impeccable/config.json`).
+- **Vistas previas:** capturas de cada portada en `public/portafolio/previa/` (escritorio a
+  1536 × 730, teléfono a 390 × 844 con densidad 2), tomadas cuando termina su gesto de entrada. Si
+  una portada cambia, se rehacen.
+- **La página** (`app/[lang]/portafolio/page.jsx`, `blocks/pages/Portadas.jsx`, textos en
+  `content/portafolio.es.js`, aprobados por Boris el 2026-09-19 con un cambio en la descripción):
+  `PageHero`, las tres portadas y `FinalCta`. Cada portada: referencia (sector · barrio), nombre,
+  texto, la etiqueta «Concepto · marca ficticia» (etiqueta de estado con punto cobre) y «Abrir la
+  portada» (pestaña nueva). Debajo, escritorio y teléfono a la misma altura, con sombra de hoja; bajo
+  760 px solo la del teléfono. Quieta.
+- **Menú y pie:** «Portafolio» detrás de «Servicios» (`lib/site.js`); en el pie, en la columna
+  «Servicios». `sitemap.js`: `/portafolio` (0,8); las portadas no entran.
+- **Soluciones digitales:** «Ver tres portadas de ejemplo» al final de la oferta de la página web
+  (`servicios.es.js` → `digital.web.portafolio`, `Offer` con `lang`).
+
+**Verificación** (producción): build sin errores ni avisos. `/es/portafolio` a 1536 × 730 y 390 ×
+844 sin desbordamiento ni errores; los tres enlaces abren su portada (200, todas las imágenes
+cargan), con `noindex` y el correo de «Talk to us». El menú: Servicios, Portafolio, Método,
+Nosotros, Contacto. Capturas `portafolio-*` (página, página entera, menú y Towpath abierta).
