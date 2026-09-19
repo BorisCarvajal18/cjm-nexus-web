@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tres Ollas · Cocina ecuatoriana en Cuenca</title>
+<!-- Concepto de portada para el portafolio de CJM Nexus. Marca ficticia.
+     Dirección: la carta del día, como la pizarra en la puerta. Referencias:
+     Rosetta (CDMX) — dirección y horario en la cabecera, y dos acciones:
+     menú y reservar; Contramar (CDMX) — la foto del plato hace el trabajo,
+     el resto se calla; Lilia (Brooklyn) — el titular dice qué se come y
+     dónde, sin adjetivos.
+     Foto: Evan Wise, Unsplash (ver FUENTES.md). -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Young+Serif&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --maiz: #F2E6CC;
+    --maiz-hondo: #E8D8B4;
+    --hoja: #1F3A2B;
+    --hoja-suave: #4A5F50;
+    --aji: #B8361E;
+    --aji-hondo: #962A16;
+    --linea: rgba(31, 58, 43, 0.22);
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; }
+  body {
+    background: var(--maiz);
+    color: var(--hoja);
+    font: 400 16px/1.5 'Work Sans', system-ui, sans-serif;
+  }
+  a { color: inherit; }
+
+  /* Franja de arriba: lo primero que busca quien va a comer hoy. */
+  .franja {
+    display: flex; justify-content: space-between; gap: 12px 24px; flex-wrap: wrap;
+    padding: 9px clamp(20px, 4vw, 56px);
+    background: var(--hoja); color: var(--maiz);
+    font-size: 0.86rem;
+  }
+  .franja b { font-weight: 600; }
+  .abierto::before {
+    content: ''; display: inline-block; width: 7px; height: 7px; border-radius: 50%;
+    background: #7FC08A; margin-right: 8px; transform: translateY(-1px);
+  }
+
+  header {
+    display: flex; align-items: center; justify-content: space-between; gap: 24px;
+    padding: 18px clamp(20px, 4vw, 56px);
+    border-bottom: 1px solid var(--linea);
+  }
+  .marca { font-family: 'Young Serif', Georgia, serif; font-size: 1.6rem; text-decoration: none; letter-spacing: -0.01em; }
+  .marca span { color: var(--aji); }
+  nav { display: flex; gap: 28px; font-weight: 500; font-size: 0.97rem; }
+  nav a { text-decoration: none; }
+  nav a:hover { text-decoration: underline; text-underline-offset: 5px; }
+
+  .portada {
+    display: grid;
+    grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+    gap: clamp(28px, 4vw, 64px);
+    padding: clamp(22px, 3.5vh, 44px) clamp(20px, 4vw, 56px) 40px;
+    align-items: stretch;
+  }
+  h1 {
+    margin: 0;
+    font-family: 'Young Serif', Georgia, serif; font-weight: 400;
+    font-size: clamp(2.3rem, 3.9vw, 3.7rem); line-height: 1.02; letter-spacing: -0.02em;
+    max-width: 14ch;
+  }
+  .entrada { margin: 18px 0 0; max-width: 46ch; font-size: 1.08rem; color: var(--hoja-suave); }
+
+  /* El almuerzo de hoy, con puntos guía como en una carta impresa. */
+  .hoy {
+    margin-top: clamp(18px, 3vh, 30px);
+    max-width: 560px;
+    padding: 16px 22px 14px;
+    background: var(--maiz-hondo);
+    border-radius: 2px;
+  }
+  .hoy-cabeza { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; }
+  .hoy h2 { margin: 0; font-family: 'Young Serif', Georgia, serif; font-weight: 400; font-size: 1.3rem; }
+  .precio { font-family: 'Young Serif', Georgia, serif; font-size: 1.3rem; color: var(--aji); white-space: nowrap; }
+  .hoy ul { list-style: none; margin: 10px 0 0; padding: 0; }
+  .hoy li { display: flex; align-items: baseline; gap: 10px; padding: 5px 0; font-size: 0.98rem; }
+  .hoy li span:first-child { color: var(--hoja-suave); min-width: 5.2em; }
+  .hoy li::after { content: none; }
+  .hoy .nota { margin: 8px 0 0; font-size: 0.84rem; color: var(--hoja-suave); }
+
+  .acciones { display: flex; flex-wrap: wrap; gap: 12px 22px; align-items: center; margin-top: 22px; }
+  .reservar {
+    display: inline-flex; align-items: center; gap: 10px;
+    padding: 14px 22px; border-radius: 999px;
+    background: var(--aji); color: #fff; text-decoration: none; font-weight: 600;
+    transition: background-color .18s;
+  }
+  .reservar:hover { background: var(--aji-hondo); }
+  .carta { font-weight: 600; text-underline-offset: 5px; }
+
+  figure { margin: 0; position: relative; min-height: 0; }
+  figure img {
+    display: block; width: 100%; height: 100%; min-height: 420px; max-height: calc(100svh - 200px);
+    object-fit: cover; object-position: 50% 60%;
+    border-radius: 220px 220px 4px 4px;
+  }
+  figcaption { margin-top: 10px; font-size: 0.86rem; color: var(--hoja-suave); }
+  figcaption b { color: var(--hoja); font-weight: 600; }
+
+  /* Lo que va fuera del negocio: la etiqueta del concepto y la llamada de CJM Nexus. */
+  .concepto {
+    position: fixed; right: 14px; bottom: 14px; z-index: 5;
+    padding: 5px 10px; border-radius: 3px;
+    background: rgba(31, 58, 43, 0.86); color: var(--maiz);
+    font-size: 0.72rem; letter-spacing: 0.02em;
+  }
+  .cjm {
+    display: flex; justify-content: space-between; align-items: center; gap: 12px 24px; flex-wrap: wrap;
+    margin: 0 clamp(20px, 4vw, 56px) 40px; padding: 18px 0 0;
+    border-top: 1px solid var(--linea);
+    font-size: 0.95rem;
+  }
+  .cjm a { font-weight: 600; text-underline-offset: 5px; }
+
+  @media (max-width: 900px) {
+    nav { display: none; }
+    .portada { grid-template-columns: 1fr; }
+    figure { order: -1; }
+    figure img { min-height: 0; height: 230px; border-radius: 140px 140px 4px 4px; object-position: 50% 55%; }
+    .franja .dir { display: none; }
+  }
+  @media (max-width: 420px) {
+    h1 { font-size: 2.3rem; }
+    .hoy { padding: 16px; }
+    .reservar { width: 100%; justify-content: center; }
+  }
+</style>
+</head>
+<body>
+  <div class="franja">
+    <span class="abierto"><b>Abierto hoy</b> · almuerzos 12:00 a 16:00 · cenas 18:30 a 22:00</span>
+    <span class="dir">Presidente Córdova 5-40, centro de Cuenca</span>
+  </div>
+  <header>
+    <a class="marca" href="#">Tres <span>Ollas</span></a>
+    <nav>
+      <a href="#">La carta</a>
+      <a href="#">Almuerzos</a>
+      <a href="#">Cómo llegar</a>
+    </nav>
+  </header>
+
+  <main class="portada">
+    <div>
+      <h1>Comida de casa, en el centro de Cuenca.</h1>
+      <p class="entrada">Locro, seco de chivo y mote pillo hechos cada mañana, como en la mesa de la abuela. Almuerzo del día y carta de martes a domingo.</p>
+
+      <section class="hoy" aria-labelledby="hoy">
+        <div class="hoy-cabeza">
+          <h2 id="hoy">El almuerzo de hoy</h2>
+          <span class="precio">$4,50</span>
+        </div>
+        <ul>
+          <li><span>Sopa</span><span>Locro de papa con queso y aguacate</span></li>
+          <li><span>Segundo</span><span>Seco de pollo con arroz y maduro</span></li>
+          <li><span>Jugo</span><span>Tomate de árbol</span></li>
+        </ul>
+        <p class="nota">Cambia cada día. Lo publicamos a las 10:00.</p>
+      </section>
+
+      <div class="acciones">
+        <a class="reservar" href="#">Reservar mesa por WhatsApp</a>
+        <a class="carta" href="#">Ver la carta completa</a>
+      </div>
+    </div>
+
+    <figure>
+      <img src="img/restaurante-mesa.jpg" alt="Ceviche servido en cazuela de barro con chifles, tostado y canguil sobre una mesa de madera">
+      <figcaption><b>Ceviche de camarón</b> con chifles, tostado y canguil. Sábados y domingos.</figcaption>
+    </figure>
+  </main>
+
+  <aside class="cjm">
+    <span>Así se ve la portada de un restaurante hecha en una semana.</span>
+    <a href="https://www.cjmnexus.com/es#contacto">¿Quieres una así para tu negocio? Escríbenos</a>
+  </aside>
+  <p class="concepto">Concepto de portada · marca ficticia</p>
+</body>
+</html>

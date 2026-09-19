@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Orilla Barbería · Las Peñas, Guayaquil</title>
+<!-- Concepto de portada para el portafolio de CJM Nexus. Marca ficticia.
+     Dirección: los turnos de hoy. Quien entra a la web de una barbería
+     quiere saber tres cosas: cuánto cuesta, si hay hueco hoy y dónde
+     queda. Referencias: Schorem (Róterdam) — precios, horario, dirección y
+     «reserva» en la primera pantalla, sin rodeos; Fellow Barber (EE. UU.) —
+     una sola acción, reservar, siempre a mano; Murdock London — la foto del
+     oficio, no del cliché. Fuera: poste, calaveras, negro y dorado.
+     Foto: Obi, Unsplash (ver FUENTES.md). -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,800&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --celeste: #A9D8EE;
+    --celeste-hondo: #7FC1E0;
+    --tinta: #10171C;
+    --tinta-suave: #34434D;
+    --blanco: #FFFFFF;
+    --sol: #FF6A3D;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; }
+  body {
+    background: var(--celeste);
+    color: var(--tinta);
+    font: 400 16px/1.5 'DM Sans', system-ui, sans-serif;
+  }
+  a { color: inherit; }
+
+  header {
+    display: flex; align-items: center; justify-content: space-between; gap: 20px;
+    padding: 18px clamp(20px, 4vw, 52px);
+  }
+  .marca { font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: 1.5rem; letter-spacing: -0.03em; text-decoration: none; }
+  nav { display: flex; gap: 26px; font-weight: 500; }
+  nav a { text-decoration: none; }
+  nav a:hover { text-decoration: underline; text-underline-offset: 5px; }
+  .reservar-mini {
+    padding: 10px 16px; border-radius: 999px; background: var(--tinta); color: var(--blanco);
+    text-decoration: none; font-weight: 700; font-size: 0.92rem;
+  }
+
+  .portada {
+    display: grid;
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+    gap: clamp(24px, 3vw, 48px);
+    padding: clamp(8px, 2vh, 24px) clamp(20px, 4vw, 52px) 36px;
+    align-items: end;
+  }
+  h1 {
+    margin: 0;
+    font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800;
+    font-size: clamp(3rem, 5.8vw, 5.6rem); line-height: 0.88; letter-spacing: -0.045em;
+  }
+  .entrada { margin: 18px 0 0; max-width: 40ch; font-size: 1.1rem; color: var(--tinta-suave); }
+
+  /* Los turnos libres de hoy: cada uno abre WhatsApp con la hora escrita. */
+  .turnos { margin-top: clamp(20px, 3.4vh, 32px); }
+  .turnos h2 { margin: 0 0 10px; font-size: 1rem; font-weight: 700; }
+  .turnos h2 span { font-weight: 400; color: var(--tinta-suave); }
+  .horas { display: flex; flex-wrap: wrap; gap: 8px; list-style: none; margin: 0; padding: 0; }
+  .horas a, .horas s {
+    display: inline-block; min-width: 76px; text-align: center;
+    padding: 10px 14px; border-radius: 999px; font-weight: 700; font-variant-numeric: tabular-nums;
+    text-decoration: none;
+  }
+  .horas a { background: var(--blanco); transition: background-color .15s, color .15s; }
+  .horas a:hover { background: var(--tinta); color: var(--blanco); }
+  .horas s { color: var(--tinta-suave); border: 1.5px dashed rgba(16, 23, 28, 0.35); font-weight: 500; }
+
+  .lado { display: flex; flex-direction: column; gap: 14px; }
+  .foto {
+    position: relative; margin: 0;
+    height: min(calc(100svh - 290px), 500px); min-height: 300px;
+  }
+  .foto img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 30%; border-radius: 28px; display: block; }
+  .sello {
+    position: absolute; left: -18px; top: 22px;
+    padding: 10px 14px; border-radius: 14px; background: var(--sol); color: var(--tinta);
+    font-weight: 700; font-size: 0.92rem; line-height: 1.25;
+    transform: rotate(-4deg);
+  }
+
+  .precios {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    background: var(--blanco); border-radius: 20px; padding: 14px 18px;
+  }
+  .precios div + div { border-left: 1px solid rgba(16, 23, 28, 0.12); padding-left: 16px; }
+  .precios dt { font-size: 0.86rem; color: var(--tinta-suave); }
+  .precios dd { margin: 2px 0 0; font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: 1.6rem; letter-spacing: -0.02em; }
+
+  .datos { display: flex; flex-wrap: wrap; gap: 6px 22px; font-size: 0.92rem; }
+  .datos b { font-weight: 700; }
+
+  .concepto {
+    position: fixed; right: 14px; bottom: 14px; z-index: 5;
+    padding: 5px 10px; border-radius: 999px; background: rgba(16, 23, 28, 0.85); color: var(--blanco);
+    font-size: 0.72rem;
+  }
+  .cjm {
+    display: flex; justify-content: space-between; align-items: center; gap: 10px 24px; flex-wrap: wrap;
+    margin: 0 clamp(20px, 4vw, 52px); padding: 18px 0 40px; border-top: 1.5px solid var(--tinta);
+    font-size: 0.95rem;
+  }
+  .cjm a { font-weight: 700; text-underline-offset: 5px; }
+
+  @media (max-width: 920px) {
+    nav { display: none; }
+    .portada { grid-template-columns: 1fr; align-items: start; }
+    .foto { height: 380px; min-height: 0; }
+    .sello { left: 12px; }
+  }
+  @media (max-width: 420px) {
+    h1 { font-size: 3.1rem; }
+    .precios { padding: 12px 14px; }
+    .precios dd { font-size: 1.3rem; }
+    .horas a, .horas s { min-width: 70px; padding: 9px 10px; }
+  }
+</style>
+</head>
+<body>
+  <header>
+    <a class="marca" href="#">orilla.</a>
+    <nav>
+      <a href="#">Servicios</a>
+      <a href="#">El equipo</a>
+      <a href="#">Cómo llegar</a>
+    </nav>
+    <a class="reservar-mini" href="#">Reservar</a>
+  </header>
+
+  <main class="portada">
+    <div>
+      <h1>Corte fresco a una cuadra del río.</h1>
+      <p class="entrada">Barbería de barrio en Las Peñas. Tres sillas, cuatro barberos y café mientras esperas. Reserva tu turno o pasa sin cita si hay hueco.</p>
+
+      <section class="turnos" aria-labelledby="turnos">
+        <h2 id="turnos">Turnos libres hoy <span>· toca uno y te lo apartamos por WhatsApp</span></h2>
+        <ul class="horas">
+          <li><s>10:00</s></li>
+          <li><a href="#">10:45</a></li>
+          <li><s>11:30</s></li>
+          <li><a href="#">14:15</a></li>
+          <li><a href="#">15:00</a></li>
+          <li><a href="#">17:30</a></li>
+          <li><a href="#">18:15</a></li>
+        </ul>
+      </section>
+    </div>
+
+    <div class="lado">
+      <figure class="foto">
+        <img src="img/barberia-corte.jpg" alt="Barbero recortando con máquina el cabello de un cliente">
+        <p class="sello">Sin cita<br>de 14:00 a 16:00</p>
+      </figure>
+      <dl class="precios">
+        <div><dt>Corte</dt><dd>$10</dd></div>
+        <div><dt>Barba</dt><dd>$7</dd></div>
+        <div><dt>Corte y barba</dt><dd>$15</dd></div>
+      </dl>
+      <p class="datos"><span><b>Lun a sáb</b> · 9:00 a 20:00</span><span>Calle Numa Pompilio Llona, Las Peñas</span></p>
+    </div>
+  </main>
+
+  <aside class="cjm">
+    <span>Así se ve la portada de una barbería hecha en una semana.</span>
+    <a href="https://www.cjmnexus.com/es#contacto">¿Quieres una así para tu negocio? Escríbenos</a>
+  </aside>
+  <p class="concepto">Concepto de portada · marca ficticia</p>
+</body>
+</html>

@@ -912,3 +912,16 @@ movimiento»): clic real en «Método» desde `/es/nosotros` (en el teléfono, c
 abierto) → `#metodo` a 88 px de arriba, bajo la cabecera. Cargas directas: `/es/servicios#metodo`
 88, `/es/nosotros#personas` 86–88, `/es/servicios/soluciones-digitales#web` 86–88 y `/es#contacto`
 153–160 (el cierre es lo último de la página y no puede subir más). Capturas `anclas-menu-metodo-*`.
+
+### 2026-09-19 — portafolio: una dirección por sector, esperando a Boris
+
+- Por encargo de Boris, una maqueta por sector (no dos): `.impeccable/mocks/portafolio/`
+  `restaurante.html` (Tres Ollas, Cuenca: el almuerzo del día como la pizarra de la puerta),
+  `constructora.html` (Cordel, Quito: el letrero de obra con una obra en curso) y `barberia.html`
+  (Orilla, Guayaquil: los turnos libres de hoy y los precios a la vista). Marcas, fotos y
+  referencias en `FUENTES.md`; capturas en `capturas/`.
+- Las búsquedas de referencias en paralelo se cortaron por el límite de uso; las referencias se
+  comprobaron a mano, dos o tres por sector.
+- El detector de Impeccable no aplica DESIGN.md a estas tres maquetas (excepciones acotadas a
+  cada archivo en `.impeccable/config.json`): son otras marcas y tienen que ser distintas de CJM Nexus.
+- El sitio no se tocó. Nada se pule hasta que Boris elija.

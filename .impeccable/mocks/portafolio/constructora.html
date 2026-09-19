@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cordel Construcciones · Casas y remodelaciones en Quito</title>
+<!-- Concepto de portada para el portafolio de CJM Nexus. Marca ficticia.
+     Dirección: el letrero de obra. En Ecuador cada obra lleva su letrero
+     con el proyecto, el responsable y el plazo; aquí la portada enseña una
+     obra en curso con su ficha. Referencias: Hammer & Hand (Portland) —
+     titular con años y región, y el contacto a la vista; BUILD LLC (Seattle)
+     — tres cifras sobrias en lugar de promesas.
+     Fotos: Andre Morales Kalamar y Solømen, Unsplash (ver FUENTES.md). -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100,500;100,700;125,800&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --hormigon: #1E1F1C;
+    --hormigon-alto: #2A2B27;
+    --cal: #EDEAE2;
+    --cal-suave: #A9A69D;
+    --obra: #F2C230;
+    --linea: rgba(237, 234, 226, 0.18);
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; }
+  body {
+    background: var(--hormigon);
+    color: var(--cal);
+    font: 500 16px/1.5 'Archivo', system-ui, sans-serif;
+    font-stretch: 100%;
+  }
+  a { color: inherit; }
+  .mono { font-family: 'IBM Plex Mono', ui-monospace, monospace; font-weight: 400; }
+
+  header {
+    display: flex; align-items: center; justify-content: space-between; gap: 24px;
+    padding: 20px clamp(20px, 4vw, 56px);
+    border-bottom: 1px solid var(--linea);
+  }
+  .marca { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+  /* El cordel: la línea tensada con la que se replantea una obra. */
+  .marca svg { flex: none; }
+  .marca b { font-weight: 800; font-stretch: 125%; font-size: 1.15rem; letter-spacing: 0.02em; }
+  nav { display: flex; gap: 30px; font-size: 0.95rem; }
+  nav a { text-decoration: none; color: var(--cal-suave); }
+  nav a:hover { color: var(--cal); }
+  .tel { font-size: 0.9rem; }
+
+  .portada {
+    display: grid;
+    grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
+    min-height: calc(100svh - 77px - 64px);
+  }
+  .texto {
+    display: flex; flex-direction: column; justify-content: center;
+    padding: clamp(28px, 5vh, 64px) clamp(20px, 4vw, 56px);
+  }
+  h1 {
+    margin: 0;
+    font-weight: 800; font-stretch: 125%;
+    font-size: clamp(2.3rem, 4.1vw, 4rem); line-height: 1; letter-spacing: -0.02em;
+    max-width: 13ch;
+  }
+  h1 em { font-style: normal; color: var(--obra); }
+  .entrada { margin: 20px 0 0; max-width: 44ch; font-size: 1.08rem; color: var(--cal-suave); font-weight: 400; }
+
+  .acciones { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 30px; }
+  .cotizar {
+    display: inline-flex; align-items: center; gap: 12px;
+    padding: 15px 22px; background: var(--obra); color: var(--hormigon);
+    font-weight: 700; text-decoration: none;
+    transition: transform .18s;
+  }
+  .cotizar:hover { transform: translateY(-2px); }
+  .whatsapp {
+    display: inline-flex; align-items: center; padding: 14px 20px;
+    border: 1px solid var(--cal-suave); text-decoration: none; font-weight: 700;
+  }
+  .whatsapp:hover { border-color: var(--cal); }
+
+  .cifras {
+    display: grid; grid-template-columns: repeat(3, auto); justify-content: start; gap: 0 36px;
+    margin: clamp(30px, 5vh, 52px) 0 0; padding: 18px 0 0; border-top: 1px solid var(--linea);
+  }
+  .cifras dt { font-weight: 800; font-stretch: 125%; font-size: 1.9rem; line-height: 1; white-space: nowrap; }
+  .cifras dd { margin: 6px 0 0; font-size: 0.86rem; color: var(--cal-suave); font-weight: 400; }
+
+  .foto { position: relative; min-height: 460px; }
+  .foto > img:not(.detalle) { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 45%; }
+
+  /* El letrero de obra: la ficha del proyecto en curso. */
+  .letrero {
+    position: absolute; left: clamp(16px, 3vw, 36px); bottom: clamp(16px, 3vw, 36px);
+    width: min(340px, calc(100% - 32px));
+    background: var(--obra); color: var(--hormigon);
+    padding: 16px 18px 14px;
+    box-shadow: 0 18px 40px -20px rgba(0, 0, 0, 0.6);
+  }
+  .letrero h2 { margin: 0 0 10px; font-size: 1rem; font-weight: 700; display: flex; justify-content: space-between; gap: 12px; }
+  .letrero h2 span { font-weight: 500; font-size: 0.8rem; opacity: .75; }
+  .letrero dl { display: grid; grid-template-columns: auto 1fr; gap: 3px 14px; margin: 0; font-size: 0.82rem; }
+  .letrero dt { opacity: .7; }
+  .letrero dd { margin: 0; }
+  .avance { margin-top: 12px; }
+  .avance-barra { height: 6px; background: rgba(30, 31, 28, 0.2); }
+  .avance-barra i { display: block; height: 100%; width: 62%; background: var(--hormigon); }
+  .avance p { display: flex; justify-content: space-between; margin: 6px 0 0; font-size: 0.78rem; }
+  .detalle {
+    position: absolute; right: clamp(16px, 3vw, 36px); top: clamp(16px, 3vw, 36px);
+    width: 150px; height: auto; aspect-ratio: 4 / 5; object-fit: cover;
+    border: 4px solid var(--cal);
+  }
+
+  .concepto {
+    position: fixed; right: 14px; bottom: 14px; z-index: 5;
+    padding: 5px 10px; background: rgba(30, 31, 28, 0.88); color: var(--cal);
+    font-size: 0.72rem; border: 1px solid var(--linea);
+  }
+  .cjm {
+    display: flex; justify-content: space-between; align-items: center; gap: 10px 24px; flex-wrap: wrap;
+    padding: 20px clamp(20px, 4vw, 56px); border-top: 1px solid var(--linea);
+    font-size: 0.95rem; color: var(--cal-suave); font-weight: 400;
+  }
+  .cjm a { color: var(--cal); font-weight: 700; text-underline-offset: 5px; }
+
+  @media (max-width: 960px) {
+    nav, .tel { display: none; }
+    .portada { grid-template-columns: 1fr; min-height: 0; }
+    .foto { min-height: 440px; }
+  }
+  @media (max-width: 480px) {
+    h1 { font-size: 2.35rem; }
+    .cifras { gap: 0 20px; }
+    .cifras dt { font-size: 1.35rem; }
+    .cotizar, .whatsapp { width: 100%; justify-content: center; }
+    .detalle { width: 96px; }
+  }
+</style>
+</head>
+<body>
+  <header>
+    <a class="marca" href="#">
+      <svg width="30" height="30" viewBox="0 0 30 30" fill="none" aria-hidden="true">
+        <rect x="1" y="1" width="28" height="28" stroke="#F2C230" stroke-width="2"/>
+        <path d="M5 24 L25 6" stroke="#EDEAE2" stroke-width="2"/>
+        <circle cx="5" cy="24" r="2.4" fill="#F2C230"/><circle cx="25" cy="6" r="2.4" fill="#F2C230"/>
+      </svg>
+      <b>CORDEL</b>
+    </a>
+    <nav>
+      <a href="#">Obras</a>
+      <a href="#">Cómo trabajamos</a>
+      <a href="#">Remodelaciones</a>
+      <a href="#">Nosotros</a>
+    </nav>
+    <span class="tel mono">Quito · Cumbayá · Los Chillos</span>
+  </header>
+
+  <main class="portada">
+    <div class="texto">
+      <h1>Tu casa, con precio cerrado y <em>plazo por escrito.</em></h1>
+      <p class="entrada">Construimos y remodelamos casas en Quito y los valles desde 2008. Antes de mover un bloque firmas el presupuesto, el cronograma y quién responde por cada etapa.</p>
+      <div class="acciones">
+        <a class="cotizar" href="#">Cotiza tu obra <span aria-hidden="true">→</span></a>
+        <a class="whatsapp" href="#">Escríbenos por WhatsApp</a>
+      </div>
+      <dl class="cifras">
+        <div><dt>18</dt><dd>años construyendo</dd></div>
+        <div><dt>64</dt><dd>casas entregadas</dd></div>
+        <div><dt>9 de 10</dt><dd>en el plazo firmado</dd></div>
+      </dl>
+    </div>
+
+    <div class="foto">
+      <img src="img/constructora-casa.jpg" alt="Casa de dos plantas con base de ladrillo y madera y volumen blanco en la planta alta">
+      <img class="detalle" src="img/constructora-bloque.jpg" alt="Manos colocando mortero sobre una pared de bloque">
+      <section class="letrero" aria-labelledby="letrero">
+        <h2 id="letrero">Obra en curso <span class="mono">N.º 065</span></h2>
+        <dl class="mono">
+          <dt>Proyecto</dt><dd>Casa Tumbaco, dos plantas</dd>
+          <dt>Área</dt><dd>218 m²</dd>
+          <dt>Residente</dt><dd>Ing. Andrea Mora</dd>
+        </dl>
+        <div class="avance">
+          <div class="avance-barra"><i></i></div>
+          <p class="mono"><span>Avance 62 %</span><span>Semana 19 de 30</span></p>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <aside class="cjm">
+    <span>Así se ve la portada de una constructora hecha en una semana.</span>
+    <a href="https://www.cjmnexus.com/es#contacto">¿Quieres una así para tu negocio? Escríbenos</a>
+  </aside>
+  <p class="concepto">Concepto de portada · marca ficticia</p>
+</body>
+</html>
