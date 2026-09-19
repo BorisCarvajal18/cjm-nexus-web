@@ -1,4 +1,8 @@
+'use client';
+
 import ManagementBoard from '../../components/mockups/ManagementBoard';
+import { tableroSeDibuja } from '../../lib/animations';
+import { alAsomar, MUEVE, useRegistro } from '../../lib/registro';
 
 /**
  * El tablero gerencial, a tamaño real y quieto.
@@ -10,10 +14,19 @@ import ManagementBoard from '../../components/mockups/ManagementBoard';
  * Los números de dentro ilustran cómo se ve el entregable. No son de ningún
  * cliente y no se presentan como resultados: por eso llevan debajo
  * «Interfaz de muestra · datos ilustrativos».
+ *
+ * EL MOMENTO DE LA PÁGINA (`tableroSeDibuja` en lib/animations.js): el
+ * tablero se dibuja una vez, cuando su borde superior asoma al 75 % de la
+ * pantalla; en el teléfono, donde es más alto que la pantalla, al 85 %.
  */
 export default function BoardShowcase({ content, muestra }) {
+  const raiz = useRegistro((mm, s) => {
+    const pieza = s.querySelector('.pieza');
+    mm.add(`${MUEVE} and (min-width: 760px)`, () => alAsomar(pieza, 'top 75%', tableroSeDibuja(pieza)));
+    mm.add(`${MUEVE} and (max-width: 759px)`, () => alAsomar(pieza, 'top 85%', tableroSeDibuja(pieza)));
+  });
   return (
-    <section id="entregable" className="registro seccion banda-honda">
+    <section ref={raiz} id="entregable" className="registro seccion banda-honda">
       <div className="marco">
         <div className="cabeza-seccion">
           <p className="ref-pag">{content.badge}</p>

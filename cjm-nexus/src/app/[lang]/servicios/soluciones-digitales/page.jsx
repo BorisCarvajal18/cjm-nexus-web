@@ -69,7 +69,7 @@ export default function SolucionesDigitalesPage({ params }) {
       />
       <main>
         <PageHero content={{ ...content.hero, secondaryHref: '#web' }} />
-        <Offer content={content.web} id="web" />
+        <Offer content={content.web} id="web" semana />
         <Offer content={content.systems} id="sistemas" tone="muted" />
         <FeatureGrid content={content.guarantees} columns={2} numbered />
         <ProductBand content={content.proof} href={`/${lang}/klinoda`} />

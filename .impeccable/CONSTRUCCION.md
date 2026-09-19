@@ -558,7 +558,7 @@ Ronda solo de textos y documentos: en paralelo, otro chat pule el diseño en la 
 vocabulario de España): 0 coincidencias en el texto visible. La única que salta es `id="metodo"`
 dentro de un comentario, que no es un imperativo.
 
-## Movimiento de las páginas interiores — guion (sin programar)
+## Movimiento de las páginas interiores — guion (aprobado y programado el 2026-09-19; ver el registro de ese día para lo que no se pudo hacer tal cual)
 
 Se programa **después de juntar `fable-pulido`**. Un momento por página, sacado de su contenido;
 ninguno se repite y ninguno es un desvanecido genérico. Mismas reglas que la portada: curvas
@@ -925,3 +925,49 @@ abierto) → `#metodo` a 88 px de arriba, bajo la cabecera. Cargas directas: `/e
 - El detector de Impeccable no aplica DESIGN.md a estas tres maquetas (excepciones acotadas a
   cada archivo en `.impeccable/config.json`): son otras marcas y tienen que ser distintas de CJM Nexus.
 - El sitio no se tocó. Nada se pule hasta que Boris elija.
+
+### 2026-09-19 — el movimiento de las páginas interiores
+
+Guion aprobado por Boris el 2026-09-19. Tres momentos, uno por página, en `lib/animations.js` (bloque
+«LAS PÁGINAS INTERIORES»), cada uno con `useRegistro` y `MUEVE`:
+
+- **`/servicios` · «Las dos hojas, a la vez»** (`dosHojas`, en `ServiceCards`): las dos hojas suben
+  28 px y aparecen en 0,7 s (`CURVA.llegar`), y el filete bajo «Servicio 0x» se traza de 0,2 a
+  0,75 s. `alAsomar` al 80 %. **Disparadores revisados:** en escritorio las dos hojas siguen a la
+  misma altura (1138 px en las dos a 1536 × 730), así que comparten disparador; bajo 1100 px, una
+  columna, cada una el suyo. El filete dejó de ser un borde y es una capa (`--raya`), igual quieto.
+- **`/servicios/direccion-financiera` · «El tablero se dibuja»** (`tableroSeDibuja`, en
+  `BoardShowcase`): doce barras desde la base con 0,05 s entre cada una, la meta que se tiende (0,1–
+  0,5 s), las cuatro barras de margen (0,6–1,3 s) y las dos alertas (1,2–1,6 s). Las cuatro cifras,
+  quietas. `alAsomar` al 75 % (al 85 % bajo 760 px: el tablero mide 782 px en el teléfono).
+- **`/servicios/soluciones-digitales` · «La semana, en una línea»** (`semanaEnLinea`, en
+  `blocks/pages/PasosSemana.jsx`, que `Offer` usa solo en `#web`): filete de cobre de 2 px ligado al
+  scroll con `scrub` 0,5, del 85 al 40 %; el punto de cada «cuándo» se enciende cuando la línea llega
+  a su columna (0,3 s) y se apaga al subir (0,18 s). Quieto: filete y puntos enteros.
+
+**Lo que no se pudo hacer tal como estaba escrito** (el guion es anterior a `fable-pulido`):
+
+1. **Dirección financiera, «el trazo de ventas cruza la meta»:** el tablero completo ya no tiene
+   línea de ventas; `fable-pulido` lo dejó en doce barras. No se animó nada en su lugar.
+2. **Dirección financiera, «el filete de Alertas del mes»:** el rótulo ya no lleva filete. Solo
+   aparecen las alertas.
+3. **`/servicios`, «la sombra de la hoja crece»:** animar `box-shadow` va contra DESIGN.md (solo
+   transformación, opacidad, máscara y variables de filete). La sombra llega con la hoja, en su
+   opacidad.
+4. **Soluciones digitales entre 761 y 1000 px:** los pasos van en dos columnas (tres pasos, dos
+   filas), así que la línea continua no tiene sentido; ahí se usa el modo del teléfono (cada paso
+   traza su filete).
+
+**Las anclas, otra vez:** con los nuevos ScrollTrigger, las anclas con movimiento caían entre 15 y
+60 px por encima. El desplazamiento suave de CSS ahora entra 1,5 s después de cargar (`html.suave`
+en `globals.css`, la clase la pone el guion de `layout.jsx`), y el salto al ancla se repite en los
+recálculos de los primeros 4 s hasta que la persona toca el scroll (`lib/gsap.js`). Los clics dentro
+de la página siguen siendo suaves.
+
+**Verificación** (producción, Chrome sin ventana): build sin errores ni avisos. En las tres páginas, a
+1536 × 730 y 390 × 844: estado de partida y final leídos en el DOM (opacidad, `scaleX`/`scaleY`,
+`--raya`, `--semana`, `--tramo`, `--punto`), sin errores de consola; con «reducir movimiento», nada
+transformado y las variables sin tocar (estado final). Anclas `#metodo`, `#web`, `#entregable`,
+`#personas` y el clic en «Método»: a 88 px, con y sin movimiento, en los dos tamaños; `/es#contacto`
+a 160 (fin de página). Capturas `mov-*` (`-inicio`, `-medio` en soluciones digitales, `-final` y
+`-quieto`).

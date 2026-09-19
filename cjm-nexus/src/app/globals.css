@@ -10,15 +10,20 @@
    Aquí solo se aplican al documento. */
 @layer base {
   html {
-    scroll-behavior: smooth;
     /* Compensa la cabecera fija al saltar a un ancla */
     scroll-padding-top: 5.5rem;
+  }
+  /* Suave solo una vez cargada la página (`.suave`, la pone el guion de
+     `layout.jsx`): el salto a un ancla al abrir la página es instantáneo y
+     llega justo; los clics dentro de la página, suaves. */
+  html.suave {
+    scroll-behavior: smooth;
   }
 
   /* Con «reducir movimiento» todo está en su estado final desde el primer
      píxel y los estados al apuntar son instantáneos (DESIGN.md, Movimiento). */
   @media (prefers-reduced-motion: reduce) {
-    html {
+    html.suave {
       scroll-behavior: auto;
     }
     *,

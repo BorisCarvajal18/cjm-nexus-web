@@ -1,3 +1,4 @@
+import PasosSemana from './PasosSemana';
 import { StepItem } from './Steps';
 
 /**
@@ -14,8 +15,11 @@ import { StepItem } from './Steps';
  *
  * LA LETRA PEQUEÑA VA A LA VISTA: «en una semana» sin condición suena a
  * folleto; con la condición escrita, a alguien que ya lo ha hecho.
+ *
+ * `semana`: los pasos de la página web llevan el momento de la página, «La
+ * semana, en una línea» (<PasosSemana />). Los del sistema, quietos.
  */
-export default function Offer({ content, tone = 'plain', id }) {
+export default function Offer({ content, tone = 'plain', id, semana = false }) {
   return (
     <section id={id} className={`registro seccion oferta ${tone === 'muted' ? 'banda-honda' : ''}`}>
       <div className="marco">
@@ -53,11 +57,15 @@ export default function Offer({ content, tone = 'plain', id }) {
         ) : null}
 
         <h3 className="ref-pag sub">{content.stepsLabel}</h3>
-        <ol className="pasos en-columnas" style={{ '--n': content.steps.length > 3 ? 4 : 3 }}>
-          {content.steps.map((paso) => (
-            <StepItem key={paso.step} paso={paso} />
-          ))}
-        </ol>
+        {semana ? (
+          <PasosSemana steps={content.steps} />
+        ) : (
+          <ol className="pasos en-columnas" style={{ '--n': content.steps.length > 3 ? 4 : 3 }}>
+            {content.steps.map((paso) => (
+              <StepItem key={paso.step} paso={paso} />
+            ))}
+          </ol>
+        )}
 
         {content.note ? <p className="nota-pag">{content.note}</p> : null}
       </div>

@@ -483,9 +483,22 @@
   flex-direction: column;
   min-width: 0;
 }
+/* El filete bajo «Servicio 0x» es una capa, no un borde, para poder
+   trazarlo (`--raya`, el momento de /servicios). Quieto, está entero. */
 .dos-lineas .ref-pag {
-  padding-bottom: 11px;
-  border-bottom: 1px solid var(--filete);
+  position: relative;
+  padding-bottom: 12px;
+}
+.dos-lineas .ref-pag::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 1px;
+  background: var(--filete);
+  transform: scaleX(var(--raya, 1));
+  transform-origin: left;
 }
 .dos-lineas h2 {
   margin-top: 16px;
@@ -712,6 +725,55 @@
 /* En el teléfono el botón ocupa el ancho; el enlace, solo lo suyo. */
 .aviso-klinoda .enlace {
   align-self: flex-start;
+}
+
+/* ── «La semana, en una línea» (/servicios/soluciones-digitales, #web) ── */
+/* Un filete de cobre de 2 px sobre el de 1 px de los pasos y un punto de
+   cobre delante de cada «cuándo». Quieto, los dos enteros: es el estado
+   final. El guion solo mueve `--semana` (la línea de la fila), `--tramo`
+   (la de cada paso, cuando no van en fila) y `--punto`. */
+.pasos.semana {
+  position: relative;
+}
+.pasos.semana::before,
+.pasos.semana > li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: -1px;
+  height: 2px;
+  background: var(--cobre);
+  transform-origin: left;
+}
+.pasos.semana::before {
+  transform: scaleX(var(--semana, 1));
+}
+.pasos.semana > li {
+  position: relative;
+}
+.pasos.semana > li::before {
+  display: none;
+  transform: scaleX(var(--tramo, 1));
+}
+.pasos.semana .cuando b::before {
+  content: '';
+  display: inline-block;
+  width: 5px;
+  height: 5px;
+  margin-right: 8px;
+  border-radius: 50%;
+  background: var(--cobre);
+  vertical-align: middle;
+  transform: translateY(-1px) scale(var(--punto, 1));
+}
+@media (max-width: 1000px) {
+  .pasos.semana::before {
+    display: none;
+  }
+  .pasos.semana > li::before {
+    display: block;
+  }
 }
 
 @media (max-width: 1100px) {

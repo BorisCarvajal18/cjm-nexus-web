@@ -112,7 +112,7 @@ export function generateMetadata({ params }) {
   };
 }
 
-const ENTRADA = `(function(){var r=document.documentElement;if(location.pathname.split('/').filter(Boolean).length!==1)return;if(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches)return;r.classList.add('js-mov');setTimeout(function(){r.classList.add('cargada')},2500)})();`;
+const ENTRADA = `(function(){var r=document.documentElement;addEventListener('load',function(){setTimeout(function(){r.classList.add('suave')},1500)});if(location.pathname.split('/').filter(Boolean).length!==1)return;if(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches)return;r.classList.add('js-mov');setTimeout(function(){r.classList.add('cargada')},2500)})();`;
 
 export default function LangLayout({ children, params }) {
   const lang = languages.includes(params.lang) ? params.lang : defaultLanguage;
@@ -122,7 +122,9 @@ export default function LangLayout({ children, params }) {
   return (
     <html lang={lang} className={`${jakarta.variable} ${inter.variable}`} suppressHydrationWarning>
       <head>
-        {/* Antes del primer pintado, y solo en la portada: con movimiento
+        {/* El desplazamiento suave entra 1,5 s después de cargar (`.suave`,
+            globals.css), para que el salto a un ancla al abrir sea exacto.
+            Antes del primer pintado, y solo en la portada: con movimiento
             permitido, la portada arranca en su estado de entrada (`.js-mov`
             en estilos/portada.css). Sin JavaScript o con «reducir movimiento» no se
             añade nada y todo se ve quieto desde el principio. Seguro: si el

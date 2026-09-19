@@ -66,20 +66,29 @@ export function registerGsap() {
 
   /* EL ANCLA DE LA URL (/es/servicios#metodo desde otra página).
    *
-   * Con `scroll-behavior: smooth` el navegador baja al ancla poco a poco. El
+   * El desplazamiento suave ya no actúa al cargar (`.suave` en globals.css),
+   * pero esto queda de seguro. Con `scroll-behavior: smooth` el navegador
+   * bajaba al ancla poco a poco. El
    * primer recálculo de ScrollTrigger, al cargar, guarda la posición de ese
    * instante (arriba del todo) y la vuelve a poner con `scrollTo`, que corta
    * el viaje: la página se quedaba arriba. Con «reducir movimiento» el salto
    * es instantáneo y no pasaba. Tras ese primer recálculo, que es también
    * cuando las escenas fijadas ya tienen su alto, se salta al ancla sin
-   * animación. Una sola vez. */
+   * animación. Y otra vez en cada recálculo de los primeros segundos (el de
+   * las fuentes mueve el texto de encima), hasta que la persona toca el
+   * scroll: a partir de ahí, la página es suya. */
   if (window.location.hash) {
-    const alAncla = () => {
+    const suelta = () => {
       ScrollTrigger.removeEventListener('refresh', alAncla);
+      ['wheel', 'touchstart', 'keydown', 'pointerdown'].forEach((e) => window.removeEventListener(e, suelta));
+    };
+    const alAncla = () => {
       const destino = document.getElementById(decodeURIComponent(window.location.hash.slice(1)));
       destino?.scrollIntoView({ behavior: 'instant', block: 'start' });
     };
     ScrollTrigger.addEventListener('refresh', alAncla);
+    ['wheel', 'touchstart', 'keydown', 'pointerdown'].forEach((e) => window.addEventListener(e, suelta, { passive: true }));
+    setTimeout(suelta, 4000);
   }
 
   return gsap;

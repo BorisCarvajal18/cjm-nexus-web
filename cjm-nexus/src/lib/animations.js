@@ -573,3 +573,131 @@ export function escenaKlinoda(puerta, { arma, limpia }) {
     limpia();
   };
 }
+
+/* ══ LAS PÁGINAS INTERIORES — un momento por página ═══════════════════════
+   Guion aprobado por Boris el 2026-09-19 (CONSTRUCCION.md, «Movimiento de
+   las páginas interiores»). Uno por página, sacado de lo que cuenta; ninguno
+   repite otro. Solo mueven lo que ya está en el HTML con su valor final: con
+   «reducir movimiento» o sin JavaScript no se llama a nada de esto y cada
+   pieza se ve entera desde el primer píxel. */
+
+/**
+ * /servicios — «Las dos hojas, a la vez». El 50/50: las dos interfaces de
+ * muestra llegan con el mismo gesto y durante el mismo tiempo, y el filete
+ * bajo su «Servicio 0x» se traza. 0,8 s. Dentro de las hojas no se dibuja
+ * nada: ese es el gesto de la página de dirección financiera.
+ *
+ * Recibe los artículos que arrancan juntos: los dos en escritorio, uno en
+ * cada disparador cuando van en una columna.
+ */
+export function dosHojas(articulos) {
+  const tl = gsap.timeline({ paused: true });
+  const hojas = articulos.map((a) => a.querySelector('.pieza'));
+  const refs = articulos.map((a) => a.querySelector('.ref-pag'));
+  tl.fromTo(hojas, { y: 28, opacity: 0 }, { y: 0, opacity: 1, duration: 0.7, ease: CURVA.llegar }, 0);
+  tl.fromTo(refs, { '--raya': 0 }, { '--raya': 1, duration: 0.55, ease: 'power2.out' }, 0.2);
+  return tl;
+}
+
+/**
+ * /servicios/direccion-financiera — «El tablero se dibuja». Lo que recibes
+ * cada mes, armado con tus datos: las doce barras crecen desde la base, la
+ * meta se tiende, las cuatro barras de margen se llenan y llegan las alertas.
+ * 1,6 s. Las cuatro cifras de la cabecera no se mueven: contar cifras es el
+ * gesto de las credenciales de la portada.
+ */
+export function tableroSeDibuja(p) {
+  const tl = gsap.timeline({ paused: true });
+  escalona(
+    tl,
+    p.querySelectorAll('.pz-barras .columna i'),
+    { scaleY: 0, transformOrigin: '50% 100%' },
+    { scaleY: 1, duration: 0.35, ease: CURVA.llegar },
+    0,
+    0.05,
+  );
+  tl.fromTo(p.querySelector('.pz-barras .meta'), { scaleX: 0, transformOrigin: '0% 50%' }, { scaleX: 1, duration: 0.4, ease: 'power2.out' }, 0.1);
+  escalona(
+    tl,
+    p.querySelectorAll('.pz-margenes .pista i'),
+    { scaleX: 0, transformOrigin: '0% 50%' },
+    { scaleX: 1, duration: 0.46, ease: CURVA.llegar },
+    0.6,
+    0.08,
+  );
+  escalona(tl, p.querySelectorAll('.pz-alerta'), { opacity: 0 }, { opacity: 1, duration: 0.32, ease: 'power2.out' }, 1.2, 0.08);
+  return tl;
+}
+
+/* Enciende o apaga el punto de un paso: 0,3 s al llegar, 0,18 s al irse. */
+function punto(li, encendido) {
+  if (li.__encendido === encendido) return;
+  li.__encendido = encendido;
+  gsap.to(li, {
+    '--punto': encendido ? 1 : 0,
+    duration: encendido ? 0.3 : 0.18,
+    ease: encendido ? CURVA.llegar : CURVA.salir,
+    overwrite: true,
+  });
+}
+
+/**
+ * /servicios/soluciones-digitales — «La semana, en una línea». Ligado al
+ * scroll y reversible: un filete de cobre recorre el borde superior de los
+ * tres pasos de la página web y, al llegar al principio de cada uno, se
+ * enciende el punto de su «cuándo». El texto no cambia en ningún momento.
+ *
+ * `enFila`: las tres columnas en una fila, con una sola línea continua (del
+ * 85 al 40 % de la pantalla). Si no, cada paso traza su propio filete al
+ * cruzar la pantalla (del 85 al 70 %) y su punto sale al completarlo.
+ * Devuelve la limpieza.
+ */
+export function semanaEnLinea(ol, { enFila }) {
+  const pasos = gsap.utils.toArray(ol.children);
+  gsap.set(pasos, { '--punto': 0 });
+
+  if (enFila) {
+    // Dónde empieza cada columna, como fracción de la línea (la lista es su
+    // `offsetParent`): el punto se enciende cuando el filete llega a ella.
+    const umbral = (li) => li.offsetLeft / ol.offsetWidth;
+    gsap.fromTo(
+      ol,
+      { '--semana': 0 },
+      {
+        '--semana': 1,
+        ease: 'none',
+        onUpdate() {
+          const p = this.progress();
+          pasos.forEach((li) => punto(li, p > umbral(li) + 0.001));
+        },
+        scrollTrigger: { trigger: ol, start: 'top 85%', end: 'top 40%', scrub: SCRUB },
+      },
+    );
+  } else {
+    pasos.forEach((li) => {
+      gsap.fromTo(
+        li,
+        { '--tramo': 0 },
+        {
+          '--tramo': 1,
+          ease: 'none',
+          onUpdate() {
+            punto(li, this.progress() >= 0.999);
+          },
+          scrollTrigger: { trigger: li, start: 'top 85%', end: 'top 70%', scrub: SCRUB },
+        },
+      );
+    });
+  }
+
+  // Los tweens y los ScrollTrigger los deshace el matchMedia de la sección.
+  // Los puntos se encienden desde el scroll, fuera de su contexto: se limpian
+  // aquí.
+  return () => {
+    gsap.killTweensOf(pasos);
+    pasos.forEach((li) => {
+      li.__encendido = undefined;
+      li.style.removeProperty('--punto');
+    });
+  };
+}
