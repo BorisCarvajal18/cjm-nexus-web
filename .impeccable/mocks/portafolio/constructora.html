@@ -1,16 +1,16 @@
 <!doctype html>
-<html lang="es">
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Cordel · Casas y remodelaciones en Quito y los valles</title>
+<title>Chalkline · Altbau renovations in Berlin</title>
 <!-- Concepto de portada para el portafolio de CJM Nexus. Marca ficticia.
-     Dirección: la lámina de un plano. La foto se toma desde dentro de la obra
-     (Olson Kundig); la portada enseña una obra concreta con su lugar (SOM); la
-     cabecera y el pie se arman en celdas con filete, como un cajetín (Laing
-     O'Rourke); WhatsApp a la vista, como hace la promotora de referencia en
-     Quito (Uribe & Schwarzkopf).
-     Fotos: Neon Wang y Maxim Tolchinskiy, Unsplash (ver FUENTES.md). -->
+     Dirección: la lámina de un plano, ahora para reformas de Altbau en Berlín. La
+     foto se toma desde dentro de la obra terminada (Olson Kundig); la portada
+     enseña una obra concreta con su barrio (SOM); cabecera y pie en celdas con
+     filete, como un cajetín (Laing O'Rourke); el contacto directo a la vista
+     (Uribe & Schwarzkopf), aquí por teléfono.
+     Fotos: Christian Lue y Olek Buzunov, Unsplash (ver FUENTES.md). -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Encode+Sans:wdth,wght@75..125,400..800&display=swap" rel="stylesheet">
@@ -24,7 +24,6 @@
     --niebla: #C9C8C2;
     --blanco: #FFFFFF;
     --linea: rgba(27, 27, 25, .16);
-    --linea-foto: rgba(255, 255, 255, .26);
     --canal: clamp(20px, 3.6vw, 56px);
     --franja: 244px;
   }
@@ -47,14 +46,14 @@
   }
   .obra-foto { position: relative; overflow: hidden; margin: 0; background: var(--grafito); }
   .obra-foto img {
-    position: absolute; top: 0; bottom: 0; left: -13%;
-    width: 113%; height: 100%;
-    object-fit: cover; object-position: 60% 34%;
+    position: absolute; inset: 0;
+    width: 100%; height: 100%;
+    object-fit: cover; object-position: 50% 50%;
   }
   .obra-foto::after {
-    /* Sombra al pie para que el rótulo de la foto se lea sobre la piedra. */
+    /* Sombra al pie para que el rótulo de la foto se lea sobre el suelo. */
     content: ''; position: absolute; inset: auto 0 0 0; height: 110px; pointer-events: none;
-    background: linear-gradient(180deg, rgba(20, 20, 18, 0), rgba(20, 20, 18, .55));
+    background: linear-gradient(180deg, rgba(20, 20, 18, 0), rgba(20, 20, 18, .45));
   }
   /* El único gesto: la foto sube como sube una obra, y al final se llena el avance. */
   .obra-foto { animation: subir 1.5s cubic-bezier(.7, 0, .18, 1) both; }
@@ -63,22 +62,23 @@
   .cabecera {
     position: absolute; inset: 0 0 auto 0; z-index: 2;
     display: grid; grid-template-columns: 25% 1fr auto;
-    color: var(--blanco);
-    border-bottom: 1px solid var(--linea-foto);
-    background: linear-gradient(180deg, rgba(20, 20, 18, .5), rgba(20, 20, 18, 0));
+    /* La foto es clara: la cabecera es una franja maciza de la lámina, no texto sobre la foto. */
+    color: var(--grafito);
+    border-bottom: 1px solid var(--linea);
+    background: var(--cemento-alto);
   }
   .cabecera > * { display: flex; align-items: center; min-height: 64px; }
   .marca {
     gap: 14px; padding: 0 var(--canal);
     font-weight: 700; font-size: 1.12rem; letter-spacing: .16em; text-decoration: none;
-    border-right: 1px solid var(--linea-foto);
+    border-right: 1px solid var(--linea);
   }
   .cabecera nav { gap: 34px; padding: 0 32px; font-weight: 500; font-size: .98rem; }
   .cabecera nav a { text-decoration: none; opacity: .86; }
   .cabecera nav a:hover { opacity: 1; text-decoration: underline; text-underline-offset: 6px; text-decoration-thickness: 1px; }
   .wa {
     gap: 10px; padding: 0 var(--canal) 0 30px;
-    border-left: 1px solid var(--linea-foto);
+    border-left: 1px solid var(--linea);
     font-weight: 600; font-size: .98rem; text-decoration: none;
   }
   .wa:hover { text-decoration: underline; text-underline-offset: 6px; text-decoration-thickness: 1px; }
@@ -155,7 +155,7 @@
     background: var(--grafito); color: var(--niebla);
   }
   .cjm p { margin: 0; max-width: 62ch; }
-  .cjm a { color: var(--blanco); font-weight: 600; font-size: 1.05rem; text-underline-offset: 6px; text-decoration-thickness: 1px; }
+  .cjm a { display: inline-block; text-wrap: balance; color: var(--blanco); font-weight: 600; font-size: 1.05rem; text-underline-offset: 6px; text-decoration-thickness: 1px; }
 
   @media (prefers-reduced-motion: reduce) {
     .obra-foto, .barra i { animation: none; }
@@ -174,7 +174,7 @@
     :root { --franja: auto; }
     .portada { grid-template-rows: auto auto; min-height: 0; }
     .obra-foto { height: 330px; }
-    .obra-foto img { left: -18%; width: 118%; object-position: 58% 32%; }
+    .obra-foto img { object-position: 36% 50%; }
     .cabecera { grid-template-columns: 1fr auto; }
     .cabecera nav { display: none; }
     .marca { border-right: 0; }
@@ -200,57 +200,57 @@
 <body>
   <section class="portada">
     <figure class="obra-foto">
-      <img src="img/constructora-interior.jpg" width="2400" height="1800"
-           alt="Interior de hormigón visto con un ventanal de piso a techo que da a montañas con neblina; piedra suelta junto al vidrio y una puerta de acero corten">
+      <img src="img/constructora-altbau.jpg" width="2400" height="1600"
+           alt="An empty Altbau room after renovation: tall double windows onto a Gründerzeit facade with wrought-iron balconies, panelled window niche and warm wooden floorboards in the afternoon sun">
       <header class="cabecera">
         <a class="marca" href="#">
           <svg width="30" height="14" viewBox="0 0 30 14" fill="none" aria-hidden="true">
             <path d="M1 1v12M29 1v12M1 7h28" stroke="currentColor" stroke-width="1.6"/>
           </svg>
-          CORDEL
+          CHALKLINE
         </a>
-        <nav aria-label="Principal">
-          <a href="#">Obras</a>
-          <a href="#">Cómo trabajamos</a>
-          <a href="#">Remodelaciones</a>
-          <a href="#">Nosotros</a>
+        <nav aria-label="Main">
+          <a href="#">Projects</a>
+          <a href="#">How we work</a>
+          <a href="#">Prices</a>
+          <a href="#">About us</a>
         </nav>
-        <a class="wa" href="#" aria-label="Escríbenos por WhatsApp">
-          <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2c-1.5 0-3-.4-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.1 5.1 0 0 0 1.1 2.7 11.6 11.6 0 0 0 4.4 3.9c1.6.7 2.3.8 3.1.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.2-.3-.2-.6-.3Z"/></svg>
-          <span>Escríbenos por WhatsApp</span>
+        <a class="wa" href="tel:+493023125862" aria-label="Call us on 030 23125 862">
+          <svg width="17" height="17" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1Z"/></svg>
+          <span>030 23125 862</span>
         </a>
       </header>
-      <figcaption class="pie-foto"><span>Casa Lloa, entregada en 2025</span><span>Concepto de portada · marca ficticia</span></figcaption>
+      <figcaption class="pie-foto"><span>Two-room flat in Schöneberg, handed over in 2025</span><span>Concept homepage · fictional brand</span></figcaption>
     </figure>
 
     <div class="cajetin">
       <div class="titular">
-        <h1>Casas que se entregan el día que dice el contrato.</h1>
+        <h1>Altbau renovations, finished on the date we signed.</h1>
         <div class="accion">
-          <a class="cotizar" href="#">Cotiza tu casa</a>
-          <p>Construimos y remodelamos en Quito y los valles desde 2008, con precio cerrado y cronograma firmado.</p>
+          <a class="cotizar" href="#">Book a site visit</a>
+          <p>Floors, stucco, windows and bathrooms in Berlin’s old buildings since 2011. Fixed price, and quotes and contracts in English.</p>
         </div>
       </div>
 
       <section class="ficha" aria-labelledby="ficha-titulo">
         <figure class="semana">
-          <img src="img/constructora-obra.jpg" width="900" height="1350"
-               alt="Casa de dos plantas en obra gris, estructura de hormigón y paredes de ladrillo, al atardecer">
-          <figcaption><b>Esta semana</b>Losa del segundo piso</figcaption>
+          <img src="img/constructora-techo.jpg" width="900" height="1200"
+               alt="An Altbau hallway mid-renovation: the ceiling opened up to the old beams, new wiring hanging down, the original stucco cornice still in place">
+          <figcaption><b>This week</b>New wiring, original cornice kept</figcaption>
         </figure>
         <div class="datos">
           <div class="datos-cab">
-            <h2 id="ficha-titulo">Casa en Tumbaco<span>Obra en curso n.º 65, 218 m² en dos plantas</span></h2>
-            <a href="#">Ver el diario de obra</a>
+            <h2 id="ficha-titulo">3-room flat, Prenzlauer Berg<span>On site now: 94 m² with 3,60 m ceilings</span></h2>
+            <a href="#">Read the site diary</a>
           </div>
           <dl>
-            <div><dt>Residente de obra</dt><dd>Ing. Andrea Mora</dd></div>
-            <div><dt>Entrega firmada</dt><dd>12 de marzo de 2027</dd></div>
+            <div><dt>Site lead</dt><dd>Marta Kowalczyk</dd></div>
+            <div><dt>Signed handover</dt><dd>12.03.2027</dd></div>
           </dl>
           <div class="avance">
             <b>62 %</b>
-            <div class="barra" role="img" aria-label="Avance de obra: 62 por ciento"><i></i></div>
-            <span>Semana 19 de 30</span>
+            <div class="barra" role="img" aria-label="Progress: 62 percent"><i></i></div>
+            <span>Week 9 of 14</span>
           </div>
         </div>
       </section>
@@ -258,8 +258,8 @@
   </section>
 
   <aside class="cjm">
-    <p>Cordel no existe: es un ejemplo de lo que tu constructora puede tener en menos de una semana.</p>
-    <a href="https://www.cjmnexus.com/es#contacto">¿Quieres una así para tu negocio? Escríbenos</a>
+    <p>Chalkline doesn’t exist. It’s an example of what your renovation business could have online in under a week.</p>
+    <a href="https://www.cjmnexus.com/en#contacto">Want one like this for your business? Talk to us</a>
   </aside>
 </body>
 </html>

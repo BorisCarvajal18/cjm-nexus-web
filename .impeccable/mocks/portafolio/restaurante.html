@@ -1,27 +1,26 @@
 <!doctype html>
-<html lang="es">
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Tres Ollas · Comida de casa en el centro de Cuenca</title>
+<title>Regulars · Neighbourhood kitchen in Friedrichshain, Berlin</title>
 <!-- Concepto de portada para el portafolio de CJM Nexus. Marca ficticia.
-     Dirección: el fogón encendido. Una sola foto manda (Kol, Hawksmoor), el lugar
-     se siente antes que el plato (Dishoom), y reservar va por WhatsApp junto a la
-     dirección (Pujol). El nombre explica el almuerzo: sopa, segundo y jugo.
-     Foto: Leandro Silva, Unsplash (ver FUENTES.md). -->
+     Dirección: la mesa larga de un sitio de barrio en Berlín, de noche. Una sola
+     foto manda (Kol, Hawksmoor), el lugar se siente antes que el plato (Dishoom) y
+     la reserva va junto a la dirección (Pujol). El menú de la noche tiene tres
+     pasos, como la carta de tres partes de la versión anterior.
+     Foto: Romain Gal, Unsplash (ver FUENTES.md). -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Caprasimo&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root {
-    --carbon: #1D150D;
-    --carbon-alto: #2B1F13;
+    --carbon: #1A120B;
     --masa: #F3E6CE;
-    --masa-honda: #E6D3B0;
     --brasa: #F2A640;
     --brasa-honda: #DD8A1C;
     --barro: #8E3F1C;
-    --humo: #C9B89C;
+    --humo: #CDBDA2;
     --tinta: #24180E;
     --tinta-suave: #6B5440;
     --canal: clamp(20px, 3.6vw, 56px);
@@ -37,158 +36,137 @@
   a { color: inherit; }
   :focus-visible { outline: 2px solid var(--brasa); outline-offset: 3px; }
 
-  /* ── La portada: el fogón ocupa la pantalla y el texto vive en la pared oscura ── */
+  /* ── The hero: the long table at night, text on the dark glass ── */
   .portada {
     position: relative; isolation: isolate; overflow: hidden;
     min-height: max(100svh, 640px);
     display: grid; grid-template-rows: auto 1fr auto;
   }
-  .foto { position: absolute; inset: 0 0 0 28%; z-index: -1; margin: 0; }
+  .foto { position: absolute; inset: 0 0 0 26%; z-index: -1; margin: 0; }
   .foto img {
     display: block; width: 100%; height: 100%;
-    object-fit: cover; object-position: 30% 60%;
-    /* La foto se funde con la pared: el fondo es el mismo marrón de su sombra. */
-    -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 24%);
-            mask-image: linear-gradient(90deg, transparent 0, #000 24%);
+    object-fit: cover; object-position: 50% 50%;
+    -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 22%);
+            mask-image: linear-gradient(90deg, transparent 0, #000 22%);
+    filter: var(--revelado);
+    --revelado: saturate(1.06) brightness(1.05);
     animation: encender 2.8s cubic-bezier(.22, .6, .2, 1) both;
   }
-  /* El único gesto: al abrir, el fogón se enciende. */
+  /* The one gesture: the room lights up, like the candles going on. */
   @keyframes encender {
-    from { filter: brightness(.28) saturate(.7); transform: scale(1.06); }
+    from { filter: brightness(.25) saturate(.7); transform: scale(1.06); }
     to   { filter: var(--revelado); transform: none; }
   }
-  /* Revelado cálido: los azulejos salen de la cámara un poco fríos. */
-  .foto img { filter: var(--revelado); --revelado: sepia(.14) saturate(1.12) brightness(1.07) contrast(1.04); }
   .foto::after {
-    /* Sombra arriba para que la cabecera se lea sobre los azulejos. */
-    content: ''; position: absolute; inset: 0 0 auto 0; height: 150px;
-    background: linear-gradient(180deg, rgba(29, 21, 13, .82), rgba(29, 21, 13, 0));
+    content: ''; position: absolute; inset: 0 0 auto 0; height: 140px;
+    background: linear-gradient(180deg, rgba(26, 18, 11, .7), rgba(26, 18, 11, 0));
   }
 
-  .cabecera {
-    display: flex; align-items: center; gap: 44px;
-    padding: 26px var(--canal) 0;
-  }
-  .marca {
-    font-family: 'Caprasimo', Georgia, serif; font-size: 1.75rem; line-height: 1;
-    text-decoration: none; letter-spacing: -0.01em;
-  }
+  .cabecera { display: flex; align-items: center; gap: 44px; padding: 26px var(--canal) 0; }
+  .marca { font-family: 'Caprasimo', Georgia, serif; font-size: 1.75rem; line-height: 1; text-decoration: none; letter-spacing: -0.01em; }
   .cabecera nav { display: flex; gap: 30px; font-weight: 500; font-size: 0.98rem; }
   .cabecera nav a { text-decoration: none; opacity: .88; }
   .cabecera nav a:hover { opacity: 1; text-decoration: underline; text-underline-offset: 6px; text-decoration-thickness: 1px; }
   .reservar-cab {
-    margin-left: auto;
-    padding: 11px 18px; border-radius: 999px;
+    margin-left: auto; padding: 11px 18px; border-radius: 999px;
     background: var(--masa); color: var(--tinta);
     font-weight: 700; font-size: 0.95rem; text-decoration: none;
-    transition: background-color .2s;
   }
   .reservar-cab:hover { background: #fff; }
 
-  .centro {
-    align-self: center;
-    padding: 24px var(--canal) 0;
-  }
+  .centro { align-self: start; padding: clamp(40px, 8vh, 72px) var(--canal) 0; }
   h1 {
     margin: 0;
     font-family: 'Caprasimo', Georgia, serif; font-weight: 400;
-    font-size: clamp(2.9rem, 6.5vw, 6.4rem); line-height: .94; letter-spacing: -0.022em;
-    max-width: 10.6em;
-    text-wrap: balance;
-    text-shadow: 0 2px 30px rgba(29, 21, 13, .45);
+    font-size: clamp(2.9rem, 6.9vw, 6.8rem); line-height: .94; letter-spacing: -0.022em;
+    max-width: 8.4em;
+    text-shadow: 0 2px 30px rgba(26, 18, 11, .5);
   }
-  .entrada {
-    margin: 26px 0 0; max-width: 34ch;
-    font-size: 1.12rem; line-height: 1.5; color: var(--humo);
-  }
+  .entrada { margin: 24px 0 0; max-width: 36ch; font-size: 1.12rem; line-height: 1.5; color: var(--humo); }
   .entrada b { color: var(--masa); font-weight: 600; }
-  .acciones { display: flex; flex-wrap: wrap; align-items: center; gap: 14px 26px; margin-top: 28px; }
+  .acciones { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 22px; margin-top: 26px; }
   .reservar {
-    display: inline-flex; align-items: center; gap: 10px;
-    padding: 16px 26px; border-radius: 999px;
+    display: inline-flex; align-items: center; padding: 16px 26px; border-radius: 999px;
     background: var(--brasa); color: var(--tinta);
     font-weight: 700; font-size: 1.02rem; text-decoration: none;
     transition: background-color .2s;
   }
   .reservar:hover { background: var(--brasa-honda); }
-  .reservar svg { flex: none; }
-  .carta { font-weight: 600; text-underline-offset: 6px; text-decoration-thickness: 1px; }
+  .llamar { color: var(--humo); }
+  .llamar a { color: var(--masa); font-weight: 600; text-underline-offset: 6px; text-decoration-thickness: 1px; white-space: nowrap; }
 
-  /* ── El almuerzo de hoy: una carta de papel apoyada en el fogón ── */
+  /* ── Tonight's menu: a printed strip laid along the edge of the table ── */
   .hoy {
-    position: absolute; right: var(--canal); bottom: 44px;
-    width: 400px;
-    padding: 22px 26px 20px;
+    display: grid; grid-template-columns: 200px repeat(3, minmax(0, 1fr)) auto; align-items: stretch;
+    margin: 0 0 14px;
     background: var(--masa); color: var(--tinta);
     border-radius: 3px;
-    box-shadow: 0 30px 50px -24px rgba(0, 0, 0, .75), 0 2px 0 rgba(0, 0, 0, .15);
+    box-shadow: 0 30px 50px -24px rgba(0, 0, 0, .8), 0 2px 0 rgba(0, 0, 0, .15);
   }
-  .hoy h2 { margin: 0; font-family: 'Caprasimo', Georgia, serif; font-weight: 400; font-size: 1.6rem; line-height: 1.1; }
-  .hoy-cab p { margin: 4px 0 0; font-size: .9rem; color: var(--tinta-suave); }
-  .hoy ol { list-style: none; margin: 14px 0 0; padding: 0; counter-reset: olla; }
+  .hoy-cab { padding: 18px 22px; }
+  .hoy h2 { margin: 0; font-family: 'Caprasimo', Georgia, serif; font-weight: 400; font-size: 1.5rem; line-height: 1.1; }
+  .hoy-cab p { margin: 4px 0 0; font-size: .88rem; color: var(--tinta-suave); }
+  .hoy ol { display: contents; list-style: none; counter-reset: paso; }
   .hoy li {
-    counter-increment: olla;
-    display: grid; grid-template-columns: 30px 1fr; gap: 0 10px;
-    padding: 10px 0; border-top: 1px solid rgba(36, 24, 14, .16);
+    counter-increment: paso;
+    display: grid; grid-template-columns: 28px 1fr; align-content: center; gap: 0 8px;
+    padding: 16px 20px; border-left: 1px solid rgba(36, 24, 14, .16);
   }
   .hoy li::before {
-    content: counter(olla);
-    grid-row: span 2;
+    content: counter(paso); grid-row: span 2;
     font-family: 'Caprasimo', Georgia, serif; font-size: 1.6rem; line-height: 1; color: var(--barro);
   }
   .hoy li small { font-size: .82rem; color: var(--tinta-suave); line-height: 1.2; }
-  .hoy li span { font-weight: 600; font-size: 1rem; line-height: 1.3; }
-  .hoy-pie {
-    display: flex; align-items: center; gap: 16px;
-    padding-top: 14px; border-top: 1px solid rgba(36, 24, 14, .16);
-  }
-  .precio { margin: 0; font-family: 'Caprasimo', Georgia, serif; font-size: 2.3rem; line-height: 1; color: var(--barro); }
-  .hoy-pie p:last-child { margin: 0; font-size: .88rem; line-height: 1.35; color: var(--tinta-suave); }
+  .hoy li span { font-weight: 600; font-size: .98rem; line-height: 1.3; }
+  .hoy-pie { display: flex; align-items: center; gap: 14px; padding: 14px 22px; border-left: 1px solid rgba(36, 24, 14, .16); }
+  .precio { margin: 0; font-family: 'Caprasimo', Georgia, serif; font-size: 2.2rem; line-height: 1; color: var(--barro); white-space: nowrap; }
+  .hoy-pie p:last-child { margin: 0; max-width: 17ch; font-size: .84rem; line-height: 1.3; color: var(--tinta-suave); }
 
-  .pie-portada {
-    display: flex; justify-content: space-between; align-items: end;
-    padding: 0 var(--canal) 22px;
-  }
+  .pie-portada { padding: 0 var(--canal) 16px; }
   .concepto { margin: 0; font-size: .78rem; color: var(--humo); opacity: .8; }
 
-  /* ── Fuera del negocio: la llamada de CJM Nexus ── */
+  /* ── Outside the business: the CJM Nexus call ── */
   .cjm {
     display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 12px 32px;
     padding: 30px var(--canal) 34px;
     background: var(--masa); color: var(--tinta);
   }
   .cjm p { margin: 0; max-width: 60ch; color: var(--tinta-suave); }
-  .cjm a { font-weight: 700; font-size: 1.05rem; text-underline-offset: 6px; text-decoration-thickness: 1px; }
+  .cjm a { display: inline-block; text-wrap: balance; font-weight: 700; font-size: 1.05rem; text-underline-offset: 6px; text-decoration-thickness: 1px; }
 
   @media (prefers-reduced-motion: reduce) {
     .foto img { animation: none; }
   }
 
-  /* Portátiles bajos: la carta no puede pisar la llamada a reservar. */
+  /* Narrower laptops: the strip drops the notes before it gets cramped. */
   @media (max-width: 1180px) and (min-width: 761px) {
-    .hoy { width: 340px; padding: 18px 20px; }
-    .foto { left: 22%; }
+    .hoy { grid-template-columns: 170px repeat(3, minmax(0, 1fr)) auto; }
+    .hoy-pie p:last-child { display: none; }
   }
 
-  /* ── Teléfono: la foto arriba, el titular entra sobre su sombra ── */
+  /* ── Phone: photo on top, the headline comes in over its shadow ── */
   @media (max-width: 760px) {
     .portada { display: block; min-height: 0; }
-    .foto { inset: 0 0 auto 0; height: 420px; }
+    .foto { inset: 0 0 auto 0; height: 400px; }
     .foto img {
-      object-position: 34% 70%;
-      -webkit-mask-image: linear-gradient(180deg, #000 52%, transparent 98%);
-              mask-image: linear-gradient(180deg, #000 52%, transparent 98%);
+      object-position: 62% 60%;
+      -webkit-mask-image: linear-gradient(180deg, #000 55%, transparent 98%);
+              mask-image: linear-gradient(180deg, #000 55%, transparent 98%);
     }
     .foto::after { height: 110px; }
     .cabecera { gap: 16px; padding-top: 18px; }
     .cabecera nav { display: none; }
     .marca { font-size: 1.5rem; }
     .reservar-cab { padding: 9px 15px; font-size: .9rem; }
-    .centro { padding-top: 258px; }
-    h1 { font-size: 2.85rem; line-height: .96; }
+    .centro { padding-top: 250px; }
+    h1 { font-size: 3.4rem; line-height: .95; }
     .entrada { font-size: 1.05rem; margin-top: 18px; }
     .reservar { width: 100%; justify-content: center; }
-    .hoy { position: static; width: auto; margin: 30px var(--canal) 0; padding: 20px; }
+    .hoy { display: block; margin: 30px 0 16px; padding: 20px; }
+    .hoy-cab { padding: 0 0 12px; }
+    .hoy ol { display: block; margin: 0; padding: 0; }
+    .hoy li { padding: 10px 0; border-left: 0; border-top: 1px solid rgba(36, 24, 14, .16); }
+    .hoy-pie { padding: 14px 0 0; border-left: 0; border-top: 1px solid rgba(36, 24, 14, .16); }
     .pie-portada { padding-top: 18px; padding-bottom: 20px; }
   }
 </style>
@@ -196,56 +174,52 @@
 <body>
   <section class="portada">
     <figure class="foto">
-      <img src="img/restaurante-fogon.jpg" width="2400" height="1600"
-           alt="Fogón de leña con una olla de barro negra tapada y una paila de hierro sobre azulejos blancos; el fuego arde debajo">
+      <img src="img/restaurante-cena.jpg" width="2400" height="1600"
+           alt="A group of friends eating at a long wooden table by candlelight, under fabric lampshades, with flatbread and a big bowl in the middle">
     </figure>
 
     <header class="cabecera">
-      <a class="marca" href="#">Tres Ollas</a>
-      <nav aria-label="Principal">
-        <a href="#">La carta</a>
-        <a href="#">Almuerzos</a>
-        <a href="#">Cómo llegar</a>
+      <a class="marca" href="#">Regulars</a>
+      <nav aria-label="Main">
+        <a href="#">Menu</a>
+        <a href="#">Private dinners</a>
+        <a href="#">Find us</a>
       </nav>
-      <a class="reservar-cab" href="#">Reservar</a>
+      <a class="reservar-cab" href="#">Book a table</a>
     </header>
 
     <div class="centro">
-      <h1>Tres ollas al fuego desde las seis de la mañana.</h1>
-      <p class="entrada">Comida de casa, hecha a leña, a dos cuadras del Parque Calderón. <b>Hoy abrimos hasta las 22:00.</b></p>
+      <h1>Long tables, short menu.</h1>
+      <p class="entrada">A kitchen for the Kiez, a few minutes from Boxhagener Platz. Tuesday to Saturday from 18:00, <b>open tonight until 23:30.</b></p>
       <div class="acciones">
-        <a class="reservar" href="#">
-          <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2c-1.5 0-3-.4-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.1 5.1 0 0 0 1.1 2.7 11.6 11.6 0 0 0 4.4 3.9c1.6.7 2.3.8 3.1.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.2-.3-.2-.6-.3Z"/></svg>
-          Reservar mesa por WhatsApp
-        </a>
-        <a class="carta" href="#">Ver la carta completa</a>
+        <a class="reservar" href="#">Book a table</a>
+        <span class="llamar">or call <a href="tel:+493023125417">030 23125 417</a></span>
       </div>
     </div>
 
-    <aside class="hoy" aria-labelledby="hoy-titulo">
-      <div class="hoy-cab">
-        <h2 id="hoy-titulo">El almuerzo de hoy</h2>
-        <p>Sábado, de 12:00 a 16:00</p>
-      </div>
-      <ol>
-        <li><small>Sopa</small><span>Locro de papa con queso fresco y aguacate</span></li>
-        <li><small>Segundo</small><span>Seco de chivo con arroz amarillo y maduro</span></li>
-        <li><small>Jugo</small><span>Tomate de árbol, recién licuado</span></li>
-      </ol>
-      <div class="hoy-pie">
-        <p class="precio">$4,50</p>
-        <p>Sale a las 12:00.<br>Cuando se acaba, se acaba.</p>
-      </div>
-    </aside>
-
     <div class="pie-portada">
-      <p class="concepto">Concepto de portada · marca ficticia</p>
+      <aside class="hoy" aria-labelledby="hoy-titulo">
+        <div class="hoy-cab">
+          <h2 id="hoy-titulo">Tonight’s menu</h2>
+          <p>Friday, from 18:00</p>
+        </div>
+        <ol>
+          <li><small>Starter</small><span>Beetroot, smoked quark, dill</span></li>
+          <li><small>Main</small><span>Pork shoulder, Spitzkohl, cider jus</span></li>
+          <li><small>Dessert</small><span>Plum crumble, vanilla cream</span></li>
+        </ol>
+        <div class="hoy-pie">
+          <p class="precio">42 €</p>
+          <p>Every course comes veggie too. New menu each Tuesday.</p>
+        </div>
+      </aside>
+      <p class="concepto">Concept homepage · fictional brand</p>
     </div>
   </section>
 
   <aside class="cjm">
-    <p>Tres Ollas no existe: es un ejemplo de lo que tu restaurante puede tener en menos de una semana.</p>
-    <a href="https://www.cjmnexus.com/es#contacto">¿Quieres una así para tu negocio? Escríbenos</a>
+    <p>Regulars doesn’t exist. It’s an example of what your restaurant could have online in under a week.</p>
+    <a href="https://www.cjmnexus.com/en#contacto">Want one like this for your business? Talk to us</a>
   </aside>
 </body>
 </html>
