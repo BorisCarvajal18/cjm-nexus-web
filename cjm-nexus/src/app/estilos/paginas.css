@@ -398,7 +398,42 @@
   margin-top: 44px;
   margin-bottom: 14px;
 }
-.oferta .a-portafolio {
+/* Las tres portadas de ejemplo bajo la cabecera de la oferta de la web. El
+   marco de cada una es el de /portafolio (`.previas img`). */
+.tira-portadas {
+  margin-top: 40px;
+}
+.tira-portadas ul {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+}
+.tira-portadas a:not(.enlace) {
+  display: block;
+  text-decoration: none;
+}
+.tira-portadas img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--linea);
+  border-radius: 5px;
+  box-shadow: var(--sombra-hoja);
+  transition: transform 0.3s var(--curva);
+}
+.tira-portadas .previa-movil {
+  display: none;
+}
+@media (hover: hover) {
+  .tira-portadas a:hover img {
+    transform: translateY(-3px);
+  }
+}
+.tira-portadas .ref-pag {
+  display: block;
+  margin-top: 14px;
+}
+.tira-portadas .pie-portada {
   margin-top: 22px;
 }
 .oferta .nota-pag {
@@ -945,6 +980,24 @@
   }
   .reglas-pag .ejemplos {
     grid-template-columns: 1fr;
+  }
+  /* La tira de la oferta: en el teléfono, una sola, la del teléfono. */
+  .tira-portadas ul {
+    grid-template-columns: minmax(0, 1fr);
+    justify-items: center;
+  }
+  .tira-portadas li + li {
+    display: none;
+  }
+  .tira-portadas .previa-escritorio {
+    display: none;
+  }
+  .tira-portadas .previa-movil {
+    display: block;
+    width: min(300px, 82vw);
+  }
+  .tira-portadas .ref-pag {
+    text-align: center;
   }
   /* En el teléfono, la portada como se verá en el teléfono. */
   .previas {

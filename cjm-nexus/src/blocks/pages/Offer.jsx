@@ -1,6 +1,6 @@
-import Flecha from '../../components/registro/Flecha';
 import PasosSemana from './PasosSemana';
 import { StepItem } from './Steps';
+import TiraPortadas from './TiraPortadas';
 
 /**
  * Una de las dos ofertas de la página de soluciones digitales.
@@ -20,10 +20,11 @@ import { StepItem } from './Steps';
  * `semana`: los pasos de la página web llevan el momento de la página, «La
  * semana, en una línea» (<PasosSemana />). Los del sistema, quietos.
  *
- * `content.portafolio`: el enlace a las portadas de ejemplo, al final de la
- * oferta de la página web (el enlace del contenido viene sin idioma).
+ * `portafolio` (los textos de /portafolio): la oferta de la página web enseña
+ * las tres portadas de ejemplo bajo su cabecera, con el enlace de
+ * `content.portafolio` (que viene sin idioma). Ver <TiraPortadas />.
  */
-export default function Offer({ content, tone = 'plain', id, semana = false, lang = 'es' }) {
+export default function Offer({ content, tone = 'plain', id, semana = false, lang = 'es', portafolio }) {
   return (
     <section id={id} className={`registro seccion oferta ${tone === 'muted' ? 'banda-honda' : ''}`}>
       <div className="marco">
@@ -49,6 +50,14 @@ export default function Offer({ content, tone = 'plain', id, semana = false, lan
           </div>
         </div>
 
+        {portafolio && content.portafolio ? (
+          <TiraPortadas
+            portafolio={portafolio}
+            enlace={content.portafolio.enlace}
+            href={`/${lang}${content.portafolio.href}`}
+          />
+        ) : null}
+
         {content.items ? (
           <ul className="puntos-pag" style={{ '--n': 4 }}>
             {content.items.map((item) => (
@@ -72,13 +81,6 @@ export default function Offer({ content, tone = 'plain', id, semana = false, lan
         )}
 
         {content.note ? <p className="nota-pag">{content.note}</p> : null}
-
-        {content.portafolio ? (
-          <a className="enlace adelante a-portafolio" href={`/${lang}${content.portafolio.href}`}>
-            <span>{content.portafolio.enlace}</span>
-            <Flecha />
-          </a>
-        ) : null}
       </div>
     </section>
   );

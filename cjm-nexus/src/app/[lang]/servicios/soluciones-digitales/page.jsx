@@ -35,7 +35,7 @@ import ProductBand from '../../../../blocks/pages/ProductBand';
 import FinalCta from '../../../../blocks/FinalCta';
 import SiteFooter from '../../../../components/SiteFooter';
 import SiteHeader from '../../../../components/SiteHeader';
-import { getDigital } from '../../../../content';
+import { getDigital, getPortafolio } from '../../../../content';
 import { defaultLanguage, languages } from '../../../../i18n/settings';
 import { faqSchema, pageMetadata, serviceSchema } from '../../../../lib/seo';
 
@@ -69,7 +69,7 @@ export default function SolucionesDigitalesPage({ params }) {
       />
       <main>
         <PageHero content={{ ...content.hero, secondaryHref: '#web' }} />
-        <Offer content={content.web} id="web" semana lang={lang} />
+        <Offer content={content.web} id="web" semana lang={lang} portafolio={getPortafolio(lang)} />
         <Offer content={content.systems} id="sistemas" tone="muted" />
         <FeatureGrid content={content.guarantees} columns={2} numbered />
         <ProductBand content={content.proof} href={`/${lang}/klinoda`} />
