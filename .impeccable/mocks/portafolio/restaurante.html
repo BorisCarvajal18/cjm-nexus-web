@@ -3,188 +3,249 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Tres Ollas · Cocina ecuatoriana en Cuenca</title>
+<title>Tres Ollas · Comida de casa en el centro de Cuenca</title>
 <!-- Concepto de portada para el portafolio de CJM Nexus. Marca ficticia.
-     Dirección: la carta del día, como la pizarra en la puerta. Referencias:
-     Rosetta (CDMX) — dirección y horario en la cabecera, y dos acciones:
-     menú y reservar; Contramar (CDMX) — la foto del plato hace el trabajo,
-     el resto se calla; Lilia (Brooklyn) — el titular dice qué se come y
-     dónde, sin adjetivos.
-     Foto: Evan Wise, Unsplash (ver FUENTES.md). -->
+     Dirección: el fogón encendido. Una sola foto manda (Kol, Hawksmoor), el lugar
+     se siente antes que el plato (Dishoom), y reservar va por WhatsApp junto a la
+     dirección (Pujol). El nombre explica el almuerzo: sopa, segundo y jugo.
+     Foto: Leandro Silva, Unsplash (ver FUENTES.md). -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Young+Serif&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Caprasimo&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root {
-    --maiz: #F2E6CC;
-    --maiz-hondo: #E8D8B4;
-    --hoja: #1F3A2B;
-    --hoja-suave: #4A5F50;
-    --aji: #B8361E;
-    --aji-hondo: #962A16;
-    --linea: rgba(31, 58, 43, 0.22);
+    --carbon: #1D150D;
+    --carbon-alto: #2B1F13;
+    --masa: #F3E6CE;
+    --masa-honda: #E6D3B0;
+    --brasa: #F2A640;
+    --brasa-honda: #DD8A1C;
+    --barro: #8E3F1C;
+    --humo: #C9B89C;
+    --tinta: #24180E;
+    --tinta-suave: #6B5440;
+    --canal: clamp(20px, 3.6vw, 56px);
   }
   * { box-sizing: border-box; }
   html, body { margin: 0; }
   body {
-    background: var(--maiz);
-    color: var(--hoja);
-    font: 400 16px/1.5 'Work Sans', system-ui, sans-serif;
+    background: var(--carbon);
+    color: var(--masa);
+    font: 400 16px/1.5 'Figtree', system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
   }
   a { color: inherit; }
+  :focus-visible { outline: 2px solid var(--brasa); outline-offset: 3px; }
 
-  /* Franja de arriba: lo primero que busca quien va a comer hoy. */
-  .franja {
-    display: flex; justify-content: space-between; gap: 12px 24px; flex-wrap: wrap;
-    padding: 9px clamp(20px, 4vw, 56px);
-    background: var(--hoja); color: var(--maiz);
-    font-size: 0.86rem;
-  }
-  .franja b { font-weight: 600; }
-  .abierto::before {
-    content: ''; display: inline-block; width: 7px; height: 7px; border-radius: 50%;
-    background: #7FC08A; margin-right: 8px; transform: translateY(-1px);
-  }
-
-  header {
-    display: flex; align-items: center; justify-content: space-between; gap: 24px;
-    padding: 18px clamp(20px, 4vw, 56px);
-    border-bottom: 1px solid var(--linea);
-  }
-  .marca { font-family: 'Young Serif', Georgia, serif; font-size: 1.6rem; text-decoration: none; letter-spacing: -0.01em; }
-  .marca span { color: var(--aji); }
-  nav { display: flex; gap: 28px; font-weight: 500; font-size: 0.97rem; }
-  nav a { text-decoration: none; }
-  nav a:hover { text-decoration: underline; text-underline-offset: 5px; }
-
+  /* ── La portada: el fogón ocupa la pantalla y el texto vive en la pared oscura ── */
   .portada {
-    display: grid;
-    grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
-    gap: clamp(28px, 4vw, 64px);
-    padding: clamp(22px, 3.5vh, 44px) clamp(20px, 4vw, 56px) 40px;
-    align-items: stretch;
+    position: relative; isolation: isolate; overflow: hidden;
+    min-height: max(100svh, 640px);
+    display: grid; grid-template-rows: auto 1fr auto;
+  }
+  .foto { position: absolute; inset: 0 0 0 28%; z-index: -1; margin: 0; }
+  .foto img {
+    display: block; width: 100%; height: 100%;
+    object-fit: cover; object-position: 30% 60%;
+    /* La foto se funde con la pared: el fondo es el mismo marrón de su sombra. */
+    -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 24%);
+            mask-image: linear-gradient(90deg, transparent 0, #000 24%);
+    animation: encender 2.8s cubic-bezier(.22, .6, .2, 1) both;
+  }
+  /* El único gesto: al abrir, el fogón se enciende. */
+  @keyframes encender {
+    from { filter: brightness(.28) saturate(.7); transform: scale(1.06); }
+    to   { filter: var(--revelado); transform: none; }
+  }
+  /* Revelado cálido: los azulejos salen de la cámara un poco fríos. */
+  .foto img { filter: var(--revelado); --revelado: sepia(.14) saturate(1.12) brightness(1.07) contrast(1.04); }
+  .foto::after {
+    /* Sombra arriba para que la cabecera se lea sobre los azulejos. */
+    content: ''; position: absolute; inset: 0 0 auto 0; height: 150px;
+    background: linear-gradient(180deg, rgba(29, 21, 13, .82), rgba(29, 21, 13, 0));
+  }
+
+  .cabecera {
+    display: flex; align-items: center; gap: 44px;
+    padding: 26px var(--canal) 0;
+  }
+  .marca {
+    font-family: 'Caprasimo', Georgia, serif; font-size: 1.75rem; line-height: 1;
+    text-decoration: none; letter-spacing: -0.01em;
+  }
+  .cabecera nav { display: flex; gap: 30px; font-weight: 500; font-size: 0.98rem; }
+  .cabecera nav a { text-decoration: none; opacity: .88; }
+  .cabecera nav a:hover { opacity: 1; text-decoration: underline; text-underline-offset: 6px; text-decoration-thickness: 1px; }
+  .reservar-cab {
+    margin-left: auto;
+    padding: 11px 18px; border-radius: 999px;
+    background: var(--masa); color: var(--tinta);
+    font-weight: 700; font-size: 0.95rem; text-decoration: none;
+    transition: background-color .2s;
+  }
+  .reservar-cab:hover { background: #fff; }
+
+  .centro {
+    align-self: center;
+    padding: 24px var(--canal) 0;
   }
   h1 {
     margin: 0;
-    font-family: 'Young Serif', Georgia, serif; font-weight: 400;
-    font-size: clamp(2.3rem, 3.9vw, 3.7rem); line-height: 1.02; letter-spacing: -0.02em;
-    max-width: 14ch;
+    font-family: 'Caprasimo', Georgia, serif; font-weight: 400;
+    font-size: clamp(2.9rem, 6.5vw, 6.4rem); line-height: .94; letter-spacing: -0.022em;
+    max-width: 10.6em;
+    text-wrap: balance;
+    text-shadow: 0 2px 30px rgba(29, 21, 13, .45);
   }
-  .entrada { margin: 18px 0 0; max-width: 46ch; font-size: 1.08rem; color: var(--hoja-suave); }
-
-  /* El almuerzo de hoy, con puntos guía como en una carta impresa. */
-  .hoy {
-    margin-top: clamp(18px, 3vh, 30px);
-    max-width: 560px;
-    padding: 16px 22px 14px;
-    background: var(--maiz-hondo);
-    border-radius: 2px;
+  .entrada {
+    margin: 26px 0 0; max-width: 34ch;
+    font-size: 1.12rem; line-height: 1.5; color: var(--humo);
   }
-  .hoy-cabeza { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; }
-  .hoy h2 { margin: 0; font-family: 'Young Serif', Georgia, serif; font-weight: 400; font-size: 1.3rem; }
-  .precio { font-family: 'Young Serif', Georgia, serif; font-size: 1.3rem; color: var(--aji); white-space: nowrap; }
-  .hoy ul { list-style: none; margin: 10px 0 0; padding: 0; }
-  .hoy li { display: flex; align-items: baseline; gap: 10px; padding: 5px 0; font-size: 0.98rem; }
-  .hoy li span:first-child { color: var(--hoja-suave); min-width: 5.2em; }
-  .hoy li::after { content: none; }
-  .hoy .nota { margin: 8px 0 0; font-size: 0.84rem; color: var(--hoja-suave); }
-
-  .acciones { display: flex; flex-wrap: wrap; gap: 12px 22px; align-items: center; margin-top: 22px; }
+  .entrada b { color: var(--masa); font-weight: 600; }
+  .acciones { display: flex; flex-wrap: wrap; align-items: center; gap: 14px 26px; margin-top: 28px; }
   .reservar {
     display: inline-flex; align-items: center; gap: 10px;
-    padding: 14px 22px; border-radius: 999px;
-    background: var(--aji); color: #fff; text-decoration: none; font-weight: 600;
-    transition: background-color .18s;
+    padding: 16px 26px; border-radius: 999px;
+    background: var(--brasa); color: var(--tinta);
+    font-weight: 700; font-size: 1.02rem; text-decoration: none;
+    transition: background-color .2s;
   }
-  .reservar:hover { background: var(--aji-hondo); }
-  .carta { font-weight: 600; text-underline-offset: 5px; }
+  .reservar:hover { background: var(--brasa-honda); }
+  .reservar svg { flex: none; }
+  .carta { font-weight: 600; text-underline-offset: 6px; text-decoration-thickness: 1px; }
 
-  figure { margin: 0; position: relative; min-height: 0; }
-  figure img {
-    display: block; width: 100%; height: 100%; min-height: 420px; max-height: calc(100svh - 200px);
-    object-fit: cover; object-position: 50% 60%;
-    border-radius: 220px 220px 4px 4px;
+  /* ── El almuerzo de hoy: una carta de papel apoyada en el fogón ── */
+  .hoy {
+    position: absolute; right: var(--canal); bottom: 44px;
+    width: 400px;
+    padding: 22px 26px 20px;
+    background: var(--masa); color: var(--tinta);
+    border-radius: 3px;
+    box-shadow: 0 30px 50px -24px rgba(0, 0, 0, .75), 0 2px 0 rgba(0, 0, 0, .15);
   }
-  figcaption { margin-top: 10px; font-size: 0.86rem; color: var(--hoja-suave); }
-  figcaption b { color: var(--hoja); font-weight: 600; }
+  .hoy h2 { margin: 0; font-family: 'Caprasimo', Georgia, serif; font-weight: 400; font-size: 1.6rem; line-height: 1.1; }
+  .hoy-cab p { margin: 4px 0 0; font-size: .9rem; color: var(--tinta-suave); }
+  .hoy ol { list-style: none; margin: 14px 0 0; padding: 0; counter-reset: olla; }
+  .hoy li {
+    counter-increment: olla;
+    display: grid; grid-template-columns: 30px 1fr; gap: 0 10px;
+    padding: 10px 0; border-top: 1px solid rgba(36, 24, 14, .16);
+  }
+  .hoy li::before {
+    content: counter(olla);
+    grid-row: span 2;
+    font-family: 'Caprasimo', Georgia, serif; font-size: 1.6rem; line-height: 1; color: var(--barro);
+  }
+  .hoy li small { font-size: .82rem; color: var(--tinta-suave); line-height: 1.2; }
+  .hoy li span { font-weight: 600; font-size: 1rem; line-height: 1.3; }
+  .hoy-pie {
+    display: flex; align-items: center; gap: 16px;
+    padding-top: 14px; border-top: 1px solid rgba(36, 24, 14, .16);
+  }
+  .precio { margin: 0; font-family: 'Caprasimo', Georgia, serif; font-size: 2.3rem; line-height: 1; color: var(--barro); }
+  .hoy-pie p:last-child { margin: 0; font-size: .88rem; line-height: 1.35; color: var(--tinta-suave); }
 
-  /* Lo que va fuera del negocio: la etiqueta del concepto y la llamada de CJM Nexus. */
-  .concepto {
-    position: fixed; right: 14px; bottom: 14px; z-index: 5;
-    padding: 5px 10px; border-radius: 3px;
-    background: rgba(31, 58, 43, 0.86); color: var(--maiz);
-    font-size: 0.72rem; letter-spacing: 0.02em;
+  .pie-portada {
+    display: flex; justify-content: space-between; align-items: end;
+    padding: 0 var(--canal) 22px;
   }
+  .concepto { margin: 0; font-size: .78rem; color: var(--humo); opacity: .8; }
+
+  /* ── Fuera del negocio: la llamada de CJM Nexus ── */
   .cjm {
-    display: flex; justify-content: space-between; align-items: center; gap: 12px 24px; flex-wrap: wrap;
-    margin: 0 clamp(20px, 4vw, 56px) 40px; padding: 18px 0 0;
-    border-top: 1px solid var(--linea);
-    font-size: 0.95rem;
+    display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 12px 32px;
+    padding: 30px var(--canal) 34px;
+    background: var(--masa); color: var(--tinta);
   }
-  .cjm a { font-weight: 600; text-underline-offset: 5px; }
+  .cjm p { margin: 0; max-width: 60ch; color: var(--tinta-suave); }
+  .cjm a { font-weight: 700; font-size: 1.05rem; text-underline-offset: 6px; text-decoration-thickness: 1px; }
 
-  @media (max-width: 900px) {
-    nav { display: none; }
-    .portada { grid-template-columns: 1fr; }
-    figure { order: -1; }
-    figure img { min-height: 0; height: 230px; border-radius: 140px 140px 4px 4px; object-position: 50% 55%; }
-    .franja .dir { display: none; }
+  @media (prefers-reduced-motion: reduce) {
+    .foto img { animation: none; }
   }
-  @media (max-width: 420px) {
-    h1 { font-size: 2.3rem; }
-    .hoy { padding: 16px; }
+
+  /* Portátiles bajos: la carta no puede pisar la llamada a reservar. */
+  @media (max-width: 1180px) and (min-width: 761px) {
+    .hoy { width: 340px; padding: 18px 20px; }
+    .foto { left: 22%; }
+  }
+
+  /* ── Teléfono: la foto arriba, el titular entra sobre su sombra ── */
+  @media (max-width: 760px) {
+    .portada { display: block; min-height: 0; }
+    .foto { inset: 0 0 auto 0; height: 420px; }
+    .foto img {
+      object-position: 34% 70%;
+      -webkit-mask-image: linear-gradient(180deg, #000 52%, transparent 98%);
+              mask-image: linear-gradient(180deg, #000 52%, transparent 98%);
+    }
+    .foto::after { height: 110px; }
+    .cabecera { gap: 16px; padding-top: 18px; }
+    .cabecera nav { display: none; }
+    .marca { font-size: 1.5rem; }
+    .reservar-cab { padding: 9px 15px; font-size: .9rem; }
+    .centro { padding-top: 258px; }
+    h1 { font-size: 2.85rem; line-height: .96; }
+    .entrada { font-size: 1.05rem; margin-top: 18px; }
     .reservar { width: 100%; justify-content: center; }
+    .hoy { position: static; width: auto; margin: 30px var(--canal) 0; padding: 20px; }
+    .pie-portada { padding-top: 18px; padding-bottom: 20px; }
   }
 </style>
 </head>
 <body>
-  <div class="franja">
-    <span class="abierto"><b>Abierto hoy</b> · almuerzos 12:00 a 16:00 · cenas 18:30 a 22:00</span>
-    <span class="dir">Presidente Córdova 5-40, centro de Cuenca</span>
-  </div>
-  <header>
-    <a class="marca" href="#">Tres <span>Ollas</span></a>
-    <nav>
-      <a href="#">La carta</a>
-      <a href="#">Almuerzos</a>
-      <a href="#">Cómo llegar</a>
-    </nav>
-  </header>
+  <section class="portada">
+    <figure class="foto">
+      <img src="img/restaurante-fogon.jpg" width="2400" height="1600"
+           alt="Fogón de leña con una olla de barro negra tapada y una paila de hierro sobre azulejos blancos; el fuego arde debajo">
+    </figure>
 
-  <main class="portada">
-    <div>
-      <h1>Comida de casa, en el centro de Cuenca.</h1>
-      <p class="entrada">Locro, seco de chivo y mote pillo hechos cada mañana, como en la mesa de la abuela. Almuerzo del día y carta de martes a domingo.</p>
+    <header class="cabecera">
+      <a class="marca" href="#">Tres Ollas</a>
+      <nav aria-label="Principal">
+        <a href="#">La carta</a>
+        <a href="#">Almuerzos</a>
+        <a href="#">Cómo llegar</a>
+      </nav>
+      <a class="reservar-cab" href="#">Reservar</a>
+    </header>
 
-      <section class="hoy" aria-labelledby="hoy">
-        <div class="hoy-cabeza">
-          <h2 id="hoy">El almuerzo de hoy</h2>
-          <span class="precio">$4,50</span>
-        </div>
-        <ul>
-          <li><span>Sopa</span><span>Locro de papa con queso y aguacate</span></li>
-          <li><span>Segundo</span><span>Seco de pollo con arroz y maduro</span></li>
-          <li><span>Jugo</span><span>Tomate de árbol</span></li>
-        </ul>
-        <p class="nota">Cambia cada día. Lo publicamos a las 10:00.</p>
-      </section>
-
+    <div class="centro">
+      <h1>Tres ollas al fuego desde las seis de la mañana.</h1>
+      <p class="entrada">Comida de casa, hecha a leña, a dos cuadras del Parque Calderón. <b>Hoy abrimos hasta las 22:00.</b></p>
       <div class="acciones">
-        <a class="reservar" href="#">Reservar mesa por WhatsApp</a>
+        <a class="reservar" href="#">
+          <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2c-1.5 0-3-.4-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.1 5.1 0 0 0 1.1 2.7 11.6 11.6 0 0 0 4.4 3.9c1.6.7 2.3.8 3.1.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.2-.3-.2-.6-.3Z"/></svg>
+          Reservar mesa por WhatsApp
+        </a>
         <a class="carta" href="#">Ver la carta completa</a>
       </div>
     </div>
 
-    <figure>
-      <img src="img/restaurante-mesa.jpg" alt="Ceviche servido en cazuela de barro con chifles, tostado y canguil sobre una mesa de madera">
-      <figcaption><b>Ceviche de camarón</b> con chifles, tostado y canguil. Sábados y domingos.</figcaption>
-    </figure>
-  </main>
+    <aside class="hoy" aria-labelledby="hoy-titulo">
+      <div class="hoy-cab">
+        <h2 id="hoy-titulo">El almuerzo de hoy</h2>
+        <p>Sábado, de 12:00 a 16:00</p>
+      </div>
+      <ol>
+        <li><small>Sopa</small><span>Locro de papa con queso fresco y aguacate</span></li>
+        <li><small>Segundo</small><span>Seco de chivo con arroz amarillo y maduro</span></li>
+        <li><small>Jugo</small><span>Tomate de árbol, recién licuado</span></li>
+      </ol>
+      <div class="hoy-pie">
+        <p class="precio">$4,50</p>
+        <p>Sale a las 12:00.<br>Cuando se acaba, se acaba.</p>
+      </div>
+    </aside>
+
+    <div class="pie-portada">
+      <p class="concepto">Concepto de portada · marca ficticia</p>
+    </div>
+  </section>
 
   <aside class="cjm">
-    <span>Así se ve la portada de un restaurante hecha en una semana.</span>
+    <p>Tres Ollas no existe: es un ejemplo de lo que tu restaurante puede tener en menos de una semana.</p>
     <a href="https://www.cjmnexus.com/es#contacto">¿Quieres una así para tu negocio? Escríbenos</a>
   </aside>
-  <p class="concepto">Concepto de portada · marca ficticia</p>
 </body>
 </html>

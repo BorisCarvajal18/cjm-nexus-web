@@ -3,175 +3,228 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Orilla Barbería · Las Peñas, Guayaquil</title>
+<title>Orilla · Barbería de barrio en Las Peñas, Guayaquil</title>
 <!-- Concepto de portada para el portafolio de CJM Nexus. Marca ficticia.
-     Dirección: los turnos de hoy. Quien entra a la web de una barbería
-     quiere saber tres cosas: cuánto cuesta, si hay hueco hoy y dónde
-     queda. Referencias: Schorem (Róterdam) — precios, horario, dirección y
-     «reserva» en la primera pantalla, sin rodeos; Fellow Barber (EE. UU.) —
-     una sola acción, reservar, siempre a mano; Murdock London — la foto del
-     oficio, no del cliché. Fuera: poste, calaveras, negro y dorado.
-     Foto: Obi, Unsplash (ver FUENTES.md). -->
+     Dirección: la vitrina. La portada es la fachada de la barbería: un escaparate
+     con el nombre pintado, la puerta abierta al centro y otro escaparate con los
+     turnos y los precios. Un lugar y un oficio con carácter en vez de las
+     herramientas (Fellow Barber); fondo de color liso contra luz dura de sol
+     (Blind Barber); reservar siempre a mano (Ruffians). Fuera: poste, calaveras,
+     negro con dorado, y los emergentes que tapan la portada (Murdock London).
+     Foto: Ten, Unsplash (ver FUENTES.md). -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,800&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Rozha+One&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root {
-    --celeste: #A9D8EE;
-    --celeste-hondo: #7FC1E0;
-    --tinta: #10171C;
-    --tinta-suave: #34434D;
-    --blanco: #FFFFFF;
-    --sol: #FF6A3D;
+    --cobalto: #23409A;
+    --cobalto-hondo: #1A3180;
+    --crema: #F4ECDA;
+    --crema-suave: #C4CCE8;
+    --crema-linea: rgba(244, 236, 218, .28);
+    --canal: clamp(20px, 3.6vw, 56px);
   }
   * { box-sizing: border-box; }
   html, body { margin: 0; }
   body {
-    background: var(--celeste);
-    color: var(--tinta);
-    font: 400 16px/1.5 'DM Sans', system-ui, sans-serif;
+    background: var(--cobalto);
+    color: var(--crema);
+    font: 400 16px/1.5 'Hanken Grotesk', system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
   }
   a { color: inherit; }
+  :focus-visible { outline: 2px solid var(--crema); outline-offset: 3px; }
+  .serif { font-family: 'Rozha One', Georgia, serif; font-weight: 400; }
 
-  header {
-    display: flex; align-items: center; justify-content: space-between; gap: 20px;
-    padding: 18px clamp(20px, 4vw, 52px);
-  }
-  .marca { font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: 1.5rem; letter-spacing: -0.03em; text-decoration: none; }
-  nav { display: flex; gap: 26px; font-weight: 500; }
-  nav a { text-decoration: none; }
-  nav a:hover { text-decoration: underline; text-underline-offset: 5px; }
-  .reservar-mini {
-    padding: 10px 16px; border-radius: 999px; background: var(--tinta); color: var(--blanco);
-    text-decoration: none; font-weight: 700; font-size: 0.92rem;
-  }
-
+  /* ── La fachada: escaparate | puerta | escaparate ── */
   .portada {
-    display: grid;
-    grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
-    gap: clamp(24px, 3vw, 48px);
-    padding: clamp(8px, 2vh, 24px) clamp(20px, 4vw, 52px) 36px;
-    align-items: end;
+    min-height: max(100svh, 640px);
+    display: grid; grid-template-rows: auto 1fr;
   }
-  h1 {
-    margin: 0;
-    font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800;
-    font-size: clamp(3rem, 5.8vw, 5.6rem); line-height: 0.88; letter-spacing: -0.045em;
+  .cabecera {
+    display: flex; align-items: center; gap: 32px;
+    padding: 0 var(--canal); min-height: 68px;
   }
-  .entrada { margin: 18px 0 0; max-width: 40ch; font-size: 1.1rem; color: var(--tinta-suave); }
+  .cabecera .lugar-mini { display: none; font-weight: 600; }
+  .cabecera nav { display: flex; gap: 30px; font-weight: 500; }
+  .cabecera nav a { text-decoration: none; opacity: .86; }
+  .cabecera nav a:hover { opacity: 1; text-decoration: underline; text-underline-offset: 6px; text-decoration-thickness: 1px; }
+  .reservar-cab {
+    margin-left: auto;
+    padding: 10px 18px; border-radius: 999px;
+    background: var(--crema); color: var(--cobalto-hondo);
+    font-weight: 700; font-size: .95rem; text-decoration: none;
+  }
+  .reservar-cab:hover { background: #fff; }
 
-  /* Los turnos libres de hoy: cada uno abre WhatsApp con la hora escrita. */
-  .turnos { margin-top: clamp(20px, 3.4vh, 32px); }
-  .turnos h2 { margin: 0 0 10px; font-size: 1rem; font-weight: 700; }
-  .turnos h2 span { font-weight: 400; color: var(--tinta-suave); }
-  .horas { display: flex; flex-wrap: wrap; gap: 8px; list-style: none; margin: 0; padding: 0; }
+  .fachada { display: grid; grid-template-columns: 1fr 36% 1fr; min-height: 0; }
+
+  .escaparate { display: flex; flex-direction: column; padding: 18px var(--canal) 26px; min-width: 0; }
+  .escaparate.izq { padding-right: 40px; }
+  .escaparate.der { padding-left: 40px; }
+
+  h1 { margin: 0; font-weight: 400; }
+  /* El nombre, pintado como en el vidrio: entra a propósito sobre el marco de la puerta. */
+  h1 .nombre {
+    position: relative; z-index: 2; display: block; white-space: nowrap;
+    font-size: clamp(5rem, 13.4vw, 12.8rem); line-height: .8; letter-spacing: -0.02em; margin-left: -.04em;
+  }
+  h1 .oficio { display: block; margin-top: 16px; font-family: 'Hanken Grotesk', system-ui, sans-serif; font-size: 1.3rem; font-weight: 600; line-height: 1.25; }
+  .entrada { margin: 16px 0 0; max-width: 36ch; font-size: 1.06rem; color: var(--crema-suave); }
+  .reservar {
+    align-self: flex-start;
+    display: inline-flex; align-items: center; gap: 10px; margin-top: 24px;
+    padding: 15px 24px; border-radius: 999px;
+    background: var(--crema); color: var(--cobalto-hondo);
+    font-weight: 700; text-decoration: none;
+  }
+  .reservar:hover { background: #fff; }
+  .datos { margin: auto 0 0; padding-top: 22px; font-size: .95rem; line-height: 1.45; }
+  .datos b { font-weight: 600; }
+  .concepto { margin: 14px 0 0; font-size: .78rem; color: var(--crema-suave); opacity: .8; }
+
+  /* La puerta: la foto, con dos hojas que se abren al llegar. El único gesto. */
+  .puerta { position: relative; margin: 0; overflow: hidden; perspective: 1600px; background: var(--cobalto-hondo); }
+  .puerta .sombra { display: none; }
+  .puerta img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 48% 62%; }
+  .puerta::before, .puerta::after {
+    content: ''; position: absolute; top: 0; bottom: 0; width: 50%; z-index: 1;
+    background: var(--crema);
+    box-shadow: inset 0 0 0 18px var(--crema), inset 0 0 0 19px rgba(35, 64, 154, .3);
+    backface-visibility: hidden;
+    animation: abrir 1.5s .35s cubic-bezier(.65, 0, .25, 1) both;
+  }
+  .puerta::before { left: 0; transform-origin: left center; --giro: -104deg; }
+  .puerta::after { right: 0; transform-origin: right center; --giro: 104deg; }
+  @keyframes abrir { to { transform: rotateY(var(--giro)); } }
+
+  /* ── El escaparate de la derecha: turnos y precios ── */
+  .der h2 { margin: 0; font-size: 1.95rem; line-height: 1.05; }
+  .der h2 + p { margin: 6px 0 0; font-size: .92rem; color: var(--crema-suave); }
+  .horas { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; list-style: none; margin: 16px 0 0; padding: 0; max-width: 360px; }
   .horas a, .horas s {
-    display: inline-block; min-width: 76px; text-align: center;
-    padding: 10px 14px; border-radius: 999px; font-weight: 700; font-variant-numeric: tabular-nums;
-    text-decoration: none;
+    display: block; padding: 10px 0; border-radius: 999px; text-align: center;
+    font-weight: 700; font-variant-numeric: tabular-nums; text-decoration: none;
   }
-  .horas a { background: var(--blanco); transition: background-color .15s, color .15s; }
-  .horas a:hover { background: var(--tinta); color: var(--blanco); }
-  .horas s { color: var(--tinta-suave); border: 1.5px dashed rgba(16, 23, 28, 0.35); font-weight: 500; }
+  .horas a { background: var(--crema); color: var(--cobalto-hondo); transition: background-color .15s; }
+  .horas a:hover { background: #fff; }
+  .horas s { font-weight: 500; color: var(--crema-suave); border: 1.5px dashed var(--crema-linea); padding: 8.5px 0; }
+  .atienden { margin: 22px 0 0; max-width: 40ch; padding-top: 18px; border-top: 1px solid var(--crema-linea); font-size: .98rem; color: var(--crema-suave); }
+  .atienden b { color: var(--crema); font-weight: 600; }
+  .precios { margin: auto 0 0; padding-top: 22px; }
+  .precios h2 { font-size: 1.95rem; }
+  .precios dl { margin: 10px 0 0; }
+  .precios div { display: flex; align-items: baseline; gap: 10px; padding: 7px 0; }
+  .precios dt { font-weight: 500; }
+  .precios div::after { content: ''; order: 1; flex: 1; border-bottom: 1.5px dotted var(--crema-linea); transform: translateY(-4px); }
+  .precios dd { order: 2; margin: 0; font-family: 'Rozha One', Georgia, serif; font-size: 1.45rem; line-height: 1; }
 
-  .lado { display: flex; flex-direction: column; gap: 14px; }
-  .foto {
-    position: relative; margin: 0;
-    height: min(calc(100svh - 290px), 500px); min-height: 300px;
-  }
-  .foto img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 30%; border-radius: 28px; display: block; }
-  .sello {
-    position: absolute; left: -18px; top: 22px;
-    padding: 10px 14px; border-radius: 14px; background: var(--sol); color: var(--tinta);
-    font-weight: 700; font-size: 0.92rem; line-height: 1.25;
-    transform: rotate(-4deg);
-  }
-
-  .precios {
-    display: grid; grid-template-columns: repeat(3, 1fr);
-    background: var(--blanco); border-radius: 20px; padding: 14px 18px;
-  }
-  .precios div + div { border-left: 1px solid rgba(16, 23, 28, 0.12); padding-left: 16px; }
-  .precios dt { font-size: 0.86rem; color: var(--tinta-suave); }
-  .precios dd { margin: 2px 0 0; font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: 1.6rem; letter-spacing: -0.02em; }
-
-  .datos { display: flex; flex-wrap: wrap; gap: 6px 22px; font-size: 0.92rem; }
-  .datos b { font-weight: 700; }
-
-  .concepto {
-    position: fixed; right: 14px; bottom: 14px; z-index: 5;
-    padding: 5px 10px; border-radius: 999px; background: rgba(16, 23, 28, 0.85); color: var(--blanco);
-    font-size: 0.72rem;
-  }
+  /* ── Fuera del negocio: la llamada de CJM Nexus ── */
   .cjm {
-    display: flex; justify-content: space-between; align-items: center; gap: 10px 24px; flex-wrap: wrap;
-    margin: 0 clamp(20px, 4vw, 52px); padding: 18px 0 40px; border-top: 1.5px solid var(--tinta);
-    font-size: 0.95rem;
+    display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 12px 32px;
+    padding: 30px var(--canal) 34px;
+    background: var(--crema); color: var(--cobalto-hondo);
   }
-  .cjm a { font-weight: 700; text-underline-offset: 5px; }
+  .cjm p { margin: 0; max-width: 62ch; }
+  .cjm a { font-weight: 700; font-size: 1.05rem; text-underline-offset: 6px; text-decoration-thickness: 1px; }
 
-  @media (max-width: 920px) {
-    nav { display: none; }
-    .portada { grid-template-columns: 1fr; align-items: start; }
-    .foto { height: 380px; min-height: 0; }
-    .sello { left: 12px; }
+  @media (prefers-reduced-motion: reduce) {
+    .puerta::before, .puerta::after { display: none; }
   }
-  @media (max-width: 420px) {
-    h1 { font-size: 3.1rem; }
-    .precios { padding: 12px 14px; }
-    .precios dd { font-size: 1.3rem; }
-    .horas a, .horas s { min-width: 70px; padding: 9px 10px; }
+
+  /* Tabletas y portátiles estrechos: la puerta se estrecha, el nombre también. */
+  @media (max-width: 1100px) and (min-width: 821px) {
+    .fachada { grid-template-columns: 1fr 30% 1fr; }
+    .escaparate.izq { padding-right: 28px; }
+    .escaparate.der { padding-left: 28px; }
+    .cabecera nav a:nth-child(3) { display: none; }
+  }
+
+  /* ── Teléfono: la puerta arriba, el nombre pintado sobre su pie y los escaparates debajo ── */
+  @media (max-width: 820px) {
+    .portada { display: block; min-height: 0; }
+    .cabecera { gap: 16px; min-height: 64px; }
+    .cabecera nav { display: none; }
+    .cabecera .lugar-mini { display: block; }
+    .fachada { display: flex; flex-direction: column; }
+    .puerta { order: -1; height: 430px; margin: 0 var(--canal); }
+    .puerta img { object-position: 46% 56%; }
+    .puerta .sombra {
+      /* Sombra al pie: el nombre se pinta encima, sobre el piso de madera. */
+      display: block; position: absolute; inset: auto 0 0 0; height: 120px; z-index: 1;
+      background: linear-gradient(180deg, rgba(20, 30, 70, 0), rgba(20, 30, 70, .6));
+    }
+    .escaparate, .escaparate.izq, .escaparate.der { padding: 26px var(--canal) 0; }
+    .escaparate.izq { padding-top: 0; }
+    h1 .nombre { font-size: 5.6rem; margin-top: -.5em; }
+    .reservar { align-self: stretch; justify-content: center; }
+    .datos { margin-top: 0; }
+    .der { padding-bottom: 30px; }
+    .horas { max-width: none; }
+    .precios { margin-top: 0; padding-top: 30px; }
   }
 </style>
 </head>
 <body>
-  <header>
-    <a class="marca" href="#">orilla.</a>
-    <nav>
-      <a href="#">Servicios</a>
-      <a href="#">El equipo</a>
-      <a href="#">Cómo llegar</a>
-    </nav>
-    <a class="reservar-mini" href="#">Reservar</a>
-  </header>
+  <section class="portada">
+    <header class="cabecera">
+      <span class="lugar-mini">Barbería en Las Peñas</span>
+      <nav aria-label="Principal">
+        <a href="#">Servicios</a>
+        <a href="#">El equipo</a>
+        <a href="#">Cómo llegar</a>
+      </nav>
+      <a class="reservar-cab" href="#">Reservar turno</a>
+    </header>
 
-  <main class="portada">
-    <div>
-      <h1>Corte fresco a una cuadra del río.</h1>
-      <p class="entrada">Barbería de barrio en Las Peñas. Tres sillas, cuatro barberos y café mientras esperas. Reserva tu turno o pasa sin cita si hay hueco.</p>
+    <div class="fachada">
+      <div class="escaparate izq">
+        <h1><span class="nombre serif">Orilla</span><span class="oficio">Barbería de barrio en Las Peñas. Pasa, que la puerta está abierta.</span></h1>
+        <p class="entrada">Tijera, navaja y toalla caliente a una cuadra del río. Si toca esperar, hay café y un tablero de ajedrez.</p>
+        <a class="reservar" href="#">
+          <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2c-1.5 0-3-.4-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.1 5.1 0 0 0 1.1 2.7 11.6 11.6 0 0 0 4.4 3.9c1.6.7 2.3.8 3.1.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.2-.3-.2-.6-.3Z"/></svg>
+          Reservar turno por WhatsApp
+        </a>
+        <p class="datos"><b>Lunes a sábado, de 9:00 a 20:00.</b><br>Numa Pompilio Llona 128, subiendo del malecón.</p>
+        <p class="concepto">Concepto de portada · marca ficticia</p>
+      </div>
 
-      <section class="turnos" aria-labelledby="turnos">
-        <h2 id="turnos">Turnos libres hoy <span>· toca uno y te lo apartamos por WhatsApp</span></h2>
-        <ul class="horas">
-          <li><s>10:00</s></li>
-          <li><a href="#">10:45</a></li>
-          <li><s>11:30</s></li>
-          <li><a href="#">14:15</a></li>
-          <li><a href="#">15:00</a></li>
-          <li><a href="#">17:30</a></li>
-          <li><a href="#">18:15</a></li>
-        </ul>
-      </section>
-    </div>
-
-    <div class="lado">
-      <figure class="foto">
-        <img src="img/barberia-corte.jpg" alt="Barbero recortando con máquina el cabello de un cliente">
-        <p class="sello">Sin cita<br>de 14:00 a 16:00</p>
+      <figure class="puerta">
+        <img src="img/barberia-puerta.jpg" width="1600" height="2400"
+             alt="Interior de una barbería antigua: una silla de barbero de hierro y cuero junto a unas puertas de madera abiertas a la calle, con el sol entrando sobre el piso de madera y un tablero de ajedrez sobre un mueble">
+        <span class="sombra" aria-hidden="true"></span>
       </figure>
-      <dl class="precios">
-        <div><dt>Corte</dt><dd>$10</dd></div>
-        <div><dt>Barba</dt><dd>$7</dd></div>
-        <div><dt>Corte y barba</dt><dd>$15</dd></div>
-      </dl>
-      <p class="datos"><span><b>Lun a sáb</b> · 9:00 a 20:00</span><span>Calle Numa Pompilio Llona, Las Peñas</span></p>
+
+      <div class="escaparate der">
+        <section aria-labelledby="turnos">
+          <h2 id="turnos" class="serif">Turnos libres hoy</h2>
+          <p>Toca una hora y te la apartamos por WhatsApp.</p>
+          <ul class="horas">
+            <li><s aria-label="10:00, ocupado">10:00</s></li>
+            <li><a href="#">10:45</a></li>
+            <li><s aria-label="11:30, ocupado">11:30</s></li>
+            <li><a href="#">14:15</a></li>
+            <li><a href="#">15:00</a></li>
+            <li><a href="#">17:30</a></li>
+          </ul>
+          <p class="atienden">Hoy atienden <b>Don Wilson</b>, que lleva 31 años con la tijera, <b>Mayra</b> y <b>Kevin</b>. Sin cita de 14:00 a 16:00, si hay silla libre.</p>
+        </section>
+        <section class="precios" aria-labelledby="precios">
+          <h2 id="precios" class="serif">Precios</h2>
+          <dl>
+            <div><dt>Corte a tijera o máquina</dt><dd>$10</dd></div>
+            <div><dt>Barba con navaja</dt><dd>$7</dd></div>
+            <div><dt>Corte y barba</dt><dd>$15</dd></div>
+            <div><dt>Afeitado con toalla caliente</dt><dd>$12</dd></div>
+          </dl>
+        </section>
+      </div>
     </div>
-  </main>
+  </section>
 
   <aside class="cjm">
-    <span>Así se ve la portada de una barbería hecha en una semana.</span>
+    <p>Orilla no existe: es un ejemplo de lo que tu barbería puede tener en menos de una semana.</p>
     <a href="https://www.cjmnexus.com/es#contacto">¿Quieres una así para tu negocio? Escríbenos</a>
   </aside>
-  <p class="concepto">Concepto de portada · marca ficticia</p>
 </body>
 </html>
